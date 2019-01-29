@@ -1,17 +1,12 @@
-buildJavaApp {
-	
-	assetName = "rearulmgtdmnejb"
-	artifact = "rearulmgtdmnejb.jar"
-	
-	deployToMIT = true
-	deployToTest = false
-	deployToSyst = false
-    systDeployType = "immediate"   
-    sonar = true
+buildJavaLib {
+
+    branch = 'develop'
+    
+    assetName = "przconfigejb"
+    artifact = "przconfigejb.jar"
     
     ombudsGroup = "OGPRIJSALG"
-    applicationCategory = "INTRANET"
-    applicationType = "WEB"
     
-    
+    publishToRAM = false
 }
+
