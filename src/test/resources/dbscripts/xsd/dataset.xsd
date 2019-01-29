@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns:dflt="PUBLIC">
+	<xsd:import namespace="PUBLIC" schemaLocation="PUBLIC.xsd" />
+	<xsd:element name="dataset">
+		<xsd:complexType>
+			<xsd:choice minOccurs="0" maxOccurs="unbounded">
+				<xsd:element name="REA_PRD_ACT" type="dflt:REA_PRD_ACT__type" />
+				<xsd:element name="REA_FLT_RULE" type="dflt:REA_FLT_RULE__type" />
+				<xsd:element name="REF_REA_ACTIONTYPE" type="dflt:REF_REA_ACTIONTYPE__type" />
+				<xsd:element name="REF_FLTOUT_TYPE" type="dflt:REF_FLTOUT_TYPE__type" />
+				<xsd:element name="REA_RNF_ACT" type="dflt:REA_RNF_ACT__type" />
+				<xsd:element name="REA_NREACT_ACT" type="dflt:REA_NREACT_ACT__type" />
+				<xsd:element name="DBMAINTAIN_SCRIPTS" type="dflt:DBMAINTAIN_SCRIPTS__type" />
+				<xsd:element name="REA_QTY_RULE" type="dflt:REA_QTY_RULE__type" />
+				<xsd:element name="REF_REA_REASON" type="dflt:REF_REA_REASON__type" />
+				<xsd:element name="REA_REACTING_ACT" type="dflt:REA_REACTING_ACT__type" />
+				<xsd:element name="REF_RULETYPE" type="dflt:REF_RULETYPE__type" />
+				<xsd:element name="REF_REA_SOURCE" type="dflt:REF_REA_SOURCE__type" />
+				<xsd:element name="REF_QTY_COND" type="dflt:REF_QTY_COND__type" />
+				<xsd:element name="REF_QTY_TYPE" type="dflt:REF_QTY_TYPE__type" />
+				<xsd:any namespace="PUBLIC" />
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

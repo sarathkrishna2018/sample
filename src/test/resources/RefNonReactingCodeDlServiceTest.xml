@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+	<REF_REA_REASON
+	REASON_ID="1"
+     	REASON_NAME="Temporarily not orderable"
+		DESCRIPTION="Temporarily not orderable"
+	/>
+	<REF_REA_REASON
+	REASON_ID="2"
+     	REASON_NAME="Reseller"
+		DESCRIPTION="Reseller"
+	/>
+</dataset>

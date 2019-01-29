@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<REA_RNF_ACT
+		REA_RULE_ID="1"
+		NO_OF_RNF="4"
+	/>
+	<REA_RNF_ACT
+		REA_RULE_ID="2"
+		NO_OF_RNF="6"
+	/>
+	
+	
+
+
+</dataset>

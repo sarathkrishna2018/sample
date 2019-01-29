@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns="PUBLIC" targetNamespace="PUBLIC">
+	<xsd:element name="REA_PRD_ACT" type="REA_PRD_ACT__type" />
+	<xsd:element name="REA_FLT_RULE" type="REA_FLT_RULE__type" />
+	<xsd:element name="REF_REA_ACTIONTYPE" type="REF_REA_ACTIONTYPE__type" />
+	<xsd:element name="REF_FLTOUT_TYPE" type="REF_FLTOUT_TYPE__type" />
+	<xsd:element name="REA_RNF_ACT" type="REA_RNF_ACT__type" />
+	<xsd:element name="REA_NREACT_ACT" type="REA_NREACT_ACT__type" />
+	<xsd:element name="DBMAINTAIN_SCRIPTS" type="DBMAINTAIN_SCRIPTS__type" />
+	<xsd:element name="REA_QTY_RULE" type="REA_QTY_RULE__type" />
+	<xsd:element name="REF_REA_REASON" type="REF_REA_REASON__type" />
+	<xsd:element name="REA_REACTING_ACT" type="REA_REACTING_ACT__type" />
+	<xsd:element name="REF_RULETYPE" type="REF_RULETYPE__type" />
+	<xsd:element name="REF_REA_SOURCE" type="REF_REA_SOURCE__type" />
+	<xsd:element name="REF_QTY_COND" type="REF_QTY_COND__type" />
+	<xsd:element name="REF_QTY_TYPE" type="REF_QTY_TYPE__type" />
+	<xsd:complexType name="REA_PRD_ACT__type">
+		<xsd:attribute name="MIN_DAYS" use="optional" />
+		<xsd:attribute name="END_DT_DAYS" use="optional" />
+		<xsd:attribute name="REA_RULE_ID" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="REA_FLT_RULE__type">
+		<xsd:attribute name="X_TIME_QTY" use="optional" />
+		<xsd:attribute name="MAX_COMP_QTY" use="optional" />
+		<xsd:attribute name="REA_RULE_ID" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="REF_REA_ACTIONTYPE__type">
+		<xsd:attribute name="ACTION_TYPE_ID" use="optional" />
+		<xsd:attribute name="DESCRIPTION" use="optional" />
+		<xsd:attribute name="SEQ" use="optional" />
+		<xsd:attribute name="ACTION_TYPE" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="REF_FLTOUT_TYPE__type">
+		<xsd:attribute name="FLTOUT_TYPE_NAME" use="optional" />
+		<xsd:attribute name="FLTOUT_TYPE_ID" use="optional" />
+		<xsd:attribute name="DESCRIPTION" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="REA_RNF_ACT__type">
+		<xsd:attribute name="REA_RULE_ID" use="optional" />
+		<xsd:attribute name="NO_OF_RNF" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="REA_NREACT_ACT__type">
+		<xsd:attribute name="FLTOUT_TYPE_ID" use="optional" />
+		<xsd:attribute name="REA_RULE_ID" use="optional" />
+		<xsd:attribute name="PPD_HCHYSET_ID" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="DBMAINTAIN_SCRIPTS__type">
+		<xsd:attribute name="CHECKSUM" use="optional" />
+		<xsd:attribute name="SUCCEEDED" use="optional" />
+		<xsd:attribute name="VERSION" use="optional" />
+		<xsd:attribute name="FILE_LAST_MODIFIED_AT" use="optional" />
+		<xsd:attribute name="EXECUTED_AT" use="optional" />
+		<xsd:attribute name="FILE_NAME" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="REA_QTY_RULE__type">
+		<xsd:attribute name="QTY_COND_ID" use="optional" />
+		<xsd:attribute name="QTY_TYPE_ID" use="optional" />
+		<xsd:attribute name="REA_RULE_ID" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="REF_REA_REASON__type">
+		<xsd:attribute name="REASON_ID" use="optional" />
+		<xsd:attribute name="REASON_NAME" use="optional" />
+		<xsd:attribute name="DESCRIPTION" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="REA_REACTING_ACT__type">
+		<xsd:attribute name="CATCH_ALL_YN" use="optional" />
+		<xsd:attribute name="REA_RULE_ID" use="optional" />
+		<xsd:attribute name="THOLD_PERC" use="optional" />
+		<xsd:attribute name="THOLD_AMT" use="optional" />
+		<xsd:attribute name="REACTING_AMT" use="optional" />
+		<xsd:attribute name="REACTING_PERC" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="REF_RULETYPE__type">
+		<xsd:attribute name="RULETYPE_NAME" use="optional" />
+		<xsd:attribute name="DESCRIPTION" use="optional" />
+		<xsd:attribute name="RULETYPE_ID" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="REF_REA_SOURCE__type">
+		<xsd:attribute name="SOURCE_ID" use="optional" />
+		<xsd:attribute name="DESCRIPTION" use="optional" />
+		<xsd:attribute name="SOURCE_NAME" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="REF_QTY_COND__type">
+		<xsd:attribute name="QTY_COND_ID" use="optional" />
+		<xsd:attribute name="DESCRIPTION" use="optional" />
+		<xsd:attribute name="QTY_COND_NAME" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="REF_QTY_TYPE__type">
+		<xsd:attribute name="QTY_TYPE_ID" use="optional" />
+		<xsd:attribute name="DESCRIPTION" use="optional" />
+		<xsd:attribute name="QTY_TYPE_NAME" use="optional" />
+	</xsd:complexType>
+</xsd:schema>
