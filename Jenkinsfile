@@ -2,8 +2,8 @@ buildJavaLib {
 
     branch = 'develop'
     
-    assetName = "przconfigejb"
-    artifact = "przconfigejb.jar"
+    assetName = "rearulmgtdmnejb"
+    artifact = "rearulmgtdmnejb.jar"
     
     ombudsGroup = "OGPRIJSALG"
     
