@@ -1,5 +1,7 @@
 apply plugin: 'java'
 
+project.version = '1.0.0'
+
 dependencies {
 	compile(group: 'com.colruytgroup', name: 'coreutillib', version: '3.6.0.1')
 	compile(group: 'javax', name: 'javaee-api', version: '7.0')
@@ -31,3 +33,11 @@ dependencies {
 	testCompile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.3'
 	
 }
+
+jar {
+    manifest {
+        attributes(
+                "Class-Path": configurations.compile.collect { it.getName() }.join(' '))
+    }
+}
+
