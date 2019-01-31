@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+	<REF_QTY_COND
+		QTY_COND_ID="1"
+     	QTY_COND_NAME="NQTY >= BQTY"
+		DESCRIPTION="NQTY >= BQTY"
+	/>
+	<REF_QTY_COND
+		QTY_COND_ID="2"
+     	QTY_COND_NAME="NQTY > BQTY"
+		DESCRIPTION="NQTY > BQTY"
+	/>
+</dataset>

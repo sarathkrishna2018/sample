@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+	<REF_QTY_TYPE
+		QTY_TYPE_ID="1"
+     	QTY_TYPE_NAME="P1 Quantity 1"
+		DESCRIPTION="P1 Quantity 1"
+	/>
+	<REF_QTY_TYPE
+		QTY_TYPE_ID="2"
+     	QTY_TYPE_NAME="P2 NQTY"
+		DESCRIPTION="P2 NQTY"
+	/>
+</dataset>

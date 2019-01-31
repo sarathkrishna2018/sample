@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<REA_QTY_RULE
+		REA_RULE_ID="1"
+		QTY_COND_ID="101"
+		QTY_TYPE_ID="2"
+	/>
+	<REA_QTY_RULE
+		REA_RULE_ID="2"
+		QTY_COND_ID="102"
+		QTY_TYPE_ID="3"
+	/>
+	
+	
+
+
+
+</dataset>

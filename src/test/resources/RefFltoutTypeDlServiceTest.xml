@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+	<REF_FLTOUT_TYPE
+	FLTOUT_TYPE_ID="1"
+     	FLTOUT_TYPE_NAME="Filter Out"
+		DESCRIPTION="Filter out the price recording"
+	/>
+	<REF_FLTOUT_TYPE
+	FLTOUT_TYPE_ID="2"
+     	FLTOUT_TYPE_NAME="Filter And Clear Out"
+		DESCRIPTION="Filter and Clear out the old calculated reaction p"
+	/>
+</dataset>
