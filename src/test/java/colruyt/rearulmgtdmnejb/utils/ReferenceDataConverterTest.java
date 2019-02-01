@@ -15,29 +15,16 @@ import org.unitils.inject.annotation.TestedObject;
 import com.google.common.collect.Lists;
 
 import colruyt.rearulmgtdmnejb.bo.RefActionTypeBo;
-import colruyt.rearulmgtdmnejb.bo.RefFilterOutRecordingTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefLangBo;
 import colruyt.rearulmgtdmnejb.bo.RefNotToReactCodeBo;
 import colruyt.rearulmgtdmnejb.bo.RefQuantityConditionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefQuantityPriceTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
-import colruyt.rearulmgtdmnejb.entity.RefFilterOutRecordingType;
-import colruyt.rearulmgtdmnejb.entity.RefFilterOutRecordingTypeLang;
-import colruyt.rearulmgtdmnejb.entity.RefFilterOutRecordingTypeLangPK;
-import colruyt.rearulmgtdmnejb.entity.RefQuantityCond;
-import colruyt.rearulmgtdmnejb.entity.RefQuantityCondLang;
-import colruyt.rearulmgtdmnejb.entity.RefQuantityCondLangPK;
-import colruyt.rearulmgtdmnejb.entity.RefQuantityType;
-import colruyt.rearulmgtdmnejb.entity.RefQuantityTypeLang;
-import colruyt.rearulmgtdmnejb.entity.RefQuantityTypeLangPK;
-import colruyt.rearulmgtdmnejb.entity.RefReason;
-import colruyt.rearulmgtdmnejb.entity.RefReasonLang;
-import colruyt.rearulmgtdmnejb.entity.RefReasonLangPK;
-import colruyt.rearulmgtdmnejb.entity.RefRuleTypePK;
-import colruyt.rearulmgtdmnejb.entity.RefRuletype;
-import colruyt.rearulmgtdmnejb.entity.RefRuletypeLang;
 import colruyt.rearulmgtdmnejb.enums.ActionTypeEnum;
+import colruyt.rearulmgtdmnejb.enums.RefQuantityTypeEnum;
+import colruyt.rearulmgtdmnejb.enums.RefReasonEnum;
+import colruyt.rearulmgtdmnejb.enums.RefRuletypeEnum;
 import colruyt.rearulmgtdmnejb.enums.SourceTypeEnum;
 import colruyt.rearulmgtdmnejb.util.ReferenceDataConverter;
 
@@ -49,7 +36,7 @@ public class ReferenceDataConverterTest {
 	@TestedObject
 	private ReferenceDataConverter referenceDataConverter;
 	
-	@Test
+	/*@Test
 	public void convertRefNonReactingCodeType(){
 		List<RefReason> refReasonlist=createRefReason();
 		List<RefNotToReactCodeBo> expectedRefNotToReactCodeBo=referenceDataConverter.convertRefNonReactingCodeType(createRefReason());
@@ -111,7 +98,7 @@ public class ReferenceDataConverterTest {
 		List<RefFilterOutRecordingTypeLang> refFltoutTypeLanglist=getRefFltoutTypeLang();
 		List<RefLangBo> expectedRefLangBo=referenceDataConverter.convertRefFltoutTypeLangs(getRefFltoutTypeLang());
 		assertEquals(refFltoutTypeLanglist.size(),expectedRefLangBo.size());	
-	}
+	}*/
 	@Test
 	public void convertRefReaActionTest(){
 		ActionTypeEnum[] actionTypeEnums= ActionTypeEnum.values();
@@ -124,7 +111,27 @@ public class ReferenceDataConverterTest {
 		 List<RefSourceTypeBo> expectedRefSourceType=referenceDataConverter.convertRefReaSource(sourceTypeEnums);
 		 Assert.assertEquals(5,expectedRefSourceType.size());
 	}
-	private List<RefFilterOutRecordingType> getRefFltoutType(){
+	@Test
+	public void testConvertRefNonReactingCodeType() {
+		RefReasonEnum[] reasonValues = RefReasonEnum.values();
+		List<RefNotToReactCodeBo> RefNotToReactCodeBos = referenceDataConverter.convertRefNonReactingCodeType(reasonValues);
+		assertEquals(RefNotToReactCodeBos.size(), 6);
+	}
+	
+	@Test
+	public void testConvertRuleType() {
+		RefRuletypeEnum[] reasonValues = RefRuletypeEnum.values();
+		List<RefRuleTypeBo> refRuleTypeBoList = referenceDataConverter.convertRuleType(reasonValues);
+		assertEquals(refRuleTypeBoList.size(), 6);
+	}
+	
+	@Test
+	public void testConvertRefQtyType(){
+		RefQuantityTypeEnum[] refQuantityTypeValues = RefQuantityTypeEnum.values();
+		List<RefQuantityPriceTypeBo> refQuantityPriceTypeBoList = referenceDataConverter.convertRefQtyType(refQuantityTypeValues);
+		assertEquals(refQuantityPriceTypeBoList.size(), 3);
+	}
+	/*private List<RefFilterOutRecordingType> getRefFltoutType(){
 		List<RefFilterOutRecordingType> refFltoutTypelist=Lists.newArrayList();
 		RefFilterOutRecordingType refFltoutType=new RefFilterOutRecordingType();
 		refFltoutType.setFltoutTypeId(1);
@@ -204,7 +211,7 @@ public class ReferenceDataConverterTest {
 		refQtyTypeLangPK.setQtyTypeId(1);
 		refQtyTypeLangPK.setIsoLangCode("EN");
 		return refQtyTypeLangPK;
-	}
+	}*/
 	private List<RefQuantityPriceTypeBo> getRefQuantityPriceTypeBo(){
 		List<RefQuantityPriceTypeBo> refQuantityPriceTypeBolist=Lists.newArrayList();
 		RefQuantityPriceTypeBo refQuantityPriceTypeBo=new RefQuantityPriceTypeBo();
@@ -215,7 +222,7 @@ public class ReferenceDataConverterTest {
 		return	refQuantityPriceTypeBolist;
 	}
 	
-	private RefQuantityCond getRefQtyCond(){
+	/*private RefQuantityCond getRefQtyCond(){
 		RefQuantityCond refQtyCond=new RefQuantityCond();
 		refQtyCond.setQtyCondId(1);
 		refQtyCond.setRefQtyCondLangs(getRefQtyCondLang());
@@ -288,7 +295,7 @@ public class ReferenceDataConverterTest {
 		refReasonLangPK.setReasonId(1);
 		refReasonLangPK.setIsoLangCode("EN");
 		return refReasonLangPK;
-	}
+	}*/
 	public List<RefLangBo> createRefLangBo(){
 		List<RefLangBo> refLangBolist=Lists.newArrayList();
 		RefLangBo refLangBo=new RefLangBo();

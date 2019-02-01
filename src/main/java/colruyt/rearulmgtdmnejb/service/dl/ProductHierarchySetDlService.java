@@ -2,7 +2,6 @@ package colruyt.rearulmgtdmnejb.service.dl;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.LocalBean;
@@ -12,13 +11,11 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.persistence.TemporalType;
 
 import colruyt.rearulmgtdmnejb.bo.XPSRuleBo;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySet;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmnt;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
-import colruyt.rearulmgtdmnejb.util.SQLQueries;
 
 @Stateless
 @LocalBean

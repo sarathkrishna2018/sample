@@ -1,8 +1,6 @@
 package colruyt.rearulmgtdmnejb.service.bl;
 
-import java.io.IOException;
 import java.io.Serializable;
-import java.io.UnsupportedEncodingException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -11,7 +9,6 @@ import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
-import org.jose4j.json.internal.json_simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,8 +22,6 @@ import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchyElement;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySet;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmnt;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmntPK;
-import colruyt.rearulmgtdmnejb.exception.PriceProductExternalServiceException;
-import colruyt.rearulmgtdmnejb.exception.PriceProductServiceDownException;
 import colruyt.rearulmgtdmnejb.service.dl.ProductHierarchyElementDlService;
 import colruyt.rearulmgtdmnejb.service.dl.ProductHierarchySetDlService;
 import colruyt.rearulmgtdmnejb.util.ProductHrchyElmntConverter;

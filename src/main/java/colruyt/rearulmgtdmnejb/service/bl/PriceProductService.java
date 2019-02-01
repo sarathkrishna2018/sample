@@ -2,7 +2,6 @@ package colruyt.rearulmgtdmnejb.service.bl;
 
 import java.io.IOException;
 import java.io.Serializable;
-import java.io.UnsupportedEncodingException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;

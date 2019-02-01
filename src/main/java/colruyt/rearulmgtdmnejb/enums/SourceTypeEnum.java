@@ -1,10 +1,5 @@
 package colruyt.rearulmgtdmnejb.enums;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
-
 public enum SourceTypeEnum {
 	ONLINE(1L,"Online", "Online"),
 	OFFLINE(2L,"Offline", "Offline"),

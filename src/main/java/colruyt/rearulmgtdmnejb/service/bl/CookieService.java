@@ -1,7 +1,6 @@
 package colruyt.rearulmgtdmnejb.service.bl;
 
 import java.io.Serializable;
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
 

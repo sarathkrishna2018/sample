@@ -26,18 +26,13 @@ import colruyt.rearulmgtdmnejb.bo.RefQuantityConditionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefQuantityPriceTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
-import colruyt.rearulmgtdmnejb.entity.RefFilterOutRecordingType;
-import colruyt.rearulmgtdmnejb.entity.RefQuantityCond;
-import colruyt.rearulmgtdmnejb.entity.RefQuantityType;
-import colruyt.rearulmgtdmnejb.entity.RefReason;
-import colruyt.rearulmgtdmnejb.entity.RefRuletype;
 import colruyt.rearulmgtdmnejb.enums.ActionTypeEnum;
+import colruyt.rearulmgtdmnejb.enums.FilterOutRecordingTypeEnum;
+import colruyt.rearulmgtdmnejb.enums.QuantityConditionEnum;
+import colruyt.rearulmgtdmnejb.enums.RefQuantityTypeEnum;
+import colruyt.rearulmgtdmnejb.enums.RefReasonEnum;
+import colruyt.rearulmgtdmnejb.enums.RefRuletypeEnum;
 import colruyt.rearulmgtdmnejb.enums.SourceTypeEnum;
-import colruyt.rearulmgtdmnejb.service.dl.RefFltoutTypeDlService;
-import colruyt.rearulmgtdmnejb.service.dl.RefNonReactingCodeDlService;
-import colruyt.rearulmgtdmnejb.service.dl.RefQuantityConditionTypeDlService;
-import colruyt.rearulmgtdmnejb.service.dl.RefQuantityPriceTypeDlService;
-import colruyt.rearulmgtdmnejb.service.dl.RefRuleTypeDlService;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnDebugMessage;
 import colruyt.rearulmgtdmnejb.util.ReferenceDataConverter;
@@ -51,21 +46,7 @@ public class ReferenceDataService implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(ReferenceDataService.class);
-	
-	@EJB
-	private RefNonReactingCodeDlService refNonReactingCodeDlService;
 
-	@EJB
-	private RefQuantityConditionTypeDlService refQuantityConditionTypeDlService;
-	
-	@EJB
-	private RefQuantityPriceTypeDlService refQuantityPriceTypeDlService;
-
-	@EJB
-	private RefFltoutTypeDlService refFltoutTypeDlService;
-	
-	@EJB
-	private RefRuleTypeDlService refRuleTypeDlService;
 
 	@EJB
 	private ReferenceDataConverter referenceDataConvertor;
@@ -88,23 +69,23 @@ public class ReferenceDataService implements Serializable {
 		ActionTypeEnum[] actionTypeEnums = ActionTypeEnum.values();
 		refActionTypeList = referenceDataConvertor.convertRefReaActiontype(actionTypeEnums);
 		
-		List<RefReason> refNotToReactCode = refNonReactingCodeDlService.findAllNonReactingCodeTypes();
-		refNotToReactCodeList = referenceDataConvertor.convertRefNonReactingCodeType(refNotToReactCode);
+		RefReasonEnum[] refReasonValues = RefReasonEnum.values();
+		refNotToReactCodeList = referenceDataConvertor.convertRefNonReactingCodeType(refReasonValues);
 		
-		List<RefQuantityCond> refQuantityCondition = refQuantityConditionTypeDlService.findAllQuantityConditionTypes();
-		refQuantityConditionList = referenceDataConvertor.convertRefQtyCond(refQuantityCondition);
+		QuantityConditionEnum[] quantityConditionEnum = QuantityConditionEnum.values();
+		refQuantityConditionList = referenceDataConvertor.convertRefQtyCond(quantityConditionEnum);
 		
-		List<RefQuantityType> refQuantityPriceTypes = refQuantityPriceTypeDlService.findAllQuantityConditionTypes();
-		refQuantityPriceTypeList = referenceDataConvertor.convertRefQtyType(refQuantityPriceTypes);
+		RefQuantityTypeEnum[] refQuantityTypeValues = RefQuantityTypeEnum.values();
+		refQuantityPriceTypeList = referenceDataConvertor.convertRefQtyType(refQuantityTypeValues);
 
 		SourceTypeEnum[]  sourceTypeEnums = SourceTypeEnum.values();
 		refSourceTypeList = referenceDataConvertor.convertRefReaSource(sourceTypeEnums);
 		
-		List<RefFilterOutRecordingType> refFltoutTypes = refFltoutTypeDlService.getFilteringOutTypes();
-		refFilterOutRecordingTypeList = referenceDataConvertor.convertRefFltoutType(refFltoutTypes);
-		
-		List<RefRuletype> refRuleTypes = refRuleTypeDlService.getAllRuleTypes();
-		refRuleTypeList = referenceDataConvertor.convertRuleType(refRuleTypes);
+		FilterOutRecordingTypeEnum[] filterOutRecordingTypeEnums = FilterOutRecordingTypeEnum.values();
+		refFilterOutRecordingTypeList = referenceDataConvertor.convertRefFltoutType(filterOutRecordingTypeEnums);
+ 		
+		RefRuletypeEnum[] refRullTypeValues = RefRuletypeEnum.values();
+		refRuleTypeList = referenceDataConvertor.convertRuleType(refRullTypeValues);
 		
 	}
 

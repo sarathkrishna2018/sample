@@ -9,14 +9,10 @@ import javax.ejb.Stateless;
 
 import com.google.common.collect.Lists;
 
-import colruyt.rearulmgtdmnejb.bo.GeneralRuleBo;
 import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
 import colruyt.rearulmgtdmnejb.bo.RefLangBo;
 import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
-import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.entity.ReactionRuleSet;
-import colruyt.rearulmgtdmnejb.entity.RefRuletype;
-import colruyt.rearulmgtdmnejb.entity.RefRuletypeLang;
 import colruyt.rearulmgtdmnejb.service.bl.ReferenceDataService;
 
 @Stateless
@@ -65,7 +61,7 @@ public class ReaRulesetConverter implements Serializable {
 
 
 	
-	public List<RefRuleTypeBo> convertRuleType(List<RefRuletype> refRuletypes) {
+	/*public List<RefRuleTypeBo> convertRuleType(List<RefRuletype> refRuletypes) {
 		List<RefRuleTypeBo> refRuleTypeBoList = Lists.newArrayList();
 		for (RefRuletype refRuletype : refRuletypes) {
 			RefRuleTypeBo refRuleTypeBo = new RefRuleTypeBo();
@@ -75,7 +71,7 @@ public class ReaRulesetConverter implements Serializable {
 			refRuleTypeBoList.add(refRuleTypeBo);
 		}
 		return refRuleTypeBoList;
-	}
+	}*/
 	public RefRuleTypeBo convertRulType(long ruleTypeid){
 		RefRuleTypeBo refRuleTypeBo = new RefRuleTypeBo();
 		List<RefRuleTypeBo> refRuletype=referenceDataService.getAllRuleTypes();
@@ -93,7 +89,7 @@ public class ReaRulesetConverter implements Serializable {
 		
 	}
 
-	public List<RefLangBo> convertRefRuletypeLangs(List<RefRuletypeLang> refRuletypeLangs) {
+	/*public List<RefLangBo> convertRefRuletypeLangs(List<RefRuletypeLang> refRuletypeLangs) {
 		List<RefLangBo> refLangList = Lists.newArrayList();
 		if (refRuletypeLangs != null) {
 			for (RefRuletypeLang refRuletypeLang : refRuletypeLangs) {
@@ -104,7 +100,7 @@ public class ReaRulesetConverter implements Serializable {
 			}
 		}
 		return refLangList;
-	}
+	}*/
 	public ReactionRulesetBo convertReactionRuleset(ReactionRuleSet reactionRuleSet){
 		ReactionRulesetBo reactionRulesetBo=new ReactionRulesetBo();
 		if(reactionRuleSet!=null){

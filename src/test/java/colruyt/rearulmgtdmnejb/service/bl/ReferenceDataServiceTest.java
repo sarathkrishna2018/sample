@@ -1,4 +1,4 @@
-package colruyt.rearulmgtdmnejb.service.bl;
+/*package colruyt.rearulmgtdmnejb.service.bl;
 
 import javax.transaction.Transactional;
 
@@ -23,8 +23,8 @@ import colruyt.rearulmgtdmnejb.service.dl.RefRuleTypeDlService;
 public class ReferenceDataServiceTest {
 	@TestedObject
 	private ReferenceDataService referenceDataBlService;
-	/*@InjectIntoByType
-	private RefActionTypeDlService refActionTypeDlService=Mockito.mock(RefActionTypeDlService.class);*/
+	@InjectIntoByType
+	private RefActionTypeDlService refActionTypeDlService=Mockito.mock(RefActionTypeDlService.class);
 	@InjectIntoByType
 	private RefFltoutTypeDlService refFltoutTypeDlService=Mockito.mock(RefFltoutTypeDlService.class);
 	@InjectIntoByType
@@ -35,8 +35,8 @@ public class ReferenceDataServiceTest {
 	private RefQuantityPriceTypeDlService refQuantityPriceTypeDlService=Mockito.mock(RefQuantityPriceTypeDlService.class);
 	@InjectIntoByType
 	private RefRuleTypeDlService refRuleTypeDlService=Mockito.mock(RefRuleTypeDlService.class);
-	/*@InjectIntoByType
-	private RefSourceTypeDlService refSourceTypeDlService=Mockito.mock(RefSourceTypeDlService.class);*/
+	@InjectIntoByType
+	private RefSourceTypeDlService refSourceTypeDlService=Mockito.mock(RefSourceTypeDlService.class);
 	
 	@Test
 	public void getAllActionTypesTest(){
@@ -75,3 +75,4 @@ public class ReferenceDataServiceTest {
 	
 
 }
+*/

@@ -30,11 +30,7 @@ import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmnt;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmntPK;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.entity.ReactionRuleSet;
-//import colruyt.rearulmgtdmnejb.entity.RefActionType;
-import colruyt.rearulmgtdmnejb.entity.RefRuleTypePK;
-import colruyt.rearulmgtdmnejb.entity.RefRuletype;
-import colruyt.rearulmgtdmnejb.entity.RefRuletypeLang;
-//import colruyt.rearulmgtdmnejb.entity.RefSourceType;
+
 import colruyt.rearulmgtdmnejb.service.bl.ReferenceDataService;
 import colruyt.rearulmgtdmnejb.util.ReaRuleConverter;
 import colruyt.rearulmgtdmnejb.util.ReaRulesetConverter;
@@ -78,7 +74,7 @@ public class ReaRulesetConverterTest {
 		ReactionRulesetBo expectedreactionRulesetBo=reaRulesetConverter.convertReactionRuleset(getReactRuleset());
 		assertEquals(reactionRulesetBo.getRulesetId(), expectedreactionRulesetBo.getRulesetId());
 	}
-	@Test
+	/*@Test
 	public void convertRefRuletypeLangsTest(){
 		List<RefLangBo> refLangList = Lists.newArrayList();
 		RefLangBo refLangBo=new RefLangBo();
@@ -88,13 +84,13 @@ public class ReaRulesetConverterTest {
 		refLangList.add(refLangBo);
 		List<RefLangBo> expectedRefLangBo=reaRulesetConverter.convertRefRuletypeLangs(getRefRuletypeLanglist());
 		assertEquals(refLangList.size(),expectedRefLangBo.size());	
-	}
+	}*/
 	/*@Test
 	public void convertRulTypeTest(){
 		RefRuleTypeBo refRuleTypeBo = new RefRuleTypeBo();
 		when(referenceDataService.getAllRuleTypes(Mockito.anyListOf(RefRuleTypeBo.class))).thenReturn(getReactionRuleBo());
 	}*/
-	@Test
+	/*@Test
 	public void convertRuleTypeTest(){
 		List<RefRuleTypeBo> refRuleTypeBoList = Lists.newArrayList();
 		RefRuletype refRuletype=getRefRuletype();
@@ -107,7 +103,7 @@ public class ReaRulesetConverterTest {
 		List<RefRuleTypeBo> expectedRefRuleTypeBo=reaRulesetConverter.convertRuleType(getRefRuletypelist());
 		assertEquals(refRuleTypeBoList.size(),expectedRefRuleTypeBo.size());	
 		
-	}
+	}*/
 	@Test
 	public void convertRuleSetBoTest(){
 		List<ReactionRulesetBo> rulesetBoList = Lists.newArrayList();
@@ -136,7 +132,7 @@ public class ReaRulesetConverterTest {
 		ruleSetList.add(reactionRuleSet);
 		return ruleSetList;
 	}
-	private List<RefRuletype> getRefRuletypelist() {
+	/*private List<RefRuletype> getRefRuletypelist() {
 		List<RefRuletype> refRuletypelist=Lists.newArrayList();
 		RefRuletype refRuletype=new RefRuletype();
 		refRuletype.setRefRuletypeLang(getRefRuletypeLanglist());
@@ -172,7 +168,7 @@ public class ReaRulesetConverterTest {
 		refRuletypeLang.setRuletypeName("Filt");
 		refRuletypeLangs.add(refRuletypeLang);
 		return refRuletypeLangs;
-	}
+	}*/
 	private ReactionRuleSet getReactRuleset() {
 		ReactionRuleSet reactionRuleSet=new ReactionRuleSet();
 		reactionRuleSet.setCgChnId(1);

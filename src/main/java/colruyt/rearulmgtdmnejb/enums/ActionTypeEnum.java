@@ -1,10 +1,5 @@
 package colruyt.rearulmgtdmnejb.enums;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import colruyt.rearulmgtdmnejb.bo.RefActionTypeBo;
-
 public enum ActionTypeEnum {
 		PRICE_PROMO(1L,"Price Promo", 1L),
 		DISCOUNT_IN_PERCENT(2L,"Discount %",  2L),

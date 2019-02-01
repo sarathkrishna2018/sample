@@ -2,9 +2,7 @@ package colruyt.rearulmgtdmnejb.service.bl;
 
 import java.io.Serializable;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
