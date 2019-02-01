@@ -30,11 +30,11 @@ import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmnt;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmntPK;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.entity.ReactionRuleSet;
-import colruyt.rearulmgtdmnejb.entity.RefActionType;
+//import colruyt.rearulmgtdmnejb.entity.RefActionType;
 import colruyt.rearulmgtdmnejb.entity.RefRuleTypePK;
 import colruyt.rearulmgtdmnejb.entity.RefRuletype;
 import colruyt.rearulmgtdmnejb.entity.RefRuletypeLang;
-import colruyt.rearulmgtdmnejb.entity.RefSourceType;
+//import colruyt.rearulmgtdmnejb.entity.RefSourceType;
 import colruyt.rearulmgtdmnejb.service.bl.ReferenceDataService;
 import colruyt.rearulmgtdmnejb.util.ReaRuleConverter;
 import colruyt.rearulmgtdmnejb.util.ReaRulesetConverter;
@@ -197,8 +197,6 @@ public class ReaRulesetConverterTest {
 		reactionRule.setPostponedYn(false);
 		reactionRule.setReaRuleId(1);
 		reactionRule.setReaRulesetId(10);
-		reactionRule.setRefActionTypes(getRefActList());
-		reactionRule.setRefSourceTypes(getRefSourceList());
 		reactionRule.setReaPpdHchysets(getreaPpdHchysets());
 		reactionRule.setRuleComment("good");
 		reactionRule.setRecalculateYn(true);
@@ -210,7 +208,7 @@ public class ReaRulesetConverterTest {
 		reactionRules.add(reactionRule);
 		return reactionRules;
 	}
-	public List<RefActionType> getRefActList(){
+	/*public List<RefActionType> getRefActList(){
 		List<RefActionType> refActlist=Lists.newArrayList();
 		RefActionType refActionType = new RefActionType();
 		refActionType.setActionTypeId(1l);
@@ -220,16 +218,7 @@ public class ReaRulesetConverterTest {
 		refActlist.add(refActionType);
 		return refActlist;
 		
-	}
-	private List<RefSourceType> getRefSourceList() {
-		List<RefSourceType> refSourcelist=Lists.newArrayList();
-		RefSourceType refSourceType=new RefSourceType();
-		refSourceType.setDescription("xxx");
-		refSourceType.setSourceId(1);
-		refSourceType.setSourceName("All");
-		refSourcelist.add(refSourceType);
-		return refSourcelist;
-	}
+	}*/
 	private List<PriceProductHierarchySet> getreaPpdHchysets() {
 		List<PriceProductHierarchySet>  priceProductHierarchySetlist=Lists.newArrayList();
 		PriceProductHierarchySet priceProductHierarchySet=new PriceProductHierarchySet();

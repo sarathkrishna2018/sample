@@ -1,4 +1,4 @@
-package colruyt.rearulmgtdmnejb.entity;
+/*package colruyt.rearulmgtdmnejb.entity;
 
 import java.io.Serializable;
 
@@ -8,10 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 
-/**
+*//**
  * The persistent class for the REF_REA_SOURCE database table.
  * 
- */
+ *//*
 @Entity
 @Table(name="REF_REA_SOURCE")
 public class RefSourceType implements Serializable {
@@ -49,4 +49,4 @@ public class RefSourceType implements Serializable {
 	public void setSourceName(String sourceName) {
 		this.sourceName = sourceName;
 	}
-}
+}*/

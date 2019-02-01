@@ -28,9 +28,6 @@ import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
 import colruyt.rearulmgtdmnejb.bo.XPSRuleBo;
 import colruyt.rearulmgtdmnejb.entity.ReactingRuleAction;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
-import colruyt.rearulmgtdmnejb.entity.ReactionRuleActionType;
-import colruyt.rearulmgtdmnejb.entity.ReactionRuleSourceType;
-import colruyt.rearulmgtdmnejb.entity.RefActionType;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleValidationException;
 import colruyt.rearulmgtdmnejb.service.dl.ReactingRuleActionDlService;
@@ -245,22 +242,6 @@ public class ReactingRuleServiceTest {
 		return reaRule;
 	}
 
-	public List<ReactionRuleActionType> getReaRuleSetActtype() {
-		List<ReactionRuleActionType> reaRuleSetActtypelist = Lists.newArrayList();
-		ReactionRuleActionType reaRuleSetActtype = new ReactionRuleActionType();
-		reaRuleSetActtype.setLstUpdateBy("sa");
-		reaRuleSetActtypelist.add(reaRuleSetActtype);
-		return reaRuleSetActtypelist;
-	}
-
-	public List<ReactionRuleSourceType> getReaRuleSetSrc() {
-		List<ReactionRuleSourceType> reaRuleSetSrclist = Lists.newArrayList();
-		ReactionRuleSourceType reaRuleSetSrc = new ReactionRuleSourceType();
-		reaRuleSetSrc.setLstUpdateBy("sa");
-		reaRuleSetSrclist.add(reaRuleSetSrc);
-		return reaRuleSetSrclist;
-	}
-
 	public ReactionRulesetBo createReactionRuleset() {
 		ReactionRulesetBo reactionRuleset = new ReactionRulesetBo();
 		reactionRuleset.setColruytGroupChainId(1l);
@@ -283,16 +264,6 @@ public class ReactingRuleServiceTest {
 		ReactionRulesetBo ruleSetBo = getReactionRulesetBo();
 		reaList.add(ruleSetBo);
 		return reaList;
-	}
-	public List<RefActionType> getRefReaActiontype(){
-		List<RefActionType> refReaActiontypelist=Lists.newArrayList();
-		RefActionType refReaActiontype=new RefActionType();
-		refReaActiontype.setActionType("xyz");
-		refReaActiontype.setActionTypeId(1);
-		refReaActiontype.setDescription("sxs");
-		refReaActiontype.setSeq(123l);
-		refReaActiontypelist.add(refReaActiontype);
-		return refReaActiontypelist;		
 	}
 
 }

@@ -33,9 +33,6 @@ import colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleAction;
 import colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleActionRsn;
 import colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleActionRsnPK;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
-import colruyt.rearulmgtdmnejb.entity.ReactionRuleActionType;
-import colruyt.rearulmgtdmnejb.entity.ReactionRuleSourceType;
-import colruyt.rearulmgtdmnejb.entity.RefActionType;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleValidationException;
 import colruyt.rearulmgtdmnejb.service.dl.ProposalNotToReactActionDlService;
@@ -61,8 +58,6 @@ public class ProposeNotToReactRuleServiceTest {
 	public void createRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException{
 		when(proposeNotToReactRuleConverter.convert(Mockito.any(ProposeNotToReactRuleBo.class))).thenReturn(getReaNreactAct());
 		when(proposalNotToReactActionDlService.createOrUpdate(Mockito.any(ProposalNotToReactRuleAction.class))).thenReturn(getReaNreactAct());
-		when(proposeNotToReactRuleConverter.convertReasonNotToReactSet(Mockito.anyListOf(RefNotToReactCodeBo.class), Mockito.anyLong(), Mockito.anyString())).thenReturn(getReaNreactSetRsn());
-		Mockito.doNothing().when(proposalNotToReactActionDlService).createOrUpdate(getReaNreactSetRsn());
 		GeneralRuleBo expectedProposeNotToReactRule = proposeNotToReactRuleService.createRuleSpecificAttributes(getProposeNotToReactRuleBo());
 		Assert.assertEquals(new Long(1l), expectedProposeNotToReactRule.getRuleId());
 	}
@@ -71,9 +66,6 @@ public class ProposeNotToReactRuleServiceTest {
 		Long ruleId=1l;
 		when(proposeNotToReactRuleConverter.convert(Mockito.any(ProposeNotToReactRuleBo.class))).thenReturn(getReaNreactAct());
 		when(proposalNotToReactActionDlService.createOrUpdate(Mockito.any(ProposalNotToReactRuleAction.class))).thenReturn(getReaNreactAct());
-		Mockito.doNothing().when(proposalNotToReactActionDlService).remove(ruleId);
-		when(proposeNotToReactRuleConverter.convertReasonNotToReactSet(Mockito.anyListOf(RefNotToReactCodeBo.class), Mockito.anyLong(), Mockito.anyString())).thenReturn(getReaNreactSetRsn());
-		Mockito.doNothing().when(proposalNotToReactActionDlService).createOrUpdate(getReaNreactSetRsn());
 		GeneralRuleBo expectedProposeNotToReactRule = proposeNotToReactRuleService.modifyRuleSpecificAttributes(getProposeNotToReactRuleBo());
 		Assert.assertEquals(new Long(1l), expectedProposeNotToReactRule.getRuleId());
 	}
@@ -188,22 +180,7 @@ public class ProposeNotToReactRuleServiceTest {
 		reaRule.setLstUpdateBy("sa");
 		return reaRule;
 	}
-	public List<ReactionRuleSourceType> getReaRuleSetSrc() {
-		List<ReactionRuleSourceType> reaRuleSetSrclist = Lists.newArrayList();
-		ReactionRuleSourceType reaRuleSetSrc = new ReactionRuleSourceType();
-		reaRuleSetSrc.setLstUpdateBy("sa");
-		reaRuleSetSrclist.add(reaRuleSetSrc);
-		return reaRuleSetSrclist;
-	}
 
-	public List<ReactionRuleActionType> getReaRuleSetActtype() {
-		List<ReactionRuleActionType> reaRuleSetActtypelist = Lists.newArrayList();
-		ReactionRuleActionType reaRuleSetActtype = new ReactionRuleActionType();
-		reaRuleSetActtype.setLstUpdateBy("sa");
-		reaRuleSetActtypelist.add(reaRuleSetActtype);
-		return reaRuleSetActtypelist;
-	}
-	
 	public ProposeNotToReactRuleBo getProposeNotToReactRuleBo() {
 		ProposeNotToReactRuleBo proposeNotToReactRuleBo = new ProposeNotToReactRuleBo();
 		proposeNotToReactRuleBo.setActionSelectAll(false);
@@ -332,15 +309,6 @@ public class ProposeNotToReactRuleServiceTest {
 		reaList.add(ruleSetBo);
 		return reaList;
 	}
-	public List<RefActionType> getRefReaActiontype(){
-		List<RefActionType> refReaActiontypelist=Lists.newArrayList();
-		RefActionType refReaActiontype=new RefActionType();
-		refReaActiontype.setActionType("xyz");
-		refReaActiontype.setActionTypeId(1);
-		refReaActiontype.setDescription("sxs");
-		refReaActiontype.setSeq(123l);
-		refReaActiontypelist.add(refReaActiontype);
-		return refReaActiontypelist;		
-	}
+	
 	
 }

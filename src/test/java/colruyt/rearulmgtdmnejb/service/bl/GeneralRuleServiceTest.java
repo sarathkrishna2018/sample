@@ -33,8 +33,6 @@ import colruyt.rearulmgtdmnejb.entity.ReactionRuleActionTypePK;
 import colruyt.rearulmgtdmnejb.entity.ReactionRuleSet;
 import colruyt.rearulmgtdmnejb.entity.ReactionRuleSourceType;
 import colruyt.rearulmgtdmnejb.entity.ReactionRuleSourceTypePK;
-import colruyt.rearulmgtdmnejb.entity.RefActionType;
-import colruyt.rearulmgtdmnejb.entity.RefSourceType;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleValidationException;
 import colruyt.rearulmgtdmnejb.service.dl.ReactionRuleActionTypeDlService;
@@ -79,12 +77,12 @@ public class GeneralRuleServiceTest {
 				Mockito.anyString())).thenReturn(createReactionRuleset());
 		when(reaRuleConverter.convertRuleBo(Mockito.isNull(ReactionRule.class), Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReaRule());
+		//action
+		when(reaRuleConverter.convertRuleTypeForAll(Mockito.anyLong()))
+				.thenReturn(getAllTypeList());
+		//source
+		when(reaRuleConverter.convertRuleTypeForAll(Mockito.anyLong())).thenReturn(getAllTypeList());
 		when(reactionRuleDlService.createOrUpdate(Mockito.any(ReactionRule.class))).thenReturn(getReaRule());
-		when(reaRuleConverter.convertRuleActionForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class)))
-				.thenReturn(getReaRuleSetActtype());
-		Mockito.doNothing().when(reactionRuleActionTypeDlService).createOrUpdate(getReaRuleSetActtype());
-		when(reaRuleConverter.convertRuleSourceForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class))).thenReturn(getReaRuleSetSrc());
-		Mockito.doNothing().when(reactionRuleSourceTypeDlService).createOrUpdate(getReaRuleSetSrc());
 		when(priceProductHierarchyBlService.createProductHierarchySet(Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReactionRuleBo());
 		when(generalRuleService.createRuleSpecificAttributes(Mockito.any(GeneralRuleBo.class)))
@@ -103,12 +101,9 @@ public class GeneralRuleServiceTest {
 				Mockito.anyString())).thenReturn(createReactionRuleset());
 		when(reaRuleConverter.convertRuleBo(Mockito.isNull(ReactionRule.class), Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReaRule());
+		when(reaRuleConverter.convertRuleAction(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
+		when(reaRuleConverter.convertRuleSource(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
 		when(reactionRuleDlService.createOrUpdate(Mockito.any(ReactionRule.class))).thenReturn(getReaRule());
-		when(reaRuleConverter.convertRuleAction(Mockito.any(GeneralRuleBo.class))).thenReturn(getReaRuleSetActtype());
-		Mockito.doNothing().when(reactionRuleActionTypeDlService).createOrUpdate(getReaRuleSetActtype());
-		when(reaRuleConverter.convertRuleSource(Mockito.any(GeneralRuleBo.class))).thenReturn(getReaRuleSetSrc());
-		Mockito.doNothing().when(reactionRuleSourceTypeDlService).createOrUpdate(getReaRuleSetSrc());
-
 		when(priceProductHierarchyBlService.createProductHierarchySet(Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReactionRuleBo());
 		when(generalRuleService.createRuleSpecificAttributes(Mockito.any(GeneralRuleBo.class)))
@@ -126,12 +121,9 @@ public class GeneralRuleServiceTest {
 				Mockito.anyString())).thenReturn(createReactionRuleset());
 		when(reaRuleConverter.convertRuleBo(Mockito.isNull(ReactionRule.class), Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReaRule());
+		when(reaRuleConverter.convertRuleAction(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
+		when(reaRuleConverter.convertRuleSource(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
 		when(reactionRuleDlService.createOrUpdate(Mockito.any(ReactionRule.class))).thenReturn(getReaRule());
-		when(reaRuleConverter.convertRuleActionForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class)))
-				.thenReturn(getReaRuleSetActtype());
-		Mockito.doNothing().when(reactionRuleActionTypeDlService).createOrUpdate(getReaRuleSetActtype());
-		when(reaRuleConverter.convertRuleSourceForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class))).thenReturn(getReaRuleSetSrc());
-		Mockito.doNothing().when(reactionRuleSourceTypeDlService).createOrUpdate(getReaRuleSetSrc());
 		when(priceProductHierarchyBlService.createProductHierarchySet(Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReactionRuleBo());
 		when(generalRuleService.createRuleSpecificAttributes(Mockito.any(GeneralRuleBo.class)))
@@ -149,12 +141,9 @@ public class GeneralRuleServiceTest {
 				Mockito.anyString())).thenReturn(createReactionRuleset());
 		when(reaRuleConverter.convertRuleBo(Mockito.isNull(ReactionRule.class), Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReaRule());
+		when(reaRuleConverter.convertRuleAction(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
+		when(reaRuleConverter.convertRuleSource(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
 		when(reactionRuleDlService.createOrUpdate(Mockito.any(ReactionRule.class))).thenReturn(getReaRule());
-		when(reaRuleConverter.convertRuleActionForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class)))
-				.thenReturn(getReaRuleSetActtype());
-		Mockito.doNothing().when(reactionRuleActionTypeDlService).createOrUpdate(getReaRuleSetActtype());
-		when(reaRuleConverter.convertRuleSourceForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class))).thenReturn(getReaRuleSetSrc());
-		Mockito.doNothing().when(reactionRuleSourceTypeDlService).createOrUpdate(getReaRuleSetSrc());
 		when(priceProductHierarchyBlService.createProductHierarchySet(Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReactionRuleBo());
 		when(generalRuleService.createRuleSpecificAttributes(Mockito.any(GeneralRuleBo.class)))
@@ -170,12 +159,9 @@ public class GeneralRuleServiceTest {
 				Mockito.anyString())).thenReturn(createReactionRuleset());
 		when(reaRuleConverter.convertRuleBo(Mockito.isNull(ReactionRule.class), Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReaRule());
+		when(reaRuleConverter.convertRuleAction(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
+		when(reaRuleConverter.convertRuleSource(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
 		when(reactionRuleDlService.createOrUpdate(Mockito.any(ReactionRule.class))).thenReturn(getReaRule());
-		when(reaRuleConverter.convertRuleActionForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class)))
-				.thenReturn(getReaRuleSetActtype());
-		Mockito.doNothing().when(reactionRuleActionTypeDlService).createOrUpdate(getReaRuleSetActtype());
-		when(reaRuleConverter.convertRuleSourceForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class))).thenReturn(getReaRuleSetSrc());
-		Mockito.doNothing().when(reactionRuleSourceTypeDlService).createOrUpdate(getReaRuleSetSrc());
 		when(priceProductHierarchyBlService.createProductHierarchySet(Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReactionRuleBo());
 		when(generalRuleService.createRuleSpecificAttributes(Mockito.any(GeneralRuleBo.class)))
@@ -191,12 +177,9 @@ public class GeneralRuleServiceTest {
 				Mockito.anyString())).thenReturn(createReactionRuleset());
 		when(reaRuleConverter.convertRuleBo(Mockito.isNull(ReactionRule.class), Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReaRule());
+		when(reaRuleConverter.convertRuleAction(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
+		when(reaRuleConverter.convertRuleSource(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
 		when(reactionRuleDlService.createOrUpdate(Mockito.any(ReactionRule.class))).thenReturn(getReaRule());
-		when(reaRuleConverter.convertRuleActionForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class)))
-				.thenReturn(getReaRuleSetActtype());
-		Mockito.doNothing().when(reactionRuleActionTypeDlService).createOrUpdate(getReaRuleSetActtype());
-		when(reaRuleConverter.convertRuleSourceForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class))).thenReturn(getReaRuleSetSrc());
-		Mockito.doNothing().when(reactionRuleSourceTypeDlService).createOrUpdate(getReaRuleSetSrc());
 		when(priceProductHierarchyBlService.createProductHierarchySet(Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReactionRuleBo());
 		when(generalRuleService.createRuleSpecificAttributes(Mockito.any(GeneralRuleBo.class)))
@@ -213,12 +196,9 @@ public class GeneralRuleServiceTest {
 				Mockito.anyString())).thenReturn(createReactionRuleset());
 		when(reaRuleConverter.convertRuleBo(Mockito.isNull(ReactionRule.class), Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReaRule());
+		when(reaRuleConverter.convertRuleAction(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
+		when(reaRuleConverter.convertRuleSource(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
 		when(reactionRuleDlService.createOrUpdate(Mockito.any(ReactionRule.class))).thenReturn(getReaRule());
-		when(reaRuleConverter.convertRuleActionForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class)))
-				.thenReturn(getReaRuleSetActtype());
-		Mockito.doNothing().when(reactionRuleActionTypeDlService).createOrUpdate(getReaRuleSetActtype());
-		when(reaRuleConverter.convertRuleSourceForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class))).thenReturn(getReaRuleSetSrc());
-		Mockito.doNothing().when(reactionRuleSourceTypeDlService).createOrUpdate(getReaRuleSetSrc());
 		when(priceProductHierarchyBlService.createProductHierarchySet(Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReactionRuleBo());
 		when(generalRuleService.createRuleSpecificAttributes(Mockito.any(GeneralRuleBo.class)))
@@ -234,12 +214,9 @@ public class GeneralRuleServiceTest {
 				Mockito.anyString())).thenReturn(createReactionRuleset());
 		when(reaRuleConverter.convertRuleBo(Mockito.isNull(ReactionRule.class), Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReaRule());
+		when(reaRuleConverter.convertRuleAction(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
+		when(reaRuleConverter.convertRuleSource(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
 		when(reactionRuleDlService.createOrUpdate(Mockito.any(ReactionRule.class))).thenReturn(getReaRule());
-		when(reaRuleConverter.convertRuleActionForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class)))
-				.thenReturn(getReaRuleSetActtype());
-		Mockito.doNothing().when(reactionRuleActionTypeDlService).createOrUpdate(getReaRuleSetActtype());
-		when(reaRuleConverter.convertRuleSourceForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class))).thenReturn(getReaRuleSetSrc());
-		Mockito.doNothing().when(reactionRuleSourceTypeDlService).createOrUpdate(getReaRuleSetSrc());
 		when(priceProductHierarchyBlService.createProductHierarchySet(Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReactionRuleBo());
 		when(generalRuleService.createRuleSpecificAttributes(Mockito.any(GeneralRuleBo.class)))
@@ -255,12 +232,9 @@ public class GeneralRuleServiceTest {
 				Mockito.anyString())).thenReturn(createReactionRuleset());
 		when(reaRuleConverter.convertRuleBo(Mockito.isNull(ReactionRule.class), Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReaRule());
+		when(reaRuleConverter.convertRuleAction(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
+		when(reaRuleConverter.convertRuleSource(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
 		when(reactionRuleDlService.createOrUpdate(Mockito.any(ReactionRule.class))).thenReturn(getReaRule());
-		when(reaRuleConverter.convertRuleActionForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class)))
-				.thenReturn(getReaRuleSetActtype());
-		Mockito.doNothing().when(reactionRuleActionTypeDlService).createOrUpdate(getReaRuleSetActtype());
-		when(reaRuleConverter.convertRuleSourceForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class))).thenReturn(getReaRuleSetSrc());
-		Mockito.doNothing().when(reactionRuleSourceTypeDlService).createOrUpdate(getReaRuleSetSrc());
 		when(priceProductHierarchyBlService.createProductHierarchySet(Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReactionRuleBo());
 		when(generalRuleService.createRuleSpecificAttributes(Mockito.any(GeneralRuleBo.class)))
@@ -277,12 +251,9 @@ public class GeneralRuleServiceTest {
 				Mockito.anyString())).thenReturn(createReactionRuleset());
 		when(reaRuleConverter.convertRuleBo(Mockito.isNull(ReactionRule.class), Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReaRule());
+		when(reaRuleConverter.convertRuleAction(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
+		when(reaRuleConverter.convertRuleSource(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
 		when(reactionRuleDlService.createOrUpdate(Mockito.any(ReactionRule.class))).thenReturn(getReaRule());
-		when(reaRuleConverter.convertRuleActionForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class)))
-				.thenReturn(getReaRuleSetActtype());
-		Mockito.doNothing().when(reactionRuleActionTypeDlService).createOrUpdate(getReaRuleSetActtype());
-		when(reaRuleConverter.convertRuleSourceForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class))).thenReturn(getReaRuleSetSrc());
-		Mockito.doNothing().when(reactionRuleSourceTypeDlService).createOrUpdate(getReaRuleSetSrc());
 		when(priceProductHierarchyBlService.createProductHierarchySet(Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReactionRuleBo());
 		when(generalRuleService.createRuleSpecificAttributes(Mockito.any(GeneralRuleBo.class)))
@@ -299,12 +270,9 @@ public class GeneralRuleServiceTest {
 				Mockito.anyString())).thenReturn(createReactionRuleset());
 		when(reaRuleConverter.convertRuleBo(Mockito.isNull(ReactionRule.class), Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReaRule());
+		when(reaRuleConverter.convertRuleAction(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
+		when(reaRuleConverter.convertRuleSource(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
 		when(reactionRuleDlService.createOrUpdate(Mockito.any(ReactionRule.class))).thenReturn(getReaRule());
-		when(reaRuleConverter.convertRuleActionForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class)))
-				.thenReturn(getReaRuleSetActtype());
-		Mockito.doNothing().when(reactionRuleActionTypeDlService).createOrUpdate(getReaRuleSetActtype());
-		when(reaRuleConverter.convertRuleSourceForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class))).thenReturn(getReaRuleSetSrc());
-		Mockito.doNothing().when(reactionRuleSourceTypeDlService).createOrUpdate(getReaRuleSetSrc());
 		when(priceProductHierarchyBlService.createProductHierarchySet(Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReactionRuleBo());
 		when(generalRuleService.createRuleSpecificAttributes(Mockito.any(GeneralRuleBo.class)))
@@ -321,12 +289,9 @@ public class GeneralRuleServiceTest {
 				Mockito.anyString())).thenReturn(createReactionRuleset());
 		when(reaRuleConverter.convertRuleBo(Mockito.isNull(ReactionRule.class), Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReaRule());
+		when(reaRuleConverter.convertRuleAction(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
+		when(reaRuleConverter.convertRuleSource(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
 		when(reactionRuleDlService.createOrUpdate(Mockito.any(ReactionRule.class))).thenReturn(getReaRule());
-		when(reaRuleConverter.convertRuleActionForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class)))
-				.thenReturn(getReaRuleSetActtype());
-		Mockito.doNothing().when(reactionRuleActionTypeDlService).createOrUpdate(getReaRuleSetActtype());
-		when(reaRuleConverter.convertRuleSourceForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class))).thenReturn(getReaRuleSetSrc());
-		Mockito.doNothing().when(reactionRuleSourceTypeDlService).createOrUpdate(getReaRuleSetSrc());
 		when(priceProductHierarchyBlService.createProductHierarchySet(Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReactionRuleBo());
 		when(generalRuleService.createRuleSpecificAttributes(Mockito.any(GeneralRuleBo.class)))
@@ -343,12 +308,9 @@ public class GeneralRuleServiceTest {
 				Mockito.anyString())).thenReturn(createReactionRuleset());
 		when(reaRuleConverter.convertRuleBo(Mockito.isNull(ReactionRule.class), Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReaRule());
+		when(reaRuleConverter.convertRuleAction(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
+		when(reaRuleConverter.convertRuleSource(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
 		when(reactionRuleDlService.createOrUpdate(Mockito.any(ReactionRule.class))).thenReturn(getReaRule());
-		when(reaRuleConverter.convertRuleActionForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class)))
-				.thenReturn(getReaRuleSetActtype());
-		Mockito.doNothing().when(reactionRuleActionTypeDlService).createOrUpdate(getReaRuleSetActtype());
-		when(reaRuleConverter.convertRuleSourceForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class))).thenReturn(getReaRuleSetSrc());
-		Mockito.doNothing().when(reactionRuleSourceTypeDlService).createOrUpdate(getReaRuleSetSrc());
 		when(priceProductHierarchyBlService.createProductHierarchySet(Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReactionRuleBo());
 		when(generalRuleService.createRuleSpecificAttributes(Mockito.any(GeneralRuleBo.class)))
@@ -365,12 +327,9 @@ public class GeneralRuleServiceTest {
 				Mockito.anyString())).thenReturn(createReactionRuleset());
 		when(reaRuleConverter.convertRuleBo(Mockito.isNull(ReactionRule.class), Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReaRule());
+		when(reaRuleConverter.convertRuleAction(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
+		when(reaRuleConverter.convertRuleSource(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
 		when(reactionRuleDlService.createOrUpdate(Mockito.any(ReactionRule.class))).thenReturn(getReaRule());
-		when(reaRuleConverter.convertRuleActionForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class)))
-				.thenReturn(getReaRuleSetActtype());
-		Mockito.doNothing().when(reactionRuleActionTypeDlService).createOrUpdate(getReaRuleSetActtype());
-		when(reaRuleConverter.convertRuleSourceForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class))).thenReturn(getReaRuleSetSrc());
-		Mockito.doNothing().when(reactionRuleSourceTypeDlService).createOrUpdate(getReaRuleSetSrc());
 		when(priceProductHierarchyBlService.createProductHierarchySet(Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReactionRuleBo());
 		when(generalRuleService.createRuleSpecificAttributes(Mockito.any(GeneralRuleBo.class)))
@@ -387,12 +346,9 @@ public class GeneralRuleServiceTest {
 				Mockito.anyString())).thenReturn(createReactionRuleset());
 		when(reaRuleConverter.convertRuleBo(Mockito.isNull(ReactionRule.class), Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReaRule());
+		when(reaRuleConverter.convertRuleAction(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
+		when(reaRuleConverter.convertRuleSource(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
 		when(reactionRuleDlService.createOrUpdate(Mockito.any(ReactionRule.class))).thenReturn(getReaRule());
-		when(reaRuleConverter.convertRuleActionForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class)))
-				.thenReturn(getReaRuleSetActtype());
-		Mockito.doNothing().when(reactionRuleActionTypeDlService).createOrUpdate(getReaRuleSetActtype());
-		when(reaRuleConverter.convertRuleSourceForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class))).thenReturn(getReaRuleSetSrc());
-		Mockito.doNothing().when(reactionRuleSourceTypeDlService).createOrUpdate(getReaRuleSetSrc());
 		when(priceProductHierarchyBlService.createProductHierarchySet(Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReactionRuleBo());
 		when(generalRuleService.createRuleSpecificAttributes(Mockito.any(GeneralRuleBo.class)))
@@ -409,12 +365,9 @@ public class GeneralRuleServiceTest {
 				Mockito.anyString())).thenReturn(createReactionRuleset());
 		when(reaRuleConverter.convertRuleBo(Mockito.isNull(ReactionRule.class), Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReaRule());
+		when(reaRuleConverter.convertRuleAction(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
+		when(reaRuleConverter.convertRuleSource(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
 		when(reactionRuleDlService.createOrUpdate(Mockito.any(ReactionRule.class))).thenReturn(getReaRule());
-		when(reaRuleConverter.convertRuleActionForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class)))
-				.thenReturn(getReaRuleSetActtype());
-		Mockito.doNothing().when(reactionRuleActionTypeDlService).createOrUpdate(getReaRuleSetActtype());
-		when(reaRuleConverter.convertRuleSourceForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class))).thenReturn(getReaRuleSetSrc());
-		Mockito.doNothing().when(reactionRuleSourceTypeDlService).createOrUpdate(getReaRuleSetSrc());
 		when(priceProductHierarchyBlService.createProductHierarchySet(Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReactionRuleBo());
 		when(generalRuleService.createRuleSpecificAttributes(Mockito.any(GeneralRuleBo.class)))
@@ -431,12 +384,9 @@ public class GeneralRuleServiceTest {
 				Mockito.anyString())).thenReturn(createReactionRuleset());
 		when(reaRuleConverter.convertRuleBo(Mockito.isNull(ReactionRule.class), Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReaRule());
+		when(reaRuleConverter.convertRuleAction(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
+		when(reaRuleConverter.convertRuleSource(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
 		when(reactionRuleDlService.createOrUpdate(Mockito.any(ReactionRule.class))).thenReturn(getReaRule());
-		when(reaRuleConverter.convertRuleActionForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class)))
-				.thenReturn(getReaRuleSetActtype());
-		Mockito.doNothing().when(reactionRuleActionTypeDlService).createOrUpdate(getReaRuleSetActtype());
-		when(reaRuleConverter.convertRuleSourceForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class))).thenReturn(getReaRuleSetSrc());
-		Mockito.doNothing().when(reactionRuleSourceTypeDlService).createOrUpdate(getReaRuleSetSrc());
 		when(priceProductHierarchyBlService.createProductHierarchySet(Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReactionRuleBo());
 		when(generalRuleService.createRuleSpecificAttributes(Mockito.any(GeneralRuleBo.class)))
@@ -476,17 +426,13 @@ public class GeneralRuleServiceTest {
 	@Test
 	public void modifyRuleTypeAllTest() throws ReaRuleValidationException, ReaRuleManagementException {
 		when(reactionRuleDlService.findByPk(Mockito.anyLong())).thenReturn(getReaRule());
-		Mockito.doNothing().when(reactionRuleSourceTypeDlService).createOrUpdate(getReaRuleSetSrc());
-		when(reactionRuleDlService.findByPk(Mockito.anyLong())).thenReturn(getReaRule());
 		when(reaRuleConverter.convertRuleBo(Mockito.any(ReactionRule.class), Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReaRule());
 		when(reactionRuleDlService.createOrUpdate(Mockito.any(ReactionRule.class))).thenReturn(getReaRule());
-		when(reaRuleConverter.convertRuleActionForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class)))
-				.thenReturn(getReaRuleSetActtype());
-		Mockito.doNothing().when(reactionRuleActionTypeDlService).createOrUpdate(getReaRuleSetActtype());
-		when(reaRuleConverter.convertRuleSourceForAll(Mockito.anyLong(), Mockito.any(GeneralRuleBo.class)))
-		.thenReturn(getReaRuleSetSrc());
-		Mockito.doNothing().when(reactionRuleSourceTypeDlService).createOrUpdate(getReaRuleSetSrc());
+		when(reaRuleConverter.convertRuleTypeForAll(Mockito.anyLong()))
+				.thenReturn(getAllTypeList());
+		when(reaRuleConverter.convertRuleTypeForAll(Mockito.anyLong())).thenReturn(getAllTypeList());
+		when(reactionRuleDlService.createOrUpdate(Mockito.any(ReactionRule.class))).thenReturn(getReaRule());
 		when(priceProductHierarchyBlService.createProductHierarchySet(Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReactionRuleBo());
 		when(generalRuleService.modifyRuleSpecificAttributes(Mockito.any(GeneralRuleBo.class)))
@@ -504,16 +450,12 @@ public class GeneralRuleServiceTest {
 		generalRuleBo.setActionTypeList(getRefActionTypeBo());
 		generalRuleBo.setSourceTypeList(getRefSourceTypeBo());
 		when(reactionRuleDlService.findByPk(Mockito.anyLong())).thenReturn(getReaRule());
-		Mockito.doNothing().when(reactionRuleSourceTypeDlService).createOrUpdate(getReaRuleSetSrc());
-		when(reactionRuleDlService.findByPk(Mockito.anyLong())).thenReturn(getReaRule());
 		when(reaRuleConverter.convertRuleBo(Mockito.any(ReactionRule.class), Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReaRule());
 		when(reactionRuleDlService.createOrUpdate(Mockito.any(ReactionRule.class))).thenReturn(getReaRule());
-		when(reaRuleConverter.convertRuleAction(Mockito.any(GeneralRuleBo.class))).thenReturn(getReaRuleSetActtype());
-		Mockito.doNothing().when(reactionRuleActionTypeDlService).createOrUpdate(getReaRuleSetActtype());
-		when(reaRuleConverter.convertRuleSource(Mockito.any(GeneralRuleBo.class))).thenReturn(getReaRuleSetSrc());
-		Mockito.doNothing().when(reactionRuleSourceTypeDlService).createOrUpdate(getReaRuleSetSrc());
-
+		when(reaRuleConverter.convertRuleAction(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
+		when(reaRuleConverter.convertRuleSource(Mockito.any(GeneralRuleBo.class))).thenReturn(getSourceandActionList());
+		when(reactionRuleDlService.createOrUpdate(Mockito.any(ReactionRule.class))).thenReturn(getReaRule());
 		when(priceProductHierarchyBlService.createProductHierarchySet(Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(generalRuleBo);
 		when(generalRuleService.modifyRuleSpecificAttributes(Mockito.any(GeneralRuleBo.class)))
@@ -587,25 +529,23 @@ public class GeneralRuleServiceTest {
 	@Test
 	public void getGeneralRuleAttributesTest(){
 		ReactionRule reactionRule=getReaRule();
-		reactionRule.setRefActionTypes(getRefActionType());
-		reactionRule.setRefSourceTypes(getRefSourceType());
-		reactionRule.getRefActionTypes().get(0).setActionTypeId(14);
-		reactionRule.getRefSourceTypes().get(0).setSourceId(5);
+		reactionRule.setRefActionTypes(getAllTypeList());
+		reactionRule.setRefSourceTypes(getAllTypeList());
 		when(referenceDataService.getAllActionTypes()).thenReturn(getRefActionTypeBo());
 		when(referenceDataService.removeActionTypeAll(Mockito.anyListOf(RefActionTypeBo.class), Mockito.anyBoolean())).thenReturn(getRefActionTypeBo());
 		when(referenceDataService.getAllSourceTypes()).thenReturn(getRefSourceTypeBo());
 		when(referenceDataService.removeSourceTypeAll(Mockito.anyListOf(RefSourceTypeBo.class))).thenReturn(getRefSourceTypeBo());
 		when(reaRuleConverter.convertGeneralRuleBo(Mockito.any(ReactionRule.class), Mockito.any(GeneralRuleBo.class))).thenReturn(getReactionRuleBo());
 		GeneralRuleBo expectedGeneralRuleAttributes=generalRuleService.getGeneralRuleAttributes(getReaRule(), getReactionRuleBo());
-		assertEquals(getRefActionType().size(), expectedGeneralRuleAttributes.getActionTypeList().size());
+		assertEquals(getAllTypeList().size(), expectedGeneralRuleAttributes.getActionTypeList().size());
 	}
 	@Test
 	public void getGeneralRuleAttributesNoActionandSourceTest(){
 		ReactionRule reactionRule=getReaRule();
 		reactionRule.setRefActionTypes(null);
 		reactionRule.setRefSourceTypes(null);
-		when(referenceDataConverter.convertRefReaActiontype(Mockito.anyListOf(RefActionType.class))).thenReturn(getRefActionTypeBo());
-		when(referenceDataConverter.convertRefReaSource(Mockito.anyListOf(RefSourceType.class))).thenReturn(getRefSourceTypeBo());
+		when(referenceDataConverter.convertRefReaActiontype(Mockito.anyListOf(Long.class))).thenReturn(getRefActionTypeBo());
+		when(referenceDataConverter.convertRefReaSource(Mockito.anyListOf(Long.class))).thenReturn(getRefSourceTypeBo());
 		when(reaRuleConverter.convertGeneralRuleBo(Mockito.any(ReactionRule.class), Mockito.any(GeneralRuleBo.class))).thenReturn(getReactionRuleBo());
 		GeneralRuleBo expectedGeneralRuleAttributes=generalRuleService.getGeneralRuleAttributes(getReaRule(), getReactionRuleBo());
 		assertEquals(new Long(1l), expectedGeneralRuleAttributes.getRuleId());
@@ -666,7 +606,17 @@ public class GeneralRuleServiceTest {
 		xpsRuleBos.add(xpsRuleBo);
 		return xpsRuleBos;
 	}
-
+	
+	private List<Long> getAllTypeList() {
+		List<Long> allTypeList=Lists.newArrayList();
+		allTypeList.add(14l);
+		return allTypeList;
+	}
+	private List<Long> getSourceandActionList() {
+		List<Long> sourceandAction=Lists.newArrayList();
+		sourceandAction.add(1l);
+		return sourceandAction;
+	}
 	private List<Long> getReactionRuleId() {
 		List<Long> reactionRuleId=Lists.newArrayList();
 		return reactionRuleId;
@@ -860,35 +810,16 @@ public class GeneralRuleServiceTest {
 		reaRule.setRuleComment("good");
 		reaRule.setCreatedBy("sa");
 		reaRule.setLstUpdateBy("sa");
-		reaRule.setRefActionTypes(getRefActionType());
-		reaRule.setRefSourceTypes(getRefSourceType());
-		reaRule.setRulePriority(1L);
+		reaRule.setRefActionTypes(getAllTypeList());
+		reaRule.setRefSourceTypes(getAllTypeList());
 		return reaRule;
-
-	}
-
-	public List<ReactionRuleActionType> getReaRuleSetActtype() {
-		List<ReactionRuleActionType> reaRuleSetActtypelist = Lists.newArrayList();
-		ReactionRuleActionType reaRuleSetActtype = new ReactionRuleActionType();
-		reaRuleSetActtype.setId(getReaRuleSetActtypePK());
-		reaRuleSetActtype.setLstUpdateBy("sa");
-		reaRuleSetActtypelist.add(reaRuleSetActtype);
-		return reaRuleSetActtypelist;
-	}
-
-	public ReactionRuleActionTypePK getReaRuleSetActtypePK() {
-		ReactionRuleActionTypePK reaRuleSetActtypePK = new ReactionRuleActionTypePK();
-		reaRuleSetActtypePK.setActionTypeId(1);
-		reaRuleSetActtypePK.setReaRuleId(1);
-		return reaRuleSetActtypePK;
 
 	}
 
 	public List<ReactionRuleSourceType> getReaRuleSetSrc() {
 		List<ReactionRuleSourceType> reaRuleSetSrclist = Lists.newArrayList();
 		ReactionRuleSourceType reaRuleSetSrc = new ReactionRuleSourceType();
-		reaRuleSetSrc.setLstUpdateBy("sa");
-		reaRuleSetSrc.setId(getReaRuleSetSrcPK());
+		
 		reaRuleSetSrclist.add(reaRuleSetSrc);
 		return reaRuleSetSrclist;
 	}
@@ -933,26 +864,7 @@ public class GeneralRuleServiceTest {
 		return reaPpdHchyset;
 
 	}
-	public List<RefActionType> getRefActionType(){
-		List<RefActionType> refActionTypes=Lists.newArrayList();
-		RefActionType refActionType=new RefActionType();
-		refActionType.setActionType("Discount");
-		refActionType.setActionTypeId(1l);
-		refActionType.setDescription("Discount");
-		refActionType.setSeq(12l);
-		refActionTypes.add(refActionType);
-		return refActionTypes;	
-		
-	}
-	public List<RefSourceType> getRefSourceType(){
-		List<RefSourceType> refSourceTypes=Lists.newArrayList();
-		RefSourceType refSourceType=new RefSourceType();
-		refSourceType.setDescription("online");
-		refSourceType.setSourceId(1l);
-		refSourceType.setSourceName("online");
-		refSourceTypes.add(refSourceType);
-		return refSourceTypes;
-	}
+	
 
 
 }

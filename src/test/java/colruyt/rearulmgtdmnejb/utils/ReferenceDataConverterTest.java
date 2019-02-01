@@ -22,7 +22,6 @@ import colruyt.rearulmgtdmnejb.bo.RefQuantityConditionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefQuantityPriceTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
-import colruyt.rearulmgtdmnejb.entity.RefActionType;
 import colruyt.rearulmgtdmnejb.entity.RefFilterOutRecordingType;
 import colruyt.rearulmgtdmnejb.entity.RefFilterOutRecordingTypeLang;
 import colruyt.rearulmgtdmnejb.entity.RefFilterOutRecordingTypeLangPK;
@@ -38,7 +37,6 @@ import colruyt.rearulmgtdmnejb.entity.RefReasonLangPK;
 import colruyt.rearulmgtdmnejb.entity.RefRuleTypePK;
 import colruyt.rearulmgtdmnejb.entity.RefRuletype;
 import colruyt.rearulmgtdmnejb.entity.RefRuletypeLang;
-import colruyt.rearulmgtdmnejb.entity.RefSourceType;
 import colruyt.rearulmgtdmnejb.enums.ActionTypeEnum;
 import colruyt.rearulmgtdmnejb.enums.SourceTypeEnum;
 import colruyt.rearulmgtdmnejb.util.ReferenceDataConverter;
@@ -50,17 +48,7 @@ import colruyt.rearulmgtdmnejb.util.ReferenceDataConverter;
 public class ReferenceDataConverterTest {
 	@TestedObject
 	private ReferenceDataConverter referenceDataConverter;
-	@Test
-	public void convertRefReaActiontypeTest(){
-		List<RefActionType> RefReaActiontypeList = getRefReaActiontype();
-		List<RefActionTypeBo> expectedRefActionTypeBo=referenceDataConverter.convertRefReaActiontype(getRefReaActiontype());
-		assertEquals(RefReaActiontypeList.size(), expectedRefActionTypeBo.size());
-	}
-	@Test
-	public void convertActionTypeTest(){
-		RefActionTypeBo expectedactionTypeBo = referenceDataConverter.convertActionType(createRefReaActiontype());
-		assertEquals(createRefReaActiontype().getActionTypeId(),expectedactionTypeBo.getActionTypeId());		
-	}
+	
 	@Test
 	public void convertRefNonReactingCodeType(){
 		List<RefReason> refReasonlist=createRefReason();
@@ -87,18 +75,7 @@ public class ReferenceDataConverterTest {
 		List<RefLangBo> expectedRefLangBo=referenceDataConverter.convertRefQtyCondLangs(getRefQtyCondLang());
 		assertEquals(refQtyCondLanglist.size(),expectedRefLangBo.size());
 	}
-	@Test
-	public void convertRefReaSourceTest(){
-		List<RefSourceType> RefReaSourcelist=getRefReaSource();
-		List<RefSourceTypeBo> expectedRefSourceTypeBo=referenceDataConverter.convertRefReaSource(getRefReaSource());
-		assertEquals(RefReaSourcelist.size(),expectedRefSourceTypeBo.size());
-	}
-	@Test
-	public void convertRefReaSourceBoTest(){
-		RefSourceType refReaSource=createRefReaSource();
-		RefSourceTypeBo expectedRefSourceTypeBo=referenceDataConverter.convertRefReaSource(refReaSource);
-		assertEquals(refReaSource.getSourceId(),expectedRefSourceTypeBo.getSourceTypeId());	
-	}
+	
 	@Test
 	public void convertRefQtyTypeTest(){
 		List<RefQuantityType> refQtyTypelist=createRefQtyType();
@@ -237,23 +214,7 @@ public class ReferenceDataConverterTest {
 		refQuantityPriceTypeBolist.add(refQuantityPriceTypeBo);
 		return	refQuantityPriceTypeBolist;
 	}
-	private RefSourceType createRefReaSource(){
-		RefSourceType refReaSource=new RefSourceType();
-		refReaSource.setSourceId(1);
-		refReaSource.setSourceName("xyz");
-		refReaSource.setDescription("xcz");
-		return refReaSource;
-	}
-	private List<RefSourceType> getRefReaSource()
-	{
-		List<RefSourceType> refReaSourcelist=Lists.newArrayList();
-		RefSourceType refReaSource=new RefSourceType();
-		refReaSource.setSourceId(1);
-		refReaSource.setSourceName("xyz");
-		refReaSource.setDescription("xzx");
-		refReaSourcelist.add(refReaSource);
-		return refReaSourcelist;
-	}
+	
 	private RefQuantityCond getRefQtyCond(){
 		RefQuantityCond refQtyCond=new RefQuantityCond();
 		refQtyCond.setQtyCondId(1);
@@ -338,25 +299,7 @@ public class ReferenceDataConverterTest {
 		
 	}
 	
-	public List<RefActionType> getRefReaActiontype(){
-		List<RefActionType> refReaActiontypelist=Lists.newArrayList();
-		RefActionType refReaActiontype=new RefActionType();
-		refReaActiontype.setActionType("xyz");
-		refReaActiontype.setActionTypeId(1);
-		refReaActiontype.setDescription("sxs");
-		refReaActiontype.setSeq(123l);
-		refReaActiontypelist.add(refReaActiontype);
-		return refReaActiontypelist;		
-	}
-	public RefActionType createRefReaActiontype(){
-		RefActionType refReaActiontype=new RefActionType();
-		refReaActiontype.setActionType("xyz");
-		refReaActiontype.setActionTypeId(1);
-		refReaActiontype.setDescription("sxs");
-		refReaActiontype.setSeq(123l);
-		return refReaActiontype;
-		
-	}
+	
 	public RefActionTypeBo getRefActionTypeBo(){
 		RefActionTypeBo refActionTypeBo=new RefActionTypeBo();
 		refActionTypeBo.setActionTypeValue("xyz");

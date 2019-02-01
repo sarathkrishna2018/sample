@@ -1,6 +1,6 @@
 package colruyt.rearulmgtdmnejb.utils;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 import java.util.Date;
@@ -17,8 +17,8 @@ import org.unitils.inject.annotation.TestedObject;
 
 import com.google.common.collect.Lists;
 
-import colruyt.rearulmgtdmnejb.bo.ProductHierarchyElementBo;
 import colruyt.rearulmgtdmnejb.bo.GeneralRuleBo;
+import colruyt.rearulmgtdmnejb.bo.ProductHierarchyElementBo;
 import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
 import colruyt.rearulmgtdmnejb.bo.RefActionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefLangBo;
@@ -29,12 +29,7 @@ import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySet;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmnt;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmntPK;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
-import colruyt.rearulmgtdmnejb.entity.ReactionRuleActionType;
-import colruyt.rearulmgtdmnejb.entity.ReactionRuleActionTypePK;
-import colruyt.rearulmgtdmnejb.entity.ReactionRuleSourceType;
-import colruyt.rearulmgtdmnejb.entity.ReactionRuleSourceTypePK;
-import colruyt.rearulmgtdmnejb.entity.RefActionType;
-import colruyt.rearulmgtdmnejb.entity.RefSourceType;
+//import colruyt.rearulmgtdmnejb.entity.RefActionType;
 import colruyt.rearulmgtdmnejb.util.ProductHrchyElmntConverter;
 import colruyt.rearulmgtdmnejb.util.ReaRuleConverter;
 import colruyt.rearulmgtdmnejb.util.ReferenceDataConverter;
@@ -74,70 +69,24 @@ public class ReaRuleConverterTest {
 
 	@Test
 	public void convertRuleActionTest() {
-		List<ReactionRuleActionType> actionTypeLst = Lists.newArrayList();
-		ReactionRuleActionType actionType = new ReactionRuleActionType();
-		ReactionRuleActionTypePK reaRuleSetActtypePK = new ReactionRuleActionTypePK();
-		RefActionTypeBo refActionTypeBo = createRefActionType();
-		GeneralRuleBo reactionRule = getReactionRule();
-		reaRuleSetActtypePK.setReaRuleId(reactionRule.getRuleId());
-		reaRuleSetActtypePK.setActionTypeId(refActionTypeBo.getActionTypeId());
-		actionType.setId(reaRuleSetActtypePK);
-		actionType.setLstUpdateBy(reactionRule.getLogonId());
-		actionTypeLst.add(actionType);
-		List<ReactionRuleActionType> expectedReaRuleSetActtype = reaRuleConverter.convertRuleAction(reactionRule);
-		assertEquals(actionTypeLst.size(), expectedReaRuleSetActtype.size());
+		List<Long> expectedReaRuleSetActtype = reaRuleConverter.convertRuleAction(getReactionRule());
+		assertEquals(1l, expectedReaRuleSetActtype.size());
 
 	}
 
 	@Test
 	public void convertRuleSourceTest() {
-		List<ReactionRuleSourceType> sourceList = Lists.newArrayList();
-		GeneralRuleBo reactionRule = getReactionRule();
-		ReactionRuleSourceType source = new ReactionRuleSourceType();
-		RefSourceTypeBo refSourceTypeBo = createRefSourceTypeBo();
-		ReactionRuleSourceTypePK reaRuleSetSrcPK = new ReactionRuleSourceTypePK();
-		reaRuleSetSrcPK.setReaRuleId(reactionRule.getRuleId());
-		reaRuleSetSrcPK.setSourceId(refSourceTypeBo.getSourceTypeId());
-		source.setId(reaRuleSetSrcPK);
-		source.setLstUpdateBy(reactionRule.getLogonId());
-		sourceList.add(source);
-		List<ReactionRuleSourceType> expectedReaRuleSetSrc = reaRuleConverter.convertRuleSource(reactionRule);
-		assertEquals(sourceList.size(), expectedReaRuleSetSrc.size());
+		List<Long> expectedReaRuleSetSrc = reaRuleConverter.convertRuleSource(getReactionRule());
+		assertEquals(1, expectedReaRuleSetSrc.size());
 	}
 
 	@Test
-	public void convertRuleActionForAllTest() {
-		GeneralRuleBo reactionRule = getReactionRule();
-		long actionIdForAll = 12;
-		List<ReactionRuleActionType> actionTypeLst = Lists.newArrayList();
-		ReactionRuleActionType actionType = new ReactionRuleActionType();
-		ReactionRuleActionTypePK reaRuleSetActtypePK = new ReactionRuleActionTypePK();
-		reaRuleSetActtypePK.setReaRuleId(reactionRule.getRuleId());
-		reaRuleSetActtypePK.setActionTypeId(actionIdForAll);
-		actionType.setId(reaRuleSetActtypePK);
-		actionType.setLstUpdateBy(reactionRule.getLogonId());
-		actionTypeLst.add(actionType);
-		List<ReactionRuleActionType> expectedReaRuleSetActtypeForAll = reaRuleConverter
-				.convertRuleActionForAll(actionIdForAll, reactionRule);
-		assertEquals(actionTypeLst.size(), expectedReaRuleSetActtypeForAll.size());
+	public void convertRuleTypeForAllTest() {
+		long idForAll=1;
+		List<Long> expectedRuleTypeForAll = reaRuleConverter
+				.convertRuleTypeForAll(idForAll);
+		assertEquals(1l, expectedRuleTypeForAll.size());
 
-	}
-
-	@Test
-	public void convertRuleSourceForAllTest() {
-		GeneralRuleBo reactionRule = getReactionRule();
-		long sourceIdForAll = 12;
-		List<ReactionRuleSourceType> sourceList = Lists.newArrayList();
-		ReactionRuleSourceType source = new ReactionRuleSourceType();
-		ReactionRuleSourceTypePK reaRuleSetSrcPK = new ReactionRuleSourceTypePK();
-		reaRuleSetSrcPK.setReaRuleId(reactionRule.getRuleId());
-		reaRuleSetSrcPK.setSourceId(sourceIdForAll);
-		source.setId(reaRuleSetSrcPK);
-		source.setLstUpdateBy(reactionRule.getLogonId());
-		sourceList.add(source);
-		List<ReactionRuleSourceType> expectedReaRuleSetSrcForAll = reaRuleConverter
-				.convertRuleSourceForAll(sourceIdForAll, reactionRule);
-		assertEquals(sourceList.size(), expectedReaRuleSetSrcForAll.size());
 	}
 	@Test
 	public void createconvertRuleLineTest(){
@@ -208,8 +157,6 @@ public class ReaRuleConverterTest {
 		reactionRule.setPostponedYn(false);
 		reactionRule.setReaRuleId(1);
 		reactionRule.setReaRulesetId(10);
-		reactionRule.setRefActionTypes(getRefActList());
-		reactionRule.setRefSourceTypes(getRefSourceList());
 		reactionRule.setReaPpdHchysets(getreaPpdHchysets());
 		reactionRule.setRuleComment("good");
 		reactionRule.setRecalculateYn(true);
@@ -281,8 +228,6 @@ public class ReaRuleConverterTest {
 		reactionRule.setPostponedYn(false);
 		reactionRule.setReaRuleId(1);
 		reactionRule.setReaRulesetId(10);
-		reactionRule.setRefActionTypes(getRefActList());
-		reactionRule.setRefSourceTypes(getRefSourceList());
 		reactionRule.setReaPpdHchysets(getreaPpdHchysets());
 		reactionRule.setRuleComment("good");
 		reactionRule.setRecalculateYn(true);
@@ -337,17 +282,6 @@ public class ReaRuleConverterTest {
 		priceProductHierarchySetElmntPK.setPpdHchysetId(1);
 		return priceProductHierarchySetElmntPK;
 	}
-
-	private List<RefSourceType> getRefSourceList() {
-		List<RefSourceType> refSourcelist=Lists.newArrayList();
-		RefSourceType refSourceType=new RefSourceType();
-		refSourceType.setDescription("xxx");
-		refSourceType.setSourceId(1);
-		refSourceType.setSourceName("All");
-		refSourcelist.add(refSourceType);
-		return refSourcelist;
-	}
-
 	public GeneralRuleBo getReactionRule() {
 		GeneralRuleBo reactionRuleBo = new GeneralRuleBo();
 		Date validFromdate = new Date();
@@ -453,7 +387,7 @@ public class ReaRuleConverterTest {
 		return refSourceType;
 
 	}
-	public List<RefActionType> getRefActList(){
+/*	public List<RefActionType> getRefActList(){
 		List<RefActionType> refActlist=Lists.newArrayList();
 		RefActionType refActionType = new RefActionType();
 		refActionType.setActionTypeId(1l);
@@ -463,6 +397,6 @@ public class ReaRuleConverterTest {
 		refActlist.add(refActionType);
 		return refActlist;
 		
-	}
+	}*/
 
 }

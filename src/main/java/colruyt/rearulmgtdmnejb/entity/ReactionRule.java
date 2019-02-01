@@ -1,26 +1,23 @@
 package colruyt.rearulmgtdmnejb.entity;
 
 import java.io.Serializable;
-
-import javax.persistence.CascadeType;
+import java.util.Date;
+import java.util.List;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import java.util.Date;
-import java.util.List;
 import org.apache.openjpa.persistence.ExternalValues;
 import org.apache.openjpa.persistence.Type;
 
@@ -128,14 +125,34 @@ public class ReactionRule implements Serializable {
 	@JoinColumn(name = "REA_RULE_ID", referencedColumnName="REA_RULE_ID")
 	private List<PriceProductHierarchySet> reaPpdHchysets;
 	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
-	@JoinTable(name = "REA_RULE_SRC", joinColumns = @JoinColumn(name = "REA_RULE_ID"), inverseJoinColumns = @JoinColumn(name = "SOURCE_ID"))
-	private List<RefSourceType> refSourceTypes;
+	@ElementCollection(fetch = FetchType.EAGER)
+	@CollectionTable(name = "REA_RULE_SRC", 
+			joinColumns = @JoinColumn(name = "REA_RULE_ID"))
+	@Column(name = "SOURCE_ID")
+	private List<Long> refSourceTypes;
 	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
-	@JoinTable(name = "REA_RULE_ACTTYPE", joinColumns = @JoinColumn(name = "REA_RULE_ID"), inverseJoinColumns = @JoinColumn(name = "ACTION_TYPE_ID"))
-	private List<RefActionType> refActionTypes;
+	@ElementCollection(fetch = FetchType.EAGER)
+	@CollectionTable(name = "REA_RULE_ACTTYPE", 
+			joinColumns = @JoinColumn(name = "REA_RULE_ID"))
+	@Column(name = "ACTION_TYPE_ID")
+	private List<Long> refActionTypes;
 	
+	public List<Long> getRefSourceTypes() {
+		return refSourceTypes;
+	}
+
+	public void setRefSourceTypes(List<Long> refSourceTypes) {
+		this.refSourceTypes = refSourceTypes;
+	}
+
+	public List<Long> getRefActionTypes() {
+		return refActionTypes;
+	}
+
+	public void setRefActionTypes(List<Long> refActionTypes) {
+		this.refActionTypes = refActionTypes;
+	}
+
 	@Column(name="LST_UPDATE_TS",insertable = false, updatable = false)
 	private Date updatedOn;
 	
@@ -334,22 +351,6 @@ public class ReactionRule implements Serializable {
 		this.reaRnfAct = reaRnfAct;
 	}
 	
-	public List<RefSourceType> getRefSourceTypes() {
-		return refSourceTypes;
-	}
-
-	public void setRefSourceTypes(List<RefSourceType> refSourceTypes) {
-		this.refSourceTypes = refSourceTypes;
-	}
-
-	public List<RefActionType> getRefActionTypes() {
-		return refActionTypes;
-	}
-
-	public void setRefActionTypes(List<RefActionType> refActionTypes) {
-		this.refActionTypes = refActionTypes;
-	}
-
 	public Date getLogicallyDeletedDate() {
 		return logicallyDeletedDate;
 	}

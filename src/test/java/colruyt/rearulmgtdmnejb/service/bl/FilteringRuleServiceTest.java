@@ -28,10 +28,6 @@ import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
 import colruyt.rearulmgtdmnejb.bo.XPSRuleBo;
 import colruyt.rearulmgtdmnejb.entity.FilteringRuleAction;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
-import colruyt.rearulmgtdmnejb.entity.ReactionRuleActionType;
-import colruyt.rearulmgtdmnejb.entity.ReactionRuleSourceType;
-import colruyt.rearulmgtdmnejb.entity.RefActionType;
-import colruyt.rearulmgtdmnejb.entity.RefSourceType;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleValidationException;
 import colruyt.rearulmgtdmnejb.service.dl.FilteringRuleActionDlService;
@@ -115,22 +111,7 @@ public class FilteringRuleServiceTest {
 		xpsRuleBo.setRuleType(1l);
 		return xpsRuleBo;
 	}
-	public List<ReactionRuleSourceType> getReaRuleSetSrc() {
-		List<ReactionRuleSourceType> reaRuleSetSrclist = Lists.newArrayList();
-		ReactionRuleSourceType reaRuleSetSrc = new ReactionRuleSourceType();
-		reaRuleSetSrc.setLstUpdateBy("sa");
-		reaRuleSetSrclist.add(reaRuleSetSrc);
-		return reaRuleSetSrclist;
-	}
-
-	public List<ReactionRuleActionType> getReaRuleSetActtype() {
-		List<ReactionRuleActionType> reaRuleSetActtypelist = Lists.newArrayList();
-		ReactionRuleActionType reaRuleSetActtype = new ReactionRuleActionType();
-		reaRuleSetActtype.setLstUpdateBy("sa");
-		reaRuleSetActtypelist.add(reaRuleSetActtype);
-		return reaRuleSetActtypelist;
-	}
-
+	
 	private FilteringRuleBo getFilteringRuleBo() {
 		FilteringRuleBo filteringRuleBo = new FilteringRuleBo();
 		filteringRuleBo.setActionSelectAll(false);
@@ -270,12 +251,9 @@ public class FilteringRuleServiceTest {
 		reaRule.setRuleComment("good");
 		reaRule.setCreatedBy("sa");
 		reaRule.setLstUpdateBy("sa");
-		reaRule.setRefActionTypes(getRefReaActiontype());
-		reaRule.setRefSourceTypes(getRefReaSource());
 		return reaRule;
 	}
-	
-	
+		
 	private List<ReactionRule> getRuleList(){
 		List<ReactionRule> ruleList = Lists.newArrayList();
 		ReactionRule rule = getReaRule();
@@ -290,26 +268,6 @@ public class FilteringRuleServiceTest {
 		return reaList;
 	}
 	
-	public List<RefActionType> getRefReaActiontype(){
-		List<RefActionType> refReaActiontypelist=Lists.newArrayList();
-		RefActionType refReaActiontype=new RefActionType();
-		refReaActiontype.setActionType("xyz");
-		refReaActiontype.setActionTypeId(1);
-		refReaActiontype.setDescription("sxs");
-		refReaActiontype.setSeq(123l);
-		refReaActiontypelist.add(refReaActiontype);
-		return refReaActiontypelist;		
-	}
-	public List<RefSourceType> getRefReaSource()
-	{
-		List<RefSourceType> refReaSourcelist=Lists.newArrayList();
-		RefSourceType refReaSource=new RefSourceType();
-		refReaSource.setSourceId(1);
-		refReaSource.setSourceName("xyz");
-		refReaSource.setDescription("xzx");
-		refReaSourcelist.add(refReaSource);
-		return refReaSourcelist;
-	}
 	
 
 }

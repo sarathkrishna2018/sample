@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.ejb.ActivationConfigProperty;
 import javax.ejb.ConcurrencyManagement;
 import javax.ejb.ConcurrencyManagementType;
 import javax.ejb.EJB;
@@ -30,20 +29,15 @@ import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
 import colruyt.rearulmgtdmnejb.entity.RefFilterOutRecordingType;
 import colruyt.rearulmgtdmnejb.entity.RefQuantityCond;
 import colruyt.rearulmgtdmnejb.entity.RefQuantityType;
-import colruyt.rearulmgtdmnejb.entity.RefActionType;
-import colruyt.rearulmgtdmnejb.entity.RefSourceType;
-import colruyt.rearulmgtdmnejb.enums.ActionTypeEnum;
-import colruyt.rearulmgtdmnejb.enums.FilterOutRecordingTypeEnum;
-import colruyt.rearulmgtdmnejb.enums.SourceTypeEnum;
 import colruyt.rearulmgtdmnejb.entity.RefReason;
 import colruyt.rearulmgtdmnejb.entity.RefRuletype;
-import colruyt.rearulmgtdmnejb.service.dl.RefActionTypeDlService;
+import colruyt.rearulmgtdmnejb.enums.ActionTypeEnum;
+import colruyt.rearulmgtdmnejb.enums.SourceTypeEnum;
 import colruyt.rearulmgtdmnejb.service.dl.RefFltoutTypeDlService;
 import colruyt.rearulmgtdmnejb.service.dl.RefNonReactingCodeDlService;
 import colruyt.rearulmgtdmnejb.service.dl.RefQuantityConditionTypeDlService;
 import colruyt.rearulmgtdmnejb.service.dl.RefQuantityPriceTypeDlService;
 import colruyt.rearulmgtdmnejb.service.dl.RefRuleTypeDlService;
-import colruyt.rearulmgtdmnejb.service.dl.RefSourceTypeDlService;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnDebugMessage;
 import colruyt.rearulmgtdmnejb.util.ReferenceDataConverter;
@@ -57,9 +51,7 @@ public class ReferenceDataService implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(ReferenceDataService.class);
-	@EJB
-	private RefActionTypeDlService refActionTypeDlService;
-
+	
 	@EJB
 	private RefNonReactingCodeDlService refNonReactingCodeDlService;
 
@@ -69,9 +61,6 @@ public class ReferenceDataService implements Serializable {
 	@EJB
 	private RefQuantityPriceTypeDlService refQuantityPriceTypeDlService;
 
-	@EJB
-	private RefSourceTypeDlService refSourceTypeDlService;
-	
 	@EJB
 	private RefFltoutTypeDlService refFltoutTypeDlService;
 	

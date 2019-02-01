@@ -20,9 +20,6 @@ public class ReactionRuleActionType implements Serializable {
 	@EmbeddedId
 	private ReactionRuleActionTypePK id;
 
-	@Column(name="LST_UPDATE_BY")
-	private String lstUpdateBy;
-
 	public ReactionRuleActionTypePK getId() {
 		return this.id;
 	}
@@ -31,12 +28,7 @@ public class ReactionRuleActionType implements Serializable {
 		this.id = id;
 	}
 
-	public String getLstUpdateBy() {
-		return this.lstUpdateBy;
-	}
-
-	public void setLstUpdateBy(String lstUpdateBy) {
-		this.lstUpdateBy = lstUpdateBy;
-	}
+	
+	
 
 }

@@ -20,8 +20,6 @@ import colruyt.rearulmgtdmnejb.bo.RefActionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
 import colruyt.rearulmgtdmnejb.bo.XPSRuleBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
-import colruyt.rearulmgtdmnejb.entity.ReactionRuleActionType;
-import colruyt.rearulmgtdmnejb.entity.ReactionRuleSourceType;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleValidationException;
 import colruyt.rearulmgtdmnejb.service.dl.ProductHierarchySetDlService;
@@ -154,11 +152,12 @@ public abstract class GeneralRuleService implements Serializable {
 			currentDate = sdf.parse(sdf.format(new Date()));
 			oldValidfrom = sdf.parse(sdf.format(existingReactionRule.getValidFrom()));
 			newValidFrom = sdf.parse(sdf.format(reactionRuleBo.getValidFrom()));
+			if (oldValidfrom != null && oldValidfrom.compareTo(currentDate)<=0 && oldValidfrom.before(newValidFrom)) {
+				return true;
+			}
+			
 		} catch (ParseException e) {
 			logger.error("Parse Exception", e);
-		}
-		if (oldValidfrom != null && oldValidfrom.before(currentDate) && oldValidfrom.before(newValidFrom)) {
-			return true;
 		}
 		return false;
 
@@ -198,29 +197,29 @@ public abstract class GeneralRuleService implements Serializable {
 		reactionRuleBo.setRulesetId(reactionRulesetBo.getRulesetId());
 		setRulePriority(reactionRulesetBo, reactionRuleBo);
 		ReactionRule reaRule = reaRuleConverter.convertRuleBo(null, reactionRuleBo);
-		reaRule = reactionRuleDlService.createOrUpdate(reaRule);
-		reactionRuleBo.setRuleId(reaRule.getReaRuleId());
-
 		// action
 		if (reactionRuleBo.isActionSelectAll()) {
-			List<ReactionRuleActionType> actionLst = reaRuleConverter
-					.convertRuleActionForAll(ReaRulMgtDmnConstants.ACTION_ALL_TYPEID, reactionRuleBo);
-			reactionRuleActionTypeDlService.createOrUpdate(actionLst);
+			List<Long> actionLst = reaRuleConverter
+					.convertRuleTypeForAll(ReaRulMgtDmnConstants.ACTION_ALL_TYPEID);
+			reaRule.setRefActionTypes(actionLst);
 		} else if (!reactionRuleBo.isActionSelectAll() && reactionRuleBo.getActionTypeList() != null
 				&& !reactionRuleBo.getActionTypeList().isEmpty()) {
-			List<ReactionRuleActionType> actionLst = reaRuleConverter.convertRuleAction(reactionRuleBo);
-			reactionRuleActionTypeDlService.createOrUpdate(actionLst);
+			List<Long> actionLst = reaRuleConverter.convertRuleAction(reactionRuleBo);
+			reaRule.setRefActionTypes(actionLst);
 		}
 		// source
 		if (reactionRuleBo.isSourceSelectAll()) {
-			List<ReactionRuleSourceType> sourceLst = reaRuleConverter
-					.convertRuleSourceForAll(ReaRulMgtDmnConstants.SOURCE_ALL_TYPEID, reactionRuleBo);
-			reactionRuleSourceTypeDlService.createOrUpdate(sourceLst);
+			List<Long> sourceLst = reaRuleConverter
+					.convertRuleTypeForAll(ReaRulMgtDmnConstants.SOURCE_ALL_TYPEID);
+			reaRule.setRefSourceTypes(sourceLst);
 		} else if (!reactionRuleBo.isSourceSelectAll() && reactionRuleBo.getSourceTypeList() != null
 				&& !reactionRuleBo.getSourceTypeList().isEmpty()) {
-			List<ReactionRuleSourceType> sourceLst = reaRuleConverter.convertRuleSource(reactionRuleBo);
-			reactionRuleSourceTypeDlService.createOrUpdate(sourceLst);
+			List<Long> sourceLst = reaRuleConverter.convertRuleSource(reactionRuleBo);
+			reaRule.setRefSourceTypes(sourceLst);
 		}
+		reaRule = reactionRuleDlService.createOrUpdate(reaRule);
+		reactionRuleBo.setRuleId(reaRule.getReaRuleId());
+
 		// product
 		return priceProductHierarchyService.createProductHierarchySet(reactionRuleBo);
 	}
@@ -404,30 +403,29 @@ public abstract class GeneralRuleService implements Serializable {
 					ExceptionMessageConstants.MESSAGE_REACTION_RULE_ABSENT);
 		}
 		ReactionRule reaRule = reaRuleConverter.convertRuleBo(existingReactionRule, reactionRuleBo);
-		reaRule = reactionRuleDlService.createOrUpdate(reaRule);
 		reactionRuleBo.setRuleId(reaRule.getReaRuleId());
 		// action
-		reactionRuleActionTypeDlService.remove(reactionRuleBo.getRuleId());
 		if (reactionRuleBo.isActionSelectAll()) {
-			List<ReactionRuleActionType> actionLst = reaRuleConverter
-					.convertRuleActionForAll(ReaRulMgtDmnConstants.ACTION_ALL_TYPEID, reactionRuleBo);
-			reactionRuleActionTypeDlService.createOrUpdate(actionLst);
+			List<Long> actionLst = reaRuleConverter
+					.convertRuleTypeForAll(ReaRulMgtDmnConstants.ACTION_ALL_TYPEID);
+			reaRule.setRefActionTypes(actionLst);
 		} else if (!reactionRuleBo.isActionSelectAll() && reactionRuleBo.getActionTypeList() != null
 				&& !reactionRuleBo.getActionTypeList().isEmpty()) {
-			List<ReactionRuleActionType> actionLst = reaRuleConverter.convertRuleAction(reactionRuleBo);
-			reactionRuleActionTypeDlService.createOrUpdate(actionLst);
+			List<Long> actionLst = reaRuleConverter.convertRuleAction(reactionRuleBo);
+			reaRule.setRefActionTypes(actionLst);
 		}
 		// source
-		reactionRuleSourceTypeDlService.remove(reactionRuleBo.getRuleId());
 		if (reactionRuleBo.isSourceSelectAll()) {
-			List<ReactionRuleSourceType> sourceLst = reaRuleConverter
-					.convertRuleSourceForAll(ReaRulMgtDmnConstants.SOURCE_ALL_TYPEID, reactionRuleBo);
-			reactionRuleSourceTypeDlService.createOrUpdate(sourceLst);
+			List<Long> sourceLst = reaRuleConverter
+					.convertRuleTypeForAll(ReaRulMgtDmnConstants.SOURCE_ALL_TYPEID);
+			reaRule.setRefSourceTypes(sourceLst);
+			
 		} else if (!reactionRuleBo.isSourceSelectAll() && reactionRuleBo.getSourceTypeList() != null
 				&& !reactionRuleBo.getSourceTypeList().isEmpty()) {
-			List<ReactionRuleSourceType> sourceLst = reaRuleConverter.convertRuleSource(reactionRuleBo);
-			reactionRuleSourceTypeDlService.createOrUpdate(sourceLst);
+			List<Long> sourceLst = reaRuleConverter.convertRuleSource(reactionRuleBo);
+			reaRule.setRefSourceTypes(sourceLst);
 		}
+		reactionRuleDlService.createOrUpdate(reaRule);
 		priceProductHierarchyService.removeProductHierarchyElement(reactionRuleBo.getProductHierarchySetId());
 		return priceProductHierarchyService.createProductHierarchySet(reactionRuleBo);
 
@@ -454,7 +452,7 @@ public abstract class GeneralRuleService implements Serializable {
 	public GeneralRuleBo getGeneralRuleAttributes(ReactionRule rule, GeneralRuleBo ruleBo) {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_GETGENERALRULE);
 		if (rule.getRefActionTypes() != null
-				&& rule.getRefActionTypes().get(0).getActionTypeId() == ReaRulMgtDmnConstants.ACTION_ALL_TYPEID) {
+				&& rule.getRefActionTypes().get(0) == ReaRulMgtDmnConstants.ACTION_ALL_TYPEID) {
 			List<RefActionTypeBo> actionTypes = referenceDataService.getAllActionTypes();
 			List<RefActionTypeBo> actionTypesExceptAll = referenceDataService.removeActionTypeAll(actionTypes, false);
 			ruleBo.setActionTypeList(actionTypesExceptAll);
@@ -463,7 +461,7 @@ public abstract class GeneralRuleService implements Serializable {
 			ruleBo.setActionTypeList(referenceDataConverter.convertRefReaActiontype(rule.getRefActionTypes()));
 		}
 		if (rule.getRefSourceTypes() != null
-				&& rule.getRefSourceTypes().get(0).getSourceId() == ReaRulMgtDmnConstants.SOURCE_ALL_TYPEID) {
+				&& rule.getRefSourceTypes().get(0) == ReaRulMgtDmnConstants.SOURCE_ALL_TYPEID) {
 			List<RefSourceTypeBo> sourceTypes = referenceDataService.getAllSourceTypes();
 			List<RefSourceTypeBo> sourceTypesExceptAll = referenceDataService.removeSourceTypeAll(sourceTypes);
 			ruleBo.setSourceTypeList(sourceTypesExceptAll);
@@ -547,13 +545,11 @@ public abstract class GeneralRuleService implements Serializable {
 	}
 
 	public List<XPSRuleBo> findAllLogicallyDeletedRules(Date dateDeleteRuleBefore) {
-		List<XPSRuleBo> rules = reactionRuleDlService.findAllLogicallyDeletedRules(dateDeleteRuleBefore);
-		return rules;
+		return  reactionRuleDlService.findAllLogicallyDeletedRules(dateDeleteRuleBefore);
 	}
 
 	public List<XPSRuleBo> findAllExpiredRules(Date dateDeleteRuleBefore) {
-		List<XPSRuleBo> rules = reactionRuleDlService.findAllExpiredRules(dateDeleteRuleBefore);
-		return rules;
+		return reactionRuleDlService.findAllExpiredRules(dateDeleteRuleBefore);
 	}
 
 	public long physicalDeleteRules(XPSRuleBo xpsRuleBo) {

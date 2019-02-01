@@ -13,8 +13,6 @@ import colruyt.rearulmgtdmnejb.bo.ProposeNotToReactRuleBo;
 import colruyt.rearulmgtdmnejb.bo.RefFilterOutRecordingTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefNotToReactCodeBo;
 import colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleAction;
-import colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleActionRsn;
-import colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleActionRsnPK;
 import colruyt.rearulmgtdmnejb.service.bl.ReferenceDataService;
 
 @Stateless
@@ -28,10 +26,19 @@ public class ProposeNotToReactRuleConverter implements Serializable {
 	public ProposalNotToReactRuleAction convert(ProposeNotToReactRuleBo notToReactRule ) {
 		ProposalNotToReactRuleAction reaNreactAct = new ProposalNotToReactRuleAction();
 		reaNreactAct.setFltoutTypeId(notToReactRule.getFilterOutType().getFilterOutTypeId());
+		reaNreactAct.setReaNreactSetRsns(convertReasonNotToReactSet(notToReactRule.getNotToReactCodes()));
 		return reaNreactAct;
 	}
 	
-	public List<ProposalNotToReactRuleActionRsn> convertReasonNotToReactSet(List<RefNotToReactCodeBo> refNotToReactCodeBos, Long ruleId, String logonId){
+	public List<Long> convertReasonNotToReactSet(List<RefNotToReactCodeBo> notToReactCodes) {
+		List<Long> reasonIds = Lists.newArrayList();
+		for(RefNotToReactCodeBo reasonCode : notToReactCodes){
+			reasonIds.add(reasonCode.getNotToReactCodeTypeId());
+		}
+		return reasonIds;
+	}
+
+	/*public List<ProposalNotToReactRuleActionRsn> convertReasonNotToReactSet(List<RefNotToReactCodeBo> refNotToReactCodeBos, Long ruleId, String logonId){
 		List<ProposalNotToReactRuleActionRsn> reaNreactSetRsns = Lists.newArrayList();
 		for(RefNotToReactCodeBo refNotToReactCodeBo: refNotToReactCodeBos) {
 			ProposalNotToReactRuleActionRsn reaNreactSetRsn = new ProposalNotToReactRuleActionRsn();
@@ -43,8 +50,9 @@ public class ProposeNotToReactRuleConverter implements Serializable {
 			reaNreactSetRsns.add(reaNreactSetRsn);
 		}
 		return reaNreactSetRsns;
-	}
+	}*/
 
+	
 	public ProposeNotToReactRuleBo convertToBo(ProposalNotToReactRuleAction proposalNotToReactRuleAction,
 			ProposeNotToReactRuleBo proposeNTRRuleBo) {
 		proposeNTRRuleBo.setFilterOutType(convertFltOutType(proposalNotToReactRuleAction.getFltoutTypeId()));
@@ -52,7 +60,7 @@ public class ProposeNotToReactRuleConverter implements Serializable {
 		return proposeNTRRuleBo;
 	}
 
-	private List<RefNotToReactCodeBo> convertReasonNotToReactSetBos(
+	/*private List<RefNotToReactCodeBo> convertReasonNotToReactSetBos(
 			List<ProposalNotToReactRuleActionRsn> reaNreactSetRsns) {
 		List<RefNotToReactCodeBo> refNotToReact = referenceDataService.getAllNotToReactCodeTypes();
 		List<RefNotToReactCodeBo> notRoReactBos = Lists.newArrayList();
@@ -60,6 +68,24 @@ public class ProposeNotToReactRuleConverter implements Serializable {
 			RefNotToReactCodeBo reasonCode = new RefNotToReactCodeBo();
 			for (int j = 0; j < refNotToReact.size(); j++) {
 				if (refNotToReact.get(j).getNotToReactCodeTypeId() == reaNreactSetRsns.get(i).getId().getReasonId()) {
+					reasonCode.setNotToReactCodeTypeId(refNotToReact.get(j).getNotToReactCodeTypeId());
+					reasonCode.setDescription(refNotToReact.get(j).getDescription());
+					reasonCode.setCodeLang(refNotToReact.get(j).getCodeLang());
+					notRoReactBos.add(reasonCode);
+				}
+			}
+		}
+		return notRoReactBos;
+	}*/
+	
+	private List<RefNotToReactCodeBo> convertReasonNotToReactSetBos(
+			List<Long> reaNreactSetRsns) {
+		List<RefNotToReactCodeBo> refNotToReact = referenceDataService.getAllNotToReactCodeTypes();
+		List<RefNotToReactCodeBo> notRoReactBos = Lists.newArrayList();
+		for (int i = 0; i < reaNreactSetRsns.size(); i++) {
+			RefNotToReactCodeBo reasonCode = new RefNotToReactCodeBo();
+			for (int j = 0; j < refNotToReact.size(); j++) {
+				if (refNotToReact.get(j).getNotToReactCodeTypeId() == reaNreactSetRsns.get(i)) {
 					reasonCode.setNotToReactCodeTypeId(refNotToReact.get(j).getNotToReactCodeTypeId());
 					reasonCode.setDescription(refNotToReact.get(j).getDescription());
 					reasonCode.setCodeLang(refNotToReact.get(j).getCodeLang());

@@ -1,4 +1,4 @@
-package colruyt.rearulmgtdmnejb.service.dl;
+/*package colruyt.rearulmgtdmnejb.service.dl;
 
 import java.io.Serializable;
 import java.util.List;
@@ -14,10 +14,10 @@ import javax.persistence.TypedQuery;
 import colruyt.rearulmgtdmnejb.entity.RefActionType;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 
-/**
+*//**
  * 
  * 
- */
+ *//*
 @Stateless
 @LocalBean
 @TransactionAttribute(TransactionAttributeType.MANDATORY)
@@ -34,4 +34,4 @@ public class RefActionTypeDlService implements Serializable {
 		return query.getResultList();
 	}
 
-}
+}*/

@@ -3,7 +3,7 @@ package colruyt.rearulmgtdmnejb.enums;
 public enum FilterOutRecordingTypeEnum {
 	PRICE_RECORDING_EN(1L, "EN", "Filter Out" , "Filter out the price Rrecording"), 
 	FILTER_AND_CLEAR_OUT_EN(2L, "EN", "Filter And Clear Out", "Filter and Clear out the old calculated reaction prices");
-
+	
 	private Long id;
 	private String langCode;
 	private String name;

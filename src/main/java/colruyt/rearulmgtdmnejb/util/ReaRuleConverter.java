@@ -16,10 +16,6 @@ import colruyt.rearulmgtdmnejb.bo.GeneralRuleBo;
 import colruyt.rearulmgtdmnejb.bo.RefActionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
-import colruyt.rearulmgtdmnejb.entity.ReactionRuleActionType;
-import colruyt.rearulmgtdmnejb.entity.ReactionRuleActionTypePK;
-import colruyt.rearulmgtdmnejb.entity.ReactionRuleSourceType;
-import colruyt.rearulmgtdmnejb.entity.ReactionRuleSourceTypePK;
 
 @Stateless
 @LocalBean
@@ -57,59 +53,29 @@ public class ReaRuleConverter implements Serializable {
 		return reaRule;
 	}
 	
-	public List<ReactionRuleActionType> convertRuleAction(GeneralRuleBo reactionRuleBo){
-		List<ReactionRuleActionType> actionTypeLst = Lists.newArrayList();
-		for(RefActionTypeBo actionBo : reactionRuleBo.getActionTypeList()){
-			ReactionRuleActionType actionType = new ReactionRuleActionType();
-			ReactionRuleActionTypePK reaRuleSetActtypePK = new ReactionRuleActionTypePK();
-			reaRuleSetActtypePK.setReaRuleId(reactionRuleBo.getRuleId());
-			reaRuleSetActtypePK.setActionTypeId(actionBo.getActionTypeId());
-			actionType.setId(reaRuleSetActtypePK);
-			actionType.setLstUpdateBy(reactionRuleBo.getLogonId());
-			actionTypeLst.add(actionType);
+	public List<Long> convertRuleAction(GeneralRuleBo reactionRuleBo) {
+		List<Long> actionTypeLst = Lists.newArrayList();
+		for (RefActionTypeBo actionBo : reactionRuleBo.getActionTypeList()) {
+			actionTypeLst.add(actionBo.getActionTypeId());
 		}
 		return actionTypeLst;
 		
 	}
 
-	public List<ReactionRuleSourceType> convertRuleSource(GeneralRuleBo reactionRuleBo) {
-		List<ReactionRuleSourceType> sourceList= Lists.newArrayList();
-		for(RefSourceTypeBo sourceBo : reactionRuleBo.getSourceTypeList()){
-			ReactionRuleSourceType source = new ReactionRuleSourceType();
-			ReactionRuleSourceTypePK reaRuleSetSrcPK = new ReactionRuleSourceTypePK();
-			reaRuleSetSrcPK.setReaRuleId(reactionRuleBo.getRuleId());
-			reaRuleSetSrcPK.setSourceId(sourceBo.getSourceTypeId());
-			source.setId(reaRuleSetSrcPK);
-			source.setLstUpdateBy(reactionRuleBo.getLogonId());
-			sourceList.add(source);
+	public List<Long> convertRuleSource(GeneralRuleBo reactionRuleBo) {
+		List<Long> sourceList = Lists.newArrayList();
+		for (RefSourceTypeBo sourceBo : reactionRuleBo.getSourceTypeList()) {
+			sourceList.add(sourceBo.getSourceTypeId());
 		}
 		return sourceList;
 	}
 
-	public List<ReactionRuleActionType> convertRuleActionForAll(long actionIdForAll, GeneralRuleBo reactionRuleBo) {
-		List<ReactionRuleActionType> actionTypeLst = Lists.newArrayList();
-		ReactionRuleActionType actionType = new ReactionRuleActionType();
-		ReactionRuleActionTypePK reaRuleSetActtypePK = new ReactionRuleActionTypePK();
-		reaRuleSetActtypePK.setReaRuleId(reactionRuleBo.getRuleId());
-		reaRuleSetActtypePK.setActionTypeId(actionIdForAll);
-		actionType.setId(reaRuleSetActtypePK);
-		actionType.setLstUpdateBy(reactionRuleBo.getLogonId());
-		actionTypeLst.add(actionType);
+	public List<Long> convertRuleTypeForAll(long idForAll) {
+		List<Long> actionTypeLst = Lists.newArrayList();
+		actionTypeLst.add(idForAll);
 		return actionTypeLst;
 	}
-
-	public List<ReactionRuleSourceType> convertRuleSourceForAll(long sourceIdForAll, GeneralRuleBo reactionRuleBo) {
-		List<ReactionRuleSourceType> sourceList= Lists.newArrayList();
-		ReactionRuleSourceType source = new ReactionRuleSourceType();
-		ReactionRuleSourceTypePK reaRuleSetSrcPK = new ReactionRuleSourceTypePK();
-		reaRuleSetSrcPK.setReaRuleId(reactionRuleBo.getRuleId());
-		reaRuleSetSrcPK.setSourceId(sourceIdForAll);
-		source.setId(reaRuleSetSrcPK);
-		source.setLstUpdateBy(reactionRuleBo.getLogonId());
-		sourceList.add(source);
-		return sourceList;
-	}
-
+	
 	public List<GeneralRuleBo> convertRuleLine(List<ReactionRule> reaRules) {
 		List<GeneralRuleBo>  ruleLines = Lists.newArrayList();
 		for(ReactionRule rule : reaRules){

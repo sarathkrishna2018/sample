@@ -26,8 +26,6 @@ import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySet;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmnt;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmntPK;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
-import colruyt.rearulmgtdmnejb.entity.RefActionType;
-import colruyt.rearulmgtdmnejb.entity.RefSourceType;
 import colruyt.rearulmgtdmnejb.util.ProductHrchyElmntConverter;
 import junit.framework.Assert;
 
@@ -76,8 +74,6 @@ public class ProductHrchyElmntConverterTest {
 		reaRule.setCreatedBy("sa");
 		reaRule.setLstUpdateBy("sa");
 		reaRule.setReaPpdHchysets(getReaPpdHchysets());
-		reaRule.setRefActionTypes(getRefActionType());
-		reaRule.setRefSourceTypes(getRefSourceType());
 		return reaRule;
 	}
 	private List<PriceProductHierarchySet> getReaPpdHchysets() {
@@ -118,26 +114,7 @@ public class ProductHrchyElmntConverterTest {
 		priceProductHierarchySetElmntPK.setPpdHchysetId(1);
 		return priceProductHierarchySetElmntPK;
 	}
-	private List<RefActionType> getRefActionType(){
-		List<RefActionType> refActionTypes=Lists.newArrayList();
-		RefActionType refActionType=new RefActionType();
-		refActionType.setActionType("Discount");
-		refActionType.setActionTypeId(1l);
-		refActionType.setDescription("Discount");
-		refActionType.setSeq(12l);
-		refActionTypes.add(refActionType);
-		return refActionTypes;	
-		
-	}
-	private List<RefSourceType> getRefSourceType(){
-		List<RefSourceType> refSourceTypes=Lists.newArrayList();
-		RefSourceType refSourceType=new RefSourceType();
-		refSourceType.setDescription("online");
-		refSourceType.setSourceId(1l);
-		refSourceType.setSourceName("online");
-		refSourceTypes.add(refSourceType);
-		return refSourceTypes;
-	}
+	
 	private GeneralRuleBo getRuleBo() {
 		GeneralRuleBo reactionRuleBo = new GeneralRuleBo();
 		Date validFromdate = new Date();

@@ -26,8 +26,6 @@ import colruyt.rearulmgtdmnejb.entity.RefQuantityCond;
 import colruyt.rearulmgtdmnejb.entity.RefQuantityCondLang;
 import colruyt.rearulmgtdmnejb.entity.RefQuantityType;
 import colruyt.rearulmgtdmnejb.entity.RefQuantityTypeLang;
-import colruyt.rearulmgtdmnejb.entity.RefActionType;
-import colruyt.rearulmgtdmnejb.entity.RefSourceType;
 import colruyt.rearulmgtdmnejb.enums.ActionTypeEnum;
 import colruyt.rearulmgtdmnejb.enums.SourceTypeEnum;
 import colruyt.rearulmgtdmnejb.entity.RefReason;
@@ -44,27 +42,23 @@ public class ReferenceDataConverter implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public List<RefActionTypeBo> convertRefReaActiontype(List<RefActionType> refReaActiontypes) {
+	public List<RefActionTypeBo> convertRefReaActiontype(List<Long> refActionTypes) {
 		List<RefActionTypeBo> refActionTypeBoList = Lists.newArrayList();
-		for (RefActionType actiontype : refReaActiontypes) {
-			RefActionTypeBo actionTypeBo = convertActionType(actiontype);
-			if (actionTypeBo != null) {
-				refActionTypeBoList.add(actionTypeBo);
+		for (Long ruleAction : refActionTypes) {
+			RefActionTypeBo actionTypeBo = new RefActionTypeBo();
+			for (ActionTypeEnum refActionType : ActionTypeEnum.values()) {
+				if (ruleAction == refActionType.getActionTypeId()) {
+					actionTypeBo.setActionTypeId(ruleAction);
+					actionTypeBo.setActionTypeValue(refActionType.getActionTypeValue());
+					actionTypeBo.setSequence(refActionType.getSequence());
+					refActionTypeBoList.add(actionTypeBo);
+				}
 			}
 		}
 		return refActionTypeBoList;
 	}
 
-	public RefActionTypeBo convertActionType(RefActionType reaActiontype) {
-		RefActionTypeBo actionTypeBo = null;
-		if (reaActiontype != null) {
-			actionTypeBo = new RefActionTypeBo();
-			actionTypeBo.setActionTypeId(reaActiontype.getActionTypeId());
-			actionTypeBo.setActionTypeValue(reaActiontype.getActionType());
-			actionTypeBo.setSequence(reaActiontype.getSeq());
-		}
-		return actionTypeBo;
-	}
+	
 
 	public List<RefNotToReactCodeBo> convertRefNonReactingCodeType(List<RefReason> refNonReactingCodeTypes) {
 		List<RefNotToReactCodeBo> refNotToReactCodeBoList = new ArrayList<>();
@@ -116,26 +110,21 @@ public class ReferenceDataConverter implements Serializable {
 		return refLangList;
 	}
 
-	public List<RefSourceTypeBo> convertRefReaSource(List<RefSourceType> refReaSources) {
+	public List<RefSourceTypeBo> convertRefReaSource(List<Long> refSourceTypes) {
 		List<RefSourceTypeBo> refSourceTypeBoList = Lists.newArrayList();
-		for (RefSourceType reaSource : refReaSources) {
-			RefSourceTypeBo sourceTypeBo = convertRefReaSource(reaSource);
-			if (sourceTypeBo != null) {
-				refSourceTypeBoList.add(sourceTypeBo);
+		for (Long sourceType : refSourceTypes) {
+			RefSourceTypeBo sourceTypeBo = new RefSourceTypeBo();
+			for (SourceTypeEnum refSourceType : SourceTypeEnum.values()) {
+				if (sourceType == refSourceType.getSourceTypeId()) {
+					sourceTypeBo.setSourceName(refSourceType.getSourceTypeName());
+					sourceTypeBo.setSourceTypeId(refSourceType.getSourceTypeId());
+					refSourceTypeBoList.add(sourceTypeBo);
+				}
 			}
 		}
 		return refSourceTypeBoList;
 	}
 
-	public RefSourceTypeBo convertRefReaSource(RefSourceType refReaSource) {
-		RefSourceTypeBo sourceTypeBo = null;
-		if (refReaSource != null) {
-			sourceTypeBo = new RefSourceTypeBo();
-			sourceTypeBo.setSourceName(refReaSource.getSourceName());
-			sourceTypeBo.setSourceTypeId(refReaSource.getSourceId());
-		}
-		return sourceTypeBo;
-	}
 
 	public List<RefQuantityPriceTypeBo> convertRefQtyType(List<RefQuantityType> refQtyTypes) {
 		List<RefQuantityPriceTypeBo> rrefQuantityPriceTypeBoList = Lists.newArrayList();

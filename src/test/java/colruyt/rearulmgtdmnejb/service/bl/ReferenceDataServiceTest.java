@@ -9,13 +9,13 @@ import org.unitils.UnitilsJUnit4TestClassRunner;
 import org.unitils.inject.annotation.InjectIntoByType;
 import org.unitils.inject.annotation.TestedObject;
 
-import colruyt.rearulmgtdmnejb.service.dl.RefActionTypeDlService;
+//import colruyt.rearulmgtdmnejb.service.dl.RefActionTypeDlService;
 import colruyt.rearulmgtdmnejb.service.dl.RefFltoutTypeDlService;
 import colruyt.rearulmgtdmnejb.service.dl.RefNonReactingCodeDlService;
 import colruyt.rearulmgtdmnejb.service.dl.RefQuantityConditionTypeDlService;
 import colruyt.rearulmgtdmnejb.service.dl.RefQuantityPriceTypeDlService;
 import colruyt.rearulmgtdmnejb.service.dl.RefRuleTypeDlService;
-import colruyt.rearulmgtdmnejb.service.dl.RefSourceTypeDlService;
+//import colruyt.rearulmgtdmnejb.service.dl.RefSourceTypeDlService;
 
 @Transactional
 @RunWith(UnitilsJUnit4TestClassRunner.class)
@@ -23,8 +23,8 @@ import colruyt.rearulmgtdmnejb.service.dl.RefSourceTypeDlService;
 public class ReferenceDataServiceTest {
 	@TestedObject
 	private ReferenceDataService referenceDataBlService;
-	@InjectIntoByType
-	private RefActionTypeDlService refActionTypeDlService=Mockito.mock(RefActionTypeDlService.class);
+	/*@InjectIntoByType
+	private RefActionTypeDlService refActionTypeDlService=Mockito.mock(RefActionTypeDlService.class);*/
 	@InjectIntoByType
 	private RefFltoutTypeDlService refFltoutTypeDlService=Mockito.mock(RefFltoutTypeDlService.class);
 	@InjectIntoByType
@@ -35,8 +35,8 @@ public class ReferenceDataServiceTest {
 	private RefQuantityPriceTypeDlService refQuantityPriceTypeDlService=Mockito.mock(RefQuantityPriceTypeDlService.class);
 	@InjectIntoByType
 	private RefRuleTypeDlService refRuleTypeDlService=Mockito.mock(RefRuleTypeDlService.class);
-	@InjectIntoByType
-	private RefSourceTypeDlService refSourceTypeDlService=Mockito.mock(RefSourceTypeDlService.class);
+	/*@InjectIntoByType
+	private RefSourceTypeDlService refSourceTypeDlService=Mockito.mock(RefSourceTypeDlService.class);*/
 	
 	@Test
 	public void getAllActionTypesTest(){

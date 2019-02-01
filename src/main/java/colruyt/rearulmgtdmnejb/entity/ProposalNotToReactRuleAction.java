@@ -3,11 +3,13 @@ package colruyt.rearulmgtdmnejb.entity;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -27,15 +29,18 @@ public class ProposalNotToReactRuleAction implements Serializable {
 	@Column(name="FLTOUT_TYPE_ID")
 	private long fltoutTypeId;
 	
-	@OneToMany
-	@JoinColumn(name = "REA_RULE_ID",referencedColumnName = "REA_RULE_ID")
-	private List<ProposalNotToReactRuleActionRsn> reaNreactSetRsns;
-		
-	public List<ProposalNotToReactRuleActionRsn> getReaNreactSetRsns() {
+	@ElementCollection(fetch = FetchType.EAGER)
+	@CollectionTable(name = "REA_NREACT_SET_RSN", 
+			joinColumns = @JoinColumn(name = "REA_RULE_ID"))
+	@Column(name = "REASON_ID")
+	private List<Long> reaNreactSetRsns;
+	
+
+	public List<Long> getReaNreactSetRsns() {
 		return reaNreactSetRsns;
 	}
 
-	public void setReaNreactSetRsns(List<ProposalNotToReactRuleActionRsn> reaNreactSetRsns) {
+	public void setReaNreactSetRsns(List<Long> reaNreactSetRsns) {
 		this.reaNreactSetRsns = reaNreactSetRsns;
 	}
 

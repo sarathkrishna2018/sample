@@ -22,7 +22,6 @@ import colruyt.rearulmgtdmnejb.bo.RefFilterOutRecordingTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefLangBo;
 import colruyt.rearulmgtdmnejb.bo.RefNotToReactCodeBo;
 import colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleAction;
-import colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleActionRsn;
 import colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleActionRsnPK;
 import colruyt.rearulmgtdmnejb.service.bl.ReferenceDataService;
 import colruyt.rearulmgtdmnejb.util.ProposeNotToReactRuleConverter;
@@ -46,19 +45,17 @@ public class ProposeNotToReactRuleConverterTest {
 	}
 	@Test
 	public void convertReasonNotToReactSetTest(){
-		 Long ruleId=1l; 
-		 String logonId="sa";
-		List<ProposalNotToReactRuleActionRsn> expectedReaNreactSetRsn=proposeNotToReactRuleConverter.convertReasonNotToReactSet(getRefNotToReactCodeBo(), ruleId, logonId);	
+		List<Long> expectedReaNreactSetRsn=proposeNotToReactRuleConverter.convertReasonNotToReactSet(getRefNotToReactCodeBo());	
 		assertEquals(expectedReaNreactSetRsn.size(),getRefNotToReactCodeBo().size());
 		
 	}
-	@Test
+	/*@Test
 	public void convertToBoTest(){
 		when(referenceDataService.getAllFilterOutRecordingTypes()).thenReturn(getRefFilterOutRecordingTypeBoList());
 		when(referenceDataService.getAllNotToReactCodeTypes()).thenReturn(getRefNotToReactCodeBo());
 		ProposeNotToReactRuleBo expectedProposeNotToReactRuleBo=proposeNotToReactRuleConverter.convertToBo(getProposalNotToReactRuleAction(), getProposeNotToReactRuleBo());
 		Assert.assertEquals(getProposeNotToReactRuleBo().getRuleId(), expectedProposeNotToReactRuleBo.getRuleId());
-	}
+	}*/
 	
 	private List<RefFilterOutRecordingTypeBo> getRefFilterOutRecordingTypeBoList() {
 		List<RefFilterOutRecordingTypeBo> refFilterOutRecordingTypeBos=Lists.newArrayList();
@@ -73,17 +70,10 @@ public class ProposeNotToReactRuleConverterTest {
 		ProposalNotToReactRuleAction proposalNotToReactRuleAction=new ProposalNotToReactRuleAction();
 		proposalNotToReactRuleAction.setFltoutTypeId(1);
 		proposalNotToReactRuleAction.setReaRuleId(1);
-		proposalNotToReactRuleAction.setReaNreactSetRsns(getReaNreactSetRsns());
+		
 		return proposalNotToReactRuleAction;
 	}
-	private List<ProposalNotToReactRuleActionRsn> getReaNreactSetRsns() {
-		List<ProposalNotToReactRuleActionRsn> proposalNotToReactRuleActionRsns=Lists.newArrayList();
-		ProposalNotToReactRuleActionRsn proposalNotToReactRuleActionRsn=new ProposalNotToReactRuleActionRsn();
-		proposalNotToReactRuleActionRsn.setId(getReaNreactSetRsnPK());
-		proposalNotToReactRuleActionRsn.setLstUpdateBy("ake");
-		proposalNotToReactRuleActionRsns.add(proposalNotToReactRuleActionRsn);
-		return proposalNotToReactRuleActionRsns;
-	}
+	
 	public ProposalNotToReactRuleActionRsnPK getReaNreactSetRsnPK(){
 		ProposalNotToReactRuleActionRsnPK reaNreactSetRsnPK=new ProposalNotToReactRuleActionRsnPK();
 		reaNreactSetRsnPK.setReaRuleId(1l);
