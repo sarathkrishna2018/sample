@@ -69,7 +69,7 @@ public class GeneralRuleServiceTest {
 	@InjectIntoByType
 	private ReferenceDataService referenceDataService = Mockito.mock(ReferenceDataService.class);
 	@InjectMocks
-	private ProductHrchyElmntConverter productHrchyElmntConverter=Mockito.mock(ProductHrchyElmntConverter.class);
+	private ProductHrchyElmntConverter productHrchyElmntConverter = Mockito.mock(ProductHrchyElmntConverter.class);
 
 	@Test
 	public void createRuleTypeAllTest() throws ReaRuleValidationException, ReaRuleManagementException {
@@ -77,10 +77,9 @@ public class GeneralRuleServiceTest {
 				Mockito.anyString())).thenReturn(createReactionRuleset());
 		when(reaRuleConverter.convertRuleBo(Mockito.isNull(ReactionRule.class), Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReaRule());
-		//action
-		when(reaRuleConverter.convertRuleTypeForAll(Mockito.anyLong()))
-				.thenReturn(getAllTypeList());
-		//source
+		// action
+		when(reaRuleConverter.convertRuleTypeForAll(Mockito.anyLong())).thenReturn(getAllTypeList());
+		// source
 		when(reaRuleConverter.convertRuleTypeForAll(Mockito.anyLong())).thenReturn(getAllTypeList());
 		when(reactionRuleDlService.createOrUpdate(Mockito.any(ReactionRule.class))).thenReturn(getReaRule());
 		when(priceProductHierarchyBlService.createProductHierarchySet(Mockito.any(GeneralRuleBo.class)))
@@ -90,9 +89,10 @@ public class GeneralRuleServiceTest {
 		GeneralRuleBo expectedReactionRule = generalRuleService.createRule(getReactionRuleBo());
 		assertEquals(new Long(1l), expectedReactionRule.getRuleId());
 	}
+
 	@Test
 	public void createRuleSourceandActionTest() throws ReaRuleManagementException, ReaRuleValidationException {
-		GeneralRuleBo generalRuleBo=getReactionRuleBo();
+		GeneralRuleBo generalRuleBo = getReactionRuleBo();
 		generalRuleBo.setActionSelectAll(true);
 		generalRuleBo.setSourceSelectAll(true);
 		generalRuleBo.setActionTypeList(getRefActionTypeBo());
@@ -111,10 +111,11 @@ public class GeneralRuleServiceTest {
 		GeneralRuleBo expectedReactionRule = generalRuleService.createRule(generalRuleBo);
 		assertEquals(new Long(1l), expectedReactionRule.getRuleId());
 
-	}	
-	@Test(expected=ReaRuleValidationException.class)
+	}
+
+	@Test(expected = ReaRuleValidationException.class)
 	public void createValidatePermanentandTempTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		GeneralRuleBo generalRuleBo=getReactionRuleBo();
+		GeneralRuleBo generalRuleBo = getReactionRuleBo();
 		generalRuleBo.setPermanentDuration(false);
 		generalRuleBo.setTemporaryDuration(false);
 		when(reactionRuleSetBlService.createReactionRuleSet(Mockito.any(ReactionRulesetBo.class), Mockito.anyBoolean(),
@@ -131,9 +132,11 @@ public class GeneralRuleServiceTest {
 		GeneralRuleBo expectedReactionRule = generalRuleService.createRule(generalRuleBo);
 		assertEquals(new Long(1l), expectedReactionRule.getRuleId());
 	}
-	@Test(expected=ReaRuleValidationException.class)
-	public void createValidateCheapandNationalBrandTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		GeneralRuleBo generalRuleBo=getReactionRuleBo();
+
+	@Test(expected = ReaRuleValidationException.class)
+	public void createValidateCheapandNationalBrandTest()
+			throws ReaRuleValidationException, ReaRuleManagementException {
+		GeneralRuleBo generalRuleBo = getReactionRuleBo();
 		generalRuleBo.setCheapBrand(false);
 		generalRuleBo.setNationalBrand(false);
 		generalRuleBo.setOwnBrand(false);
@@ -151,9 +154,10 @@ public class GeneralRuleServiceTest {
 		GeneralRuleBo expectedReactionRule = generalRuleService.createRule(generalRuleBo);
 		assertEquals(new Long(1l), expectedReactionRule.getRuleId());
 	}
-	@Test(expected=ReaRuleValidationException.class)
+
+	@Test(expected = ReaRuleValidationException.class)
 	public void createValidateHierarchySetTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		GeneralRuleBo generalRuleBo=getReactionRuleBo();
+		GeneralRuleBo generalRuleBo = getReactionRuleBo();
 		generalRuleBo.setPriceProductHierarchySet(null);
 		when(reactionRuleSetBlService.createReactionRuleSet(Mockito.any(ReactionRulesetBo.class), Mockito.anyBoolean(),
 				Mockito.anyString())).thenReturn(createReactionRuleset());
@@ -169,9 +173,10 @@ public class GeneralRuleServiceTest {
 		GeneralRuleBo expectedReactionRule = generalRuleService.createRule(generalRuleBo);
 		assertEquals(new Long(1l), expectedReactionRule.getRuleId());
 	}
-	@Test(expected=ReaRuleValidationException.class)
+
+	@Test(expected = ReaRuleValidationException.class)
 	public void createValidateAssortmentNameTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		GeneralRuleBo generalRuleBo=getReactionRuleBo();
+		GeneralRuleBo generalRuleBo = getReactionRuleBo();
 		generalRuleBo.setAssortmentName(null);
 		when(reactionRuleSetBlService.createReactionRuleSet(Mockito.any(ReactionRulesetBo.class), Mockito.anyBoolean(),
 				Mockito.anyString())).thenReturn(createReactionRuleset());
@@ -187,9 +192,10 @@ public class GeneralRuleServiceTest {
 		GeneralRuleBo expectedReactionRule = generalRuleService.createRule(generalRuleBo);
 		assertEquals(new Long(1l), expectedReactionRule.getRuleId());
 	}
-	@Test(expected=ReaRuleValidationException.class)
+
+	@Test(expected = ReaRuleValidationException.class)
 	public void createValidateImportanceCodeTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		GeneralRuleBo generalRuleBo=getReactionRuleBo();
+		GeneralRuleBo generalRuleBo = getReactionRuleBo();
 		generalRuleBo.setImportanceCodeFrom(null);
 		generalRuleBo.setImportanceCodeTo(null);
 		when(reactionRuleSetBlService.createReactionRuleSet(Mockito.any(ReactionRulesetBo.class), Mockito.anyBoolean(),
@@ -206,9 +212,10 @@ public class GeneralRuleServiceTest {
 		GeneralRuleBo expectedReactionRule = generalRuleService.createRule(generalRuleBo);
 		assertEquals(new Long(1l), expectedReactionRule.getRuleId());
 	}
-	@Test(expected=ReaRuleValidationException.class)
+
+	@Test(expected = ReaRuleValidationException.class)
 	public void createValidateRuleNameTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		GeneralRuleBo generalRuleBo=getReactionRuleBo();
+		GeneralRuleBo generalRuleBo = getReactionRuleBo();
 		generalRuleBo.setRuleName(null);
 		when(reactionRuleSetBlService.createReactionRuleSet(Mockito.any(ReactionRulesetBo.class), Mockito.anyBoolean(),
 				Mockito.anyString())).thenReturn(createReactionRuleset());
@@ -224,9 +231,10 @@ public class GeneralRuleServiceTest {
 		GeneralRuleBo expectedReactionRule = generalRuleService.createRule(generalRuleBo);
 		assertEquals(new Long(1l), expectedReactionRule.getRuleId());
 	}
+
 	@Test
 	public void createRuleTypeDateValidationTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		GeneralRuleBo generalRuleBo=getReactionRuleBo();
+		GeneralRuleBo generalRuleBo = getReactionRuleBo();
 		generalRuleBo.setValidFrom(null);
 		when(reactionRuleSetBlService.createReactionRuleSet(Mockito.any(ReactionRulesetBo.class), Mockito.anyBoolean(),
 				Mockito.anyString())).thenReturn(createReactionRuleset());
@@ -242,9 +250,11 @@ public class GeneralRuleServiceTest {
 		GeneralRuleBo expectedReactionRule = generalRuleService.createRule(generalRuleBo);
 		assertEquals(new Long(1l), expectedReactionRule.getRuleId());
 	}
-	@Test(expected=ReaRuleValidationException.class)
-	public void createRuleTypeImportanceCodeValidationTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		GeneralRuleBo generalRuleBo=getReactionRuleBo();
+
+	@Test(expected = ReaRuleValidationException.class)
+	public void createRuleTypeImportanceCodeValidationTest()
+			throws ReaRuleValidationException, ReaRuleManagementException {
+		GeneralRuleBo generalRuleBo = getReactionRuleBo();
 		generalRuleBo.setImportanceCodeFrom(20l);
 		generalRuleBo.setImportanceCodeTo(15l);
 		when(reactionRuleSetBlService.createReactionRuleSet(Mockito.any(ReactionRulesetBo.class), Mockito.anyBoolean(),
@@ -261,9 +271,11 @@ public class GeneralRuleServiceTest {
 		GeneralRuleBo expectedReactionRule = generalRuleService.createRule(generalRuleBo);
 		assertEquals(new Long(1l), expectedReactionRule.getRuleId());
 	}
-	@Test(expected=ReaRuleValidationException.class)
-	public void createRuleTypeImportanceCodeValidationElseTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		GeneralRuleBo generalRuleBo=getReactionRuleBo();
+
+	@Test(expected = ReaRuleValidationException.class)
+	public void createRuleTypeImportanceCodeValidationElseTest()
+			throws ReaRuleValidationException, ReaRuleManagementException {
+		GeneralRuleBo generalRuleBo = getReactionRuleBo();
 		generalRuleBo.setImportanceCodeFrom(-1l);
 		generalRuleBo.setImportanceCodeTo(150l);
 		when(reactionRuleSetBlService.createReactionRuleSet(Mockito.any(ReactionRulesetBo.class), Mockito.anyBoolean(),
@@ -280,9 +292,10 @@ public class GeneralRuleServiceTest {
 		GeneralRuleBo expectedReactionRule = generalRuleService.createRule(generalRuleBo);
 		assertEquals(new Long(1l), expectedReactionRule.getRuleId());
 	}
-	@Test(expected=ReaRuleValidationException.class)
+
+	@Test(expected = ReaRuleValidationException.class)
 	public void createRuleTypeCatchAllRuleNameTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		GeneralRuleBo generalRuleBo=getReactionRuleBo();
+		GeneralRuleBo generalRuleBo = getReactionRuleBo();
 		generalRuleBo.setCatchAll(true);
 		generalRuleBo.setRuleName("All");
 		when(reactionRuleSetBlService.createReactionRuleSet(Mockito.any(ReactionRulesetBo.class), Mockito.anyBoolean(),
@@ -299,9 +312,11 @@ public class GeneralRuleServiceTest {
 		GeneralRuleBo expectedReactionRule = generalRuleService.createRule(generalRuleBo);
 		assertEquals(new Long(1l), expectedReactionRule.getRuleId());
 	}
-	@Test(expected=ReaRuleValidationException.class)
-	public void createRuleTypeCatchAllPermanentandTempTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		GeneralRuleBo generalRuleBo=getReactionRuleBo();
+
+	@Test(expected = ReaRuleValidationException.class)
+	public void createRuleTypeCatchAllPermanentandTempTest()
+			throws ReaRuleValidationException, ReaRuleManagementException {
+		GeneralRuleBo generalRuleBo = getReactionRuleBo();
 		generalRuleBo.setCatchAll(true);
 		generalRuleBo.setPermanentDuration(false);
 		when(reactionRuleSetBlService.createReactionRuleSet(Mockito.any(ReactionRulesetBo.class), Mockito.anyBoolean(),
@@ -318,9 +333,10 @@ public class GeneralRuleServiceTest {
 		GeneralRuleBo expectedReactionRule = generalRuleService.createRule(generalRuleBo);
 		assertEquals(new Long(1l), expectedReactionRule.getRuleId());
 	}
-	@Test(expected=ReaRuleValidationException.class)
+
+	@Test(expected = ReaRuleValidationException.class)
 	public void createRuleTypeCatchAllActionAllTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		GeneralRuleBo generalRuleBo=getReactionRuleBo();
+		GeneralRuleBo generalRuleBo = getReactionRuleBo();
 		generalRuleBo.setCatchAll(true);
 		generalRuleBo.setActionSelectAll(false);
 		when(reactionRuleSetBlService.createReactionRuleSet(Mockito.any(ReactionRulesetBo.class), Mockito.anyBoolean(),
@@ -337,9 +353,11 @@ public class GeneralRuleServiceTest {
 		GeneralRuleBo expectedReactionRule = generalRuleService.createRule(generalRuleBo);
 		assertEquals(new Long(1l), expectedReactionRule.getRuleId());
 	}
-	@Test(expected=ReaRuleValidationException.class)
-	public void createRuleTypeCatchAllPostandDirectTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		GeneralRuleBo generalRuleBo=getReactionRuleBo();
+
+	@Test(expected = ReaRuleValidationException.class)
+	public void createRuleTypeCatchAllPostandDirectTest()
+			throws ReaRuleValidationException, ReaRuleManagementException {
+		GeneralRuleBo generalRuleBo = getReactionRuleBo();
 		generalRuleBo.setCatchAll(true);
 		generalRuleBo.setPostponedBenefit(false);
 		when(reactionRuleSetBlService.createReactionRuleSet(Mockito.any(ReactionRulesetBo.class), Mockito.anyBoolean(),
@@ -356,9 +374,11 @@ public class GeneralRuleServiceTest {
 		GeneralRuleBo expectedReactionRule = generalRuleService.createRule(generalRuleBo);
 		assertEquals(new Long(1l), expectedReactionRule.getRuleId());
 	}
-	@Test(expected=ReaRuleValidationException.class)
-	public void createRuleTypeCatchAllAssortmentNameTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		GeneralRuleBo generalRuleBo=getReactionRuleBo();
+
+	@Test(expected = ReaRuleValidationException.class)
+	public void createRuleTypeCatchAllAssortmentNameTest()
+			throws ReaRuleValidationException, ReaRuleManagementException {
+		GeneralRuleBo generalRuleBo = getReactionRuleBo();
 		generalRuleBo.setCatchAll(true);
 		generalRuleBo.setAssortmentName("products");
 		when(reactionRuleSetBlService.createReactionRuleSet(Mockito.any(ReactionRulesetBo.class), Mockito.anyBoolean(),
@@ -375,9 +395,11 @@ public class GeneralRuleServiceTest {
 		GeneralRuleBo expectedReactionRule = generalRuleService.createRule(generalRuleBo);
 		assertEquals(new Long(1l), expectedReactionRule.getRuleId());
 	}
-	@Test(expected=ReaRuleValidationException.class)
-	public void createRuleTypeCatchAllCheapandNationalTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		GeneralRuleBo generalRuleBo=getReactionRuleBo();
+
+	@Test(expected = ReaRuleValidationException.class)
+	public void createRuleTypeCatchAllCheapandNationalTest()
+			throws ReaRuleValidationException, ReaRuleManagementException {
+		GeneralRuleBo generalRuleBo = getReactionRuleBo();
 		generalRuleBo.setCatchAll(true);
 		generalRuleBo.setCheapBrand(false);
 		when(reactionRuleSetBlService.createReactionRuleSet(Mockito.any(ReactionRulesetBo.class), Mockito.anyBoolean(),
@@ -394,6 +416,7 @@ public class GeneralRuleServiceTest {
 		GeneralRuleBo expectedReactionRule = generalRuleService.createRule(generalRuleBo);
 		assertEquals(new Long(1l), expectedReactionRule.getRuleId());
 	}
+
 	@Test
 	public void logicallyDeleteReactionRuleTest() throws ReaRuleManagementException {
 		ReactionRule reactionRule = getReaRule();
@@ -401,8 +424,9 @@ public class GeneralRuleServiceTest {
 		when(reactionRuleDlService.findParentRule(Mockito.anyLong())).thenReturn(reactionRule);
 		when(reactionRuleDlService.createOrUpdate(Mockito.any(ReactionRule.class))).thenReturn(reactionRule);
 		Mockito.doNothing().when(reactionRuleDlService).updateLogicallyDeletedDate(Mockito.any(ReactionRule.class));
-		generalRuleService.logicallyDeleteReactionRule(1L, "EN", "xyz");	
+		generalRuleService.logicallyDeleteReactionRule(1L, "EN", "xyz");
 	}
+
 	@Test
 	public void logicallyDeleteReactionRuleHavingChildTest() throws ReaRuleManagementException {
 		ReactionRule reactionRule = getReaRule();
@@ -411,9 +435,10 @@ public class GeneralRuleServiceTest {
 		when(reactionRuleDlService.findParentRule(Mockito.anyLong())).thenReturn(reactionRule);
 		when(reactionRuleDlService.createOrUpdate(Mockito.any(ReactionRule.class))).thenReturn(reactionRule);
 		Mockito.doNothing().when(reactionRuleDlService).updateLogicallyDeletedDate(Mockito.any(ReactionRule.class));
-		generalRuleService.logicallyDeleteReactionRule(1L, "EN", "xyz");	
+		generalRuleService.logicallyDeleteReactionRule(1L, "EN", "xyz");
 	}
-	@Test (expected = ReaRuleManagementException.class)
+
+	@Test(expected = ReaRuleManagementException.class)
 	public void logicallyDeleteReactionRuleFailTest() throws ReaRuleManagementException {
 		ReactionRule reactionRule = getReaRule();
 		reactionRule.setChildRuleId(1L);
@@ -421,30 +446,32 @@ public class GeneralRuleServiceTest {
 		when(reactionRuleDlService.findParentRule(Mockito.anyLong())).thenReturn(reactionRule);
 		when(reactionRuleDlService.createOrUpdate(Mockito.any(ReactionRule.class))).thenReturn(reactionRule);
 		Mockito.doNothing().when(reactionRuleDlService).updateLogicallyDeletedDate(Mockito.any(ReactionRule.class));
-		generalRuleService.logicallyDeleteReactionRule(1L, "EN", "xyz");	
+		generalRuleService.logicallyDeleteReactionRule(1L, "EN", "xyz");
 	}
+
 	@Test
 	public void modifyRuleTypeAllTest() throws ReaRuleValidationException, ReaRuleManagementException {
 		when(reactionRuleDlService.findByPk(Mockito.anyLong())).thenReturn(getReaRule());
+		when(reactionRuleSetBlService.createReactionRuleSet(Mockito.any(ReactionRulesetBo.class), Mockito.anyBoolean(),
+				Mockito.anyString())).thenReturn(createReactionRuleset());
 		when(reaRuleConverter.convertRuleBo(Mockito.any(ReactionRule.class), Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReaRule());
 		when(reactionRuleDlService.createOrUpdate(Mockito.any(ReactionRule.class))).thenReturn(getReaRule());
-		when(reaRuleConverter.convertRuleTypeForAll(Mockito.anyLong()))
-				.thenReturn(getAllTypeList());
 		when(reaRuleConverter.convertRuleTypeForAll(Mockito.anyLong())).thenReturn(getAllTypeList());
+
 		when(reactionRuleDlService.createOrUpdate(Mockito.any(ReactionRule.class))).thenReturn(getReaRule());
 		when(priceProductHierarchyBlService.createProductHierarchySet(Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReactionRuleBo());
 		when(generalRuleService.modifyRuleSpecificAttributes(Mockito.any(GeneralRuleBo.class)))
-		.thenReturn(getReactionRuleBo());
-		GeneralRuleBo expectedRuleBo=generalRuleService.modifyRule(getReactionRuleBo());
-		assertEquals(new Long(1l),expectedRuleBo.getRuleId());
-		
+				.thenReturn(getReactionRuleBo());
+		GeneralRuleBo expectedRuleBo = generalRuleService.modifyRule(getReactionRuleBo());
+		assertEquals(new Long(1l), expectedRuleBo.getRuleId());
 
 	}
-	@Test(expected=ReaRuleValidationException.class)
-	public void modifyRuleSourceandActionTest() throws ReaRuleValidationException, ReaRuleManagementException{
-		GeneralRuleBo generalRuleBo=getReactionRuleBo();
+
+	@Test(expected = ReaRuleValidationException.class)
+	public void modifyRuleSourceandActionTest() throws ReaRuleValidationException, ReaRuleManagementException {
+		GeneralRuleBo generalRuleBo = getReactionRuleBo();
 		generalRuleBo.setActionSelectAll(false);
 		generalRuleBo.setSourceSelectAll(false);
 		generalRuleBo.setActionTypeList(getRefActionTypeBo());
@@ -459,171 +486,205 @@ public class GeneralRuleServiceTest {
 		when(priceProductHierarchyBlService.createProductHierarchySet(Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(generalRuleBo);
 		when(generalRuleService.modifyRuleSpecificAttributes(Mockito.any(GeneralRuleBo.class)))
-		.thenReturn(generalRuleBo);
-		GeneralRuleBo expectedRuleBo=generalRuleService.modifyRule(generalRuleBo);
-		assertEquals(new Long(1l),expectedRuleBo.getRuleId());
+				.thenReturn(generalRuleBo);
+		GeneralRuleBo expectedRuleBo = generalRuleService.modifyRule(generalRuleBo);
+		assertEquals(new Long(1l), expectedRuleBo.getRuleId());
 	}
+
 	@Test
-	public void getReactionRuleTest() throws ReaRuleManagementException{
-		long ruleId=1;
+	public void getReactionRuleTest() throws ReaRuleManagementException {
+		long ruleId = 1;
 		String langCode = "EN";
 		when(reactionRuleDlService.findByPk(Mockito.anyLong())).thenReturn(getReaRule());
-		ReactionRule expectedReactionRule=generalRuleService.getReactionRule(ruleId,langCode);
+		ReactionRule expectedReactionRule = generalRuleService.getReactionRule(ruleId, langCode);
 		Assert.assertNotNull(expectedReactionRule);
 	}
+
 	@Test
-	public void getReactionRuleFailTest() throws ReaRuleManagementException{
-		long ruleId=1;
+	public void getReactionRuleFailTest() throws ReaRuleManagementException {
+		long ruleId = 1;
 		String langCode = "EN";
 		when(reactionRuleDlService.findByPk(Mockito.anyLong())).thenReturn(getReaRule());
-		ReactionRule expectedReactionRule=generalRuleService.getReactionRule(ruleId,langCode);
-		Assert.assertNotSame(new Long(999l), expectedReactionRule.getReaRuleId());	
+		ReactionRule expectedReactionRule = generalRuleService.getReactionRule(ruleId, langCode);
+		Assert.assertNotSame(new Long(999l), expectedReactionRule.getReaRuleId());
 	}
+
 	@Test
-	public void getRulesByRuleSetIdTest(){
-		long ruleSetId=1;
+	public void getRulesByRuleSetIdTest() {
+		long ruleSetId = 1;
 		when(reactionRuleDlService.findByRuleSetId(Mockito.anyLong())).thenReturn(getReaRuleList());
-		List<ReactionRule> expectedReactionRuleList=generalRuleService.getRulesByRuleSetId(ruleSetId);
+		List<ReactionRule> expectedReactionRuleList = generalRuleService.getRulesByRuleSetId(ruleSetId);
 		assertEquals(getReaRuleList().size(), expectedReactionRuleList.size());
 	}
+
 	@Test
-	public void getRulesByRuleSetIdFailTest(){
-		long ruleSetId=1;
+	public void getRulesByRuleSetIdFailTest() {
+		long ruleSetId = 1;
 		when(reactionRuleDlService.findByRuleSetId(Mockito.anyLong())).thenReturn(getReaRuleList());
-		List<ReactionRule> expectedReactionRuleList=generalRuleService.getRulesByRuleSetId(ruleSetId);
+		List<ReactionRule> expectedReactionRuleList = generalRuleService.getRulesByRuleSetId(ruleSetId);
 		Assert.assertNotSame(new Long(999l), expectedReactionRuleList.size());
 	}
+
 	@Test
-	public void getRuleTypeIdTest(){
-		String ruleType="Filtering";
-		long ruleTypeId=3;
+	public void getRuleTypeIdTest() {
+		String ruleType = "Filtering";
+		long ruleTypeId = 3;
 		when(referenceDataService.findPkByType(Mockito.anyString())).thenReturn(ruleTypeId);
-		long expectedRuleTypeId=generalRuleService.getRuleTypeId(ruleType);
+		long expectedRuleTypeId = generalRuleService.getRuleTypeId(ruleType);
 		Assert.assertNotNull(expectedRuleTypeId);
 	}
+
 	@Test
-	public void modifyPriorityOfRulesTest() throws ReaRuleManagementException{
+	public void modifyPriorityOfRulesTest() throws ReaRuleManagementException {
 		when(reactionRuleDlService.findByPk(Mockito.anyLong())).thenReturn(getReaRule());
 		when(reactionRuleDlService.createOrUpdate(Mockito.mock(ReactionRule.class))).thenReturn(getReaRule());
 		generalRuleService.modifyPriorityOfRules(getruleLines());
 	}
+
 	@Test
-	public void modifyPriorityOfRulesHavingChildTest() throws ReaRuleManagementException{
+	public void modifyPriorityOfRulesHavingChildTest() throws ReaRuleManagementException {
 		ReactionRule reactionRule = getReaRule();
 		reactionRule.setChildRuleId(1L);
 		when(reactionRuleDlService.findByPk(Mockito.anyLong())).thenReturn(getReaRule());
 		when(reactionRuleDlService.createOrUpdate(Mockito.mock(ReactionRule.class))).thenReturn(getReaRule());
 		generalRuleService.modifyPriorityOfRules(getruleLines());
 	}
-	@Test (expected=ReaRuleManagementException.class)
-	public void  modifyPriorityOfRulesFailTest() throws ReaRuleManagementException{
+
+	@Test(expected = ReaRuleManagementException.class)
+	public void modifyPriorityOfRulesFailTest() throws ReaRuleManagementException {
 		when(reactionRuleDlService.findByPk(Mockito.anyLong())).thenReturn(null);
 		when(reactionRuleDlService.createOrUpdate(Mockito.mock(ReactionRule.class))).thenReturn(getReaRule());
 		generalRuleService.modifyPriorityOfRules(getruleLines());
 	}
+
 	@Test
-	public void deleteReactionRuleTest(){
-		String logonId="xxx";
+	public void deleteReactionRuleTest() {
+		String logonId = "xxx";
 		generalRuleService.deleteReactionRule(getReaRule(), logonId);
 	}
+
 	@Test
-	public void getGeneralRuleAttributesTest(){
-		ReactionRule reactionRule=getReaRule();
+	public void getGeneralRuleAttributesTest() {
+		ReactionRule reactionRule = getReaRule();
 		reactionRule.setRefActionTypes(getAllTypeList());
 		reactionRule.setRefSourceTypes(getAllTypeList());
 		when(referenceDataService.getAllActionTypes()).thenReturn(getRefActionTypeBo());
-		when(referenceDataService.removeActionTypeAll(Mockito.anyListOf(RefActionTypeBo.class), Mockito.anyBoolean())).thenReturn(getRefActionTypeBo());
+		when(referenceDataService.removeActionTypeAll(Mockito.anyListOf(RefActionTypeBo.class), Mockito.anyBoolean()))
+				.thenReturn(getRefActionTypeBo());
 		when(referenceDataService.getAllSourceTypes()).thenReturn(getRefSourceTypeBo());
-		when(referenceDataService.removeSourceTypeAll(Mockito.anyListOf(RefSourceTypeBo.class))).thenReturn(getRefSourceTypeBo());
-		when(reaRuleConverter.convertGeneralRuleBo(Mockito.any(ReactionRule.class), Mockito.any(GeneralRuleBo.class))).thenReturn(getReactionRuleBo());
-		GeneralRuleBo expectedGeneralRuleAttributes=generalRuleService.getGeneralRuleAttributes(getReaRule(), getReactionRuleBo());
+		when(referenceDataService.removeSourceTypeAll(Mockito.anyListOf(RefSourceTypeBo.class)))
+				.thenReturn(getRefSourceTypeBo());
+		when(reaRuleConverter.convertGeneralRuleBo(Mockito.any(ReactionRule.class), Mockito.any(GeneralRuleBo.class)))
+				.thenReturn(getReactionRuleBo());
+		GeneralRuleBo expectedGeneralRuleAttributes = generalRuleService.getGeneralRuleAttributes(getReaRule(),
+				getReactionRuleBo());
 		assertEquals(getAllTypeList().size(), expectedGeneralRuleAttributes.getActionTypeList().size());
 	}
+
 	@Test
-	public void getGeneralRuleAttributesNoActionandSourceTest(){
-		ReactionRule reactionRule=getReaRule();
+	public void getGeneralRuleAttributesNoActionandSourceTest() {
+		ReactionRule reactionRule = getReaRule();
 		reactionRule.setRefActionTypes(null);
 		reactionRule.setRefSourceTypes(null);
-		when(referenceDataConverter.convertRefReaActiontype(Mockito.anyListOf(Long.class))).thenReturn(getRefActionTypeBo());
-		when(referenceDataConverter.convertRefReaSource(Mockito.anyListOf(Long.class))).thenReturn(getRefSourceTypeBo());
-		when(reaRuleConverter.convertGeneralRuleBo(Mockito.any(ReactionRule.class), Mockito.any(GeneralRuleBo.class))).thenReturn(getReactionRuleBo());
-		GeneralRuleBo expectedGeneralRuleAttributes=generalRuleService.getGeneralRuleAttributes(getReaRule(), getReactionRuleBo());
+		when(referenceDataConverter.convertRefReaActiontype(Mockito.anyListOf(Long.class)))
+				.thenReturn(getRefActionTypeBo());
+		when(referenceDataConverter.convertRefReaSource(Mockito.anyListOf(Long.class)))
+				.thenReturn(getRefSourceTypeBo());
+		when(reaRuleConverter.convertGeneralRuleBo(Mockito.any(ReactionRule.class), Mockito.any(GeneralRuleBo.class)))
+				.thenReturn(getReactionRuleBo());
+		GeneralRuleBo expectedGeneralRuleAttributes = generalRuleService.getGeneralRuleAttributes(getReaRule(),
+				getReactionRuleBo());
 		assertEquals(new Long(1l), expectedGeneralRuleAttributes.getRuleId());
 	}
+
 	@Test
-	public void getGeneralRuleAttributesFailTest(){
+	public void getGeneralRuleAttributesFailTest() {
 		when(referenceDataService.getAllActionTypes()).thenReturn(getRefActionTypeBo());
-		when(referenceDataService.removeActionTypeAll(Mockito.anyListOf(RefActionTypeBo.class), Mockito.anyBoolean())).thenReturn(getRefActionTypeBo());
+		when(referenceDataService.removeActionTypeAll(Mockito.anyListOf(RefActionTypeBo.class), Mockito.anyBoolean()))
+				.thenReturn(getRefActionTypeBo());
 		when(referenceDataService.getAllSourceTypes()).thenReturn(getRefSourceTypeBo());
-		when(referenceDataService.removeSourceTypeAll(Mockito.anyListOf(RefSourceTypeBo.class))).thenReturn(getRefSourceTypeBo());
-		when(reaRuleConverter.convertGeneralRuleBo(Mockito.any(ReactionRule.class), Mockito.any(GeneralRuleBo.class))).thenReturn(getReactionRuleBo());
-		GeneralRuleBo expectedGeneralRuleAttributes=generalRuleService.getGeneralRuleAttributes(getReaRule(), getReactionRuleBo());
-		Assert.assertNotSame(new Long(99l), expectedGeneralRuleAttributes.getRuleId());	
+		when(referenceDataService.removeSourceTypeAll(Mockito.anyListOf(RefSourceTypeBo.class)))
+				.thenReturn(getRefSourceTypeBo());
+		when(reaRuleConverter.convertGeneralRuleBo(Mockito.any(ReactionRule.class), Mockito.any(GeneralRuleBo.class)))
+				.thenReturn(getReactionRuleBo());
+		GeneralRuleBo expectedGeneralRuleAttributes = generalRuleService.getGeneralRuleAttributes(getReaRule(),
+				getReactionRuleBo());
+		Assert.assertNotSame(new Long(99l), expectedGeneralRuleAttributes.getRuleId());
 	}
+
 	@Test
-	public void logicallyDeleteReactionRulesTest(){
-		List<Long> reactionRuleIds=getReactionRuleId();
-		String logonId="sa";
+	public void logicallyDeleteReactionRulesTest() {
+		List<Long> reactionRuleIds = getReactionRuleId();
+		String logonId = "sa";
 		Mockito.doNothing().when(reactionRuleDlService).logicallyDeleteRules(reactionRuleIds, logonId);
 		generalRuleService.logicallyDeleteReactionRules(reactionRuleIds, logonId);
 	}
+
 	@Test
-	public void findAllLogicallyDeletedRulesTest(){
-		Date dateForRulesDelete=new Date();
-		Date dateDeleteRuleBefore=new Date();
+	public void findAllLogicallyDeletedRulesTest() {
+		Date dateForRulesDelete = new Date();
+		Date dateDeleteRuleBefore = new Date();
 		when(reactionRuleDlService.findAllLogicallyDeletedRules(dateForRulesDelete)).thenReturn(getXPSRuleBoList());
-		List<XPSRuleBo> expectedRuleBo=generalRuleService.findAllLogicallyDeletedRules(dateDeleteRuleBefore);
+		List<XPSRuleBo> expectedRuleBo = generalRuleService.findAllLogicallyDeletedRules(dateDeleteRuleBefore);
 		Assert.assertEquals(1l, expectedRuleBo.size());
 	}
+
 	@Test
-	public void findAllExpiredRulesTest(){
-		Date dateDeleteRuleBefore=new Date();
+	public void findAllExpiredRulesTest() {
+		Date dateDeleteRuleBefore = new Date();
 		when(reactionRuleDlService.findAllExpiredRules(dateDeleteRuleBefore)).thenReturn(getXPSRuleBoList());
-		List<XPSRuleBo> expectedRuleBo=generalRuleService.findAllExpiredRules(dateDeleteRuleBefore);
+		List<XPSRuleBo> expectedRuleBo = generalRuleService.findAllExpiredRules(dateDeleteRuleBefore);
 		Assert.assertEquals(1l, expectedRuleBo.size());
 	}
+
 	@Test
-	public void physicalDeleteRulesTest(){
-		Long deleteId=1l;
-		when(reactionRuleActionTypeDlService.physicalDeleteActionForRules(Mockito.any(XPSRuleBo.class))).thenReturn(deleteId);
-		when(reactionRuleSourceTypeDlService.physicalDeleteSourceType(Mockito.any(XPSRuleBo.class))).thenReturn(deleteId);
+	public void physicalDeleteRulesTest() {
+		Long deleteId = 1l;
+		when(reactionRuleActionTypeDlService.physicalDeleteActionForRules(Mockito.any(XPSRuleBo.class)))
+				.thenReturn(deleteId);
+		when(reactionRuleSourceTypeDlService.physicalDeleteSourceType(Mockito.any(XPSRuleBo.class)))
+				.thenReturn(deleteId);
 		Mockito.doNothing().when(priceProductHierarchyBlService).physicalDeleteElements(getXpsRuleBo());
-		long expectedResult=generalRuleService.physicalDeleteRules(getXpsRuleBo());
+		long expectedResult = generalRuleService.physicalDeleteRules(getXpsRuleBo());
 		Assert.assertNotNull(expectedResult);
-		
+
 	}
+
 	private XPSRuleBo getXpsRuleBo() {
 		XPSRuleBo xpsRuleBo = new XPSRuleBo(1l, 1l);
 		xpsRuleBo.setRuleId(1l);
 		xpsRuleBo.setRuleType(1l);
 		return xpsRuleBo;
 	}
+
 	private List<XPSRuleBo> getXPSRuleBoList() {
-		List<XPSRuleBo> xpsRuleBos=Lists.newArrayList();
+		List<XPSRuleBo> xpsRuleBos = Lists.newArrayList();
 		XPSRuleBo xpsRuleBo = new XPSRuleBo(1l, 1l);
 		xpsRuleBo.setRuleId(1l);
 		xpsRuleBo.setRuleType(1l);
 		xpsRuleBos.add(xpsRuleBo);
 		return xpsRuleBos;
 	}
-	
+
 	private List<Long> getAllTypeList() {
-		List<Long> allTypeList=Lists.newArrayList();
+		List<Long> allTypeList = Lists.newArrayList();
 		allTypeList.add(14l);
 		return allTypeList;
 	}
+
 	private List<Long> getSourceandActionList() {
-		List<Long> sourceandAction=Lists.newArrayList();
+		List<Long> sourceandAction = Lists.newArrayList();
 		sourceandAction.add(1l);
 		return sourceandAction;
 	}
+
 	private List<Long> getReactionRuleId() {
-		List<Long> reactionRuleId=Lists.newArrayList();
+		List<Long> reactionRuleId = Lists.newArrayList();
 		return reactionRuleId;
 	}
 
 	private List<GeneralRuleBo> getruleLines() {
-		List<GeneralRuleBo> generalRuleBos=Lists.newArrayList();
+		List<GeneralRuleBo> generalRuleBos = Lists.newArrayList();
 		GeneralRuleBo reactionRuleBo = new GeneralRuleBo();
 		Date validFromdate = new Date();
 		reactionRuleBo.setRuleName("Catch ALL");
@@ -731,6 +792,8 @@ public class GeneralRuleServiceTest {
 		reactionRuleBo.setSourceTypeList(getRefSourceTypeBo());
 		reactionRuleBo.setLangCode("EN");
 		reactionRuleBo.setType("Reacting");
+		reactionRuleBo.setChildRuleId(1l);
+		reactionRuleBo.setRulePriority(1l);
 		return reactionRuleBo;
 	}
 
@@ -762,16 +825,7 @@ public class GeneralRuleServiceTest {
 		return reactionRuleset;
 	}
 
-	/*public List<RefActionTypeBo> getRefActionType() {
-		List<RefActionTypeBo> refActionTypelist = Lists.newArrayList();
-		RefActionTypeBo refActionType = new RefActionTypeBo();
-		refActionType.setActionTypeId(1l);
-		refActionType.setActionTypeValue("asa");
-		refActionType.setSequence(12l);
-		refActionTypelist.add(refActionType);
-		return refActionTypelist;
-
-	}*/
+	
 	public List<ProductHierarchyElementBo> getProductHierarchyElement() {
 		List<ProductHierarchyElementBo> productHierarchyElementlist = Lists.newArrayList();
 		ProductHierarchyElementBo productHierarchyElement = new ProductHierarchyElementBo();
@@ -782,15 +836,7 @@ public class GeneralRuleServiceTest {
 		return productHierarchyElementlist;
 	}
 
-	/*public List<RefSourceTypeBo> getRefSourceType() {
-		List<RefSourceTypeBo> refSourceTypelist = Lists.newArrayList();
-		RefSourceTypeBo refSourceType = new RefSourceTypeBo();
-		refSourceType.setSourceName("online");
-		refSourceType.setSourceTypeId(1);
-		refSourceTypelist.add(refSourceType);
-		return refSourceTypelist;
-	}
-*/
+	
 	public ReactionRule getReaRule() {
 		Date validFromdate = new Date();
 		Date validTodate = new Date();
@@ -819,7 +865,7 @@ public class GeneralRuleServiceTest {
 	public List<ReactionRuleSourceType> getReaRuleSetSrc() {
 		List<ReactionRuleSourceType> reaRuleSetSrclist = Lists.newArrayList();
 		ReactionRuleSourceType reaRuleSetSrc = new ReactionRuleSourceType();
-		
+
 		reaRuleSetSrclist.add(reaRuleSetSrc);
 		return reaRuleSetSrclist;
 	}
@@ -864,7 +910,5 @@ public class GeneralRuleServiceTest {
 		return reaPpdHchyset;
 
 	}
-	
-
 
 }

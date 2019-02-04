@@ -1,8 +1,6 @@
 package colruyt.rearulmgtdmnejb.service.bl;
 
 import java.io.Serializable;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -144,23 +142,11 @@ public abstract class GeneralRuleService implements Serializable {
 	 * @return
 	 */
 	private boolean checkForValidity(ReactionRule existingReactionRule, GeneralRuleBo reactionRuleBo) {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		Date currentDate = null;
-		Date oldValidfrom = null;
-		Date newValidFrom = null;
-		try {
-			currentDate = sdf.parse(sdf.format(new Date()));
-			oldValidfrom = sdf.parse(sdf.format(existingReactionRule.getValidFrom()));
-			newValidFrom = sdf.parse(sdf.format(reactionRuleBo.getValidFrom()));
-			if (oldValidfrom != null && oldValidfrom.compareTo(currentDate)<=0 && oldValidfrom.before(newValidFrom)) {
-				return true;
-			}
-			
-		} catch (ParseException e) {
-			logger.error("Parse Exception", e);
+		Date currentDate = new Date();
+		if (existingReactionRule.getValidFrom() != null && existingReactionRule.getValidFrom().compareTo(currentDate)<=0 && existingReactionRule.getValidFrom().before(reactionRuleBo.getValidFrom())) {
+			return true;
 		}
 		return false;
-
 	}
 
 	/**
