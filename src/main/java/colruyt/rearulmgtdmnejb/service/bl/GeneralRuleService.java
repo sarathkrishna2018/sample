@@ -143,7 +143,7 @@ public abstract class GeneralRuleService implements Serializable {
 	 */
 	private boolean checkForValidity(ReactionRule existingReactionRule, GeneralRuleBo reactionRuleBo) {
 		Date currentDate = new Date();
-		if (existingReactionRule.getValidFrom() != null && existingReactionRule.getValidFrom().compareTo(currentDate)<=0 && existingReactionRule.getValidFrom().before(reactionRuleBo.getValidFrom())) {
+		if (existingReactionRule.getValidFrom() != null && existingReactionRule.getValidFrom().compareTo(currentDate)<=0 && existingReactionRule.getValidFrom().compareTo(reactionRuleBo.getValidFrom())<=0) {
 			return true;
 		}
 		return false;
