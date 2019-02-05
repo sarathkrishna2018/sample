@@ -467,8 +467,8 @@ public class GeneralRuleServiceTest {
 		GeneralRuleBo expectedRuleBo = generalRuleService.modifyRule(getReactionRuleBo());
 		assertEquals(new Long(1l), expectedRuleBo.getRuleId());
 
-	}
-*/
+	}*/
+
 	@Test(expected = ReaRuleValidationException.class)
 	public void modifyRuleSourceandActionTest() throws ReaRuleValidationException, ReaRuleManagementException {
 		GeneralRuleBo generalRuleBo = getReactionRuleBo();
