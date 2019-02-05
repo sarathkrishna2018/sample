@@ -1,8 +1,6 @@
 package colruyt.rearulmgtdmnejb.service.bl;
 
 import java.io.Serializable;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -124,21 +122,9 @@ public abstract class GeneralRuleService implements Serializable {
 	 * @param existingReactionRule
 	 */
 	private void appendTimeSliceParam(GeneralRuleBo childRuleBo, ReactionRule existingReactionRule) {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		try {
-			Date  newValidFrom = sdf.parse(sdf.format(childRuleBo.getValidFrom()));
-			Date oldValidfrom = sdf.parse(sdf.format(existingReactionRule.getValidFrom()));
 			existingReactionRule.setChildRuleId(childRuleBo.getRuleId());
-			if(oldValidfrom.compareTo(newValidFrom)==0){
-				existingReactionRule.setValidUpto(childRuleBo.getValidFrom());
-			}else{
-				existingReactionRule.setValidUpto(DateUtils.addDays(childRuleBo.getValidFrom(), -1));
-			}
+			existingReactionRule.setValidUpto(DateUtils.addDays(childRuleBo.getValidFrom(), -1));
 			reactionRuleDlService.createOrUpdate(existingReactionRule);
-		} catch (ParseException e) {
-			logger.error("Parse Exception", e);
-		}
-		
 	}
 
 	private GeneralRuleBo createRuleLine(GeneralRuleBo reactionRuleBo)
@@ -157,7 +143,7 @@ public abstract class GeneralRuleService implements Serializable {
 	 */
 	private boolean checkForValidity(ReactionRule existingReactionRule, GeneralRuleBo reactionRuleBo) {
 		Date currentDate = new Date();
-		if (existingReactionRule.getValidFrom() != null && existingReactionRule.getValidFrom().compareTo(currentDate)<=0 && existingReactionRule.getValidFrom().compareTo(reactionRuleBo.getValidFrom())<=0) {
+		if (existingReactionRule.getValidFrom() != null && existingReactionRule.getValidFrom().compareTo(currentDate)<=0 && existingReactionRule.getValidFrom().compareTo(reactionRuleBo.getValidFrom())<0) {
 			return true;
 		}
 		return false;
