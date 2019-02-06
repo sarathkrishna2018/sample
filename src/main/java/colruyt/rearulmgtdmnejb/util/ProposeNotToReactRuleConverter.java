@@ -51,7 +51,7 @@ public class ProposeNotToReactRuleConverter implements Serializable {
 		for (int i = 0; i < reaNreactSetRsns.size(); i++) {
 			RefNotToReactCodeBo reasonCode = new RefNotToReactCodeBo();
 			for (int j = 0; j < refNotToReact.size(); j++) {
-				if (refNotToReact.get(j).getNotToReactCodeTypeId() == reaNreactSetRsns.get(i)) {
+				if (refNotToReact.get(j).getNotToReactCodeTypeId().equals(reaNreactSetRsns.get(i))) {
 					reasonCode.setNotToReactCodeTypeId(refNotToReact.get(j).getNotToReactCodeTypeId());
 					reasonCode.setDescription(refNotToReact.get(j).getDescription());
 					reasonCode.setCodeLang(refNotToReact.get(j).getCodeLang());

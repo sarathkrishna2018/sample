@@ -115,21 +115,21 @@ public class ReferenceDataConverterTest {
 	public void testConvertRefNonReactingCodeType() {
 		RefReasonEnum[] reasonValues = RefReasonEnum.values();
 		List<RefNotToReactCodeBo> RefNotToReactCodeBos = referenceDataConverter.convertRefNonReactingCodeType(reasonValues);
-		assertEquals(RefNotToReactCodeBos.size(), 6);
+		assertEquals(6,RefNotToReactCodeBos.size());
 	}
 	
 	@Test
 	public void testConvertRuleType() {
 		RefRuletypeEnum[] reasonValues = RefRuletypeEnum.values();
 		List<RefRuleTypeBo> refRuleTypeBoList = referenceDataConverter.convertRuleType(reasonValues);
-		assertEquals(refRuleTypeBoList.size(), 6);
+		assertEquals(6,refRuleTypeBoList.size());
 	}
 	
 	@Test
 	public void testConvertRefQtyType(){
 		RefQuantityTypeEnum[] refQuantityTypeValues = RefQuantityTypeEnum.values();
 		List<RefQuantityPriceTypeBo> refQuantityPriceTypeBoList = referenceDataConverter.convertRefQtyType(refQuantityTypeValues);
-		assertEquals(refQuantityPriceTypeBoList.size(), 3);
+		assertEquals(3,refQuantityPriceTypeBoList.size());
 	}
 	/*private List<RefFilterOutRecordingType> getRefFltoutType(){
 		List<RefFilterOutRecordingType> refFltoutTypelist=Lists.newArrayList();

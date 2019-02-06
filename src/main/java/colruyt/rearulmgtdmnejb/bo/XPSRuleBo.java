@@ -54,7 +54,9 @@ public class XPSRuleBo implements Serializable {
 				return false;
 			}
 		} else if (!ruleId.equals(other.ruleId))
+		{
 			return false;
+		}
 		if (ruleType == null) {
 			if (other.ruleType != null)
 			{
