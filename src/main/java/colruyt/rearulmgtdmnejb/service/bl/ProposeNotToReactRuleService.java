@@ -61,10 +61,6 @@ public class ProposeNotToReactRuleService extends GeneralRuleService implements 
 		ProposalNotToReactRuleAction notToReactRuleAction = proposeNotToReactRuleConverter.convert(notToReactRule);
 		notToReactRuleAction.setReaRuleId(notToReactRule.getRuleId());
 		proposalNotToReactActionDlService.createOrUpdate(notToReactRuleAction);
-		/*List<ProposalNotToReactRuleActionRsn> reaNreactSetRsns = proposeNotToReactRuleConverter
-				.convertReasonNotToReactSet(notToReactRule.getNotToReactCodes(), notToReactRule.getRuleId(),
-						notToReactRule.getLogonId());
-		proposalNotToReactActionDlService.createOrUpdate(reaNreactSetRsns);*/
 		return notToReactRule;
 	}
 
@@ -102,11 +98,6 @@ public class ProposeNotToReactRuleService extends GeneralRuleService implements 
 				.convert(proposeNotToReactRuleBo);
 		proposalNotToReactRuleAction.setReaRuleId(proposeNotToReactRuleBo.getRuleId());
 		proposalNotToReactActionDlService.createOrUpdate(proposalNotToReactRuleAction);
-		/*proposalNotToReactActionDlService.remove(proposeNotToReactRuleBo.getRuleId());
-		List<ProposalNotToReactRuleActionRsn> reaNreactSetRsns = proposeNotToReactRuleConverter
-				.convertReasonNotToReactSet(proposeNotToReactRuleBo.getNotToReactCodes(), proposeNotToReactRuleBo.getRuleId(),
-						proposeNotToReactRuleBo.getLogonId());
-		proposalNotToReactActionDlService.createOrUpdate(reaNreactSetRsns);*/
 		return proposeNotToReactRuleBo;
 	}
 
@@ -141,10 +132,9 @@ public class ProposeNotToReactRuleService extends GeneralRuleService implements 
 				}
 				Collections.sort(ruleBos, new GeneralRuleComparator());
 				reactionRulesetBo.setRuleLines(ruleBos);
-				ruleSetBos.add(reactionRulesetBo);
-			} else {
-				ruleSetBos.add(reactionRulesetBo);
-			}
+				
+			} 
+			ruleSetBos.add(reactionRulesetBo);
 		}
 		return ruleSetBos;
 	}

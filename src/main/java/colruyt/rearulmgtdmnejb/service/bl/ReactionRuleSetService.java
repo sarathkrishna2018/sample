@@ -51,7 +51,7 @@ public class ReactionRuleSetService implements Serializable {
 	 * @throws ReaRuleManagementException
 	 */
 	public ReactionRulesetBo createReactionRuleSet(ReactionRulesetBo reactionRulesetBo, boolean isDuplicationAllowed,
-			String logonId) throws ReaRuleManagementException {
+			String userId) throws ReaRuleManagementException {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_CREATEREACTIONRULESET);
 		List<ReactionRuleSet> reactionRulesets = null;
 		ReactionRuleSet reaRuleset = null;
@@ -63,7 +63,7 @@ public class ReactionRuleSetService implements Serializable {
 			reaRuleset = reactionRuleSetDlService.findByPk(reactionRulesetBo.getRulesetId());
 		}
 		if (reactionRulesets == null || reactionRulesets.isEmpty()) {
-			reaRuleset = reaRulesetConverter.convertReaRuleset(reaRuleset, reactionRulesetBo, logonId);
+			reaRuleset = reaRulesetConverter.convertReaRuleset(reaRuleset, reactionRulesetBo, userId);
 			reaRuleset = reactionRuleSetDlService.createOrUpdate(reaRuleset);
 			reactionRulesetBo.setRulesetId(reaRuleset.getReaRulesetId());
 		} else {

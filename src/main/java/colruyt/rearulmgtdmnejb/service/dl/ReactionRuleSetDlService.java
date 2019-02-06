@@ -28,8 +28,7 @@ import org.slf4j.LoggerFactory;
 import colruyt.rearulmgtdmnejb.bo.XPSRuleSetBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionRuleSet;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
-import colruyt.rearulmgtdmnejb.util.ReactionRuleMgtConstants;
-import colruyt.rearulmgtdmnejb.util.SQLQueries;
+
 
 /**
  * @version 1.0
@@ -134,8 +133,10 @@ public class ReactionRuleSetDlService implements Serializable {
 	
 	public List<XPSRuleSetBo> findAllLogicallyDeletedRuleSet(Date dateForRulesDelete) {		
 		List<XPSRuleSetBo> ruleSet = new ArrayList<XPSRuleSetBo>();
-		String schemaName = SQLQueries.getSchemaName(entityManager);
-		Query query = entityManager.createNativeQuery(SQLQueries.FIND_ALL_LOGICALLY_DELETE_RULESET.replaceAll(ReactionRuleMgtConstants.SCHEMA, schemaName));
+		Query query = entityManager.createNativeQuery("SELECT ruleSet.REA_RULESET_ID, ruleSet.RULETYPE_ID from"
+				+ " SCHEMA.REA_RULESET ruleSet LEFT JOIN SCHEMA.SOI_PPT_RULE soippt ON ruleSet.REA_RULESET_ID=soippt.REACT_RULESET_ID "
+				+ " LEFT JOIN SCHEMA.SOI_CG_CHN_RULE soicg ON ruleSet.REA_RULESET_ID=soicg.REACT_RULESET_ID"
+				+ " where ruleSet.DATE_LOGICALLY_DELETED IS NOT NULL AND ruleSet.DATE_LOGICALLY_DELETED < (?1) AND soippt.REACT_RULESET_ID IS NULL AND soicg.REACT_RULESET_ID IS NULL");
 		query.setParameter(1, dateForRulesDelete, TemporalType.DATE);
 		List<Object[]> results = query.getResultList();
 		for(Object[] item : results) {

@@ -34,24 +34,10 @@ public class ProposalNotToReactActionDlService implements Serializable {
 
 	}
 	
-	/*public void createOrUpdate(List<ProposalNotToReactRuleActionRsn> reaNreactSetRsns) {
-		for(ProposalNotToReactRuleActionRsn reaNreactSetRsn: reaNreactSetRsns){
-			entityManager.merge(reaNreactSetRsn);
-			entityManager.flush();
-		}
-		
-	}*/
-
 	public ProposalNotToReactRuleAction findByRuleId(long reaRuleId) {
 		return entityManager.find(ProposalNotToReactRuleAction.class, reaRuleId);
 		
 	}
-
-	/*public void remove(Long ruleId) {
-		Query query = entityManager.createQuery("Delete from  ProposalNotToReactRuleActionRsn proposalNotToReactRuleActionRsn where proposalNotToReactRuleActionRsn.id.reaRuleId = ?1");		
-		query.setParameter(1, ruleId).executeUpdate();
-		entityManager.clear();
-	}*/
 	
 	public long physicalDeleteElements(XPSRuleBo xpsRuleBo) {
 		Query query = entityManager.createQuery("Delete from  ProposalNotToReactRuleAction proposalNotToReactRuleAction where proposalNotToReactRuleAction.reaRuleId = (?1)");

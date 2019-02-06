@@ -31,7 +31,7 @@ import colruyt.rearulmgtdmnejb.bo.XPSRuleBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 import colruyt.rearulmgtdmnejb.util.ReactionRuleMgtConstants;
-import colruyt.rearulmgtdmnejb.util.SQLQueries;
+
 
 /**
  * @version 1.0
@@ -154,9 +154,10 @@ public class ReactionRuleDlService implements Serializable {
 
 	public List<XPSRuleBo> findAllLogicallyDeletedRules(Date dateForRulesDelete) {
 		List<XPSRuleBo> rules = new ArrayList<XPSRuleBo>();
-		String schemaName = SQLQueries.getSchemaName(entityManager);
 		Query query = entityManager.createNativeQuery(
-				SQLQueries.FIND_ALL_LOGICALLY_DELETE_RULE.replaceAll(ReactionRuleMgtConstants.SCHEMA, schemaName));
+				"SELECT rule.REA_RULE_ID, ruleSet.RULETYPE_ID from SCHEMA.REA_RULE rule "
+						+ "INNER JOIN SCHEMA.REA_RULESET ruleSet ON rule.REA_RULESET_ID =  ruleSet.REA_RULESET_ID where "
+						+ "rule.DATE_LOGICALLY_DELETED IS NOT NULL and rule.DATE_LOGICALLY_DELETED < (?1)");
 		query.setParameter(1, dateForRulesDelete, TemporalType.DATE);
 		List<Object[]> results = query.getResultList();
 		for (Object[] item : results) {
@@ -171,9 +172,10 @@ public class ReactionRuleDlService implements Serializable {
 
 	public List<XPSRuleBo> findAllExpiredRules(Date dateForRulesDelete) {
 		List<XPSRuleBo> rules = new ArrayList<XPSRuleBo>();
-		String schemaName = SQLQueries.getSchemaName(entityManager);
 		Query query = entityManager.createNativeQuery(
-				SQLQueries.FIND_ALL_EXPIRED_RULE.replaceAll(ReactionRuleMgtConstants.SCHEMA, schemaName));
+				"SELECT rule.REA_RULE_ID, ruleSet.RULETYPE_ID from SCHEMA.REA_RULE rule "
+						+ "INNER JOIN SCHEMA.REA_RULESET ruleSet ON rule.REA_RULESET_ID =  ruleSet.REA_RULESET_ID where "
+						+ "rule.VALID_UPTO IS NOT NULL and rule.VALID_UPTO < (?1)");
 		query.setParameter(1, dateForRulesDelete, TemporalType.DATE);
 		List<Object[]> results = query.getResultList();
 		for (Object[] item : results) {

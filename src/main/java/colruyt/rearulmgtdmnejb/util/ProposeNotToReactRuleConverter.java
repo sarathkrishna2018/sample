@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.EJB;
-import javax.ejb.LocalBean;
-import javax.ejb.Stateless;
 
 import com.google.common.collect.Lists;
 
@@ -15,8 +13,7 @@ import colruyt.rearulmgtdmnejb.bo.RefNotToReactCodeBo;
 import colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleAction;
 import colruyt.rearulmgtdmnejb.service.bl.ReferenceDataService;
 
-@Stateless
-@LocalBean
+
 public class ProposeNotToReactRuleConverter implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -38,20 +35,6 @@ public class ProposeNotToReactRuleConverter implements Serializable {
 		return reasonIds;
 	}
 
-	/*public List<ProposalNotToReactRuleActionRsn> convertReasonNotToReactSet(List<RefNotToReactCodeBo> refNotToReactCodeBos, Long ruleId, String logonId){
-		List<ProposalNotToReactRuleActionRsn> reaNreactSetRsns = Lists.newArrayList();
-		for(RefNotToReactCodeBo refNotToReactCodeBo: refNotToReactCodeBos) {
-			ProposalNotToReactRuleActionRsn reaNreactSetRsn = new ProposalNotToReactRuleActionRsn();
-			ProposalNotToReactRuleActionRsnPK reaNreactSetRsnPK = new ProposalNotToReactRuleActionRsnPK();
-			reaNreactSetRsnPK.setReaRuleId(ruleId);
-			reaNreactSetRsnPK.setReasonId(refNotToReactCodeBo.getNotToReactCodeTypeId());
-			reaNreactSetRsn.setId(reaNreactSetRsnPK);
-			reaNreactSetRsn.setLstUpdateBy(logonId);
-			reaNreactSetRsns.add(reaNreactSetRsn);
-		}
-		return reaNreactSetRsns;
-	}*/
-
 	
 	public ProposeNotToReactRuleBo convertToBo(ProposalNotToReactRuleAction proposalNotToReactRuleAction,
 			ProposeNotToReactRuleBo proposeNTRRuleBo) {
@@ -60,23 +43,6 @@ public class ProposeNotToReactRuleConverter implements Serializable {
 		return proposeNTRRuleBo;
 	}
 
-	/*private List<RefNotToReactCodeBo> convertReasonNotToReactSetBos(
-			List<ProposalNotToReactRuleActionRsn> reaNreactSetRsns) {
-		List<RefNotToReactCodeBo> refNotToReact = referenceDataService.getAllNotToReactCodeTypes();
-		List<RefNotToReactCodeBo> notRoReactBos = Lists.newArrayList();
-		for (int i = 0; i < reaNreactSetRsns.size(); i++) {
-			RefNotToReactCodeBo reasonCode = new RefNotToReactCodeBo();
-			for (int j = 0; j < refNotToReact.size(); j++) {
-				if (refNotToReact.get(j).getNotToReactCodeTypeId() == reaNreactSetRsns.get(i).getId().getReasonId()) {
-					reasonCode.setNotToReactCodeTypeId(refNotToReact.get(j).getNotToReactCodeTypeId());
-					reasonCode.setDescription(refNotToReact.get(j).getDescription());
-					reasonCode.setCodeLang(refNotToReact.get(j).getCodeLang());
-					notRoReactBos.add(reasonCode);
-				}
-			}
-		}
-		return notRoReactBos;
-	}*/
 	
 	private List<RefNotToReactCodeBo> convertReasonNotToReactSetBos(
 			List<Long> reaNreactSetRsns) {

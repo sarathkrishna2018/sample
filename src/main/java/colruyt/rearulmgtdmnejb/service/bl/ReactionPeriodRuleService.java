@@ -136,10 +136,8 @@ public class ReactionPeriodRuleService extends GeneralRuleService implements Ser
 				}
 				Collections.sort(ruleBos, new GeneralRuleComparator());
 				reactionRulesetBo.setRuleLines(ruleBos);
-				ruleSetBos.add(reactionRulesetBo);
-			} else {
-				ruleSetBos.add(reactionRulesetBo);
-			}
+			} 
+			ruleSetBos.add(reactionRulesetBo);
 		}
 		return ruleSetBos;
 	}

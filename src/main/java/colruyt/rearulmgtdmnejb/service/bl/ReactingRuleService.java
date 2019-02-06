@@ -59,9 +59,8 @@ public class ReactingRuleService extends GeneralRuleService implements Serializa
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_REACTINGRULE);
 		ReactingRuleBo reactingRuleBo = (ReactingRuleBo) reactionRuleBo;
 		validateRuleInputs(reactingRuleBo);
-		ReactingRuleAction reaReactingAct = reactingRuleConverter.convert(reactingRuleBo);
-		reaReactingAct.setReaRuleId(reactingRuleBo.getRuleId());
-		reactingRuleActionDlService.createOrUpdate(reaReactingAct);
+		ReactingRuleAction reactingRuleAction = reactingRuleConverter.convert(reactingRuleBo);
+		reactingRuleActionDlService.createOrUpdate(reactingRuleAction);
 		return reactingRuleBo;
 	}
 
@@ -105,7 +104,6 @@ public class ReactingRuleService extends GeneralRuleService implements Serializa
 		ReactingRuleBo reactingRuleBo = (ReactingRuleBo) reactionRuleBo;
 		validateRuleInputs(reactingRuleBo);
 		ReactingRuleAction reactingRuleAction = reactingRuleConverter.convert(reactingRuleBo);
-		reactingRuleAction.setReaRuleId(reactingRuleBo.getRuleId());
 		reactingRuleActionDlService.createOrUpdate(reactingRuleAction);
 		return reactingRuleBo;
 	}
@@ -135,16 +133,14 @@ public class ReactingRuleService extends GeneralRuleService implements Serializa
 
 					ReactingRuleAction reactingRuleAction = reactingRuleActionDlService
 							.findByRuleId(rule.getReaRuleId());
-					reactingBo = reactingRuleConverter.convertToBo(reactingRuleAction, reactingBo);
+					reactingBo = reactingRuleConverter.addingReactionRuleAction(reactingRuleAction, reactingBo);
 					ruleBos.add(reactingBo);
 
 				}
 				Collections.sort(ruleBos, new GeneralRuleComparator());
 				reactionRulesetBo.setRuleLines(ruleBos);
-				ruleSetBos.add(reactionRulesetBo);
-			} else {
-				ruleSetBos.add(reactionRulesetBo);
 			}
+			ruleSetBos.add(reactionRulesetBo);
 		}
 		return ruleSetBos;
 	}
@@ -161,7 +157,7 @@ public class ReactingRuleService extends GeneralRuleService implements Serializa
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_VIEWREACTINGRULE);
 		ReactingRuleBo reactRuleBo = (ReactingRuleBo) ruleBo;
 		ReactingRuleAction reactingRuleAction = reactingRuleActionDlService.findByRuleId(reactRuleBo.getRuleId());
-		reactRuleBo = reactingRuleConverter.convertToBo(reactingRuleAction, reactRuleBo);
+		reactRuleBo = reactingRuleConverter.addingReactionRuleAction(reactingRuleAction, reactRuleBo);
 		reactRuleBo.setType(ReaRulMgtDmnConstants.RULE_TYPE_REACTING);
 		return reactRuleBo;
 	}

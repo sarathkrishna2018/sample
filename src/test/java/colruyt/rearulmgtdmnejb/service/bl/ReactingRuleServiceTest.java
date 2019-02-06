@@ -84,7 +84,7 @@ public class ReactingRuleServiceTest {
 	@Test
 	public void getRuleSpecificValuesTest() throws ReaRuleManagementException{
 		when(reactingRuleActionDlService.findByRuleId(Mockito.anyLong())).thenReturn(getReareactingAct());
-		when(reactingRuleConverter.convertToBo(Mockito.any(ReactingRuleAction.class),
+		when(reactingRuleConverter.addingReactionRuleAction(Mockito.any(ReactingRuleAction.class),
 				Mockito.any(ReactingRuleBo.class))).thenReturn(getReactingRuleBo());
 		GeneralRuleBo expectedReactingRule = reactingRuleBlService.getRuleSpecificValues(getReactingRuleBo());
 		Assert.assertEquals(new Long(1l), expectedReactingRule.getRuleId());

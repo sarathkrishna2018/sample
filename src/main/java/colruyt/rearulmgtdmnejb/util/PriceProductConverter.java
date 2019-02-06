@@ -1,56 +1,23 @@
 package colruyt.rearulmgtdmnejb.util;
 
 import java.io.Serializable;
-import java.lang.reflect.Type;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Set;
-
-import javax.ejb.LocalBean;
-import javax.ejb.Stateless;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
 
 import colruyt.priceproduct.bo.LangHirerachyBo;
-import colruyt.priceproduct.bo.LangPriceBO;
 import colruyt.priceproduct.bo.MainCategoryBo;
-import colruyt.priceproduct.bo.PriceProductBO;
 import colruyt.priceproduct.bo.PriceProductHierarchyBo;
 import colruyt.priceproduct.bo.ProductCategoryBo;
 import colruyt.priceproduct.bo.ProductGroupBo;
-import colruyt.priceproduct.bo.ProductHierarchyBO;
 import colruyt.priceproduct.bo.ProductSegmentBo;
-import colruyt.rearulmgtdmnejb.bo.ProductHierarchyElementBo;
 import colruyt.rearulmgtdmnejb.enums.PriceProductHierarchyType;
 
-/**
- * 
- * 
- */
-@Stateless
-@LocalBean
+
 public class PriceProductConverter implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
-	
-	
-	
-	
-	
-	
-	
-
-	
 	/**
 	 * @param userLang
 	 * @return

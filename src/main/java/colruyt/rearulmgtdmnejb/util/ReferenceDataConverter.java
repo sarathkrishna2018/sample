@@ -9,9 +9,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.ejb.LocalBean;
-import javax.ejb.Stateless;
-
 import com.google.common.collect.Lists;
 
 import colruyt.rearulmgtdmnejb.bo.RefActionTypeBo;
@@ -22,20 +19,15 @@ import colruyt.rearulmgtdmnejb.bo.RefQuantityConditionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefQuantityPriceTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
-
 import colruyt.rearulmgtdmnejb.enums.ActionTypeEnum;
-import colruyt.rearulmgtdmnejb.enums.SourceTypeEnum;
 import colruyt.rearulmgtdmnejb.enums.FilterOutRecordingTypeEnum;
 import colruyt.rearulmgtdmnejb.enums.QuantityConditionEnum;
 import colruyt.rearulmgtdmnejb.enums.RefQuantityTypeEnum;
 import colruyt.rearulmgtdmnejb.enums.RefReasonEnum;
 import colruyt.rearulmgtdmnejb.enums.RefRuletypeEnum;
+import colruyt.rearulmgtdmnejb.enums.SourceTypeEnum;
 
-/**
- *
- */
-@Stateless
-@LocalBean
+
 public class ReferenceDataConverter implements Serializable {
 
 	private static final long serialVersionUID = 1L;

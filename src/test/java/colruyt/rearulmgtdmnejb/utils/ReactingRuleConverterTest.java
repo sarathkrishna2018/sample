@@ -21,16 +21,18 @@ public class ReactingRuleConverterTest {
 	@Test
 	public void createConverterTest(){
 		ReactingRuleBo reactingRuleBo=getReactingRuleBo();
-		ReactingRuleAction reactingAct = new ReactingRuleAction();
-		reactingAct.setReactingAmt(reactingRuleBo.getReactingAmount());
-		reactingAct.setReactingPerc(reactingRuleBo.getReactingAmount());
-		reactingAct.setTholdAmt(reactingRuleBo.getThresholdAmount());
-		reactingAct.setTholdPerc(reactingRuleBo.getThresholdPercentage());
+		ReactingRuleAction reactingRuleAction = new ReactingRuleAction();
+		reactingRuleAction.setReaRuleId(reactingRuleBo.getRuleId());
+		reactingRuleAction.setReactingAmt(reactingRuleBo.getReactingAmount());
+		reactingRuleAction.setReactingPerc(reactingRuleBo.getReactingAmount());
+		reactingRuleAction.setTholdAmt(reactingRuleBo.getThresholdAmount());
+		reactingRuleAction.setTholdPerc(reactingRuleBo.getThresholdPercentage());
 		ReactingRuleAction expectedReaReactingAct=reactingRuleConverter.convert(reactingRuleBo);
 		assertEquals(new Double(12d),expectedReaReactingAct.getReactingAmt());	
 	}
 	public ReactingRuleBo getReactingRuleBo(){
 		ReactingRuleBo reactingRule=new ReactingRuleBo();
+		reactingRule.setRuleId(1L);
 		reactingRule.setReactingAmount(12d);
 		reactingRule.setReactingPercentage(5d);
 		reactingRule.setThresholdAmount(13d);
