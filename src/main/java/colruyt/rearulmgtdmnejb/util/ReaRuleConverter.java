@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +17,8 @@ import colruyt.rearulmgtdmnejb.bo.RefActionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 
-
+@Stateless
+@LocalBean
 public class ReaRuleConverter implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(ReaRuleConverter.class);

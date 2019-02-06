@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 
 import com.google.common.collect.Lists;
 
@@ -13,6 +15,8 @@ import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionRuleSet;
 import colruyt.rearulmgtdmnejb.service.bl.ReferenceDataService;
 
+@Stateless
+@LocalBean
 public class ReaRulesetConverter implements Serializable {
 	private static final long serialVersionUID = 1L;
 

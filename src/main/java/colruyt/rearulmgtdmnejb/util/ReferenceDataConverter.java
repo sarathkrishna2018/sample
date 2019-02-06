@@ -1,6 +1,3 @@
-/**
- * 
- */
 package colruyt.rearulmgtdmnejb.util;
 
 import java.io.Serializable;
@@ -8,6 +5,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 
 import com.google.common.collect.Lists;
 
@@ -27,7 +27,8 @@ import colruyt.rearulmgtdmnejb.enums.RefReasonEnum;
 import colruyt.rearulmgtdmnejb.enums.RefRuletypeEnum;
 import colruyt.rearulmgtdmnejb.enums.SourceTypeEnum;
 
-
+@Stateless
+@LocalBean
 public class ReferenceDataConverter implements Serializable {
 
 	private static final long serialVersionUID = 1L;

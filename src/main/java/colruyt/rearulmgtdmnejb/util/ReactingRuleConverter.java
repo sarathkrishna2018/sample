@@ -2,9 +2,14 @@ package colruyt.rearulmgtdmnejb.util;
 
 import java.io.Serializable;
 
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+
 import colruyt.rearulmgtdmnejb.bo.ReactingRuleBo;
 import colruyt.rearulmgtdmnejb.entity.ReactingRuleAction;
 
+@Stateless
+@LocalBean
 public class ReactingRuleConverter implements Serializable {
 
 	private static final long serialVersionUID = 1L;
