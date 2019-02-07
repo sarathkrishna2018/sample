@@ -2,10 +2,14 @@ package colruyt.rearulmgtdmnejb.util;
 
 import java.io.Serializable;
 
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+
 import colruyt.rearulmgtdmnejb.bo.ReactionPeriodRuleBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionPeriodRuleAction;
 
-
+@Stateless
+@LocalBean
 public class ReactionPeriodRuleConverter implements Serializable{
 
 	/**
