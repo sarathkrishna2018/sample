@@ -40,7 +40,7 @@ public class ReactionPeriodRuleService extends GeneralRuleService implements Ser
 	private static final Logger logger = LoggerFactory.getLogger(ReactionPeriodRuleService.class);
 	@EJB
 	private ReactionPeriodActionDlService reactionPeriodActionDlService;
-	@Inject
+	@EJB
 	private ReactionPeriodRuleConverter reactionPeriodRuleConverter;
 	
 
