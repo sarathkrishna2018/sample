@@ -3,7 +3,7 @@ package colruyt.rearulmgtdmnejb.util;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.inject.Inject;
+import javax.ejb.EJB;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +19,7 @@ public class ReaRuleConverter implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(ReaRuleConverter.class);
 	
-	@Inject
+	@EJB
 	private ProductHrchyElmntConverter productHrchyElmntConverter;
 	
 	public ReactionRule convertRuleBo(ReactionRule existingReaRule, GeneralRuleBo reactionRuleBo){

@@ -47,7 +47,7 @@ public class PriceProductService implements Serializable{
 	@EJB
 	private ExternalClientService externalClientService;
 
-	@Inject
+	@EJB
 	private PriceProductConverter priceProductConvertor;
 	
 	private static final Logger logger = LoggerFactory.getLogger(PriceProductService.class);

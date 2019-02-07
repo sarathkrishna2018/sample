@@ -41,7 +41,7 @@ public class QuantityRuleService extends GeneralRuleService implements Serializa
 
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(QuantityRuleService.class);
-	@Inject
+	@EJB
 	private QuantityRuleActionConverter quantityRuleActionConvertor;
 	@EJB
 	private QuantityRuleActionDlService quantityRuleActionDlService;

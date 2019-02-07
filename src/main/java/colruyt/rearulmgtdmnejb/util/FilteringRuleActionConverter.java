@@ -2,10 +2,14 @@ package colruyt.rearulmgtdmnejb.util;
 
 import java.io.Serializable;
 
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+
 import colruyt.rearulmgtdmnejb.bo.FilteringRuleBo;
 import colruyt.rearulmgtdmnejb.entity.FilteringRuleAction;
 
-
+@Stateless
+@LocalBean
 public class FilteringRuleActionConverter  implements Serializable {
 	
 	private static final long serialVersionUID = 1L;

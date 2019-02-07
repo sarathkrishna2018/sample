@@ -7,7 +7,6 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
-import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,7 +36,7 @@ public class RecordingNotFoundRuleService extends GeneralRuleService implements 
 	 */
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(RecordingNotFoundRuleService.class);
-	@Inject
+	@EJB
 	private RecordingNotFoundRuleConverter recordingNotFoundRuleConverter;
 	@EJB
 	private RecordingNotFoundRuleActionDlService recordingNotFoundRuleActionDlService;

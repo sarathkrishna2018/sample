@@ -12,7 +12,6 @@ import javax.ejb.Lock;
 import javax.ejb.LockType;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
-import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,7 +48,7 @@ public class ReferenceDataService implements Serializable {
 	private static final Logger logger = LoggerFactory.getLogger(ReferenceDataService.class);
 
 
-	@Inject
+	@EJB
 	private ReferenceDataConverter referenceDataConvertor;
 
 	private List<RefActionTypeBo> refActionTypeList = Lists.newArrayList();

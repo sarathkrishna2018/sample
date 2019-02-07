@@ -7,7 +7,6 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
-import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,7 +42,7 @@ public class ProposeNotToReactRuleService extends GeneralRuleService implements 
 	private static final Logger logger = LoggerFactory.getLogger(ProposeNotToReactRuleService.class);
 	@EJB
 	private ProposalNotToReactActionDlService proposalNotToReactActionDlService;
-	@Inject
+	@EJB
 	private ProposeNotToReactRuleConverter proposeNotToReactRuleConverter;
 	
 

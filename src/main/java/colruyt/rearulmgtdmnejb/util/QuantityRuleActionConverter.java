@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 
 import colruyt.rearulmgtdmnejb.bo.QuantityRuleBo;
 import colruyt.rearulmgtdmnejb.bo.RefQuantityConditionTypeBo;
@@ -11,6 +13,8 @@ import colruyt.rearulmgtdmnejb.bo.RefQuantityPriceTypeBo;
 import colruyt.rearulmgtdmnejb.entity.QuantityRuleAction;
 import colruyt.rearulmgtdmnejb.service.bl.ReferenceDataService;
 
+@Stateless
+@LocalBean
 public class QuantityRuleActionConverter implements Serializable {
 
 	

@@ -7,7 +7,6 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
-import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,7 +51,7 @@ public class FilteringRuleService extends GeneralRuleService implements Serializ
 
 	@EJB
 	private FilteringRuleActionDlService filteringRuleActionDlService;
-	@Inject
+	@EJB
 	private FilteringRuleActionConverter filteringRuleActionConverter;
 	
 	/**

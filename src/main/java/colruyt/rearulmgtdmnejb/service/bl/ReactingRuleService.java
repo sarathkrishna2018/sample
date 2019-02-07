@@ -7,7 +7,6 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
-import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,7 +40,7 @@ public class ReactingRuleService extends GeneralRuleService implements Serializa
 
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(ReactingRuleService.class);
-	@Inject
+	@EJB
 	private ReactingRuleConverter reactingRuleConverter;
 	@EJB
 	private ReactingRuleActionDlService reactingRuleActionDlService;
