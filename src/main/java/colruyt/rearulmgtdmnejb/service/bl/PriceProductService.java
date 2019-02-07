@@ -9,6 +9,7 @@ import java.util.Set;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 
 import org.jose4j.json.internal.json_simple.JSONArray;
 import org.jose4j.json.internal.json_simple.parser.ParseException;
@@ -46,7 +47,7 @@ public class PriceProductService implements Serializable{
 	@EJB
 	private ExternalClientService externalClientService;
 
-	@EJB
+	@Inject
 	private PriceProductConverter priceProductConvertor;
 	
 	private static final Logger logger = LoggerFactory.getLogger(PriceProductService.class);

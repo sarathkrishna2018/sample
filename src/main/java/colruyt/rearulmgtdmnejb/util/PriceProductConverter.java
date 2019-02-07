@@ -3,9 +3,6 @@ package colruyt.rearulmgtdmnejb.util;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.ejb.LocalBean;
-import javax.ejb.Stateless;
-
 import com.google.common.collect.Lists;
 
 import colruyt.priceproduct.bo.LangHirerachyBo;
@@ -16,8 +13,7 @@ import colruyt.priceproduct.bo.ProductGroupBo;
 import colruyt.priceproduct.bo.ProductSegmentBo;
 import colruyt.rearulmgtdmnejb.enums.PriceProductHierarchyType;
 
-@Stateless
-@LocalBean
+
 public class PriceProductConverter implements Serializable{
 	
 	private static final long serialVersionUID = 1L;

@@ -7,6 +7,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,7 +52,7 @@ public class FilteringRuleService extends GeneralRuleService implements Serializ
 
 	@EJB
 	private FilteringRuleActionDlService filteringRuleActionDlService;
-	@EJB
+	@Inject
 	private FilteringRuleActionConverter filteringRuleActionConverter;
 	
 	/**
@@ -68,7 +69,6 @@ public class FilteringRuleService extends GeneralRuleService implements Serializ
 		FilteringRuleBo filteringRuleBo = (FilteringRuleBo) reactionRuleBo;
 		validateRuleInputs(filteringRuleBo);
 		FilteringRuleAction reaFltRule = filteringRuleActionConverter.convert(filteringRuleBo);
-		reaFltRule.setReaRuleId(filteringRuleBo.getRuleId());
 		filteringRuleActionDlService.createOrUpdate(reaFltRule);
 		return filteringRuleBo;
 	}
@@ -106,7 +106,6 @@ public class FilteringRuleService extends GeneralRuleService implements Serializ
 		FilteringRuleBo filteringRuleBo = (FilteringRuleBo) reactionRuleBo;
 		validateRuleInputs(filteringRuleBo);
 		FilteringRuleAction reaFltRule = filteringRuleActionConverter.convert(filteringRuleBo);
-		reaFltRule.setReaRuleId(filteringRuleBo.getRuleId());
 		filteringRuleActionDlService.createOrUpdate(reaFltRule);
 		return filteringRuleBo;
 	}
@@ -135,7 +134,7 @@ public class FilteringRuleService extends GeneralRuleService implements Serializ
 					FilteringRuleBo filteringRuleBo = (FilteringRuleBo) ruleBo;
 
 					FilteringRuleAction filteringRule = filteringRuleActionDlService.findByRuleId(rule.getReaRuleId());
-					filteringRuleBo = filteringRuleActionConverter.convertToBo(filteringRule, filteringRuleBo);
+					filteringRuleBo = filteringRuleActionConverter.addFilteringRuleAction(filteringRule, filteringRuleBo);
 					ruleBos.add(filteringRuleBo);
 
 				}
@@ -159,7 +158,7 @@ public class FilteringRuleService extends GeneralRuleService implements Serializ
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_VIEWFILTERINGRULE);
 		FilteringRuleBo filteringRuleBo = (FilteringRuleBo) ruleBo;
 		FilteringRuleAction filteringRule = filteringRuleActionDlService.findByRuleId(filteringRuleBo.getRuleId());
-		filteringRuleBo = filteringRuleActionConverter.convertToBo(filteringRule, filteringRuleBo);
+		filteringRuleBo = filteringRuleActionConverter.addFilteringRuleAction(filteringRule, filteringRuleBo);
 		filteringRuleBo.setType(ReaRulMgtDmnConstants.RULE_TYPE_FILTERING);
 		return filteringRuleBo;
 	}

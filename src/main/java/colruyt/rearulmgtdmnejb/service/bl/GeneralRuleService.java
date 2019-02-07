@@ -6,10 +6,13 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
+import javax.inject.Inject;
 
 import org.apache.commons.lang.time.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+
 
 import colruyt.rearulmgtdmnejb.bo.GeneralRuleBo;
 import colruyt.rearulmgtdmnejb.bo.ReactingRuleBo;
@@ -41,7 +44,7 @@ public abstract class GeneralRuleService implements Serializable {
 	private static final Logger logger = LoggerFactory.getLogger(GeneralRuleService.class);
 	@EJB
 	private ReactionRuleSetService reactionRuleSetService;
-	@EJB
+	@Inject
 	private ReaRuleConverter reaRuleConverter;
 	@EJB
 	private ReactionRuleDlService reactionRuleDlService;
@@ -51,7 +54,7 @@ public abstract class GeneralRuleService implements Serializable {
 	private ReactionRuleSourceTypeDlService reactionRuleSourceTypeDlService;
 	@EJB
 	private PriceProductHierarchyService priceProductHierarchyService;
-	@EJB
+	@Inject
 	private ReferenceDataConverter referenceDataConverter;
 	@EJB
 	private ReferenceDataService referenceDataService;

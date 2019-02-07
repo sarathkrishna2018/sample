@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.EJB;
-import javax.ejb.LocalBean;
-import javax.ejb.Stateless;
 
 import com.google.common.collect.Lists;
 
@@ -15,8 +13,7 @@ import colruyt.rearulmgtdmnejb.bo.RefNotToReactCodeBo;
 import colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleAction;
 import colruyt.rearulmgtdmnejb.service.bl.ReferenceDataService;
 
-@Stateless
-@LocalBean
+
 public class ProposeNotToReactRuleConverter implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -24,10 +21,11 @@ public class ProposeNotToReactRuleConverter implements Serializable {
 	private ReferenceDataService referenceDataService;
 
 	public ProposalNotToReactRuleAction convert(ProposeNotToReactRuleBo notToReactRule ) {
-		ProposalNotToReactRuleAction reaNreactAct = new ProposalNotToReactRuleAction();
-		reaNreactAct.setFltoutTypeId(notToReactRule.getFilterOutType().getFilterOutTypeId());
-		reaNreactAct.setReaNreactSetRsns(convertReasonNotToReactSet(notToReactRule.getNotToReactCodes()));
-		return reaNreactAct;
+		ProposalNotToReactRuleAction notToReactRuleAction = new ProposalNotToReactRuleAction();
+		notToReactRuleAction.setReaRuleId(notToReactRule.getRuleId());
+		notToReactRuleAction.setFltoutTypeId(notToReactRule.getFilterOutType().getFilterOutTypeId());
+		notToReactRuleAction.setReaNreactSetRsns(convertReasonNotToReactSet(notToReactRule.getNotToReactCodes()));
+		return notToReactRuleAction;
 	}
 	
 	public List<Long> convertReasonNotToReactSet(List<RefNotToReactCodeBo> notToReactCodes) {

@@ -7,6 +7,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,7 +41,7 @@ public class QuantityRuleService extends GeneralRuleService implements Serializa
 
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(QuantityRuleService.class);
-	@EJB
+	@Inject
 	private QuantityRuleActionConverter quantityRuleActionConvertor;
 	@EJB
 	private QuantityRuleActionDlService quantityRuleActionDlService;
@@ -60,7 +61,6 @@ public class QuantityRuleService extends GeneralRuleService implements Serializa
 		QuantityRuleBo quantityRuleBo = (QuantityRuleBo) reactionRuleBo;
 		validateRuleInputs(quantityRuleBo);
 		QuantityRuleAction quantityRuleAction = quantityRuleActionConvertor.convert(quantityRuleBo);
-		quantityRuleAction.setReaRuleId(quantityRuleBo.getRuleId());
 		quantityRuleActionDlService.createOrUpdate(quantityRuleAction);
 		return quantityRuleBo;
 	}
@@ -95,7 +95,6 @@ public class QuantityRuleService extends GeneralRuleService implements Serializa
 		QuantityRuleBo quantityRuleBo = (QuantityRuleBo) reactionRuleBo;
 		validateRuleInputs(quantityRuleBo);
 		QuantityRuleAction quantityRuleAction = quantityRuleActionConvertor.convert(quantityRuleBo);
-		quantityRuleAction.setReaRuleId(quantityRuleBo.getRuleId());
 		quantityRuleActionDlService.createOrUpdate(quantityRuleAction);
 		return quantityRuleBo;
 	}
@@ -125,7 +124,7 @@ public class QuantityRuleService extends GeneralRuleService implements Serializa
 
 					QuantityRuleAction quantityRuleAction = quantityRuleActionDlService
 							.findByRuleId(rule.getReaRuleId());
-					quantityBo = quantityRuleActionConvertor.convertToBo(quantityRuleAction, quantityBo);
+					quantityBo = quantityRuleActionConvertor.addQuantityRuleAction(quantityRuleAction, quantityBo);
 					ruleBos.add(quantityBo);
 
 				}
@@ -149,7 +148,7 @@ public class QuantityRuleService extends GeneralRuleService implements Serializa
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_VIEWQUANTITYRULE);
 		QuantityRuleBo quantityBo = (QuantityRuleBo) ruleBo;
 		QuantityRuleAction quantityRuleAction = quantityRuleActionDlService.findByRuleId(quantityBo.getRuleId());
-		quantityBo = quantityRuleActionConvertor.convertToBo(quantityRuleAction, quantityBo);
+		quantityBo = quantityRuleActionConvertor.addQuantityRuleAction(quantityRuleAction, quantityBo);
 		quantityBo.setType(ReaRulMgtDmnConstants.RULE_TYPE_QUANTITY);
 		return quantityBo;
 

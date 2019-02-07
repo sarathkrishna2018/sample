@@ -7,6 +7,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,7 +43,7 @@ public class ProposeNotToReactRuleService extends GeneralRuleService implements 
 	private static final Logger logger = LoggerFactory.getLogger(ProposeNotToReactRuleService.class);
 	@EJB
 	private ProposalNotToReactActionDlService proposalNotToReactActionDlService;
-	@EJB
+	@Inject
 	private ProposeNotToReactRuleConverter proposeNotToReactRuleConverter;
 	
 
@@ -59,7 +60,6 @@ public class ProposeNotToReactRuleService extends GeneralRuleService implements 
 		ProposeNotToReactRuleBo notToReactRule = (ProposeNotToReactRuleBo) reactionRuleBo;
 		validateRuleInputs(notToReactRule);
 		ProposalNotToReactRuleAction notToReactRuleAction = proposeNotToReactRuleConverter.convert(notToReactRule);
-		notToReactRuleAction.setReaRuleId(notToReactRule.getRuleId());
 		proposalNotToReactActionDlService.createOrUpdate(notToReactRuleAction);
 		return notToReactRule;
 	}
@@ -96,7 +96,6 @@ public class ProposeNotToReactRuleService extends GeneralRuleService implements 
 		validateRuleInputs(proposeNotToReactRuleBo);
 		ProposalNotToReactRuleAction proposalNotToReactRuleAction = proposeNotToReactRuleConverter
 				.convert(proposeNotToReactRuleBo);
-		proposalNotToReactRuleAction.setReaRuleId(proposeNotToReactRuleBo.getRuleId());
 		proposalNotToReactActionDlService.createOrUpdate(proposalNotToReactRuleAction);
 		return proposeNotToReactRuleBo;
 	}

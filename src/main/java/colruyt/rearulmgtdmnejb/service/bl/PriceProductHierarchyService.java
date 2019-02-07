@@ -8,6 +8,7 @@ import java.util.Set;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,7 +40,7 @@ import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnDebugMessage;
 public class PriceProductHierarchyService implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(PriceProductHierarchyService.class);
-	@EJB
+	@Inject
 	ProductHrchyElmntConverter productHrchyElmntConverter;
 
 	@EJB

@@ -21,14 +21,16 @@ public class RecordingNotFoundRuleConverterTest {
 	@Test
 	public void createConverterTest(){
 		RecordingNotFoundRuleBo recordingNotFoundRule=getRecordingNotFoundRule();
-		RecordingNotFoundRuleAction reaRnfAct=new RecordingNotFoundRuleAction();
-		reaRnfAct.setNoOfRnf(recordingNotFoundRule.getNoOfNotFoundRecordings());
+		RecordingNotFoundRuleAction recordNotFoundRuleAction=new RecordingNotFoundRuleAction();
+		recordNotFoundRuleAction.setReaRuleId(1L);
+		recordNotFoundRuleAction.setNoOfRnf(recordingNotFoundRule.getNoOfNotFoundRecordings());
 		RecordingNotFoundRuleAction expectedReaRnfAct=recordingNotFoundRuleConverter.convert(recordingNotFoundRule);
 		Assert.assertEquals(new Long(12l), Long.valueOf(expectedReaRnfAct.getNoOfRnf()));
 		
 	}
 	public RecordingNotFoundRuleBo getRecordingNotFoundRule(){
 		RecordingNotFoundRuleBo recordingNotFoundRule=new RecordingNotFoundRuleBo();
+		recordingNotFoundRule.setRuleId(1L);
 		recordingNotFoundRule.setNoOfNotFoundRecordings(12l);
 		return recordingNotFoundRule;
 	}

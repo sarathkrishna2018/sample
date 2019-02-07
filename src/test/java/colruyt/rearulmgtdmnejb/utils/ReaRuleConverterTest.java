@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -29,10 +30,8 @@ import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySet;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmnt;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmntPK;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
-//import colruyt.rearulmgtdmnejb.entity.RefActionType;
 import colruyt.rearulmgtdmnejb.util.ProductHrchyElmntConverter;
 import colruyt.rearulmgtdmnejb.util.ReaRuleConverter;
-import colruyt.rearulmgtdmnejb.util.ReferenceDataConverter;
 
 @Transactional
 @RunWith(UnitilsJUnit4TestClassRunner.class)
@@ -41,30 +40,12 @@ public class ReaRuleConverterTest {
 	@TestedObject
 	private ReaRuleConverter reaRuleConverter;
 	@InjectIntoByType
-	private ReferenceDataConverter referenceDataConverter=Mockito.mock(ReferenceDataConverter.class);
-	@InjectIntoByType
-	private ProductHrchyElmntConverter productHrchyElmntConverter=Mockito.mock(ProductHrchyElmntConverter.class);
+	private ProductHrchyElmntConverter productHrchyElmntConverter = Mockito.mock(ProductHrchyElmntConverter.class);
 
 	@Test
 	public void convertRuleBoTest() {
-		ReactionRule reaRule = new ReactionRule();
-		GeneralRuleBo reactionRule = getReactionRule();
-		reaRule.setReaRulesetId(reactionRule.getRulesetId());
-		reaRule.setRuleName(reactionRule.getRuleName());
-		reaRule.setIcFrom(reactionRule.getImportanceCodeFrom());
-		reaRule.setIcTo(reactionRule.getImportanceCodeTo());
-		reaRule.setDirectYn(reactionRule.isDirectBenefit());
-		reaRule.setPostponedYn(reactionRule.isPostponedBenefit());
-		reaRule.setPermenantYn(reactionRule.isPermanentDuration());
-		reaRule.setTemporaryYn(reactionRule.isTemporaryDuration());
-		reaRule.setValidFrom(reactionRule.getValidFrom());
-		reaRule.setValidUpto(reactionRule.getValidTo());
-		reaRule.setRecalculateYn(reactionRule.isRecalculate());
-		reaRule.setRuleComment(reactionRule.getComments());
-		reaRule.setCreatedBy(reactionRule.getLogonId());
-		reaRule.setLstUpdateBy(reactionRule.getLogonId());
-		ReactionRule expectedReaRule = reaRuleConverter.convertRuleBo(reaRule, reactionRule);
-		assertEquals(reaRule.getReaRulesetId(), expectedReaRule.getReaRulesetId());
+		ReactionRule expectedReaRule = reaRuleConverter.convertRuleBo(getReactRule(), getReactionRule());
+		Assert.assertEquals(getReactRule().getReaRuleId(), expectedReaRule.getReaRuleId());
 	}
 
 	@Test
@@ -82,72 +63,30 @@ public class ReaRuleConverterTest {
 
 	@Test
 	public void convertRuleTypeForAllTest() {
-		long idForAll=1;
-		List<Long> expectedRuleTypeForAll = reaRuleConverter
-				.convertRuleTypeForAll(idForAll);
+		long idForAll = 1;
+		List<Long> expectedRuleTypeForAll = reaRuleConverter.convertRuleTypeForAll(idForAll);
 		assertEquals(1l, expectedRuleTypeForAll.size());
 
 	}
+
 	@Test
-	public void createconvertRuleLineTest(){
-		List<GeneralRuleBo>  ruleLines = Lists.newArrayList();
-		ReactionRule rule = getReactRule();
-		GeneralRuleBo ruleBo = new GeneralRuleBo();
-		ruleBo.setRuleId(rule.getReaRuleId());
-		ruleBo.setRulesetId(rule.getReaRulesetId());
-		ruleBo.setRuleName(rule.getRuleName());
-		ruleBo.setImportanceCodeFrom(rule.getIcFrom());
-		ruleBo.setImportanceCodeTo(rule.getIcTo());
-		ruleBo.setDirectBenefit(rule.getDirectYn());
-		ruleBo.setPostponedBenefit(rule.getPostponedYn());
-		ruleBo.setPermanentDuration(rule.getPermenantYn());
-		ruleBo.setTemporaryDuration(rule.getTemporaryYn());
-		ruleBo.setValidFrom(rule.getValidFrom());
-		ruleBo.setValidTo(rule.getValidUpto());
-		ruleBo.setRecalculate(rule.getRecalculateYn());
-		ruleBo.setComments(rule.getRuleComment());
-		ruleLines.add(ruleBo);
-		List<GeneralRuleBo> expectedGeneralRuleBoList=reaRuleConverter.convertRuleLine(getReactRuleList());
-		assertEquals(ruleLines.size(), expectedGeneralRuleBoList.size());
+	public void createconvertRuleLineTest() {
+		List<GeneralRuleBo> expectedGeneralRuleBoList = reaRuleConverter.convertRuleLine(getReactRuleList());
+		assertEquals(getruleLines().size(), expectedGeneralRuleBoList.size());
 	}
-	
+
 	@Test
 	public void convertGeneralRuleBoTest() {
-		GeneralRuleBo ruleBo = new GeneralRuleBo();
-		ReactionRule rule = getReactRule();
-		ruleBo.setRuleId(rule.getReaRuleId());
-		ruleBo.setRulesetId(rule.getReaRulesetId());
-		ruleBo.setRuleName(rule.getRuleName());
-		ruleBo.setImportanceCodeFrom(rule.getIcFrom());
-		ruleBo.setImportanceCodeTo(rule.getIcTo());
-		ruleBo.setDirectBenefit(rule.getDirectYn());
-		ruleBo.setPostponedBenefit(rule.getPostponedYn());
-		ruleBo.setPermanentDuration(rule.getPermenantYn());
-		ruleBo.setTemporaryDuration(rule.getTemporaryYn());
-		ruleBo.setValidFrom(rule.getValidFrom());
-		ruleBo.setValidTo(rule.getValidUpto());
-		ruleBo.setRecalculate(rule.getRecalculateYn());
-		ruleBo.setComments(rule.getRuleComment());
-		ruleBo.setActionSelectAll(true);
-		ruleBo.setActionTypeList(getRefActionType());
-		ruleBo.setSourceSelectAll(true);
-		ruleBo.setSourceTypeList(getRefSourceType());
-		ruleBo.setLangCode("En");
-		ruleBo.setLogonId("xa");
-		ruleBo.setProductHierarchySetId(1l);
-		ruleBo.setReactionRulesetBo(getreactionRulesetBo());
-		ruleBo.setRefRuleTypeBo(getRefRuleType());
-		ruleBo.setPriceProductHierarchySet(getProductHierarchyElement());
-		/*when(referenceDataConverter.convertRefReaActiontype(getRefActList())).thenReturn(getRefActionType());
-		when(referenceDataConverter.convertRefReaSource(getRefSourceList())).thenReturn(getRefSourceType());*/
-		when(productHrchyElmntConverter.convertAssortment(Mockito.any(GeneralRuleBo.class),Mockito.any(ReactionRule.class))).thenReturn(getReactionRule());
-		GeneralRuleBo expectedGeneralRuleBo=reaRuleConverter.convertGeneralRuleBo(rule, ruleBo);
-		assertEquals(ruleBo.getRuleId(), expectedGeneralRuleBo.getRuleId());
-		
+		when(productHrchyElmntConverter.convertAssortment(Mockito.any(GeneralRuleBo.class),
+				Mockito.any(ReactionRule.class))).thenReturn(getReactionRule());
+		GeneralRuleBo expectedGeneralRuleBo = reaRuleConverter.convertGeneralRuleBo(getReactRule(), getReactionRule());
+		assertEquals(new Long(1l), expectedGeneralRuleBo.getRuleId());
+
 	}
+
 	private List<ReactionRule> getReactRuleList() {
-		List<ReactionRule> reactionRules=Lists.newArrayList();
-		ReactionRule reactionRule=new ReactionRule();
+		List<ReactionRule> reactionRules = Lists.newArrayList();
+		ReactionRule reactionRule = new ReactionRule();
 		reactionRule.setCreatedBy("Sa");
 		reactionRule.setDirectYn(true);
 		reactionRule.setIcFrom(5);
@@ -169,21 +108,8 @@ public class ReaRuleConverterTest {
 		return reactionRules;
 	}
 
-
-	private ReactionRulesetBo getreactionRulesetBo() {
-		ReactionRulesetBo reactionRulesetBo=new ReactionRulesetBo();
-		reactionRulesetBo.setColruytGroupChainId(1);
-		reactionRulesetBo.setComments("good");
-		reactionRulesetBo.setName("xxx");
-		reactionRulesetBo.setPriceCompetitorChainId(1);
-		reactionRulesetBo.setRefRuleTypeBo(getRefRuleType());
-		reactionRulesetBo.setRuleLines(getruleLines());
-		reactionRulesetBo.setRulesetId(1l);
-		return reactionRulesetBo;
-	}
-
 	private List<GeneralRuleBo> getruleLines() {
-		List<GeneralRuleBo> generalRuleBos=Lists.newArrayList();
+		List<GeneralRuleBo> generalRuleBos = Lists.newArrayList();
 		GeneralRuleBo reactionRuleBo = new GeneralRuleBo();
 		Date validFromdate = new Date();
 		Date validTodate = new Date();
@@ -218,7 +144,7 @@ public class ReaRuleConverterTest {
 
 	private ReactionRule getReactRule() {
 		ReactionRule reactionRule = new ReactionRule();
-		
+
 		reactionRule.setCreatedBy("Sa");
 		reactionRule.setDirectYn(true);
 		reactionRule.setIcFrom(5);
@@ -240,8 +166,8 @@ public class ReaRuleConverterTest {
 	}
 
 	private List<PriceProductHierarchySet> getreaPpdHchysets() {
-		List<PriceProductHierarchySet>  priceProductHierarchySetlist=Lists.newArrayList();
-		PriceProductHierarchySet priceProductHierarchySet=new PriceProductHierarchySet();
+		List<PriceProductHierarchySet> priceProductHierarchySetlist = Lists.newArrayList();
+		PriceProductHierarchySet priceProductHierarchySet = new PriceProductHierarchySet();
 		priceProductHierarchySet.setAssortmentName("asas");
 		priceProductHierarchySet.setCheapBrandYn(true);
 		priceProductHierarchySet.setCreatedBy("sa");
@@ -251,13 +177,13 @@ public class ReaRuleConverterTest {
 		priceProductHierarchySet.setPpdHchysetId(1);
 		priceProductHierarchySet.setPriceProductHierarchyElements(getpriceProductHierarchyElements());
 		priceProductHierarchySet.setReaRuleId(1);
-		priceProductHierarchySetlist.add(priceProductHierarchySet);	
+		priceProductHierarchySetlist.add(priceProductHierarchySet);
 		return priceProductHierarchySetlist;
 	}
 
 	private List<PriceProductHierarchyElement> getpriceProductHierarchyElements() {
-		List<PriceProductHierarchyElement> productHierarchyElements=Lists.newArrayList();
-		PriceProductHierarchyElement priceProductHierarchyElement=new PriceProductHierarchyElement();
+		List<PriceProductHierarchyElement> productHierarchyElements = Lists.newArrayList();
+		PriceProductHierarchyElement priceProductHierarchyElement = new PriceProductHierarchyElement();
 		priceProductHierarchyElement.setCreatedBy("sa");
 		priceProductHierarchyElement.setPpdHchyElmntId(12l);
 		priceProductHierarchyElement.setPpdHchyTypeId(1l);
@@ -268,8 +194,8 @@ public class ReaRuleConverterTest {
 	}
 
 	private List<PriceProductHierarchySetElmnt> getreaPpdHchysetElmnts() {
-		List<PriceProductHierarchySetElmnt> priceProductHierarchySetElmnts=Lists.newArrayList();
-		PriceProductHierarchySetElmnt priceProductHierarchySetElmnt=new PriceProductHierarchySetElmnt();
+		List<PriceProductHierarchySetElmnt> priceProductHierarchySetElmnts = Lists.newArrayList();
+		PriceProductHierarchySetElmnt priceProductHierarchySetElmnt = new PriceProductHierarchySetElmnt();
 		priceProductHierarchySetElmnt.setId(getppdid());
 		priceProductHierarchySetElmnt.setLstUpdateBy("sa");
 		priceProductHierarchySetElmnts.add(priceProductHierarchySetElmnt);
@@ -277,11 +203,12 @@ public class ReaRuleConverterTest {
 	}
 
 	private PriceProductHierarchySetElmntPK getppdid() {
-		PriceProductHierarchySetElmntPK priceProductHierarchySetElmntPK=new PriceProductHierarchySetElmntPK();
+		PriceProductHierarchySetElmntPK priceProductHierarchySetElmntPK = new PriceProductHierarchySetElmntPK();
 		priceProductHierarchySetElmntPK.setPpdHchyElmntId(1);
 		priceProductHierarchySetElmntPK.setPpdHchysetId(1);
 		return priceProductHierarchySetElmntPK;
 	}
+
 	public GeneralRuleBo getReactionRule() {
 		GeneralRuleBo reactionRuleBo = new GeneralRuleBo();
 		Date validFromdate = new Date();
@@ -387,16 +314,5 @@ public class ReaRuleConverterTest {
 		return refSourceType;
 
 	}
-/*	public List<RefActionType> getRefActList(){
-		List<RefActionType> refActlist=Lists.newArrayList();
-		RefActionType refActionType = new RefActionType();
-		refActionType.setActionTypeId(1l);
-		refActionType.setActionType("all");
-		refActionType.setDescription("xxx");
-		refActionType.setSeq(123l);
-		refActlist.add(refActionType);
-		return refActlist;
-		
-	}*/
 
 }

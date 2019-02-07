@@ -37,9 +37,10 @@ public class QuantityRuleActionConverterTest {
 	@Test
 	public void createConverterTest(){
 		QuantityRuleBo quantityRule=getQuantityRule();
-		QuantityRuleAction qtyRule = new QuantityRuleAction();
-		qtyRule.setQtyCondId(quantityRule.getConditionType().getCodeTypeId());
-		qtyRule.setQtyTypeId(quantityRule.getQuantityPriceType().getQuantityTypeId());
+		QuantityRuleAction quantityRuleAction = new QuantityRuleAction();
+		quantityRuleAction.setReaRuleId(1L);
+		quantityRuleAction.setQtyCondId(quantityRule.getConditionType().getCodeTypeId());
+		quantityRuleAction.setQtyTypeId(quantityRule.getQuantityPriceType().getQuantityTypeId());
 		QuantityRuleAction expectedReaQtyRule=quantityRuleActionConverter.convert(quantityRule);
 		assertEquals(new Long(2),expectedReaQtyRule.getQtyTypeId());
 		
@@ -53,7 +54,7 @@ public class QuantityRuleActionConverterTest {
 		when(referenceDataService.getAllQuantityConditionTypes()).thenReturn(getQtyCondLst());
 		quantityRule.setQuantityPriceType(getRefQuantityPriceType());
 		quantityRule.setConditionType(getRefQuantityConditionType());
-		QuantityRuleBo qtyRuleBo = quantityRuleActionConverter.convertToBo(qtyRule, quantityRule);
+		QuantityRuleBo qtyRuleBo = quantityRuleActionConverter.addQuantityRuleAction(qtyRule, quantityRule);
 		assertEquals(qtyRuleBo.getQuantityPriceType(),quantityRule.getQuantityPriceType());
 		assertEquals(qtyRuleBo.getConditionType(),quantityRule.getConditionType());
 		
@@ -75,6 +76,7 @@ public class QuantityRuleActionConverterTest {
 
 	public  QuantityRuleBo getQuantityRule(){
 		QuantityRuleBo quantityRule=new QuantityRuleBo();
+		quantityRule.setRuleId(1L);
 		quantityRule.setConditionType(getRefQuantityConditionType());
 		quantityRule.setQuantityPriceType(getRefQuantityPriceType());
 		return quantityRule;

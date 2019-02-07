@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.EJB;
-import javax.ejb.LocalBean;
-import javax.ejb.Stateless;
 
 import colruyt.rearulmgtdmnejb.bo.QuantityRuleBo;
 import colruyt.rearulmgtdmnejb.bo.RefQuantityConditionTypeBo;
@@ -13,8 +11,6 @@ import colruyt.rearulmgtdmnejb.bo.RefQuantityPriceTypeBo;
 import colruyt.rearulmgtdmnejb.entity.QuantityRuleAction;
 import colruyt.rearulmgtdmnejb.service.bl.ReferenceDataService;
 
-@Stateless
-@LocalBean
 public class QuantityRuleActionConverter implements Serializable {
 
 	
@@ -23,13 +19,14 @@ public class QuantityRuleActionConverter implements Serializable {
 	private ReferenceDataService referenceDataService;
 
 	public QuantityRuleAction convert(QuantityRuleBo quantityRuleBo) {
-		QuantityRuleAction qtyRule = new QuantityRuleAction();
-		qtyRule.setQtyCondId(quantityRuleBo.getConditionType().getCodeTypeId());
-		qtyRule.setQtyTypeId(quantityRuleBo.getQuantityPriceType().getQuantityTypeId());
-		return qtyRule;
+		QuantityRuleAction quantityRuleAction = new QuantityRuleAction();
+		quantityRuleAction.setReaRuleId(quantityRuleBo.getRuleId());
+		quantityRuleAction.setQtyCondId(quantityRuleBo.getConditionType().getCodeTypeId());
+		quantityRuleAction.setQtyTypeId(quantityRuleBo.getQuantityPriceType().getQuantityTypeId());
+		return quantityRuleAction;
 	}
 
-	public QuantityRuleBo convertToBo(QuantityRuleAction quantityRuleAction, QuantityRuleBo quantityBo) {
+	public QuantityRuleBo addQuantityRuleAction(QuantityRuleAction quantityRuleAction, QuantityRuleBo quantityBo) {
 		quantityBo.setConditionType(convertConditionType(quantityRuleAction.getQtyCondId()));
 		quantityBo.setQuantityPriceType(convertQtyPriceType(quantityRuleAction.getQtyTypeId()));
 		return quantityBo;

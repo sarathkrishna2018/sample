@@ -82,7 +82,7 @@ public class FilteringRuleServiceTest {
 		when(generalRuleService.getGeneralRuleAttributes(Mockito.any(ReactionRule.class),
 				Mockito.any(GeneralRuleBo.class))).thenReturn(getFilteringRuleBo());
 		when(filteringRuleActionDlService.findByRuleId(Mockito.anyLong())).thenReturn(getReaFltRule());
-		when(filteringRuleActionConverter.convertToBo(Mockito.any(FilteringRuleAction.class),
+		when(filteringRuleActionConverter.addFilteringRuleAction(Mockito.any(FilteringRuleAction.class),
 				Mockito.any(FilteringRuleBo.class))).thenReturn(getFilteringRuleBo());
 		List<ReactionRulesetBo> expectedFilteringRule = filteringRuleBlService.getReactionRules(getReaRuleList());
 		Assert.assertEquals(1l, expectedFilteringRule.size());
@@ -91,7 +91,7 @@ public class FilteringRuleServiceTest {
 	@Test
 	public void getRuleSpecificValuesTest() throws ReaRuleManagementException {
 		when(filteringRuleActionDlService.findByRuleId(Mockito.anyLong())).thenReturn(getReaFltRule());
-		when(filteringRuleActionConverter.convertToBo(Mockito.any(FilteringRuleAction.class),
+		when(filteringRuleActionConverter.addFilteringRuleAction(Mockito.any(FilteringRuleAction.class),
 				Mockito.any(FilteringRuleBo.class))).thenReturn(getFilteringRuleBo());
 		GeneralRuleBo expectedFilteringRule = filteringRuleBlService.getRuleSpecificValues(getFilteringRuleBo());
 		Assert.assertEquals(new Long(1l), expectedFilteringRule.getRuleId());
