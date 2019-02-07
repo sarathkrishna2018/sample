@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.ejb.LocalBean;
+
 import com.google.common.collect.Lists;
 
 import colruyt.rearulmgtdmnejb.bo.RefActionTypeBo;
@@ -24,6 +26,7 @@ import colruyt.rearulmgtdmnejb.enums.RefReasonEnum;
 import colruyt.rearulmgtdmnejb.enums.RefRuletypeEnum;
 import colruyt.rearulmgtdmnejb.enums.SourceTypeEnum;
 
+@LocalBean
 public class ReferenceDataConverter implements Serializable {
 
 	private static final long serialVersionUID = 1L;
