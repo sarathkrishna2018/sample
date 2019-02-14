@@ -60,12 +60,6 @@ public class ReactionRuleDlService implements Serializable {
 		return reactionRule;
 	}
 
-	public ReactionRule findByPk(String ruleType) {
-		ReactionRule reactionRule = entityManager.find(ReactionRule.class, ruleType);
-		entityManager.flush();
-		return reactionRule;
-	}
-
 	public ReactionRule findByPk(Long ruleId) {
 		return entityManager.find(ReactionRule.class, ruleId);
 	}

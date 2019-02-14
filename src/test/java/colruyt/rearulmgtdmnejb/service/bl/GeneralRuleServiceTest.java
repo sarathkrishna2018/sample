@@ -645,9 +645,13 @@ public class GeneralRuleServiceTest {
 		when(reactionRuleSourceTypeDlService.physicalDeleteSourceType(Mockito.any(XPSRuleBo.class)))
 				.thenReturn(deleteId);
 		Mockito.doNothing().when(priceProductHierarchyBlService).physicalDeleteElements(getXpsRuleBo());
-		long expectedResult = generalRuleService.physicalDeleteRules(getXpsRuleBo());
-		Assert.assertNotNull(expectedResult);
-
+		try
+		{
+			generalRuleService.physicalDeleteRules(getXpsRuleBo());
+		}
+		catch(Exception e){
+			Assert.fail();
+		}
 	}
 
 	private XPSRuleBo getXpsRuleBo() {

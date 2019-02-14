@@ -19,9 +19,7 @@ import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 @TransactionAttribute(TransactionAttributeType.MANDATORY)
 public class ReactionPeriodActionDlService implements Serializable {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	@PersistenceContext(unitName=ReaRulMgtDmnConstants.PERSISTENCE_UNIT_NAME)
 	private transient EntityManager entityManager;

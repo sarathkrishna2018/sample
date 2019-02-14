@@ -171,24 +171,28 @@ public class PriceProductHierarchyService implements Serializable {
 		productHierarchySetDlService.removeProductHierarchyElement(productHieracrchySetId);
 	}
 
+	/**
+	 * @param externalValueSet
+	 * @return the list of Hierarchy SetId's where the 
+	 */
 	public List<Long> manageExternalChanges(Set<String> externalValueSet) {
-		List<Long> productHierarchySetIds =Lists.newArrayList();
+		List<Long> productHierarchySetIds = Lists.newArrayList();
 		List<PriceProductHierarchyElement> allElements = productHierarchyElementDlService.findAllElements();
-		if(!allElements.isEmpty()){
-		Set<String> productHierarchyElementSet = converthierarchyValueListtoSet(allElements);
-		Set<String> deletedElements = Sets.difference(productHierarchyElementSet, externalValueSet);
-		List<Long> toBeDeletedElements = findByElementValueList(deletedElements, allElements);
-		if(!toBeDeletedElements.isEmpty()){
-		List<PriceProductHierarchySetElmnt> toBeDeletedSetElements = productHierarchySetDlService
-				.findSetElementByElementIds(toBeDeletedElements);
-		List<Long> setIds = Lists.newArrayList();
-		for (PriceProductHierarchySetElmnt priceProductHierarchySetElement : toBeDeletedSetElements) {
-			setIds.add(priceProductHierarchySetElement.getId().getPpdHchysetId());
-		}
-		productHierarchySetIds = productHierarchySetDlService.findSetElementBySetIds(setIds);
-			productHierarchySetDlService.deleteSetElements(toBeDeletedElements);
-			productHierarchyElementDlService.deleteElements(toBeDeletedElements);
-		}
+		if (!allElements.isEmpty()) {
+			Set<String> productHierarchyElementSet = convertHierarchyValueListToSet(allElements);
+			Set<String> deletedElements = Sets.difference(productHierarchyElementSet, externalValueSet);
+			List<Long> toBeDeletedElements = findByElementValueList(deletedElements, allElements);
+			if (!toBeDeletedElements.isEmpty()) {
+				List<PriceProductHierarchySetElmnt> toBeDeletedSetElements = productHierarchySetDlService
+						.findSetElementByElementIds(toBeDeletedElements);
+				List<Long> setIds = Lists.newArrayList();
+				for (PriceProductHierarchySetElmnt priceProductHierarchySetElement : toBeDeletedSetElements) {
+					setIds.add(priceProductHierarchySetElement.getId().getPpdHchysetId());
+				}
+				productHierarchySetIds = productHierarchySetDlService.findSetElementBySetIds(setIds);
+				productHierarchySetDlService.deleteSetElements(toBeDeletedElements);
+				productHierarchyElementDlService.deleteElements(toBeDeletedElements);
+			}
 		}
 		return productHierarchySetIds;
 	}
@@ -198,7 +202,7 @@ public class PriceProductHierarchyService implements Serializable {
 	 * @param hierarchyValuesFromSoi
 	 * @return
 	 */
-	private Set<String> converthierarchyValueListtoSet(List<PriceProductHierarchyElement> hierarchyValuesFromSoi) {
+	private Set<String> convertHierarchyValueListToSet(List<PriceProductHierarchyElement> hierarchyValuesFromSoi) {
 		Set<String> hierarchyValueSet = new HashSet<>();
 		for (PriceProductHierarchyElement hierarchyValue : hierarchyValuesFromSoi) {
 			if (hierarchyValue.getPpdHchyTypeId() != 1) {
