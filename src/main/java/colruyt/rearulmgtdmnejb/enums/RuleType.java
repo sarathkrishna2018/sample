@@ -1,6 +1,6 @@
 package colruyt.rearulmgtdmnejb.enums;
 
-public enum RefRuletypeEnum {
+public enum RuleType {
 	REACTING_EN(1L, "EN", "Reacting"),
 	QUANTITY_EN(2L, "EN", "Quantity"),
 	FILTERING_EN(3L, "EN", "Filtering"),
@@ -24,7 +24,7 @@ public enum RefRuletypeEnum {
 		return ruleTypeDescription;
 	}
 	
-	private RefRuletypeEnum(long ruleTypeID, String isoLangCode, String ruleTypeDescription) {
+	private RuleType(long ruleTypeID, String isoLangCode, String ruleTypeDescription) {
 		this.ruleTypeID = ruleTypeID;
 		this.isoLangCode = isoLangCode;
 		this.ruleTypeDescription = ruleTypeDescription;

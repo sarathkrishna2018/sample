@@ -45,13 +45,13 @@ public class ReactionRule implements Serializable {
 	@Column(name="DIRECT_YN")
 	@ExternalValues({ "true=Y", "false=N" })
 	@Type(String.class)
-	private boolean directYn;
+	private boolean direct;
 
 	@Column(name="IC_FROM")
-	private long icFrom;
+	private long importancecodeFrom;
 
 	@Column(name="IC_TO")
-	private long icTo;
+	private long importancecodeTo;
 
 	@Column(name="LST_UPDATE_BY")
 	private String lstUpdateBy;
@@ -59,17 +59,17 @@ public class ReactionRule implements Serializable {
 	@Column(name="PERMENANT_YN")
 	@ExternalValues({ "true=Y", "false=N" })
 	@Type(String.class)
-	private boolean permenantYn;
+	private boolean permenant;
 
 	@Column(name="POSTPONED_YN")
 	@ExternalValues({ "true=Y", "false=N" })
 	@Type(String.class)
-	private boolean postponedYn;
+	private boolean postponed;
 
 	@Column(name="RECALCULATE_YN")
 	@ExternalValues({ "true=Y", "false=N" })
 	@Type(String.class)
-	private boolean recalculateYn;
+	private boolean recalculate;
 
 	@Column(name="RULE_COMMENT")
 	private String ruleComment;
@@ -83,7 +83,7 @@ public class ReactionRule implements Serializable {
 	@Column(name="TEMPORARY_YN")
 	@ExternalValues({ "true=Y", "false=N" })
 	@Type(String.class)
-	private boolean temporaryYn;
+	private boolean temporary;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="VALID_FROM")
@@ -99,31 +99,31 @@ public class ReactionRule implements Serializable {
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "REA_RULE_ID", referencedColumnName="REA_RULE_ID")
-    private FilteringRuleAction reaFltRule;
+    private FilteringRuleAction filteringRuleAction;
 	
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "REA_RULE_ID", referencedColumnName="REA_RULE_ID")
-	private ProposalNotToReactRuleAction reaNreactAct;
+	private ProposalNotToReactRuleAction proposalNotToReactRuleAction;
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "REA_RULE_ID", referencedColumnName="REA_RULE_ID")
-	private ReactionPeriodRuleAction reaPrdAct;
+	private ReactionPeriodRuleAction reactionPeriodRuleAction;
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "REA_RULE_ID", referencedColumnName="REA_RULE_ID")
-	private QuantityRuleAction reaQtyRule;
+	private QuantityRuleAction quantityRuleAction;
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "REA_RULE_ID", referencedColumnName="REA_RULE_ID")
-	private ReactingRuleAction reaReactingAct;
+	private ReactingRuleAction reactingRuleAction;
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "REA_RULE_ID", referencedColumnName="REA_RULE_ID")
-	private RecordingNotFoundRuleAction reaRnfAct;
+	private RecordingNotFoundRuleAction recordingNotFoundRuleAction;
 	
 	@OneToMany
 	@JoinColumn(name = "REA_RULE_ID", referencedColumnName="REA_RULE_ID")
-	private List<PriceProductHierarchySet> reaPpdHchysets;
+	private List<PriceProductHierarchySet> priceProductHierarchySet;
 	
 	@ElementCollection(fetch = FetchType.EAGER)
 	@CollectionTable(name = "REA_RULE_SRC", 
@@ -183,20 +183,20 @@ public class ReactionRule implements Serializable {
 		this.reaRulesetId = reaRulesetId;
 	}
 
-	public long getIcFrom() {
-		return icFrom;
+	public long getImportancecodeFrom() {
+		return importancecodeFrom;
 	}
 
-	public void setIcFrom(long icFrom) {
-		this.icFrom = icFrom;
+	public void setImportancecodeFrom(long icFrom) {
+		this.importancecodeFrom = icFrom;
 	}
 
-	public long getIcTo() {
-		return icTo;
+	public long getImportancecodeTo() {
+		return importancecodeTo;
 	}
 
-	public void setIcTo(long icTo) {
-		this.icTo = icTo;
+	public void setImportancecodeTo(long icTo) {
+		this.importancecodeTo = icTo;
 	}
 
 	public String getCreatedBy() {
@@ -207,12 +207,12 @@ public class ReactionRule implements Serializable {
 		this.createdBy = createdBy;
 	}
 
-	public boolean getDirectYn() {
-		return this.directYn;
+	public boolean getDirect() {
+		return this.direct;
 	}
 
-	public void setDirectYn(boolean directYn) {
-		this.directYn = directYn;
+	public void setDirect(boolean directYn) {
+		this.direct = directYn;
 	}
 
 	public String getLstUpdateBy() {
@@ -223,28 +223,28 @@ public class ReactionRule implements Serializable {
 		this.lstUpdateBy = lstUpdateBy;
 	}
 
-	public boolean getPermenantYn() {
-		return this.permenantYn;
+	public boolean getPermenant() {
+		return this.permenant;
 	}
 
-	public void setPermenantYn(boolean permenantYn) {
-		this.permenantYn = permenantYn;
+	public void setPermenant(boolean permenantYn) {
+		this.permenant = permenantYn;
 	}
 
-	public boolean getPostponedYn() {
-		return this.postponedYn;
+	public boolean getPostponed() {
+		return this.postponed;
 	}
 
-	public void setPostponedYn(boolean postponedYn) {
-		this.postponedYn = postponedYn;
+	public void setPostponed(boolean postponedYn) {
+		this.postponed = postponedYn;
 	}
 
-	public boolean getRecalculateYn() {
-		return this.recalculateYn;
+	public boolean getRecalculate() {
+		return this.recalculate;
 	}
 
-	public void setRecalculateYn(boolean recalculateYn) {
-		this.recalculateYn = recalculateYn;
+	public void setRecalculate(boolean recalculateYn) {
+		this.recalculate = recalculateYn;
 	}
 
 	public String getRuleComment() {
@@ -271,12 +271,12 @@ public class ReactionRule implements Serializable {
 		this.rulePriority = rulePriority;
 	}
 
-	public boolean getTemporaryYn() {
-		return this.temporaryYn;
+	public boolean getTemporary() {
+		return this.temporary;
 	}
 
-	public void setTemporaryYn(boolean temporaryYn) {
-		this.temporaryYn = temporaryYn;
+	public void setTemporary(boolean temporaryYn) {
+		this.temporary = temporaryYn;
 	}
 
 	public Date getValidFrom() {
@@ -295,60 +295,60 @@ public class ReactionRule implements Serializable {
 		this.validUpto = validUpto;
 	}
 
-	public FilteringRuleAction getReaFltRule() {
-		return this.reaFltRule;
+	public FilteringRuleAction getFilteringRuleAction() {
+		return this.filteringRuleAction;
 	}
 
-	public void setReaFltRule(FilteringRuleAction reaFltRule) {
-		this.reaFltRule = reaFltRule;
+	public void setFilteringRuleAction(FilteringRuleAction reaFltRule) {
+		this.filteringRuleAction = reaFltRule;
 	}
 
-	public ProposalNotToReactRuleAction getReaNreactAct() {
-		return this.reaNreactAct;
+	public ProposalNotToReactRuleAction getProposalNotToReactRuleAction() {
+		return this.proposalNotToReactRuleAction;
 	}
 
-	public void setReaNreactAct(ProposalNotToReactRuleAction reaNreactAct) {
-		this.reaNreactAct = reaNreactAct;
+	public void setProposalNotToReactRuleAction(ProposalNotToReactRuleAction reaNreactAct) {
+		this.proposalNotToReactRuleAction = reaNreactAct;
 	}
 
-	public List<PriceProductHierarchySet> getReaPpdHchysets() {
-		return this.reaPpdHchysets;
+	public List<PriceProductHierarchySet> getPriceProductHierarchySet() {
+		return this.priceProductHierarchySet;
 	}
 
-	public void setReaPpdHchysets(List<PriceProductHierarchySet> reaPpdHchysets) {
-		this.reaPpdHchysets = reaPpdHchysets;
+	public void setPriceProductHierarchySet(List<PriceProductHierarchySet> reaPpdHchysets) {
+		this.priceProductHierarchySet = reaPpdHchysets;
 	}
 
-	public ReactionPeriodRuleAction getReaPrdAct() {
-		return this.reaPrdAct;
+	public ReactionPeriodRuleAction getReactionPeriodRuleAction() {
+		return this.reactionPeriodRuleAction;
 	}
 
-	public void setReaPrdAct(ReactionPeriodRuleAction reaPrdAct) {
-		this.reaPrdAct = reaPrdAct;
+	public void setReactionPeriodRuleAction(ReactionPeriodRuleAction reaPrdAct) {
+		this.reactionPeriodRuleAction = reaPrdAct;
 	}
 
-	public QuantityRuleAction getReaQtyRule() {
-		return this.reaQtyRule;
+	public QuantityRuleAction getQuantityRuleAction() {
+		return this.quantityRuleAction;
 	}
 
-	public void setReaQtyRule(QuantityRuleAction reaQtyRule) {
-		this.reaQtyRule = reaQtyRule;
+	public void setQuantityRuleAction(QuantityRuleAction reaQtyRule) {
+		this.quantityRuleAction = reaQtyRule;
 	}
 
-	public ReactingRuleAction getReaReactingAct() {
-		return this.reaReactingAct;
+	public ReactingRuleAction getReactingRuleAction() {
+		return this.reactingRuleAction;
 	}
 
-	public void setReaReactingAct(ReactingRuleAction reaReactingAct) {
-		this.reaReactingAct = reaReactingAct;
+	public void setReactingRuleAction(ReactingRuleAction reaReactingAct) {
+		this.reactingRuleAction = reaReactingAct;
 	}
 
-	public RecordingNotFoundRuleAction getReaRnfAct() {
-		return this.reaRnfAct;
+	public RecordingNotFoundRuleAction getRecordingNotFoundRuleAction() {
+		return this.recordingNotFoundRuleAction;
 	}
 
-	public void setReaRnfAct(RecordingNotFoundRuleAction reaRnfAct) {
-		this.reaRnfAct = reaRnfAct;
+	public void setRecordingNotFoundRuleAction(RecordingNotFoundRuleAction reaRnfAct) {
+		this.recordingNotFoundRuleAction = reaRnfAct;
 	}
 	
 	public Date getLogicallyDeletedDate() {

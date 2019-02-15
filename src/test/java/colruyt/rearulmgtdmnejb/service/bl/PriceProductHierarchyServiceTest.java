@@ -243,12 +243,12 @@ public class PriceProductHierarchyServiceTest {
 	public PriceProductHierarchySet getReaPpdHchyset() {
 		PriceProductHierarchySet reaPpdHchyset = new PriceProductHierarchySet();
 		reaPpdHchyset.setAssortmentName("Asa");
-		reaPpdHchyset.setCheapBrandYn(true);
+		reaPpdHchyset.setCheapBrand(true);
 		reaPpdHchyset.setCreatedBy("Sa");
 		reaPpdHchyset.setLstUpdateBy("Sa");
-		reaPpdHchyset.setNatBrandYn(true);
-		reaPpdHchyset.setOwnBrandYn(true);
-		reaPpdHchyset.setPpdHchysetId(1l);
+		reaPpdHchyset.setNationalBrand(true);
+		reaPpdHchyset.setOwnBrand(true);
+		reaPpdHchyset.setProdHrchySetId(1l);
 		reaPpdHchyset.setReaRuleId(1l);
 		return reaPpdHchyset;
 
@@ -272,7 +272,7 @@ public class PriceProductHierarchyServiceTest {
 		reaPpdHchyElmnt.setPpdHchyTypeId(1l);
 		reaPpdHchyElmnt.setPpdHchyValue("ASA");
 		reaPpdHchyElmnt.setCreatedBy("SA");
-		reaPpdHchyElmnt.setReaPpdHchysetElmnts(getReaPpdHchysetElmnt());
+		reaPpdHchyElmnt.setProdHrchySetElement(getReaPpdHchysetElmnt());
 		reaPpdHchyElmntlist.add(reaPpdHchyElmnt);
 		return reaPpdHchyElmntlist;
 
@@ -283,8 +283,8 @@ public class PriceProductHierarchyServiceTest {
 		PriceProductHierarchySetElmnt reaPpdHchysetElmnt = new PriceProductHierarchySetElmnt();
 		reaPpdHchysetElmnt.setLstUpdateBy("Sa");
 		PriceProductHierarchySetElmntPK hierarchySetElmntPK = new PriceProductHierarchySetElmntPK();
-		hierarchySetElmntPK.setPpdHchyElmntId(1L);
-		hierarchySetElmntPK.setPpdHchysetId(1L);
+		hierarchySetElmntPK.setProdHrchyElemntId(1L);
+		hierarchySetElmntPK.setProdHrchySetId(1L);
 		reaPpdHchysetElmnt.setId(hierarchySetElmntPK);
 		reaPpdHchysetElmntlist.add(reaPpdHchysetElmnt);
 		return reaPpdHchysetElmntlist;
@@ -297,7 +297,7 @@ public class PriceProductHierarchyServiceTest {
 		reaPpdHchyElmnt.setPpdHchyTypeId(1l);
 		reaPpdHchyElmnt.setPpdHchyValue("ASA");
 		reaPpdHchyElmnt.setCreatedBy("SA");
-		reaPpdHchyElmnt.setReaPpdHchysetElmnts(getReaPpdHchysetElmnt());
+		reaPpdHchyElmnt.setProdHrchySetElement(getReaPpdHchysetElmnt());
 		return reaPpdHchyElmnt;
 
 	}

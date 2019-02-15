@@ -34,8 +34,8 @@ public class PriceProductHierarchySet implements Serializable {
 		this.priceProductHierarchyElements = priceProductHierarchyElements;
 	}
 
-	public void setPpdHchysetId(long ppdHchysetId) {
-		this.ppdHchysetId = ppdHchysetId;
+	public void setProdHrchySetId(long ppdHchysetId) {
+		this.prodHrchySetId = ppdHchysetId;
 	}
 
 	public void setReaRuleId(long reaRuleId) {
@@ -48,7 +48,7 @@ public class PriceProductHierarchySet implements Serializable {
 	@SequenceGenerator(name="REA_PPD_HCHYSET_SEQ_GEN", sequenceName="SEQ_REA_PPD_HCHYSET")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="REA_PPD_HCHYSET_SEQ_GEN")
 	@Column(name="PPD_HCHYSET_ID")
-	private long ppdHchysetId;
+	private long prodHrchySetId;
 	
 	@Column(name="REA_RULE_ID")
 	private long reaRuleId;
@@ -59,7 +59,7 @@ public class PriceProductHierarchySet implements Serializable {
 	@Column(name="CHEAP_BRAND_YN")
 	@ExternalValues({ "true=Y", "false=N" })
 	@Type(String.class)
-	private boolean cheapBrandYn;
+	private boolean cheapBrand;
 
 	@Column(name="CREATED_BY")
 	private String createdBy;
@@ -70,23 +70,23 @@ public class PriceProductHierarchySet implements Serializable {
 	@Column(name="NAT_BRAND_YN")
 	@ExternalValues({ "true=Y", "false=N" })
 	@Type(String.class)
-	private boolean natBrandYn;
+	private boolean nationalBrand;
 
 	@Column(name="OWN_BRAND_YN")
 	@ExternalValues({ "true=Y", "false=N" })
 	@Type(String.class)
-	private boolean ownBrandYn;
+	private boolean ownBrand;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH, orphanRemoval = false)
 	@JoinTable(name = "REA_PPD_HCHYSET_ELMNT", joinColumns = @JoinColumn(name = "PPD_HCHYSET_ID"), inverseJoinColumns = @JoinColumn(name = "PPD_HCHY_ELMNT_ID"))
 	private List<PriceProductHierarchyElement> priceProductHierarchyElements;
 	
-	public Long getPpdHchysetId() {
-		return this.ppdHchysetId;
+	public Long getProdHrchySetId() {
+		return this.prodHrchySetId;
 	}
 
 	public void setPpdHchysetId(Long ppdHchysetId) {
-		this.ppdHchysetId = ppdHchysetId;
+		this.prodHrchySetId = ppdHchysetId;
 	}
 
 	public String getAssortmentName() {
@@ -97,12 +97,12 @@ public class PriceProductHierarchySet implements Serializable {
 		this.assortmentName = assortmentName;
 	}
 
-	public boolean getCheapBrandYn() {
-		return this.cheapBrandYn;
+	public boolean getCheapBrand() {
+		return this.cheapBrand;
 	}
 
-	public void setCheapBrandYn(boolean cheapBrandYn) {
-		this.cheapBrandYn = cheapBrandYn;
+	public void setCheapBrand(boolean cheapBrandYn) {
+		this.cheapBrand = cheapBrandYn;
 	}
 
 	public String getCreatedBy() {
@@ -121,20 +121,20 @@ public class PriceProductHierarchySet implements Serializable {
 		this.lstUpdateBy = lstUpdateBy;
 	}
 
-	public boolean getNatBrandYn() {
-		return this.natBrandYn;
+	public boolean getNationalBrand() {
+		return this.nationalBrand;
 	}
 
-	public void setNatBrandYn(boolean natBrandYn) {
-		this.natBrandYn = natBrandYn;
+	public void setNationalBrand(boolean natBrandYn) {
+		this.nationalBrand = natBrandYn;
 	}
 
-	public boolean getOwnBrandYn() {
-		return this.ownBrandYn;
+	public boolean getOwnBrand() {
+		return this.ownBrand;
 	}
 
-	public void setOwnBrandYn(boolean ownBrandYn) {
-		this.ownBrandYn = ownBrandYn;
+	public void setOwnBrand(boolean ownBrandYn) {
+		this.ownBrand = ownBrandYn;
 	}
 	
 	public Long getReaRuleId() {

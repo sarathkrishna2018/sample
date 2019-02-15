@@ -1,6 +1,6 @@
 package colruyt.rearulmgtdmnejb.enums;
 
-public enum FilterOutRecordingTypeEnum {
+public enum FilterOutRecordingType {
 	PRICE_RECORDING_EN(1L, "EN", "Filter Out" , "Filter out the price Rrecording"), 
 	FILTER_AND_CLEAR_OUT_EN(2L, "EN", "Filter And Clear Out", "Filter and Clear out the old calculated reaction prices");
 	
@@ -9,7 +9,7 @@ public enum FilterOutRecordingTypeEnum {
 	private String name;
 	private String description;
 
-	private FilterOutRecordingTypeEnum(Long id, String langCode, String name, String description) {
+	private FilterOutRecordingType(Long id, String langCode, String name, String description) {
 		this.id = id;
 		this.langCode = langCode;
 		this.name = name;

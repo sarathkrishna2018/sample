@@ -22,7 +22,7 @@ public class RecordingNotFoundRuleAction implements Serializable {
 	private long reaRuleId;
 
 	@Column(name="NO_OF_RNF")
-	private long noOfRnf;
+	private long noOfRecordNotFound;
 
 	public long getReaRuleId() {
 		return this.reaRuleId;
@@ -32,12 +32,12 @@ public class RecordingNotFoundRuleAction implements Serializable {
 		this.reaRuleId = reaRuleId;
 	}
 
-	public long getNoOfRnf() {
-		return this.noOfRnf;
+	public long getNoOfRecordNotFound() {
+		return this.noOfRecordNotFound;
 	}
 
-	public void setNoOfRnf(long noOfRnf) {
-		this.noOfRnf = noOfRnf;
+	public void setNoOfRecordNotFound(long noOfRnf) {
+		this.noOfRecordNotFound = noOfRnf;
 	}
 
 }

@@ -1,6 +1,6 @@
 package colruyt.rearulmgtdmnejb.enums;
 
-public enum QuantityConditionEnum {
+public enum QuantityCondition {
 	NQTY_GREATER_THAN_EQUAL_TO_BQTY_EN(1L,"EN", "NQTY >= BQTY"),
 	NQTY_GREATER_THAN_BQTY_EN(2L,"EN","NQTY > BQTY"),
 	NQTY_LESS_THAN_EQUAL_TO_BQTY_EN(3L, "EN","NQTY <= BQTY"),
@@ -13,7 +13,7 @@ public enum QuantityConditionEnum {
 	private String description;
 	
 	
-	private QuantityConditionEnum(Long id, String langCode, String description) {
+	private QuantityCondition(Long id, String langCode, String description) {
 		this.id = id;
 		this.langCode = langCode;
 		this.description = description;

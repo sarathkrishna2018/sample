@@ -727,10 +727,10 @@ public class GeneralRuleServiceTest {
 
 	public ReactionRuleSet getReaRuleset() {
 		ReactionRuleSet reaRuleset = new ReactionRuleSet();
-		reaRuleset.setCgChnId(1l);
-		reaRuleset.setCompChainId(1l);
+		reaRuleset.setColruytGroupChainId(1l);
+		reaRuleset.setPriceCompetitorChainId(1l);
 		reaRuleset.setLstUpdateBy("sa");
-		reaRuleset.setReaRules(getReaRuleList());
+		reaRuleset.setReactionRules(getReaRuleList());
 		reaRuleset.setReaRulesetId(1l);
 		reaRuleset.setRulesetComment("good");
 		reaRuleset.setRulesetName("asa");
@@ -747,15 +747,15 @@ public class GeneralRuleServiceTest {
 		reaRule.setReaRuleId(1l);
 		reaRule.setRulePriority(2);
 		reaRule.setRuleName("Reacting");
-		reaRule.setIcFrom(10);
-		reaRule.setIcTo(5);
-		reaRule.setDirectYn(true);
-		reaRule.setPostponedYn(true);
-		reaRule.setPermenantYn(true);
-		reaRule.setTemporaryYn(false);
+		reaRule.setImportancecodeFrom(10);
+		reaRule.setImportancecodeTo(5);
+		reaRule.setDirect(true);
+		reaRule.setPostponed(true);
+		reaRule.setPermenant(true);
+		reaRule.setTemporary(false);
 		reaRule.setValidFrom(new Date());
 		reaRule.setValidUpto(new Date());
-		reaRule.setRecalculateYn(false);
+		reaRule.setRecalculate(false);
 		reaRule.setRuleComment("good");
 		reaRule.setCreatedBy("sa");
 		reaRule.setLstUpdateBy("sa");
@@ -848,15 +848,15 @@ public class GeneralRuleServiceTest {
 		reaRule.setReaRuleId(1L);
 		reaRule.setReaRulesetId(1l);
 		reaRule.setRuleName("Filtering");
-		reaRule.setIcFrom(10);
-		reaRule.setIcTo(5);
-		reaRule.setDirectYn(true);
-		reaRule.setPostponedYn(true);
-		reaRule.setPermenantYn(true);
-		reaRule.setTemporaryYn(false);
+		reaRule.setImportancecodeFrom(10);
+		reaRule.setImportancecodeTo(5);
+		reaRule.setDirect(true);
+		reaRule.setPostponed(true);
+		reaRule.setPermenant(true);
+		reaRule.setTemporary(false);
 		reaRule.setValidFrom(validFromdate);
 		reaRule.setValidUpto(validTodate);
-		reaRule.setRecalculateYn(false);
+		reaRule.setRecalculate(false);
 		reaRule.setRuleComment("good");
 		reaRule.setCreatedBy("sa");
 		reaRule.setLstUpdateBy("sa");
@@ -905,12 +905,12 @@ public class GeneralRuleServiceTest {
 	public PriceProductHierarchySet getReaPpdHchyset() {
 		PriceProductHierarchySet reaPpdHchyset = new PriceProductHierarchySet();
 		reaPpdHchyset.setAssortmentName("Asa");
-		reaPpdHchyset.setCheapBrandYn(true);
+		reaPpdHchyset.setCheapBrand(true);
 		reaPpdHchyset.setCreatedBy("Sa");
 		reaPpdHchyset.setLstUpdateBy("Sa");
-		reaPpdHchyset.setNatBrandYn(true);
-		reaPpdHchyset.setOwnBrandYn(true);
-		reaPpdHchyset.setPpdHchysetId(1l);
+		reaPpdHchyset.setNationalBrand(true);
+		reaPpdHchyset.setOwnBrand(true);
+		reaPpdHchyset.setProdHrchySetId(1l);
 		reaPpdHchyset.setReaRuleId(1l);
 		return reaPpdHchyset;
 

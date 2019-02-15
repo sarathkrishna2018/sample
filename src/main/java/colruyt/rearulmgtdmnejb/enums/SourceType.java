@@ -1,6 +1,6 @@
 package colruyt.rearulmgtdmnejb.enums;
 
-public enum SourceTypeEnum {
+public enum SourceType {
 	ONLINE(1L,"Online", "Online"),
 	OFFLINE(2L,"Offline", "Offline"),
 	FOLDER(3L, "Folder", "Folder"),
@@ -11,7 +11,7 @@ public enum SourceTypeEnum {
 	private final String sourceTypeName;
 	private final String description;
 	
-	private SourceTypeEnum(Long sourceTypeId, String sourceTypeName, String description) {
+	private SourceType(Long sourceTypeId, String sourceTypeName, String description) {
 		this.sourceTypeId = sourceTypeId;
 		this.sourceTypeName = sourceTypeName;
 		this.description = description;

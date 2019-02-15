@@ -50,23 +50,23 @@ public class ReaRulesetConverterTest {
 		ReactionRulesetBo reactionRulesetBo=getReactionRuleset();
 		ReactionRuleSet reaRuleset = new ReactionRuleSet();
 		String logonId="sa";
-		reaRuleset.setCgChnId(reactionRulesetBo.getColruytGroupChainId());
-		reaRuleset.setCompChainId(reactionRulesetBo.getPriceCompetitorChainId());
+		reaRuleset.setColruytGroupChainId(reactionRulesetBo.getColruytGroupChainId());
+		reaRuleset.setPriceCompetitorChainId(reactionRulesetBo.getPriceCompetitorChainId());
 		reaRuleset.setRuleTypeId(reactionRulesetBo.getRefRuleTypeBo().getRuleTypeId());
 		reaRuleset.setRulesetComment(reactionRulesetBo.getComments());
 		reaRuleset.setRulesetName(reactionRulesetBo.getName());
 		reaRuleset.setLstUpdateBy(logonId);
 		ReactionRuleSet expectedReaRuleset=reaRulesetConverter.convertReaRuleset(reaRuleset, reactionRulesetBo, logonId);
-		assertEquals(new Long(1L), Long.valueOf(expectedReaRuleset.getCgChnId()));
+		assertEquals(new Long(1L), Long.valueOf(expectedReaRuleset.getColruytGroupChainId()));
 	}
 	@Test
 	public void convertReactionRulesetTest(){
 		ReactionRulesetBo reactionRulesetBo=new ReactionRulesetBo();
 		ReactionRuleSet reactionRuleSet=getReactRuleset();
-		reactionRulesetBo.setColruytGroupChainId(reactionRuleSet.getCgChnId());
+		reactionRulesetBo.setColruytGroupChainId(reactionRuleSet.getColruytGroupChainId());
 		reactionRulesetBo.setComments(reactionRuleSet.getRulesetComment());
 		reactionRulesetBo.setName(reactionRuleSet.getRulesetName());
-		reactionRulesetBo.setPriceCompetitorChainId(reactionRuleSet.getCompChainId());
+		reactionRulesetBo.setPriceCompetitorChainId(reactionRuleSet.getPriceCompetitorChainId());
 		reactionRulesetBo.setRefRuleTypeBo(getRefRuleType());
 		reactionRulesetBo.setRuleLines(getReactionRuleBo());
 		reactionRulesetBo.setRulesetId(reactionRuleSet.getReaRulesetId());
@@ -110,8 +110,8 @@ public class ReaRulesetConverterTest {
 		ReactionRulesetBo ruleBo = new ReactionRulesetBo();
 		ReactionRuleSet reactionRuleSet=getReactRuleset();
 		ruleBo.setRulesetId(reactionRuleSet.getReaRulesetId());
-		ruleBo.setColruytGroupChainId(reactionRuleSet.getCgChnId());
-		ruleBo.setPriceCompetitorChainId(reactionRuleSet.getCompChainId());
+		ruleBo.setColruytGroupChainId(reactionRuleSet.getColruytGroupChainId());
+		ruleBo.setPriceCompetitorChainId(reactionRuleSet.getPriceCompetitorChainId());
 		rulesetBoList.add(ruleBo);
 		List<ReactionRulesetBo> expectedReactionRulesetBo=reaRulesetConverter.convertRuleSetBo(getReactionRuleSetlist());
 		assertEquals(rulesetBoList.size(),expectedReactionRulesetBo.size());
@@ -121,10 +121,10 @@ public class ReaRulesetConverterTest {
 	private List<ReactionRuleSet> getReactionRuleSetlist() {
 		List<ReactionRuleSet> ruleSetList=Lists.newArrayList();
 		ReactionRuleSet reactionRuleSet=new ReactionRuleSet();
-		reactionRuleSet.setCgChnId(1);
-		reactionRuleSet.setCompChainId(2);
+		reactionRuleSet.setColruytGroupChainId(1);
+		reactionRuleSet.setPriceCompetitorChainId(2);
 		reactionRuleSet.setLstUpdateBy("Sa");
-		reactionRuleSet.setReaRules(getReactRuleList());
+		reactionRuleSet.setReactionRules(getReactRuleList());
 		reactionRuleSet.setReaRulesetId(12l);
 		reactionRuleSet.setRulesetComment("Good");
 		reactionRuleSet.setRulesetName("Filr");
@@ -171,10 +171,10 @@ public class ReaRulesetConverterTest {
 	}*/
 	private ReactionRuleSet getReactRuleset() {
 		ReactionRuleSet reactionRuleSet=new ReactionRuleSet();
-		reactionRuleSet.setCgChnId(1);
-		reactionRuleSet.setCompChainId(2);
+		reactionRuleSet.setColruytGroupChainId(1);
+		reactionRuleSet.setPriceCompetitorChainId(2);
 		reactionRuleSet.setLstUpdateBy("Sa");
-		reactionRuleSet.setReaRules(getReactRuleList());
+		reactionRuleSet.setReactionRules(getReactRuleList());
 		reactionRuleSet.setReaRulesetId(12l);
 		reactionRuleSet.setRulesetComment("Good");
 		reactionRuleSet.setRulesetName("Filr");
@@ -185,20 +185,20 @@ public class ReaRulesetConverterTest {
 		List<ReactionRule> reactionRules=Lists.newArrayList();
 		ReactionRule reactionRule=new ReactionRule();
 		reactionRule.setCreatedBy("Sa");
-		reactionRule.setDirectYn(true);
-		reactionRule.setIcFrom(5);
-		reactionRule.setIcTo(10);
+		reactionRule.setDirect(true);
+		reactionRule.setImportancecodeFrom(5);
+		reactionRule.setImportancecodeTo(10);
 		reactionRule.setLstUpdateBy("sa");
-		reactionRule.setPermenantYn(true);
-		reactionRule.setPostponedYn(false);
+		reactionRule.setPermenant(true);
+		reactionRule.setPostponed(false);
 		reactionRule.setReaRuleId(1);
 		reactionRule.setReaRulesetId(10);
-		reactionRule.setReaPpdHchysets(getreaPpdHchysets());
+		reactionRule.setPriceProductHierarchySet(getreaPpdHchysets());
 		reactionRule.setRuleComment("good");
-		reactionRule.setRecalculateYn(true);
+		reactionRule.setRecalculate(true);
 		reactionRule.setRuleName("filt");
 		reactionRule.setRulePriority(1);
-		reactionRule.setTemporaryYn(true);
+		reactionRule.setTemporary(true);
 		reactionRule.setValidFrom(new Date());
 		reactionRule.setValidUpto(new Date());
 		reactionRules.add(reactionRule);
@@ -219,12 +219,12 @@ public class ReaRulesetConverterTest {
 		List<PriceProductHierarchySet>  priceProductHierarchySetlist=Lists.newArrayList();
 		PriceProductHierarchySet priceProductHierarchySet=new PriceProductHierarchySet();
 		priceProductHierarchySet.setAssortmentName("asas");
-		priceProductHierarchySet.setCheapBrandYn(true);
+		priceProductHierarchySet.setCheapBrand(true);
 		priceProductHierarchySet.setCreatedBy("sa");
 		priceProductHierarchySet.setLstUpdateBy("sa");
-		priceProductHierarchySet.setNatBrandYn(true);
-		priceProductHierarchySet.setOwnBrandYn(false);
-		priceProductHierarchySet.setPpdHchysetId(1);
+		priceProductHierarchySet.setNationalBrand(true);
+		priceProductHierarchySet.setOwnBrand(false);
+		priceProductHierarchySet.setProdHrchySetId(1);
 		priceProductHierarchySet.setPriceProductHierarchyElements(getpriceProductHierarchyElements());
 		priceProductHierarchySet.setReaRuleId(1);
 		priceProductHierarchySetlist.add(priceProductHierarchySet);	
@@ -237,7 +237,7 @@ public class ReaRulesetConverterTest {
 		priceProductHierarchyElement.setPpdHchyElmntId(12l);
 		priceProductHierarchyElement.setPpdHchyTypeId(1l);
 		priceProductHierarchyElement.setPpdHchyValue("xx");
-		priceProductHierarchyElement.setReaPpdHchysetElmnts(getreaPpdHchysetElmnts());
+		priceProductHierarchyElement.setProdHrchySetElement(getreaPpdHchysetElmnts());
 		productHierarchyElements.add(priceProductHierarchyElement);
 		return productHierarchyElements;
 	}
@@ -252,8 +252,8 @@ public class ReaRulesetConverterTest {
 
 	private PriceProductHierarchySetElmntPK getppdid() {
 		PriceProductHierarchySetElmntPK priceProductHierarchySetElmntPK=new PriceProductHierarchySetElmntPK();
-		priceProductHierarchySetElmntPK.setPpdHchyElmntId(1);
-		priceProductHierarchySetElmntPK.setPpdHchysetId(1);
+		priceProductHierarchySetElmntPK.setProdHrchyElemntId(1);
+		priceProductHierarchySetElmntPK.setProdHrchySetId(1);
 		return priceProductHierarchySetElmntPK;
 	}
 

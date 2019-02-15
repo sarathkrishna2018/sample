@@ -221,7 +221,7 @@ public class RecordingNotFoundRuleServiceTest {
 
 	public RecordingNotFoundRuleAction getRecordingNotFoundRule() {
 		RecordingNotFoundRuleAction reaRnfAct = new RecordingNotFoundRuleAction();
-		reaRnfAct.setNoOfRnf(5L);
+		reaRnfAct.setNoOfRecordNotFound(5L);
 		return reaRnfAct;
 	}
 
@@ -232,15 +232,15 @@ public class RecordingNotFoundRuleServiceTest {
 		reaRule.setReaRuleId(1L);
 		reaRule.setReaRulesetId(1l);
 		reaRule.setRuleName("Rule");
-		reaRule.setIcFrom(10);
-		reaRule.setIcTo(5);
-		reaRule.setDirectYn(true);
-		reaRule.setPostponedYn(true);
-		reaRule.setPermenantYn(true);
-		reaRule.setTemporaryYn(false);
+		reaRule.setImportancecodeFrom(10);
+		reaRule.setImportancecodeTo(5);
+		reaRule.setDirect(true);
+		reaRule.setPostponed(true);
+		reaRule.setPermenant(true);
+		reaRule.setTemporary(false);
 		reaRule.setValidFrom(validFromdate);
 		reaRule.setValidUpto(validTodate);
-		reaRule.setRecalculateYn(false);
+		reaRule.setRecalculate(false);
 		reaRule.setRuleComment("good");
 		reaRule.setCreatedBy("sa");
 		reaRule.setLstUpdateBy("sa");

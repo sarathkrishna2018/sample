@@ -88,20 +88,20 @@ public class ReaRuleConverterTest {
 		List<ReactionRule> reactionRules = Lists.newArrayList();
 		ReactionRule reactionRule = new ReactionRule();
 		reactionRule.setCreatedBy("Sa");
-		reactionRule.setDirectYn(true);
-		reactionRule.setIcFrom(5);
-		reactionRule.setIcTo(10);
+		reactionRule.setDirect(true);
+		reactionRule.setImportancecodeFrom(5);
+		reactionRule.setImportancecodeTo(10);
 		reactionRule.setLstUpdateBy("sa");
-		reactionRule.setPermenantYn(true);
-		reactionRule.setPostponedYn(false);
+		reactionRule.setPermenant(true);
+		reactionRule.setPostponed(false);
 		reactionRule.setReaRuleId(1);
 		reactionRule.setReaRulesetId(10);
-		reactionRule.setReaPpdHchysets(getreaPpdHchysets());
+		reactionRule.setPriceProductHierarchySet(getreaPpdHchysets());
 		reactionRule.setRuleComment("good");
-		reactionRule.setRecalculateYn(true);
+		reactionRule.setRecalculate(true);
 		reactionRule.setRuleName("filt");
 		reactionRule.setRulePriority(1);
-		reactionRule.setTemporaryYn(true);
+		reactionRule.setTemporary(true);
 		reactionRule.setValidFrom(new Date());
 		reactionRule.setValidUpto(new Date());
 		reactionRules.add(reactionRule);
@@ -146,20 +146,20 @@ public class ReaRuleConverterTest {
 		ReactionRule reactionRule = new ReactionRule();
 
 		reactionRule.setCreatedBy("Sa");
-		reactionRule.setDirectYn(true);
-		reactionRule.setIcFrom(5);
-		reactionRule.setIcTo(10);
+		reactionRule.setDirect(true);
+		reactionRule.setImportancecodeFrom(5);
+		reactionRule.setImportancecodeTo(10);
 		reactionRule.setLstUpdateBy("sa");
-		reactionRule.setPermenantYn(true);
-		reactionRule.setPostponedYn(false);
+		reactionRule.setPermenant(true);
+		reactionRule.setPostponed(false);
 		reactionRule.setReaRuleId(1);
 		reactionRule.setReaRulesetId(10);
-		reactionRule.setReaPpdHchysets(getreaPpdHchysets());
+		reactionRule.setPriceProductHierarchySet(getreaPpdHchysets());
 		reactionRule.setRuleComment("good");
-		reactionRule.setRecalculateYn(true);
+		reactionRule.setRecalculate(true);
 		reactionRule.setRuleName("filt");
 		reactionRule.setRulePriority(1);
-		reactionRule.setTemporaryYn(true);
+		reactionRule.setTemporary(true);
 		reactionRule.setValidFrom(new Date());
 		reactionRule.setValidUpto(new Date());
 		return reactionRule;
@@ -169,12 +169,12 @@ public class ReaRuleConverterTest {
 		List<PriceProductHierarchySet> priceProductHierarchySetlist = Lists.newArrayList();
 		PriceProductHierarchySet priceProductHierarchySet = new PriceProductHierarchySet();
 		priceProductHierarchySet.setAssortmentName("asas");
-		priceProductHierarchySet.setCheapBrandYn(true);
+		priceProductHierarchySet.setCheapBrand(true);
 		priceProductHierarchySet.setCreatedBy("sa");
 		priceProductHierarchySet.setLstUpdateBy("sa");
-		priceProductHierarchySet.setNatBrandYn(true);
-		priceProductHierarchySet.setOwnBrandYn(false);
-		priceProductHierarchySet.setPpdHchysetId(1);
+		priceProductHierarchySet.setNationalBrand(true);
+		priceProductHierarchySet.setOwnBrand(false);
+		priceProductHierarchySet.setProdHrchySetId(1);
 		priceProductHierarchySet.setPriceProductHierarchyElements(getpriceProductHierarchyElements());
 		priceProductHierarchySet.setReaRuleId(1);
 		priceProductHierarchySetlist.add(priceProductHierarchySet);
@@ -188,7 +188,7 @@ public class ReaRuleConverterTest {
 		priceProductHierarchyElement.setPpdHchyElmntId(12l);
 		priceProductHierarchyElement.setPpdHchyTypeId(1l);
 		priceProductHierarchyElement.setPpdHchyValue("xx");
-		priceProductHierarchyElement.setReaPpdHchysetElmnts(getreaPpdHchysetElmnts());
+		priceProductHierarchyElement.setProdHrchySetElement(getreaPpdHchysetElmnts());
 		productHierarchyElements.add(priceProductHierarchyElement);
 		return productHierarchyElements;
 	}
@@ -204,8 +204,8 @@ public class ReaRuleConverterTest {
 
 	private PriceProductHierarchySetElmntPK getppdid() {
 		PriceProductHierarchySetElmntPK priceProductHierarchySetElmntPK = new PriceProductHierarchySetElmntPK();
-		priceProductHierarchySetElmntPK.setPpdHchyElmntId(1);
-		priceProductHierarchySetElmntPK.setPpdHchysetId(1);
+		priceProductHierarchySetElmntPK.setProdHrchyElemntId(1);
+		priceProductHierarchySetElmntPK.setProdHrchySetId(1);
 		return priceProductHierarchySetElmntPK;
 	}
 

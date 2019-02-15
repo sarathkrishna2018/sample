@@ -18,19 +18,19 @@ public class ReactingRuleConverter implements Serializable {
 		ReactingRuleAction reactingAct = new ReactingRuleAction();
 		reactingAct.setReaRuleId(reactingRuleBo.getRuleId());
 		reactingAct.setReactingAmt(reactingRuleBo.getReactingAmount());
-		reactingAct.setReactingPerc(reactingRuleBo.getReactingPercentage());
-		reactingAct.setTholdAmt(reactingRuleBo.getThresholdAmount());
-		reactingAct.setTholdPerc(reactingRuleBo.getThresholdPercentage());
-		reactingAct.setCatchAllYn(reactingRuleBo.isCatchAll());
+		reactingAct.setReactingPercentage(reactingRuleBo.getReactingPercentage());
+		reactingAct.setThresholdAmount(reactingRuleBo.getThresholdAmount());
+		reactingAct.setThresholdPercentage(reactingRuleBo.getThresholdPercentage());
+		reactingAct.setCatchAll(reactingRuleBo.isCatchAll());
 		return reactingAct;
 	}
 
 	public ReactingRuleBo addingReactionRuleAction(ReactingRuleAction reactingRuleAction, ReactingRuleBo reactingBo) {
 		reactingBo.setReactingAmount(reactingRuleAction.getReactingAmt());
-		reactingBo.setReactingPercentage(reactingRuleAction.getReactingPerc());
-		reactingBo.setThresholdAmount(reactingRuleAction.getTholdAmt());
-		reactingBo.setThresholdPercentage(reactingRuleAction.getTholdPerc());
-		reactingBo.setCatchAll(reactingRuleAction.getCatchAllYn());
+		reactingBo.setReactingPercentage(reactingRuleAction.getReactingPercentage());
+		reactingBo.setThresholdAmount(reactingRuleAction.getThresholdAmount());
+		reactingBo.setThresholdPercentage(reactingRuleAction.getThresholdPercentage());
+		reactingBo.setCatchAll(reactingRuleAction.getCatchAll());
 		return reactingBo;
 	}
 }

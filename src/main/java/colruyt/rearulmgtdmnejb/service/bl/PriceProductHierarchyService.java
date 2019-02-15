@@ -64,7 +64,7 @@ public class PriceProductHierarchyService implements Serializable {
 				reactionRuleBo.getPriceProductHierarchySet(), reactionRuleBo.getLogonId());
 		PriceProductHierarchySet reaPpdHchyset = setProdHrchySet(reactionRuleBo);
 		reaPpdHchyset = productHierarchySetDlService.create(reaPpdHchyset);
-		reactionRuleBo.setProductHierarchySetId(reaPpdHchyset.getPpdHchysetId());
+		reactionRuleBo.setProductHierarchySetId(reaPpdHchyset.getProdHrchySetId());
 		createProdHrchtSetElmnt(reaPpdHchyElmnts, reactionRuleBo.getProductHierarchySetId(),
 				reactionRuleBo.getLogonId());
 		return reactionRuleBo;
@@ -88,8 +88,8 @@ public class PriceProductHierarchyService implements Serializable {
 		for (PriceProductHierarchyElement reaPpdHchyElmnt : reaPpdHchyElmnts) {
 			hierarchyFound = false;
 			for (PriceProductHierarchyElement existingProdHrchyElmnt : existingProdHrchyList) {
-				if (reaPpdHchyElmnt.getPpdHchyValue().equals(existingProdHrchyElmnt.getPpdHchyValue())
-						&& reaPpdHchyElmnt.getPpdHchyTypeId().equals(existingProdHrchyElmnt.getPpdHchyTypeId())) {
+				if (reaPpdHchyElmnt.getProdHrchyValue().equals(existingProdHrchyElmnt.getProdHrchyValue())
+						&& reaPpdHchyElmnt.getProdHrchyTypeId().equals(existingProdHrchyElmnt.getProdHrchyTypeId())) {
 					// same hierarchy element already exists in DB
 					hierarchyFound = true;
 					combinedProdHrchyElmnList.add(existingProdHrchyElmnt);
@@ -115,7 +115,7 @@ public class PriceProductHierarchyService implements Serializable {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_PRODUCTHIERARCHYELEMENTEXISTING);
 		List<String> productHierarchyElmntValueLst = Lists.newArrayList();
 		for (PriceProductHierarchyElement reaPpdHchyElmnt : reaPpdHchyElmnts) {
-			productHierarchyElmntValueLst.add(reaPpdHchyElmnt.getPpdHchyValue());
+			productHierarchyElmntValueLst.add(reaPpdHchyElmnt.getProdHrchyValue());
 		}
 		return productHierarchyElementDlService.findByHierarchyValueList(productHierarchyElmntValueLst);
 
@@ -138,9 +138,9 @@ public class PriceProductHierarchyService implements Serializable {
 		}
 		reaPpdHchyset.setReaRuleId(reactionRuleBo.getRuleId());
 		reaPpdHchyset.setAssortmentName(reactionRuleBo.getAssortmentName());
-		reaPpdHchyset.setOwnBrandYn(reactionRuleBo.isOwnBrand());
-		reaPpdHchyset.setNatBrandYn(reactionRuleBo.isNationalBrand());
-		reaPpdHchyset.setCheapBrandYn(reactionRuleBo.isCheapBrand());
+		reaPpdHchyset.setOwnBrand(reactionRuleBo.isOwnBrand());
+		reaPpdHchyset.setNationalBrand(reactionRuleBo.isNationalBrand());
+		reaPpdHchyset.setCheapBrand(reactionRuleBo.isCheapBrand());
 		reaPpdHchyset.setLstUpdateBy(reactionRuleBo.getLogonId());
 		reaPpdHchyset.setCreatedBy(reactionRuleBo.getLogonId());
 		return reaPpdHchyset;
@@ -159,8 +159,8 @@ public class PriceProductHierarchyService implements Serializable {
 		for (PriceProductHierarchyElement reaPpdHchyElmnt : reaPpdHchyElmnts) {
 			PriceProductHierarchySetElmnt reaPpdHchysetElmnt = new PriceProductHierarchySetElmnt();
 			PriceProductHierarchySetElmntPK reaPpdHchysetElmntPK = new PriceProductHierarchySetElmntPK();
-			reaPpdHchysetElmntPK.setPpdHchyElmntId(reaPpdHchyElmnt.getPpdHchyElmntId());
-			reaPpdHchysetElmntPK.setPpdHchysetId(prodHrchySetId);
+			reaPpdHchysetElmntPK.setProdHrchyElemntId(reaPpdHchyElmnt.getProdHrchyElemntId());
+			reaPpdHchysetElmntPK.setProdHrchySetId(prodHrchySetId);
 			reaPpdHchysetElmnt.setId(reaPpdHchysetElmntPK);
 			reaPpdHchysetElmnt.setLstUpdateBy(logonId);
 			productHierarchySetDlService.create(reaPpdHchysetElmnt);
@@ -187,7 +187,7 @@ public class PriceProductHierarchyService implements Serializable {
 						.findSetElementByElementIds(toBeDeletedElements);
 				List<Long> setIds = Lists.newArrayList();
 				for (PriceProductHierarchySetElmnt priceProductHierarchySetElement : toBeDeletedSetElements) {
-					setIds.add(priceProductHierarchySetElement.getId().getPpdHchysetId());
+					setIds.add(priceProductHierarchySetElement.getId().getProdHrchySetId());
 				}
 				productHierarchySetIds = productHierarchySetDlService.findSetElementBySetIds(setIds);
 				productHierarchySetDlService.deleteSetElements(toBeDeletedElements);
@@ -205,8 +205,8 @@ public class PriceProductHierarchyService implements Serializable {
 	private Set<String> convertHierarchyValueListToSet(List<PriceProductHierarchyElement> hierarchyValuesFromSoi) {
 		Set<String> hierarchyValueSet = new HashSet<>();
 		for (PriceProductHierarchyElement hierarchyValue : hierarchyValuesFromSoi) {
-			if (hierarchyValue.getPpdHchyTypeId() != 1) {
-				hierarchyValueSet.add(hierarchyValue.getPpdHchyValue());
+			if (hierarchyValue.getProdHrchyTypeId() != 1) {
+				hierarchyValueSet.add(hierarchyValue.getProdHrchyValue());
 			}
 		}
 		return hierarchyValueSet;
@@ -217,8 +217,8 @@ public class PriceProductHierarchyService implements Serializable {
 		List<Long> toBeDeletedElements = Lists.newArrayList();
 		for (String hierarchyValue : hierarchyValuesToDelete) {
 			for (PriceProductHierarchyElement productHierarchyElement : productHierarchyElementList) {
-				if (hierarchyValue.equalsIgnoreCase(productHierarchyElement.getPpdHchyValue())) {
-					toBeDeletedElements.add(productHierarchyElement.getPpdHchyElmntId());
+				if (hierarchyValue.equalsIgnoreCase(productHierarchyElement.getProdHrchyValue())) {
+					toBeDeletedElements.add(productHierarchyElement.getProdHrchyElemntId());
 					break;
 				}
 			}

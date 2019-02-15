@@ -18,22 +18,22 @@ public class PriceProductHierarchySetElmntPK implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Column(name="PPD_HCHYSET_ID")
-	private long ppdHchysetId;
+	private long prodHrchySetId;
 
 	@Column(name="PPD_HCHY_ELMNT_ID")
-	private long ppdHchyElmntId;
+	private long prodHrchyElemntId;
 
-	public long getPpdHchysetId() {
-		return this.ppdHchysetId;
+	public long getProdHrchySetId() {
+		return this.prodHrchySetId;
 	}
-	public void setPpdHchysetId(long ppdHchysetId) {
-		this.ppdHchysetId = ppdHchysetId;
+	public void setProdHrchySetId(long ppdHchysetId) {
+		this.prodHrchySetId = ppdHchysetId;
 	}
-	public long getPpdHchyElmntId() {
-		return this.ppdHchyElmntId;
+	public long getProdHrchyElemntId() {
+		return this.prodHrchyElemntId;
 	}
-	public void setPpdHchyElmntId(long ppdHchyElmntId) {
-		this.ppdHchyElmntId = ppdHchyElmntId;
+	public void setProdHrchyElemntId(long ppdHchyElmntId) {
+		this.prodHrchyElemntId = ppdHchyElmntId;
 	}
 
 	public boolean equals(Object other) {
@@ -45,15 +45,15 @@ public class PriceProductHierarchySetElmntPK implements Serializable {
 		}
 		PriceProductHierarchySetElmntPK castOther = (PriceProductHierarchySetElmntPK)other;
 		return 
-			(this.ppdHchysetId == castOther.ppdHchysetId)
-			&& (this.ppdHchyElmntId == castOther.ppdHchyElmntId);
+			(this.prodHrchySetId == castOther.prodHrchySetId)
+			&& (this.prodHrchyElemntId == castOther.prodHrchyElemntId);
 	}
 
 	public int hashCode() {
 		final int prime = 31;
 		int hash = 17;
-		hash = hash * prime + ((int) (this.ppdHchysetId ^ (this.ppdHchysetId >>> 32)));
-		hash = hash * prime + ((int) (this.ppdHchyElmntId ^ (this.ppdHchyElmntId >>> 32)));
+		hash = hash * prime + ((int) (this.prodHrchySetId ^ (this.prodHrchySetId >>> 32)));
+		hash = hash * prime + ((int) (this.prodHrchyElemntId ^ (this.prodHrchyElemntId >>> 32)));
 		
 		return hash;
 	}

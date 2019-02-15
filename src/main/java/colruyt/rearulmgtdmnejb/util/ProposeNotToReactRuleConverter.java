@@ -27,7 +27,7 @@ public class ProposeNotToReactRuleConverter implements Serializable {
 		ProposalNotToReactRuleAction notToReactRuleAction = new ProposalNotToReactRuleAction();
 		notToReactRuleAction.setReaRuleId(notToReactRule.getRuleId());
 		notToReactRuleAction.setFltoutTypeId(notToReactRule.getFilterOutType().getFilterOutTypeId());
-		notToReactRuleAction.setReaNreactSetRsns(convertReasonNotToReactSet(notToReactRule.getNotToReactCodes()));
+		notToReactRuleAction.setNotToReactSetReasons(convertReasonNotToReactSet(notToReactRule.getNotToReactCodes()));
 		return notToReactRuleAction;
 	}
 	
@@ -43,7 +43,7 @@ public class ProposeNotToReactRuleConverter implements Serializable {
 	public ProposeNotToReactRuleBo convertToBo(ProposalNotToReactRuleAction proposalNotToReactRuleAction,
 			ProposeNotToReactRuleBo proposeNTRRuleBo) {
 		proposeNTRRuleBo.setFilterOutType(convertFltOutType(proposalNotToReactRuleAction.getFltoutTypeId()));
-		proposeNTRRuleBo.setNotToReactCodes(convertReasonNotToReactSetBos(proposalNotToReactRuleAction.getReaNreactSetRsns()));
+		proposeNTRRuleBo.setNotToReactCodes(convertReasonNotToReactSetBos(proposalNotToReactRuleAction.getNotToReactSetReasons()));
 		return proposeNTRRuleBo;
 	}
 

@@ -323,10 +323,10 @@ public class ReactionRuleSetServiceTest {
 
 	public ReactionRuleSet getReaRuleset() {
 		ReactionRuleSet reaRuleset = new ReactionRuleSet();
-		reaRuleset.setCgChnId(1l);
-		reaRuleset.setCompChainId(1l);
+		reaRuleset.setColruytGroupChainId(1l);
+		reaRuleset.setPriceCompetitorChainId(1l);
 		reaRuleset.setLstUpdateBy("sa");
-		reaRuleset.setReaRules(getReaRule());
+		reaRuleset.setReactionRules(getReaRule());
 		reaRuleset.setReaRulesetId(1l);
 		reaRuleset.setRulesetComment("good");
 		reaRuleset.setRulesetName("asa");
@@ -338,10 +338,10 @@ public class ReactionRuleSetServiceTest {
 	public List<ReactionRuleSet> getReactionRuleset() {
 		List<ReactionRuleSet> reaRulesetlist = Lists.newArrayList();
 		ReactionRuleSet reaRuleset = new ReactionRuleSet();
-		reaRuleset.setCgChnId(1l);
-		reaRuleset.setCompChainId(1l);
+		reaRuleset.setColruytGroupChainId(1l);
+		reaRuleset.setPriceCompetitorChainId(1l);
 		reaRuleset.setLstUpdateBy("sa");
-		reaRuleset.setReaRules(getReaRule());
+		reaRuleset.setReactionRules(getReaRule());
 		reaRuleset.setReaRulesetId(1l);
 		reaRuleset.setRulesetComment("good");
 		reaRuleset.setRulesetName("asa");
@@ -359,15 +359,15 @@ public class ReactionRuleSetServiceTest {
 		reaRule.setReaRuleId(1l);
 		reaRule.setRulePriority(2);
 		reaRule.setRuleName("Filtering");
-		reaRule.setIcFrom(10);
-		reaRule.setIcTo(5);
-		reaRule.setDirectYn(true);
-		reaRule.setPostponedYn(true);
-		reaRule.setPermenantYn(true);
-		reaRule.setTemporaryYn(false);
+		reaRule.setImportancecodeFrom(10);
+		reaRule.setImportancecodeTo(5);
+		reaRule.setDirect(true);
+		reaRule.setPostponed(true);
+		reaRule.setPermenant(true);
+		reaRule.setTemporary(false);
 		reaRule.setValidFrom(new Date());
 		reaRule.setValidUpto(new Date());
-		reaRule.setRecalculateYn(false);
+		reaRule.setRecalculate(false);
 		reaRule.setRuleComment("good");
 		reaRule.setCreatedBy("sa");
 		reaRule.setLstUpdateBy("sa");

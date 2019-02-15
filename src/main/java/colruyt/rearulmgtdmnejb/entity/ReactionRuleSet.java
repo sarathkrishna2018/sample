@@ -36,10 +36,10 @@ public class ReactionRuleSet implements Serializable {
 	private long ruleTypeId;
 
 	@Column(name="CG_CHN_ID")
-	private long cgChnId;
+	private long colruytGroupChainId;
 
 	@Column(name="COMP_CHAIN_ID")
-	private long compChainId;
+	private long priceCompetitorChainId;
 
 	@Column(name="LST_UPDATE_BY")
 	private String lstUpdateBy;
@@ -56,7 +56,7 @@ public class ReactionRuleSet implements Serializable {
 	
 	@OneToMany()
 	@JoinColumn(name = "REA_RULESET_ID", referencedColumnName="REA_RULESET_ID")
-	private List<ReactionRule> reaRules;
+	private List<ReactionRule> reactionRules;
 
 	public Long getReaRulesetId() {
 		return this.reaRulesetId;
@@ -66,20 +66,20 @@ public class ReactionRuleSet implements Serializable {
 		this.reaRulesetId = reaRulesetId;
 	}
 
-	public long getCgChnId() {
-		return this.cgChnId;
+	public long getColruytGroupChainId() {
+		return this.colruytGroupChainId;
 	}
 
-	public void setCgChnId(long cgChnId) {
-		this.cgChnId = cgChnId;
+	public void setColruytGroupChainId(long cgChnId) {
+		this.colruytGroupChainId = cgChnId;
 	}
 
-	public long getCompChainId() {
-		return this.compChainId;
+	public long getPriceCompetitorChainId() {
+		return this.priceCompetitorChainId;
 	}
 
-	public void setCompChainId(long compChainId) {
-		this.compChainId = compChainId;
+	public void setPriceCompetitorChainId(long compChainId) {
+		this.priceCompetitorChainId = compChainId;
 	}
 
 	public String getLstUpdateBy() {
@@ -106,12 +106,12 @@ public class ReactionRuleSet implements Serializable {
 		this.rulesetName = rulesetName;
 	}
 
-	public List<ReactionRule> getReaRules() {
-		return this.reaRules;
+	public List<ReactionRule> getReactionRules() {
+		return this.reactionRules;
 	}
 
-	public void setReaRules(List<ReactionRule> reaRules) {
-		this.reaRules = reaRules;
+	public void setReactionRules(List<ReactionRule> reaRules) {
+		this.reactionRules = reaRules;
 	}
 
 	public long getRuleTypeId() {

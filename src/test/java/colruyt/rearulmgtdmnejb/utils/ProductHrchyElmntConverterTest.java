@@ -61,29 +61,29 @@ public class ProductHrchyElmntConverterTest {
 		reaRule.setReaRuleId(1L);
 		reaRule.setReaRulesetId(1l);
 		reaRule.setRuleName("Filtering");
-		reaRule.setIcFrom(10);
-		reaRule.setIcTo(5);
-		reaRule.setDirectYn(true);
-		reaRule.setPostponedYn(true);
-		reaRule.setPermenantYn(true);
-		reaRule.setTemporaryYn(false);
+		reaRule.setImportancecodeFrom(10);
+		reaRule.setImportancecodeTo(5);
+		reaRule.setDirect(true);
+		reaRule.setPostponed(true);
+		reaRule.setPermenant(true);
+		reaRule.setTemporary(false);
 		reaRule.setValidFrom(validFromdate);
 		reaRule.setValidUpto(validTodate);
-		reaRule.setRecalculateYn(false);
+		reaRule.setRecalculate(false);
 		reaRule.setRuleComment("good");
 		reaRule.setCreatedBy("sa");
 		reaRule.setLstUpdateBy("sa");
-		reaRule.setReaPpdHchysets(getReaPpdHchysets());
+		reaRule.setPriceProductHierarchySet(getReaPpdHchysets());
 		return reaRule;
 	}
 	private List<PriceProductHierarchySet> getReaPpdHchysets() {
 		 List<PriceProductHierarchySet> priceProductHierarchySets=Lists.newArrayList();
 		 PriceProductHierarchySet priceProductHierarchySet=new PriceProductHierarchySet();
 		 priceProductHierarchySet.setAssortmentName("all");
-		 priceProductHierarchySet.setCheapBrandYn(false);
+		 priceProductHierarchySet.setCheapBrand(false);
 		 priceProductHierarchySet.setCreatedBy("ake");
 		 priceProductHierarchySet.setLstUpdateBy("ake");
-		 priceProductHierarchySet.setPpdHchysetId(1l);
+		 priceProductHierarchySet.setProdHrchySetId(1l);
 		 priceProductHierarchySet.setPriceProductHierarchyElements(getPriceProductHierarchyElements());
 		 priceProductHierarchySet.setReaRuleId(1);
 		 priceProductHierarchySets.add(priceProductHierarchySet);
@@ -96,7 +96,7 @@ public class ProductHrchyElmntConverterTest {
 		priceProductHierarchyElement.setPpdHchyElmntId(1l);
 		priceProductHierarchyElement.setPpdHchyTypeId(1l);
 		priceProductHierarchyElement.setPpdHchyValue("All");
-		priceProductHierarchyElement.setReaPpdHchysetElmnts(getReaPpdHchysetElmnts());
+		priceProductHierarchyElement.setProdHrchySetElement(getReaPpdHchysetElmnts());
 		priceProductHierarchyElements.add(priceProductHierarchyElement);
 		return priceProductHierarchyElements;
 	}
@@ -110,8 +110,8 @@ public class ProductHrchyElmntConverterTest {
 	}
 	private PriceProductHierarchySetElmntPK getPriceProductHierarchySetElmntPK() {
 		PriceProductHierarchySetElmntPK priceProductHierarchySetElmntPK=new PriceProductHierarchySetElmntPK();
-		priceProductHierarchySetElmntPK.setPpdHchyElmntId(1);
-		priceProductHierarchySetElmntPK.setPpdHchysetId(1);
+		priceProductHierarchySetElmntPK.setProdHrchyElemntId(1);
+		priceProductHierarchySetElmntPK.setProdHrchySetId(1);
 		return priceProductHierarchySetElmntPK;
 	}
 	

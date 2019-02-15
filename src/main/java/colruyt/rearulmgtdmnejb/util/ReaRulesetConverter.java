@@ -34,8 +34,8 @@ public class ReaRulesetConverter implements Serializable {
 		} else {
 			reaRuleset = new ReactionRuleSet();
 		}
-		reaRuleset.setCgChnId(rulesetBo.getColruytGroupChainId());
-		reaRuleset.setCompChainId(rulesetBo.getPriceCompetitorChainId());
+		reaRuleset.setColruytGroupChainId(rulesetBo.getColruytGroupChainId());
+		reaRuleset.setPriceCompetitorChainId(rulesetBo.getPriceCompetitorChainId());
 		reaRuleset.setRuleTypeId(rulesetBo.getRefRuleTypeBo().getRuleTypeId());
 		reaRuleset.setRulesetComment(rulesetBo.getComments());
 		reaRuleset.setRulesetName(rulesetBo.getName());
@@ -50,8 +50,8 @@ public class ReaRulesetConverter implements Serializable {
 			ruleBo.setRulesetId(ruleSet.getReaRulesetId());
 			ruleBo.setName(ruleSet.getRulesetName());
 			ruleBo.setComments(ruleSet.getRulesetComment());
-			ruleBo.setColruytGroupChainId(ruleSet.getCgChnId());
-			ruleBo.setPriceCompetitorChainId(ruleSet.getCompChainId());
+			ruleBo.setColruytGroupChainId(ruleSet.getColruytGroupChainId());
+			ruleBo.setPriceCompetitorChainId(ruleSet.getPriceCompetitorChainId());
 			RefRuleTypeBo ruleType = convertRulType(ruleSet.getRuleTypeId());
 			ruleBo.setRefRuleTypeBo(ruleType);
 			rulesetBoList.add(ruleBo);
@@ -78,12 +78,12 @@ public class ReaRulesetConverter implements Serializable {
 	public ReactionRulesetBo convertReactionRuleset(ReactionRuleSet reactionRuleSet) {
 		ReactionRulesetBo reactionRulesetBo = new ReactionRulesetBo();
 		if (reactionRuleSet != null) {
-			reactionRulesetBo.setColruytGroupChainId(reactionRuleSet.getCgChnId());
+			reactionRulesetBo.setColruytGroupChainId(reactionRuleSet.getColruytGroupChainId());
 			reactionRulesetBo.setComments(reactionRuleSet.getRulesetComment());
 			reactionRulesetBo.setName(reactionRuleSet.getRulesetName());
-			reactionRulesetBo.setPriceCompetitorChainId(reactionRuleSet.getCompChainId());
+			reactionRulesetBo.setPriceCompetitorChainId(reactionRuleSet.getPriceCompetitorChainId());
 			reactionRulesetBo.setRulesetId(reactionRuleSet.getReaRulesetId());
-			reactionRulesetBo.setRuleLines(reaRuleConverter.convertRuleLine(reactionRuleSet.getReaRules()));
+			reactionRulesetBo.setRuleLines(reaRuleConverter.convertRuleLine(reactionRuleSet.getReactionRules()));
 			reactionRulesetBo.setRefRuleTypeBo(new RefRuleTypeBo());
 			reactionRulesetBo.getRefRuleTypeBo().setRuleTypeId(reactionRuleSet.getRuleTypeId());
 

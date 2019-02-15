@@ -211,11 +211,11 @@ public class ReactingRuleServiceTest {
 	public ReactingRuleAction getReareactingAct() {
 		ReactingRuleAction reaReactingAct = new ReactingRuleAction();
 		reaReactingAct.setReaRuleId(1l);
-		reaReactingAct.setCatchAllYn(true);
+		reaReactingAct.setCatchAll(true);
 		reaReactingAct.setReactingAmt(12d);
-		reaReactingAct.setReactingPerc(8d);
-		reaReactingAct.setTholdAmt(10d);
-		reaReactingAct.setTholdPerc(6d);
+		reaReactingAct.setReactingPercentage(8d);
+		reaReactingAct.setThresholdAmount(10d);
+		reaReactingAct.setThresholdPercentage(6d);
 		return reaReactingAct;
 
 	}
@@ -227,15 +227,15 @@ public class ReactingRuleServiceTest {
 		reaRule.setReaRuleId(1L);
 		reaRule.setReaRulesetId(1l);
 		reaRule.setRuleName("Rule");
-		reaRule.setIcFrom(10);
-		reaRule.setIcTo(5);
-		reaRule.setDirectYn(true);
-		reaRule.setPostponedYn(true);
-		reaRule.setPermenantYn(true);
-		reaRule.setTemporaryYn(false);
+		reaRule.setImportancecodeFrom(10);
+		reaRule.setImportancecodeTo(5);
+		reaRule.setDirect(true);
+		reaRule.setPostponed(true);
+		reaRule.setPermenant(true);
+		reaRule.setTemporary(false);
 		reaRule.setValidFrom(validFromdate);
 		reaRule.setValidUpto(validTodate);
-		reaRule.setRecalculateYn(false);
+		reaRule.setRecalculate(false);
 		reaRule.setRuleComment("good");
 		reaRule.setCreatedBy("sa");
 		reaRule.setLstUpdateBy("sa");

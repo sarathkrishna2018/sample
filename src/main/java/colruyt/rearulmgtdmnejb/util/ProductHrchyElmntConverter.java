@@ -36,12 +36,12 @@ public class ProductHrchyElmntConverter implements Serializable {
 	}
 	
 	public GeneralRuleBo convertAssortment(GeneralRuleBo ruleBo, ReactionRule rule) {
-		for(PriceProductHierarchySet set : rule.getReaPpdHchysets()){
+		for(PriceProductHierarchySet set : rule.getPriceProductHierarchySet()){
 			ruleBo.setAssortmentName(set.getAssortmentName());
-			ruleBo.setCheapBrand(set.getCheapBrandYn());
-			ruleBo.setNationalBrand(set.getNatBrandYn());
-			ruleBo.setOwnBrand(set.getOwnBrandYn());
-			ruleBo.setProductHierarchySetId(set.getPpdHchysetId());
+			ruleBo.setCheapBrand(set.getCheapBrand());
+			ruleBo.setNationalBrand(set.getNationalBrand());
+			ruleBo.setOwnBrand(set.getOwnBrand());
+			ruleBo.setProductHierarchySetId(set.getProdHrchySetId());
 			List<ProductHierarchyElementBo> productHierarchyElementBolist=convertProductHrchyElementBo(set.getPriceProductHierarchyElements());
 			ruleBo.setPriceProductHierarchySet(productHierarchyElementBolist);
 			
@@ -53,9 +53,9 @@ public class ProductHrchyElmntConverter implements Serializable {
 		 List<ProductHierarchyElementBo> productHierarchyElementBolist=Lists.newArrayList();
 		 for(PriceProductHierarchyElement ppHchyElement:priceProductHierarchyElements){
 			 ProductHierarchyElementBo productHierarchyElementBo=new ProductHierarchyElementBo();
-			 productHierarchyElementBo.setId(ppHchyElement.getPpdHchyElmntId());
-			 productHierarchyElementBo.setPriceProductHierarchyTypeId(ppHchyElement.getPpdHchyTypeId());
-			 productHierarchyElementBo.setPriceProductHierarchyValue(ppHchyElement.getPpdHchyValue());
+			 productHierarchyElementBo.setId(ppHchyElement.getProdHrchyElemntId());
+			 productHierarchyElementBo.setPriceProductHierarchyTypeId(ppHchyElement.getProdHrchyTypeId());
+			 productHierarchyElementBo.setPriceProductHierarchyValue(ppHchyElement.getProdHrchyValue());
 			 productHierarchyElementBolist.add(productHierarchyElementBo);
 		 }
 		

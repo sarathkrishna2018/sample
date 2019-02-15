@@ -27,28 +27,28 @@ public class PriceProductHierarchyElement implements Serializable {
 	@SequenceGenerator(name="REA_PPD_HCHY_ELMNT_SEQ_GEN", sequenceName="SEQ_REA_PPD_HCHY_ELMNT")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="REA_PPD_HCHY_ELMNT_SEQ_GEN")
 	@Column(name="PPD_HCHY_ELMNT_ID")
-	private long ppdHchyElmntId;
+	private long prodHrchyElemntId;
 
 	@Column(name="CREATED_BY")
 	private String createdBy;
 
 	@Column(name="PPD_HCHY_TYPE_ID")
-	private long ppdHchyTypeId;
+	private long prodHrchyTypeId;
 
 	@Column(name="PPD_HCHY_VALUE")
-	private String ppdHchyValue;
+	private String prodHrchyValue;
 
 	//bi-directional many-to-one association to ReaPpdHchysetElmnt
 	@OneToMany
 	@JoinColumn(name = "PPD_HCHY_ELMNT_ID",referencedColumnName = "PPD_HCHY_ELMNT_ID")
-	private List<PriceProductHierarchySetElmnt> reaPpdHchysetElmnts;
+	private List<PriceProductHierarchySetElmnt> prodHrchySetElement;
 	
-	public Long getPpdHchyElmntId() {
-		return this.ppdHchyElmntId;
+	public Long getProdHrchyElemntId() {
+		return this.prodHrchyElemntId;
 	}
 
 	public void setPpdHchyElmntId(Long ppdHchyElmntId) {
-		this.ppdHchyElmntId = ppdHchyElmntId;
+		this.prodHrchyElemntId = ppdHchyElmntId;
 	}
 	
 	public String getCreatedBy() {
@@ -59,28 +59,28 @@ public class PriceProductHierarchyElement implements Serializable {
 		this.createdBy = createdBy;
 	}
 
-	public Long getPpdHchyTypeId() {
-		return this.ppdHchyTypeId;
+	public Long getProdHrchyTypeId() {
+		return this.prodHrchyTypeId;
 	}
 
 	public void setPpdHchyTypeId(Long ppdHchyTypeId) {
-		this.ppdHchyTypeId = ppdHchyTypeId;
+		this.prodHrchyTypeId = ppdHchyTypeId;
 	}
 
-	public String getPpdHchyValue() {
-		return this.ppdHchyValue;
+	public String getProdHrchyValue() {
+		return this.prodHrchyValue;
 	}
 
 	public void setPpdHchyValue(String ppdHchyValue) {
-		this.ppdHchyValue = ppdHchyValue;
+		this.prodHrchyValue = ppdHchyValue;
 	}
 
-	public List<PriceProductHierarchySetElmnt> getReaPpdHchysetElmnts() {
-		return this.reaPpdHchysetElmnts;
+	public List<PriceProductHierarchySetElmnt> getProdHrchySetElement() {
+		return this.prodHrchySetElement;
 	}
 
-	public void setReaPpdHchysetElmnts(List<PriceProductHierarchySetElmnt> reaPpdHchysetElmnts) {
-		this.reaPpdHchysetElmnts = reaPpdHchysetElmnts;
+	public void setProdHrchySetElement(List<PriceProductHierarchySetElmnt> reaPpdHchysetElmnts) {
+		this.prodHrchySetElement = reaPpdHchysetElmnts;
 	}
 
 }

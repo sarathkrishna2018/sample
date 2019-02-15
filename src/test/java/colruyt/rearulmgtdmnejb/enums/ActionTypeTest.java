@@ -4,16 +4,16 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-public class ActionTypeEnumTest {
+public class ActionTypeTest {
 	@Test
 	public void actionTypeEnumTest(){
-	      ActionTypeEnum[] actionTypeEnums = ActionTypeEnum.values();
+	      ActionType[] actionTypeEnums = ActionType.values();
 	       assertEquals(15,actionTypeEnums.length);
 	   }
 	
 	@Test
 	public void actionTypeEnumTest2(){
-		ActionTypeEnum PRICE_PROMO = ActionTypeEnum.PRICE_PROMO;
-	       assertEquals(PRICE_PROMO,ActionTypeEnum.valueOf("PRICE_PROMO") );
+		ActionType PRICE_PROMO = ActionType.PRICE_PROMO;
+	       assertEquals(PRICE_PROMO,ActionType.valueOf("PRICE_PROMO") );
 	   }
 }

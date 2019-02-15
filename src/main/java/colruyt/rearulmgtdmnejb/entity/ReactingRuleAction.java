@@ -26,19 +26,19 @@ public class ReactingRuleAction implements Serializable {
 	@Column(name="CATCH_ALL_YN")
 	@ExternalValues({ "true=Y", "false=N" })
 	@Type(String.class)
-	private boolean catchAllYn;
+	private boolean catchAll;
 
 	@Column(name="REACTING_AMT")
 	private Double reactingAmt;
 
 	@Column(name="REACTING_PERC")
-	private Double reactingPerc;
+	private Double reactingPercentage;
 
 	@Column(name="THOLD_AMT")
-	private Double tholdAmt;
+	private Double thresholdAmount;
 
 	@Column(name="THOLD_PERC")
-	private Double tholdPerc;
+	private Double thresholdPercentage;
 
 	public long getReaRuleId() {
 		return this.reaRuleId;
@@ -48,12 +48,12 @@ public class ReactingRuleAction implements Serializable {
 		this.reaRuleId = reaRuleId;
 	}
 
-	public boolean getCatchAllYn() {
-		return this.catchAllYn;
+	public boolean getCatchAll() {
+		return this.catchAll;
 	}
 
-	public void setCatchAllYn(boolean catchAllYn) {
-		this.catchAllYn = catchAllYn;
+	public void setCatchAll(boolean catchAllYn) {
+		this.catchAll = catchAllYn;
 	}
 
 	public Double getReactingAmt() {
@@ -64,28 +64,28 @@ public class ReactingRuleAction implements Serializable {
 		this.reactingAmt = reactingAmt;
 	}
 
-	public Double getReactingPerc() {
-		return reactingPerc;
+	public Double getReactingPercentage() {
+		return reactingPercentage;
 	}
 
-	public void setReactingPerc(Double reactingPerc) {
-		this.reactingPerc = reactingPerc;
+	public void setReactingPercentage(Double reactingPerc) {
+		this.reactingPercentage = reactingPerc;
 	}
 
-	public Double getTholdAmt() {
-		return tholdAmt;
+	public Double getThresholdAmount() {
+		return thresholdAmount;
 	}
 
-	public void setTholdAmt(Double tholdAmt) {
-		this.tholdAmt = tholdAmt;
+	public void setThresholdAmount(Double tholdAmt) {
+		this.thresholdAmount = tholdAmt;
 	}
 
-	public Double getTholdPerc() {
-		return tholdPerc;
+	public Double getThresholdPercentage() {
+		return thresholdPercentage;
 	}
 
-	public void setTholdPerc(Double tholdPerc) {
-		this.tholdPerc = tholdPerc;
+	public void setThresholdPercentage(Double tholdPerc) {
+		this.thresholdPercentage = tholdPerc;
 	}
 
 }

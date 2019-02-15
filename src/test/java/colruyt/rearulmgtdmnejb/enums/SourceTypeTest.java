@@ -4,16 +4,16 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-public class SourceTypeEnumTest {
+public class SourceTypeTest {
 	@Test
 	public void sourceTypeEnumTest() {
-		SourceTypeEnum[] sourceTypeEnums = SourceTypeEnum.values();
+		SourceType[] sourceTypeEnums = SourceType.values();
 		assertEquals(5,sourceTypeEnums.length);
 	}
 
 	@Test
 	public void sourceTypeEnumTest2() {
-		SourceTypeEnum ONLINE = SourceTypeEnum.ONLINE;
-		assertEquals(ONLINE,SourceTypeEnum.valueOf("ONLINE"));
+		SourceType ONLINE = SourceType.ONLINE;
+		assertEquals(ONLINE,SourceType.valueOf("ONLINE"));
 	}
 }

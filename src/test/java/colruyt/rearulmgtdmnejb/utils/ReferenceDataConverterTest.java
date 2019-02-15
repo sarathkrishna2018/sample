@@ -21,11 +21,11 @@ import colruyt.rearulmgtdmnejb.bo.RefQuantityConditionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefQuantityPriceTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
-import colruyt.rearulmgtdmnejb.enums.ActionTypeEnum;
-import colruyt.rearulmgtdmnejb.enums.RefQuantityTypeEnum;
-import colruyt.rearulmgtdmnejb.enums.RefReasonEnum;
-import colruyt.rearulmgtdmnejb.enums.RefRuletypeEnum;
-import colruyt.rearulmgtdmnejb.enums.SourceTypeEnum;
+import colruyt.rearulmgtdmnejb.enums.ActionType;
+import colruyt.rearulmgtdmnejb.enums.QuantityType;
+import colruyt.rearulmgtdmnejb.enums.ReasonType;
+import colruyt.rearulmgtdmnejb.enums.RuleType;
+import colruyt.rearulmgtdmnejb.enums.SourceType;
 import colruyt.rearulmgtdmnejb.util.ReferenceDataConverter;
 
 @Transactional
@@ -101,33 +101,33 @@ public class ReferenceDataConverterTest {
 	}*/
 	@Test
 	public void convertRefReaActionTest(){
-		ActionTypeEnum[] actionTypeEnums= ActionTypeEnum.values();
+		ActionType[] actionTypeEnums= ActionType.values();
 		List<RefActionTypeBo> expectedRefActionType=referenceDataConverter.convertRefReaActiontype(actionTypeEnums);
 		Assert.assertEquals(15,expectedRefActionType.size());
 	}
 	@Test
 	public void convertRefReaSourceTypeTest(){
-		SourceTypeEnum[] sourceTypeEnums=SourceTypeEnum.values();
+		SourceType[] sourceTypeEnums=SourceType.values();
 		 List<RefSourceTypeBo> expectedRefSourceType=referenceDataConverter.convertRefReaSource(sourceTypeEnums);
 		 Assert.assertEquals(5,expectedRefSourceType.size());
 	}
 	@Test
 	public void testConvertRefNonReactingCodeType() {
-		RefReasonEnum[] reasonValues = RefReasonEnum.values();
+		ReasonType[] reasonValues = ReasonType.values();
 		List<RefNotToReactCodeBo> RefNotToReactCodeBos = referenceDataConverter.convertRefNonReactingCodeType(reasonValues);
 		assertEquals(6,RefNotToReactCodeBos.size());
 	}
 	
 	@Test
 	public void testConvertRuleType() {
-		RefRuletypeEnum[] reasonValues = RefRuletypeEnum.values();
+		RuleType[] reasonValues = RuleType.values();
 		List<RefRuleTypeBo> refRuleTypeBoList = referenceDataConverter.convertRuleType(reasonValues);
 		assertEquals(6,refRuleTypeBoList.size());
 	}
 	
 	@Test
 	public void testConvertRefQtyType(){
-		RefQuantityTypeEnum[] refQuantityTypeValues = RefQuantityTypeEnum.values();
+		QuantityType[] refQuantityTypeValues = QuantityType.values();
 		List<RefQuantityPriceTypeBo> refQuantityPriceTypeBoList = referenceDataConverter.convertRefQtyType(refQuantityTypeValues);
 		assertEquals(3,refQuantityPriceTypeBoList.size());
 	}

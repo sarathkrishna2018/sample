@@ -1,6 +1,6 @@
 package colruyt.rearulmgtdmnejb.enums;
 
-public enum ActionTypeEnum {
+public enum ActionType {
 		PRICE_PROMO(1L,"Price Promo", 1L),
 		DISCOUNT_IN_PERCENT(2L,"Discount %",  2L),
 		DISCOUNT_IN_EURO(3L,"Discount Euro", 3L),
@@ -22,14 +22,14 @@ public enum ActionTypeEnum {
 	private long sequence;
 		
 		 
-		private ActionTypeEnum(long actionTypeId, String actionTypeValue, long sequence) {
+	private ActionType(long actionTypeId, String actionTypeValue, long sequence) {
 		this.actionTypeId = actionTypeId;
 		this.actionTypeValue = actionTypeValue;
 		this.sequence = sequence;
 	}
 
 
-		public long getActionTypeId() {
+	public long getActionTypeId() {
 		return actionTypeId;
 	}
 

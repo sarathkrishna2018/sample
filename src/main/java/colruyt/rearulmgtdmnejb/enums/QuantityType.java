@@ -1,6 +1,6 @@
 package colruyt.rearulmgtdmnejb.enums;
 
-public enum RefQuantityTypeEnum {
+public enum QuantityType {
 	P1_QUANTITY_EN(1L, "EN", "P1 Quantity 1"),
 	P2_NQTY_EN(2L, "EN", "P2 NQTY"),
 	P2_BQTY_EN(3L, "EN", "P2 BQTY");
@@ -19,7 +19,7 @@ public enum RefQuantityTypeEnum {
 		return qtyTypeDescription;
 	}
 	
-	private RefQuantityTypeEnum(long qtyTypeId, String isoLangCode, String qtyTypeDescription) {
+	private QuantityType(long qtyTypeId, String isoLangCode, String qtyTypeDescription) {
 		this.qtyTypeId = qtyTypeId;
 		this.isoLangCode = isoLangCode;
 		this.qtyTypeDescription = qtyTypeDescription;

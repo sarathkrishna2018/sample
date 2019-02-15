@@ -19,13 +19,13 @@ import colruyt.rearulmgtdmnejb.bo.RefQuantityConditionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefQuantityPriceTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
-import colruyt.rearulmgtdmnejb.enums.ActionTypeEnum;
-import colruyt.rearulmgtdmnejb.enums.FilterOutRecordingTypeEnum;
-import colruyt.rearulmgtdmnejb.enums.QuantityConditionEnum;
-import colruyt.rearulmgtdmnejb.enums.RefQuantityTypeEnum;
-import colruyt.rearulmgtdmnejb.enums.RefReasonEnum;
-import colruyt.rearulmgtdmnejb.enums.RefRuletypeEnum;
-import colruyt.rearulmgtdmnejb.enums.SourceTypeEnum;
+import colruyt.rearulmgtdmnejb.enums.ActionType;
+import colruyt.rearulmgtdmnejb.enums.FilterOutRecordingType;
+import colruyt.rearulmgtdmnejb.enums.QuantityCondition;
+import colruyt.rearulmgtdmnejb.enums.QuantityType;
+import colruyt.rearulmgtdmnejb.enums.ReasonType;
+import colruyt.rearulmgtdmnejb.enums.RuleType;
+import colruyt.rearulmgtdmnejb.enums.SourceType;
 
 @Stateless
 @LocalBean
@@ -37,7 +37,7 @@ public class ReferenceDataConverter implements Serializable {
 		List<RefActionTypeBo> refActionTypeBoList = Lists.newArrayList();
 		for (Long ruleAction : refActionTypes) {
 			RefActionTypeBo actionTypeBo = new RefActionTypeBo();
-			for (ActionTypeEnum refActionType : ActionTypeEnum.values()) {
+			for (ActionType refActionType : ActionType.values()) {
 				if (ruleAction == refActionType.getActionTypeId()) {
 					actionTypeBo.setActionTypeId(ruleAction);
 					actionTypeBo.setActionTypeValue(refActionType.getActionTypeValue());
@@ -49,7 +49,7 @@ public class ReferenceDataConverter implements Serializable {
 		return refActionTypeBoList;
 	}
 
-	public List<RefNotToReactCodeBo> convertRefNonReactingCodeType(RefReasonEnum[] refReasonEnums) {
+	public List<RefNotToReactCodeBo> convertRefNonReactingCodeType(ReasonType[] refReasonEnums) {
 		List<RefNotToReactCodeBo> refNotToReactCodeBoList = new ArrayList<>();
 		Map<Long, List<RefLangBo>> reasonMap = getReasonTypeMap(refReasonEnums);
 		RefNotToReactCodeBo refNotToReactCodeBo;
@@ -62,19 +62,19 @@ public class ReferenceDataConverter implements Serializable {
 		return refNotToReactCodeBoList;
 	}
 
-	private Map<Long, List<RefLangBo>> getReasonTypeMap(RefReasonEnum[] refReasonEnums) {
+	private Map<Long, List<RefLangBo>> getReasonTypeMap(ReasonType[] refReasonEnums) {
 		Map<Long, List<RefLangBo>> reasonTypeMap = new HashMap<>();
-		for (RefReasonEnum refReasonEnum : refReasonEnums) {
-			if (!reasonTypeMap.containsKey(refReasonEnum.getReasonID())) {
-				RefLangBo langBo = createRefLangBo(refReasonEnum.getIsoLangCode(),
-						refReasonEnum.getReasonDescription());
+		for (ReasonType reasonType : refReasonEnums) {
+			if (!reasonTypeMap.containsKey(reasonType.getReasonID())) {
+				RefLangBo langBo = createRefLangBo(reasonType.getIsoLangCode(),
+						reasonType.getReasonDescription());
 				List<RefLangBo> langBos = new ArrayList<>();
 				langBos.add(langBo);
-				reasonTypeMap.put(refReasonEnum.getReasonID(), langBos);
+				reasonTypeMap.put(reasonType.getReasonID(), langBos);
 			} else {
-				List<RefLangBo> existsLangBos = reasonTypeMap.get(refReasonEnum.getReasonID());
-				RefLangBo langBo = createRefLangBo(refReasonEnum.getIsoLangCode(),
-						refReasonEnum.getReasonDescription());
+				List<RefLangBo> existsLangBos = reasonTypeMap.get(reasonType.getReasonID());
+				RefLangBo langBo = createRefLangBo(reasonType.getIsoLangCode(),
+						reasonType.getReasonDescription());
 				existsLangBos.add(langBo);
 			}
 		}
@@ -85,7 +85,7 @@ public class ReferenceDataConverter implements Serializable {
 		List<RefSourceTypeBo> refSourceTypeBoList = Lists.newArrayList();
 		for (Long sourceType : refSourceTypes) {
 			RefSourceTypeBo sourceTypeBo = new RefSourceTypeBo();
-			for (SourceTypeEnum refSourceType : SourceTypeEnum.values()) {
+			for (SourceType refSourceType : SourceType.values()) {
 				if (sourceType.equals(refSourceType.getSourceTypeId())) {
 					sourceTypeBo.setSourceName(refSourceType.getSourceTypeName());
 					sourceTypeBo.setSourceTypeId(refSourceType.getSourceTypeId());
@@ -96,32 +96,32 @@ public class ReferenceDataConverter implements Serializable {
 		return refSourceTypeBoList;
 	}
 
-	public List<RefActionTypeBo> convertRefReaActiontype(ActionTypeEnum[] actionTypeEnums) {
+	public List<RefActionTypeBo> convertRefReaActiontype(ActionType[] actionTypeEnums) {
 		List<RefActionTypeBo> refActionTypeBos = new ArrayList<>();
 		RefActionTypeBo refActionTypeBo;
-		for (ActionTypeEnum actionTypeEnum : actionTypeEnums) {
+		for (ActionType actionType : actionTypeEnums) {
 			refActionTypeBo = new RefActionTypeBo();
-			refActionTypeBo.setActionTypeId(actionTypeEnum.getActionTypeId());
-			refActionTypeBo.setActionTypeValue(actionTypeEnum.getActionTypeValue());
-			refActionTypeBo.setSequence(actionTypeEnum.getSequence());
+			refActionTypeBo.setActionTypeId(actionType.getActionTypeId());
+			refActionTypeBo.setActionTypeValue(actionType.getActionTypeValue());
+			refActionTypeBo.setSequence(actionType.getSequence());
 			refActionTypeBos.add(refActionTypeBo);
 		}
 		return refActionTypeBos;
 	}
 
-	public List<RefSourceTypeBo> convertRefReaSource(SourceTypeEnum[] sourceTypeEnums) {
+	public List<RefSourceTypeBo> convertRefReaSource(SourceType[] sourceTypeEnums) {
 		List<RefSourceTypeBo> refSourceTypeBos = new ArrayList<>();
 		RefSourceTypeBo refSourceTypeBo;
-		for (SourceTypeEnum sourceTypeEnum : sourceTypeEnums) {
+		for (SourceType sourceType : sourceTypeEnums) {
 			refSourceTypeBo = new RefSourceTypeBo();
-			refSourceTypeBo.setSourceName(sourceTypeEnum.getSourceTypeName());
-			refSourceTypeBo.setSourceTypeId(sourceTypeEnum.getSourceTypeId());
+			refSourceTypeBo.setSourceName(sourceType.getSourceTypeName());
+			refSourceTypeBo.setSourceTypeId(sourceType.getSourceTypeId());
 			refSourceTypeBos.add(refSourceTypeBo);
 		}
 		return refSourceTypeBos;
 	}
 
-	public List<RefQuantityPriceTypeBo> convertRefQtyType(RefQuantityTypeEnum[] refQuantityTypeValues) {
+	public List<RefQuantityPriceTypeBo> convertRefQtyType(QuantityType[] refQuantityTypeValues) {
 		List<RefQuantityPriceTypeBo> rrefQuantityPriceTypeBoList = Lists.newArrayList();
 		Map<Long, List<RefLangBo>> refQuantityTypeMap = getRefQtyTypeMap(refQuantityTypeValues);
 		for (Map.Entry<Long, List<RefLangBo>> entry : refQuantityTypeMap.entrySet()) {
@@ -133,9 +133,9 @@ public class ReferenceDataConverter implements Serializable {
 		return rrefQuantityPriceTypeBoList;
 	}
 
-	private Map<Long, List<RefLangBo>> getRefQtyTypeMap(RefQuantityTypeEnum[] refQuantityTypeValues) {
+	private Map<Long, List<RefLangBo>> getRefQtyTypeMap(QuantityType[] refQuantityTypeValues) {
 		Map<Long, List<RefLangBo>> refQuantityTypeMap = new HashMap<>();
-		for (RefQuantityTypeEnum refQuantityType : refQuantityTypeValues) {
+		for (QuantityType refQuantityType : refQuantityTypeValues) {
 			if (!refQuantityTypeMap.containsKey(refQuantityType.getQtyTypeId())) {
 				List<RefLangBo> langBos = new ArrayList<>();
 				RefLangBo langBo = createRefLangBo(refQuantityType.getIsoLangCode(),
@@ -152,7 +152,7 @@ public class ReferenceDataConverter implements Serializable {
 		return refQuantityTypeMap;
 	}
 
-	public List<RefQuantityConditionTypeBo> convertRefQtyCond(QuantityConditionEnum[] quantityConditionEnums) {
+	public List<RefQuantityConditionTypeBo> convertRefQtyCond(QuantityCondition[] quantityConditionEnums) {
 		List<RefQuantityConditionTypeBo> refQuantityConditionTypeBoList = new ArrayList<>();
 		Map<Long, List<RefLangBo>> quantityConditionMap = getQuantityConditionMap(quantityConditionEnums);
 		RefQuantityConditionTypeBo refQuantityConditionTypeBo;
@@ -166,19 +166,19 @@ public class ReferenceDataConverter implements Serializable {
 		return refQuantityConditionTypeBoList;
 	}
 
-	private Map<Long, List<RefLangBo>> getQuantityConditionMap(QuantityConditionEnum[] quantityConditionEnums) {
+	private Map<Long, List<RefLangBo>> getQuantityConditionMap(QuantityCondition[] quantityConditionEnums) {
 		Map<Long, List<RefLangBo>> quantityConditionTypeMap = new HashMap<>();
-		for (QuantityConditionEnum quantityConditionEnum : quantityConditionEnums) {
-			if (!quantityConditionTypeMap.containsKey(quantityConditionEnum.getId())) {
+		for (QuantityCondition quantityCondition : quantityConditionEnums) {
+			if (!quantityConditionTypeMap.containsKey(quantityCondition.getId())) {
 				List<RefLangBo> langBos = new ArrayList<>();
-				RefLangBo langBo = createRefLangBo(quantityConditionEnum.getLangCode(),
-						quantityConditionEnum.getDescription());
+				RefLangBo langBo = createRefLangBo(quantityCondition.getLangCode(),
+						quantityCondition.getDescription());
 				langBos.add(langBo);
-				quantityConditionTypeMap.put(quantityConditionEnum.getId(), langBos);
+				quantityConditionTypeMap.put(quantityCondition.getId(), langBos);
 			} else {
-				List<RefLangBo> existsLangBos = quantityConditionTypeMap.get(quantityConditionEnum.getId());
-				RefLangBo langBo = createRefLangBo(quantityConditionEnum.getLangCode(),
-						quantityConditionEnum.getDescription());
+				List<RefLangBo> existsLangBos = quantityConditionTypeMap.get(quantityCondition.getId());
+				RefLangBo langBo = createRefLangBo(quantityCondition.getLangCode(),
+						quantityCondition.getDescription());
 				existsLangBos.add(langBo);
 			}
 		}
@@ -193,7 +193,7 @@ public class ReferenceDataConverter implements Serializable {
 	}
 
 	public List<RefFilterOutRecordingTypeBo> convertRefFltoutType(
-			FilterOutRecordingTypeEnum[] filterOutRecordingTypeEnums) {
+			FilterOutRecordingType[] filterOutRecordingTypeEnums) {
 		List<RefFilterOutRecordingTypeBo> refFilterOutRecordingTypeBos = new ArrayList<>();
 		Map<Long, List<RefLangBo>> filterOutRecordingTypeMap = getFilterOutRecordingTypeMap(
 				filterOutRecordingTypeEnums);
@@ -209,26 +209,26 @@ public class ReferenceDataConverter implements Serializable {
 	}
 
 	private Map<Long, List<RefLangBo>> getFilterOutRecordingTypeMap(
-			FilterOutRecordingTypeEnum[] filterOutRecordingTypeEnums) {
+			FilterOutRecordingType[] filterOutRecordingTypeEnums) {
 		Map<Long, List<RefLangBo>> filterOutRecordingTypeMap = new HashMap<>();
-		for (FilterOutRecordingTypeEnum filterOutRecordingTypeEnum : filterOutRecordingTypeEnums) {
-			if (!filterOutRecordingTypeMap.containsKey(filterOutRecordingTypeEnum.getId())) {
+		for (FilterOutRecordingType filterOutRecordingType : filterOutRecordingTypeEnums) {
+			if (!filterOutRecordingTypeMap.containsKey(filterOutRecordingType.getId())) {
 				List<RefLangBo> langBos = new ArrayList<>();
-				RefLangBo langBo = createRefLangBo(filterOutRecordingTypeEnum.getLangCode(),
-						filterOutRecordingTypeEnum.getName());
+				RefLangBo langBo = createRefLangBo(filterOutRecordingType.getLangCode(),
+						filterOutRecordingType.getName());
 				langBos.add(langBo);
-				filterOutRecordingTypeMap.put(filterOutRecordingTypeEnum.getId(), langBos);
+				filterOutRecordingTypeMap.put(filterOutRecordingType.getId(), langBos);
 			} else {
-				List<RefLangBo> existsLangBos = filterOutRecordingTypeMap.get(filterOutRecordingTypeEnum.getId());
-				RefLangBo langBo = createRefLangBo(filterOutRecordingTypeEnum.getLangCode(),
-						filterOutRecordingTypeEnum.getName());
+				List<RefLangBo> existsLangBos = filterOutRecordingTypeMap.get(filterOutRecordingType.getId());
+				RefLangBo langBo = createRefLangBo(filterOutRecordingType.getLangCode(),
+						filterOutRecordingType.getName());
 				existsLangBos.add(langBo);
 			}
 		}
 		return filterOutRecordingTypeMap;
 	}
 
-	public List<RefRuleTypeBo> convertRuleType(RefRuletypeEnum[] refRullTypeValues) {
+	public List<RefRuleTypeBo> convertRuleType(RuleType[] refRullTypeValues) {
 		List<RefRuleTypeBo> refRuleTypeBoList = new ArrayList<>();
 		Map<Long, List<RefLangBo>> reasonMap = getRuleTypeMap(refRullTypeValues);
 		for (Map.Entry<Long, List<RefLangBo>> entry : reasonMap.entrySet()) {
@@ -240,9 +240,9 @@ public class ReferenceDataConverter implements Serializable {
 		return refRuleTypeBoList;
 	}
 
-	private Map<Long, List<RefLangBo>> getRuleTypeMap(RefRuletypeEnum[] refRullTypeValues) {
+	private Map<Long, List<RefLangBo>> getRuleTypeMap(RuleType[] refRullTypeValues) {
 		Map<Long, List<RefLangBo>> reasonTypeMap = new HashMap<>();
-		for (RefRuletypeEnum refRuleType : refRullTypeValues) {
+		for (RuleType refRuleType : refRullTypeValues) {
 			if (!reasonTypeMap.containsKey(refRuleType.getRuleTypeID())) {
 				RefLangBo langBo = createRefLangBo(refRuleType.getIsoLangCode(), refRuleType.getRuleTypeDescription());
 				List<RefLangBo> langBos = new ArrayList<>();

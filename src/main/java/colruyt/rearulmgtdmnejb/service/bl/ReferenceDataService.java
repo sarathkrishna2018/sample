@@ -26,13 +26,13 @@ import colruyt.rearulmgtdmnejb.bo.RefQuantityConditionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefQuantityPriceTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
-import colruyt.rearulmgtdmnejb.enums.ActionTypeEnum;
-import colruyt.rearulmgtdmnejb.enums.FilterOutRecordingTypeEnum;
-import colruyt.rearulmgtdmnejb.enums.QuantityConditionEnum;
-import colruyt.rearulmgtdmnejb.enums.RefQuantityTypeEnum;
-import colruyt.rearulmgtdmnejb.enums.RefReasonEnum;
-import colruyt.rearulmgtdmnejb.enums.RefRuletypeEnum;
-import colruyt.rearulmgtdmnejb.enums.SourceTypeEnum;
+import colruyt.rearulmgtdmnejb.enums.ActionType;
+import colruyt.rearulmgtdmnejb.enums.FilterOutRecordingType;
+import colruyt.rearulmgtdmnejb.enums.QuantityCondition;
+import colruyt.rearulmgtdmnejb.enums.QuantityType;
+import colruyt.rearulmgtdmnejb.enums.ReasonType;
+import colruyt.rearulmgtdmnejb.enums.RuleType;
+import colruyt.rearulmgtdmnejb.enums.SourceType;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnDebugMessage;
 import colruyt.rearulmgtdmnejb.util.ReferenceDataConverter;
@@ -66,25 +66,25 @@ public class ReferenceDataService implements Serializable {
 	@PostConstruct
 	private void init() {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_REFERENCEDATASERVICE);
-		ActionTypeEnum[] actionTypeEnums = ActionTypeEnum.values();
+		ActionType[] actionTypeEnums = ActionType.values();
 		refActionTypeList = referenceDataConvertor.convertRefReaActiontype(actionTypeEnums);
 		
-		RefReasonEnum[] refReasonValues = RefReasonEnum.values();
+		ReasonType[] refReasonValues = ReasonType.values();
 		refNotToReactCodeList = referenceDataConvertor.convertRefNonReactingCodeType(refReasonValues);
 		
-		QuantityConditionEnum[] quantityConditionEnum = QuantityConditionEnum.values();
+		QuantityCondition[] quantityConditionEnum = QuantityCondition.values();
 		refQuantityConditionList = referenceDataConvertor.convertRefQtyCond(quantityConditionEnum);
 		
-		RefQuantityTypeEnum[] refQuantityTypeValues = RefQuantityTypeEnum.values();
+		QuantityType[] refQuantityTypeValues = QuantityType.values();
 		refQuantityPriceTypeList = referenceDataConvertor.convertRefQtyType(refQuantityTypeValues);
 
-		SourceTypeEnum[]  sourceTypeEnums = SourceTypeEnum.values();
+		SourceType[]  sourceTypeEnums = SourceType.values();
 		refSourceTypeList = referenceDataConvertor.convertRefReaSource(sourceTypeEnums);
 		
-		FilterOutRecordingTypeEnum[] filterOutRecordingTypeEnums = FilterOutRecordingTypeEnum.values();
+		FilterOutRecordingType[] filterOutRecordingTypeEnums = FilterOutRecordingType.values();
 		refFilterOutRecordingTypeList = referenceDataConvertor.convertRefFltoutType(filterOutRecordingTypeEnums);
  		
-		RefRuletypeEnum[] refRullTypeValues = RefRuletypeEnum.values();
+		RuleType[] refRullTypeValues = RuleType.values();
 		refRuleTypeList = referenceDataConvertor.convertRuleType(refRullTypeValues);
 		
 	}

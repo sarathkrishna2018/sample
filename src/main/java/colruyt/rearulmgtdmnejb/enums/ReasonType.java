@@ -1,6 +1,6 @@
 package colruyt.rearulmgtdmnejb.enums;
 
-public enum RefReasonEnum {
+public enum ReasonType {
 	TEMP_NOT_ORDERABLE_EN(1L, "EN", "Temporarily not orderable"),
 	RESELLER_EN(2L, "EN", "Reseller"),
 	OUTLET_ARTICLE_EN(3L, "EN", "Outlet article"),
@@ -23,7 +23,7 @@ public enum RefReasonEnum {
 		return reasonDescription;
 	}	
 	
-	private RefReasonEnum(long reasonID, String isoLangCode, String reasonDescription) {
+	private ReasonType(long reasonID, String isoLangCode, String reasonDescription) {
 		this.reasonID = reasonID;
 		this.isoLangCode = isoLangCode;
 		this.reasonDescription = reasonDescription;

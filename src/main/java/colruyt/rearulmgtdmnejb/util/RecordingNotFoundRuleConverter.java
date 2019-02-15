@@ -16,13 +16,13 @@ public class RecordingNotFoundRuleConverter implements Serializable{
 	public RecordingNotFoundRuleAction convert(RecordingNotFoundRuleBo recordingNotFoundRuleBo){
 		RecordingNotFoundRuleAction recordNotFoundRuleAction=new RecordingNotFoundRuleAction();
 		recordNotFoundRuleAction.setReaRuleId(recordingNotFoundRuleBo.getRuleId());
-		recordNotFoundRuleAction.setNoOfRnf(recordingNotFoundRuleBo.getNoOfNotFoundRecordings());
+		recordNotFoundRuleAction.setNoOfRecordNotFound(recordingNotFoundRuleBo.getNoOfNotFoundRecordings());
 		return recordNotFoundRuleAction;
 		
 	}
 	public RecordingNotFoundRuleBo addRecordingNotFoundRuleAction(RecordingNotFoundRuleAction recordNotFoundRule,
 			RecordingNotFoundRuleBo recordingNotFoundBo) {
-		recordingNotFoundBo.setNoOfNotFoundRecordings(recordNotFoundRule.getNoOfRnf());
+		recordingNotFoundBo.setNoOfNotFoundRecordings(recordNotFoundRule.getNoOfRecordNotFound());
 		return recordingNotFoundBo;
 	}
 

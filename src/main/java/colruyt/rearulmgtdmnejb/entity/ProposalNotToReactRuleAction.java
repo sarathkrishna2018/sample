@@ -33,15 +33,15 @@ public class ProposalNotToReactRuleAction implements Serializable {
 	@CollectionTable(name = "REA_NREACT_SET_RSN", 
 			joinColumns = @JoinColumn(name = "REA_RULE_ID"))
 	@Column(name = "REASON_ID")
-	private List<Long> reaNreactSetRsns;
+	private List<Long> notToReactSetReasons;
 	
 
-	public List<Long> getReaNreactSetRsns() {
-		return reaNreactSetRsns;
+	public List<Long> getNotToReactSetReasons() {
+		return notToReactSetReasons;
 	}
 
-	public void setReaNreactSetRsns(List<Long> reaNreactSetRsns) {
-		this.reaNreactSetRsns = reaNreactSetRsns;
+	public void setNotToReactSetReasons(List<Long> reaNreactSetRsns) {
+		this.notToReactSetReasons = reaNreactSetRsns;
 	}
 
 	public long getReaRuleId() {
