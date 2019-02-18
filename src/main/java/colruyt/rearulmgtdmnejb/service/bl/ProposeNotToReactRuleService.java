@@ -19,13 +19,13 @@ import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
 import colruyt.rearulmgtdmnejb.bo.XPSRuleBo;
 import colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleAction;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
+import colruyt.rearulmgtdmnejb.enums.RuleType;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleValidationException;
 import colruyt.rearulmgtdmnejb.service.dl.ProposalNotToReactActionDlService;
 import colruyt.rearulmgtdmnejb.util.ExceptionMessageConstants;
 import colruyt.rearulmgtdmnejb.util.GeneralRulePriorityComparator;
 import colruyt.rearulmgtdmnejb.util.ProposeNotToReactRuleConverter;
-import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnDebugMessage;
 
 /**
@@ -110,7 +110,7 @@ public class ProposeNotToReactRuleService extends GeneralRuleService implements 
 	public List<ReactionRulesetBo> getReactionRules(List<ReactionRulesetBo> reactionRulesetBos)
 			throws ReaRuleValidationException, ReaRuleManagementException {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_RETRIEVEPROPOSENOTTOREACTRULE);
-		long ruleTypeId = super.getRuleTypeId(ReaRulMgtDmnConstants.RULE_TYPE_PROPOSED_NOT_REACT);
+		long ruleTypeId = super.getRuleTypeId(RuleType.PROPOSE_NOT_REACT_EN.getRuleTypeDescription());
 		List<ReactionRulesetBo> ruleSetBos = Lists.newArrayList();
 		for (ReactionRulesetBo reactionRulesetBo : reactionRulesetBos) {
 			if (reactionRulesetBo.getRefRuleTypeBo().getRuleTypeId() == ruleTypeId) {
@@ -152,7 +152,7 @@ public class ProposeNotToReactRuleService extends GeneralRuleService implements 
 				.findByRuleId(proposeNotToRactRuleBo.getRuleId());
 		proposeNotToRactRuleBo = proposeNotToReactRuleConverter.convertToBo(proposalNotToReactRuleAction,
 				proposeNotToRactRuleBo);
-		proposeNotToRactRuleBo.setType(ReaRulMgtDmnConstants.RULE_TYPE_PROPOSED_NOT_REACT);
+		proposeNotToRactRuleBo.setType(RuleType.PROPOSE_NOT_REACT_EN.getRuleTypeDescription());
 		return proposeNotToRactRuleBo;
 	}
 

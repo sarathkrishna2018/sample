@@ -33,7 +33,6 @@ import colruyt.rearulmgtdmnejb.enums.QuantityType;
 import colruyt.rearulmgtdmnejb.enums.ReasonType;
 import colruyt.rearulmgtdmnejb.enums.RuleType;
 import colruyt.rearulmgtdmnejb.enums.SourceType;
-import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnDebugMessage;
 import colruyt.rearulmgtdmnejb.util.ReferenceDataConverter;
 
@@ -126,12 +125,12 @@ public class ReferenceDataService implements Serializable {
 		List<RefActionTypeBo> finalActionList = Lists.newArrayList();
 		for(RefActionTypeBo action : allActionType){
 			if(getAllTypes){
-				if(!(action.getActionTypeValue().equalsIgnoreCase(ReaRulMgtDmnConstants.ALL) )){
+				if(!(action.getActionTypeValue().equalsIgnoreCase(ActionType.ALL.getActionTypeValue()) )){
 					finalActionList.add(action);
 				}	
 			}
 			else{
-				if(!(action.getActionTypeValue().equalsIgnoreCase(ReaRulMgtDmnConstants.ALL) || action.getActionTypeValue().equalsIgnoreCase(ReaRulMgtDmnConstants.NONE))){
+				if(!(action.getActionTypeValue().equalsIgnoreCase(ActionType.ALL.getActionTypeValue()) || action.getActionTypeValue().equalsIgnoreCase(ActionType.NONE.getActionTypeValue()))){
 					finalActionList.add(action);
 				}	
 			}
@@ -148,7 +147,7 @@ public class ReferenceDataService implements Serializable {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_REMOVEALLSOURCE);
 		List<RefSourceTypeBo> finalSourceList = Lists.newArrayList();
 		for(RefSourceTypeBo source : allSourceType){
-			if(!source.getSourceName().equalsIgnoreCase(ReaRulMgtDmnConstants.ALL)){
+			if(!source.getSourceName().equalsIgnoreCase(SourceType.ALL.getSourceTypeName())){
 				finalSourceList.add(source);
 			}
 		}

@@ -18,6 +18,8 @@ import colruyt.rearulmgtdmnejb.bo.RefActionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
 import colruyt.rearulmgtdmnejb.bo.XPSRuleBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
+import colruyt.rearulmgtdmnejb.enums.ActionType;
+import colruyt.rearulmgtdmnejb.enums.SourceType;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleValidationException;
 import colruyt.rearulmgtdmnejb.service.dl.ProductHierarchySetDlService;
@@ -25,7 +27,6 @@ import colruyt.rearulmgtdmnejb.service.dl.ReactionRuleActionTypeDlService;
 import colruyt.rearulmgtdmnejb.service.dl.ReactionRuleDlService;
 import colruyt.rearulmgtdmnejb.service.dl.ReactionRuleSourceTypeDlService;
 import colruyt.rearulmgtdmnejb.util.ExceptionMessageConstants;
-import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnDebugMessage;
 import colruyt.rearulmgtdmnejb.util.ReaRuleConverter;
 import colruyt.rearulmgtdmnejb.util.ReferenceDataConverter;
@@ -186,7 +187,7 @@ public abstract class GeneralRuleService implements Serializable {
 		// action
 		if (reactionRuleBo.isActionSelectAll()) {
 			List<Long> actionLst = reaRuleConverter
-					.convertRuleTypeForAll(ReaRulMgtDmnConstants.ACTION_ALL_TYPEID);
+					.convertRuleTypeForAll(ActionType.ALL.getActionTypeId());
 			reaRule.setRefActionTypes(actionLst);
 		} else if (!reactionRuleBo.isActionSelectAll() && reactionRuleBo.getActionTypeList() != null
 				&& !reactionRuleBo.getActionTypeList().isEmpty()) {
@@ -196,7 +197,7 @@ public abstract class GeneralRuleService implements Serializable {
 		// source
 		if (reactionRuleBo.isSourceSelectAll()) {
 			List<Long> sourceLst = reaRuleConverter
-					.convertRuleTypeForAll(ReaRulMgtDmnConstants.SOURCE_ALL_TYPEID);
+					.convertRuleTypeForAll(SourceType.ALL.getSourceTypeId());
 			reaRule.setRefSourceTypes(sourceLst);
 		} else if (!reactionRuleBo.isSourceSelectAll() && reactionRuleBo.getSourceTypeList() != null
 				&& !reactionRuleBo.getSourceTypeList().isEmpty()) {
@@ -239,7 +240,7 @@ public abstract class GeneralRuleService implements Serializable {
 
 	private Long getAllRulesByRuleSetId(Long rulesetId) {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_GETREACTRULE);
-		return reactionRuleDlService.findAllByRuleSetId(rulesetId);
+		return reactionRuleDlService.getMaxRulePriorityByRuleSetId(rulesetId);
 	}
 
 	/**
@@ -393,7 +394,7 @@ public abstract class GeneralRuleService implements Serializable {
 		// action
 		if (reactionRuleBo.isActionSelectAll()) {
 			List<Long> actionLst = reaRuleConverter
-					.convertRuleTypeForAll(ReaRulMgtDmnConstants.ACTION_ALL_TYPEID);
+					.convertRuleTypeForAll(ActionType.ALL.getActionTypeId());
 			reaRule.setRefActionTypes(actionLst);
 		} else if (!reactionRuleBo.isActionSelectAll() && reactionRuleBo.getActionTypeList() != null
 				&& !reactionRuleBo.getActionTypeList().isEmpty()) {
@@ -403,7 +404,7 @@ public abstract class GeneralRuleService implements Serializable {
 		// source
 		if (reactionRuleBo.isSourceSelectAll()) {
 			List<Long> sourceLst = reaRuleConverter
-					.convertRuleTypeForAll(ReaRulMgtDmnConstants.SOURCE_ALL_TYPEID);
+					.convertRuleTypeForAll(SourceType.ALL.getSourceTypeId());
 			reaRule.setRefSourceTypes(sourceLst);
 			
 		} else if (!reactionRuleBo.isSourceSelectAll() && reactionRuleBo.getSourceTypeList() != null
@@ -438,7 +439,7 @@ public abstract class GeneralRuleService implements Serializable {
 	public GeneralRuleBo getGeneralRuleAttributes(ReactionRule rule, GeneralRuleBo ruleBo) {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_GETGENERALRULE);
 		if (rule.getRefActionTypes() != null
-				&& rule.getRefActionTypes().get(0) == ReaRulMgtDmnConstants.ACTION_ALL_TYPEID) {
+				&& rule.getRefActionTypes().get(0) == ActionType.ALL.getActionTypeId()) {
 			List<RefActionTypeBo> actionTypes = referenceDataService.getAllActionTypes();
 			List<RefActionTypeBo> actionTypesExceptAll = referenceDataService.removeActionTypeAll(actionTypes, false);
 			ruleBo.setActionTypeList(actionTypesExceptAll);
@@ -447,7 +448,7 @@ public abstract class GeneralRuleService implements Serializable {
 			ruleBo.setActionTypeList(referenceDataConverter.convertRefReaActiontype(rule.getRefActionTypes()));
 		}
 		if (rule.getRefSourceTypes() != null
-				&& rule.getRefSourceTypes().get(0) == ReaRulMgtDmnConstants.SOURCE_ALL_TYPEID) {
+				&& rule.getRefSourceTypes().get(0) == SourceType.ALL.getSourceTypeId()) {
 			List<RefSourceTypeBo> sourceTypes = referenceDataService.getAllSourceTypes();
 			List<RefSourceTypeBo> sourceTypesExceptAll = referenceDataService.removeSourceTypeAll(sourceTypes);
 			ruleBo.setSourceTypeList(sourceTypesExceptAll);

@@ -127,7 +127,7 @@ public class ReactionRuleDlService implements Serializable {
 	}
 
 	
-	public Long findAllByRuleSetId(Long rulesetId) {
+	public Long getMaxRulePriorityByRuleSetId(Long rulesetId) {
 		TypedQuery<Long> query = entityManager.createQuery(
 				"select max(reactionRule.rulePriority) from ReactionRule reactionRule where reactionRule.reaRulesetId = ?1",
 				Long.class);

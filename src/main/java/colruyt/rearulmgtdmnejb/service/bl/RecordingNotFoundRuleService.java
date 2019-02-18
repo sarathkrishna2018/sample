@@ -19,12 +19,12 @@ import colruyt.rearulmgtdmnejb.bo.RecordingNotFoundRuleBo;
 import colruyt.rearulmgtdmnejb.bo.XPSRuleBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.entity.RecordingNotFoundRuleAction;
+import colruyt.rearulmgtdmnejb.enums.RuleType;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleValidationException;
 import colruyt.rearulmgtdmnejb.service.dl.RecordingNotFoundRuleActionDlService;
 import colruyt.rearulmgtdmnejb.util.ExceptionMessageConstants;
 import colruyt.rearulmgtdmnejb.util.GeneralRulePriorityComparator;
-import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnDebugMessage;
 import colruyt.rearulmgtdmnejb.util.RecordingNotFoundRuleConverter;
 
@@ -113,7 +113,7 @@ public class RecordingNotFoundRuleService extends GeneralRuleService implements 
 	public List<ReactionRulesetBo> getReactionRules(List<ReactionRulesetBo> reactionRulesetBos)
 			throws ReaRuleValidationException, ReaRuleManagementException {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_RETRIEVERECORDNOTFOUNDRULE);
-		long ruleTypeId = super.getRuleTypeId(ReaRulMgtDmnConstants.RULE_TYPE_RECORD_NOT_FOUND);
+		long ruleTypeId = super.getRuleTypeId(RuleType.RECORD_NOT_FOUND_EN.getRuleTypeDescription());
 		List<ReactionRulesetBo> ruleSetBos = Lists.newArrayList();
 		for (ReactionRulesetBo reactionRulesetBo : reactionRulesetBos) {
 			if (reactionRulesetBo.getRefRuleTypeBo().getRuleTypeId() == ruleTypeId) {
@@ -155,7 +155,7 @@ public class RecordingNotFoundRuleService extends GeneralRuleService implements 
 				.findByRuleId(recordNotFoundRuleBo.getRuleId());
 		recordNotFoundRuleBo = recordingNotFoundRuleConverter.addRecordingNotFoundRuleAction(recordingNotFoundRuleAction,
 				recordNotFoundRuleBo);
-		recordNotFoundRuleBo.setType(ReaRulMgtDmnConstants.RULE_TYPE_RECORD_NOT_FOUND);
+		recordNotFoundRuleBo.setType(RuleType.RECORD_NOT_FOUND_EN.getRuleTypeDescription());
 		return recordNotFoundRuleBo;
 	}
 

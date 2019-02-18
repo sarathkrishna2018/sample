@@ -19,13 +19,13 @@ import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
 import colruyt.rearulmgtdmnejb.bo.XPSRuleBo;
 import colruyt.rearulmgtdmnejb.entity.QuantityRuleAction;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
+import colruyt.rearulmgtdmnejb.enums.RuleType;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleValidationException;
 import colruyt.rearulmgtdmnejb.service.dl.QuantityRuleActionDlService;
 import colruyt.rearulmgtdmnejb.util.ExceptionMessageConstants;
 import colruyt.rearulmgtdmnejb.util.GeneralRulePriorityComparator;
 import colruyt.rearulmgtdmnejb.util.QuantityRuleActionConverter;
-import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnDebugMessage;
 
 /**
@@ -109,7 +109,7 @@ public class QuantityRuleService extends GeneralRuleService implements Serializa
 	public List<ReactionRulesetBo> getReactionRules(List<ReactionRulesetBo> reactionRulesetBos)
 			throws ReaRuleValidationException, ReaRuleManagementException {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_RETRIEVEQUANTITYRULE);
-		long ruleTypeId = super.getRuleTypeId(ReaRulMgtDmnConstants.RULE_TYPE_QUANTITY);
+		long ruleTypeId = super.getRuleTypeId(RuleType.QUANTITY_EN.getRuleTypeDescription());
 		List<ReactionRulesetBo> ruleSetBos = Lists.newArrayList();
 		for (ReactionRulesetBo reactionRulesetBo : reactionRulesetBos) {
 			if (reactionRulesetBo.getRefRuleTypeBo().getRuleTypeId() == ruleTypeId) {
@@ -148,7 +148,7 @@ public class QuantityRuleService extends GeneralRuleService implements Serializa
 		QuantityRuleBo quantityBo = (QuantityRuleBo) ruleBo;
 		QuantityRuleAction quantityRuleAction = quantityRuleActionDlService.findByRuleId(quantityBo.getRuleId());
 		quantityBo = quantityRuleActionConvertor.addQuantityRuleAction(quantityRuleAction, quantityBo);
-		quantityBo.setType(ReaRulMgtDmnConstants.RULE_TYPE_QUANTITY);
+		quantityBo.setType(RuleType.QUANTITY_EN.getRuleTypeDescription());
 		return quantityBo;
 
 	}

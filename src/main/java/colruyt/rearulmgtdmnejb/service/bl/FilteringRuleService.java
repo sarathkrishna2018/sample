@@ -19,13 +19,13 @@ import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
 import colruyt.rearulmgtdmnejb.bo.XPSRuleBo;
 import colruyt.rearulmgtdmnejb.entity.FilteringRuleAction;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
+import colruyt.rearulmgtdmnejb.enums.RuleType;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleValidationException;
 import colruyt.rearulmgtdmnejb.service.dl.FilteringRuleActionDlService;
 import colruyt.rearulmgtdmnejb.util.ExceptionMessageConstants;
 import colruyt.rearulmgtdmnejb.util.FilteringRuleActionConverter;
 import colruyt.rearulmgtdmnejb.util.GeneralRulePriorityComparator;
-import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnDebugMessage;
 
 /**
@@ -53,7 +53,7 @@ public class FilteringRuleService extends GeneralRuleService implements Serializ
 	private FilteringRuleActionDlService filteringRuleActionDlService;
 	@EJB
 	private FilteringRuleActionConverter filteringRuleActionConverter;
-	
+
 	/**
 	 * This Method is to Create FilteringRule
 	 * 
@@ -120,7 +120,7 @@ public class FilteringRuleService extends GeneralRuleService implements Serializ
 	public List<ReactionRulesetBo> getReactionRules(List<ReactionRulesetBo> reactionRulesetBos)
 			throws ReaRuleValidationException, ReaRuleManagementException {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_RETRIEVEFILTERINGRULE);
-		long ruleTypeId = super.getRuleTypeId(ReaRulMgtDmnConstants.RULE_TYPE_FILTERING);
+		long ruleTypeId = super.getRuleTypeId(RuleType.FILTERING_EN.getRuleTypeDescription());
 		List<ReactionRulesetBo> ruleSetBos = Lists.newArrayList();
 		for (ReactionRulesetBo reactionRulesetBo : reactionRulesetBos) {
 			if (reactionRulesetBo.getRefRuleTypeBo().getRuleTypeId() == ruleTypeId) {
@@ -133,13 +133,14 @@ public class FilteringRuleService extends GeneralRuleService implements Serializ
 					FilteringRuleBo filteringRuleBo = (FilteringRuleBo) ruleBo;
 
 					FilteringRuleAction filteringRule = filteringRuleActionDlService.findByRuleId(rule.getReaRuleId());
-					filteringRuleBo = filteringRuleActionConverter.addFilteringRuleAction(filteringRule, filteringRuleBo);
+					filteringRuleBo = filteringRuleActionConverter.addFilteringRuleAction(filteringRule,
+							filteringRuleBo);
 					ruleBos.add(filteringRuleBo);
 
 				}
 				Collections.sort(ruleBos, new GeneralRulePriorityComparator());
 				reactionRulesetBo.setRuleLines(ruleBos);
-			} 
+			}
 			ruleSetBos.add(reactionRulesetBo);
 		}
 		return ruleSetBos;
@@ -158,7 +159,7 @@ public class FilteringRuleService extends GeneralRuleService implements Serializ
 		FilteringRuleBo filteringRuleBo = (FilteringRuleBo) ruleBo;
 		FilteringRuleAction filteringRule = filteringRuleActionDlService.findByRuleId(filteringRuleBo.getRuleId());
 		filteringRuleBo = filteringRuleActionConverter.addFilteringRuleAction(filteringRule, filteringRuleBo);
-		filteringRuleBo.setType(ReaRulMgtDmnConstants.RULE_TYPE_FILTERING);
+		filteringRuleBo.setType(RuleType.FILTERING_EN.getRuleTypeDescription());
 		return filteringRuleBo;
 	}
 

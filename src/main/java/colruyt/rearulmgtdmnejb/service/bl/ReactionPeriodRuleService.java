@@ -19,12 +19,12 @@ import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
 import colruyt.rearulmgtdmnejb.bo.XPSRuleBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionPeriodRuleAction;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
+import colruyt.rearulmgtdmnejb.enums.RuleType;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleValidationException;
 import colruyt.rearulmgtdmnejb.service.dl.ReactionPeriodActionDlService;
 import colruyt.rearulmgtdmnejb.util.ExceptionMessageConstants;
 import colruyt.rearulmgtdmnejb.util.GeneralRulePriorityComparator;
-import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnDebugMessage;
 import colruyt.rearulmgtdmnejb.util.ReactionPeriodRuleConverter;
 
@@ -113,7 +113,7 @@ public class ReactionPeriodRuleService extends GeneralRuleService implements Ser
 	public List<ReactionRulesetBo> getReactionRules(List<ReactionRulesetBo> reactionRulesetBos)
 			throws ReaRuleValidationException, ReaRuleManagementException {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_RETRIEVEREACTIONPERIODRULE);
-		long ruleTypeId = super.getRuleTypeId(ReaRulMgtDmnConstants.RULE_TYPE_REACTION_PERIOD);
+		long ruleTypeId = super.getRuleTypeId(RuleType.REACTION_PERIOD_EN.getRuleTypeDescription());
 		List<ReactionRulesetBo> ruleSetBos = Lists.newArrayList();
 		for (ReactionRulesetBo reactionRulesetBo : reactionRulesetBos) {
 			if (reactionRulesetBo.getRefRuleTypeBo().getRuleTypeId() == ruleTypeId) {
@@ -152,7 +152,7 @@ public class ReactionPeriodRuleService extends GeneralRuleService implements Ser
 		ReactionPeriodRuleBo reaPrdRule = (ReactionPeriodRuleBo) ruleBo;
 		ReactionPeriodRuleAction reactionPeriodRuleAction = reactionPeriodActionDlService.findByRuleId(reaPrdRule.getRuleId());
 		reaPrdRule = reactionPeriodRuleConverter.addReactionPeriodRuleAction(reactionPeriodRuleAction, reaPrdRule);
-		reaPrdRule.setType(ReaRulMgtDmnConstants.RULE_TYPE_REACTION_PERIOD);
+		reaPrdRule.setType(RuleType.REACTION_PERIOD_EN.getRuleTypeDescription());
 		return reaPrdRule;
 
 	}
