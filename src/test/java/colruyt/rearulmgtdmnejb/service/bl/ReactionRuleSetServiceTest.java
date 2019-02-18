@@ -27,8 +27,8 @@ import colruyt.rearulmgtdmnejb.bo.RefActionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefLangBo;
 import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
-import colruyt.rearulmgtdmnejb.bo.XPSRuleBo;
-import colruyt.rearulmgtdmnejb.bo.XPSRuleSetBo;
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleSetInfoBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.entity.ReactionRuleSet;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
@@ -139,7 +139,7 @@ public class ReactionRuleSetServiceTest {
 		Date dateForRulesDelete=new Date();
 		Date dateDeleteRuleSetBefore=new Date();
 		when(reactionRuleSetDlService.findAllLogicallyDeletedRuleSet(dateForRulesDelete)).thenReturn(getXPSRuleSetBoList());
-		List<XPSRuleSetBo> expectedXpsRulesetBo=reactionRuleSetBlService.findAllLogicallyDeletedRuleSet(dateDeleteRuleSetBefore);
+		List<DeleteRuleSetInfoBo> expectedXpsRulesetBo=reactionRuleSetBlService.findAllLogicallyDeletedRuleSet(dateDeleteRuleSetBefore);
 		Assert.assertEquals(1l, expectedXpsRulesetBo.size());
 	}
 	@Test
@@ -154,9 +154,9 @@ public class ReactionRuleSetServiceTest {
 		ruleSetId.add(1l);
 		return ruleSetId;
 	}
-	private List<XPSRuleSetBo> getXPSRuleSetBoList() {
-		List<XPSRuleSetBo> xpsRuleSetBos=Lists.newArrayList();
-		XPSRuleSetBo xpsRuleSetBo = new XPSRuleSetBo(1l, 1l);
+	private List<DeleteRuleSetInfoBo> getXPSRuleSetBoList() {
+		List<DeleteRuleSetInfoBo> xpsRuleSetBos=Lists.newArrayList();
+		DeleteRuleSetInfoBo xpsRuleSetBo = new DeleteRuleSetInfoBo(1l, 1l);
 		xpsRuleSetBo.setRuleSetId(1l);;
 		xpsRuleSetBo.setRuleType(1l);
 		xpsRuleSetBos.add(xpsRuleSetBo);

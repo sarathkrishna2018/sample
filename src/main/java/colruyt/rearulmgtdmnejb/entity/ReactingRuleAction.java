@@ -21,7 +21,7 @@ public class ReactingRuleAction implements Serializable {
 
 	@Id
 	@Column(name="REA_RULE_ID")
-	private long reaRuleId;
+	private long reactionRuleId;
 
 	@Column(name="CATCH_ALL_YN")
 	@ExternalValues({ "true=Y", "false=N" })
@@ -40,12 +40,12 @@ public class ReactingRuleAction implements Serializable {
 	@Column(name="THOLD_PERC")
 	private Double thresholdPercentage;
 
-	public long getReaRuleId() {
-		return this.reaRuleId;
+	public long getReactionRuleId() {
+		return this.reactionRuleId;
 	}
 
-	public void setReaRuleId(long reaRuleId) {
-		this.reaRuleId = reaRuleId;
+	public void setReactionRuleId(long reactionRuleId) {
+		this.reactionRuleId = reactionRuleId;
 	}
 
 	public boolean getCatchAll() {

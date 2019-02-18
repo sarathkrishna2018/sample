@@ -25,7 +25,7 @@ import javax.persistence.criteria.Root;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import colruyt.rearulmgtdmnejb.bo.XPSRuleSetBo;
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleSetInfoBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionRuleSet;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 
@@ -131,8 +131,8 @@ public class ReactionRuleSetDlService implements Serializable {
 		query.executeUpdate();
 	}
 	
-	public List<XPSRuleSetBo> findAllLogicallyDeletedRuleSet(Date dateForRulesDelete) {		
-		List<XPSRuleSetBo> ruleSet = new ArrayList<XPSRuleSetBo>();
+	public List<DeleteRuleSetInfoBo> findAllLogicallyDeletedRuleSet(Date dateForRulesDelete) {		
+		List<DeleteRuleSetInfoBo> ruleSet = new ArrayList<DeleteRuleSetInfoBo>();
 		Query query = entityManager.createNativeQuery("SELECT ruleSet.REA_RULESET_ID, ruleSet.RULETYPE_ID from"
 				+ " SCHEMA.REA_RULESET ruleSet LEFT JOIN SCHEMA.SOI_PPT_RULE soippt ON ruleSet.REA_RULESET_ID=soippt.REACT_RULESET_ID "
 				+ " LEFT JOIN SCHEMA.SOI_CG_CHN_RULE soicg ON ruleSet.REA_RULESET_ID=soicg.REACT_RULESET_ID"
@@ -142,8 +142,8 @@ public class ReactionRuleSetDlService implements Serializable {
 		for(Object[] item : results) {
 			Long ruleSetId = ((BigDecimal)item[0]).longValue();
 			Long ruleType = ((BigDecimal)item[1]).longValue();
-			XPSRuleSetBo xpsRuleBo= new XPSRuleSetBo(ruleSetId, ruleType);
-	        ruleSet.add(xpsRuleBo);
+			DeleteRuleSetInfoBo deleteRuleInfoBo= new DeleteRuleSetInfoBo(ruleSetId, ruleType);
+	        ruleSet.add(deleteRuleInfoBo);
 		}
 		logger.info("findAllLogicallyDeletedRuleSet completed");
 		return ruleSet;

@@ -24,7 +24,7 @@ public class ProposalNotToReactRuleAction implements Serializable {
 
 	@Id
 	@Column(name="REA_RULE_ID")
-	private long reaRuleId;
+	private long reactionRuleId;
 
 	@Column(name="FLTOUT_TYPE_ID")
 	private long fltoutTypeId;
@@ -44,12 +44,12 @@ public class ProposalNotToReactRuleAction implements Serializable {
 		this.notToReactSetReasons = reaNreactSetRsns;
 	}
 
-	public long getReaRuleId() {
-		return this.reaRuleId;
+	public long getReactionRuleId() {
+		return this.reactionRuleId;
 	}
 
-	public void setReaRuleId(long reaRuleId) {
-		this.reaRuleId = reaRuleId;
+	public void setReactionRuleId(long reactionRuleId) {
+		this.reactionRuleId = reactionRuleId;
 	}
 	
 	public long getFltoutTypeId() {

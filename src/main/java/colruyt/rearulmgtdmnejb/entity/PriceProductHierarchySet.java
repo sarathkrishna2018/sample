@@ -26,21 +26,6 @@ import javax.persistence.JoinTable;
 @Entity
 @Table(name="REA_PPD_HCHYSET")
 public class PriceProductHierarchySet implements Serializable {
-	public List<PriceProductHierarchyElement> getPriceProductHierarchyElements() {
-		return priceProductHierarchyElements;
-	}
-
-	public void setPriceProductHierarchyElements(List<PriceProductHierarchyElement> priceProductHierarchyElements) {
-		this.priceProductHierarchyElements = priceProductHierarchyElements;
-	}
-
-	public void setProdHrchySetId(long ppdHchysetId) {
-		this.prodHrchySetId = ppdHchysetId;
-	}
-
-	public void setReaRuleId(long reaRuleId) {
-		this.reaRuleId = reaRuleId;
-	}
 
 	private static final long serialVersionUID = 1L;
 
@@ -48,10 +33,10 @@ public class PriceProductHierarchySet implements Serializable {
 	@SequenceGenerator(name="REA_PPD_HCHYSET_SEQ_GEN", sequenceName="SEQ_REA_PPD_HCHYSET")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="REA_PPD_HCHYSET_SEQ_GEN")
 	@Column(name="PPD_HCHYSET_ID")
-	private long prodHrchySetId;
+	private long productHierarchySetId;
 	
 	@Column(name="REA_RULE_ID")
-	private long reaRuleId;
+	private long reactionRuleId;
 
 	@Column(name="ASSORTMENT_NAME")
 	private String assortmentName;
@@ -81,12 +66,12 @@ public class PriceProductHierarchySet implements Serializable {
 	@JoinTable(name = "REA_PPD_HCHYSET_ELMNT", joinColumns = @JoinColumn(name = "PPD_HCHYSET_ID"), inverseJoinColumns = @JoinColumn(name = "PPD_HCHY_ELMNT_ID"))
 	private List<PriceProductHierarchyElement> priceProductHierarchyElements;
 	
-	public Long getProdHrchySetId() {
-		return this.prodHrchySetId;
+	public Long getProductHierarchySetId() {
+		return this.productHierarchySetId;
 	}
 
-	public void setPpdHchysetId(Long ppdHchysetId) {
-		this.prodHrchySetId = ppdHchysetId;
+	public void setProductHierarchySetId(Long productHierarchySetId) {
+		this.productHierarchySetId = productHierarchySetId;
 	}
 
 	public String getAssortmentName() {
@@ -138,13 +123,23 @@ public class PriceProductHierarchySet implements Serializable {
 	}
 	
 	public Long getReaRuleId() {
-		return reaRuleId;
+		return this.reactionRuleId;
 	}
 
-	public void setReaRuleId(Long reaRuleId) {
-		this.reaRuleId = reaRuleId;
+	public void setReactionRuleId(long reactionRuleId) {
+		this.reactionRuleId = reactionRuleId;
+	}
+	public List<PriceProductHierarchyElement> getPriceProductHierarchyElements() {
+		return priceProductHierarchyElements;
 	}
 
-	
+	public void setPriceProductHierarchyElements(List<PriceProductHierarchyElement> priceProductHierarchyElements) {
+		this.priceProductHierarchyElements = priceProductHierarchyElements;
+	}
+
+	public void setProdHrchySetId(long ppdHchysetId) {
+		this.productHierarchySetId = ppdHchysetId;
+	}
+
 	
 }

@@ -25,7 +25,7 @@ import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
 import colruyt.rearulmgtdmnejb.bo.RefActionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
-import colruyt.rearulmgtdmnejb.bo.XPSRuleBo;
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.FilteringRuleAction;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
@@ -100,16 +100,16 @@ public class FilteringRuleServiceTest {
 	@Test
 	public void physicalDeleteElementsTest() {
 		long id = 1;
-		when(filteringRuleActionDlService.physicalDeleteElements(Mockito.any(XPSRuleBo.class))).thenReturn(id);
-		long expectedFilteringRule = filteringRuleBlService.physicalDeleteElements(getXpsRuleBo());
+		when(filteringRuleActionDlService.physicalDeleteElements(Mockito.any(DeleteRuleInfoBo.class))).thenReturn(id);
+		long expectedFilteringRule = filteringRuleBlService.physicalDeleteElements(getDeleteRuleInfoBo());
 		Assert.assertNotNull(expectedFilteringRule);
 	}
 
-	private XPSRuleBo getXpsRuleBo() {
-		XPSRuleBo xpsRuleBo = new XPSRuleBo(1l, 1l);
-		xpsRuleBo.setRuleId(1l);
-		xpsRuleBo.setRuleType(1l);
-		return xpsRuleBo;
+	private DeleteRuleInfoBo getDeleteRuleInfoBo() {
+		DeleteRuleInfoBo deleteRuleInfoBo = new DeleteRuleInfoBo(1l, 1l);
+		deleteRuleInfoBo.setRuleId(1l);
+		deleteRuleInfoBo.setRuleType(1l);
+		return deleteRuleInfoBo;
 	}
 	
 	private FilteringRuleBo getFilteringRuleBo() {
@@ -226,8 +226,8 @@ public class FilteringRuleServiceTest {
 
 	public FilteringRuleAction getReaFltRule() {
 		FilteringRuleAction reaFltRule = new FilteringRuleAction();
-		reaFltRule.setReaRuleId(1l);
-		reaFltRule.setMaxCompQty(12d);
+		reaFltRule.setReactionRuleId(1l);
+		reaFltRule.setMaximumCompetitorQuantity(12d);
 		reaFltRule.setXTimeQty(1d);
 		return reaFltRule;
 	}

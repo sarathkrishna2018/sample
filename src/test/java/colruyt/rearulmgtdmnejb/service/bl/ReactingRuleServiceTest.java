@@ -25,7 +25,7 @@ import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
 import colruyt.rearulmgtdmnejb.bo.RefActionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
-import colruyt.rearulmgtdmnejb.bo.XPSRuleBo;
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.ReactingRuleAction;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
@@ -92,13 +92,13 @@ public class ReactingRuleServiceTest {
 	@Test
 	public void physicalDeleteElementsTest() {
 		long id = 1;
-		when(reactingRuleActionDlService.physicalDeleteElements(Mockito.any(XPSRuleBo.class))).thenReturn(id);
+		when(reactingRuleActionDlService.physicalDeleteElements(Mockito.any(DeleteRuleInfoBo.class))).thenReturn(id);
 		long expectedReactingRule = reactingRuleBlService.physicalDeleteElements(getXpsRuleBo());
 		Assert.assertNotNull(expectedReactingRule);
 	}
 
-	private XPSRuleBo getXpsRuleBo() {
-		XPSRuleBo xpsRuleBo = new XPSRuleBo(1l, 1l);
+	private DeleteRuleInfoBo getXpsRuleBo() {
+		DeleteRuleInfoBo xpsRuleBo = new DeleteRuleInfoBo(1l, 1l);
 		xpsRuleBo.setRuleId(1l);
 		xpsRuleBo.setRuleType(1l);
 		return xpsRuleBo;
@@ -210,7 +210,7 @@ public class ReactingRuleServiceTest {
 
 	public ReactingRuleAction getReareactingAct() {
 		ReactingRuleAction reaReactingAct = new ReactingRuleAction();
-		reaReactingAct.setReaRuleId(1l);
+		reaReactingAct.setReactionRuleId(1l);
 		reaReactingAct.setCatchAll(true);
 		reaReactingAct.setReactingAmt(12d);
 		reaReactingAct.setReactingPercentage(8d);

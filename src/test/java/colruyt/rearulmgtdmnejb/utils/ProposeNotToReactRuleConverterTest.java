@@ -69,14 +69,14 @@ public class ProposeNotToReactRuleConverterTest {
 	private ProposalNotToReactRuleAction getProposalNotToReactRuleAction() {
 		ProposalNotToReactRuleAction proposalNotToReactRuleAction=new ProposalNotToReactRuleAction();
 		proposalNotToReactRuleAction.setFltoutTypeId(1);
-		proposalNotToReactRuleAction.setReaRuleId(1);
+		proposalNotToReactRuleAction.setReactionRuleId(1);
 		
 		return proposalNotToReactRuleAction;
 	}
 	
 	public ProposalNotToReactRuleActionRsnPK getReaNreactSetRsnPK(){
 		ProposalNotToReactRuleActionRsnPK reaNreactSetRsnPK=new ProposalNotToReactRuleActionRsnPK();
-		reaNreactSetRsnPK.setReaRuleId(1l);
+		reaNreactSetRsnPK.setReactionRuleId(1l);
 		reaNreactSetRsnPK.setReasonId(1l);
 		return reaNreactSetRsnPK;
 	}

@@ -12,7 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import colruyt.rearulmgtdmnejb.bo.XPSRuleBo;
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySet;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmnt;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
@@ -70,10 +70,10 @@ public class ProductHierarchySetDlService implements Serializable{
 		return query.setParameter(1, productHierarchySetIds).getResultList();	
 	}
 	
-	public long getPriceProductHierarchySetElementId(XPSRuleBo xpsRuleBo){
+	public long getPriceProductHierarchySetElementId(DeleteRuleInfoBo deleteRuleInfoBo){
 		Query query = entityManager.createNativeQuery("SELECT rhs.PPD_HCHYSET_ID, rhs.REA_RULE_ID from PRCGD001.REA_PPD_HCHYSET rhs "
 			+ " where rhs.REA_RULE_ID = (?1)");
-		query.setParameter(1, xpsRuleBo.getRuleId());
+		query.setParameter(1, deleteRuleInfoBo.getRuleId());
 		Long ppdHchysetId = null;
 		List<Object[]> results = query.getResultList();
 		for(Object[] item : results) {
@@ -89,9 +89,9 @@ public class ProductHierarchySetDlService implements Serializable{
 		return 1L;
 	}
 	
-	public long deletePriceProductHierarchySet(XPSRuleBo xpsRuleBo){
+	public long deletePriceProductHierarchySet(DeleteRuleInfoBo deleteRuleInfoBo){
 		Query query = entityManager.createQuery("Delete from  PriceProductHierarchySet priceProductHierarchySet where priceProductHierarchySet.reaRuleId = (?1)");
-		query.setParameter(1, xpsRuleBo.getRuleId()).executeUpdate();	
+		query.setParameter(1, deleteRuleInfoBo.getRuleId()).executeUpdate();	
 		entityManager.clear();
 		return 1L;
 	}

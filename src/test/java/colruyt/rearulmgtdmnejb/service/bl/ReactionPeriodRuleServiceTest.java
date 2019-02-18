@@ -25,7 +25,7 @@ import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
 import colruyt.rearulmgtdmnejb.bo.RefActionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
-import colruyt.rearulmgtdmnejb.bo.XPSRuleBo;
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionPeriodRuleAction;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
@@ -95,13 +95,13 @@ public class ReactionPeriodRuleServiceTest {
 	@Test
 	public void physicalDeleteElementsTest() {
 		long id = 1;
-		when(reactionPeriodActionDlService.physicalDeleteElements(Mockito.any(XPSRuleBo.class))).thenReturn(id);
+		when(reactionPeriodActionDlService.physicalDeleteElements(Mockito.any(DeleteRuleInfoBo.class))).thenReturn(id);
 		long expectedReactionPrdRule = reactionPeriodRuleBlService.physicalDeleteElements(getXpsRuleBo());
 		Assert.assertNotNull(expectedReactionPrdRule);
 	}
 
-	private XPSRuleBo getXpsRuleBo() {
-		XPSRuleBo xpsRuleBo = new XPSRuleBo(1l, 1l);
+	private DeleteRuleInfoBo getXpsRuleBo() {
+		DeleteRuleInfoBo xpsRuleBo = new DeleteRuleInfoBo(1l, 1l);
 		xpsRuleBo.setRuleId(1l);
 		xpsRuleBo.setRuleType(1l);
 		return xpsRuleBo;

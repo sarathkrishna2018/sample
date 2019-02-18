@@ -10,7 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import colruyt.rearulmgtdmnejb.bo.XPSRuleBo;
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.RecordingNotFoundRuleAction;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 
@@ -35,9 +35,9 @@ public class RecordingNotFoundRuleActionDlService  implements Serializable {
 		
 	}
 	
-	public long physicalDeleteElements(XPSRuleBo xpsRuleBo) {
+	public long physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo) {
 		Query query = entityManager.createQuery("Delete from  RecordingNotFoundRuleAction recordingNotFoundRuleAction where recordingNotFoundRuleAction.reaRuleId = (?1)");
-		query.setParameter(1, xpsRuleBo.getRuleId()).executeUpdate();	
+		query.setParameter(1, deleteRuleInfoBo.getRuleId()).executeUpdate();	
 		entityManager.clear();
 		return 1L;
 	}

@@ -25,7 +25,7 @@ public class ProposeNotToReactRuleConverter implements Serializable {
 
 	public ProposalNotToReactRuleAction convert(ProposeNotToReactRuleBo notToReactRule ) {
 		ProposalNotToReactRuleAction notToReactRuleAction = new ProposalNotToReactRuleAction();
-		notToReactRuleAction.setReaRuleId(notToReactRule.getRuleId());
+		notToReactRuleAction.setReactionRuleId(notToReactRule.getRuleId());
 		notToReactRuleAction.setFltoutTypeId(notToReactRule.getFilterOutType().getFilterOutTypeId());
 		notToReactRuleAction.setNotToReactSetReasons(convertReasonNotToReactSet(notToReactRule.getNotToReactCodes()));
 		return notToReactRuleAction;

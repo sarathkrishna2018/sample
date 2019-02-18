@@ -9,7 +9,9 @@ import java.util.Map;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
+import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Multimap;
 
 import colruyt.rearulmgtdmnejb.bo.RefActionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefFilterOutRecordingTypeBo;
@@ -51,6 +53,7 @@ public class ReferenceDataConverter implements Serializable {
 
 	public List<RefNotToReactCodeBo> convertRefNonReactingCodeType(ReasonType[] refReasonEnums) {
 		List<RefNotToReactCodeBo> refNotToReactCodeBoList = new ArrayList<>();
+		Multimap<Long, RefLangBo> reasonMap1 = getReasonTypeMap1(refReasonEnums);
 		Map<Long, List<RefLangBo>> reasonMap = getReasonTypeMap(refReasonEnums);
 		RefNotToReactCodeBo refNotToReactCodeBo;
 		for (Map.Entry<Long, List<RefLangBo>> entry : reasonMap.entrySet()) {
@@ -62,6 +65,10 @@ public class ReferenceDataConverter implements Serializable {
 		return refNotToReactCodeBoList;
 	}
 
+	private Multimap<Long, RefLangBo> getReasonTypeMap1(ReasonType[] refReasonEnums){
+		Multimap<Long, RefLangBo> reasonTypeMap =  ArrayListMultimap.create();
+		return reasonTypeMap;
+	}
 	private Map<Long, List<RefLangBo>> getReasonTypeMap(ReasonType[] refReasonEnums) {
 		Map<Long, List<RefLangBo>> reasonTypeMap = new HashMap<>();
 		for (ReasonType reasonType : refReasonEnums) {

@@ -10,7 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import colruyt.rearulmgtdmnejb.bo.XPSRuleBo;
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.ReactingRuleAction;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 
@@ -34,9 +34,9 @@ public class ReactingRuleActionDlService implements Serializable {
 		
 	}
 	
-	public long physicalDeleteElements(XPSRuleBo xpsRuleBo) {
+	public long physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo) {
 		Query query = entityManager.createQuery("Delete from  ReactingRuleAction reactingRuleAction where reactingRuleAction.reaRuleId = (?1)");
-		query.setParameter(1, xpsRuleBo.getRuleId()).executeUpdate();	
+		query.setParameter(1, deleteRuleInfoBo.getRuleId()).executeUpdate();	
 		entityManager.clear();
 		return 1L;
 	}

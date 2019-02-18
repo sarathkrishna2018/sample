@@ -30,7 +30,7 @@ import colruyt.rearulmgtdmnejb.bo.RefActionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefLangBo;
 import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
-import colruyt.rearulmgtdmnejb.bo.XPSRuleBo;
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchyElement;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySet;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmnt;
@@ -127,13 +127,13 @@ public class PriceProductHierarchyServiceTest {
 	@Test
 	public void physicalDeleteElementsTest(){
 		Long id=1l;
-		when(productHierarchySetDlService.getPriceProductHierarchySetElementId(Mockito.any(XPSRuleBo.class))).thenReturn(id);
+		when(productHierarchySetDlService.getPriceProductHierarchySetElementId(Mockito.any(DeleteRuleInfoBo.class))).thenReturn(id);
 		when(productHierarchySetDlService.deletePriceProductHierarchySetElemnet(Mockito.anyLong())).thenReturn(id);
-		when(productHierarchySetDlService.deletePriceProductHierarchySet(Mockito.any(XPSRuleBo.class))).thenReturn(id);
+		when(productHierarchySetDlService.deletePriceProductHierarchySet(Mockito.any(DeleteRuleInfoBo.class))).thenReturn(id);
 		priceProductHierarchyBlService.physicalDeleteElements(getXpsRuleBo());
 	}
-	private XPSRuleBo getXpsRuleBo() {
-		XPSRuleBo xpsRuleBo = new XPSRuleBo(1l, 1l);
+	private DeleteRuleInfoBo getXpsRuleBo() {
+		DeleteRuleInfoBo xpsRuleBo = new DeleteRuleInfoBo(1l, 1l);
 		xpsRuleBo.setRuleId(1l);
 		xpsRuleBo.setRuleType(1l);
 		return xpsRuleBo;
@@ -249,7 +249,7 @@ public class PriceProductHierarchyServiceTest {
 		reaPpdHchyset.setNationalBrand(true);
 		reaPpdHchyset.setOwnBrand(true);
 		reaPpdHchyset.setProdHrchySetId(1l);
-		reaPpdHchyset.setReaRuleId(1l);
+		reaPpdHchyset.setReactionRuleId(1l);
 		return reaPpdHchyset;
 
 	}
@@ -268,8 +268,8 @@ public class PriceProductHierarchyServiceTest {
 	public List<PriceProductHierarchyElement> getReaPpdHchyElmnt() {
 		List<PriceProductHierarchyElement> reaPpdHchyElmntlist = Lists.newArrayList();
 		PriceProductHierarchyElement reaPpdHchyElmnt = new PriceProductHierarchyElement();
-		reaPpdHchyElmnt.setPpdHchyElmntId(1l);
-		reaPpdHchyElmnt.setPpdHchyTypeId(1l);
+		reaPpdHchyElmnt.setProductHierarchyElementId(1l);
+		reaPpdHchyElmnt.setProductHierarchyTypeId(1l);
 		reaPpdHchyElmnt.setPpdHchyValue("ASA");
 		reaPpdHchyElmnt.setCreatedBy("SA");
 		reaPpdHchyElmnt.setProdHrchySetElement(getReaPpdHchysetElmnt());
@@ -283,8 +283,8 @@ public class PriceProductHierarchyServiceTest {
 		PriceProductHierarchySetElmnt reaPpdHchysetElmnt = new PriceProductHierarchySetElmnt();
 		reaPpdHchysetElmnt.setLstUpdateBy("Sa");
 		PriceProductHierarchySetElmntPK hierarchySetElmntPK = new PriceProductHierarchySetElmntPK();
-		hierarchySetElmntPK.setProdHrchyElemntId(1L);
-		hierarchySetElmntPK.setProdHrchySetId(1L);
+		hierarchySetElmntPK.setProductHierarchyElementId(1L);
+		hierarchySetElmntPK.setProdicyHierarchySetId(1L);
 		reaPpdHchysetElmnt.setId(hierarchySetElmntPK);
 		reaPpdHchysetElmntlist.add(reaPpdHchysetElmnt);
 		return reaPpdHchysetElmntlist;
@@ -293,8 +293,8 @@ public class PriceProductHierarchyServiceTest {
 
 	public PriceProductHierarchyElement createReaPpdHchyElmnt() {
 		PriceProductHierarchyElement reaPpdHchyElmnt = new PriceProductHierarchyElement();
-		reaPpdHchyElmnt.setPpdHchyElmntId(1l);
-		reaPpdHchyElmnt.setPpdHchyTypeId(1l);
+		reaPpdHchyElmnt.setProductHierarchyElementId(1l);
+		reaPpdHchyElmnt.setProductHierarchyTypeId(1l);
 		reaPpdHchyElmnt.setPpdHchyValue("ASA");
 		reaPpdHchyElmnt.setCreatedBy("SA");
 		reaPpdHchyElmnt.setProdHrchySetElement(getReaPpdHchysetElmnt());

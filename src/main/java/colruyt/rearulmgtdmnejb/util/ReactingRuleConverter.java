@@ -16,7 +16,7 @@ public class ReactingRuleConverter implements Serializable {
 
 	public ReactingRuleAction convert(ReactingRuleBo reactingRuleBo) {
 		ReactingRuleAction reactingAct = new ReactingRuleAction();
-		reactingAct.setReaRuleId(reactingRuleBo.getRuleId());
+		reactingAct.setReactionRuleId(reactingRuleBo.getRuleId());
 		reactingAct.setReactingAmt(reactingRuleBo.getReactingAmount());
 		reactingAct.setReactingPercentage(reactingRuleBo.getReactingPercentage());
 		reactingAct.setThresholdAmount(reactingRuleBo.getThresholdAmount());

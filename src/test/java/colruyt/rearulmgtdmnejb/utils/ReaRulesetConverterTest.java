@@ -226,7 +226,7 @@ public class ReaRulesetConverterTest {
 		priceProductHierarchySet.setOwnBrand(false);
 		priceProductHierarchySet.setProdHrchySetId(1);
 		priceProductHierarchySet.setPriceProductHierarchyElements(getpriceProductHierarchyElements());
-		priceProductHierarchySet.setReaRuleId(1);
+		priceProductHierarchySet.setReactionRuleId(1);
 		priceProductHierarchySetlist.add(priceProductHierarchySet);	
 		return priceProductHierarchySetlist;
 	}
@@ -234,8 +234,8 @@ public class ReaRulesetConverterTest {
 		List<PriceProductHierarchyElement> productHierarchyElements=Lists.newArrayList();
 		PriceProductHierarchyElement priceProductHierarchyElement=new PriceProductHierarchyElement();
 		priceProductHierarchyElement.setCreatedBy("sa");
-		priceProductHierarchyElement.setPpdHchyElmntId(12l);
-		priceProductHierarchyElement.setPpdHchyTypeId(1l);
+		priceProductHierarchyElement.setProductHierarchyElementId(12l);
+		priceProductHierarchyElement.setProductHierarchyTypeId(1l);
 		priceProductHierarchyElement.setPpdHchyValue("xx");
 		priceProductHierarchyElement.setProdHrchySetElement(getreaPpdHchysetElmnts());
 		productHierarchyElements.add(priceProductHierarchyElement);
@@ -252,8 +252,8 @@ public class ReaRulesetConverterTest {
 
 	private PriceProductHierarchySetElmntPK getppdid() {
 		PriceProductHierarchySetElmntPK priceProductHierarchySetElmntPK=new PriceProductHierarchySetElmntPK();
-		priceProductHierarchySetElmntPK.setProdHrchyElemntId(1);
-		priceProductHierarchySetElmntPK.setProdHrchySetId(1);
+		priceProductHierarchySetElmntPK.setProductHierarchyElementId(1);
+		priceProductHierarchySetElmntPK.setProdicyHierarchySetId(1);
 		return priceProductHierarchySetElmntPK;
 	}
 

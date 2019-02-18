@@ -38,11 +38,11 @@ public class QuantityRuleActionConverterTest {
 	public void createConverterTest(){
 		QuantityRuleBo quantityRule=getQuantityRule();
 		QuantityRuleAction quantityRuleAction = new QuantityRuleAction();
-		quantityRuleAction.setReaRuleId(1L);
-		quantityRuleAction.setQtyCondId(quantityRule.getConditionType().getCodeTypeId());
-		quantityRuleAction.setQtyTypeId(quantityRule.getQuantityPriceType().getQuantityTypeId());
+		quantityRuleAction.setReactionRuleId(1L);
+		quantityRuleAction.setQuantityConditionId(quantityRule.getConditionType().getCodeTypeId());
+		quantityRuleAction.setQuantityTypeId(quantityRule.getQuantityPriceType().getQuantityTypeId());
 		QuantityRuleAction expectedReaQtyRule=quantityRuleActionConverter.convert(quantityRule);
-		assertEquals(new Long(2),expectedReaQtyRule.getQtyTypeId());
+		assertEquals(new Long(2),expectedReaQtyRule.getQuantityTypeId());
 		
 	}
 	
@@ -108,8 +108,8 @@ public class QuantityRuleActionConverterTest {
 	
 	public QuantityRuleAction getReaQtyRule() {
 		QuantityRuleAction reaQtyRule = new QuantityRuleAction();
-		reaQtyRule.setQtyCondId(1L);
-		reaQtyRule.setQtyTypeId(1L);
+		reaQtyRule.setQuantityConditionId(1L);
+		reaQtyRule.setQuantityTypeId(1L);
 		return reaQtyRule;
 	}
 

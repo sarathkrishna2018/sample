@@ -25,7 +25,7 @@ import colruyt.rearulmgtdmnejb.bo.RefActionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefLangBo;
 import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
-import colruyt.rearulmgtdmnejb.bo.XPSRuleBo;
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySet;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.entity.ReactionRuleActionType;
@@ -625,7 +625,7 @@ public class GeneralRuleServiceTest {
 		Date dateForRulesDelete = new Date();
 		Date dateDeleteRuleBefore = new Date();
 		when(reactionRuleDlService.findAllLogicallyDeletedRules(dateForRulesDelete)).thenReturn(getXPSRuleBoList());
-		List<XPSRuleBo> expectedRuleBo = generalRuleService.findAllLogicallyDeletedRules(dateDeleteRuleBefore);
+		List<DeleteRuleInfoBo> expectedRuleBo = generalRuleService.findAllLogicallyDeletedRules(dateDeleteRuleBefore);
 		Assert.assertEquals(1l, expectedRuleBo.size());
 	}
 
@@ -633,40 +633,40 @@ public class GeneralRuleServiceTest {
 	public void findAllExpiredRulesTest() {
 		Date dateDeleteRuleBefore = new Date();
 		when(reactionRuleDlService.findAllExpiredRules(dateDeleteRuleBefore)).thenReturn(getXPSRuleBoList());
-		List<XPSRuleBo> expectedRuleBo = generalRuleService.findAllExpiredRules(dateDeleteRuleBefore);
+		List<DeleteRuleInfoBo> expectedRuleBo = generalRuleService.findAllExpiredRules(dateDeleteRuleBefore);
 		Assert.assertEquals(1l, expectedRuleBo.size());
 	}
 
 	@Test
 	public void physicalDeleteRulesTest() {
 		Long deleteId = 1l;
-		when(reactionRuleActionTypeDlService.physicalDeleteActionForRules(Mockito.any(XPSRuleBo.class)))
+		when(reactionRuleActionTypeDlService.physicalDeleteActionForRules(Mockito.any(DeleteRuleInfoBo.class)))
 				.thenReturn(deleteId);
-		when(reactionRuleSourceTypeDlService.physicalDeleteSourceType(Mockito.any(XPSRuleBo.class)))
+		when(reactionRuleSourceTypeDlService.physicalDeleteSourceType(Mockito.any(DeleteRuleInfoBo.class)))
 				.thenReturn(deleteId);
-		Mockito.doNothing().when(priceProductHierarchyBlService).physicalDeleteElements(getXpsRuleBo());
+		Mockito.doNothing().when(priceProductHierarchyBlService).physicalDeleteElements(getDeleteRuleInfoBo());
 		try
 		{
-			generalRuleService.physicalDeleteRules(getXpsRuleBo());
+			generalRuleService.physicalDeleteRules(getDeleteRuleInfoBo());
 		}
 		catch(Exception e){
 			Assert.fail();
 		}
 	}
 
-	private XPSRuleBo getXpsRuleBo() {
-		XPSRuleBo xpsRuleBo = new XPSRuleBo(1l, 1l);
-		xpsRuleBo.setRuleId(1l);
-		xpsRuleBo.setRuleType(1l);
-		return xpsRuleBo;
+	private DeleteRuleInfoBo getDeleteRuleInfoBo() {
+		DeleteRuleInfoBo deleteRuleInfoBo = new DeleteRuleInfoBo(1l, 1l);
+		deleteRuleInfoBo.setRuleId(1l);
+		deleteRuleInfoBo.setRuleType(1l);
+		return deleteRuleInfoBo;
 	}
 
-	private List<XPSRuleBo> getXPSRuleBoList() {
-		List<XPSRuleBo> xpsRuleBos = Lists.newArrayList();
-		XPSRuleBo xpsRuleBo = new XPSRuleBo(1l, 1l);
-		xpsRuleBo.setRuleId(1l);
-		xpsRuleBo.setRuleType(1l);
-		xpsRuleBos.add(xpsRuleBo);
+	private List<DeleteRuleInfoBo> getXPSRuleBoList() {
+		List<DeleteRuleInfoBo> xpsRuleBos = Lists.newArrayList();
+		DeleteRuleInfoBo deleteRuleInfoBo = new DeleteRuleInfoBo(1l, 1l);
+		deleteRuleInfoBo.setRuleId(1l);
+		deleteRuleInfoBo.setRuleType(1l);
+		xpsRuleBos.add(deleteRuleInfoBo);
 		return xpsRuleBos;
 	}
 
@@ -911,7 +911,7 @@ public class GeneralRuleServiceTest {
 		reaPpdHchyset.setNationalBrand(true);
 		reaPpdHchyset.setOwnBrand(true);
 		reaPpdHchyset.setProdHrchySetId(1l);
-		reaPpdHchyset.setReaRuleId(1l);
+		reaPpdHchyset.setReactionRuleId(1l);
 		return reaPpdHchyset;
 
 	}

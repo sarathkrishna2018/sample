@@ -16,7 +16,7 @@ import com.google.common.collect.Lists;
 import colruyt.rearulmgtdmnejb.bo.GeneralRuleBo;
 import colruyt.rearulmgtdmnejb.bo.ReactionPeriodRuleBo;
 import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
-import colruyt.rearulmgtdmnejb.bo.XPSRuleBo;
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionPeriodRuleAction;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.enums.RuleType;
@@ -158,10 +158,10 @@ public class ReactionPeriodRuleService extends GeneralRuleService implements Ser
 	}
 
 	@Override
-	public long physicalDeleteElements(XPSRuleBo xpsRuleBo) {
-		String debugInfo = String.format("physicalDeleteElements %1$d", xpsRuleBo.getRuleId());
+	public long physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo) {
+		String debugInfo = String.format("physicalDeleteElements %1$d", deleteRuleInfoBo.getRuleId());
 		logger.debug(debugInfo);
-		return reactionPeriodActionDlService.physicalDeleteElements(xpsRuleBo);
+		return reactionPeriodActionDlService.physicalDeleteElements(deleteRuleInfoBo);
 	}
 
 }

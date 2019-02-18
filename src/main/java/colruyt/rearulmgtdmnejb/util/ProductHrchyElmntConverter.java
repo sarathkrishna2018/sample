@@ -25,10 +25,10 @@ public class ProductHrchyElmntConverter implements Serializable {
 		for(ProductHierarchyElementBo productHierarchyElementBo:productHierarchyElementBos){
 			PriceProductHierarchyElement reaPpdHchyElmnt=new PriceProductHierarchyElement();
 			if(productHierarchyElementBo.getId() != null) {
-				reaPpdHchyElmnt.setPpdHchyElmntId(productHierarchyElementBo.getId());
+				reaPpdHchyElmnt.setProductHierarchyElementId(productHierarchyElementBo.getId());
 			}
 			reaPpdHchyElmnt.setPpdHchyValue(productHierarchyElementBo.getPriceProductHierarchyValue());
-			reaPpdHchyElmnt.setPpdHchyTypeId(productHierarchyElementBo.getPriceProductHierarchyTypeId());
+			reaPpdHchyElmnt.setProductHierarchyTypeId(productHierarchyElementBo.getPriceProductHierarchyTypeId());
 			reaPpdHchyElmnt.setCreatedBy(logonId);
 			reaPpdHchyElmnts.add(reaPpdHchyElmnt);
 		}
@@ -41,7 +41,7 @@ public class ProductHrchyElmntConverter implements Serializable {
 			ruleBo.setCheapBrand(set.getCheapBrand());
 			ruleBo.setNationalBrand(set.getNationalBrand());
 			ruleBo.setOwnBrand(set.getOwnBrand());
-			ruleBo.setProductHierarchySetId(set.getProdHrchySetId());
+			ruleBo.setProductHierarchySetId(set.getProductHierarchySetId());
 			List<ProductHierarchyElementBo> productHierarchyElementBolist=convertProductHrchyElementBo(set.getPriceProductHierarchyElements());
 			ruleBo.setPriceProductHierarchySet(productHierarchyElementBolist);
 			
@@ -53,8 +53,8 @@ public class ProductHrchyElmntConverter implements Serializable {
 		 List<ProductHierarchyElementBo> productHierarchyElementBolist=Lists.newArrayList();
 		 for(PriceProductHierarchyElement ppHchyElement:priceProductHierarchyElements){
 			 ProductHierarchyElementBo productHierarchyElementBo=new ProductHierarchyElementBo();
-			 productHierarchyElementBo.setId(ppHchyElement.getProdHrchyElemntId());
-			 productHierarchyElementBo.setPriceProductHierarchyTypeId(ppHchyElement.getProdHrchyTypeId());
+			 productHierarchyElementBo.setId(ppHchyElement.getProductHierarchyElementId());
+			 productHierarchyElementBo.setPriceProductHierarchyTypeId(ppHchyElement.getProductHierarchyTypeId());
 			 productHierarchyElementBo.setPriceProductHierarchyValue(ppHchyElement.getProdHrchyValue());
 			 productHierarchyElementBolist.add(productHierarchyElementBo);
 		 }

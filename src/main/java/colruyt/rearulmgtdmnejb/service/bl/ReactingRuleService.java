@@ -16,7 +16,7 @@ import com.google.common.collect.Lists;
 import colruyt.rearulmgtdmnejb.bo.GeneralRuleBo;
 import colruyt.rearulmgtdmnejb.bo.ReactingRuleBo;
 import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
-import colruyt.rearulmgtdmnejb.bo.XPSRuleBo;
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.ReactingRuleAction;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.enums.RuleType;
@@ -163,9 +163,9 @@ public class ReactingRuleService extends GeneralRuleService implements Serializa
 	}
 
 	@Override
-	public long physicalDeleteElements(XPSRuleBo xpsRuleBo) {
-		logger.debug("physicalDeleteElements is {}", xpsRuleBo.getRuleId());
-		return reactingRuleActionDlService.physicalDeleteElements(xpsRuleBo);
+	public long physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo) {
+		logger.debug("physicalDeleteElements is {}", deleteRuleInfoBo.getRuleId());
+		return reactingRuleActionDlService.physicalDeleteElements(deleteRuleInfoBo);
 	}
 
 }

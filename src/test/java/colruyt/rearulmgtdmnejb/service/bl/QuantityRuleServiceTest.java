@@ -27,7 +27,7 @@ import colruyt.rearulmgtdmnejb.bo.RefQuantityConditionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefQuantityPriceTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
-import colruyt.rearulmgtdmnejb.bo.XPSRuleBo;
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.QuantityRuleAction;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
@@ -95,13 +95,13 @@ public class QuantityRuleServiceTest {
 	@Test
 	public void physicalDeleteElementsTest() {
 		long id = 1;
-		when(quantityRuleActionDlService.physicalDeleteElements(Mockito.any(XPSRuleBo.class))).thenReturn(id);
+		when(quantityRuleActionDlService.physicalDeleteElements(Mockito.any(DeleteRuleInfoBo.class))).thenReturn(id);
 		long expectedQuantityRule = quantityRuleBlService.physicalDeleteElements(getXpsRuleBo());
 		Assert.assertNotNull(expectedQuantityRule);
 	}
 
-	private XPSRuleBo getXpsRuleBo() {
-		XPSRuleBo xpsRuleBo = new XPSRuleBo(1l, 1l);
+	private DeleteRuleInfoBo getXpsRuleBo() {
+		DeleteRuleInfoBo xpsRuleBo = new DeleteRuleInfoBo(1l, 1l);
 		xpsRuleBo.setRuleId(1l);
 		xpsRuleBo.setRuleType(1l);
 		return xpsRuleBo;
@@ -226,7 +226,7 @@ public class QuantityRuleServiceTest {
 
 	public QuantityRuleAction getReaQtyRule() {
 		QuantityRuleAction reaQtyRule = new QuantityRuleAction();
-		reaQtyRule.setQtyCondId(1L);
+		reaQtyRule.setQuantityConditionId(1L);
 
 		return reaQtyRule;
 	}

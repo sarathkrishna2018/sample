@@ -2,16 +2,22 @@ package colruyt.rearulmgtdmnejb.bo;
 
 import java.io.Serializable;
 
-public class XPSRuleSetBo implements Serializable {
+public class DeleteRuleInfoBo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private Long ruleSetId;
+	private Long ruleId;
 	private Long ruleType;
-	public Long getRuleSetId() {
-		return ruleSetId;
+	
+	public DeleteRuleInfoBo(Long ruleId, Long ruleType) {
+		super();
+		this.ruleId = ruleId;
+		this.ruleType = ruleType;
 	}
-	public void setRuleSetId(Long ruleSetId) {
-		this.ruleSetId = ruleSetId;
+	public Long getRuleId() {
+		return ruleId;
+	}
+	public void setRuleId(Long ruleId) {
+		this.ruleId = ruleId;
 	}
 	public Long getRuleType() {
 		return ruleType;
@@ -19,37 +25,35 @@ public class XPSRuleSetBo implements Serializable {
 	public void setRuleType(Long ruleType) {
 		this.ruleType = ruleType;
 	}
-	public XPSRuleSetBo(Long ruleSetId, Long ruleType) {
-		super();
-		this.ruleSetId = ruleSetId;
-		this.ruleType = ruleType;
-	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((ruleSetId == null) ? 0 : ruleSetId.hashCode());
+		result = prime * result + ((ruleId == null) ? 0 : ruleId.hashCode());
 		result = prime * result + ((ruleType == null) ? 0 : ruleType.hashCode());
 		return result;
 	}
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj){
+		if (this == obj)
+		{
 			return true;
 		}
-		if (obj == null){
+		if (obj == null)
+		{
 			return false;
 		}
-		if (getClass() != obj.getClass()){
+		if (getClass() != obj.getClass())
+		{
 			return false;
 		}
-		XPSRuleSetBo other = (XPSRuleSetBo) obj;
-		if (ruleSetId == null) {
-			if (other.ruleSetId != null){
+		DeleteRuleInfoBo other = (DeleteRuleInfoBo) obj;
+		if (ruleId == null) {
+			if (other.ruleId != null)
+			{
 				return false;
 			}
-		}
-		else if (!ruleSetId.equals(other.ruleSetId))
+		} else if (!ruleId.equals(other.ruleId))
 		{
 			return false;
 		}
@@ -58,13 +62,12 @@ public class XPSRuleSetBo implements Serializable {
 			{
 				return false;
 			}
-		} 
-		else if (!ruleType.equals(other.ruleType))
+		} else if (!ruleType.equals(other.ruleType))
 		{
 			return false;
 		}
 		return true;
 	}
-	
+
 	
 }

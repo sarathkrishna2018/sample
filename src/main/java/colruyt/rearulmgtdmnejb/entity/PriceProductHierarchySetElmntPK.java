@@ -18,22 +18,22 @@ public class PriceProductHierarchySetElmntPK implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Column(name="PPD_HCHYSET_ID")
-	private long prodHrchySetId;
+	private long productHierarchySetId;
 
 	@Column(name="PPD_HCHY_ELMNT_ID")
-	private long prodHrchyElemntId;
+	private long productHierarchyElementId;
 
-	public long getProdHrchySetId() {
-		return this.prodHrchySetId;
+	public long getProductHierarchySetId() {
+		return this.productHierarchySetId;
 	}
-	public void setProdHrchySetId(long ppdHchysetId) {
-		this.prodHrchySetId = ppdHchysetId;
+	public void setProdicyHierarchySetId(long productHierarchySetId) {
+		this.productHierarchySetId = productHierarchySetId;
 	}
-	public long getProdHrchyElemntId() {
-		return this.prodHrchyElemntId;
+	public long getProductHierarchyElementId() {
+		return this.productHierarchyElementId;
 	}
-	public void setProdHrchyElemntId(long ppdHchyElmntId) {
-		this.prodHrchyElemntId = ppdHchyElmntId;
+	public void setProductHierarchyElementId(long productHierarchyElementId) {
+		this.productHierarchyElementId = productHierarchyElementId;
 	}
 
 	public boolean equals(Object other) {
@@ -45,15 +45,15 @@ public class PriceProductHierarchySetElmntPK implements Serializable {
 		}
 		PriceProductHierarchySetElmntPK castOther = (PriceProductHierarchySetElmntPK)other;
 		return 
-			(this.prodHrchySetId == castOther.prodHrchySetId)
-			&& (this.prodHrchyElemntId == castOther.prodHrchyElemntId);
+			(this.productHierarchySetId == castOther.productHierarchySetId)
+			&& (this.productHierarchyElementId == castOther.productHierarchyElementId);
 	}
 
 	public int hashCode() {
 		final int prime = 31;
 		int hash = 17;
-		hash = hash * prime + ((int) (this.prodHrchySetId ^ (this.prodHrchySetId >>> 32)));
-		hash = hash * prime + ((int) (this.prodHrchyElemntId ^ (this.prodHrchyElemntId >>> 32)));
+		hash = hash * prime + ((int) (this.productHierarchySetId ^ (this.productHierarchySetId >>> 32)));
+		hash = hash * prime + ((int) (this.productHierarchyElementId ^ (this.productHierarchyElementId >>> 32)));
 		
 		return hash;
 	}

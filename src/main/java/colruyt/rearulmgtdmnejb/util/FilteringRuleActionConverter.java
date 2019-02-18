@@ -16,20 +16,20 @@ public class FilteringRuleActionConverter  implements Serializable {
 
 	public FilteringRuleAction convert(FilteringRuleBo filteringRuleBo) {
 		FilteringRuleAction filteringRuleAction = new FilteringRuleAction();
-		filteringRuleAction.setReaRuleId(filteringRuleBo.getRuleId());
-		filteringRuleAction.setMaxCompQty(filteringRuleBo.getMaxCompQuantity());
+		filteringRuleAction.setReactionRuleId(filteringRuleBo.getRuleId());
+		filteringRuleAction.setMaximumCompetitorQuantity(filteringRuleBo.getMaxCompQuantity());
 		filteringRuleAction.setXTimeQty(filteringRuleBo.getxTimeQuantity());
 		return filteringRuleAction;
 	}
 	public FilteringRuleBo convertFilteringRuleAction(FilteringRuleAction filteringRuleAction){
 		FilteringRuleBo filteringRuleBo=new FilteringRuleBo();
-		filteringRuleBo.setMaxCompQuantity(filteringRuleAction.getMaxCompQty());
+		filteringRuleBo.setMaxCompQuantity(filteringRuleAction.getMaximumCompetitorQuantity());
 		filteringRuleBo.setxTimeQuantity(filteringRuleAction.getXTimeQty());
 		return filteringRuleBo;
 	}
 		
 	public FilteringRuleBo addFilteringRuleAction(FilteringRuleAction filteringRule, FilteringRuleBo filteringRuleBo) {
-		filteringRuleBo.setMaxCompQuantity(filteringRule.getMaxCompQty());
+		filteringRuleBo.setMaxCompQuantity(filteringRule.getMaximumCompetitorQuantity());
 		filteringRuleBo.setxTimeQuantity(filteringRule.getXTimeQty());
 		return filteringRuleBo;
 	}

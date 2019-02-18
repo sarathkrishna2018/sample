@@ -13,7 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
-import colruyt.rearulmgtdmnejb.bo.XPSRuleSetBo;
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleSetInfoBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionRuleSet;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleValidationException;
@@ -165,8 +165,8 @@ public class ReactionRuleSetService implements Serializable {
 		reactionRuleSetDlService.logicallyDeleteRuleSet(reactionRuleSet);
 	}
 	
-	public List<XPSRuleSetBo> findAllLogicallyDeletedRuleSet(Date dateDeleteRuleSetBefore) {
-		List<XPSRuleSetBo> ruleSetList = reactionRuleSetDlService.findAllLogicallyDeletedRuleSet(dateDeleteRuleSetBefore);
+	public List<DeleteRuleSetInfoBo> findAllLogicallyDeletedRuleSet(Date dateDeleteRuleSetBefore) {
+		List<DeleteRuleSetInfoBo> ruleSetList = reactionRuleSetDlService.findAllLogicallyDeletedRuleSet(dateDeleteRuleSetBefore);
 		return ruleSetList;
 	}
 	

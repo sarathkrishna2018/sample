@@ -27,13 +27,13 @@ public class PriceProductHierarchyElement implements Serializable {
 	@SequenceGenerator(name="REA_PPD_HCHY_ELMNT_SEQ_GEN", sequenceName="SEQ_REA_PPD_HCHY_ELMNT")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="REA_PPD_HCHY_ELMNT_SEQ_GEN")
 	@Column(name="PPD_HCHY_ELMNT_ID")
-	private long prodHrchyElemntId;
+	private long productHierarchyElementId;
 
 	@Column(name="CREATED_BY")
 	private String createdBy;
 
 	@Column(name="PPD_HCHY_TYPE_ID")
-	private long prodHrchyTypeId;
+	private long productHierarchyTypeId;
 
 	@Column(name="PPD_HCHY_VALUE")
 	private String prodHrchyValue;
@@ -43,12 +43,12 @@ public class PriceProductHierarchyElement implements Serializable {
 	@JoinColumn(name = "PPD_HCHY_ELMNT_ID",referencedColumnName = "PPD_HCHY_ELMNT_ID")
 	private List<PriceProductHierarchySetElmnt> prodHrchySetElement;
 	
-	public Long getProdHrchyElemntId() {
-		return this.prodHrchyElemntId;
+	public Long getProductHierarchyElementId() {
+		return this.productHierarchyElementId;
 	}
 
-	public void setPpdHchyElmntId(Long ppdHchyElmntId) {
-		this.prodHrchyElemntId = ppdHchyElmntId;
+	public void setProductHierarchyElementId(Long productHierarchyElementId) {
+		this.productHierarchyElementId = productHierarchyElementId;
 	}
 	
 	public String getCreatedBy() {
@@ -59,12 +59,12 @@ public class PriceProductHierarchyElement implements Serializable {
 		this.createdBy = createdBy;
 	}
 
-	public Long getProdHrchyTypeId() {
-		return this.prodHrchyTypeId;
+	public Long getProductHierarchyTypeId() {
+		return this.productHierarchyTypeId;
 	}
 
-	public void setPpdHchyTypeId(Long ppdHchyTypeId) {
-		this.prodHrchyTypeId = ppdHchyTypeId;
+	public void setProductHierarchyTypeId(Long productHierarchyTypeId) {
+		this.productHierarchyTypeId = productHierarchyTypeId;
 	}
 
 	public String getProdHrchyValue() {

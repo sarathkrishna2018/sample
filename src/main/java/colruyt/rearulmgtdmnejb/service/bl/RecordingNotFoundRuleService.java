@@ -16,7 +16,7 @@ import com.google.common.collect.Lists;
 import colruyt.rearulmgtdmnejb.bo.GeneralRuleBo;
 import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
 import colruyt.rearulmgtdmnejb.bo.RecordingNotFoundRuleBo;
-import colruyt.rearulmgtdmnejb.bo.XPSRuleBo;
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.entity.RecordingNotFoundRuleAction;
 import colruyt.rearulmgtdmnejb.enums.RuleType;
@@ -160,10 +160,10 @@ public class RecordingNotFoundRuleService extends GeneralRuleService implements 
 	}
 
 	@Override
-	public long physicalDeleteElements(XPSRuleBo xpsRuleBo) {
-		String debugInfo = String.format("physicalDeleteElements %1$d", xpsRuleBo.getRuleId());
+	public long physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo) {
+		String debugInfo = String.format("physicalDeleteElements %1$d", deleteRuleInfoBo.getRuleId());
 		logger.debug(debugInfo);
-		return recordingNotFoundRuleActionDlService.physicalDeleteElements(xpsRuleBo);
+		return recordingNotFoundRuleActionDlService.physicalDeleteElements(deleteRuleInfoBo);
 	}
 
 }

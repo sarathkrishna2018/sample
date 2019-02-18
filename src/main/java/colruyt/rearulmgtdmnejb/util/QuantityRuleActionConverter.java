@@ -24,15 +24,15 @@ public class QuantityRuleActionConverter implements Serializable {
 
 	public QuantityRuleAction convert(QuantityRuleBo quantityRuleBo) {
 		QuantityRuleAction quantityRuleAction = new QuantityRuleAction();
-		quantityRuleAction.setReaRuleId(quantityRuleBo.getRuleId());
-		quantityRuleAction.setQtyCondId(quantityRuleBo.getConditionType().getCodeTypeId());
-		quantityRuleAction.setQtyTypeId(quantityRuleBo.getQuantityPriceType().getQuantityTypeId());
+		quantityRuleAction.setReactionRuleId(quantityRuleBo.getRuleId());
+		quantityRuleAction.setQuantityConditionId(quantityRuleBo.getConditionType().getCodeTypeId());
+		quantityRuleAction.setQuantityTypeId(quantityRuleBo.getQuantityPriceType().getQuantityTypeId());
 		return quantityRuleAction;
 	}
 
 	public QuantityRuleBo addQuantityRuleAction(QuantityRuleAction quantityRuleAction, QuantityRuleBo quantityBo) {
-		quantityBo.setConditionType(convertConditionType(quantityRuleAction.getQtyCondId()));
-		quantityBo.setQuantityPriceType(convertQtyPriceType(quantityRuleAction.getQtyTypeId()));
+		quantityBo.setConditionType(convertConditionType(quantityRuleAction.getQuantityConditionId()));
+		quantityBo.setQuantityPriceType(convertQtyPriceType(quantityRuleAction.getQuantityTypeId()));
 		return quantityBo;
 	}
 

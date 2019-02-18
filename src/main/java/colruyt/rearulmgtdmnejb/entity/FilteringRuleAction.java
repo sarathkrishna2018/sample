@@ -19,28 +19,28 @@ public class FilteringRuleAction implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name="REA_RULE_ID")
-	private long reaRuleId;
+	private long reactionRuleId;
 
 	@Column(name="MAX_COMP_QTY")
-	private Double maxCompQty;
+	private Double maximumCompetitorQuantity;
 
 	@Column(name="X_TIME_QTY")
 	private Double xTimeQty;
 
-	public long getReaRuleId() {
-		return this.reaRuleId;
+	public long getReactionRuleId() {
+		return this.reactionRuleId;
 	}
 
-	public void setReaRuleId(long reaRuleId) {
-		this.reaRuleId = reaRuleId;
+	public void setReactionRuleId(long reactionRuleId) {
+		this.reactionRuleId = reactionRuleId;
 	}
 
-	public Double getMaxCompQty() {
-		return this.maxCompQty;
+	public Double getMaximumCompetitorQuantity() {
+		return this.maximumCompetitorQuantity;
 	}
 
-	public void setMaxCompQty(Double maxCompQty) {
-		this.maxCompQty = maxCompQty;
+	public void setMaximumCompetitorQuantity(Double maximumCompetitorQuantity) {
+		this.maximumCompetitorQuantity = maximumCompetitorQuantity;
 	}
 
 	public Double getXTimeQty() {

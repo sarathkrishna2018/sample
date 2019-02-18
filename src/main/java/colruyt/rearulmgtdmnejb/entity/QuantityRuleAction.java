@@ -20,36 +20,36 @@ public class QuantityRuleAction implements Serializable {
 
 	@Id
 	@Column(name="REA_RULE_ID")
-	private long reaRuleId;
+	private long reactionRuleId;
 
 	@Column(name="QTY_COND_ID")
-	private long qtyCondId;
+	private long quantityConditionId;
 
 	@Column(name="QTY_TYPE_ID")
-	private long QtyTypeId;
+	private long quantityTypeId;
 
-	public long getReaRuleId() {
-		return this.reaRuleId;
+	public long getReactionRuleId() {
+		return this.reactionRuleId;
 	}
 
-	public void setReaRuleId(Long reaRuleId) {
-		this.reaRuleId = reaRuleId;
+	public void setReactionRuleId(Long reactionRuleId) {
+		this.reactionRuleId = reactionRuleId;
 	}
 
-	public Long getQtyCondId() {
-		return qtyCondId;
+	public Long getQuantityConditionId() {
+		return quantityConditionId;
 	}
 
-	public void setQtyCondId(Long qtyCondId) {
-		this.qtyCondId = qtyCondId;
+	public void setQuantityConditionId(Long quantityConditionId) {
+		this.quantityConditionId = quantityConditionId;
 	}
 
-	public Long getQtyTypeId() {
-		return QtyTypeId;
+	public Long getQuantityTypeId() {
+		return quantityTypeId;
 	}
 
-	public void setQtyTypeId(Long qtyTypeId) {
-		QtyTypeId = qtyTypeId;
+	public void setQuantityTypeId(Long quantityTypeId) {
+		this.quantityTypeId = quantityTypeId;
 	}
 
 }

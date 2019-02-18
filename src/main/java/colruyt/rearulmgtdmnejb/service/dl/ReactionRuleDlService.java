@@ -27,7 +27,7 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Lists;
 
-import colruyt.rearulmgtdmnejb.bo.XPSRuleBo;
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 import colruyt.rearulmgtdmnejb.util.ReactionRuleMgtConstants;
@@ -146,8 +146,8 @@ public class ReactionRuleDlService implements Serializable {
 		query.executeUpdate();
 	}
 
-	public List<XPSRuleBo> findAllLogicallyDeletedRules(Date dateForRulesDelete) {
-		List<XPSRuleBo> rules = new ArrayList<XPSRuleBo>();
+	public List<DeleteRuleInfoBo> findAllLogicallyDeletedRules(Date dateForRulesDelete) {
+		List<DeleteRuleInfoBo> rules = new ArrayList<DeleteRuleInfoBo>();
 		Query query = entityManager.createNativeQuery(
 				"SELECT rule.REA_RULE_ID, ruleSet.RULETYPE_ID from SCHEMA.REA_RULE rule "
 						+ "INNER JOIN SCHEMA.REA_RULESET ruleSet ON rule.REA_RULESET_ID =  ruleSet.REA_RULESET_ID where "
@@ -157,15 +157,15 @@ public class ReactionRuleDlService implements Serializable {
 		for (Object[] item : results) {
 			Long ruleId = ((BigDecimal) item[0]).longValue();
 			Long ruleType = ((BigDecimal) item[1]).longValue();
-			XPSRuleBo xpsRuleBo = new XPSRuleBo(ruleId, ruleType);
-			rules.add(xpsRuleBo);
+			DeleteRuleInfoBo deleteRuleInfoBo = new DeleteRuleInfoBo(ruleId, ruleType);
+			rules.add(deleteRuleInfoBo);
 		}
 		logger.info("findAllLogicallyDeletedRules completed");
 		return rules;
 	}
 
-	public List<XPSRuleBo> findAllExpiredRules(Date dateForRulesDelete) {
-		List<XPSRuleBo> rules = new ArrayList<XPSRuleBo>();
+	public List<DeleteRuleInfoBo> findAllExpiredRules(Date dateForRulesDelete) {
+		List<DeleteRuleInfoBo> rules = new ArrayList<DeleteRuleInfoBo>();
 		Query query = entityManager.createNativeQuery(
 				"SELECT rule.REA_RULE_ID, ruleSet.RULETYPE_ID from SCHEMA.REA_RULE rule "
 						+ "INNER JOIN SCHEMA.REA_RULESET ruleSet ON rule.REA_RULESET_ID =  ruleSet.REA_RULESET_ID where "
@@ -175,17 +175,17 @@ public class ReactionRuleDlService implements Serializable {
 		for (Object[] item : results) {
 			Long ruleId = ((BigDecimal) item[0]).longValue();
 			Long ruleType = ((BigDecimal) item[1]).longValue();
-			XPSRuleBo xpsRuleBo = new XPSRuleBo(ruleId, ruleType);
-			rules.add(xpsRuleBo);
+			DeleteRuleInfoBo deleteRuleInfoBo = new DeleteRuleInfoBo(ruleId, ruleType);
+			rules.add(deleteRuleInfoBo);
 		}
 		logger.info("findAllLogicallyDeletedRules findAllExpiredRules");
 		return rules;
 	}
 
-	public long physicalDeleteRule(XPSRuleBo xpsRuleBo) {
+	public long physicalDeleteRule(DeleteRuleInfoBo deleteRuleInfoBo) {
 		Query query = entityManager
 				.createQuery("Delete from  ReactionRule reactionRule where reactionRule.reaRuleId = (?1)");
-		query.setParameter(1, xpsRuleBo.getRuleId()).executeUpdate();
+		query.setParameter(1, deleteRuleInfoBo.getRuleId()).executeUpdate();
 		entityManager.clear();
 		return 1L;
 	}

@@ -16,7 +16,7 @@ import colruyt.rearulmgtdmnejb.bo.ReactingRuleBo;
 import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
 import colruyt.rearulmgtdmnejb.bo.RefActionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
-import colruyt.rearulmgtdmnejb.bo.XPSRuleBo;
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.enums.ActionType;
 import colruyt.rearulmgtdmnejb.enums.SourceType;
@@ -71,7 +71,7 @@ public abstract class GeneralRuleService implements Serializable {
 
 	public abstract GeneralRuleBo getRuleSpecificValues(GeneralRuleBo ruleBo) throws ReaRuleManagementException;
 
-	public abstract long physicalDeleteElements(XPSRuleBo xpsRuleBo);
+	public abstract long physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo);
 
 	/**
 	 * Template pattern to create the Reaction Rule
@@ -531,20 +531,20 @@ public abstract class GeneralRuleService implements Serializable {
 		reactionRuleDlService.logicallyDeleteRules(reactionRuleIds, logonId);
 	}
 
-	public List<XPSRuleBo> findAllLogicallyDeletedRules(Date dateDeleteRuleBefore) {
+	public List<DeleteRuleInfoBo> findAllLogicallyDeletedRules(Date dateDeleteRuleBefore) {
 		return  reactionRuleDlService.findAllLogicallyDeletedRules(dateDeleteRuleBefore);
 	}
 
-	public List<XPSRuleBo> findAllExpiredRules(Date dateDeleteRuleBefore) {
+	public List<DeleteRuleInfoBo> findAllExpiredRules(Date dateDeleteRuleBefore) {
 		return reactionRuleDlService.findAllExpiredRules(dateDeleteRuleBefore);
 	}
 
-	public long physicalDeleteRules(XPSRuleBo xpsRuleBo) {
-		this.physicalDeleteElements(xpsRuleBo);
-		reactionRuleActionTypeDlService.physicalDeleteActionForRules(xpsRuleBo);
-		reactionRuleSourceTypeDlService.physicalDeleteSourceType(xpsRuleBo);
-		priceProductHierarchyService.physicalDeleteElements(xpsRuleBo);
-		reactionRuleDlService.physicalDeleteRule(xpsRuleBo);
+	public long physicalDeleteRules(DeleteRuleInfoBo deleteRuleInfoBo) {
+		this.physicalDeleteElements(deleteRuleInfoBo);
+		reactionRuleActionTypeDlService.physicalDeleteActionForRules(deleteRuleInfoBo);
+		reactionRuleSourceTypeDlService.physicalDeleteSourceType(deleteRuleInfoBo);
+		priceProductHierarchyService.physicalDeleteElements(deleteRuleInfoBo);
+		reactionRuleDlService.physicalDeleteRule(deleteRuleInfoBo);
 		return 0L;
 	}
 }

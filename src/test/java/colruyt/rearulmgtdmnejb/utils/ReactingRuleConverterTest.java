@@ -22,7 +22,7 @@ public class ReactingRuleConverterTest {
 	public void createConverterTest(){
 		ReactingRuleBo reactingRuleBo=getReactingRuleBo();
 		ReactingRuleAction reactingRuleAction = new ReactingRuleAction();
-		reactingRuleAction.setReaRuleId(reactingRuleBo.getRuleId());
+		reactingRuleAction.setReactionRuleId(reactingRuleBo.getRuleId());
 		reactingRuleAction.setReactingAmt(reactingRuleBo.getReactingAmount());
 		reactingRuleAction.setReactingPercentage(reactingRuleBo.getReactingAmount());
 		reactingRuleAction.setThresholdAmount(reactingRuleBo.getThresholdAmount());

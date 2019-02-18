@@ -16,7 +16,7 @@ import com.google.common.collect.Lists;
 import colruyt.rearulmgtdmnejb.bo.GeneralRuleBo;
 import colruyt.rearulmgtdmnejb.bo.QuantityRuleBo;
 import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
-import colruyt.rearulmgtdmnejb.bo.XPSRuleBo;
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.QuantityRuleAction;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.enums.RuleType;
@@ -154,10 +154,10 @@ public class QuantityRuleService extends GeneralRuleService implements Serializa
 	}
 
 	@Override
-	public long physicalDeleteElements(XPSRuleBo xpsRuleBo) {
-		String debugInfo = String.format("physicalDeleteElements %1$d", xpsRuleBo.getRuleId());
+	public long physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo) {
+		String debugInfo = String.format("physicalDeleteElements %1$d", deleteRuleInfoBo.getRuleId());
 		logger.debug(debugInfo);
-		return quantityRuleActionDlService.physicalDeleteElements(xpsRuleBo);
+		return quantityRuleActionDlService.physicalDeleteElements(deleteRuleInfoBo);
 	}
 
 }

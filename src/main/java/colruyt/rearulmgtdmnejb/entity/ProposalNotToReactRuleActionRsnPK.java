@@ -11,17 +11,17 @@ public class ProposalNotToReactRuleActionRsnPK implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Column(name = "REA_RULE_ID")
-	private long reaRuleId;
+	private long reactionRuleId;
 
 	@Column(name = "REASON_ID")
 	private long reasonId;
 
-	public long getReaRuleId() {
-		return reaRuleId;
+	public long getReactionRuleId() {
+		return reactionRuleId;
 	}
 
-	public void setReaRuleId(long reaRuleId) {
-		this.reaRuleId = reaRuleId;
+	public void setReactionRuleId(long reactionRuleId) {
+		this.reactionRuleId = reactionRuleId;
 	}
 
 	public long getReasonId() {
@@ -40,13 +40,13 @@ public class ProposalNotToReactRuleActionRsnPK implements Serializable {
 			return false;
 		}
 		ProposalNotToReactRuleActionRsnPK castOther = (ProposalNotToReactRuleActionRsnPK) other;
-		return (this.reaRuleId == castOther.reaRuleId) && (this.reasonId == castOther.reasonId);
+		return (this.reactionRuleId == castOther.reactionRuleId) && (this.reasonId == castOther.reasonId);
 	}
 
 	public int hashCode() {
 		final int prime = 31;
 		int hash = 17;
-		hash = hash * prime + ((int) (this.reaRuleId ^ (this.reaRuleId >>> 32)));
+		hash = hash * prime + ((int) (this.reactionRuleId ^ (this.reactionRuleId >>> 32)));
 		hash = hash * prime + ((int) (this.reasonId ^ (this.reasonId >>> 32)));
 
 		return hash;

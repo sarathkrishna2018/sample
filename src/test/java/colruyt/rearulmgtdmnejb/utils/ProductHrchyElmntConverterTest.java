@@ -43,7 +43,7 @@ public class ProductHrchyElmntConverterTest {
 		PriceProductHierarchyElement reaPpdHchyElmnt=new PriceProductHierarchyElement();
 		String logonId="sa";
 		reaPpdHchyElmnt.setPpdHchyValue(productHierarchyElement.getPriceProductHierarchyValue());
-		reaPpdHchyElmnt.setPpdHchyTypeId(productHierarchyElement.getPriceProductHierarchyTypeId());
+		reaPpdHchyElmnt.setProductHierarchyTypeId(productHierarchyElement.getPriceProductHierarchyTypeId());
 		reaPpdHchyElmnt.setCreatedBy(logonId);
 		reaPpdHchyElmnts.add(reaPpdHchyElmnt);
 		List<PriceProductHierarchyElement> expectedReaPpdHchyElmnt=productHrchyElmntConverter.convertProductHierarchyElement(getProductHierarchyElement(), logonId);
@@ -85,7 +85,7 @@ public class ProductHrchyElmntConverterTest {
 		 priceProductHierarchySet.setLstUpdateBy("ake");
 		 priceProductHierarchySet.setProdHrchySetId(1l);
 		 priceProductHierarchySet.setPriceProductHierarchyElements(getPriceProductHierarchyElements());
-		 priceProductHierarchySet.setReaRuleId(1);
+		 priceProductHierarchySet.setReactionRuleId(1);
 		 priceProductHierarchySets.add(priceProductHierarchySet);
 		return priceProductHierarchySets;
 	}
@@ -93,8 +93,8 @@ public class ProductHrchyElmntConverterTest {
 		List<PriceProductHierarchyElement> priceProductHierarchyElements=Lists.newArrayList();
 		PriceProductHierarchyElement priceProductHierarchyElement=new PriceProductHierarchyElement();
 		priceProductHierarchyElement.setCreatedBy("ak");
-		priceProductHierarchyElement.setPpdHchyElmntId(1l);
-		priceProductHierarchyElement.setPpdHchyTypeId(1l);
+		priceProductHierarchyElement.setProductHierarchyElementId(1l);
+		priceProductHierarchyElement.setProductHierarchyTypeId(1l);
 		priceProductHierarchyElement.setPpdHchyValue("All");
 		priceProductHierarchyElement.setProdHrchySetElement(getReaPpdHchysetElmnts());
 		priceProductHierarchyElements.add(priceProductHierarchyElement);
@@ -110,8 +110,8 @@ public class ProductHrchyElmntConverterTest {
 	}
 	private PriceProductHierarchySetElmntPK getPriceProductHierarchySetElmntPK() {
 		PriceProductHierarchySetElmntPK priceProductHierarchySetElmntPK=new PriceProductHierarchySetElmntPK();
-		priceProductHierarchySetElmntPK.setProdHrchyElemntId(1);
-		priceProductHierarchySetElmntPK.setProdHrchySetId(1);
+		priceProductHierarchySetElmntPK.setProductHierarchyElementId(1);
+		priceProductHierarchySetElmntPK.setProdicyHierarchySetId(1);
 		return priceProductHierarchySetElmntPK;
 	}
 	

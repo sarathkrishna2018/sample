@@ -24,11 +24,11 @@ public class FilteringRuleActionConverterTest {
 	public void createConverterTest(){
 		FilteringRuleBo filteringRuleBo=getFilteringRuleBo();
 		FilteringRuleAction filteringRuleAction=new FilteringRuleAction();
-		filteringRuleAction.setReaRuleId(1L);
-		filteringRuleAction.setMaxCompQty(filteringRuleBo.getMaxCompQuantity());
+		filteringRuleAction.setReactionRuleId(1L);
+		filteringRuleAction.setMaximumCompetitorQuantity(filteringRuleBo.getMaxCompQuantity());
 		filteringRuleAction.setXTimeQty(filteringRuleBo.getxTimeQuantity());
 		FilteringRuleAction expectedReaFltRule=filteringRuleActionConverter.convert(filteringRuleBo);	
-		assertEquals(expectedReaFltRule.getMaxCompQty(), filteringRuleAction.getMaxCompQty());
+		assertEquals(expectedReaFltRule.getMaximumCompetitorQuantity(), filteringRuleAction.getMaximumCompetitorQuantity());
 		assertEquals(expectedReaFltRule.getXTimeQty(), filteringRuleAction.getXTimeQty());
 
 		
@@ -38,10 +38,10 @@ public class FilteringRuleActionConverterTest {
 	public void convertFilteringRuleActionTest(){
 		FilteringRuleAction reaFltRule=getReaFltRule();
 		FilteringRuleBo filteringRuleBo=new FilteringRuleBo();
-		filteringRuleBo.setMaxCompQuantity(reaFltRule.getMaxCompQty());
+		filteringRuleBo.setMaxCompQuantity(reaFltRule.getMaximumCompetitorQuantity());
 		filteringRuleBo.setxTimeQuantity(reaFltRule.getXTimeQty());
 		FilteringRuleBo finalBo = filteringRuleActionConverter.convertFilteringRuleAction(reaFltRule);
-		assertEquals(finalBo.getMaxCompQuantity(),reaFltRule.getMaxCompQty());
+		assertEquals(finalBo.getMaxCompQuantity(),reaFltRule.getMaximumCompetitorQuantity());
 		assertEquals(finalBo.getxTimeQuantity(),reaFltRule.getXTimeQty());
 	}
 	
@@ -50,7 +50,7 @@ public class FilteringRuleActionConverterTest {
 		FilteringRuleAction reaFltRule=new FilteringRuleAction();
 		FilteringRuleBo filteringBoParam=new FilteringRuleBo();
 		FilteringRuleBo filteringRuleBo=getFilteringRuleBo();
-		filteringRuleBo.setMaxCompQuantity(reaFltRule.getMaxCompQty());
+		filteringRuleBo.setMaxCompQuantity(reaFltRule.getMaximumCompetitorQuantity());
 		filteringRuleBo.setxTimeQuantity(reaFltRule.getXTimeQty());
 		FilteringRuleBo finalBo =filteringRuleActionConverter.addFilteringRuleAction(reaFltRule, filteringBoParam);
 		assertEquals(finalBo.getMaxCompQuantity(),filteringRuleBo.getMaxCompQuantity());
@@ -67,7 +67,7 @@ public class FilteringRuleActionConverterTest {
 	
 	public FilteringRuleAction getReaFltRule() {
 		FilteringRuleAction reaFltRule = new FilteringRuleAction();
-		reaFltRule.setMaxCompQty(12d);
+		reaFltRule.setMaximumCompetitorQuantity(12d);
 		reaFltRule.setXTimeQty(1d);
 		return reaFltRule;
 	}
