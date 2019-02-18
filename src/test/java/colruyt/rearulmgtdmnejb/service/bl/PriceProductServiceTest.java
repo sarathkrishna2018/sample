@@ -24,7 +24,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import colruyt.priceproduct.bo.MainCategoryBo;
-import colruyt.priceproduct.bo.PriceProductHeriarchyBo;
+import colruyt.priceproduct.bo.PriceProductHierarchyResponseBo;
 import colruyt.priceproduct.bo.PriceProductHierarchyBo;
 import colruyt.rearulmgtdmnejb.exception.PriceProductExternalServiceException;
 import colruyt.rearulmgtdmnejb.exception.PriceProductServiceDownException;
@@ -53,7 +53,7 @@ public class PriceProductServiceTest {
 		when(externalClientService.getGsonWithDateDeserializer()).thenReturn(getGson());
 		when(priceProductConvertor.convertProducts(Mockito.anyListOf(MainCategoryBo.class), Mockito.anyString()))
 				.thenReturn(getPriceProductHierarchyBoList());
-		Set<String> allHierarchyValuesFromPriceProduct = priceProductService.externalHierrachyValues();
+		Set<String> allHierarchyValuesFromPriceProduct = priceProductService.externalHierarchyValues();
 		Assert.assertNotNull(allHierarchyValuesFromPriceProduct);
 	}
 
@@ -63,7 +63,7 @@ public class PriceProductServiceTest {
 		when(priceProductUrlService.getAllHierarchyUrl()).thenReturn(getAllHierarchyUrl());
 		when(externalClientService.callGetService(Mockito.anyString())).thenReturn(getJSONString());
 		when(externalClientService.getGsonWithDateDeserializer()).thenReturn(getGson());
-		PriceProductHeriarchyBo priceProductHeriarchyBo = priceProductService.findHierarchyValues();
+		PriceProductHierarchyResponseBo priceProductHeriarchyBo = priceProductService.findHierarchyValues();
 		Assert.assertNotNull(priceProductHeriarchyBo);
 	}
 

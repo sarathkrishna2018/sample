@@ -96,7 +96,8 @@ public class PriceProductHierarchyService implements Serializable {
 				}
 			}
 			if (!hierarchyFound) {
-				PriceProductHierarchyElement reaPpdHchyElmntCreated = productHierarchyElementDlService.create(reaPpdHchyElmnt);
+				PriceProductHierarchyElement reaPpdHchyElmntCreated = productHierarchyElementDlService
+						.create(reaPpdHchyElmnt);
 				// hierarchy is not existing in DB yet
 				combinedProdHrchyElmnList.add(reaPpdHchyElmntCreated);
 			}
@@ -173,9 +174,9 @@ public class PriceProductHierarchyService implements Serializable {
 
 	/**
 	 * @param externalValueSet
-	 * @return the list of Hierarchy SetId's where the 
+	 * @return the list of Hierarchy SetId's where the
 	 */
-	public List<Long> manageExternalChanges(Set<String> externalValueSet) {
+	public List<Long> getproductHierarchySetIdList(Set<String> externalValueSet) {
 		List<Long> productHierarchySetIds = Lists.newArrayList();
 		List<PriceProductHierarchyElement> allElements = productHierarchyElementDlService.findAllElements();
 		if (!allElements.isEmpty()) {
@@ -190,8 +191,10 @@ public class PriceProductHierarchyService implements Serializable {
 					setIds.add(priceProductHierarchySetElement.getId().getProdHrchySetId());
 				}
 				productHierarchySetIds = productHierarchySetDlService.findSetElementBySetIds(setIds);
-				productHierarchySetDlService.deleteSetElements(toBeDeletedElements);
-				productHierarchyElementDlService.deleteElements(toBeDeletedElements);
+				if (!toBeDeletedElements.isEmpty()) {
+					productHierarchySetDlService.deleteSetElements(toBeDeletedElements);
+					productHierarchyElementDlService.deleteElements(toBeDeletedElements);
+				}
 			}
 		}
 		return productHierarchySetIds;
@@ -227,15 +230,14 @@ public class PriceProductHierarchyService implements Serializable {
 	}
 
 	public List<PriceProductHierarchySet> findProductHierarchySets(List<Long> productHierarchySetIds) {
-		return productHierarchySetDlService
-				.findProductSetByIds(productHierarchySetIds);
-		
+		return productHierarchySetDlService.findProductSetByIds(productHierarchySetIds);
+
 	}
-	
-	public void physicalDeleteElements(XPSRuleBo xpsRuleBo){
+
+	public void physicalDeleteElements(XPSRuleBo xpsRuleBo) {
 		String debugInfo = String.format("physicalDeleteElements %1$d", xpsRuleBo.getRuleId());
 		logger.debug(debugInfo);
-		Long ppdHchysetId =  productHierarchySetDlService.getPriceProductHierarchySetElementId(xpsRuleBo);
+		Long ppdHchysetId = productHierarchySetDlService.getPriceProductHierarchySetElementId(xpsRuleBo);
 		productHierarchySetDlService.deletePriceProductHierarchySetElemnet(ppdHchysetId);
 		productHierarchySetDlService.deletePriceProductHierarchySet(xpsRuleBo);
 	}

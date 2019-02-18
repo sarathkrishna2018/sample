@@ -2,7 +2,7 @@ package colruyt.priceproduct.bo;
 
 import java.util.List;
 
-public class PriceProductHeriarchyBo {
+public class PriceProductHierarchyResponseBo {
 
 	private List<MainCategoryBo> result;
 	private String code;

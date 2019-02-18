@@ -24,7 +24,7 @@ import colruyt.rearulmgtdmnejb.exception.ReaRuleValidationException;
 import colruyt.rearulmgtdmnejb.service.dl.FilteringRuleActionDlService;
 import colruyt.rearulmgtdmnejb.util.ExceptionMessageConstants;
 import colruyt.rearulmgtdmnejb.util.FilteringRuleActionConverter;
-import colruyt.rearulmgtdmnejb.util.GeneralRuleComparator;
+import colruyt.rearulmgtdmnejb.util.GeneralRulePriorityComparator;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnDebugMessage;
 
@@ -137,7 +137,7 @@ public class FilteringRuleService extends GeneralRuleService implements Serializ
 					ruleBos.add(filteringRuleBo);
 
 				}
-				Collections.sort(ruleBos, new GeneralRuleComparator());
+				Collections.sort(ruleBos, new GeneralRulePriorityComparator());
 				reactionRulesetBo.setRuleLines(ruleBos);
 			} 
 			ruleSetBos.add(reactionRulesetBo);

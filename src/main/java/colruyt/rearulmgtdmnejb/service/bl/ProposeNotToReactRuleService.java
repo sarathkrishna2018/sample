@@ -23,7 +23,7 @@ import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleValidationException;
 import colruyt.rearulmgtdmnejb.service.dl.ProposalNotToReactActionDlService;
 import colruyt.rearulmgtdmnejb.util.ExceptionMessageConstants;
-import colruyt.rearulmgtdmnejb.util.GeneralRuleComparator;
+import colruyt.rearulmgtdmnejb.util.GeneralRulePriorityComparator;
 import colruyt.rearulmgtdmnejb.util.ProposeNotToReactRuleConverter;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnDebugMessage;
@@ -128,7 +128,7 @@ public class ProposeNotToReactRuleService extends GeneralRuleService implements 
 							proposeNTRRuleBo);
 					ruleBos.add(proposeNTRRuleBo);
 				}
-				Collections.sort(ruleBos, new GeneralRuleComparator());
+				Collections.sort(ruleBos, new GeneralRulePriorityComparator());
 				reactionRulesetBo.setRuleLines(ruleBos);
 				
 			} 

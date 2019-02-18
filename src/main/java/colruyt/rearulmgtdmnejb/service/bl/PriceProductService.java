@@ -18,7 +18,7 @@ import org.slf4j.LoggerFactory;
 import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 
-import colruyt.priceproduct.bo.PriceProductHeriarchyBo;
+import colruyt.priceproduct.bo.PriceProductHierarchyResponseBo;
 import colruyt.priceproduct.bo.PriceProductHierarchyBo;
 import colruyt.rearulmgtdmnejb.exception.PriceProductExternalServiceException;
 import colruyt.rearulmgtdmnejb.exception.PriceProductServiceDownException;
@@ -47,23 +47,23 @@ public class PriceProductService implements Serializable{
 	private ExternalClientService externalClientService;
 
 	@EJB
-	private PriceProductConverter priceProductConvertor;
+	private PriceProductConverter priceProductConverter;
 	
 	private static final Logger logger = LoggerFactory.getLogger(PriceProductService.class);
 	
-	public Set<String> externalHierrachyValues() throws PriceProductExternalServiceException, PriceProductServiceDownException, IOException, ParseException{
-		PriceProductHeriarchyBo heriarchyBo =findHierarchyValues();
-		List<PriceProductHierarchyBo> priceProductHierarchyBoList =priceProductConvertor.convertProducts(heriarchyBo.getResult(),ReactionRuleMgtConstants.LANG_CODE_NL);
+	public Set<String> externalHierarchyValues() throws PriceProductExternalServiceException, PriceProductServiceDownException, IOException, ParseException{
+		PriceProductHierarchyResponseBo heriarchyBo =findHierarchyValues();
+		List<PriceProductHierarchyBo> priceProductHierarchyBoList =priceProductConverter.convertProducts(heriarchyBo.getResult(),ReactionRuleMgtConstants.LANG_CODE_NL);
 		List<PriceProductHierarchyBo> productList = getPriceProducts();
 		return getAllHierarchyValues(priceProductHierarchyBoList, productList);
 	}
-	public PriceProductHeriarchyBo findHierarchyValues() throws PriceProductExternalServiceException, PriceProductServiceDownException  {
+	public PriceProductHierarchyResponseBo findHierarchyValues() throws PriceProductExternalServiceException, PriceProductServiceDownException  {
 		String url = priceProductUrlService.getAllHierarchyUrl();
 		String jsonString;
 		try {
 			jsonString = externalClientService.callGetService(url);
 			Gson gson = externalClientService.getGsonWithDateDeserializer();
-			return gson.fromJson(jsonString, PriceProductHeriarchyBo.class);
+			return gson.fromJson(jsonString, PriceProductHierarchyResponseBo.class);
 
 		} catch (RRMDomainException e) {
 			logger.info("Domain Exception", e);

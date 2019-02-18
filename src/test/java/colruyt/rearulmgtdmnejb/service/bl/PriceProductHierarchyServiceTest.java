@@ -101,7 +101,7 @@ public class PriceProductHierarchyServiceTest {
 				.thenReturn(getPrdHrySetIds());
 		Mockito.doNothing().when(productHierarchySetDlService).deleteSetElements(Mockito.anyListOf(Long.class));
 		Mockito.doNothing().when(productHierarchyElementDlService).deleteElements(Mockito.anyListOf(Long.class));
-		List<Long> productHierarchySetIds = priceProductHierarchyBlService.manageExternalChanges(externalValuesSet);
+		List<Long> productHierarchySetIds = priceProductHierarchyBlService.getproductHierarchySetIdList(externalValuesSet);
 		Assert.assertNotNull(productHierarchySetIds);
 
 	}

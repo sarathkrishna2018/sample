@@ -23,7 +23,7 @@ import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleValidationException;
 import colruyt.rearulmgtdmnejb.service.dl.RecordingNotFoundRuleActionDlService;
 import colruyt.rearulmgtdmnejb.util.ExceptionMessageConstants;
-import colruyt.rearulmgtdmnejb.util.GeneralRuleComparator;
+import colruyt.rearulmgtdmnejb.util.GeneralRulePriorityComparator;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnDebugMessage;
 import colruyt.rearulmgtdmnejb.util.RecordingNotFoundRuleConverter;
@@ -132,7 +132,7 @@ public class RecordingNotFoundRuleService extends GeneralRuleService implements 
 					ruleBos.add(recordingNotFoundBo);
 
 				}
-				Collections.sort(ruleBos, new GeneralRuleComparator());
+				Collections.sort(ruleBos, new GeneralRulePriorityComparator());
 				reactionRulesetBo.setRuleLines(ruleBos);
 			} 
 			ruleSetBos.add(reactionRulesetBo);

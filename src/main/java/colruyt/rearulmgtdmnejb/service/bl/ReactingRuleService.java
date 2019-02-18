@@ -23,7 +23,7 @@ import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleValidationException;
 import colruyt.rearulmgtdmnejb.service.dl.ReactingRuleActionDlService;
 import colruyt.rearulmgtdmnejb.util.ExceptionMessageConstants;
-import colruyt.rearulmgtdmnejb.util.GeneralRuleComparator;
+import colruyt.rearulmgtdmnejb.util.GeneralRulePriorityComparator;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnDebugMessage;
 import colruyt.rearulmgtdmnejb.util.ReactingRuleConverter;
@@ -137,7 +137,7 @@ public class ReactingRuleService extends GeneralRuleService implements Serializa
 					ruleBos.add(reactingBo);
 
 				}
-				Collections.sort(ruleBos, new GeneralRuleComparator());
+				Collections.sort(ruleBos, new GeneralRulePriorityComparator());
 				reactionRulesetBo.setRuleLines(ruleBos);
 			}
 			ruleSetBos.add(reactionRulesetBo);
