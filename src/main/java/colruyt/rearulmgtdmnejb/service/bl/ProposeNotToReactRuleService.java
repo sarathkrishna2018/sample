@@ -44,7 +44,6 @@ public class ProposeNotToReactRuleService extends GeneralRuleService implements 
 	private ProposalNotToReactActionDlService proposalNotToReactActionDlService;
 	@EJB
 	private ProposeNotToReactRuleConverter proposeNotToReactRuleConverter;
-	
 
 	/**
 	 * This method is to create ProposeNotToReactRule
@@ -72,7 +71,7 @@ public class ProposeNotToReactRuleService extends GeneralRuleService implements 
 	private void validateRuleInputs(ProposeNotToReactRuleBo notToReactRule) throws ReaRuleValidationException {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_VALIDATEPROPOSENOTTOREACTRULE);
 		if (notToReactRule != null) {
-			if(notToReactRule.getFilterOutType() == null || notToReactRule.getNotToReactCodes() == null
+			if (notToReactRule.getFilterOutType() == null || notToReactRule.getNotToReactCodes() == null
 					|| notToReactRule.getNotToReactCodes().isEmpty()) {
 				throw new ReaRuleValidationException(notToReactRule.getLangCode(),
 						ExceptionMessageConstants.MESSAGE_MANDATORY_FIELD_VALIDATION);
@@ -130,8 +129,8 @@ public class ProposeNotToReactRuleService extends GeneralRuleService implements 
 				}
 				Collections.sort(ruleBos, new GeneralRulePriorityComparator());
 				reactionRulesetBo.setRuleLines(ruleBos);
-				
-			} 
+
+			}
 			ruleSetBos.add(reactionRulesetBo);
 		}
 		return ruleSetBos;
@@ -157,12 +156,11 @@ public class ProposeNotToReactRuleService extends GeneralRuleService implements 
 	}
 
 	@Override
-	public long physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo) {
+	public void physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo) {
 		String debugInfo = String.format("physicalDeleteElements %1$d", deleteRuleInfoBo.getRuleId());
 		logger.debug(debugInfo);
 		proposalNotToReactActionDlService.physicalDeleteElementsRsn(deleteRuleInfoBo);
-		return proposalNotToReactActionDlService.physicalDeleteElements(deleteRuleInfoBo);
+		proposalNotToReactActionDlService.physicalDeleteElements(deleteRuleInfoBo);
 	}
-
 
 }

@@ -128,8 +128,8 @@ public class PriceProductHierarchyServiceTest {
 	public void physicalDeleteElementsTest(){
 		Long id=1l;
 		when(productHierarchySetDlService.getPriceProductHierarchySetElementId(Mockito.any(DeleteRuleInfoBo.class))).thenReturn(id);
-		when(productHierarchySetDlService.deletePriceProductHierarchySetElemnet(Mockito.anyLong())).thenReturn(id);
-		when(productHierarchySetDlService.deletePriceProductHierarchySet(Mockito.any(DeleteRuleInfoBo.class))).thenReturn(id);
+		/*when(productHierarchySetDlService.deletePriceProductHierarchySetElemnet(Mockito.anyLong())).thenReturn(id);
+		when(productHierarchySetDlService.deletePriceProductHierarchySet(Mockito.any(DeleteRuleInfoBo.class))).thenReturn(id);*/
 		priceProductHierarchyBlService.physicalDeleteElements(getXpsRuleBo());
 	}
 	private DeleteRuleInfoBo getXpsRuleBo() {

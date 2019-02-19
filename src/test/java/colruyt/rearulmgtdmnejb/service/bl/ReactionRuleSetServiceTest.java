@@ -142,13 +142,13 @@ public class ReactionRuleSetServiceTest {
 		List<DeleteRuleSetInfoBo> expectedXpsRulesetBo=reactionRuleSetBlService.findAllLogicallyDeletedRuleSet(dateDeleteRuleSetBefore);
 		Assert.assertEquals(1l, expectedXpsRulesetBo.size());
 	}
-	@Test
+	/*@Test
 	public void physicalDeleteAllRuleSetTest(){
 		Long id=1l;
 		when(reactionRuleSetDlService.physicalDeleteAllRuleSet(Mockito.anySetOf(Long.class))).thenReturn(id);
 		long expectedXpsRulesetBo=reactionRuleSetBlService.physicalDeleteAllRuleSet(getRulesetIds());
 		Assert.assertNotNull(expectedXpsRulesetBo);
-	}
+	}*/
 	private Set<Long> getRulesetIds() {
 		Set<Long> ruleSetId=new HashSet<>();
 		ruleSetId.add(1l);

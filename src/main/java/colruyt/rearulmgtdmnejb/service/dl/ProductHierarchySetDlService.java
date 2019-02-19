@@ -82,18 +82,16 @@ public class ProductHierarchySetDlService implements Serializable{
 		return ppdHchysetId;
 	}
 	
-	public long deletePriceProductHierarchySetElemnet(Long ppdHchysetId){
+	public void deletePriceProductHierarchySetElemnet(Long ppdHchysetId){
 		Query query = entityManager.createQuery("Delete from  PriceProductHierarchySetElmnt pphse where pphse.id.ppdHchysetId = (?1)");
 		query.setParameter(1, ppdHchysetId).executeUpdate();	
 		entityManager.clear();
-		return 1L;
 	}
 	
-	public long deletePriceProductHierarchySet(DeleteRuleInfoBo deleteRuleInfoBo){
+	public void deletePriceProductHierarchySet(DeleteRuleInfoBo deleteRuleInfoBo){
 		Query query = entityManager.createQuery("Delete from  PriceProductHierarchySet priceProductHierarchySet where priceProductHierarchySet.reaRuleId = (?1)");
 		query.setParameter(1, deleteRuleInfoBo.getRuleId()).executeUpdate();	
 		entityManager.clear();
-		return 1L;
 	}
 
 }

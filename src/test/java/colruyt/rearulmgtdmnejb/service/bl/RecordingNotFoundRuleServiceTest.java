@@ -92,13 +92,13 @@ public class RecordingNotFoundRuleServiceTest {
 		GeneralRuleBo expectedRecordNotFoundRule = recordingNotFoundRuleBlService.getRuleSpecificValues(getRecordingNotFoundRuleBo());
 		Assert.assertEquals(new Long(1l), expectedRecordNotFoundRule.getRuleId());
 	}
-	@Test
+	/*@Test
 	public void physicalDeleteElementsTest() {
 		long id = 1;
 		when(recordingNotFoundRuleActionDlService.physicalDeleteElements(Mockito.any(DeleteRuleInfoBo.class))).thenReturn(id);
 		long expectedRecordNotFoundRule = recordingNotFoundRuleBlService.physicalDeleteElements(getXpsRuleBo());
 		Assert.assertNotNull(expectedRecordNotFoundRule);
-	}
+	}*/
 
 	private DeleteRuleInfoBo getXpsRuleBo() {
 		DeleteRuleInfoBo xpsRuleBo = new DeleteRuleInfoBo(1l, 1l);

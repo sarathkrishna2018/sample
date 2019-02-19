@@ -164,10 +164,10 @@ public class FilteringRuleService extends GeneralRuleService implements Serializ
 	}
 
 	@Override
-	public long physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo) {
+	public void physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo) {
 		String debugInfo = String.format("physicalDeleteElements %1$d", deleteRuleInfoBo.getRuleId());
 		logger.debug(debugInfo);
-		return filteringRuleActionDlService.physicalDeleteElements(deleteRuleInfoBo);
+		filteringRuleActionDlService.physicalDeleteElements(deleteRuleInfoBo);
 	}
 
 }

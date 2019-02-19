@@ -149,10 +149,9 @@ public class ReactionRuleSetDlService implements Serializable {
 		return ruleSet;
 	}
 	
-	public long physicalDeleteAllRuleSet(Set<Long> ruleSetIds){
+	public void physicalDeleteAllRuleSet(Set<Long> ruleSetIds){
 		Query query = entityManager.createQuery("Delete from  ReactionRuleSet reactionRuleSet where reactionRuleSet.reaRulesetId IN (?1)");
 		query.setParameter(1, ruleSetIds).executeUpdate();	
 		entityManager.clear();
-		return 1L;
 	}
 }

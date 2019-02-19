@@ -37,10 +37,9 @@ public class ReactionPeriodActionDlService implements Serializable {
 		return entityManager.find(ReactionPeriodRuleAction.class, reaRuleId);
 	}
 
-	public long physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo) {
+	public void physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo) {
 		Query query = entityManager.createQuery("Delete from  ReactionPeriodRuleAction reactionPeriodRuleAction where reactionPeriodRuleAction.reaRuleId = (?1)");
 		query.setParameter(1, deleteRuleInfoBo.getRuleId()).executeUpdate();	
 		entityManager.clear();
-		return 1L;
 	}
 }

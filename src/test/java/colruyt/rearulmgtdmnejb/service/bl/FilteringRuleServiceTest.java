@@ -97,13 +97,13 @@ public class FilteringRuleServiceTest {
 		Assert.assertEquals(new Long(1l), expectedFilteringRule.getRuleId());
 	}
 
-	@Test
+	/*@Test
 	public void physicalDeleteElementsTest() {
 		long id = 1;
 		when(filteringRuleActionDlService.physicalDeleteElements(Mockito.any(DeleteRuleInfoBo.class))).thenReturn(id);
 		long expectedFilteringRule = filteringRuleBlService.physicalDeleteElements(getDeleteRuleInfoBo());
 		Assert.assertNotNull(expectedFilteringRule);
-	}
+	}*/
 
 	private DeleteRuleInfoBo getDeleteRuleInfoBo() {
 		DeleteRuleInfoBo deleteRuleInfoBo = new DeleteRuleInfoBo(1l, 1l);

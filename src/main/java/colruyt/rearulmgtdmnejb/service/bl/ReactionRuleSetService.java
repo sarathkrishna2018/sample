@@ -170,7 +170,7 @@ public class ReactionRuleSetService implements Serializable {
 		return ruleSetList;
 	}
 	
-	public long physicalDeleteAllRuleSet(Set<Long> ruleSetIds){
-		return reactionRuleSetDlService.physicalDeleteAllRuleSet(ruleSetIds);
+	public void physicalDeleteAllRuleSet(Set<Long> ruleSetIds){
+		reactionRuleSetDlService.physicalDeleteAllRuleSet(ruleSetIds);
 	}
 }

@@ -48,11 +48,10 @@ public class QuantityRuleActionDlService implements Serializable {
 		
 	}
 	
-	public long physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo) {
+	public void physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo) {
 		Query query = entityManager.createQuery("Delete from  QuantityRuleAction quantityRuleAction where quantityRuleAction.reaRuleId = (?1)");
 		query.setParameter(1, deleteRuleInfoBo.getRuleId()).executeUpdate();	
 		entityManager.clear();
-		return 1L;
 	}
 
 }

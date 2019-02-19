@@ -30,11 +30,10 @@ public class ReactionRuleActionTypeDlService implements Serializable {
 	@PersistenceContext(unitName = ReaRulMgtDmnConstants.PERSISTENCE_UNIT_NAME)
 	private transient EntityManager entityManager;
 
-	public long physicalDeleteActionForRules(DeleteRuleInfoBo deleteRuleInfoBo){
+	public void physicalDeleteActionForRules(DeleteRuleInfoBo deleteRuleInfoBo){
 		Query query = entityManager.createQuery("Delete from  ReactionRuleActionType reactionRuleActionType where reactionRuleActionType.id.reaRuleId = (?1)");
 		query.setParameter(1, deleteRuleInfoBo.getRuleId()).executeUpdate();	
 		entityManager.clear();
-		return 1L;
 	}
 
 }

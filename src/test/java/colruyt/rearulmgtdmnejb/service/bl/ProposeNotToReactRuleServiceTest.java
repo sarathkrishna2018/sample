@@ -91,7 +91,7 @@ public class ProposeNotToReactRuleServiceTest {
 		GeneralRuleBo expectedProposeNotToReactRule = proposeNotToReactRuleService.getRuleSpecificValues(getProposeNotToReactRuleBo());
 		Assert.assertEquals(new Long(1l), expectedProposeNotToReactRule.getRuleId());
 	}
-	@Test
+	/*@Test
 	public void physicalDeleteElementsTest(){
 		long id = 1;
 		when(proposalNotToReactActionDlService.physicalDeleteElementsRsn(Mockito.any(DeleteRuleInfoBo.class))).thenReturn(id);
@@ -99,7 +99,7 @@ public class ProposeNotToReactRuleServiceTest {
 		long expectedProposeNotToReactRule = proposeNotToReactRuleService.physicalDeleteElements(getXpsRuleBo());
 		Assert.assertNotNull(expectedProposeNotToReactRule);
 		
-	}
+	}*/
 	
 	private DeleteRuleInfoBo getXpsRuleBo() {
 		DeleteRuleInfoBo xpsRuleBo = new DeleteRuleInfoBo(1l, 1l);

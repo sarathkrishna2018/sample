@@ -71,7 +71,7 @@ public abstract class GeneralRuleService implements Serializable {
 
 	public abstract GeneralRuleBo getRuleSpecificValues(GeneralRuleBo ruleBo) throws ReaRuleManagementException;
 
-	public abstract long physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo);
+	public abstract void physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo);
 
 	/**
 	 * Template pattern to create the Reaction Rule
@@ -539,12 +539,11 @@ public abstract class GeneralRuleService implements Serializable {
 		return reactionRuleDlService.findAllExpiredRules(dateDeleteRuleBefore);
 	}
 
-	public long physicalDeleteRules(DeleteRuleInfoBo deleteRuleInfoBo) {
+	public void physicalDeleteRules(DeleteRuleInfoBo deleteRuleInfoBo) {
 		this.physicalDeleteElements(deleteRuleInfoBo);
 		reactionRuleActionTypeDlService.physicalDeleteActionForRules(deleteRuleInfoBo);
 		reactionRuleSourceTypeDlService.physicalDeleteSourceType(deleteRuleInfoBo);
 		priceProductHierarchyService.physicalDeleteElements(deleteRuleInfoBo);
 		reactionRuleDlService.physicalDeleteRule(deleteRuleInfoBo);
-		return 0L;
 	}
 }

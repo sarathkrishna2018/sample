@@ -40,7 +40,6 @@ public class RecordingNotFoundRuleService extends GeneralRuleService implements 
 	private RecordingNotFoundRuleConverter recordingNotFoundRuleConverter;
 	@EJB
 	private RecordingNotFoundRuleActionDlService recordingNotFoundRuleActionDlService;
-	
 
 	/**
 	 * This method is to create Recording Not Found Rule
@@ -127,14 +126,14 @@ public class RecordingNotFoundRuleService extends GeneralRuleService implements 
 
 					RecordingNotFoundRuleAction recordNotFoundRule = recordingNotFoundRuleActionDlService
 							.findByRuleId(rule.getReaRuleId());
-					recordingNotFoundBo = recordingNotFoundRuleConverter.addRecordingNotFoundRuleAction(recordNotFoundRule,
-							recordingNotFoundBo);
+					recordingNotFoundBo = recordingNotFoundRuleConverter
+							.addRecordingNotFoundRuleAction(recordNotFoundRule, recordingNotFoundBo);
 					ruleBos.add(recordingNotFoundBo);
 
 				}
 				Collections.sort(ruleBos, new GeneralRulePriorityComparator());
 				reactionRulesetBo.setRuleLines(ruleBos);
-			} 
+			}
 			ruleSetBos.add(reactionRulesetBo);
 		}
 		return ruleSetBos;
@@ -153,17 +152,17 @@ public class RecordingNotFoundRuleService extends GeneralRuleService implements 
 		RecordingNotFoundRuleBo recordNotFoundRuleBo = (RecordingNotFoundRuleBo) ruleBo;
 		RecordingNotFoundRuleAction recordingNotFoundRuleAction = recordingNotFoundRuleActionDlService
 				.findByRuleId(recordNotFoundRuleBo.getRuleId());
-		recordNotFoundRuleBo = recordingNotFoundRuleConverter.addRecordingNotFoundRuleAction(recordingNotFoundRuleAction,
-				recordNotFoundRuleBo);
+		recordNotFoundRuleBo = recordingNotFoundRuleConverter
+				.addRecordingNotFoundRuleAction(recordingNotFoundRuleAction, recordNotFoundRuleBo);
 		recordNotFoundRuleBo.setType(RuleType.RECORD_NOT_FOUND_EN.getRuleTypeDescription());
 		return recordNotFoundRuleBo;
 	}
 
 	@Override
-	public long physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo) {
+	public void physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo) {
 		String debugInfo = String.format("physicalDeleteElements %1$d", deleteRuleInfoBo.getRuleId());
 		logger.debug(debugInfo);
-		return recordingNotFoundRuleActionDlService.physicalDeleteElements(deleteRuleInfoBo);
+		recordingNotFoundRuleActionDlService.physicalDeleteElements(deleteRuleInfoBo);
 	}
 
 }

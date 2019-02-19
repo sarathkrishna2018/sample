@@ -41,7 +41,6 @@ public class ReactionPeriodRuleService extends GeneralRuleService implements Ser
 	private ReactionPeriodActionDlService reactionPeriodActionDlService;
 	@EJB
 	private ReactionPeriodRuleConverter reactionPeriodRuleConverter;
-	
 
 	/**
 	 * This method is to create Reaction Period Rule
@@ -127,13 +126,14 @@ public class ReactionPeriodRuleService extends GeneralRuleService implements Ser
 
 					ReactionPeriodRuleAction reactionPeriodRuleAction = reactionPeriodActionDlService
 							.findByRuleId(rule.getReaRuleId());
-					reacPrdRuleBo = reactionPeriodRuleConverter.addReactionPeriodRuleAction(reactionPeriodRuleAction, reacPrdRuleBo);
+					reacPrdRuleBo = reactionPeriodRuleConverter.addReactionPeriodRuleAction(reactionPeriodRuleAction,
+							reacPrdRuleBo);
 					ruleBos.add(reacPrdRuleBo);
 
 				}
 				Collections.sort(ruleBos, new GeneralRulePriorityComparator());
 				reactionRulesetBo.setRuleLines(ruleBos);
-			} 
+			}
 			ruleSetBos.add(reactionRulesetBo);
 		}
 		return ruleSetBos;
@@ -150,7 +150,8 @@ public class ReactionPeriodRuleService extends GeneralRuleService implements Ser
 	public GeneralRuleBo getRuleSpecificValues(GeneralRuleBo ruleBo) throws ReaRuleManagementException {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_VIEWREACTIONPERIODRULE);
 		ReactionPeriodRuleBo reaPrdRule = (ReactionPeriodRuleBo) ruleBo;
-		ReactionPeriodRuleAction reactionPeriodRuleAction = reactionPeriodActionDlService.findByRuleId(reaPrdRule.getRuleId());
+		ReactionPeriodRuleAction reactionPeriodRuleAction = reactionPeriodActionDlService
+				.findByRuleId(reaPrdRule.getRuleId());
 		reaPrdRule = reactionPeriodRuleConverter.addReactionPeriodRuleAction(reactionPeriodRuleAction, reaPrdRule);
 		reaPrdRule.setType(RuleType.REACTION_PERIOD_EN.getRuleTypeDescription());
 		return reaPrdRule;
@@ -158,10 +159,10 @@ public class ReactionPeriodRuleService extends GeneralRuleService implements Ser
 	}
 
 	@Override
-	public long physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo) {
+	public void physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo) {
 		String debugInfo = String.format("physicalDeleteElements %1$d", deleteRuleInfoBo.getRuleId());
 		logger.debug(debugInfo);
-		return reactionPeriodActionDlService.physicalDeleteElements(deleteRuleInfoBo);
+		reactionPeriodActionDlService.physicalDeleteElements(deleteRuleInfoBo);
 	}
 
 }

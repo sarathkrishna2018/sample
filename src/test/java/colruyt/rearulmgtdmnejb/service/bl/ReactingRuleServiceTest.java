@@ -89,14 +89,14 @@ public class ReactingRuleServiceTest {
 		GeneralRuleBo expectedReactingRule = reactingRuleBlService.getRuleSpecificValues(getReactingRuleBo());
 		Assert.assertEquals(new Long(1l), expectedReactingRule.getRuleId());
 	}
-	@Test
+	/*@Test
 	public void physicalDeleteElementsTest() {
 		long id = 1;
 		when(reactingRuleActionDlService.physicalDeleteElements(Mockito.any(DeleteRuleInfoBo.class))).thenReturn(id);
 		long expectedReactingRule = reactingRuleBlService.physicalDeleteElements(getXpsRuleBo());
 		Assert.assertNotNull(expectedReactingRule);
 	}
-
+*/
 	private DeleteRuleInfoBo getXpsRuleBo() {
 		DeleteRuleInfoBo xpsRuleBo = new DeleteRuleInfoBo(1l, 1l);
 		xpsRuleBo.setRuleId(1l);

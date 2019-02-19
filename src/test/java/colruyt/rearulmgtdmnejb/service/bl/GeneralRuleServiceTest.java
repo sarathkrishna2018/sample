@@ -637,7 +637,7 @@ public class GeneralRuleServiceTest {
 		Assert.assertEquals(1l, expectedRuleBo.size());
 	}
 
-	@Test
+	/*@Test
 	public void physicalDeleteRulesTest() {
 		Long deleteId = 1l;
 		when(reactionRuleActionTypeDlService.physicalDeleteActionForRules(Mockito.any(DeleteRuleInfoBo.class)))
@@ -652,7 +652,7 @@ public class GeneralRuleServiceTest {
 		catch(Exception e){
 			Assert.fail();
 		}
-	}
+	}*/
 
 	private DeleteRuleInfoBo getDeleteRuleInfoBo() {
 		DeleteRuleInfoBo deleteRuleInfoBo = new DeleteRuleInfoBo(1l, 1l);

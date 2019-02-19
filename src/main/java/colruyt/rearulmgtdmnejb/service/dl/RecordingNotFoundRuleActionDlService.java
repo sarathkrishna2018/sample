@@ -35,11 +35,10 @@ public class RecordingNotFoundRuleActionDlService  implements Serializable {
 		
 	}
 	
-	public long physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo) {
+	public void physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo) {
 		Query query = entityManager.createQuery("Delete from  RecordingNotFoundRuleAction recordingNotFoundRuleAction where recordingNotFoundRuleAction.reaRuleId = (?1)");
 		query.setParameter(1, deleteRuleInfoBo.getRuleId()).executeUpdate();	
 		entityManager.clear();
-		return 1L;
 	}
 
 }

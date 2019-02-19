@@ -44,7 +44,6 @@ public class QuantityRuleService extends GeneralRuleService implements Serializa
 	private QuantityRuleActionConverter quantityRuleActionConvertor;
 	@EJB
 	private QuantityRuleActionDlService quantityRuleActionDlService;
-	
 
 	/**
 	 * This method is to create Quantity Rule
@@ -129,7 +128,7 @@ public class QuantityRuleService extends GeneralRuleService implements Serializa
 				}
 				Collections.sort(ruleBos, new GeneralRulePriorityComparator());
 				reactionRulesetBo.setRuleLines(ruleBos);
-			} 
+			}
 			ruleSetBos.add(reactionRulesetBo);
 		}
 		return ruleSetBos;
@@ -154,10 +153,10 @@ public class QuantityRuleService extends GeneralRuleService implements Serializa
 	}
 
 	@Override
-	public long physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo) {
+	public void physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo) {
 		String debugInfo = String.format("physicalDeleteElements %1$d", deleteRuleInfoBo.getRuleId());
 		logger.debug(debugInfo);
-		return quantityRuleActionDlService.physicalDeleteElements(deleteRuleInfoBo);
+		quantityRuleActionDlService.physicalDeleteElements(deleteRuleInfoBo);
 	}
 
 }

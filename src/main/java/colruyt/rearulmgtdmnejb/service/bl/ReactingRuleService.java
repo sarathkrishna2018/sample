@@ -44,7 +44,6 @@ public class ReactingRuleService extends GeneralRuleService implements Serializa
 	private ReactingRuleConverter reactingRuleConverter;
 	@EJB
 	private ReactingRuleActionDlService reactingRuleActionDlService;
-	
 
 	/**
 	 * This method is to create reacting rule
@@ -163,9 +162,9 @@ public class ReactingRuleService extends GeneralRuleService implements Serializa
 	}
 
 	@Override
-	public long physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo) {
+	public void physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo) {
 		logger.debug("physicalDeleteElements is {}", deleteRuleInfoBo.getRuleId());
-		return reactingRuleActionDlService.physicalDeleteElements(deleteRuleInfoBo);
+		reactingRuleActionDlService.physicalDeleteElements(deleteRuleInfoBo);
 	}
 
 }
