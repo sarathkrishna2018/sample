@@ -26,6 +26,7 @@ import colruyt.rearulmgtdmnejb.bo.RefQuantityConditionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefQuantityPriceTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
+import colruyt.rearulmgtdmnejb.entity.RefFilterOutRecordingType;
 import colruyt.rearulmgtdmnejb.enums.ActionType;
 import colruyt.rearulmgtdmnejb.enums.FilterOutRecordingType;
 import colruyt.rearulmgtdmnejb.enums.QuantityCondition;
@@ -33,6 +34,7 @@ import colruyt.rearulmgtdmnejb.enums.QuantityType;
 import colruyt.rearulmgtdmnejb.enums.ReasonType;
 import colruyt.rearulmgtdmnejb.enums.RuleType;
 import colruyt.rearulmgtdmnejb.enums.SourceType;
+import colruyt.rearulmgtdmnejb.service.dl.ReferenceDataDlService;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnDebugMessage;
 import colruyt.rearulmgtdmnejb.util.ReferenceDataConverter;
 
@@ -49,6 +51,9 @@ public class ReferenceDataService implements Serializable {
 
 	@EJB
 	private ReferenceDataConverter referenceDataConvertor;
+	
+	@EJB
+	private ReferenceDataDlService referenceDataDlService;
 
 	private List<RefActionTypeBo> refActionTypeList = Lists.newArrayList();
 	private List<RefNotToReactCodeBo> refNotToReactCodeList = Lists.newArrayList();
@@ -81,7 +86,8 @@ public class ReferenceDataService implements Serializable {
 		refSourceTypeList = referenceDataConvertor.convertRefReaSource(sourceTypeEnums);
 		
 		FilterOutRecordingType[] filterOutRecordingTypeEnums = FilterOutRecordingType.values();
-		refFilterOutRecordingTypeList = referenceDataConvertor.convertRefFltoutType(filterOutRecordingTypeEnums);
+		List<RefFilterOutRecordingType> refFilterOutRecordingTypes =referenceDataDlService.findAllRefFilterOutRecordingTypes();
+		refFilterOutRecordingTypeList = referenceDataConvertor.convertRefFltoutType(filterOutRecordingTypeEnums, refFilterOutRecordingTypes);
  		
 		RuleType[] refRullTypeValues = RuleType.values();
 		refRuleTypeList = referenceDataConvertor.convertRuleType(refRullTypeValues);

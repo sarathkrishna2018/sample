@@ -21,6 +21,7 @@ import colruyt.rearulmgtdmnejb.bo.RefQuantityConditionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefQuantityPriceTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
+import colruyt.rearulmgtdmnejb.entity.RefFilterOutRecordingType;
 import colruyt.rearulmgtdmnejb.enums.ActionType;
 import colruyt.rearulmgtdmnejb.enums.FilterOutRecordingType;
 import colruyt.rearulmgtdmnejb.enums.QuantityCondition;
@@ -198,42 +199,30 @@ public class ReferenceDataConverter implements Serializable {
 		langBo.setValue(value);
 		return langBo;
 	}
-
+	
 	public List<RefFilterOutRecordingTypeBo> convertRefFltoutType(
-			FilterOutRecordingType[] filterOutRecordingTypeEnums) {
+			FilterOutRecordingType[] filterOutRecordingTypeEnums, List<RefFilterOutRecordingType> refFilterOutRecordingTypes) {
 		List<RefFilterOutRecordingTypeBo> refFilterOutRecordingTypeBos = new ArrayList<>();
-		Map<Long, List<RefLangBo>> filterOutRecordingTypeMap = getFilterOutRecordingTypeMap(
-				filterOutRecordingTypeEnums);
-		RefFilterOutRecordingTypeBo refFilterOutRecordingTypeBo;
-		for (Map.Entry<Long, List<RefLangBo>> entry : filterOutRecordingTypeMap.entrySet()) {
-			refFilterOutRecordingTypeBo = new RefFilterOutRecordingTypeBo();
-			refFilterOutRecordingTypeBo.setFilterOutTypeId(entry.getKey());
-			refFilterOutRecordingTypeBo.setCodeLang(entry.getValue());
-			refFilterOutRecordingTypeBos.add(refFilterOutRecordingTypeBo);
+		for(FilterOutRecordingType filterOutRecordingType : filterOutRecordingTypeEnums){
+			RefFilterOutRecordingTypeBo filterOutRecordingTypeBo = new RefFilterOutRecordingTypeBo();
+			List<RefLangBo> codeLangs = Lists.newArrayList();
+			filterOutRecordingTypeBo.setFilterOutTypeId(filterOutRecordingType.getId());
+			for(RefFilterOutRecordingType refFilterOutRecordingType :refFilterOutRecordingTypes){
+				if(refFilterOutRecordingType.getId().getFltoutTypeId() == filterOutRecordingType.getId()){
+					RefLangBo langBo = new RefLangBo();
+					langBo.setIsoLangCode(refFilterOutRecordingType.getId().getIsoLangCode());
+					langBo.setValue(refFilterOutRecordingType.getFilterOutTypeName());
+					filterOutRecordingTypeBo.setDescription(refFilterOutRecordingType.getDescription());
+					codeLangs.add(langBo);
+				}
+			}
+			filterOutRecordingTypeBo.setCodeLang(codeLangs);
+			refFilterOutRecordingTypeBos.add(filterOutRecordingTypeBo);
 		}
 
 		return refFilterOutRecordingTypeBos;
 	}
 
-	private Map<Long, List<RefLangBo>> getFilterOutRecordingTypeMap(
-			FilterOutRecordingType[] filterOutRecordingTypeEnums) {
-		Map<Long, List<RefLangBo>> filterOutRecordingTypeMap = new HashMap<>();
-		for (FilterOutRecordingType filterOutRecordingType : filterOutRecordingTypeEnums) {
-			if (!filterOutRecordingTypeMap.containsKey(filterOutRecordingType.getId())) {
-				List<RefLangBo> langBos = new ArrayList<>();
-				RefLangBo langBo = createRefLangBo(filterOutRecordingType.getLangCode(),
-						filterOutRecordingType.getName());
-				langBos.add(langBo);
-				filterOutRecordingTypeMap.put(filterOutRecordingType.getId(), langBos);
-			} else {
-				List<RefLangBo> existsLangBos = filterOutRecordingTypeMap.get(filterOutRecordingType.getId());
-				RefLangBo langBo = createRefLangBo(filterOutRecordingType.getLangCode(),
-						filterOutRecordingType.getName());
-				existsLangBos.add(langBo);
-			}
-		}
-		return filterOutRecordingTypeMap;
-	}
 
 	public List<RefRuleTypeBo> convertRuleType(RuleType[] refRullTypeValues) {
 		List<RefRuleTypeBo> refRuleTypeBoList = new ArrayList<>();
