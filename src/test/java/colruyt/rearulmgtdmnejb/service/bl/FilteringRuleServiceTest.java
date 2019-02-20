@@ -12,6 +12,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mockito;
+import org.mockito.internal.verification.Times;
 import org.unitils.UnitilsJUnit4TestClassRunner;
 import org.unitils.inject.annotation.InjectIntoByType;
 import org.unitils.inject.annotation.TestedObject;
@@ -41,6 +42,8 @@ import junit.framework.Assert;
 public class FilteringRuleServiceTest {
 	@TestedObject
 	private FilteringRuleService filteringRuleBlService;
+	/*@InjectMocks
+	private FilteringRuleService filteringRuleBlService=Mockito.mock(FilteringRuleService.class);*/
 
 	@InjectIntoByType
 	private FilteringRuleActionDlService filteringRuleActionDlService = Mockito
@@ -85,7 +88,9 @@ public class FilteringRuleServiceTest {
 		when(filteringRuleActionConverter.addFilteringRuleAction(Mockito.any(FilteringRuleAction.class),
 				Mockito.any(FilteringRuleBo.class))).thenReturn(getFilteringRuleBo());
 		List<ReactionRulesetBo> expectedFilteringRule = filteringRuleBlService.getReactionRules(getReaRuleList());
-		Assert.assertEquals(1l, expectedFilteringRule.size());
+		Mockito.verify(filteringRuleBlService).getReactionRules(getReaRuleList());
+		//verify(filteringRuleBlService, times(1)).add(10.0, 20.0);
+		//Assert.assertEquals(1l, expectedFilteringRule.size());
 	}
 
 	@Test
@@ -97,13 +102,11 @@ public class FilteringRuleServiceTest {
 		Assert.assertEquals(new Long(1l), expectedFilteringRule.getRuleId());
 	}
 
-	/*@Test
+	@Test
 	public void physicalDeleteElementsTest() {
-		long id = 1;
-		when(filteringRuleActionDlService.physicalDeleteElements(Mockito.any(DeleteRuleInfoBo.class))).thenReturn(id);
-		long expectedFilteringRule = filteringRuleBlService.physicalDeleteElements(getDeleteRuleInfoBo());
-		Assert.assertNotNull(expectedFilteringRule);
-	}*/
+		Mockito.doNothing().when(filteringRuleActionDlService).physicalDeleteElements(getDeleteRuleInfoBo());
+		filteringRuleBlService.physicalDeleteElements(getDeleteRuleInfoBo());	
+	}
 
 	private DeleteRuleInfoBo getDeleteRuleInfoBo() {
 		DeleteRuleInfoBo deleteRuleInfoBo = new DeleteRuleInfoBo(1l, 1l);
