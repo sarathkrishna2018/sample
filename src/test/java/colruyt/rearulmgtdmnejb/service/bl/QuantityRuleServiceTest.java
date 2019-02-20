@@ -91,15 +91,11 @@ public class QuantityRuleServiceTest {
 		GeneralRuleBo expectedQuantityRule = quantityRuleBlService.getRuleSpecificValues(getQuantityRuleBo());
 		Assert.assertEquals(new Long(1l), expectedQuantityRule.getRuleId());
 	}
-
-	/*@Test
+	@Test
 	public void physicalDeleteElementsTest() {
-		long id = 1;
-		when(quantityRuleActionDlService.physicalDeleteElements(Mockito.any(DeleteRuleInfoBo.class))).thenReturn(id);
-		long expectedQuantityRule = quantityRuleBlService.physicalDeleteElements(getXpsRuleBo());
-		Assert.assertNotNull(expectedQuantityRule);
-	}*/
-
+		Mockito.doNothing().when(quantityRuleActionDlService).physicalDeleteElements(getXpsRuleBo());
+		quantityRuleActionDlService.physicalDeleteElements(getXpsRuleBo());	
+	}
 	private DeleteRuleInfoBo getXpsRuleBo() {
 		DeleteRuleInfoBo xpsRuleBo = new DeleteRuleInfoBo(1l, 1l);
 		xpsRuleBo.setRuleId(1l);

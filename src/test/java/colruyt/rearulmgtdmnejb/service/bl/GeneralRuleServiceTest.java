@@ -636,14 +636,9 @@ public class GeneralRuleServiceTest {
 		List<DeleteRuleInfoBo> expectedRuleBo = generalRuleService.findAllExpiredRules(dateDeleteRuleBefore);
 		Assert.assertEquals(1l, expectedRuleBo.size());
 	}
-
-	/*@Test
+	@Test
 	public void physicalDeleteRulesTest() {
-		Long deleteId = 1l;
-		when(reactionRuleActionTypeDlService.physicalDeleteActionForRules(Mockito.any(DeleteRuleInfoBo.class)))
-				.thenReturn(deleteId);
-		when(reactionRuleSourceTypeDlService.physicalDeleteSourceType(Mockito.any(DeleteRuleInfoBo.class)))
-				.thenReturn(deleteId);
+		Mockito.doNothing().when(reactionRuleActionTypeDlService).physicalDeleteActionForRules(getDeleteRuleInfoBo());
 		Mockito.doNothing().when(priceProductHierarchyBlService).physicalDeleteElements(getDeleteRuleInfoBo());
 		try
 		{
@@ -652,7 +647,7 @@ public class GeneralRuleServiceTest {
 		catch(Exception e){
 			Assert.fail();
 		}
-	}*/
+	}
 
 	private DeleteRuleInfoBo getDeleteRuleInfoBo() {
 		DeleteRuleInfoBo deleteRuleInfoBo = new DeleteRuleInfoBo(1l, 1l);

@@ -35,15 +35,16 @@ import colruyt.rearulmgtdmnejb.service.dl.FilteringRuleActionDlService;
 import colruyt.rearulmgtdmnejb.util.FilteringRuleActionConverter;
 import junit.framework.Assert;
 
-
 @Transactional
 @RunWith(UnitilsJUnit4TestClassRunner.class)
 
 public class FilteringRuleServiceTest {
 	@TestedObject
 	private FilteringRuleService filteringRuleBlService;
-	/*@InjectMocks
-	private FilteringRuleService filteringRuleBlService=Mockito.mock(FilteringRuleService.class);*/
+	/*
+	 * @InjectMocks private FilteringRuleService
+	 * filteringRuleBlService=Mockito.mock(FilteringRuleService.class);
+	 */
 
 	@InjectIntoByType
 	private FilteringRuleActionDlService filteringRuleActionDlService = Mockito
@@ -56,6 +57,7 @@ public class FilteringRuleServiceTest {
 
 	@InjectIntoByType
 	private ReferenceDataService referenceDataService = Mockito.mock(ReferenceDataService.class);
+
 	@Test
 	public void createRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException {
 		when(filteringRuleActionConverter.convert(Mockito.any(FilteringRuleBo.class))).thenReturn(getReaFltRule());
@@ -88,9 +90,7 @@ public class FilteringRuleServiceTest {
 		when(filteringRuleActionConverter.addFilteringRuleAction(Mockito.any(FilteringRuleAction.class),
 				Mockito.any(FilteringRuleBo.class))).thenReturn(getFilteringRuleBo());
 		List<ReactionRulesetBo> expectedFilteringRule = filteringRuleBlService.getReactionRules(getReaRuleList());
-		Mockito.verify(filteringRuleBlService).getReactionRules(getReaRuleList());
-		//verify(filteringRuleBlService, times(1)).add(10.0, 20.0);
-		//Assert.assertEquals(1l, expectedFilteringRule.size());
+		Assert.assertEquals(1l, expectedFilteringRule.size());
 	}
 
 	@Test
@@ -105,7 +105,7 @@ public class FilteringRuleServiceTest {
 	@Test
 	public void physicalDeleteElementsTest() {
 		Mockito.doNothing().when(filteringRuleActionDlService).physicalDeleteElements(getDeleteRuleInfoBo());
-		filteringRuleBlService.physicalDeleteElements(getDeleteRuleInfoBo());	
+		filteringRuleBlService.physicalDeleteElements(getDeleteRuleInfoBo());
 	}
 
 	private DeleteRuleInfoBo getDeleteRuleInfoBo() {
@@ -114,7 +114,7 @@ public class FilteringRuleServiceTest {
 		deleteRuleInfoBo.setRuleType(1l);
 		return deleteRuleInfoBo;
 	}
-	
+
 	private FilteringRuleBo getFilteringRuleBo() {
 		FilteringRuleBo filteringRuleBo = new FilteringRuleBo();
 		filteringRuleBo.setActionSelectAll(false);
@@ -188,7 +188,7 @@ public class FilteringRuleServiceTest {
 	}
 
 	private List<GeneralRuleBo> getReactionRuleBoList() {
-		 List<GeneralRuleBo> generalRuleBos=Lists.newArrayList();
+		List<GeneralRuleBo> generalRuleBos = Lists.newArrayList();
 		GeneralRuleBo reactionRuleBo = new GeneralRuleBo();
 		reactionRuleBo.setActionSelectAll(true);
 		reactionRuleBo.setActionTypeList(getActionTypeList());
@@ -256,21 +256,19 @@ public class FilteringRuleServiceTest {
 		reaRule.setLstUpdateBy("sa");
 		return reaRule;
 	}
-		
-	private List<ReactionRule> getRuleList(){
+
+	private List<ReactionRule> getRuleList() {
 		List<ReactionRule> ruleList = Lists.newArrayList();
 		ReactionRule rule = getReaRule();
-		 ruleList.add(rule); 
-		 return ruleList;
+		ruleList.add(rule);
+		return ruleList;
 	}
-	
-	private List<ReactionRulesetBo> getReaRuleList(){
+
+	private List<ReactionRulesetBo> getReaRuleList() {
 		List<ReactionRulesetBo> reaList = Lists.newArrayList();
 		ReactionRulesetBo ruleSetBo = getReactionRulesetBo();
 		reaList.add(ruleSetBo);
 		return reaList;
 	}
-	
-	
 
 }
