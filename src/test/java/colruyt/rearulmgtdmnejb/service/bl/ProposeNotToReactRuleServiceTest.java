@@ -18,6 +18,7 @@ import org.unitils.inject.annotation.TestedObject;
 
 import com.google.common.collect.Lists;
 
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.bo.GeneralRuleBo;
 import colruyt.rearulmgtdmnejb.bo.ProductHierarchyElementBo;
 import colruyt.rearulmgtdmnejb.bo.ProposeNotToReactRuleBo;
@@ -28,7 +29,6 @@ import colruyt.rearulmgtdmnejb.bo.RefLangBo;
 import colruyt.rearulmgtdmnejb.bo.RefNotToReactCodeBo;
 import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
-import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleAction;
 import colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleActionRsn;
 import colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleActionRsnPK;
@@ -45,32 +45,41 @@ public class ProposeNotToReactRuleServiceTest {
 	@TestedObject
 	private ProposeNotToReactRuleService proposeNotToReactRuleService;
 	@InjectIntoByType
-	private ProposalNotToReactActionDlService proposalNotToReactActionDlService =  Mockito.mock(ProposalNotToReactActionDlService.class);
+	private ProposalNotToReactActionDlService proposalNotToReactActionDlService = Mockito
+			.mock(ProposalNotToReactActionDlService.class);
 	@InjectIntoByType
-	private ProposeNotToReactRuleConverter proposeNotToReactRuleConverter = Mockito.mock(ProposeNotToReactRuleConverter.class);
+	private ProposeNotToReactRuleConverter proposeNotToReactRuleConverter = Mockito
+			.mock(ProposeNotToReactRuleConverter.class);
 	@InjectMocks
 	private GeneralRuleService generalRuleService = Mockito.mock(GeneralRuleService.class);
 
 	@InjectIntoByType
 	private ReferenceDataService referenceDataService = Mockito.mock(ReferenceDataService.class);
-	
+
 	@Test
-	public void createRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException{
-		when(proposeNotToReactRuleConverter.convert(Mockito.any(ProposeNotToReactRuleBo.class))).thenReturn(getReaNreactAct());
-		when(proposalNotToReactActionDlService.createOrUpdate(Mockito.any(ProposalNotToReactRuleAction.class))).thenReturn(getReaNreactAct());
-		GeneralRuleBo expectedProposeNotToReactRule = proposeNotToReactRuleService.createRuleSpecificAttributes(getProposeNotToReactRuleBo());
+	public void createRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException {
+		when(proposeNotToReactRuleConverter.convert(Mockito.any(ProposeNotToReactRuleBo.class)))
+				.thenReturn(getReaNreactAct());
+		when(proposalNotToReactActionDlService.createOrUpdate(Mockito.any(ProposalNotToReactRuleAction.class)))
+				.thenReturn(getReaNreactAct());
+		GeneralRuleBo expectedProposeNotToReactRule = proposeNotToReactRuleService
+				.createRuleSpecificAttributes(getProposeNotToReactRuleBo());
 		Assert.assertEquals(new Long(1l), expectedProposeNotToReactRule.getRuleId());
 	}
+
 	@Test
 	public void modifyRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		Long ruleId=1l;
-		when(proposeNotToReactRuleConverter.convert(Mockito.any(ProposeNotToReactRuleBo.class))).thenReturn(getReaNreactAct());
-		when(proposalNotToReactActionDlService.createOrUpdate(Mockito.any(ProposalNotToReactRuleAction.class))).thenReturn(getReaNreactAct());
-		GeneralRuleBo expectedProposeNotToReactRule = proposeNotToReactRuleService.modifyRuleSpecificAttributes(getProposeNotToReactRuleBo());
+		when(proposeNotToReactRuleConverter.convert(Mockito.any(ProposeNotToReactRuleBo.class)))
+				.thenReturn(getReaNreactAct());
+		when(proposalNotToReactActionDlService.createOrUpdate(Mockito.any(ProposalNotToReactRuleAction.class)))
+				.thenReturn(getReaNreactAct());
+		GeneralRuleBo expectedProposeNotToReactRule = proposeNotToReactRuleService
+				.modifyRuleSpecificAttributes(getProposeNotToReactRuleBo());
 		Assert.assertEquals(new Long(1l), expectedProposeNotToReactRule.getRuleId());
 	}
+
 	@Test
-	public void getReactionRulesTest() throws ReaRuleValidationException, ReaRuleManagementException{
+	public void getReactionRulesTest() throws ReaRuleValidationException, ReaRuleManagementException {
 		Long ruleId = 1l;
 		ReactionRulesetBo reactionRulesetBo = getReactionRulesetBo();
 		when(generalRuleService.getRuleTypeId(Mockito.anyString())).thenReturn(ruleId);
@@ -80,34 +89,41 @@ public class ProposeNotToReactRuleServiceTest {
 		when(generalRuleService.getGeneralRuleAttributes(Mockito.any(ReactionRule.class),
 				Mockito.any(GeneralRuleBo.class))).thenReturn(getProposeNotToReactRuleBo());
 		when(proposalNotToReactActionDlService.findByRuleId(Mockito.anyLong())).thenReturn(getReaNreactAct());
-		when(proposeNotToReactRuleConverter.convertToBo(Mockito.any(ProposalNotToReactRuleAction.class), Mockito.any(ProposeNotToReactRuleBo.class))).thenReturn(getProposeNotToReactRuleBo());
-		List<ReactionRulesetBo> expectedProposeNotToReactRule = proposeNotToReactRuleService.getReactionRules(getReaRuleList());
+		when(proposeNotToReactRuleConverter.convertToBo(Mockito.any(ProposalNotToReactRuleAction.class),
+				Mockito.any(ProposeNotToReactRuleBo.class))).thenReturn(getProposeNotToReactRuleBo());
+		List<ReactionRulesetBo> expectedProposeNotToReactRule = proposeNotToReactRuleService
+				.getReactionRules(getReaRuleList());
 		Assert.assertEquals(1, expectedProposeNotToReactRule.size());
 	}
+
 	@Test
-	public void getRuleSpecificValuesTest() throws ReaRuleManagementException{
+	public void getRuleSpecificValuesTest() throws ReaRuleManagementException {
 		when(proposalNotToReactActionDlService.findByRuleId(Mockito.anyLong())).thenReturn(getReaNreactAct());
-		when(proposeNotToReactRuleConverter.convertToBo(Mockito.any(ProposalNotToReactRuleAction.class), Mockito.any(ProposeNotToReactRuleBo.class))).thenReturn(getProposeNotToReactRuleBo());
-		GeneralRuleBo expectedProposeNotToReactRule = proposeNotToReactRuleService.getRuleSpecificValues(getProposeNotToReactRuleBo());
+		when(proposeNotToReactRuleConverter.convertToBo(Mockito.any(ProposalNotToReactRuleAction.class),
+				Mockito.any(ProposeNotToReactRuleBo.class))).thenReturn(getProposeNotToReactRuleBo());
+		GeneralRuleBo expectedProposeNotToReactRule = proposeNotToReactRuleService
+				.getRuleSpecificValues(getProposeNotToReactRuleBo());
 		Assert.assertEquals(new Long(1l), expectedProposeNotToReactRule.getRuleId());
 	}
+
 	@Test
 	public void physicalDeleteElementsTest() {
 		Mockito.doNothing().when(proposalNotToReactActionDlService).physicalDeleteElementsRsn(getXpsRuleBo());
 		Mockito.doNothing().when(proposalNotToReactActionDlService).physicalDeleteElements(getXpsRuleBo());
-		proposalNotToReactActionDlService.physicalDeleteElements(getXpsRuleBo());	
+		proposeNotToReactRuleService.physicalDeleteElements(getXpsRuleBo());
+		Mockito.verify(proposalNotToReactActionDlService).physicalDeleteElementsRsn(getXpsRuleBo());
+		Mockito.verify(proposalNotToReactActionDlService).physicalDeleteElements(getXpsRuleBo());
 	}
+
 	private DeleteRuleInfoBo getXpsRuleBo() {
 		DeleteRuleInfoBo xpsRuleBo = new DeleteRuleInfoBo(1l, 1l);
 		xpsRuleBo.setRuleId(1l);
 		xpsRuleBo.setRuleType(1l);
 		return xpsRuleBo;
 	}
-	
-	
-	
+
 	private List<GeneralRuleBo> getReactionRuleBoList() {
-		List<GeneralRuleBo> generalRuleBos=Lists.newArrayList();
+		List<GeneralRuleBo> generalRuleBos = Lists.newArrayList();
 		GeneralRuleBo reactionRuleBo = new GeneralRuleBo();
 		reactionRuleBo.setActionSelectAll(true);
 		reactionRuleBo.setActionTypeList(getActionTypeList());
@@ -135,7 +151,7 @@ public class ProposeNotToReactRuleServiceTest {
 		generalRuleBos.add(reactionRuleBo);
 		return generalRuleBos;
 	}
-	
+
 	private List<RefActionTypeBo> getActionTypeList() {
 		List<RefActionTypeBo> refActionTypeBos = new ArrayList<>();
 		RefActionTypeBo refActionTypeBo = new RefActionTypeBo();
@@ -143,8 +159,7 @@ public class ProposeNotToReactRuleServiceTest {
 		refActionTypeBos.add(refActionTypeBo);
 		return refActionTypeBos;
 	}
-	
-	
+
 	public ReactionRulesetBo createReactionRuleset() {
 		ReactionRulesetBo reactionRuleset = new ReactionRulesetBo();
 		reactionRuleset.setColruytGroupChainId(1l);
@@ -154,7 +169,7 @@ public class ProposeNotToReactRuleServiceTest {
 		reactionRuleset.setComments("good");
 		return reactionRuleset;
 	}
-	
+
 	public ReactionRule getReaRule() {
 		Date validFromdate = new Date();
 		Date validTodate = new Date();
@@ -208,13 +223,14 @@ public class ProposeNotToReactRuleServiceTest {
 		proposeNotToReactRuleBo.setNotToReactCodes(getRefNotToReactCodeBo());
 		return proposeNotToReactRuleBo;
 	}
+
 	public ProposalNotToReactRuleAction getReaNreactAct() {
 		ProposalNotToReactRuleAction reaNreactAct = new ProposalNotToReactRuleAction();
 		reaNreactAct.setReactionRuleId(1);
 		reaNreactAct.setFltoutTypeId(2);
 		return reaNreactAct;
 	}
-	
+
 	private List<RefSourceTypeBo> getSourceTypeList() {
 		List<RefSourceTypeBo> refSourceTypeBos = new ArrayList<>();
 		RefSourceTypeBo refSourceTypeBo = new RefSourceTypeBo();
@@ -255,6 +271,7 @@ public class ProposeNotToReactRuleServiceTest {
 		reaNreactSetRsnPK.setReasonId(2);
 		return reaNreactSetRsnPK;
 	}
+
 	public RefFilterOutRecordingTypeBo getRefFilterOutRecordingTypeBo() {
 		RefFilterOutRecordingTypeBo refFilterOutRecordingTypeBo = new RefFilterOutRecordingTypeBo();
 		refFilterOutRecordingTypeBo.setFilterOutTypeId(1l);
@@ -283,6 +300,7 @@ public class ProposeNotToReactRuleServiceTest {
 		refNotToReactCodeBolist.add(refNotToReactCodeBo);
 		return refNotToReactCodeBolist;
 	}
+
 	private List<ProductHierarchyElementBo> getPriceProductHierarchyList() {
 		List<ProductHierarchyElementBo> hierarchyElementBos = new ArrayList<>();
 		ProductHierarchyElementBo hierarchyElementBo = new ProductHierarchyElementBo();
@@ -292,19 +310,19 @@ public class ProposeNotToReactRuleServiceTest {
 		hierarchyElementBos.add(hierarchyElementBo);
 		return hierarchyElementBos;
 	}
-	private List<ReactionRule> getRuleList(){
+
+	private List<ReactionRule> getRuleList() {
 		List<ReactionRule> ruleList = Lists.newArrayList();
 		ReactionRule rule = getReaRule();
-		 ruleList.add(rule); 
-		 return ruleList;
+		ruleList.add(rule);
+		return ruleList;
 	}
-	
-	private List<ReactionRulesetBo> getReaRuleList(){
+
+	private List<ReactionRulesetBo> getReaRuleList() {
 		List<ReactionRulesetBo> reaList = Lists.newArrayList();
 		ReactionRulesetBo ruleSetBo = getReactionRulesetBo();
 		reaList.add(ruleSetBo);
 		return reaList;
 	}
-	
-	
+
 }

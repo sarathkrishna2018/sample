@@ -18,6 +18,7 @@ import org.unitils.inject.annotation.TestedObject;
 
 import com.google.common.collect.Lists;
 
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.bo.GeneralRuleBo;
 import colruyt.rearulmgtdmnejb.bo.ProductHierarchyElementBo;
 import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
@@ -25,7 +26,6 @@ import colruyt.rearulmgtdmnejb.bo.RecordingNotFoundRuleBo;
 import colruyt.rearulmgtdmnejb.bo.RefActionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
-import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.entity.RecordingNotFoundRuleAction;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
@@ -51,23 +51,29 @@ public class RecordingNotFoundRuleServiceTest {
 
 	@InjectIntoByType
 	private ReferenceDataService referenceDataService = Mockito.mock(ReferenceDataService.class);
-	
+
 	@Test
 	public void createRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		when(recordingNotFoundRuleConverter.convert(Mockito.any(RecordingNotFoundRuleBo.class))).thenReturn(getRecordingNotFoundRule());
+		when(recordingNotFoundRuleConverter.convert(Mockito.any(RecordingNotFoundRuleBo.class)))
+				.thenReturn(getRecordingNotFoundRule());
 		when(recordingNotFoundRuleActionDlService.createOrUpdate(Mockito.any(RecordingNotFoundRuleAction.class)))
 				.thenReturn(getRecordingNotFoundRule());
-		GeneralRuleBo expectedRecordNotFoundRule = recordingNotFoundRuleBlService.createRuleSpecificAttributes(getRecordingNotFoundRuleBo());
+		GeneralRuleBo expectedRecordNotFoundRule = recordingNotFoundRuleBlService
+				.createRuleSpecificAttributes(getRecordingNotFoundRuleBo());
 		Assert.assertEquals(new Long(1l), expectedRecordNotFoundRule.getRuleId());
 	}
+
 	@Test
-	public void modifyRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException{
-		when(recordingNotFoundRuleConverter.convert(Mockito.any(RecordingNotFoundRuleBo.class))).thenReturn(getRecordingNotFoundRule());
+	public void modifyRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException {
+		when(recordingNotFoundRuleConverter.convert(Mockito.any(RecordingNotFoundRuleBo.class)))
+				.thenReturn(getRecordingNotFoundRule());
 		when(recordingNotFoundRuleActionDlService.createOrUpdate(Mockito.any(RecordingNotFoundRuleAction.class)))
 				.thenReturn(getRecordingNotFoundRule());
-		GeneralRuleBo expectedRecordNotFoundRule = recordingNotFoundRuleBlService.modifyRuleSpecificAttributes(getRecordingNotFoundRuleBo());
+		GeneralRuleBo expectedRecordNotFoundRule = recordingNotFoundRuleBlService
+				.modifyRuleSpecificAttributes(getRecordingNotFoundRuleBo());
 		Assert.assertEquals(new Long(1l), expectedRecordNotFoundRule.getRuleId());
 	}
+
 	@Test
 	public void getReactionRulesTest() throws ReaRuleValidationException, ReaRuleManagementException {
 		Long ruleId = 1l;
@@ -78,25 +84,35 @@ public class RecordingNotFoundRuleServiceTest {
 		when(generalRuleService.getRulesByRuleSetId(Mockito.anyLong())).thenReturn(getRuleList());
 		when(generalRuleService.getGeneralRuleAttributes(Mockito.any(ReactionRule.class),
 				Mockito.any(GeneralRuleBo.class))).thenReturn(getRecordingNotFoundRuleBo());
-		when(recordingNotFoundRuleActionDlService.findByRuleId(Mockito.anyLong())).thenReturn(getRecordingNotFoundRule());
-		when(recordingNotFoundRuleConverter.addRecordingNotFoundRuleAction(Mockito.any(RecordingNotFoundRuleAction.class),
-				Mockito.any(RecordingNotFoundRuleBo.class))).thenReturn(getRecordingNotFoundRuleBo());
-		List<ReactionRulesetBo> expectedRecordNotFoundRule = recordingNotFoundRuleBlService.getReactionRules(getReaRuleList());
+		when(recordingNotFoundRuleActionDlService.findByRuleId(Mockito.anyLong()))
+				.thenReturn(getRecordingNotFoundRule());
+		when(recordingNotFoundRuleConverter.addRecordingNotFoundRuleAction(
+				Mockito.any(RecordingNotFoundRuleAction.class), Mockito.any(RecordingNotFoundRuleBo.class)))
+						.thenReturn(getRecordingNotFoundRuleBo());
+		List<ReactionRulesetBo> expectedRecordNotFoundRule = recordingNotFoundRuleBlService
+				.getReactionRules(getReaRuleList());
 		Assert.assertEquals(1l, expectedRecordNotFoundRule.size());
 	}
+
 	@Test
 	public void getRuleSpecificValuesTest() throws ReaRuleManagementException {
-		when(recordingNotFoundRuleActionDlService.findByRuleId(Mockito.anyLong())).thenReturn(getRecordingNotFoundRule());
-		when(recordingNotFoundRuleConverter.addRecordingNotFoundRuleAction(Mockito.any(RecordingNotFoundRuleAction.class),
-				Mockito.any(RecordingNotFoundRuleBo.class))).thenReturn(getRecordingNotFoundRuleBo());
-		GeneralRuleBo expectedRecordNotFoundRule = recordingNotFoundRuleBlService.getRuleSpecificValues(getRecordingNotFoundRuleBo());
+		when(recordingNotFoundRuleActionDlService.findByRuleId(Mockito.anyLong()))
+				.thenReturn(getRecordingNotFoundRule());
+		when(recordingNotFoundRuleConverter.addRecordingNotFoundRuleAction(
+				Mockito.any(RecordingNotFoundRuleAction.class), Mockito.any(RecordingNotFoundRuleBo.class)))
+						.thenReturn(getRecordingNotFoundRuleBo());
+		GeneralRuleBo expectedRecordNotFoundRule = recordingNotFoundRuleBlService
+				.getRuleSpecificValues(getRecordingNotFoundRuleBo());
 		Assert.assertEquals(new Long(1l), expectedRecordNotFoundRule.getRuleId());
 	}
+
 	@Test
 	public void physicalDeleteElementsTest() {
 		Mockito.doNothing().when(recordingNotFoundRuleActionDlService).physicalDeleteElements(getXpsRuleBo());
-		recordingNotFoundRuleActionDlService.physicalDeleteElements(getXpsRuleBo());	
+		recordingNotFoundRuleBlService.physicalDeleteElements(getXpsRuleBo());
+		Mockito.verify(recordingNotFoundRuleActionDlService).physicalDeleteElements(getXpsRuleBo());
 	}
+
 	private DeleteRuleInfoBo getXpsRuleBo() {
 		DeleteRuleInfoBo xpsRuleBo = new DeleteRuleInfoBo(1l, 1l);
 		xpsRuleBo.setRuleId(1l);
@@ -177,7 +193,7 @@ public class RecordingNotFoundRuleServiceTest {
 	}
 
 	private List<GeneralRuleBo> getReactionRuleBoList() {
-		List<GeneralRuleBo> generalRuleBos=Lists.newArrayList();
+		List<GeneralRuleBo> generalRuleBos = Lists.newArrayList();
 		GeneralRuleBo reactionRuleBo = new GeneralRuleBo();
 		reactionRuleBo.setActionSelectAll(true);
 		reactionRuleBo.setActionTypeList(getActionTypeList());
@@ -257,5 +273,5 @@ public class RecordingNotFoundRuleServiceTest {
 		reaList.add(ruleSetBo);
 		return reaList;
 	}
-	
+
 }

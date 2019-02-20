@@ -12,13 +12,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mockito;
-import org.mockito.internal.verification.Times;
 import org.unitils.UnitilsJUnit4TestClassRunner;
 import org.unitils.inject.annotation.InjectIntoByType;
 import org.unitils.inject.annotation.TestedObject;
 
 import com.google.common.collect.Lists;
 
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.bo.FilteringRuleBo;
 import colruyt.rearulmgtdmnejb.bo.GeneralRuleBo;
 import colruyt.rearulmgtdmnejb.bo.ProductHierarchyElementBo;
@@ -26,7 +26,6 @@ import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
 import colruyt.rearulmgtdmnejb.bo.RefActionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
-import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.FilteringRuleAction;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
@@ -41,10 +40,6 @@ import junit.framework.Assert;
 public class FilteringRuleServiceTest {
 	@TestedObject
 	private FilteringRuleService filteringRuleBlService;
-	/*
-	 * @InjectMocks private FilteringRuleService
-	 * filteringRuleBlService=Mockito.mock(FilteringRuleService.class);
-	 */
 
 	@InjectIntoByType
 	private FilteringRuleActionDlService filteringRuleActionDlService = Mockito
@@ -106,6 +101,7 @@ public class FilteringRuleServiceTest {
 	public void physicalDeleteElementsTest() {
 		Mockito.doNothing().when(filteringRuleActionDlService).physicalDeleteElements(getDeleteRuleInfoBo());
 		filteringRuleBlService.physicalDeleteElements(getDeleteRuleInfoBo());
+		Mockito.verify(filteringRuleActionDlService).physicalDeleteElements(getDeleteRuleInfoBo());
 	}
 
 	private DeleteRuleInfoBo getDeleteRuleInfoBo() {

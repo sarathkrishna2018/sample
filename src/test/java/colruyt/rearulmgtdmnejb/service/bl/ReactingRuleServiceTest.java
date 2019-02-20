@@ -16,8 +16,7 @@ import org.unitils.UnitilsJUnit4TestClassRunner;
 import org.unitils.inject.annotation.InjectIntoByType;
 import org.unitils.inject.annotation.TestedObject;
 
-import com.google.common.collect.Lists;
-
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.bo.GeneralRuleBo;
 import colruyt.rearulmgtdmnejb.bo.ProductHierarchyElementBo;
 import colruyt.rearulmgtdmnejb.bo.ReactingRuleBo;
@@ -25,7 +24,6 @@ import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
 import colruyt.rearulmgtdmnejb.bo.RefActionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
-import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.ReactingRuleAction;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
@@ -57,6 +55,7 @@ public class ReactingRuleServiceTest {
 		GeneralRuleBo expectedReactingRule = reactingRuleBlService.createRuleSpecificAttributes(getReactingRuleBo());
 		Assert.assertEquals(new Long(1l), expectedReactingRule.getRuleId());
 	}
+
 	@Test
 	public void modifyRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException {
 		when(reactingRuleConverter.convert(Mockito.any(ReactingRuleBo.class))).thenReturn(getReareactingAct());
@@ -65,42 +64,30 @@ public class ReactingRuleServiceTest {
 		GeneralRuleBo expectedReactingRule = reactingRuleBlService.modifyRuleSpecificAttributes(getReactingRuleBo());
 		Assert.assertEquals(new Long(1l), expectedReactingRule.getRuleId());
 	}
-	/*@Test
-	public void getReactionRulesTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		Long ruleId = 1l;
-		ReactionRulesetBo reactionRulesetBo = getReactionRulesetBo();
-		when(generalRuleService.getRuleTypeId(Mockito.anyString())).thenReturn(ruleId);
-		when(referenceDataService.findPkByType(Mockito.anyString())).thenReturn(ruleId);
-		reactionRulesetBo.setRuleLines(getReactionRuleBoList());
-		when(generalRuleService.getRulesByRuleSetId(Mockito.anyLong())).thenReturn(getRuleList());
-		when(generalRuleService.getGeneralRuleAttributes(Mockito.any(ReactionRule.class),
-				Mockito.any(GeneralRuleBo.class))).thenReturn(getReactingRuleBo());
-		when(reactingRuleActionDlService.findByRuleId(Mockito.anyLong())).thenReturn(getReareactingAct());
-		when(reactingRuleConverter.convertToBo(Mockito.any(ReactingRuleAction.class),
-				Mockito.any(ReactingRuleBo.class))).thenReturn(getReactingRuleBo());
-		List<ReactionRulesetBo> expectedRecordNotFoundRule = reactingRuleBlService.getReactionRules(getReaRuleList());
-		Assert.assertEquals(1l, expectedRecordNotFoundRule.size());
-	}*/
+
 	@Test
-	public void getRuleSpecificValuesTest() throws ReaRuleManagementException{
+	public void getRuleSpecificValuesTest() throws ReaRuleManagementException {
 		when(reactingRuleActionDlService.findByRuleId(Mockito.anyLong())).thenReturn(getReareactingAct());
 		when(reactingRuleConverter.addingReactionRuleAction(Mockito.any(ReactingRuleAction.class),
 				Mockito.any(ReactingRuleBo.class))).thenReturn(getReactingRuleBo());
 		GeneralRuleBo expectedReactingRule = reactingRuleBlService.getRuleSpecificValues(getReactingRuleBo());
 		Assert.assertEquals(new Long(1l), expectedReactingRule.getRuleId());
 	}
+
 	@Test
 	public void physicalDeleteElementsTest() {
 		Mockito.doNothing().when(reactingRuleActionDlService).physicalDeleteElements(getXpsRuleBo());
-		reactingRuleActionDlService.physicalDeleteElements(getXpsRuleBo());	
+		reactingRuleBlService.physicalDeleteElements(getXpsRuleBo());
+		Mockito.verify(reactingRuleActionDlService).physicalDeleteElements(getXpsRuleBo());
 	}
+
 	private DeleteRuleInfoBo getXpsRuleBo() {
 		DeleteRuleInfoBo xpsRuleBo = new DeleteRuleInfoBo(1l, 1l);
 		xpsRuleBo.setRuleId(1l);
 		xpsRuleBo.setRuleType(1l);
 		return xpsRuleBo;
 	}
-	
+
 	public ReactingRuleBo getReactingRuleBo() {
 		ReactingRuleBo reactingRuleBo = new ReactingRuleBo();
 		reactingRuleBo.setActionSelectAll(false);
@@ -130,36 +117,6 @@ public class ReactingRuleServiceTest {
 		reactingRuleBo.setSourceTypeList(getSourceTypeList());
 		reactingRuleBo.setValidFrom(new Date());
 		return reactingRuleBo;
-	}
-
-	private List<GeneralRuleBo> getReactionRuleBoList() {
-		List<GeneralRuleBo> generalRuleBos=Lists.newArrayList();
-		GeneralRuleBo reactionRuleBo = new GeneralRuleBo();
-		reactionRuleBo.setActionSelectAll(true);
-		reactionRuleBo.setActionTypeList(getActionTypeList());
-		reactionRuleBo.setAssortmentName("Products");
-		reactionRuleBo.setCheapBrand(true);
-		reactionRuleBo.setDirectBenefit(true);
-		reactionRuleBo.setImportanceCodeFrom(1L);
-		reactionRuleBo.setImportanceCodeTo(5L);
-		reactionRuleBo.setLangCode("EN");
-		reactionRuleBo.setLogonId("xyz");
-		reactionRuleBo.setNationalBrand(false);
-		reactionRuleBo.setOwnBrand(false);
-		reactionRuleBo.setPermanentDuration(true);
-		reactionRuleBo.setTemporaryDuration(false);
-		reactionRuleBo.setPostponedBenefit(false);
-		reactionRuleBo.setPriceProductHierarchySet(getPriceProductHierarchyList());
-		reactionRuleBo.setReactionRulesetBo(getReactionRulesetBo());
-		reactionRuleBo.setRefRuleTypeBo(getRefRuleTypeBo());
-		reactionRuleBo.setRuleId(1L);
-		reactionRuleBo.setRuleName("Rule");
-		reactionRuleBo.setRulesetId(1L);
-		reactionRuleBo.setSourceSelectAll(false);
-		reactionRuleBo.setSourceTypeList(getSourceTypeList());
-		reactionRuleBo.setValidFrom(new Date());
-		generalRuleBos.add(reactionRuleBo);
-		return generalRuleBos;
 	}
 
 	private List<ProductHierarchyElementBo> getPriceProductHierarchyList() {
@@ -247,20 +204,6 @@ public class ReactingRuleServiceTest {
 		reactionRuleset.setRulesetId(1l);
 		reactionRuleset.setComments("good");
 		return reactionRuleset;
-	}
-
-	private List<ReactionRule> getRuleList() {
-		List<ReactionRule> ruleList = Lists.newArrayList();
-		ReactionRule rule = getReaRule();
-		ruleList.add(rule);
-		return ruleList;
-	}
-
-	private List<ReactionRulesetBo> getReaRuleList() {
-		List<ReactionRulesetBo> reaList = Lists.newArrayList();
-		ReactionRulesetBo ruleSetBo = getReactionRulesetBo();
-		reaList.add(ruleSetBo);
-		return reaList;
 	}
 
 }

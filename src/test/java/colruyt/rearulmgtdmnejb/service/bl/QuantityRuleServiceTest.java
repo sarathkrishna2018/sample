@@ -18,6 +18,7 @@ import org.unitils.inject.annotation.TestedObject;
 
 import com.google.common.collect.Lists;
 
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.bo.GeneralRuleBo;
 import colruyt.rearulmgtdmnejb.bo.ProductHierarchyElementBo;
 import colruyt.rearulmgtdmnejb.bo.QuantityRuleBo;
@@ -27,7 +28,6 @@ import colruyt.rearulmgtdmnejb.bo.RefQuantityConditionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefQuantityPriceTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
-import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.QuantityRuleAction;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
@@ -51,24 +51,27 @@ public class QuantityRuleServiceTest {
 
 	@InjectIntoByType
 	private ReferenceDataService referenceDataService = Mockito.mock(ReferenceDataService.class);
+
 	@Test
-	public void createRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException{
+	public void createRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException {
 		when(quantityRuleActionConverter.convert(Mockito.any(QuantityRuleBo.class))).thenReturn(getReaQtyRule());
 		when(quantityRuleActionDlService.createOrUpdate(Mockito.any(QuantityRuleAction.class)))
 				.thenReturn(getReaQtyRule());
 		GeneralRuleBo expectedQuantityRule = quantityRuleBlService.createRuleSpecificAttributes(getQuantityRuleBo());
 		Assert.assertEquals(new Long(1l), expectedQuantityRule.getRuleId());
 	}
+
 	@Test
-	public void modifyRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException{
+	public void modifyRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException {
 		when(quantityRuleActionConverter.convert(Mockito.any(QuantityRuleBo.class))).thenReturn(getReaQtyRule());
 		when(quantityRuleActionDlService.createOrUpdate(Mockito.any(QuantityRuleAction.class)))
 				.thenReturn(getReaQtyRule());
 		GeneralRuleBo expectedQuantityRule = quantityRuleBlService.modifyRuleSpecificAttributes(getQuantityRuleBo());
 		Assert.assertEquals(new Long(1l), expectedQuantityRule.getRuleId());
 	}
+
 	@Test
-	public void getReactionRulesTest() throws ReaRuleValidationException, ReaRuleManagementException{
+	public void getReactionRulesTest() throws ReaRuleValidationException, ReaRuleManagementException {
 		Long ruleId = 1l;
 		ReactionRulesetBo reactionRulesetBo = getReactionRulesetBo();
 		when(generalRuleService.getRuleTypeId(Mockito.anyString())).thenReturn(ruleId);
@@ -83,6 +86,7 @@ public class QuantityRuleServiceTest {
 		List<ReactionRulesetBo> expectedQuantityRule = quantityRuleBlService.getReactionRules(getReaRuleList());
 		Assert.assertEquals(1l, expectedQuantityRule.size());
 	}
+
 	@Test
 	public void getRuleSpecificValuesTest() throws ReaRuleManagementException {
 		when(quantityRuleActionDlService.findByRuleId(Mockito.anyLong())).thenReturn(getReaQtyRule());
@@ -91,11 +95,14 @@ public class QuantityRuleServiceTest {
 		GeneralRuleBo expectedQuantityRule = quantityRuleBlService.getRuleSpecificValues(getQuantityRuleBo());
 		Assert.assertEquals(new Long(1l), expectedQuantityRule.getRuleId());
 	}
+
 	@Test
 	public void physicalDeleteElementsTest() {
 		Mockito.doNothing().when(quantityRuleActionDlService).physicalDeleteElements(getXpsRuleBo());
-		quantityRuleActionDlService.physicalDeleteElements(getXpsRuleBo());	
+		quantityRuleBlService.physicalDeleteElements(getXpsRuleBo());
+		Mockito.verify(quantityRuleActionDlService).physicalDeleteElements(getXpsRuleBo());
 	}
+
 	private DeleteRuleInfoBo getXpsRuleBo() {
 		DeleteRuleInfoBo xpsRuleBo = new DeleteRuleInfoBo(1l, 1l);
 		xpsRuleBo.setRuleId(1l);
@@ -181,7 +188,7 @@ public class QuantityRuleServiceTest {
 	}
 
 	private List<GeneralRuleBo> getReactionRuleBoList() {
-		List<GeneralRuleBo> generalRuleBos=Lists.newArrayList();
+		List<GeneralRuleBo> generalRuleBos = Lists.newArrayList();
 		GeneralRuleBo reactionRuleBo = new GeneralRuleBo();
 		reactionRuleBo.setActionSelectAll(true);
 		reactionRuleBo.setActionTypeList(getActionTypeList());
@@ -248,18 +255,19 @@ public class QuantityRuleServiceTest {
 		reaRule.setLstUpdateBy("sa");
 		return reaRule;
 	}
-	private List<ReactionRule> getRuleList(){
+
+	private List<ReactionRule> getRuleList() {
 		List<ReactionRule> ruleList = Lists.newArrayList();
 		ReactionRule rule = getReaRule();
-		 ruleList.add(rule); 
-		 return ruleList;
+		ruleList.add(rule);
+		return ruleList;
 	}
-	
-	private List<ReactionRulesetBo> getReaRuleList(){
+
+	private List<ReactionRulesetBo> getReaRuleList() {
 		List<ReactionRulesetBo> reaList = Lists.newArrayList();
 		ReactionRulesetBo ruleSetBo = getReactionRulesetBo();
 		reaList.add(ruleSetBo);
 		return reaList;
 	}
-	
+
 }

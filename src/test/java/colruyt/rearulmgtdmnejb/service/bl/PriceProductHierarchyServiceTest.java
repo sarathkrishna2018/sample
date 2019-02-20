@@ -23,6 +23,7 @@ import org.unitils.inject.annotation.TestedObject;
 
 import com.google.common.collect.Lists;
 
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.bo.GeneralRuleBo;
 import colruyt.rearulmgtdmnejb.bo.ProductHierarchyElementBo;
 import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
@@ -30,7 +31,6 @@ import colruyt.rearulmgtdmnejb.bo.RefActionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefLangBo;
 import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
-import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchyElement;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySet;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmnt;
@@ -101,11 +101,12 @@ public class PriceProductHierarchyServiceTest {
 				.thenReturn(getPrdHrySetIds());
 		Mockito.doNothing().when(productHierarchySetDlService).deleteSetElements(Mockito.anyListOf(Long.class));
 		Mockito.doNothing().when(productHierarchyElementDlService).deleteElements(Mockito.anyListOf(Long.class));
-		List<Long> productHierarchySetIds = priceProductHierarchyBlService.getproductHierarchySetIdList(externalValuesSet);
+		List<Long> productHierarchySetIds = priceProductHierarchyBlService
+				.getproductHierarchySetIdList(externalValuesSet);
 		Assert.assertNotNull(productHierarchySetIds);
 
 	}
-	
+
 	@Test
 	public void findByElementValueListTest() {
 		Set<String> hierarchyValuesToDelete = getValuesSet();
@@ -114,7 +115,7 @@ public class PriceProductHierarchyServiceTest {
 				.findByElementValueList(hierarchyValuesToDelete, productHierarchyElementList);
 		Assert.assertNotNull(priceProductHierarchyElements);
 	}
-	
+
 	@Test
 	public void findProductHierarchySetsTest() {
 		List<Long> productHierarchySetIds = getPrdHrySetIds();
@@ -124,20 +125,26 @@ public class PriceProductHierarchyServiceTest {
 				.findProductHierarchySets(productHierarchySetIds);
 		Assert.assertNotNull(priceProductHierarchySets);
 	}
+
 	@Test
-	public void physicalDeleteElementsTest(){
-		Long id=1l;
-		when(productHierarchySetDlService.getPriceProductHierarchySetElementId(Mockito.any(DeleteRuleInfoBo.class))).thenReturn(id);
+	public void physicalDeleteElementsTest() {
+		Long id = 1l;
+		when(productHierarchySetDlService.getPriceProductHierarchySetElementId(Mockito.any(DeleteRuleInfoBo.class)))
+				.thenReturn(id);
 		Mockito.doNothing().when(productHierarchySetDlService).deletePriceProductHierarchySetElemnet(id);
 		Mockito.doNothing().when(productHierarchySetDlService).deletePriceProductHierarchySet(getXpsRuleBo());
 		priceProductHierarchyBlService.physicalDeleteElements(getXpsRuleBo());
+		Mockito.verify(productHierarchySetDlService).deletePriceProductHierarchySetElemnet(id);
+		Mockito.verify(productHierarchySetDlService).deletePriceProductHierarchySet(getXpsRuleBo());
 	}
+
 	private DeleteRuleInfoBo getXpsRuleBo() {
 		DeleteRuleInfoBo xpsRuleBo = new DeleteRuleInfoBo(1l, 1l);
 		xpsRuleBo.setRuleId(1l);
 		xpsRuleBo.setRuleType(1l);
 		return xpsRuleBo;
 	}
+
 	private List<PriceProductHierarchySet> getPriceProductHierarchySetList() {
 		List<PriceProductHierarchySet> priceProductHierarchySets = new ArrayList<>();
 		PriceProductHierarchySet priceProductHierarchySet = getReaPpdHchyset();

@@ -18,6 +18,7 @@ import org.unitils.inject.annotation.TestedObject;
 
 import com.google.common.collect.Lists;
 
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.bo.GeneralRuleBo;
 import colruyt.rearulmgtdmnejb.bo.ProductHierarchyElementBo;
 import colruyt.rearulmgtdmnejb.bo.ReactionPeriodRuleBo;
@@ -25,7 +26,6 @@ import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
 import colruyt.rearulmgtdmnejb.bo.RefActionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
-import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionPeriodRuleAction;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
@@ -51,22 +51,27 @@ public class ReactionPeriodRuleServiceTest {
 
 	@InjectIntoByType
 	private ReferenceDataService referenceDataService = Mockito.mock(ReferenceDataService.class);
+
 	@Test
 	public void createRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException {
 		when(reactionPeriodRuleConverter.convert(Mockito.any(ReactionPeriodRuleBo.class))).thenReturn(getReaPrdAct());
 		when(reactionPeriodActionDlService.createOrUpdate(Mockito.any(ReactionPeriodRuleAction.class)))
 				.thenReturn(getReaPrdAct());
-		GeneralRuleBo expectedReactionPrdRule = reactionPeriodRuleBlService.createRuleSpecificAttributes(getReactionPeriodRuleBo());
+		GeneralRuleBo expectedReactionPrdRule = reactionPeriodRuleBlService
+				.createRuleSpecificAttributes(getReactionPeriodRuleBo());
 		Assert.assertEquals(new Long(1l), expectedReactionPrdRule.getRuleId());
 	}
+
 	@Test
-	public void modifyRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException{
+	public void modifyRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException {
 		when(reactionPeriodRuleConverter.convert(Mockito.any(ReactionPeriodRuleBo.class))).thenReturn(getReaPrdAct());
 		when(reactionPeriodActionDlService.createOrUpdate(Mockito.any(ReactionPeriodRuleAction.class)))
 				.thenReturn(getReaPrdAct());
-		GeneralRuleBo expectedReactionPrdRule = reactionPeriodRuleBlService.modifyRuleSpecificAttributes(getReactionPeriodRuleBo());
+		GeneralRuleBo expectedReactionPrdRule = reactionPeriodRuleBlService
+				.modifyRuleSpecificAttributes(getReactionPeriodRuleBo());
 		Assert.assertEquals(new Long(1l), expectedReactionPrdRule.getRuleId());
 	}
+
 	@Test
 	public void getReactionRulesTest() throws ReaRuleValidationException, ReaRuleManagementException {
 		Long ruleId = 1l;
@@ -80,28 +85,35 @@ public class ReactionPeriodRuleServiceTest {
 		when(reactionPeriodActionDlService.findByRuleId(Mockito.anyLong())).thenReturn(getReaPrdAct());
 		when(reactionPeriodRuleConverter.addReactionPeriodRuleAction(Mockito.any(ReactionPeriodRuleAction.class),
 				Mockito.any(ReactionPeriodRuleBo.class))).thenReturn(getReactionPeriodRuleBo());
-		List<ReactionRulesetBo> expectedReactionPrdRule = reactionPeriodRuleBlService.getReactionRules(getReaRuleList());
+		List<ReactionRulesetBo> expectedReactionPrdRule = reactionPeriodRuleBlService
+				.getReactionRules(getReaRuleList());
 		Assert.assertEquals(1l, expectedReactionPrdRule.size());
 	}
+
 	@Test
 	public void getRuleSpecificValuesTest() throws ReaRuleManagementException {
 		when(reactionPeriodActionDlService.findByRuleId(Mockito.anyLong())).thenReturn(getReaPrdAct());
 		when(reactionPeriodRuleConverter.addReactionPeriodRuleAction(Mockito.any(ReactionPeriodRuleAction.class),
 				Mockito.any(ReactionPeriodRuleBo.class))).thenReturn(getReactionPeriodRuleBo());
-		GeneralRuleBo expectedReactionPrdRule = reactionPeriodRuleBlService.getRuleSpecificValues(getReactionPeriodRuleBo());
+		GeneralRuleBo expectedReactionPrdRule = reactionPeriodRuleBlService
+				.getRuleSpecificValues(getReactionPeriodRuleBo());
 		Assert.assertEquals(new Long(1l), expectedReactionPrdRule.getRuleId());
 	}
+
 	@Test
 	public void physicalDeleteElementsTest() {
 		Mockito.doNothing().when(reactionPeriodActionDlService).physicalDeleteElements(getXpsRuleBo());
-		reactionPeriodActionDlService.physicalDeleteElements(getXpsRuleBo());	
+		reactionPeriodRuleBlService.physicalDeleteElements(getXpsRuleBo());
+		Mockito.verify(reactionPeriodActionDlService).physicalDeleteElements(getXpsRuleBo());
 	}
+
 	private DeleteRuleInfoBo getXpsRuleBo() {
 		DeleteRuleInfoBo xpsRuleBo = new DeleteRuleInfoBo(1l, 1l);
 		xpsRuleBo.setRuleId(1l);
 		xpsRuleBo.setRuleType(1l);
 		return xpsRuleBo;
 	}
+
 	public ReactionPeriodRuleBo getReactionPeriodRuleBo() {
 		ReactionPeriodRuleBo reactionPeriodRuleBo = new ReactionPeriodRuleBo();
 		reactionPeriodRuleBo.setActionSelectAll(false);
@@ -135,7 +147,7 @@ public class ReactionPeriodRuleServiceTest {
 	}
 
 	private List<GeneralRuleBo> getReactionRuleBoList() {
-		List<GeneralRuleBo> generalRuleBos=Lists.newArrayList();
+		List<GeneralRuleBo> generalRuleBos = Lists.newArrayList();
 		GeneralRuleBo reactionRuleBo = new GeneralRuleBo();
 		reactionRuleBo.setActionSelectAll(true);
 		reactionRuleBo.setActionTypeList(getActionTypeList());

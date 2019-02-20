@@ -4,9 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.transaction.Transactional;
 
@@ -20,6 +18,7 @@ import org.unitils.inject.annotation.TestedObject;
 
 import com.google.common.collect.Lists;
 
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleSetInfoBo;
 import colruyt.rearulmgtdmnejb.bo.GeneralRuleBo;
 import colruyt.rearulmgtdmnejb.bo.ProductHierarchyElementBo;
 import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
@@ -27,8 +26,6 @@ import colruyt.rearulmgtdmnejb.bo.RefActionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefLangBo;
 import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
-import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
-import colruyt.rearulmgtdmnejb.bo.DeleteRuleSetInfoBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.entity.ReactionRuleSet;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
@@ -50,9 +47,8 @@ public class ReactionRuleSetServiceTest {
 	private ReaRulesetConverter reaRulesetConverter = Mockito.mock(ReaRulesetConverter.class);
 	@InjectMocks
 	private ReaRuleConverter reaRuleConverter = Mockito.mock(ReaRuleConverter.class);
-	
 
-	@Test (expected = ReaRuleManagementException.class)
+	@Test(expected = ReaRuleManagementException.class)
 	public void createReactionRuleSetTest() throws ReaRuleManagementException {
 		long reactionRulesetId = 1l;
 		long colruytGroupChainId = 1l;
@@ -69,112 +65,117 @@ public class ReactionRuleSetServiceTest {
 				.createReactionRuleSet(getReactionRulesetBo(), false, logonId);
 		assertEquals(new Long(1l), expectedReactionRuleset.getRulesetId());
 	}
+
 	@Test
-	public void findReactionRuleSetTest(){
-		long cgChainId=1;
-		long compChainId=2;
-		when(reactionRuleSetDlService.findByCgChainAndPCChain(Mockito.anyLong(),Mockito.anyLong())).thenReturn(getReactionRuleset());
+	public void findReactionRuleSetTest() {
+		long cgChainId = 1;
+		long compChainId = 2;
+		when(reactionRuleSetDlService.findByCgChainAndPCChain(Mockito.anyLong(), Mockito.anyLong()))
+				.thenReturn(getReactionRuleset());
 		when(reaRulesetConverter.convertRuleSetBo(getReactionRuleset())).thenReturn(getReactionRuleSetList());
-		List<ReactionRulesetBo> expectedReactionRulesetBo=reactionRuleSetBlService.find(cgChainId, compChainId);
+		List<ReactionRulesetBo> expectedReactionRulesetBo = reactionRuleSetBlService.find(cgChainId, compChainId);
 		Assert.assertNotNull(expectedReactionRulesetBo);
 	}
+
 	@Test
-	public void findReactionRuleSetFailTest(){
-		List<ReactionRulesetBo> reactionRulesetBos=getReactionRuleSetList();
-		long cgChainId=1;
-		long compChainId=2;
-		when(reactionRuleSetDlService.findByCgChainAndPCChain(Mockito.anyLong(),Mockito.anyLong())).thenReturn(getReactionRuleset());
+	public void findReactionRuleSetFailTest() {
+		List<ReactionRulesetBo> reactionRulesetBos = getReactionRuleSetList();
+		long cgChainId = 1;
+		long compChainId = 2;
+		when(reactionRuleSetDlService.findByCgChainAndPCChain(Mockito.anyLong(), Mockito.anyLong()))
+				.thenReturn(getReactionRuleset());
 		when(reaRulesetConverter.convertRuleSetBo(getReactionRuleset())).thenReturn(getReactionRuleSetList());
-		List<ReactionRulesetBo> expectedReactionRulesetBo=reactionRuleSetBlService.find(cgChainId, compChainId);
+		List<ReactionRulesetBo> expectedReactionRulesetBo = reactionRuleSetBlService.find(cgChainId, compChainId);
 		Assert.assertNotSame(reactionRulesetBos.size(), expectedReactionRulesetBo.size());
 	}
+
 	@Test
-	public void getReactionRulesetTest() throws ReaRuleManagementException{
-		long rulesetId=1;
+	public void getReactionRulesetTest() throws ReaRuleManagementException {
+		long rulesetId = 1;
 		when(reactionRuleSetDlService.findByPk(Mockito.anyLong())).thenReturn(getReaRuleset());
-		when(reaRulesetConverter.convertReactionRuleset(Mockito.any(ReactionRuleSet.class))).thenReturn(getReaRulesetBo());
+		when(reaRulesetConverter.convertReactionRuleset(Mockito.any(ReactionRuleSet.class)))
+				.thenReturn(getReaRulesetBo());
 		when(reaRuleConverter.convertRuleLine(getReaRule())).thenReturn(getReactionRuleBo());
-		ReactionRulesetBo expectedReactionRulesetBo=reactionRuleSetBlService.getReactionRuleset(rulesetId);
-		//Assert.assertNotNull(expectedReactionRulesetBo);
+		ReactionRulesetBo expectedReactionRulesetBo = reactionRuleSetBlService.getReactionRuleset(rulesetId);
 		assertEquals(new Long(1l), expectedReactionRulesetBo.getRulesetId());
 	}
+
 	@Test
-	public void getReactionRulesetFailTest() throws ReaRuleManagementException{
-		long rulesetId=1;
+	public void getReactionRulesetFailTest() throws ReaRuleManagementException {
+		long rulesetId = 1;
 		when(reactionRuleSetDlService.findByPk(Mockito.anyLong())).thenReturn(getReaRuleset());
-		when(reaRulesetConverter.convertReactionRuleset(Mockito.any(ReactionRuleSet.class))).thenReturn(getReaRulesetBo());
+		when(reaRulesetConverter.convertReactionRuleset(Mockito.any(ReactionRuleSet.class)))
+				.thenReturn(getReaRulesetBo());
 		when(reaRuleConverter.convertRuleLine(getReaRule())).thenReturn(getReactionRuleBo());
-		ReactionRulesetBo expectedReactionRulesetBo=reactionRuleSetBlService.getReactionRuleset(rulesetId);
-		//Assert.assertNotNull(expectedReactionRulesetBo);
+		ReactionRulesetBo expectedReactionRulesetBo = reactionRuleSetBlService.getReactionRuleset(rulesetId);
 		Assert.assertNotSame(new Long(999l), expectedReactionRulesetBo.getRulesetId());
 	}
-	@Test 
-	public void modifyRuleSetDetailsTest() throws ReaRuleValidationException, ReaRuleManagementException{
-		String logonId="ake201h";
+
+	@Test
+	public void modifyRuleSetDetailsTest() throws ReaRuleValidationException, ReaRuleManagementException {
+		String logonId = "ake201h";
 		when(reactionRuleSetDlService.findByPk(Mockito.anyLong())).thenReturn(getReaRuleset());
 		when(reaRulesetConverter.convertReaRuleset(Mockito.any(ReactionRuleSet.class),
 				Mockito.any(ReactionRulesetBo.class), Mockito.anyString())).thenReturn(getReaRuleset());
 		when(reactionRuleSetDlService.createOrUpdate(getReaRuleset())).thenReturn(getReaRuleset());
 		reactionRuleSetBlService.modifyRuleSetDetails(getReactionRulesetId(), logonId);
-		
+		Mockito.verify(reactionRuleSetDlService).findByPk(Mockito.anyLong());
+
 	}
+
 	@Test
-	public void logicallyDeleteReactionRuleSetTest() throws ReaRuleManagementException{
-		long rulesetId=1;
+	public void logicallyDeleteReactionRuleSetTest() throws ReaRuleManagementException {
+		long rulesetId = 1;
 		when(reactionRuleSetDlService.findByPk(Mockito.anyLong())).thenReturn(getReaRuleset());
 		Mockito.doNothing().when(reactionRuleSetDlService).logicallyDeleteRuleSet(getReaRuleset());
-		reactionRuleSetBlService.logicallyDeleteReactionRuleSet(rulesetId,"EN", "ktr18lq");
-
+		reactionRuleSetBlService.logicallyDeleteReactionRuleSet(rulesetId, "EN", "ktr18lq");
+		Mockito.verify(reactionRuleSetDlService).findByPk(Mockito.anyLong());
+		Mockito.verify(reactionRuleSetDlService).logicallyDeleteRuleSet(Mockito.any(ReactionRuleSet.class));
 	}
-	@Test (expected = ReaRuleManagementException.class)
-	public void logicallyDeleteReactionRuleSetFailTest() throws ReaRuleManagementException{
-		long rulesetId=1;
+
+	@Test(expected = ReaRuleManagementException.class)
+	public void logicallyDeleteReactionRuleSetFailTest() throws ReaRuleManagementException {
+		long rulesetId = 1;
 		when(reactionRuleSetDlService.findByPk(Mockito.anyLong())).thenReturn(null);
 		Mockito.doNothing().when(reactionRuleSetDlService).logicallyDeleteRuleSet(getReaRuleset());
-		reactionRuleSetBlService.logicallyDeleteReactionRuleSet(rulesetId,"EN", "ktr18lq");
+		reactionRuleSetBlService.logicallyDeleteReactionRuleSet(rulesetId, "EN", "ktr18lq");
 
 	}
+
 	@Test
-	public void findAllLogicallyDeletedRuleSetTest(){
-		Date dateForRulesDelete=new Date();
-		Date dateDeleteRuleSetBefore=new Date();
-		when(reactionRuleSetDlService.findAllLogicallyDeletedRuleSet(dateForRulesDelete)).thenReturn(getXPSRuleSetBoList());
-		List<DeleteRuleSetInfoBo> expectedXpsRulesetBo=reactionRuleSetBlService.findAllLogicallyDeletedRuleSet(dateDeleteRuleSetBefore);
+	public void findAllLogicallyDeletedRuleSetTest() {
+		Date dateForRulesDelete = new Date();
+		Date dateDeleteRuleSetBefore = new Date();
+		when(reactionRuleSetDlService.findAllLogicallyDeletedRuleSet(dateForRulesDelete))
+				.thenReturn(getXPSRuleSetBoList());
+		List<DeleteRuleSetInfoBo> expectedXpsRulesetBo = reactionRuleSetBlService
+				.findAllLogicallyDeletedRuleSet(dateDeleteRuleSetBefore);
 		Assert.assertEquals(1l, expectedXpsRulesetBo.size());
 	}
-	/*@Test
-	public void physicalDeleteAllRuleSetTest(){
-		Long id=1l;
-		when(reactionRuleSetDlService.physicalDeleteAllRuleSet(Mockito.anySetOf(Long.class))).thenReturn(id);
-		long expectedXpsRulesetBo=reactionRuleSetBlService.physicalDeleteAllRuleSet(getRulesetIds());
-		Assert.assertNotNull(expectedXpsRulesetBo);
-	}*/
-	private Set<Long> getRulesetIds() {
-		Set<Long> ruleSetId=new HashSet<>();
-		ruleSetId.add(1l);
-		return ruleSetId;
-	}
+
 	private List<DeleteRuleSetInfoBo> getXPSRuleSetBoList() {
-		List<DeleteRuleSetInfoBo> xpsRuleSetBos=Lists.newArrayList();
+		List<DeleteRuleSetInfoBo> xpsRuleSetBos = Lists.newArrayList();
 		DeleteRuleSetInfoBo xpsRuleSetBo = new DeleteRuleSetInfoBo(1l, 1l);
-		xpsRuleSetBo.setRuleSetId(1l);;
+		xpsRuleSetBo.setRuleSetId(1l);
 		xpsRuleSetBo.setRuleType(1l);
 		xpsRuleSetBos.add(xpsRuleSetBo);
 		return xpsRuleSetBos;
 	}
+
 	private List<ReactionRulesetBo> getReactionRuleSetList() {
-		 List<ReactionRulesetBo> reactionRulesetBos=Lists.newArrayList();
-		 ReactionRulesetBo reactionRulesetBo = new ReactionRulesetBo();
-			reactionRulesetBo.setColruytGroupChainId(1l);
-			reactionRulesetBo.setComments("good");
-			reactionRulesetBo.setName("aa");
-			reactionRulesetBo.setPriceCompetitorChainId(1l);
-			reactionRulesetBo.setRefRuleTypeBo(getRefRuleTypeBo());
-			reactionRulesetBo.setRuleLines(getReactionRuleBo());
-			reactionRulesetBo.setRulesetId(1l);
-			reactionRulesetBos.add(reactionRulesetBo) ;
+		List<ReactionRulesetBo> reactionRulesetBos = Lists.newArrayList();
+		ReactionRulesetBo reactionRulesetBo = new ReactionRulesetBo();
+		reactionRulesetBo.setColruytGroupChainId(1l);
+		reactionRulesetBo.setComments("good");
+		reactionRulesetBo.setName("aa");
+		reactionRulesetBo.setPriceCompetitorChainId(1l);
+		reactionRulesetBo.setRefRuleTypeBo(getRefRuleTypeBo());
+		reactionRulesetBo.setRuleLines(getReactionRuleBo());
+		reactionRulesetBo.setRulesetId(1l);
+		reactionRulesetBos.add(reactionRulesetBo);
 		return reactionRulesetBos;
 	}
+
 	public ReactionRulesetBo getReaRulesetBo() {
 		ReactionRulesetBo reactionRulesetBo = new ReactionRulesetBo();
 		reactionRulesetBo.setColruytGroupChainId(1l);
@@ -187,6 +188,7 @@ public class ReactionRuleSetServiceTest {
 		return reactionRulesetBo;
 
 	}
+
 	public ReactionRulesetBo getReactionRulesetBo() {
 		ReactionRulesetBo reactionRulesetBo = new ReactionRulesetBo();
 		reactionRulesetBo.setColruytGroupChainId(1l);
@@ -195,10 +197,11 @@ public class ReactionRuleSetServiceTest {
 		reactionRulesetBo.setPriceCompetitorChainId(1l);
 		reactionRulesetBo.setRefRuleTypeBo(getRefRuleTypeBo());
 		reactionRulesetBo.setRuleLines(getReactionRuleBo());
-	//	reactionRulesetBo.setRulesetId(1l);
+		// reactionRulesetBo.setRulesetId(1l);
 		return reactionRulesetBo;
 
 	}
+
 	public ReactionRulesetBo getReactionRulesetId() {
 		ReactionRulesetBo reactionRulesetBo = new ReactionRulesetBo();
 		reactionRulesetBo.setColruytGroupChainId(1l);
