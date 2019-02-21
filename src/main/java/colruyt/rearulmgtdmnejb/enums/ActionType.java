@@ -40,6 +40,14 @@ public enum ActionType {
 	public long getSequence() {
 		return sequence;
 	}
+	public static ActionType forValue(Long actionTypeId) {
+		for (ActionType actionType : ActionType.values()){
+			if(actionType.actionTypeId == (actionTypeId)){
+				return actionType;
+			}
+		}
+		throw new UnsupportedOperationException("Could not find ActionType with actionTypeId : " + actionTypeId);
+	}  
 
 
 

@@ -25,5 +25,13 @@ public enum SourceType {
 	public String getDescription() {
 		return description;
 	}
+	public static SourceType forValue(Long sourceTypeId) {
+		for (SourceType sourceType : SourceType.values()){
+			if(sourceType.getSourceTypeId() == (sourceTypeId)){
+				return sourceType;
+			}
+		}
+		throw new UnsupportedOperationException("Could not find ActionType with actionTypeId : " + sourceTypeId);
+	}  
 	
 }

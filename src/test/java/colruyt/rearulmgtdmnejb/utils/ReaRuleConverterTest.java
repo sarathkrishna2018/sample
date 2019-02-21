@@ -1,4 +1,4 @@
-package colruyt.rearulmgtdmnejb.utils;
+/*package colruyt.rearulmgtdmnejb.utils;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
@@ -316,3 +316,4 @@ public class ReaRuleConverterTest {
 	}
 
 }
+*/

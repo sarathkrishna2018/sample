@@ -1,4 +1,4 @@
-package colruyt.rearulmgtdmnejb.service.bl;
+/*package colruyt.rearulmgtdmnejb.service.bl;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
@@ -449,7 +449,7 @@ public class GeneralRuleServiceTest {
 		generalRuleService.logicallyDeleteReactionRule(1L, "EN", "xyz");
 	}
 
-	/*@Test
+	@Test
 	public void modifyRuleTypeAllTest() throws ReaRuleValidationException, ReaRuleManagementException {
 		when(reactionRuleDlService.findByPk(Mockito.anyLong())).thenReturn(getReaRule());
 		when(reactionRuleSetBlService.createReactionRuleSet(Mockito.any(ReactionRulesetBo.class), Mockito.anyBoolean(),
@@ -467,7 +467,7 @@ public class GeneralRuleServiceTest {
 		GeneralRuleBo expectedRuleBo = generalRuleService.modifyRule(getReactionRuleBo());
 		assertEquals(new Long(1l), expectedRuleBo.getRuleId());
 
-	}*/
+	}
 
 	@Test(expected = ReaRuleValidationException.class)
 	public void modifyRuleSourceandActionTest() throws ReaRuleValidationException, ReaRuleManagementException {
@@ -911,4 +911,4 @@ public class GeneralRuleServiceTest {
 
 	}
 
-}
+}*/

@@ -27,6 +27,9 @@ import colruyt.rearulmgtdmnejb.bo.RefQuantityPriceTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
 import colruyt.rearulmgtdmnejb.entity.RefFilterOutRecordingType;
+import colruyt.rearulmgtdmnejb.entity.RefQuantityConditionType;
+import colruyt.rearulmgtdmnejb.entity.RefQuantityType;
+import colruyt.rearulmgtdmnejb.entity.RefReasonType;
 import colruyt.rearulmgtdmnejb.enums.ActionType;
 import colruyt.rearulmgtdmnejb.enums.FilterOutRecordingType;
 import colruyt.rearulmgtdmnejb.enums.QuantityCondition;
@@ -74,13 +77,16 @@ public class ReferenceDataService implements Serializable {
 		refActionTypeList = referenceDataConvertor.convertRefReaActiontype(actionTypeEnums);
 		
 		ReasonType[] refReasonValues = ReasonType.values();
-		refNotToReactCodeList = referenceDataConvertor.convertRefNonReactingCodeType(refReasonValues);
+		List<RefReasonType> refReasonTypes =referenceDataDlService.findAllRefReasonType();
+		refNotToReactCodeList = referenceDataConvertor.convertRefNonReactingCodeType(refReasonValues,refReasonTypes);
 		
 		QuantityCondition[] quantityConditionEnum = QuantityCondition.values();
-		refQuantityConditionList = referenceDataConvertor.convertRefQtyCond(quantityConditionEnum);
+		List<RefQuantityConditionType> refQuantityConditionTypes =referenceDataDlService.findAllRefQuantityCondition();
+		refQuantityConditionList = referenceDataConvertor.convertRefQtyCond(quantityConditionEnum,refQuantityConditionTypes);
 		
 		QuantityType[] refQuantityTypeValues = QuantityType.values();
-		refQuantityPriceTypeList = referenceDataConvertor.convertRefQtyType(refQuantityTypeValues);
+		List<RefQuantityType> refQuantityTypes =referenceDataDlService.findAllRefQuantityType();
+		refQuantityPriceTypeList = referenceDataConvertor.convertRefQtyType(refQuantityTypeValues,refQuantityTypes);
 
 		SourceType[]  sourceTypeEnums = SourceType.values();
 		refSourceTypeList = referenceDataConvertor.convertRefReaSource(sourceTypeEnums);

@@ -21,6 +21,11 @@ import javax.persistence.TemporalType;
 import org.apache.openjpa.persistence.ExternalValues;
 import org.apache.openjpa.persistence.Type;
 
+import com.google.common.collect.Lists;
+
+import colruyt.rearulmgtdmnejb.enums.ActionType;
+import colruyt.rearulmgtdmnejb.enums.SourceType;
+
 /**
  * The persistent class for the REA_RULE database table.
  * 
@@ -137,22 +142,35 @@ public class ReactionRule implements Serializable {
 	@Column(name = "ACTION_TYPE_ID")
 	private List<Long> refActionTypes;
 	
-	public List<Long> getRefSourceTypes() {
-		return refSourceTypes;
+	public List<SourceType> getRefSourceTypes() {
+		List<SourceType> sourceTypes=Lists.newArrayList();
+		for(Long sourceTypeId : refSourceTypes){
+			sourceTypes.add(SourceType.forValue(sourceTypeId));
+		}
+		return sourceTypes;
 	}
 
-	public void setRefSourceTypes(List<Long> refSourceTypes) {
-		this.refSourceTypes = refSourceTypes;
+	public void setRefSourceTypes(List<SourceType> sourceTypes) {
+		this.refSourceTypes = Lists.newArrayList();
+		for(SourceType sourceType:sourceTypes){
+			this.refSourceTypes.add(sourceType.getSourceTypeId());
+		}
 	}
 
-	public List<Long> getRefActionTypes() {
-		return refActionTypes;
+	public List<ActionType> getRefActionTypes(){
+		List<ActionType> actionTypes = Lists.newArrayList();
+		for(Long actionTypeId : refActionTypes) {
+			actionTypes.add(ActionType.forValue(actionTypeId));
+		}
+		return actionTypes;
 	}
 
-	public void setRefActionTypes(List<Long> refActionTypes) {
-		this.refActionTypes = refActionTypes;
-	}
-
+	public void setRefActionTypes(List<ActionType> actionTypes) {
+		this.refActionTypes = Lists.newArrayList();
+		for(ActionType actionType : actionTypes) {
+			this.refActionTypes.add(actionType.getActionTypeId());
+		}
+	}  
 	@Column(name="LST_UPDATE_TS",insertable = false, updatable = false)
 	private Date updatedOn;
 	

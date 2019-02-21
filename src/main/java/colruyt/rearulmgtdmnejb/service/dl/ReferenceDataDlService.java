@@ -12,6 +12,9 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import colruyt.rearulmgtdmnejb.entity.RefFilterOutRecordingType;
+import colruyt.rearulmgtdmnejb.entity.RefQuantityConditionType;
+import colruyt.rearulmgtdmnejb.entity.RefQuantityType;
+import colruyt.rearulmgtdmnejb.entity.RefReasonType;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 
 /**
@@ -38,5 +41,19 @@ public class ReferenceDataDlService implements Serializable {
 		return refFilterOutRecordingTypes;
 				
 	}
-	
+	 public List<RefQuantityConditionType> findAllRefQuantityCondition(){
+		 Query query=entityManager.createQuery("select refQuantityConditionType from RefQuantityConditionType refQuantityConditionType ");
+		 List<RefQuantityConditionType> refQuantityConditionTypes=query.getResultList();
+		 return refQuantityConditionTypes;
+	 }
+	 public List<RefQuantityType> findAllRefQuantityType(){
+		 Query query=entityManager.createQuery("select refQuantityType from RefQuantityType refQuantityType ");
+		 List<RefQuantityType> refQuantityTypes=query.getResultList();
+		 return refQuantityTypes;
+	 }
+	 public List<RefReasonType> findAllRefReasonType(){
+		 Query query=entityManager.createQuery("select refReasonType from RefReasonType refReasonType ");
+		 List<RefReasonType> refReasonTypes=query.getResultList();
+		 return refReasonTypes;
+	 }
 }

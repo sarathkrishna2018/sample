@@ -16,6 +16,8 @@ import colruyt.rearulmgtdmnejb.bo.GeneralRuleBo;
 import colruyt.rearulmgtdmnejb.bo.RefActionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
+import colruyt.rearulmgtdmnejb.enums.ActionType;
+import colruyt.rearulmgtdmnejb.enums.SourceType;
 
 @Stateless
 @LocalBean
@@ -52,19 +54,20 @@ public class ReaRuleConverter implements Serializable {
 		return reaRule;
 	}
 	
-	public List<Long> convertRuleAction(GeneralRuleBo reactionRuleBo) {
-		List<Long> actionTypeLst = Lists.newArrayList();
+	public List<ActionType> convertRuleAction(GeneralRuleBo reactionRuleBo) {
+		
+		List<ActionType> actionTypeLst = Lists.newArrayList();
 		for (RefActionTypeBo actionBo : reactionRuleBo.getActionTypeList()) {
-			actionTypeLst.add(actionBo.getActionTypeId());
+			actionTypeLst.add(ActionType.forValue(actionBo.getActionTypeId()));
 		}
 		return actionTypeLst;
 		
 	}
 
-	public List<Long> convertRuleSource(GeneralRuleBo reactionRuleBo) {
-		List<Long> sourceList = Lists.newArrayList();
+	public List<SourceType> convertRuleSource(GeneralRuleBo reactionRuleBo) {
+		List<SourceType> sourceList = Lists.newArrayList();
 		for (RefSourceTypeBo sourceBo : reactionRuleBo.getSourceTypeList()) {
-			sourceList.add(sourceBo.getSourceTypeId());
+			sourceList.add(SourceType.forValue(sourceBo.getSourceTypeId()));
 		}
 		return sourceList;
 	}
@@ -74,6 +77,19 @@ public class ReaRuleConverter implements Serializable {
 		actionTypeLst.add(idForAll);
 		return actionTypeLst;
 	}
+	public List<ActionType> convertAllAction(long idForAll){
+		List<ActionType> actionTypes=Lists.newArrayList();
+		actionTypes.add(ActionType.forValue(idForAll));
+		return actionTypes;
+		
+	}
+	public List<SourceType> convertAllSource(long idForAll){
+		List<SourceType> sourceTypes=Lists.newArrayList();
+		sourceTypes.add(SourceType.forValue(idForAll));
+		return sourceTypes;
+	}
+	
+	
 	
 	public List<GeneralRuleBo> convertRuleLine(List<ReactionRule> reaRules) {
 		List<GeneralRuleBo>  ruleLines = Lists.newArrayList();
