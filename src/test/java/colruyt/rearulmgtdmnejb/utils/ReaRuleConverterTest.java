@@ -1,10 +1,11 @@
-/*package colruyt.rearulmgtdmnejb.utils;
+package colruyt.rearulmgtdmnejb.utils;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 import java.util.Date;
 import java.util.List;
+
 
 import javax.transaction.Transactional;
 
@@ -30,6 +31,8 @@ import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySet;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmnt;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmntPK;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
+import colruyt.rearulmgtdmnejb.enums.ActionType;
+import colruyt.rearulmgtdmnejb.enums.SourceType;
 import colruyt.rearulmgtdmnejb.util.ProductHrchyElmntConverter;
 import colruyt.rearulmgtdmnejb.util.ReaRuleConverter;
 
@@ -50,23 +53,28 @@ public class ReaRuleConverterTest {
 
 	@Test
 	public void convertRuleActionTest() {
-		List<Long> expectedReaRuleSetActtype = reaRuleConverter.convertRuleAction(getReactionRule());
+		List<ActionType> expectedReaRuleSetActtype=reaRuleConverter.convertRuleAction(getReactionRule());
 		assertEquals(1l, expectedReaRuleSetActtype.size());
 
 	}
 
 	@Test
 	public void convertRuleSourceTest() {
-		List<Long> expectedReaRuleSetSrc = reaRuleConverter.convertRuleSource(getReactionRule());
+		List<SourceType> expectedReaRuleSetSrc = reaRuleConverter.convertRuleSource(getReactionRule());
 		assertEquals(1, expectedReaRuleSetSrc.size());
 	}
-
+	
 	@Test
-	public void convertRuleTypeForAllTest() {
-		long idForAll = 1;
-		List<Long> expectedRuleTypeForAll = reaRuleConverter.convertRuleTypeForAll(idForAll);
-		assertEquals(1l, expectedRuleTypeForAll.size());
-
+	public void convertAllActionTest(){
+		long idForAll=1;
+		List<ActionType> expectedActionTypes=reaRuleConverter.convertAllAction(idForAll);
+		Assert.assertNotNull(expectedActionTypes);
+	}
+	@Test
+	public void convertAllSourceTest(){
+		long idForAll=1;
+		List<SourceType> expectedSourceTypes=reaRuleConverter.convertAllSource(idForAll);
+		Assert.assertNotNull(expectedSourceTypes);
 	}
 
 	@Test
@@ -316,4 +324,3 @@ public class ReaRuleConverterTest {
 	}
 
 }
-*/

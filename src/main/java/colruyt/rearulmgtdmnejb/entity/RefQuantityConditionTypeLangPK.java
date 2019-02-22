@@ -5,6 +5,10 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+/**
+ * The primary key class for the QTY_COND_LANG database table.
+ *
+ */
 @Embeddable
 public class RefQuantityConditionTypeLangPK implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -37,19 +41,32 @@ public class RefQuantityConditionTypeLangPK implements Serializable {
 	
 	public boolean equals(Object obj) {
 		if (this == obj)
+		{
 			return true;
+		}
 		if (obj == null)
+		{
 			return false;
+		}
 		if (getClass() != obj.getClass())
+		{
 			return false;
+		}
 		RefQuantityConditionTypeLangPK other = (RefQuantityConditionTypeLangPK) obj;
 		if (isoLangCode == null) {
 			if (other.isoLangCode != null)
+			{
 				return false;
-		} else if (!isoLangCode.equals(other.isoLangCode))
+			}
+		} 
+		else if (!isoLangCode.equals(other.isoLangCode))
+		{
 			return false;
+		}
 		if (qtyCondId != other.qtyCondId)
+		{
 			return false;
+		}
 		return true;
 	}
 

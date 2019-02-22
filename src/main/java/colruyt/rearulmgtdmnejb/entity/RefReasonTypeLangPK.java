@@ -4,18 +4,23 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+
+/**
+ * The primary key class for the REA_REASON_LANG database table.
+ *
+ */
 @Embeddable
 public class RefReasonTypeLangPK implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
-	@Column(name="REASON_ID")
+
+	@Column(name = "REASON_ID")
 	private long reasonId;
 
-	@Column(name="ISO_LANG_CODE")
+	@Column(name = "ISO_LANG_CODE")
 	private String isoLangCode;
-	
-	public RefReasonTypeLangPK(){
-		
+
+	public RefReasonTypeLangPK() {
+
 	}
 
 	public long getReasonId() {
@@ -35,22 +40,29 @@ public class RefReasonTypeLangPK implements Serializable {
 	}
 
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		RefReasonTypeLangPK other = (RefReasonTypeLangPK) obj;
 		if (isoLangCode == null) {
-			if (other.isoLangCode != null)
+			if (other.isoLangCode != null) {
 				return false;
-		} else if (!isoLangCode.equals(other.isoLangCode))
+			}
+		} else if (!isoLangCode.equals(other.isoLangCode)) {
 			return false;
-		if (reasonId != other.reasonId)
+		}
+		if (reasonId != other.reasonId) {
 			return false;
+		}
 		return true;
 	}
+
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -58,5 +70,5 @@ public class RefReasonTypeLangPK implements Serializable {
 		result = prime * result + (int) (reasonId ^ (reasonId >>> 32));
 		return result;
 	}
-	
+
 }

@@ -7,7 +7,7 @@ public enum SourceType {
 	EXTERNAL(4L,"External", "External"),
 	ALL(5L,"All", "All");
 	
-	private final Long sourceTypeId;
+	private final long sourceTypeId;
 	private final String sourceTypeName;
 	private final String description;
 	
@@ -25,7 +25,7 @@ public enum SourceType {
 	public String getDescription() {
 		return description;
 	}
-	public static SourceType forValue(Long sourceTypeId) {
+	public static SourceType forValue(long sourceTypeId) {
 		for (SourceType sourceType : SourceType.values()){
 			if(sourceType.getSourceTypeId() == (sourceTypeId)){
 				return sourceType;

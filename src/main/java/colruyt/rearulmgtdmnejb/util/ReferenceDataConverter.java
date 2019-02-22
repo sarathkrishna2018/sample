@@ -53,21 +53,22 @@ public class ReferenceDataConverter implements Serializable {
 		return refActionTypeBoList;
 	}
 
-	public List<RefNotToReactCodeBo> convertRefNonReactingCodeType(ReasonType[] refReasonEnums,List<RefReasonType> refReasonTypes) { 
+	public List<RefNotToReactCodeBo> convertRefNonReactingCodeType(ReasonType[] refReasonEnums,
+			List<RefReasonType> refReasonTypes) {
 		List<RefNotToReactCodeBo> refNotToReactCodeBoList = new ArrayList<>();
-		for(ReasonType reasonType:refReasonEnums){
-			RefNotToReactCodeBo refNotToReactCodeBo=new RefNotToReactCodeBo();
-			List<RefLangBo> refLangBos=Lists.newArrayList();
+		for (ReasonType reasonType : refReasonEnums) {
+			RefNotToReactCodeBo refNotToReactCodeBo = new RefNotToReactCodeBo();
+			List<RefLangBo> refLangBos = Lists.newArrayList();
 			refNotToReactCodeBo.setNotToReactCodeTypeId(reasonType.getReasonID());
-			for(RefReasonType reasonTypes:refReasonTypes){
-				if(reasonTypes.getId().getReasonId() == reasonType.getReasonID()){
-					RefLangBo refLangBo=new RefLangBo();
+			for (RefReasonType reasonTypes : refReasonTypes) {
+				if (reasonTypes.getId().getReasonId() == reasonType.getReasonID()) {
+					RefLangBo refLangBo = new RefLangBo();
 					refLangBo.setIsoLangCode(reasonTypes.getId().getIsoLangCode());
 					refLangBo.setValue(reasonTypes.getReasonName());
 					refNotToReactCodeBo.setDescription(reasonTypes.getDescription());
 					refLangBos.add(refLangBo);
 				}
-				
+
 			}
 			refNotToReactCodeBo.setCodeLang(refLangBos);
 			refNotToReactCodeBoList.add(refNotToReactCodeBo);
@@ -75,34 +76,12 @@ public class ReferenceDataConverter implements Serializable {
 		return refNotToReactCodeBoList;
 	}
 
-	/*private Multimap<Long, RefLangBo> getReasonTypeMap1(ReasonType[] refReasonEnums) {
-		Multimap<Long, RefLangBo> reasonTypeMap = ArrayListMultimap.create();
-		return reasonTypeMap;
-	}
-
-	private Map<Long, List<RefLangBo>> getReasonTypeMap(ReasonType[] refReasonEnums) {
-		Map<Long, List<RefLangBo>> reasonTypeMap = new HashMap<>();
-		for (ReasonType reasonType : refReasonEnums) {
-			if (!reasonTypeMap.containsKey(reasonType.getReasonID())) {
-				RefLangBo langBo = createRefLangBo(reasonType.getIsoLangCode(), reasonType.getReasonDescription());
-				List<RefLangBo> langBos = new ArrayList<>();
-				langBos.add(langBo);
-				reasonTypeMap.put(reasonType.getReasonID(), langBos);
-			} else {
-				List<RefLangBo> existsLangBos = reasonTypeMap.get(reasonType.getReasonID());
-				RefLangBo langBo = createRefLangBo(reasonType.getIsoLangCode(), reasonType.getReasonDescription());
-				existsLangBos.add(langBo);
-			}
-		}
-		return reasonTypeMap;
-	}*/
-
 	public List<RefSourceTypeBo> convertRefReaSource(List<SourceType> refSourceTypes) {
 		List<RefSourceTypeBo> refSourceTypeBoList = Lists.newArrayList();
 		for (SourceType sourceType : refSourceTypes) {
 			RefSourceTypeBo sourceTypeBo = new RefSourceTypeBo();
 			for (SourceType refSourceType : SourceType.values()) {
-				if (sourceType.getSourceTypeId()==refSourceType.getSourceTypeId()) {
+				if (sourceType.getSourceTypeId().equals(refSourceType.getSourceTypeId())) {
 					sourceTypeBo.setSourceName(refSourceType.getSourceTypeName());
 					sourceTypeBo.setSourceTypeId(refSourceType.getSourceTypeId());
 					refSourceTypeBoList.add(sourceTypeBo);
@@ -137,15 +116,16 @@ public class ReferenceDataConverter implements Serializable {
 		return refSourceTypeBos;
 	}
 
-	public List<RefQuantityPriceTypeBo> convertRefQtyType(QuantityType[] refQuantityTypeValues,List<RefQuantityType> quantityTypes) {
+	public List<RefQuantityPriceTypeBo> convertRefQtyType(QuantityType[] refQuantityTypeValues,
+			List<RefQuantityType> quantityTypes) {
 		List<RefQuantityPriceTypeBo> refQuantityPriceTypeBoList = Lists.newArrayList();
-		for(QuantityType quantityType:refQuantityTypeValues){
-			RefQuantityPriceTypeBo refQuantityPriceTypeBo=new RefQuantityPriceTypeBo();
-			List<RefLangBo> refLangBos=Lists.newArrayList();
+		for (QuantityType quantityType : refQuantityTypeValues) {
+			RefQuantityPriceTypeBo refQuantityPriceTypeBo = new RefQuantityPriceTypeBo();
+			List<RefLangBo> refLangBos = Lists.newArrayList();
 			refQuantityPriceTypeBo.setQuantityTypeId(quantityType.getQtyTypeId());
-			for(RefQuantityType refQuantityType:quantityTypes){
-				if(refQuantityType.getId().getQuantityTypeId()==quantityType.getQtyTypeId()){
-					RefLangBo refLangBo=new RefLangBo();
+			for (RefQuantityType refQuantityType : quantityTypes) {
+				if (refQuantityType.getId().getQuantityTypeId() == quantityType.getQtyTypeId()) {
+					RefLangBo refLangBo = new RefLangBo();
 					refLangBo.setIsoLangCode(refQuantityType.getId().getIsoLangCode());
 					refLangBo.setValue(refQuantityType.getQuantityTypeName());
 					refQuantityPriceTypeBo.setDescription(refQuantityType.getDescription());
@@ -158,35 +138,16 @@ public class ReferenceDataConverter implements Serializable {
 		return refQuantityPriceTypeBoList;
 	}
 
-	/*private Map<Long, List<RefLangBo>> getRefQtyTypeMap(QuantityType[] refQuantityTypeValues) {
-		Map<Long, List<RefLangBo>> refQuantityTypeMap = new HashMap<>();
-		for (QuantityType refQuantityType : refQuantityTypeValues) {
-			if (!refQuantityTypeMap.containsKey(refQuantityType.getQtyTypeId())) {
-				List<RefLangBo> langBos = new ArrayList<>();
-				RefLangBo langBo = createRefLangBo(refQuantityType.getIsoLangCode(),
-						refQuantityType.getQtyTypeDescription());
-				langBos.add(langBo);
-				refQuantityTypeMap.put(refQuantityType.getQtyTypeId(), langBos);
-			} else {
-				List<RefLangBo> existsLangBos = refQuantityTypeMap.get(refQuantityType.getQtyTypeId());
-				RefLangBo langBo = createRefLangBo(refQuantityType.getIsoLangCode(),
-						refQuantityType.getQtyTypeDescription());
-				existsLangBos.add(langBo);
-			}
-		}
-		return refQuantityTypeMap;
-	}*/
-
 	public List<RefQuantityConditionTypeBo> convertRefQtyCond(QuantityCondition[] quantityConditionEnums,
 			List<RefQuantityConditionType> refQuantityConditionTypes) {
 		List<RefQuantityConditionTypeBo> refQuantityConditionTypeBoList = new ArrayList<>();
-		for(QuantityCondition quantityCondition:quantityConditionEnums){
-			RefQuantityConditionTypeBo refQuantityConditionTypeBo=new RefQuantityConditionTypeBo();
-			List<RefLangBo> refLangBos=Lists.newArrayList();
+		for (QuantityCondition quantityCondition : quantityConditionEnums) {
+			RefQuantityConditionTypeBo refQuantityConditionTypeBo = new RefQuantityConditionTypeBo();
+			List<RefLangBo> refLangBos = Lists.newArrayList();
 			refQuantityConditionTypeBo.setCodeTypeId(quantityCondition.getId());
-			for(RefQuantityConditionType refQuantityConditionType:refQuantityConditionTypes){
-				if(refQuantityConditionType.getId().getQtyCondId() == quantityCondition.getId()){
-					RefLangBo refLangBo=new RefLangBo();
+			for (RefQuantityConditionType refQuantityConditionType : refQuantityConditionTypes) {
+				if (refQuantityConditionType.getId().getQtyCondId() == quantityCondition.getId()) {
+					RefLangBo refLangBo = new RefLangBo();
 					refLangBo.setIsoLangCode(refQuantityConditionType.getId().getIsoLangCode());
 					refLangBo.setValue(refQuantityConditionType.getQuantityConditionName());
 					refQuantityConditionTypeBo.setDescription(refQuantityConditionType.getDescription());
@@ -200,23 +161,6 @@ public class ReferenceDataConverter implements Serializable {
 		return refQuantityConditionTypeBoList;
 	}
 
-	/*private Map<Long, List<RefLangBo>> getQuantityConditionMap(QuantityCondition[] quantityConditionEnums) {
-		Map<Long, List<RefLangBo>> quantityConditionTypeMap = new HashMap<>();
-		for (QuantityCondition quantityCondition : quantityConditionEnums) {
-			if (!quantityConditionTypeMap.containsKey(quantityCondition.getId())) {
-				List<RefLangBo> langBos = new ArrayList<>();
-				RefLangBo langBo = createRefLangBo(quantityCondition.getLangCode(), quantityCondition.getDescription());
-				langBos.add(langBo);
-				quantityConditionTypeMap.put(quantityCondition.getId(), langBos);
-			} else {
-				List<RefLangBo> existsLangBos = quantityConditionTypeMap.get(quantityCondition.getId());
-				RefLangBo langBo = createRefLangBo(quantityCondition.getLangCode(), quantityCondition.getDescription());
-				existsLangBos.add(langBo);
-			}
-		}
-		return quantityConditionTypeMap;
-	}
-*/
 	private RefLangBo createRefLangBo(String isoLangCode, String value) {
 		RefLangBo langBo = new RefLangBo();
 		langBo.setIsoLangCode(isoLangCode);
@@ -275,7 +219,5 @@ public class ReferenceDataConverter implements Serializable {
 		}
 		return reasonTypeMap;
 	}
-
-	
 
 }

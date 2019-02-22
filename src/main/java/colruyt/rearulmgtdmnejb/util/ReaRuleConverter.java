@@ -72,11 +72,6 @@ public class ReaRuleConverter implements Serializable {
 		return sourceList;
 	}
 
-	public List<Long> convertRuleTypeForAll(long idForAll) {
-		List<Long> actionTypeLst = Lists.newArrayList();
-		actionTypeLst.add(idForAll);
-		return actionTypeLst;
-	}
 	public List<ActionType> convertAllAction(long idForAll){
 		List<ActionType> actionTypes=Lists.newArrayList();
 		actionTypes.add(ActionType.forValue(idForAll));
