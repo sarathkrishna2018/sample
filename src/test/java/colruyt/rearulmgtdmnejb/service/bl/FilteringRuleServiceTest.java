@@ -43,7 +43,7 @@ public class FilteringRuleServiceTest {
 
 	@InjectIntoByType
 	private FilteringRuleActionDlService filteringRuleActionDlService = Mockito
-			.mock(FilteringRuleActionDlService.class);;
+			.mock(FilteringRuleActionDlService.class);
 	@InjectIntoByType
 	private FilteringRuleActionConverter filteringRuleActionConverter = Mockito
 			.mock(FilteringRuleActionConverter.class);
