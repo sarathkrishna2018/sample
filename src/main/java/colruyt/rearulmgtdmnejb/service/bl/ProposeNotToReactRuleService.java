@@ -109,7 +109,7 @@ public class ProposeNotToReactRuleService extends GeneralRuleService implements 
 	public List<ReactionRulesetBo> getReactionRules(List<ReactionRulesetBo> reactionRulesetBos)
 			throws ReaRuleValidationException, ReaRuleManagementException {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_RETRIEVEPROPOSENOTTOREACTRULE);
-		long ruleTypeId = super.getRuleTypeId(RuleType.PROPOSE_NOT_REACT_EN.getRuleTypeDescription());
+		long ruleTypeId = super.getRuleTypeId(RuleType.PROPOSE_NOT_REACT.getRuleTypeName());
 		List<ReactionRulesetBo> ruleSetBos = Lists.newArrayList();
 		for (ReactionRulesetBo reactionRulesetBo : reactionRulesetBos) {
 			if (reactionRulesetBo.getRefRuleTypeBo().getRuleTypeId() == ruleTypeId) {
@@ -151,7 +151,7 @@ public class ProposeNotToReactRuleService extends GeneralRuleService implements 
 				.findByRuleId(proposeNotToRactRuleBo.getRuleId());
 		proposeNotToRactRuleBo = proposeNotToReactRuleConverter.convertToBo(proposalNotToReactRuleAction,
 				proposeNotToRactRuleBo);
-		proposeNotToRactRuleBo.setType(RuleType.PROPOSE_NOT_REACT_EN.getRuleTypeDescription());
+		proposeNotToRactRuleBo.setType(RuleType.PROPOSE_NOT_REACT.getRuleTypeName());
 		return proposeNotToRactRuleBo;
 	}
 

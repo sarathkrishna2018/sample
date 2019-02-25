@@ -30,6 +30,7 @@ import colruyt.rearulmgtdmnejb.entity.RefFilterOutRecordingType;
 import colruyt.rearulmgtdmnejb.entity.RefQuantityConditionType;
 import colruyt.rearulmgtdmnejb.entity.RefQuantityType;
 import colruyt.rearulmgtdmnejb.entity.RefReasonType;
+import colruyt.rearulmgtdmnejb.entity.RefRuleType;
 import colruyt.rearulmgtdmnejb.enums.ActionType;
 import colruyt.rearulmgtdmnejb.enums.FilterOutRecordingType;
 import colruyt.rearulmgtdmnejb.enums.QuantityCondition;
@@ -95,8 +96,9 @@ public class ReferenceDataService implements Serializable {
 		List<RefFilterOutRecordingType> refFilterOutRecordingTypes =referenceDataDlService.findAllRefFilterOutRecordingTypes();
 		refFilterOutRecordingTypeList = referenceDataConvertor.convertRefFltoutType(filterOutRecordingTypeEnums, refFilterOutRecordingTypes);
  		
-		RuleType[] refRullTypeValues = RuleType.values();
-		refRuleTypeList = referenceDataConvertor.convertRuleType(refRullTypeValues);
+		RuleType[] refRuleTypeValues = RuleType.values();
+		List<RefRuleType> refRuleTypes=referenceDataDlService.findAllRuleType();
+		refRuleTypeList = referenceDataConvertor.convertRuleType(refRuleTypeValues,refRuleTypes);
 		
 	}
 

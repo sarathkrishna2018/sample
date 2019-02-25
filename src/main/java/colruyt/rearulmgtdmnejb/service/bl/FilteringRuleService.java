@@ -120,7 +120,7 @@ public class FilteringRuleService extends GeneralRuleService implements Serializ
 	public List<ReactionRulesetBo> getReactionRules(List<ReactionRulesetBo> reactionRulesetBos)
 			throws ReaRuleValidationException, ReaRuleManagementException {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_RETRIEVEFILTERINGRULE);
-		long ruleTypeId = super.getRuleTypeId(RuleType.FILTERING_EN.getRuleTypeDescription());
+		long ruleTypeId = super.getRuleTypeId(RuleType.FILTERING.getRuleTypeName());
 		List<ReactionRulesetBo> ruleSetBos = Lists.newArrayList();
 		for (ReactionRulesetBo reactionRulesetBo : reactionRulesetBos) {
 			if (reactionRulesetBo.getRefRuleTypeBo().getRuleTypeId() == ruleTypeId) {
@@ -159,7 +159,7 @@ public class FilteringRuleService extends GeneralRuleService implements Serializ
 		FilteringRuleBo filteringRuleBo = (FilteringRuleBo) ruleBo;
 		FilteringRuleAction filteringRule = filteringRuleActionDlService.findByRuleId(filteringRuleBo.getRuleId());
 		filteringRuleBo = filteringRuleActionConverter.addFilteringRuleAction(filteringRule, filteringRuleBo);
-		filteringRuleBo.setType(RuleType.FILTERING_EN.getRuleTypeDescription());
+		filteringRuleBo.setType(RuleType.FILTERING.getRuleTypeName());
 		return filteringRuleBo;
 	}
 

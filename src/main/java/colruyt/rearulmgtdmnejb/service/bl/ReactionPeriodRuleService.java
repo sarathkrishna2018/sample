@@ -112,7 +112,7 @@ public class ReactionPeriodRuleService extends GeneralRuleService implements Ser
 	public List<ReactionRulesetBo> getReactionRules(List<ReactionRulesetBo> reactionRulesetBos)
 			throws ReaRuleValidationException, ReaRuleManagementException {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_RETRIEVEREACTIONPERIODRULE);
-		long ruleTypeId = super.getRuleTypeId(RuleType.REACTION_PERIOD_EN.getRuleTypeDescription());
+		long ruleTypeId = super.getRuleTypeId(RuleType.REACTION_PERIOD.getRuleTypeName());
 		List<ReactionRulesetBo> ruleSetBos = Lists.newArrayList();
 		for (ReactionRulesetBo reactionRulesetBo : reactionRulesetBos) {
 			if (reactionRulesetBo.getRefRuleTypeBo().getRuleTypeId() == ruleTypeId) {
@@ -153,7 +153,7 @@ public class ReactionPeriodRuleService extends GeneralRuleService implements Ser
 		ReactionPeriodRuleAction reactionPeriodRuleAction = reactionPeriodActionDlService
 				.findByRuleId(reaPrdRule.getRuleId());
 		reaPrdRule = reactionPeriodRuleConverter.addReactionPeriodRuleAction(reactionPeriodRuleAction, reaPrdRule);
-		reaPrdRule.setType(RuleType.REACTION_PERIOD_EN.getRuleTypeDescription());
+		reaPrdRule.setType(RuleType.REACTION_PERIOD.getRuleTypeName());
 		return reaPrdRule;
 
 	}

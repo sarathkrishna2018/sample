@@ -108,7 +108,7 @@ public class QuantityRuleService extends GeneralRuleService implements Serializa
 	public List<ReactionRulesetBo> getReactionRules(List<ReactionRulesetBo> reactionRulesetBos)
 			throws ReaRuleValidationException, ReaRuleManagementException {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_RETRIEVEQUANTITYRULE);
-		long ruleTypeId = super.getRuleTypeId(RuleType.QUANTITY_EN.getRuleTypeDescription());
+		long ruleTypeId = super.getRuleTypeId(RuleType.QUANTITY.getRuleTypeName());
 		List<ReactionRulesetBo> ruleSetBos = Lists.newArrayList();
 		for (ReactionRulesetBo reactionRulesetBo : reactionRulesetBos) {
 			if (reactionRulesetBo.getRefRuleTypeBo().getRuleTypeId() == ruleTypeId) {
@@ -147,7 +147,7 @@ public class QuantityRuleService extends GeneralRuleService implements Serializa
 		QuantityRuleBo quantityBo = (QuantityRuleBo) ruleBo;
 		QuantityRuleAction quantityRuleAction = quantityRuleActionDlService.findByRuleId(quantityBo.getRuleId());
 		quantityBo = quantityRuleActionConvertor.addQuantityRuleAction(quantityRuleAction, quantityBo);
-		quantityBo.setType(RuleType.QUANTITY_EN.getRuleTypeDescription());
+		quantityBo.setType(RuleType.QUANTITY.getRuleTypeName());
 		return quantityBo;
 
 	}

@@ -15,6 +15,7 @@ import colruyt.rearulmgtdmnejb.entity.RefFilterOutRecordingType;
 import colruyt.rearulmgtdmnejb.entity.RefQuantityConditionType;
 import colruyt.rearulmgtdmnejb.entity.RefQuantityType;
 import colruyt.rearulmgtdmnejb.entity.RefReasonType;
+import colruyt.rearulmgtdmnejb.entity.RefRuleType;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 
 /**
@@ -55,5 +56,10 @@ public class ReferenceDataDlService implements Serializable {
 		 Query query=entityManager.createQuery("select refReasonType from RefReasonType refReasonType ");
 		 List<RefReasonType> refReasonTypes=query.getResultList();
 		 return refReasonTypes;
+	 }
+	 public List<RefRuleType> findAllRuleType(){
+		 Query query=entityManager.createQuery("select ruleType from RuleType ruleType ");
+		 List<RefRuleType> ruleTypes=query.getResultList();
+		 return ruleTypes;
 	 }
 }

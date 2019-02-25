@@ -112,7 +112,7 @@ public class RecordingNotFoundRuleService extends GeneralRuleService implements 
 	public List<ReactionRulesetBo> getReactionRules(List<ReactionRulesetBo> reactionRulesetBos)
 			throws ReaRuleValidationException, ReaRuleManagementException {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_RETRIEVERECORDNOTFOUNDRULE);
-		long ruleTypeId = super.getRuleTypeId(RuleType.RECORD_NOT_FOUND_EN.getRuleTypeDescription());
+		long ruleTypeId = super.getRuleTypeId(RuleType.RECORD_NOT_FOUND.getRuleTypeName());
 		List<ReactionRulesetBo> ruleSetBos = Lists.newArrayList();
 		for (ReactionRulesetBo reactionRulesetBo : reactionRulesetBos) {
 			if (reactionRulesetBo.getRefRuleTypeBo().getRuleTypeId() == ruleTypeId) {
@@ -154,7 +154,7 @@ public class RecordingNotFoundRuleService extends GeneralRuleService implements 
 				.findByRuleId(recordNotFoundRuleBo.getRuleId());
 		recordNotFoundRuleBo = recordingNotFoundRuleConverter
 				.addRecordingNotFoundRuleAction(recordingNotFoundRuleAction, recordNotFoundRuleBo);
-		recordNotFoundRuleBo.setType(RuleType.RECORD_NOT_FOUND_EN.getRuleTypeDescription());
+		recordNotFoundRuleBo.setType(RuleType.RECORD_NOT_FOUND.getRuleTypeName());
 		return recordNotFoundRuleBo;
 	}
 

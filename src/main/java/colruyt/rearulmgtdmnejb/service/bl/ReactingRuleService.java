@@ -118,7 +118,7 @@ public class ReactingRuleService extends GeneralRuleService implements Serializa
 	public List<ReactionRulesetBo> getReactionRules(List<ReactionRulesetBo> reactionRulesetBos)
 			throws ReaRuleValidationException, ReaRuleManagementException {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_RETRIEVEREACTINGRULE);
-		long ruleTypeId = super.getRuleTypeId(RuleType.REACTING_EN.getRuleTypeDescription());
+		long ruleTypeId = super.getRuleTypeId(RuleType.REACTING.getRuleTypeName());
 		List<ReactionRulesetBo> ruleSetBos = Lists.newArrayList();
 		for (ReactionRulesetBo reactionRulesetBo : reactionRulesetBos) {
 			if (reactionRulesetBo.getRefRuleTypeBo().getRuleTypeId() == ruleTypeId) {
@@ -157,7 +157,7 @@ public class ReactingRuleService extends GeneralRuleService implements Serializa
 		ReactingRuleBo reactRuleBo = (ReactingRuleBo) ruleBo;
 		ReactingRuleAction reactingRuleAction = reactingRuleActionDlService.findByRuleId(reactRuleBo.getRuleId());
 		reactRuleBo = reactingRuleConverter.addingReactionRuleAction(reactingRuleAction, reactRuleBo);
-		reactRuleBo.setType(RuleType.REACTING_EN.getRuleTypeDescription());
+		reactRuleBo.setType(RuleType.REACTING.getRuleTypeName());
 		return reactRuleBo;
 	}
 
