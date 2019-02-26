@@ -38,7 +38,7 @@ public class ProductHierarchyElementDlService implements Serializable{
 		CriteriaQuery<PriceProductHierarchyElement> criteriaQuery = criteriaBuilder
 				.createQuery(PriceProductHierarchyElement.class);
 		Root<PriceProductHierarchyElement> hierarchyRoot = criteriaQuery.from(PriceProductHierarchyElement.class);
-		Path<String> hierarchyValuePath = hierarchyRoot.get("ppdHchyValue");
+		Path<String> hierarchyValuePath = hierarchyRoot.get("prodHrchyValue");
 		Predicate valuePredicate = hierarchyValuePath.in(productHierarchyElmntValues);
 		criteriaQuery.where(valuePredicate);
 		return  entityManager.createQuery(criteriaQuery).getResultList();
@@ -56,7 +56,7 @@ public class ProductHierarchyElementDlService implements Serializable{
 		return priceProductHierarchyElementList;
 	}
 	public void deleteElements(List<Long> elementsIds){
-		Query query = entityManager.createQuery("delete  from  PriceProductHierarchyElement priceProductHierarchyElement where priceProductHierarchyElement.ppdHchyElmntId IN ?1 ");
+		Query query = entityManager.createQuery("delete  from  PriceProductHierarchyElement priceProductHierarchyElement where priceProductHierarchyElement.productHierarchyElementId IN ?1 ");
 		query.setParameter(1, elementsIds).executeUpdate();	
 		entityManager.flush();
 		entityManager.clear();

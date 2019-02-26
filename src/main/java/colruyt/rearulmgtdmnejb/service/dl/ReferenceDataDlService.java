@@ -31,36 +31,36 @@ public class ReferenceDataDlService implements Serializable {
 	@PersistenceContext(unitName = ReaRulMgtDmnConstants.PERSISTENCE_UNIT_NAME)
 	private transient EntityManager entityManager;
 
-
-	/**
-	 * @param ruleId
-	 * @return
-	 */
 	public List<RefFilterOutRecordingType> findAllRefFilterOutRecordingTypes() {
-		Query query = entityManager.createQuery("select refFilterOutRecordingType  from  RefFilterOutRecordingType refFilterOutRecordingType");
-	    return query.getResultList();	
-		
-				
+		Query query = entityManager.createQuery(
+				"select refFilterOutRecordingType  from  RefFilterOutRecordingType refFilterOutRecordingType");
+		return query.getResultList();
+
 	}
-	 public List<RefQuantityConditionType> findAllRefQuantityCondition(){
-		 Query query=entityManager.createQuery("select refQuantityConditionType from RefQuantityConditionType refQuantityConditionType ");
-		 return query.getResultList();
-		 
-	 }
-	 public List<RefQuantityType> findAllRefQuantityType(){
-		 Query query=entityManager.createQuery("select refQuantityType from RefQuantityType refQuantityType ");
-		 return query.getResultList();
-		 
-	 }
-	 public List<RefReasonType> findAllRefReasonType(){
-		 Query query=entityManager.createQuery("select refReasonType from RefReasonType refReasonType ");
-		 return query.getResultList();
-		 
-	 }
-	 public List<RefRuleType> findAllRuleType(){
-		 Query query=entityManager.createQuery("select ruleType from RefRuleType ruleType ");
-		 return query.getResultList();
-		 
-	 }
-	 
+
+	public List<RefQuantityConditionType> findAllRefQuantityCondition() {
+		Query query = entityManager
+				.createQuery("select refQuantityConditionType from RefQuantityConditionType refQuantityConditionType ");
+		return query.getResultList();
+
+	}
+
+	public List<RefQuantityType> findAllRefQuantityType() {
+		Query query = entityManager.createQuery("select refQuantityType from RefQuantityType refQuantityType ");
+		return query.getResultList();
+
+	}
+
+	public List<RefReasonType> findAllRefReasonType() {
+		Query query = entityManager.createQuery("select refReasonType from RefReasonType refReasonType ");
+		return query.getResultList();
+
+	}
+
+	public List<RefRuleType> findAllRuleType() {
+		Query query = entityManager.createQuery("select ruleType from RefRuleType ruleType ");
+		return query.getResultList();
+
+	}
+
 }

@@ -35,7 +35,7 @@ public class ReactingRuleActionDlService implements Serializable {
 	}
 	
 	public void physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo) {
-		Query query = entityManager.createQuery("Delete from  ReactingRuleAction reactingRuleAction where reactingRuleAction.reaRuleId = (?1)");
+		Query query = entityManager.createQuery("Delete from  ReactingRuleAction reactingRuleAction where reactingRuleAction.reactionRuleId = (?1)");
 		query.setParameter(1, deleteRuleInfoBo.getRuleId()).executeUpdate();	
 		entityManager.clear();
 	}

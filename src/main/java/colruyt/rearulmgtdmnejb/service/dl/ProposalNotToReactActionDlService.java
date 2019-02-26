@@ -40,13 +40,13 @@ public class ProposalNotToReactActionDlService implements Serializable {
 	}
 	
 	public void physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo) {
-		Query query = entityManager.createQuery("Delete from  ProposalNotToReactRuleAction proposalNotToReactRuleAction where proposalNotToReactRuleAction.reaRuleId = (?1)");
+		Query query = entityManager.createQuery("Delete from  ProposalNotToReactRuleAction proposalNotToReactRuleAction where proposalNotToReactRuleAction.reactionRuleId = (?1)");
 		query.setParameter(1, deleteRuleInfoBo.getRuleId()).executeUpdate();	
 		entityManager.clear();
 	}
 	
 	public void physicalDeleteElementsRsn(DeleteRuleInfoBo deleteRuleInfoBo) {
-		Query query = entityManager.createQuery("Delete from  ProposalNotToReactRuleActionRsn prsn where prsn.id.reaRuleId = (?1)");
+		Query query = entityManager.createQuery("Delete from  ProposalNotToReactRuleActionRsn prsn where prsn.id.reactionRuleId = (?1)");
 		query.setParameter(1, deleteRuleInfoBo.getRuleId()).executeUpdate();	
 		entityManager.clear();
 	}
