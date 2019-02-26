@@ -66,9 +66,9 @@ public class ReactionRuleSetDlService implements Serializable {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<ReactionRuleSet> criteriaQuery = criteriaBuilder.createQuery(ReactionRuleSet.class);
 		Root<ReactionRuleSet> reactionRuleSetRoot = criteriaQuery.from(ReactionRuleSet.class);
-		Path<Long> cgChainPath = reactionRuleSetRoot.get("cgChnId");
+		Path<Long> cgChainPath = reactionRuleSetRoot.get("colruytGroupChainId");
 		Predicate cgChainPredicate = criteriaBuilder.equal(cgChainPath, cgChainId);
-		Path<Long> pcChainPath = reactionRuleSetRoot.get("compChainId");
+		Path<Long> pcChainPath = reactionRuleSetRoot.get("priceCompetitorChainId");
 		Predicate pcChainPredicate = criteriaBuilder.equal(pcChainPath, pcChainId);
 		Path<Long> ruleTypePath = reactionRuleSetRoot.get("ruleTypeId");
 		Predicate ruleTypePredicate = criteriaBuilder.equal(ruleTypePath, ruleTypeId);
@@ -103,9 +103,9 @@ public class ReactionRuleSetDlService implements Serializable {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<ReactionRuleSet> criteriaQuery = criteriaBuilder.createQuery(ReactionRuleSet.class);
 		Root<ReactionRuleSet> reactionRuleSetRoot = criteriaQuery.from(ReactionRuleSet.class);
-		Path<Long> cgChainPath = reactionRuleSetRoot.get("cgChnId");
+		Path<Long> cgChainPath = reactionRuleSetRoot.get("colruytGroupChainId");
 		Predicate cgChainPredicate = criteriaBuilder.equal(cgChainPath, cgChainId);
-		Path<Long> pcChainPath = reactionRuleSetRoot.get("compChainId");
+		Path<Long> pcChainPath = reactionRuleSetRoot.get("priceCompetitorChainId");
 		Predicate pcChainPredicate = criteriaBuilder.equal(pcChainPath, pcChainId);
 		Predicate logicallyDeletePredicate = criteriaBuilder.isNull(reactionRuleSetRoot.<Date>get("logicallyDeletedDate"));
 		Predicate combinedPredicate = criteriaBuilder.and(cgChainPredicate, pcChainPredicate, logicallyDeletePredicate);
@@ -134,8 +134,8 @@ public class ReactionRuleSetDlService implements Serializable {
 	public List<DeleteRuleSetInfoBo> findAllLogicallyDeletedRuleSet(Date dateForRulesDelete) {		
 		List<DeleteRuleSetInfoBo> ruleSet = new ArrayList<DeleteRuleSetInfoBo>();
 		Query query = entityManager.createNativeQuery("SELECT ruleSet.REA_RULESET_ID, ruleSet.RULETYPE_ID from"
-				+ " SCHEMA.REA_RULESET ruleSet LEFT JOIN SCHEMA.SOI_PPT_RULE soippt ON ruleSet.REA_RULESET_ID=soippt.REACT_RULESET_ID "
-				+ " LEFT JOIN SCHEMA.SOI_CG_CHN_RULE soicg ON ruleSet.REA_RULESET_ID=soicg.REACT_RULESET_ID"
+				+ " REA_RULESET ruleSet LEFT JOIN SOI_PPT_RULE soippt ON ruleSet.REA_RULESET_ID=soippt.REACT_RULESET_ID "
+				+ " LEFT JOIN SOI_CG_CHN_RULE soicg ON ruleSet.REA_RULESET_ID=soicg.REACT_RULESET_ID"
 				+ " where ruleSet.DATE_LOGICALLY_DELETED IS NOT NULL AND ruleSet.DATE_LOGICALLY_DELETED < (?1) AND soippt.REACT_RULESET_ID IS NULL AND soicg.REACT_RULESET_ID IS NULL");
 		query.setParameter(1, dateForRulesDelete, TemporalType.DATE);
 		List<Object[]> results = query.getResultList();

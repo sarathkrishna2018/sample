@@ -25,5 +25,5 @@ public class ReactionRuleMgtConstants {
 	public static final String APPLICATION_NAME="rearulmgtdmnmw";
 	public static final String JWT_HEADER_NAME="priceconfigjwt";
 	public static final String COMMA = ",";
-	public static final String SCHEMA = "SCHEMA";
+	
 }

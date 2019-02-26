@@ -28,29 +28,22 @@ public class QuantityRuleActionDlService implements Serializable {
 	@PersistenceContext(unitName = ReaRulMgtDmnConstants.PERSISTENCE_UNIT_NAME)
 	private transient EntityManager entityManager;
 
-	
-
-	/**
-	 * 
-	 * @param quantityRuleAction
-	 */
-	public QuantityRuleAction createOrUpdate(QuantityRuleAction quantityRuleAction){
+	public QuantityRuleAction createOrUpdate(QuantityRuleAction quantityRuleAction) {
 		QuantityRuleAction qtyRuleAction = entityManager.merge(quantityRuleAction);
 		entityManager.flush();
 		return qtyRuleAction;
-		
+
 	}
-
-
 
 	public QuantityRuleAction findByRuleId(long reaRuleId) {
 		return entityManager.find(QuantityRuleAction.class, reaRuleId);
-		
+
 	}
-	
+
 	public void physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo) {
-		Query query = entityManager.createQuery("Delete from  QuantityRuleAction quantityRuleAction where quantityRuleAction.reaRuleId = (?1)");
-		query.setParameter(1, deleteRuleInfoBo.getRuleId()).executeUpdate();	
+		Query query = entityManager.createQuery(
+				"Delete from  QuantityRuleAction quantityRuleAction where quantityRuleAction.reaRuleId = (?1)");
+		query.setParameter(1, deleteRuleInfoBo.getRuleId()).executeUpdate();
 		entityManager.clear();
 	}
 

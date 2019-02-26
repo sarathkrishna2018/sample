@@ -149,8 +149,8 @@ public class ReactionRuleDlService implements Serializable {
 	public List<DeleteRuleInfoBo> findAllLogicallyDeletedRules(Date dateForRulesDelete) {
 		List<DeleteRuleInfoBo> rules = new ArrayList<DeleteRuleInfoBo>();
 		Query query = entityManager.createNativeQuery(
-				"SELECT rule.REA_RULE_ID, ruleSet.RULETYPE_ID from SCHEMA.REA_RULE rule "
-						+ "INNER JOIN SCHEMA.REA_RULESET ruleSet ON rule.REA_RULESET_ID =  ruleSet.REA_RULESET_ID where "
+				"SELECT rule.REA_RULE_ID, ruleSet.RULETYPE_ID from REA_RULE rule "
+						+ "INNER JOIN REA_RULESET ruleSet ON rule.REA_RULESET_ID =  ruleSet.REA_RULESET_ID where "
 						+ "rule.DATE_LOGICALLY_DELETED IS NOT NULL and rule.DATE_LOGICALLY_DELETED < (?1)");
 		query.setParameter(1, dateForRulesDelete, TemporalType.DATE);
 		List<Object[]> results = query.getResultList();
@@ -167,8 +167,8 @@ public class ReactionRuleDlService implements Serializable {
 	public List<DeleteRuleInfoBo> findAllExpiredRules(Date dateForRulesDelete) {
 		List<DeleteRuleInfoBo> rules = new ArrayList<DeleteRuleInfoBo>();
 		Query query = entityManager.createNativeQuery(
-				"SELECT rule.REA_RULE_ID, ruleSet.RULETYPE_ID from SCHEMA.REA_RULE rule "
-						+ "INNER JOIN SCHEMA.REA_RULESET ruleSet ON rule.REA_RULESET_ID =  ruleSet.REA_RULESET_ID where "
+				"SELECT rule.REA_RULE_ID, ruleSet.RULETYPE_ID from REA_RULE rule "
+						+ "INNER JOIN REA_RULESET ruleSet ON rule.REA_RULESET_ID =  ruleSet.REA_RULESET_ID where "
 						+ "rule.VALID_UPTO IS NOT NULL and rule.VALID_UPTO < (?1)");
 		query.setParameter(1, dateForRulesDelete, TemporalType.DATE);
 		List<Object[]> results = query.getResultList();
