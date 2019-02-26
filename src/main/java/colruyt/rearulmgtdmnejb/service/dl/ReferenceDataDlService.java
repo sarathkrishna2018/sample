@@ -38,28 +38,28 @@ public class ReferenceDataDlService implements Serializable {
 	 */
 	public List<RefFilterOutRecordingType> findAllRefFilterOutRecordingTypes() {
 		Query query = entityManager.createQuery("select refFilterOutRecordingType  from  RefFilterOutRecordingType refFilterOutRecordingType");
-	    List<RefFilterOutRecordingType> refFilterOutRecordingTypes  = query.getResultList();	
-		return refFilterOutRecordingTypes;
+	    return query.getResultList();	
+		
 				
 	}
 	 public List<RefQuantityConditionType> findAllRefQuantityCondition(){
 		 Query query=entityManager.createQuery("select refQuantityConditionType from RefQuantityConditionType refQuantityConditionType ");
-		 List<RefQuantityConditionType> refQuantityConditionTypes=query.getResultList();
-		 return refQuantityConditionTypes;
+		 return query.getResultList();
+		 
 	 }
 	 public List<RefQuantityType> findAllRefQuantityType(){
 		 Query query=entityManager.createQuery("select refQuantityType from RefQuantityType refQuantityType ");
-		 List<RefQuantityType> refQuantityTypes=query.getResultList();
-		 return refQuantityTypes;
+		 return query.getResultList();
+		 
 	 }
 	 public List<RefReasonType> findAllRefReasonType(){
 		 Query query=entityManager.createQuery("select refReasonType from RefReasonType refReasonType ");
-		 List<RefReasonType> refReasonTypes=query.getResultList();
-		 return refReasonTypes;
+		 return query.getResultList();
+		 
 	 }
 	 public List<RefRuleType> findAllRuleType(){
-		 Query query=entityManager.createQuery("select ruleType from RuleType ruleType ");
-		 List<RefRuleType> ruleTypes=query.getResultList();
-		 return ruleTypes;
+		 Query query=entityManager.createQuery("select ruleType from RefRuleType ruleType ");
+		 return query.getResultList();
+		 
 	 }
 }
