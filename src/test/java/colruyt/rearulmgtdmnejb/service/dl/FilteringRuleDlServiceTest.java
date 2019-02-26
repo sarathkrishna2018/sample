@@ -1,4 +1,4 @@
-/*package colruyt.rearulmgtdmnejb.service.dl;
+package colruyt.rearulmgtdmnejb.service.dl;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -14,7 +14,7 @@ import org.unitils.database.annotations.Transactional;
 import org.unitils.database.util.TransactionMode;
 import org.unitils.dbunit.annotation.DataSet;
 
-@JpaEntityManagerFactory(persistenceUnit = "rearulmgtdmnmwtest", configFile = "/META-INF/persistence-test.xml")
+@JpaEntityManagerFactory(persistenceUnit = "in_memory_database_testing", configFile = "/META-INF/persistence-test.xml")
 @Transactional(TransactionMode.ROLLBACK)
 @RunWith(UnitilsJUnit4TestClassRunner.class)
 public class FilteringRuleDlServiceTest {
@@ -30,18 +30,16 @@ public class FilteringRuleDlServiceTest {
 	@Test
 	@DataSet
 	public void createTest() {
-		FilteringRuleAction reaFltRule=getReaFltRule();
-		filteringRuleActionDlService.createOrUpdate(reaFltRule);
-		Assert.assertNotNull(reaFltRule);
+		FilteringRuleAction expectedFilteringRule=filteringRuleActionDlService.createOrUpdate(getReaFltRule());
+		Assert.assertNotNull(expectedFilteringRule);
 
 	}
 	public FilteringRuleAction getReaFltRule(){
 		FilteringRuleAction reaFlt=new FilteringRuleAction();
-		reaFlt.setReaRuleId(1l);
-		reaFlt.setMaxCompQty(12d);
-		reaFlt.setXTimeQty(1d);
+		reaFlt.setMaximumCompetitorQuantity(5d);
+		reaFlt.setReactionRuleId(1);
+		reaFlt.setXTimeQty(2d);
 		return reaFlt;
 	}
 	
 }
-*/

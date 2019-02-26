@@ -2,11 +2,12 @@ package colruyt.rearulmgtdmnejb.utils;
 
 import static org.junit.Assert.*;
 
-import javax.transaction.Transactional;
+
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.unitils.UnitilsJUnit4TestClassRunner;
+import org.unitils.database.annotations.Transactional;
 import org.unitils.inject.annotation.TestedObject;
 
 import colruyt.rearulmgtdmnejb.bo.ReactingRuleBo;

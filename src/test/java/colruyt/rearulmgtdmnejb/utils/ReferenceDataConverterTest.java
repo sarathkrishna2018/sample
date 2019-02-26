@@ -3,12 +3,13 @@ package colruyt.rearulmgtdmnejb.utils;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.transaction.Transactional;
+
 
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.unitils.UnitilsJUnit4TestClassRunner;
+import org.unitils.database.annotations.Transactional;
 import org.unitils.inject.annotation.TestedObject;
 
 import com.google.common.collect.Lists;

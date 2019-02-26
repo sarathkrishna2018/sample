@@ -3,7 +3,7 @@
 	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 		
-    <persistence-unit name="rearulmgtdmnmwtest" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="in_memory_database_testing" transaction-type="RESOURCE_LOCAL">
    
 
 		<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
@@ -27,29 +27,27 @@
 		<class>colruyt.rearulmgtdmnejb.entity.ReactionRuleSourceType</class>
 		<class>colruyt.rearulmgtdmnejb.entity.ReactionRuleSourceTypePK</class>
 		<class>colruyt.rearulmgtdmnejb.entity.RefFilterOutRecordingType</class>
-		<class>colruyt.rearulmgtdmnejb.entity.RefFilterOutRecordingTypeLang</class>
 		<class>colruyt.rearulmgtdmnejb.entity.RefFilterOutRecordingTypeLangPK</class>
-		<class>colruyt.rearulmgtdmnejb.entity.RefQuantityCond</class>
-		<class>colruyt.rearulmgtdmnejb.entity.RefQuantityCondLang</class>
-		<class>colruyt.rearulmgtdmnejb.entity.RefQuantityCondLangPK</class>
 		<class>colruyt.rearulmgtdmnejb.entity.RefQuantityType</class>
-		<class>colruyt.rearulmgtdmnejb.entity.RefQuantityTypeLang</class>
 		<class>colruyt.rearulmgtdmnejb.entity.RefQuantityTypeLangPK</class>
-		<class>colruyt.rearulmgtdmnejb.entity.RefActionType</class>
-		<class>colruyt.rearulmgtdmnejb.entity.RefReason</class>
-		<class>colruyt.rearulmgtdmnejb.entity.RefReasonLang</class>
-		<class>colruyt.rearulmgtdmnejb.entity.RefReasonLangPK</class>
-		<class>colruyt.rearulmgtdmnejb.entity.RefSourceType</class>
-		<class>colruyt.rearulmgtdmnejb.entity.RefRuletype</class>
-		<class>colruyt.rearulmgtdmnejb.entity.RefRuletypeLang</class>
-		<class>colruyt.rearulmgtdmnejb.entity.RefRuleTypePK</class>
+		<class>colruyt.rearulmgtdmnejb.entity.RefReasonType</class>
+		<class>colruyt.rearulmgtdmnejb.entity.RefReasonTypeLangPK</class>
+		<class>colruyt.rearulmgtdmnejb.entity.RefRuleType</class>
+		<class>colruyt.rearulmgtdmnejb.entity.RefRuleTypeLangPK</class>
+		<class>colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleActionRsn</class>
+		<class>colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleActionRsnPK</class>
+		<class>colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleAction</class>
+		<class>colruyt.rearulmgtdmnejb.entity.RefQuantityConditionType</class>
+		<class>colruyt.rearulmgtdmnejb.entity.RefQuantityConditionTypeLangPK</class>
 	    	
 		<properties>
+			<property name="openjpa.jdbc.Schema" value="PUBLIC" />
 			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test" />
 			<property name="javax.persistence.jdbc.user" value="sa" />
 			<property name="openjpa.RuntimeUnenhancedClasses" value="supported" />
 			<property name="openjpa.Log" value="DefaultLevel=WARN,SQL=TRACE" />
+			<property name="openjpa.Compatibility" value="CheckDatabaseForCascadePersistToDetachedEntity=true"/>
 		</properties>
 
     </persistence-unit>
