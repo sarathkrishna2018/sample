@@ -11,6 +11,7 @@
 	<xsd:element name="REA_NREACT_SET_RSN" type="REA_NREACT_SET_RSN__type" />
 	<xsd:element name="REA_NREACT_ACT" type="REA_NREACT_ACT__type" />
 	<xsd:element name="DBMAINTAIN_SCRIPTS" type="DBMAINTAIN_SCRIPTS__type" />
+	<xsd:element name="REA_PPD_HCHYSET" type="REA_PPD_HCHYSET__type" />
 	<xsd:element name="REA_QTY_RULE" type="REA_QTY_RULE__type" />
 	<xsd:element name="REA_RULE" type="REA_RULE__type" />
 	<xsd:element name="REF_REA_REASON" type="REF_REA_REASON__type" />
@@ -82,6 +83,16 @@
 		<xsd:attribute name="FILE_LAST_MODIFIED_AT" use="optional" />
 		<xsd:attribute name="EXECUTED_AT" use="optional" />
 		<xsd:attribute name="FILE_NAME" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="REA_PPD_HCHYSET__type">
+		<xsd:attribute name="CREATED_BY" use="optional" />
+		<xsd:attribute name="ASSORTMENT_NAME" use="optional" />
+		<xsd:attribute name="OWN_BRAND_YN" use="optional" />
+		<xsd:attribute name="NAT_BRAND_YN" use="optional" />
+		<xsd:attribute name="CHEAP_BRAND_YN" use="optional" />
+		<xsd:attribute name="PPD_HCHYSET_ID" use="optional" />
+		<xsd:attribute name="REA_RULE_ID" use="optional" />
+		<xsd:attribute name="LST_UPDATE_BY" use="optional" />
 	</xsd:complexType>
 	<xsd:complexType name="REA_QTY_RULE__type">
 		<xsd:attribute name="QTY_COND_ID" use="optional" />

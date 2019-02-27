@@ -196,3 +196,18 @@ Create table REA_RULESET (
     LST_UPDATE_BY                  VARCHAR(11)         NOT NULL    ,
     LST_UPDATE_TS 				   TIMESTAMP(10)
 );
+--------------------------------------------------
+-- Create Table REA_PPD_HCHYSET
+--------------------------------------------------
+Create table REA_PPD_HCHYSET (
+    PPD_HCHYSET_ID                 DECIMAL(9)          NOT NULL   ,
+    REA_RULE_ID                    DECIMAL(9)                     ,
+    ASSORTMENT_NAME                VARCHAR(40)         NOT NULL   ,
+    OWN_BRAND_YN                   CHAR(1)             NOT NULL   ,
+    CHEAP_BRAND_YN                 CHAR(1)         	   NOT NULL   ,
+    NAT_BRAND_YN                   CHAR(1)             NOT NULL   ,
+    CREATED_BY                     VARCHAR(11)         NOT NULL   ,
+    LST_UPDATE_BY                  VARCHAR(11)         NOT NULL
+    
+    
+);
