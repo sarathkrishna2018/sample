@@ -9,23 +9,21 @@
 				<xsd:element name="REA_RULESET" type="dflt:REA_RULESET__type" />
 				<xsd:element name="REA_RULE_SRC" type="dflt:REA_RULE_SRC__type" />
 				<xsd:element name="REA_FLT_RULE" type="dflt:REA_FLT_RULE__type" />
-				<xsd:element name="REF_REA_ACTIONTYPE" type="dflt:REF_REA_ACTIONTYPE__type" />
-				<xsd:element name="REF_FLTOUT_TYPE" type="dflt:REF_FLTOUT_TYPE__type" />
+				<xsd:element name="QTY_TYPE_LANG" type="dflt:QTY_TYPE_LANG__type" />
+				<xsd:element name="RULETYPE_LANG" type="dflt:RULETYPE_LANG__type" />
+				<xsd:element name="REA_REASON_LANG" type="dflt:REA_REASON_LANG__type" />
 				<xsd:element name="REA_RNF_ACT" type="dflt:REA_RNF_ACT__type" />
 				<xsd:element name="REA_NREACT_SET_RSN" type="dflt:REA_NREACT_SET_RSN__type" />
 				<xsd:element name="REA_NREACT_ACT" type="dflt:REA_NREACT_ACT__type" />
 				<xsd:element name="DBMAINTAIN_SCRIPTS" type="dflt:DBMAINTAIN_SCRIPTS__type" />
+				<xsd:element name="QTY_COND_LANG" type="dflt:QTY_COND_LANG__type" />
 				<xsd:element name="REA_PPD_HCHYSET" type="dflt:REA_PPD_HCHYSET__type" />
 				<xsd:element name="REA_QTY_RULE" type="dflt:REA_QTY_RULE__type" />
 				<xsd:element name="REA_RULE" type="dflt:REA_RULE__type" />
-				<xsd:element name="REF_REA_REASON" type="dflt:REF_REA_REASON__type" />
 				<xsd:element name="REA_RULE_ACTTYPE" type="dflt:REA_RULE_ACTTYPE__type" />
 				<xsd:element name="REA_PPD_HCHYSET_ELMNT" type="dflt:REA_PPD_HCHYSET_ELMNT__type" />
 				<xsd:element name="REA_REACTING_ACT" type="dflt:REA_REACTING_ACT__type" />
-				<xsd:element name="REF_RULETYPE" type="dflt:REF_RULETYPE__type" />
-				<xsd:element name="REF_REA_SOURCE" type="dflt:REF_REA_SOURCE__type" />
-				<xsd:element name="REF_QTY_COND" type="dflt:REF_QTY_COND__type" />
-				<xsd:element name="REF_QTY_TYPE" type="dflt:REF_QTY_TYPE__type" />
+				<xsd:element name="FLTOUT_TYPE_LANG" type="dflt:FLTOUT_TYPE_LANG__type" />
 				<xsd:any namespace="PUBLIC" />
 			</xsd:choice>
 		</xsd:complexType>

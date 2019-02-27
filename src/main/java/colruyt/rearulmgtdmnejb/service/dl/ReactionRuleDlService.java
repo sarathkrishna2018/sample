@@ -30,7 +30,6 @@ import com.google.common.collect.Lists;
 import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
-import colruyt.rearulmgtdmnejb.util.ReactionRuleMgtConstants;
 
 
 /**

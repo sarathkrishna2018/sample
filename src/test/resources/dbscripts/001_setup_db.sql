@@ -60,67 +60,53 @@ Create table REA_NREACT_SET_RSN(
 );
 
 --------------------------------------------------
--- Create Table REF_FLTOUT_TYPE
+-- Create Table FLTOUT_TYPE_LANG
 --------------------------------------------------
-Create table REF_FLTOUT_TYPE (
+Create table FLTOUT_TYPE_LANG (
     FLTOUT_TYPE_ID                 DECIMAL(3)          NOT NULL    ,
     FLTOUT_TYPE_NAME               VARCHAR(25)         NOT NULL    ,
-    DESCRIPTION                    VARCHAR(100)        NOT NULL   
+    DESCRIPTION                    VARCHAR(100)        NOT NULL	   ,  
+    ISO_LANG_CODE				   CHAR(2)			   NOT NULL
 );
 
 --------------------------------------------------
--- Create Table REF_QTY_COND
+-- Create Table QTY_COND_LANG
 --------------------------------------------------
-Create table REF_QTY_COND (
+Create table QTY_COND_LANG (
     QTY_COND_ID                    DECIMAL(3)          NOT NULL    ,
     QTY_COND_NAME                  VARCHAR(25)         NOT NULL    ,
-    DESCRIPTION                    VARCHAR(100)                    
+    DESCRIPTION                    VARCHAR(100)  				   ,
+    ISO_LANG_CODE				   CHAR(2)			   NOT NULL
 );
 
 --------------------------------------------------
--- Create Table REF_QTY_TYPE
+-- Create Table QTY_TYPE_LANG
 --------------------------------------------------
-Create table REF_QTY_TYPE (
+Create table QTY_TYPE_LANG (
     QTY_TYPE_ID                    DECIMAL(3)          NOT NULL    ,
     QTY_TYPE_NAME                  VARCHAR(25)         NOT NULL    ,
-    DESCRIPTION                    VARCHAR(100)        NOT NULL    
+    DESCRIPTION                    VARCHAR(100)        NOT NULL    ,
+    ISO_LANG_CODE				   CHAR(2)			   NOT NULL
 ); 
 
 --------------------------------------------------
--- Create Table REF_REA_ACTIONTYPE
+-- Create Table REA_REASON_LANG
 --------------------------------------------------
-Create table REF_REA_ACTIONTYPE (
-    ACTION_TYPE_ID                 DECIMAL(3)          NOT NULL    ,
-    ACTION_TYPE                    VARCHAR(25)                     ,
-    DESCRIPTION                    VARCHAR(100)                    ,
-    SEQ                            DECIMAL(3)                      
-);
-
---------------------------------------------------
--- Create Table REF_REA_REASON
---------------------------------------------------
-Create table REF_REA_REASON (
+Create table REA_REASON_LANG (
     REASON_ID                      DECIMAL(3)          NOT NULL    ,
     REASON_NAME                    VARCHAR(25)         NOT NULL    ,
-    DESCRIPTION                    VARCHAR(100)        NOT NULL    
+    DESCRIPTION                    VARCHAR(100)        NOT NULL    ,
+    ISO_LANG_CODE				   CHAR(2)			   NOT NULL
 ); 
 
 --------------------------------------------------
--- Create Table REF_REA_SOURCE
+-- Create Table RULETYPE_LANG
 --------------------------------------------------
-Create table REF_REA_SOURCE (
-    SOURCE_ID                      DECIMAL(3)          NOT NULL    ,
-    SOURCE_NAME                    VARCHAR(20)         NOT NULL    ,
-    DESCRIPTION                    VARCHAR(100)        NOT NULL    
-);
-
---------------------------------------------------
--- Create Table REF_RULETYPE
---------------------------------------------------
-Create table REF_RULETYPE (
+Create table RULETYPE_LANG (
     RULETYPE_ID                    DECIMAL(3)          NOT NULL    ,
     RULETYPE_NAME                  VARCHAR(25)         NOT NULL    ,
-    DESCRIPTION                    VARCHAR(100)        NOT NULL    
+    DESCRIPTION                    VARCHAR(100)        NOT NULL    ,
+    ISO_LANG_CODE				   CHAR(2)			   NOT NULL
 ); 
 --------------------------------------------------
 -- Create Table REA_RULE_ACTTYPE

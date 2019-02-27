@@ -5,23 +5,21 @@
 	<xsd:element name="REA_RULESET" type="REA_RULESET__type" />
 	<xsd:element name="REA_RULE_SRC" type="REA_RULE_SRC__type" />
 	<xsd:element name="REA_FLT_RULE" type="REA_FLT_RULE__type" />
-	<xsd:element name="REF_REA_ACTIONTYPE" type="REF_REA_ACTIONTYPE__type" />
-	<xsd:element name="REF_FLTOUT_TYPE" type="REF_FLTOUT_TYPE__type" />
+	<xsd:element name="QTY_TYPE_LANG" type="QTY_TYPE_LANG__type" />
+	<xsd:element name="RULETYPE_LANG" type="RULETYPE_LANG__type" />
+	<xsd:element name="REA_REASON_LANG" type="REA_REASON_LANG__type" />
 	<xsd:element name="REA_RNF_ACT" type="REA_RNF_ACT__type" />
 	<xsd:element name="REA_NREACT_SET_RSN" type="REA_NREACT_SET_RSN__type" />
 	<xsd:element name="REA_NREACT_ACT" type="REA_NREACT_ACT__type" />
 	<xsd:element name="DBMAINTAIN_SCRIPTS" type="DBMAINTAIN_SCRIPTS__type" />
+	<xsd:element name="QTY_COND_LANG" type="QTY_COND_LANG__type" />
 	<xsd:element name="REA_PPD_HCHYSET" type="REA_PPD_HCHYSET__type" />
 	<xsd:element name="REA_QTY_RULE" type="REA_QTY_RULE__type" />
 	<xsd:element name="REA_RULE" type="REA_RULE__type" />
-	<xsd:element name="REF_REA_REASON" type="REF_REA_REASON__type" />
 	<xsd:element name="REA_RULE_ACTTYPE" type="REA_RULE_ACTTYPE__type" />
 	<xsd:element name="REA_PPD_HCHYSET_ELMNT" type="REA_PPD_HCHYSET_ELMNT__type" />
 	<xsd:element name="REA_REACTING_ACT" type="REA_REACTING_ACT__type" />
-	<xsd:element name="REF_RULETYPE" type="REF_RULETYPE__type" />
-	<xsd:element name="REF_REA_SOURCE" type="REF_REA_SOURCE__type" />
-	<xsd:element name="REF_QTY_COND" type="REF_QTY_COND__type" />
-	<xsd:element name="REF_QTY_TYPE" type="REF_QTY_TYPE__type" />
+	<xsd:element name="FLTOUT_TYPE_LANG" type="FLTOUT_TYPE_LANG__type" />
 	<xsd:complexType name="REA_PPD_HCHY_ELMNT__type">
 		<xsd:attribute name="CREATED_BY" use="optional" />
 		<xsd:attribute name="PPD_HCHY_ELMNT_ID" use="optional" />
@@ -53,16 +51,23 @@
 		<xsd:attribute name="MAX_COMP_QTY" use="optional" />
 		<xsd:attribute name="REA_RULE_ID" use="optional" />
 	</xsd:complexType>
-	<xsd:complexType name="REF_REA_ACTIONTYPE__type">
-		<xsd:attribute name="ACTION_TYPE_ID" use="optional" />
+	<xsd:complexType name="QTY_TYPE_LANG__type">
+		<xsd:attribute name="QTY_TYPE_ID" use="optional" />
 		<xsd:attribute name="DESCRIPTION" use="optional" />
-		<xsd:attribute name="SEQ" use="optional" />
-		<xsd:attribute name="ACTION_TYPE" use="optional" />
+		<xsd:attribute name="QTY_TYPE_NAME" use="optional" />
+		<xsd:attribute name="ISO_LANG_CODE" use="optional" />
 	</xsd:complexType>
-	<xsd:complexType name="REF_FLTOUT_TYPE__type">
-		<xsd:attribute name="FLTOUT_TYPE_NAME" use="optional" />
-		<xsd:attribute name="FLTOUT_TYPE_ID" use="optional" />
+	<xsd:complexType name="RULETYPE_LANG__type">
+		<xsd:attribute name="RULETYPE_NAME" use="optional" />
 		<xsd:attribute name="DESCRIPTION" use="optional" />
+		<xsd:attribute name="ISO_LANG_CODE" use="optional" />
+		<xsd:attribute name="RULETYPE_ID" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="REA_REASON_LANG__type">
+		<xsd:attribute name="REASON_ID" use="optional" />
+		<xsd:attribute name="REASON_NAME" use="optional" />
+		<xsd:attribute name="DESCRIPTION" use="optional" />
+		<xsd:attribute name="ISO_LANG_CODE" use="optional" />
 	</xsd:complexType>
 	<xsd:complexType name="REA_RNF_ACT__type">
 		<xsd:attribute name="REA_RULE_ID" use="optional" />
@@ -83,6 +88,12 @@
 		<xsd:attribute name="FILE_LAST_MODIFIED_AT" use="optional" />
 		<xsd:attribute name="EXECUTED_AT" use="optional" />
 		<xsd:attribute name="FILE_NAME" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="QTY_COND_LANG__type">
+		<xsd:attribute name="QTY_COND_ID" use="optional" />
+		<xsd:attribute name="DESCRIPTION" use="optional" />
+		<xsd:attribute name="QTY_COND_NAME" use="optional" />
+		<xsd:attribute name="ISO_LANG_CODE" use="optional" />
 	</xsd:complexType>
 	<xsd:complexType name="REA_PPD_HCHYSET__type">
 		<xsd:attribute name="CREATED_BY" use="optional" />
@@ -120,11 +131,6 @@
 		<xsd:attribute name="RULE_PRIORITY" use="optional" />
 		<xsd:attribute name="C_REA_RULE_ID" use="optional" />
 	</xsd:complexType>
-	<xsd:complexType name="REF_REA_REASON__type">
-		<xsd:attribute name="REASON_ID" use="optional" />
-		<xsd:attribute name="REASON_NAME" use="optional" />
-		<xsd:attribute name="DESCRIPTION" use="optional" />
-	</xsd:complexType>
 	<xsd:complexType name="REA_RULE_ACTTYPE__type">
 		<xsd:attribute name="ACTION_TYPE_ID" use="optional" />
 		<xsd:attribute name="REA_RULE_ID" use="optional" />
@@ -142,24 +148,10 @@
 		<xsd:attribute name="REACTING_AMT" use="optional" />
 		<xsd:attribute name="REACTING_PERC" use="optional" />
 	</xsd:complexType>
-	<xsd:complexType name="REF_RULETYPE__type">
-		<xsd:attribute name="RULETYPE_NAME" use="optional" />
+	<xsd:complexType name="FLTOUT_TYPE_LANG__type">
+		<xsd:attribute name="FLTOUT_TYPE_NAME" use="optional" />
+		<xsd:attribute name="FLTOUT_TYPE_ID" use="optional" />
 		<xsd:attribute name="DESCRIPTION" use="optional" />
-		<xsd:attribute name="RULETYPE_ID" use="optional" />
-	</xsd:complexType>
-	<xsd:complexType name="REF_REA_SOURCE__type">
-		<xsd:attribute name="SOURCE_ID" use="optional" />
-		<xsd:attribute name="DESCRIPTION" use="optional" />
-		<xsd:attribute name="SOURCE_NAME" use="optional" />
-	</xsd:complexType>
-	<xsd:complexType name="REF_QTY_COND__type">
-		<xsd:attribute name="QTY_COND_ID" use="optional" />
-		<xsd:attribute name="DESCRIPTION" use="optional" />
-		<xsd:attribute name="QTY_COND_NAME" use="optional" />
-	</xsd:complexType>
-	<xsd:complexType name="REF_QTY_TYPE__type">
-		<xsd:attribute name="QTY_TYPE_ID" use="optional" />
-		<xsd:attribute name="DESCRIPTION" use="optional" />
-		<xsd:attribute name="QTY_TYPE_NAME" use="optional" />
+		<xsd:attribute name="ISO_LANG_CODE" use="optional" />
 	</xsd:complexType>
 </xsd:schema>

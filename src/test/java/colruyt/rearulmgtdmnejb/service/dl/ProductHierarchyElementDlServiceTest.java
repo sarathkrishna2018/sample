@@ -30,17 +30,33 @@ public class ProductHierarchyElementDlServiceTest {
 		productHierarchyElementDlService = new ProductHierarchyElementDlService();
 		JpaUnitils.injectEntityManagerInto(productHierarchyElementDlService);
 	}
-	/*@Test
+	@Test
 	@DataSet
 	public void findByHierarchyValueListTest(){
 		List<PriceProductHierarchyElement> expectedPriceProductHierarchyElement=productHierarchyElementDlService.findByHierarchyValueList(getProductHierarchyElmntValues());
-	}*/
-	
+		Assert.assertNotNull(expectedPriceProductHierarchyElement);
+	}
 	@Test
 	@DataSet
 	public void createProductHierarachyTest(){
 		PriceProductHierarchyElement expectedPriceProductHierarchyElement=productHierarchyElementDlService.create(getProductHchyElement());
 		Assert.assertNotNull(expectedPriceProductHierarchyElement);
+	}
+	@Test
+	@DataSet
+	public void findAllElementsTest(){
+		List<PriceProductHierarchyElement> priceProductHierarchyElements=productHierarchyElementDlService.findAllElements();
+		Assert.assertNotNull(priceProductHierarchyElements);
+	}
+	@Test
+	@DataSet
+	public void deleteElementsTest(){
+		productHierarchyElementDlService.deleteElements(getElementsIds());
+	}
+	private List<Long> getElementsIds() {
+		List<Long> elementIds=Lists.newArrayList();
+		elementIds.add(1l);
+		return elementIds;
 	}
 	private List<String> getProductHierarchyElmntValues() {
 		List<String> productHierarchyElmnt=Lists.newArrayList();

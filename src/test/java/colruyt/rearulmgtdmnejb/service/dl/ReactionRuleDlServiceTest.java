@@ -1,9 +1,12 @@
 package colruyt.rearulmgtdmnejb.service.dl;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import org.assertj.core.util.Lists;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +17,7 @@ import org.unitils.dbunit.annotation.DataSet;
 import org.unitils.orm.jpa.JpaUnitils;
 import org.unitils.orm.jpa.annotation.JpaEntityManagerFactory;
 
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.enums.ActionType;
 import colruyt.rearulmgtdmnejb.enums.SourceType;
@@ -33,9 +37,86 @@ public class ReactionRuleDlServiceTest {
 
 	@Test
 	@DataSet
-	public void createRuleTest(){
-		ReactionRule expectedReactionRule=reactionRuleDlService.createOrUpdate(getReactionRule());
+	public void createRuleTest() {
+		ReactionRule expectedReactionRule = reactionRuleDlService.createOrUpdate(getReactionRule());
 		Assert.assertNotNull(expectedReactionRule);
+	}
+
+	@Test
+	@DataSet
+	public void findByPkTest() {
+		ReactionRule expectedReactionRule = reactionRuleDlService.findByPk(1l);
+		Assert.assertNotNull(expectedReactionRule);
+	}
+
+	@Test
+	@DataSet
+	public void findByRuleSetId() {
+		List<ReactionRule> expectedReactionRules = reactionRuleDlService.findByRuleSetId(1l);
+		Assert.assertNotNull(expectedReactionRules);
+	}
+
+	@Test
+	@DataSet
+	public void findParentRule() {
+		ReactionRule expectedChildReactionRule = reactionRuleDlService.findParentRule(2l);
+		Assert.assertNotNull(expectedChildReactionRule);
+	}
+
+	@Test
+	@DataSet
+	public void updateLogicallyDeletedDate() {
+		reactionRuleDlService.updateLogicallyDeletedDate(getReactionRule());
+	}
+
+	@Test
+	@DataSet
+	public void getMaxRulePriorityByRuleSetIdTest() {
+		Long expectedRulePriority = reactionRuleDlService.getMaxRulePriorityByRuleSetId(1l);
+		Assert.assertNotNull(expectedRulePriority);
+	}
+
+	@Test
+	@DataSet
+	public void logicallyDeleteRulesTest() {
+		String logonId = "ake";
+		reactionRuleDlService.logicallyDeleteRules(getReactionRuleIds(), logonId);
+	}
+
+	@Test
+	@DataSet
+	public void findAllLogicallyDeletedRulesTest() throws ParseException {
+		Date dateForRulesDelete = new Date();
+		List<DeleteRuleInfoBo> expectedDeletedRuleBos = reactionRuleDlService
+				.findAllLogicallyDeletedRules(dateForRulesDelete);
+		Assert.assertNotNull(expectedDeletedRuleBos);
+	}
+
+	@Test
+	@DataSet
+	public void findAllExpiredRulesTest() throws ParseException {
+		Date dateForRulesDelete = new Date();
+		List<DeleteRuleInfoBo> expectedDeleteRuleInfo = reactionRuleDlService.findAllExpiredRules(dateForRulesDelete);
+		Assert.assertNotNull(expectedDeleteRuleInfo);
+	}
+
+	@Test
+	@DataSet
+	public void physicalDeleteRuleTest() {
+		reactionRuleDlService.physicalDeleteRule(getDeleteRuleInfoBo());
+	}
+
+	private DeleteRuleInfoBo getDeleteRuleInfoBo() {
+		DeleteRuleInfoBo deleteRuleInfoBo = new DeleteRuleInfoBo(1l, 1l);
+		deleteRuleInfoBo.setRuleId(1l);
+		deleteRuleInfoBo.setRuleType(1l);
+		return deleteRuleInfoBo;
+	}
+
+	private List<Long> getReactionRuleIds() {
+		List<Long> reactionRuleIds = Lists.newArrayList();
+		reactionRuleIds.add(1l);
+		return reactionRuleIds;
 	}
 
 	private ReactionRule getReactionRule() {
@@ -63,6 +144,7 @@ public class ReactionRuleDlServiceTest {
 		reactionRule.setRulePriority(1);
 		return reactionRule;
 	}
+
 	private List<SourceType> getSourceTypeList() {
 		List<SourceType> sourceTypes = Arrays.asList(SourceType.values());
 		return sourceTypes;

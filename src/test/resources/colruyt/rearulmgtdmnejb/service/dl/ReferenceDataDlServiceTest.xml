@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<FLTOUT_TYPE_LANG
+		FLTOUT_TYPE_ID="1"
+     	FLTOUT_TYPE_NAME="Filter Out"
+		DESCRIPTION="Filter out the price recording"
+		ISO_LANG_CODE="EN"
+	/>
+	<QTY_COND_LANG
+		QTY_COND_ID="1"
+     	QTY_COND_NAME="NQTY >= BQTY"
+		DESCRIPTION="NQTY >= BQTY"
+		ISO_LANG_CODE="EN"
+	/>
+	<QTY_TYPE_LANG
+		QTY_TYPE_ID="1"
+     	QTY_TYPE_NAME="P1 Quantity 1"
+		DESCRIPTION="P1 Quantity 1"
+		ISO_LANG_CODE="EN"
+	/>
+	<REA_REASON_LANG
+		REASON_ID="1"
+     	REASON_NAME="Not Found"
+		DESCRIPTION="P1 Quantity 1"
+		ISO_LANG_CODE="EN"
+	/>
+	<RULETYPE_LANG
+		RULETYPE_ID="1"
+     	RULETYPE_NAME="Reacting"
+		DESCRIPTION="React"
+		ISO_LANG_CODE="EN"
+	/>
+
+</dataset>
