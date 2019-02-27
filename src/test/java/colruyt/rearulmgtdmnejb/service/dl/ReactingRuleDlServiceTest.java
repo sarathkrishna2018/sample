@@ -1,4 +1,4 @@
-/*package colruyt.rearulmgtdmnejb.service.dl;
+package colruyt.rearulmgtdmnejb.service.dl;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,9 +11,12 @@ import org.unitils.dbunit.annotation.DataSet;
 import org.unitils.orm.jpa.JpaUnitils;
 import org.unitils.orm.jpa.annotation.JpaEntityManagerFactory;
 
-import colruyt.rearulmgtdmnejb.entity.ReaReactingAct;
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
+import colruyt.rearulmgtdmnejb.entity.ReactingRuleAction;
 
-@JpaEntityManagerFactory(persistenceUnit = "rearulmgtdmnmwtest", configFile = "/META-INF/persistence-test.xml")
+
+
+@JpaEntityManagerFactory(persistenceUnit = "in_memory_database_testing", configFile = "/META-INF/persistence-test.xml")
 @Transactional(TransactionMode.ROLLBACK)
 @RunWith(UnitilsJUnit4TestClassRunner.class)
 public class ReactingRuleDlServiceTest {
@@ -26,20 +29,32 @@ public class ReactingRuleDlServiceTest {
 	@Test
 	@DataSet
 	public void createTest(){
-		ReaReactingAct reaReactingAct=getReareactingAct();
-		reactingRuleActionDlService.createOrUpdate(reaReactingAct);
-		Assert.notNull(reaReactingAct);
+		ReactingRuleAction expectedReactingRule=reactingRuleActionDlService.createOrUpdate(getReactingRule());
+		Assert.notNull(expectedReactingRule);
 	}
-	public ReaReactingAct getReareactingAct(){
-		ReaReactingAct reaReactingAct=new ReaReactingAct();
-		reaReactingAct.setReaRuleId(1l);
-		reaReactingAct.setCatchAllYn(true);
-		reaReactingAct.setReactingAmt(12d);
-		reaReactingAct.setReactingPerc(8d);
-		reaReactingAct.setTholdAmt(10d);
-		reaReactingAct.setTholdPerc(6d);
-		return reaReactingAct;
+	@Test
+	@DataSet
+	public void findByRuleIdTest(){
+		ReactingRuleAction expectedReactingRule=reactingRuleActionDlService.findByRuleId(1l);
+		Assert.notNull(expectedReactingRule);
+	}
+	@Test
+	@DataSet
+	public void physicalDeleteElementsTest(){
+		reactingRuleActionDlService.physicalDeleteElements(getDeleteRuleInfoBo());
+	}
+	private DeleteRuleInfoBo getDeleteRuleInfoBo() {
+		DeleteRuleInfoBo deleteRuleInfoBo = new DeleteRuleInfoBo(1l, 1l);
+		deleteRuleInfoBo.setRuleId(1l);
+		deleteRuleInfoBo.setRuleType(1l);
+		return deleteRuleInfoBo;
+	}
+	public ReactingRuleAction getReactingRule(){
+		ReactingRuleAction reactingRuleAction=new ReactingRuleAction();
+		reactingRuleAction.setCatchAll(true);
+		reactingRuleAction.setReactingAmt(12d);
+		reactingRuleAction.setReactionRuleId(1l);
+		return reactingRuleAction;	
 		
 	}
 }
-*/

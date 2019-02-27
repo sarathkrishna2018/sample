@@ -1,3 +1,6 @@
+--------------------------------------------------
+-- Create Table REA_FLT_RULE
+--------------------------------------------------
 Create table REA_FLT_RULE (
     REA_RULE_ID                    DECIMAL(9)          NOT NULL   ,
     MAX_COMP_QTY                   DECIMAL(5, 3)                  ,
@@ -119,3 +122,64 @@ Create table REF_RULETYPE (
     RULETYPE_NAME                  VARCHAR(25)         NOT NULL    ,
     DESCRIPTION                    VARCHAR(100)        NOT NULL    
 ); 
+--------------------------------------------------
+-- Create Table REA_RULE_ACTTYPE
+--------------------------------------------------
+Create table REA_RULE_ACTTYPE (
+    REA_RULE_ID                    DECIMAL(9)          NOT NULL    ,
+    ACTION_TYPE_ID                 DECIMAL(3)         NOT NULL    
+    
+); 
+--------------------------------------------------
+-- Create Table REA_RULE
+--------------------------------------------------
+Create table REA_RULE (
+    REA_RULE_ID                    DECIMAL(9)          NOT NULL    ,
+    REA_RULESET_ID                 DECIMAL(9)          NOT NULL	   ,
+    RULE_NAME                      VARCHAR(40)         NOT NULL    ,
+    IC_FROM                    	   DECIMAL(3)          NOT NULL    ,
+    IC_TO                    	   DECIMAL(3)          NOT NULL    ,
+    DIRECT_YN                      CHAR(1)             NOT NULL    ,
+    POSTPONED_YN                   CHAR(1)             NOT NULL    ,
+    PERMENANT_YN                   CHAR(1)             NOT NULL    ,
+    TEMPORARY_YN                   CHAR(1)             NOT NULL    ,
+    VALID_FROM                     DATE(4)             			   ,
+    VALID_UPTO                     DATE(4)                         ,
+    RECALCULATE_YN                 CHAR(1)             NOT NULL    ,
+    RULE_PRIORITY                  DECIMAL(3)              		   ,
+    RULE_COMMENT                   VARCHAR(500)             	   ,
+    CREATED_BY                     VARCHAR(11)          NOT NULL   ,
+    LST_UPDATE_BY                  VARCHAR(11)          NOT NULL  ,
+    C_REA_RULE_ID  					DECIMAL(9)          			,
+    DATE_LOGICALLY_DELETED 			 DATE(4) ,
+    LST_UPDATE_TS 					TIMESTAMP(10)
+    
+); 
+--------------------------------------------------
+-- Create Table REA_PPD_HCHY_ELMNT
+--------------------------------------------------
+Create table REA_PPD_HCHY_ELMNT (
+    PPD_HCHY_ELMNT_ID                   DECIMAL(9)          NOT NULL   ,
+    PPD_HCHY_TYPE_ID                 	DECIMAL(3)          NOT NULL   ,
+    PPD_HCHY_VALUE                      VARCHAR(40)         NOT NULL   ,
+    CREATED_BY                    	    VARCHAR(11)         NOT NULL   
+   
+);
+--------------------------------------------------
+-- Create Table REA_PPD_HCHYSET_ELMNT
+--------------------------------------------------
+Create table REA_PPD_HCHYSET_ELMNT (
+    PPD_HCHYSET_ID                   DECIMAL(9)          NOT NULL   ,
+    PPD_HCHY_ELMNT_ID                DECIMAL(9)          NOT NULL   ,
+    LST_UPDATE_BY                    VARCHAR(11)         NOT NULL   
+    
+);
+--------------------------------------------------
+-- Create Table REA_RULE_SRC
+--------------------------------------------------
+Create table REA_RULE_SRC (
+    REA_RULE_ID                   DECIMAL(9)          NOT NULL   ,
+    SOURCE_ID               	  DECIMAL(3)          NOT NULL   
+    
+    
+);

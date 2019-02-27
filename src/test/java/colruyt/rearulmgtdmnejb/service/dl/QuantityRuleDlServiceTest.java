@@ -10,6 +10,7 @@ import org.unitils.dbunit.annotation.DataSet;
 import org.unitils.orm.jpa.JpaUnitils;
 import org.unitils.orm.jpa.annotation.JpaEntityManagerFactory;
 
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.QuantityRuleAction;
 import junit.framework.Assert;
 
@@ -30,6 +31,23 @@ public class QuantityRuleDlServiceTest {
 	public void createTest(){
 		QuantityRuleAction expectedQuantityRule=quantityRuleActionDlService.createOrUpdate(getReaQtyRule());
 		Assert.assertNotNull(expectedQuantityRule);
+	}
+	@Test
+	@DataSet
+	public void findByRuleIdTest(){
+		QuantityRuleAction expectedQuantityRule=quantityRuleActionDlService.findByRuleId(1);
+		Assert.assertNotNull(expectedQuantityRule);	
+	}
+	@Test
+	@DataSet
+	public void physicalDeleteElementsTest(){
+		quantityRuleActionDlService.physicalDeleteElements(getDeleteRuleInfoBo());
+	}
+	private DeleteRuleInfoBo getDeleteRuleInfoBo() {
+		DeleteRuleInfoBo deleteRuleInfoBo = new DeleteRuleInfoBo(1l, 1l);
+		deleteRuleInfoBo.setRuleId(1l);
+		deleteRuleInfoBo.setRuleType(1l);
+		return deleteRuleInfoBo;
 	}
 	public QuantityRuleAction getReaQtyRule(){
 		QuantityRuleAction reaQtyRule=new QuantityRuleAction();
