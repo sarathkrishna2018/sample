@@ -15,6 +15,7 @@ import org.unitils.orm.jpa.annotation.JpaEntityManagerFactory;
 
 import com.google.common.collect.Lists;
 
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleAction;
 
 @JpaEntityManagerFactory(persistenceUnit = "in_memory_database_testing", configFile = "/META-INF/persistence-test.xml")
@@ -37,6 +38,25 @@ public class ProposalNotToReactActionDlServiceTest {
 		Assert.assertNotNull(expectedProposalNotToReactRuleAction);
 
 	}
+	@Test
+	@DataSet
+	public void findByRuleIdTest() {
+		ProposalNotToReactRuleAction expectedProposalNotToReactRule = proposalNotToReactActionDlService.findByRuleId(1l);
+		Assert.assertNotNull(expectedProposalNotToReactRule);
+	}
+
+	@Test
+	@DataSet
+	public void physicalDeleteElementsTest() {
+		proposalNotToReactActionDlService.physicalDeleteElements(getDeleteRuleInfoBo());
+		
+	}
+	@Test
+	@DataSet
+	public void physicalDeleteElementsRsnTest() {
+		proposalNotToReactActionDlService.physicalDeleteElementsRsn(getDeleteRuleInfoBo());
+		
+	}
 
 	ProposalNotToReactRuleAction getProposalNotToReactRuleAction() {
 		ProposalNotToReactRuleAction proposalNotToReactRuleAction = new ProposalNotToReactRuleAction();
@@ -47,5 +67,11 @@ public class ProposalNotToReactActionDlServiceTest {
 		proposalNotToReactRuleAction.setNotToReactSetReasons(reaNreactSetRsns);
 		proposalNotToReactRuleAction.setFltoutTypeId(3l);
 		return proposalNotToReactRuleAction;
+	}
+	private DeleteRuleInfoBo getDeleteRuleInfoBo() {
+		DeleteRuleInfoBo deleteRuleInfoBo = new DeleteRuleInfoBo(1l, 1l);
+		deleteRuleInfoBo.setRuleId(1l);
+		deleteRuleInfoBo.setRuleType(1l);
+		return deleteRuleInfoBo;
 	}
 }

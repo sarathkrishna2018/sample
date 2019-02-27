@@ -10,6 +10,7 @@ import org.unitils.dbunit.annotation.DataSet;
 import org.unitils.orm.jpa.JpaUnitils;
 import org.unitils.orm.jpa.annotation.JpaEntityManagerFactory;
 
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionPeriodRuleAction;
 import junit.framework.Assert;
 
@@ -33,7 +34,19 @@ public class ReactionPeriodRuleDlServiceTest {
 		Assert.assertNotNull(expectedReactionPeriodRule);
 
 	}
+	@Test
+	@DataSet
+	public void findByRuleIdTest() {
+		ReactionPeriodRuleAction expectedReactionPeriodRule = reactionPeriodActionDlService.findByRuleId(1l);
+		Assert.assertNotNull(expectedReactionPeriodRule);
+	}
 
+	@Test
+	@DataSet
+	public void physicalDeleteElementsTest() {
+		reactionPeriodActionDlService.physicalDeleteElements(getDeleteRuleInfoBo());
+		
+	}
 	public ReactionPeriodRuleAction getreactionPeriodRuleAction() {
 		ReactionPeriodRuleAction reactionPeriodRuleAction = new ReactionPeriodRuleAction();
 		reactionPeriodRuleAction.setReaRuleId(1l);
@@ -41,5 +54,10 @@ public class ReactionPeriodRuleDlServiceTest {
 		reactionPeriodRuleAction.setMinDays(8l);
 		return reactionPeriodRuleAction;
 	}
-
+	private DeleteRuleInfoBo getDeleteRuleInfoBo() {
+		DeleteRuleInfoBo deleteRuleInfoBo = new DeleteRuleInfoBo(1l, 1l);
+		deleteRuleInfoBo.setRuleId(1l);
+		deleteRuleInfoBo.setRuleType(1l);
+		return deleteRuleInfoBo;
+	}
 }
