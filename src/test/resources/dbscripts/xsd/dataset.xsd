@@ -6,6 +6,7 @@
 			<xsd:choice minOccurs="0" maxOccurs="unbounded">
 				<xsd:element name="REA_PPD_HCHY_ELMNT" type="dflt:REA_PPD_HCHY_ELMNT__type" />
 				<xsd:element name="REA_PRD_ACT" type="dflt:REA_PRD_ACT__type" />
+				<xsd:element name="REA_RULESET" type="dflt:REA_RULESET__type" />
 				<xsd:element name="REA_RULE_SRC" type="dflt:REA_RULE_SRC__type" />
 				<xsd:element name="REA_FLT_RULE" type="dflt:REA_FLT_RULE__type" />
 				<xsd:element name="REF_REA_ACTIONTYPE" type="dflt:REF_REA_ACTIONTYPE__type" />

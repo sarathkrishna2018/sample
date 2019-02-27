@@ -183,3 +183,16 @@ Create table REA_RULE_SRC (
     
     
 );
+-- Create Table REA_RULESET
+--------------------------------------------------
+Create table REA_RULESET (
+    REA_RULESET_ID                 DECIMAL(5)          NOT NULL    ,
+    RULETYPE_ID                    DECIMAL(3)          NOT NULL    ,
+    RULESET_NAME                   VARCHAR(40)                     ,
+    CG_CHN_ID                      DECIMAL(5)          NOT NULL    ,
+    COMP_CHAIN_ID                  DECIMAL(5)          NOT NULL    ,
+    RULESET_COMMENT                VARCHAR(500)                    ,
+    DATE_LOGICALLY_DELETED         DATE(4)                         ,
+    LST_UPDATE_BY                  VARCHAR(11)         NOT NULL    ,
+    LST_UPDATE_TS 				   TIMESTAMP(10)
+);

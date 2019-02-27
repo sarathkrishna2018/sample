@@ -2,6 +2,7 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns="PUBLIC" targetNamespace="PUBLIC">
 	<xsd:element name="REA_PPD_HCHY_ELMNT" type="REA_PPD_HCHY_ELMNT__type" />
 	<xsd:element name="REA_PRD_ACT" type="REA_PRD_ACT__type" />
+	<xsd:element name="REA_RULESET" type="REA_RULESET__type" />
 	<xsd:element name="REA_RULE_SRC" type="REA_RULE_SRC__type" />
 	<xsd:element name="REA_FLT_RULE" type="REA_FLT_RULE__type" />
 	<xsd:element name="REF_REA_ACTIONTYPE" type="REF_REA_ACTIONTYPE__type" />
@@ -30,6 +31,17 @@
 		<xsd:attribute name="MIN_DAYS" use="optional" />
 		<xsd:attribute name="END_DT_DAYS" use="optional" />
 		<xsd:attribute name="REA_RULE_ID" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="REA_RULESET__type">
+		<xsd:attribute name="CG_CHN_ID" use="optional" />
+		<xsd:attribute name="REA_RULESET_ID" use="optional" />
+		<xsd:attribute name="DATE_LOGICALLY_DELETED" use="optional" />
+		<xsd:attribute name="LST_UPDATE_TS" use="optional" />
+		<xsd:attribute name="COMP_CHAIN_ID" use="optional" />
+		<xsd:attribute name="RULETYPE_ID" use="optional" />
+		<xsd:attribute name="RULESET_COMMENT" use="optional" />
+		<xsd:attribute name="RULESET_NAME" use="optional" />
+		<xsd:attribute name="LST_UPDATE_BY" use="optional" />
 	</xsd:complexType>
 	<xsd:complexType name="REA_RULE_SRC__type">
 		<xsd:attribute name="SOURCE_ID" use="optional" />

@@ -15,21 +15,20 @@ import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 @JpaEntityManagerFactory(persistenceUnit = "in_memory_database_testing", configFile = "/META-INF/persistence-test.xml")
 @Transactional(TransactionMode.ROLLBACK)
 @RunWith(UnitilsJUnit4TestClassRunner.class)
-public class ReactionRuleActionTypeDlServiceTest {
-	
-	private ReactionRuleActionTypeDlService reactionRuleActionTypeDlService;
-	
+public class ReactionRuleSourceTypeDlServiceTest {
+	private ReactionRuleSourceTypeDlService reactionRuleSourceTypeDlService;
+
 	@Before
 	public void init() {
-		reactionRuleActionTypeDlService = new ReactionRuleActionTypeDlService();
-		JpaUnitils.injectEntityManagerInto(reactionRuleActionTypeDlService);
+		reactionRuleSourceTypeDlService = new ReactionRuleSourceTypeDlService();
+		JpaUnitils.injectEntityManagerInto(reactionRuleSourceTypeDlService);
 	}
-	
+
 	@Test
 	@DataSet
-	public void physicalDeleteActionForRulesTest(){
-		reactionRuleActionTypeDlService.physicalDeleteActionForRules(getDeleteRuleInfoBo());
-		//Assert.assertEquals(getDeleteRuleInfoBo().getRuleId(), new Long(1l));
+	public void physicalDeleteActionForRulesTest() {
+		reactionRuleSourceTypeDlService.physicalDeleteSourceType(getDeleteRuleInfoBo());
+		// Assert.assertEquals(getDeleteRuleInfoBo().getRuleId(), new Long(1l));
 	}
 
 	private DeleteRuleInfoBo getDeleteRuleInfoBo() {
