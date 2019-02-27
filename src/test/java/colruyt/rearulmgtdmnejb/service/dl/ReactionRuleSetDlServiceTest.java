@@ -2,7 +2,9 @@ package colruyt.rearulmgtdmnejb.service.dl;
 
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -16,6 +18,7 @@ import org.unitils.orm.jpa.annotation.JpaEntityManagerFactory;
 
 import com.google.common.collect.Lists;
 
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleSetInfoBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.entity.ReactionRuleSet;
 import colruyt.rearulmgtdmnejb.enums.ActionType;
@@ -42,7 +45,45 @@ public class ReactionRuleSetDlServiceTest {
 		Assert.assertNotNull(expectedReactionRuleSet);
 
 	}
+	@Test
+	@DataSet
+	public void findByPkTest() {
+		ReactionRuleSet expectedReactionRuleSet = reactionRuleSetDlService.findByPk(501l);
+		Assert.assertNotNull(expectedReactionRuleSet);
 
+	}
+	@Test
+	@DataSet
+	public void findByAttributesTest() {
+		List<ReactionRuleSet> expectedReactionRuleSetList = reactionRuleSetDlService.findByAttributes(1l, 63l, 2l);
+		Assert.assertNotNull(expectedReactionRuleSetList);
+
+	}
+	@Test
+	@DataSet
+	public void findByCgChainAndPCChainTest() {
+		List<ReactionRuleSet> expectedReactionRuleSetList = reactionRuleSetDlService.findByCgChainAndPCChain(1l, 63l);
+		Assert.assertNotNull(expectedReactionRuleSetList);
+	}
+	@Test
+	@DataSet
+	public void logicallyDeleteRuleSetTest() {
+		reactionRuleSetDlService.logicallyDeleteRuleSet(getReactionRuleSet());
+
+	}
+	/*@Test
+	@DataSet
+	public void findAllLogicallyDeletedRuleSetTest() {
+		Date date =new Date();
+		List<DeleteRuleSetInfoBo> expectedLogicallyDeletedRuleSet=reactionRuleSetDlService.findAllLogicallyDeletedRuleSet(date);
+		Assert.assertNotNull(expectedLogicallyDeletedRuleSet);
+	}*/
+	@Test
+	@DataSet
+	public void physicalDeleteAllRuleSetTest() {
+		reactionRuleSetDlService.physicalDeleteAllRuleSet(getReactionRuleId());
+
+	}
 	private ReactionRuleSet getReactionRuleSet() {
 		ReactionRuleSet reactionRuleSet = new ReactionRuleSet();
 		reactionRuleSet.setColruytGroupChainId(1l);
@@ -97,6 +138,12 @@ public class ReactionRuleSetDlServiceTest {
 	private List<ActionType> getActionTypeList() {
 		List<ActionType> actionTypes = Arrays.asList(ActionType.values());
 		return actionTypes;
+	}
+	private Set<Long> getReactionRuleId(){
+		Set<Long> reactionRuleIdSet = new HashSet<>();
+		reactionRuleIdSet.add(5l);
+		reactionRuleIdSet.add(2l);
+		return reactionRuleIdSet;
 	}
 
 }

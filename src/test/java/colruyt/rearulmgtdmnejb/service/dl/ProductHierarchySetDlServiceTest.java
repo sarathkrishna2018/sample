@@ -13,6 +13,7 @@ import org.unitils.dbunit.annotation.DataSet;
 import org.unitils.orm.jpa.JpaUnitils;
 import org.unitils.orm.jpa.annotation.JpaEntityManagerFactory;
 
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchyElement;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySet;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmnt;
@@ -33,10 +34,81 @@ public class ProductHierarchySetDlServiceTest {
 
 	@Test
 	@DataSet
-	public void createProductHierarachyTest() {
-		PriceProductHierarchySet expectedPriceProductHierarchySetElement = productHierarchySetDlService
+	public void createProductHierarachySetTest() {
+		PriceProductHierarchySet expectedPriceProductHierarchySet = productHierarchySetDlService
 				.create(getPriceProductHierarchySet());
+		Assert.assertNotNull(expectedPriceProductHierarchySet);
+	}
+
+	@Test
+	@DataSet
+	public void createProductHierarachySetElementTest() {
+		PriceProductHierarchySetElmnt expectedPriceProductHierarchySetElement = productHierarchySetDlService
+				.create(getPriceProductHierarchySetElmnt());
 		Assert.assertNotNull(expectedPriceProductHierarchySetElement);
+	}
+
+	@Test
+	@DataSet
+	public void findByPkTest() {
+		PriceProductHierarchySet expectedPriceProductHierarchySetElement = productHierarchySetDlService.findByPk(504l);
+		Assert.assertNotNull(expectedPriceProductHierarchySetElement);
+	}
+
+	@Test
+	@DataSet
+	public void removeProductHierarchyElementTest() {
+		productHierarchySetDlService.removeProductHierarchyElement(504l);
+	}
+
+	@Test
+	@DataSet
+	public void findSetElementByElementIdsTest() {
+		List<PriceProductHierarchySetElmnt> expectedpriceProductHierarchySetElmntList = productHierarchySetDlService
+				.findSetElementByElementIds(getpriceProductHierarchySetElmntList());
+		Assert.assertNotNull(expectedpriceProductHierarchySetElmntList);
+	}
+
+	@Test
+	@DataSet
+	public void findSetElementBySetIdsTest() {
+		List<Long> expectedpriceProductHierarchySetElmntList = productHierarchySetDlService
+				.findSetElementBySetIds(getpriceProductHierarchySetElmntList());
+		Assert.assertNotNull(expectedpriceProductHierarchySetElmntList);
+	}
+
+	@Test
+	@DataSet
+	public void deleteSetElementsTest() {
+		productHierarchySetDlService.deleteSetElements(getpriceProductHierarchySetElmntList());
+	}
+
+	@Test
+	@DataSet
+	public void findProductSetByIdsTest() {
+		List<PriceProductHierarchySet> expectedpriceProductHierarchySetElmntList = productHierarchySetDlService
+				.findProductSetByIds(getpriceProductHierarchySetElmntList());
+		Assert.assertNotNull(expectedpriceProductHierarchySetElmntList);
+	}
+
+	@Test
+	@DataSet
+	public void getPriceProductHierarchySetElementIdTest() {
+		long expectedpriceProductHierarchySetElmntList = productHierarchySetDlService
+				.getPriceProductHierarchySetElementId(getDeleteRuleInfoBo());
+		Assert.assertNotNull(expectedpriceProductHierarchySetElmntList);
+	}
+
+	@Test
+	@DataSet
+	public void deletePriceProductHierarchySetElemnetTest() {
+		productHierarchySetDlService.deletePriceProductHierarchySetElemnet(5l);
+	}
+
+	@Test
+	@DataSet
+	public void deletePriceProductHierarchySetTest() {
+		productHierarchySetDlService.deletePriceProductHierarchySet(getDeleteRuleInfoBo());
 	}
 
 	private PriceProductHierarchySet getPriceProductHierarchySet() {
@@ -71,14 +143,33 @@ public class ProductHierarchySetDlServiceTest {
 
 	private List<PriceProductHierarchySetElmnt> getReaPpdHchysetElmnt() {
 		List<PriceProductHierarchySetElmnt> reaPpdHchysetElmntlist = Lists.newArrayList();
+		PriceProductHierarchySetElmnt reaPpdHchysetElmnt = getPriceProductHierarchySetElmnt();
+		reaPpdHchysetElmntlist.add(reaPpdHchysetElmnt);
+		return reaPpdHchysetElmntlist;
+
+	}
+
+	private PriceProductHierarchySetElmnt getPriceProductHierarchySetElmnt() {
 		PriceProductHierarchySetElmnt reaPpdHchysetElmnt = new PriceProductHierarchySetElmnt();
 		reaPpdHchysetElmnt.setLstUpdateBy("Sa");
 		PriceProductHierarchySetElmntPK hierarchySetElmntPK = new PriceProductHierarchySetElmntPK();
 		hierarchySetElmntPK.setProductHierarchyElementId(1L);
 		hierarchySetElmntPK.setProdicyHierarchySetId(1L);
 		reaPpdHchysetElmnt.setId(hierarchySetElmntPK);
-		reaPpdHchysetElmntlist.add(reaPpdHchysetElmnt);
-		return reaPpdHchysetElmntlist;
+		return reaPpdHchysetElmnt;
+	}
 
+	List<Long> getpriceProductHierarchySetElmntList() {
+		List<Long> priceProductHierarchySetElmntList = Lists.newArrayList();
+		priceProductHierarchySetElmntList.add(5l);
+		priceProductHierarchySetElmntList.add(2l);
+		return priceProductHierarchySetElmntList;
+	}
+
+	private DeleteRuleInfoBo getDeleteRuleInfoBo() {
+		DeleteRuleInfoBo deleteRuleInfoBo = new DeleteRuleInfoBo(1l, 1l);
+		deleteRuleInfoBo.setRuleId(1l);
+		deleteRuleInfoBo.setRuleType(1l);
+		return deleteRuleInfoBo;
 	}
 }

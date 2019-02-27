@@ -11,6 +11,7 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySet;
@@ -70,16 +71,11 @@ public class ProductHierarchySetDlService implements Serializable{
 		return query.setParameter(1, productHierarchySetIds).getResultList();	
 	}
 	
-	public long getPriceProductHierarchySetElementId(DeleteRuleInfoBo deleteRuleInfoBo){
-		Query query = entityManager.createNativeQuery("SELECT rhs.productHierarchySetId, rhs.reactionRuleId from PriceProductHierarchySet rhs "
-			+ " where rhs.reactionRuleId = (?1)");
+	public Long getPriceProductHierarchySetElementId(DeleteRuleInfoBo deleteRuleInfoBo){
+		TypedQuery<Long> query = entityManager.createQuery("SELECT rhs.productHierarchySetId from PriceProductHierarchySet rhs "
+			+ " where rhs.reactionRuleId = (?1)",Long.class);
 		query.setParameter(1, deleteRuleInfoBo.getRuleId());
-		Long ppdHchysetId = null;
-		List<Object[]> results = query.getResultList();
-		for(Object[] item : results) {
-			ppdHchysetId = ((BigDecimal)item[0]).longValue();
-		}
-		return ppdHchysetId;
+		return query.getSingleResult();
 	}
 	
 	public void deletePriceProductHierarchySetElemnet(Long ppdHchysetId){
