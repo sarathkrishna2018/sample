@@ -9,6 +9,7 @@
 				<xsd:element name="REF_REA_ACTIONTYPE" type="dflt:REF_REA_ACTIONTYPE__type" />
 				<xsd:element name="REF_FLTOUT_TYPE" type="dflt:REF_FLTOUT_TYPE__type" />
 				<xsd:element name="REA_RNF_ACT" type="dflt:REA_RNF_ACT__type" />
+				<xsd:element name="REA_NREACT_SET_RSN" type="dflt:REA_NREACT_SET_RSN__type" />
 				<xsd:element name="REA_NREACT_ACT" type="dflt:REA_NREACT_ACT__type" />
 				<xsd:element name="DBMAINTAIN_SCRIPTS" type="dflt:DBMAINTAIN_SCRIPTS__type" />
 				<xsd:element name="REA_QTY_RULE" type="dflt:REA_QTY_RULE__type" />

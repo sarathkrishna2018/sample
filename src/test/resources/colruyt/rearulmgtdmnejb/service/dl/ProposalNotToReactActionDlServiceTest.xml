@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-	<REA_PRD_ACT
+	<REA_NREACT_ACT
 		REA_RULE_ID="1"
-		END_DT_DAYS="5"
-		MIN_DAYS="2"
+		FLTOUT_TYPE_ID="5"
 	/>
-	<REA_PRD_ACT
+	<REA_NREACT_SET_RSN
 		REA_RULE_ID="2"
-		END_DT_DAYS="7"
-		MIN_DAYS="2"
+		REASON_ID="2"
 	/>
 	
 

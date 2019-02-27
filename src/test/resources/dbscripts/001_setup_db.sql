@@ -35,7 +35,7 @@ Create table REA_REACTING_ACT(
 --------------------------------------------------
 Create table REA_RNF_ACT(
 	REA_RULE_ID				DECIMAL(9)		NOT NULL,
-	NO_OF_RNF				DECIMAL(9)
+	NO_OF_RNF				DECIMAL(2)		NOT NULL
 
 );
 --------------------------------------------------
@@ -43,8 +43,16 @@ Create table REA_RNF_ACT(
 --------------------------------------------------
 Create table REA_NREACT_ACT(
 	REA_RULE_ID				DECIMAL(9)		NOT NULL,
-	FLTOUT_TYPE_ID			DECIMAL(9)				,
-	PPD_HCHYSET_ID			DECIMAL(9)				,
+	FLTOUT_TYPE_ID			DECIMAL(3)		NOT NULL
+	
+);
+
+--------------------------------------------------
+-- Create Table REA_NREACT_SET_RSN
+--------------------------------------------------
+Create table REA_NREACT_SET_RSN(
+	REA_RULE_ID				DECIMAL(9)		NOT NULL,
+	REASON_ID			    DECIMAL(3)	    NOT NULL
 	
 );
 

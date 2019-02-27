@@ -5,6 +5,7 @@
 	<xsd:element name="REF_REA_ACTIONTYPE" type="REF_REA_ACTIONTYPE__type" />
 	<xsd:element name="REF_FLTOUT_TYPE" type="REF_FLTOUT_TYPE__type" />
 	<xsd:element name="REA_RNF_ACT" type="REA_RNF_ACT__type" />
+	<xsd:element name="REA_NREACT_SET_RSN" type="REA_NREACT_SET_RSN__type" />
 	<xsd:element name="REA_NREACT_ACT" type="REA_NREACT_ACT__type" />
 	<xsd:element name="DBMAINTAIN_SCRIPTS" type="DBMAINTAIN_SCRIPTS__type" />
 	<xsd:element name="REA_QTY_RULE" type="REA_QTY_RULE__type" />
@@ -39,10 +40,13 @@
 		<xsd:attribute name="REA_RULE_ID" use="optional" />
 		<xsd:attribute name="NO_OF_RNF" use="optional" />
 	</xsd:complexType>
+	<xsd:complexType name="REA_NREACT_SET_RSN__type">
+		<xsd:attribute name="REASON_ID" use="optional" />
+		<xsd:attribute name="REA_RULE_ID" use="optional" />
+	</xsd:complexType>
 	<xsd:complexType name="REA_NREACT_ACT__type">
 		<xsd:attribute name="FLTOUT_TYPE_ID" use="optional" />
 		<xsd:attribute name="REA_RULE_ID" use="optional" />
-		<xsd:attribute name="PPD_HCHYSET_ID" use="optional" />
 	</xsd:complexType>
 	<xsd:complexType name="DBMAINTAIN_SCRIPTS__type">
 		<xsd:attribute name="CHECKSUM" use="optional" />

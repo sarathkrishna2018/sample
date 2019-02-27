@@ -1,4 +1,4 @@
-/*package colruyt.rearulmgtdmnejb.service.dl;
+package colruyt.rearulmgtdmnejb.service.dl;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -10,34 +10,36 @@ import org.unitils.dbunit.annotation.DataSet;
 import org.unitils.orm.jpa.JpaUnitils;
 import org.unitils.orm.jpa.annotation.JpaEntityManagerFactory;
 
-import colruyt.rearulmgtdmnejb.entity.ReaPrdAct;
+import colruyt.rearulmgtdmnejb.entity.ReactionPeriodRuleAction;
 import junit.framework.Assert;
 
-@JpaEntityManagerFactory(persistenceUnit = "rearulmgtdmnmwtest", configFile = "/META-INF/persistence-test.xml")
+@JpaEntityManagerFactory(persistenceUnit = "in_memory_database_testing", configFile = "/META-INF/persistence-test.xml")
 @Transactional(TransactionMode.ROLLBACK)
 @RunWith(UnitilsJUnit4TestClassRunner.class)
 public class ReactionPeriodRuleDlServiceTest {
 	private ReactionPeriodActionDlService reactionPeriodActionDlService;
+
 	@Before
-	public void init(){
-		reactionPeriodActionDlService=new ReactionPeriodActionDlService();
+	public void init() {
+		reactionPeriodActionDlService = new ReactionPeriodActionDlService();
 		JpaUnitils.injectEntityManagerInto(reactionPeriodActionDlService);
 	}
+
 	@Test
 	@DataSet
-	public void createTest(){
-		ReaPrdAct reaPrdAct=getReaPrdAct();
-		reactionPeriodActionDlService.createOrUpdate(reaPrdAct);
-		Assert.assertNotNull(reaPrdAct);
-		
+	public void createTest() {
+		ReactionPeriodRuleAction expectedReactionPeriodRule = reactionPeriodActionDlService
+				.createOrUpdate(getreactionPeriodRuleAction());
+		Assert.assertNotNull(expectedReactionPeriodRule);
+
 	}
-	public ReaPrdAct getReaPrdAct(){
-		ReaPrdAct reaPrdAct=new ReaPrdAct();
-		reaPrdAct.setReaRuleId(1l);
-		reaPrdAct.setEndDtDays(10l);
-		reaPrdAct.setMinDays(8l);
-		return reaPrdAct;
+
+	public ReactionPeriodRuleAction getreactionPeriodRuleAction() {
+		ReactionPeriodRuleAction reactionPeriodRuleAction = new ReactionPeriodRuleAction();
+		reactionPeriodRuleAction.setReaRuleId(1l);
+		reactionPeriodRuleAction.setEndDtDays(10l);
+		reactionPeriodRuleAction.setMinDays(8l);
+		return reactionPeriodRuleAction;
 	}
 
 }
-*/
