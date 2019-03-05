@@ -31,8 +31,8 @@ public class ProposeNotToReactRuleConverter implements Serializable {
 		return notToReactRuleAction;
 	}
 	
-	public List<Long> convertReasonNotToReactSet(List<RefNotToReactCodeBo> notToReactCodes) {
-		List<Long> reasonIds = Lists.newArrayList();
+	public List<Integer> convertReasonNotToReactSet(List<RefNotToReactCodeBo> notToReactCodes) {
+		List<Integer> reasonIds = Lists.newArrayList();
 		for(RefNotToReactCodeBo reasonCode : notToReactCodes){
 			reasonIds.add(reasonCode.getNotToReactCodeTypeId());
 		}
@@ -49,13 +49,13 @@ public class ProposeNotToReactRuleConverter implements Serializable {
 
 	
 	private List<RefNotToReactCodeBo> convertReasonNotToReactSetBos(
-			List<Long> reaNreactSetRsns) {
+			List<Integer> reaNreactSetRsns) {
 		List<RefNotToReactCodeBo> refNotToReact = referenceDataService.getAllNotToReactCodeTypes();
 		List<RefNotToReactCodeBo> notRoReactBos = Lists.newArrayList();
 		for (int i = 0; i < reaNreactSetRsns.size(); i++) {
 			RefNotToReactCodeBo reasonCode = new RefNotToReactCodeBo();
 			for (int j = 0; j < refNotToReact.size(); j++) {
-				if (refNotToReact.get(j).getNotToReactCodeTypeId().equals(reaNreactSetRsns.get(i))) {
+				if (refNotToReact.get(j).getNotToReactCodeTypeId() == (reaNreactSetRsns.get(i))) {
 					reasonCode.setNotToReactCodeTypeId(refNotToReact.get(j).getNotToReactCodeTypeId());
 					reasonCode.setDescription(refNotToReact.get(j).getDescription());
 					reasonCode.setCodeLang(refNotToReact.get(j).getCodeLang());
@@ -66,7 +66,7 @@ public class ProposeNotToReactRuleConverter implements Serializable {
 		return notRoReactBos;
 	}
 
-	private RefFilterOutRecordingTypeBo convertFltOutType(long fltoutTypeId) {
+	private RefFilterOutRecordingTypeBo convertFltOutType(int fltoutTypeId) {
 		RefFilterOutRecordingTypeBo refFilterOutRecordingTypeBo = new RefFilterOutRecordingTypeBo();
 		List<RefFilterOutRecordingTypeBo> refFilterOutRecordingTypeLst = referenceDataService.getAllFilterOutRecordingTypes();
 		for(int i=0;i<refFilterOutRecordingTypeLst.size();i++){

@@ -1,17 +1,17 @@
 package colruyt.rearulmgtdmnejb.enums;
 
 public enum RuleType {
-	REACTING(1L, "Reacting"),
-	QUANTITY(2L, "Quantity"),
-	FILTERING(3L, "Filtering"),
-	RECORD_NOT_FOUND(4L,  "Record Not Found"),
-	PROPOSE_NOT_REACT(5L,  "Propose Not To React"),
-	REACTION_PERIOD(6L, "Reaction Period");
+	REACTING(1, "Reacting"),
+	QUANTITY(2, "Quantity"),
+	FILTERING(3, "Filtering"),
+	RECORD_NOT_FOUND(4,  "Record Not Found"),
+	PROPOSE_NOT_REACT(5,  "Propose Not To React"),
+	REACTION_PERIOD(6, "Reaction Period");
 	
-	private long ruleTypeID;
+	private int ruleTypeID;
 	private String ruleTypeName;
 	
-	public long getRuleTypeID() {
+	public int getRuleTypeID() {
 		return ruleTypeID;
 	}
 	
@@ -19,7 +19,7 @@ public enum RuleType {
 		return ruleTypeName;
 	}
 	
-	private RuleType(long ruleTypeID, String ruleType) {
+	private RuleType(int ruleTypeID, String ruleType) {
 		this.ruleTypeID = ruleTypeID;	
 		this.ruleTypeName = ruleType;
 	}

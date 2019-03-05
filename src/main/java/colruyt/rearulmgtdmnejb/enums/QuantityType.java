@@ -1,15 +1,15 @@
 package colruyt.rearulmgtdmnejb.enums;
 
 public enum QuantityType {
-	P1_QUANTITY(1L),
-	P2_NQTY(2L),
-	P2_BQTY(3L);
+	P1_QUANTITY(1),
+	P2_NQTY(2),
+	P2_BQTY(3);
 	
-	private long qtyTypeId;
-	public long getQtyTypeId() {
+	private int qtyTypeId;
+	public int getQtyTypeId() {
 		return qtyTypeId;
 	}	
-	private QuantityType(long qtyTypeId) {
+	private QuantityType(int qtyTypeId) {
 		this.qtyTypeId = qtyTypeId;
 		
 	}

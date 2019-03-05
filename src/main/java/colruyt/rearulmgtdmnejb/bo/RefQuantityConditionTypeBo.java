@@ -16,15 +16,15 @@ public class RefQuantityConditionTypeBo implements Serializable {
 
 	
 	private static final long serialVersionUID = 1L;
-	private long codeTypeId;
+	private int codeTypeId;
 	private List<RefLangBo> codeLang;
 	private String description;
 	
-	public long getCodeTypeId() {
+	public int getCodeTypeId() {
 		return codeTypeId;
 	}
 
-	public void setCodeTypeId(long codeTypeId) {
+	public void setCodeTypeId(int codeTypeId) {
 		this.codeTypeId = codeTypeId;
 	}
 

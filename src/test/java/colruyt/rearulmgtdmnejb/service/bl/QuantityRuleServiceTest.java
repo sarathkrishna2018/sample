@@ -73,7 +73,7 @@ public class QuantityRuleServiceTest {
 
 	@Test
 	public void getReactionRulesTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		Long ruleId = 1l;
+		int ruleId = 1;
 		ReactionRulesetBo reactionRulesetBo = getReactionRulesetBo();
 		when(generalRuleService.getRuleTypeId(Mockito.anyString())).thenReturn(ruleId);
 		when(referenceDataService.findPkByType(Mockito.anyString())).thenReturn(ruleId);
@@ -137,10 +137,10 @@ public class QuantityRuleServiceTest {
 		quantityRuleBo.setSourceTypeList(getSourceTypeList());
 		quantityRuleBo.setValidFrom(new Date());
 		RefQuantityPriceTypeBo quantityPriceType = new RefQuantityPriceTypeBo();
-		quantityPriceType.setQuantityTypeId(1L);
+		quantityPriceType.setQuantityTypeId(1);
 		quantityRuleBo.setQuantityPriceType(quantityPriceType);
 		RefQuantityConditionTypeBo conditionType = new RefQuantityConditionTypeBo();
-		conditionType.setCodeTypeId(1L);
+		conditionType.setCodeTypeId(1);
 		quantityRuleBo.setConditionType(conditionType);
 		return quantityRuleBo;
 	}
@@ -156,7 +156,7 @@ public class QuantityRuleServiceTest {
 
 	private RefRuleTypeBo getRefRuleTypeBo() {
 		RefRuleTypeBo refRuleTypeBo = new RefRuleTypeBo();
-		refRuleTypeBo.setRuleTypeId(2L);
+		refRuleTypeBo.setRuleTypeId(2);
 		return refRuleTypeBo;
 	}
 
@@ -183,7 +183,7 @@ public class QuantityRuleServiceTest {
 	private List<RefActionTypeBo> getActionTypeList() {
 		List<RefActionTypeBo> refActionTypeBos = new ArrayList<>();
 		RefActionTypeBo refActionTypeBo = new RefActionTypeBo();
-		refActionTypeBo.setActionTypeId(1L);
+		refActionTypeBo.setActionTypeId(1);
 		refActionTypeBos.add(refActionTypeBo);
 		return refActionTypeBos;
 	}
@@ -230,7 +230,7 @@ public class QuantityRuleServiceTest {
 
 	public QuantityRuleAction getReaQtyRule() {
 		QuantityRuleAction reaQtyRule = new QuantityRuleAction();
-		reaQtyRule.setQuantityConditionId(1L);
+		reaQtyRule.setQuantityConditionId(1);
 
 		return reaQtyRule;
 	}

@@ -10,7 +10,7 @@ public class PriceProductHierarchyBo implements Serializable, Comparable<PricePr
 
 	private static final long serialVersionUID = 1L;
 	private Long id;
-	private Long typeId;
+	private int typeId;
 	private List<PriceProductHierarchyBo> childHierarchy;
 	private String name;
 	private String value;
@@ -32,11 +32,11 @@ public class PriceProductHierarchyBo implements Serializable, Comparable<PricePr
 		this.id = id;
 	}
 
-	public Long getTypeId() {
+	public int getTypeId() {
 		return typeId;
 	}
 
-	public final void setTypeId(Long typeId) {
+	public final void setTypeId(int typeId) {
 		this.typeId = typeId;
 	}
 
@@ -94,7 +94,7 @@ public class PriceProductHierarchyBo implements Serializable, Comparable<PricePr
 		this.linkedContextHierarchyId = linkedContextHierarchyId;
 	}
 
-	public PriceProductHierarchyBo(String name, String value, String parentValue, Long typeId) {
+	public PriceProductHierarchyBo(String name, String value, String parentValue, int typeId) {
 		this.setName(name);
 		this.setValue(value);
 		this.setParentValue(parentValue);

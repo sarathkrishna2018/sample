@@ -15,15 +15,15 @@ public class RefActionTypeBo implements Serializable{
 
 	
 	private static final long serialVersionUID = 1L;
-	private long actionTypeId;
+	private int actionTypeId;
 	private String actionTypeValue;
 	private long sequence;
 
-	public long getActionTypeId() {
+	public int getActionTypeId() {
 		return actionTypeId;
 	}
 
-	public void setActionTypeId(long actionTypeId) {
+	public void setActionTypeId(int actionTypeId) {
 		this.actionTypeId = actionTypeId;
 	}
 

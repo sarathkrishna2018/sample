@@ -65,7 +65,7 @@ public class ReaRuleConverterTest {
 	
 	@Test
 	public void convertAllActionTest(){
-		long idForAll=1;
+		int idForAll=1;
 		List<ActionType> expectedActionTypes=reaRuleConverter.convertAllAction(idForAll);
 		Assert.assertNotNull(expectedActionTypes);
 	}
@@ -279,7 +279,7 @@ public class ReaRuleConverterTest {
 	public List<RefActionTypeBo> getRefActionType() {
 		List<RefActionTypeBo> refActionTypelist = Lists.newArrayList();
 		RefActionTypeBo refActionType = new RefActionTypeBo();
-		refActionType.setActionTypeId(1l);
+		refActionType.setActionTypeId(1);
 		refActionType.setActionTypeValue("asa");
 		refActionType.setSequence(12l);
 		refActionTypelist.add(refActionType);
@@ -308,7 +308,7 @@ public class ReaRuleConverterTest {
 
 	public RefActionTypeBo createRefActionType() {
 		RefActionTypeBo refActionType = new RefActionTypeBo();
-		refActionType.setActionTypeId(1l);
+		refActionType.setActionTypeId(1);
 		refActionType.setActionTypeValue("asa");
 		refActionType.setSequence(12l);
 		return refActionType;

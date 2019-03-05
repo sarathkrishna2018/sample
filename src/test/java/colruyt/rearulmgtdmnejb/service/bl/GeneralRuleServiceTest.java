@@ -556,7 +556,7 @@ public class GeneralRuleServiceTest {
 	@Test
 	public void getRuleTypeIdTest() {
 		String ruleType = "Filtering";
-		long ruleTypeId = 3;
+		int ruleTypeId = 3;
 		when(referenceDataService.findPkByType(Mockito.anyString())).thenReturn(ruleTypeId);
 		long expectedRuleTypeId = generalRuleService.getRuleTypeId(ruleType);
 		Assert.assertNotNull(expectedRuleTypeId);

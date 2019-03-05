@@ -14,7 +14,7 @@ public class RefReasonTypeLangPK implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Column(name = "REASON_ID")
-	private long reasonId;
+	private int reasonId;
 
 	@Column(name = "ISO_LANG_CODE")
 	private String isoLangCode;
@@ -23,11 +23,11 @@ public class RefReasonTypeLangPK implements Serializable {
 
 	}
 
-	public long getReasonId() {
+	public int getReasonId() {
 		return reasonId;
 	}
 
-	public void setReasonId(long reasonId) {
+	public void setReasonId(int reasonId) {
 		this.reasonId = reasonId;
 	}
 
@@ -67,7 +67,7 @@ public class RefReasonTypeLangPK implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((isoLangCode == null) ? 0 : isoLangCode.hashCode());
-		result = prime * result + (int) (reasonId ^ (reasonId >>> 32));
+		result = prime * result + (reasonId ^ (reasonId >>> 32));
 		return result;
 	}
 

@@ -14,7 +14,7 @@ public class RefQuantityTypeLangPK implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Column(name = "QTY_TYPE_ID")
-	private long quantityTypeId;
+	private int quantityTypeId;
 
 	@Column(name = "ISO_LANG_CODE")
 	private String isoLangCode;
@@ -23,11 +23,11 @@ public class RefQuantityTypeLangPK implements Serializable {
 
 	}
 
-	public long getQuantityTypeId() {
+	public int getQuantityTypeId() {
 		return quantityTypeId;
 	}
 
-	public void setQuantityTypeId(long quantityTypeId) {
+	public void setQuantityTypeId(int quantityTypeId) {
 		this.quantityTypeId = quantityTypeId;
 	}
 
@@ -67,7 +67,7 @@ public class RefQuantityTypeLangPK implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((isoLangCode == null) ? 0 : isoLangCode.hashCode());
-		result = prime * result + (int) (quantityTypeId ^ (quantityTypeId >>> 32));
+		result = prime * result + (quantityTypeId ^ (quantityTypeId >>> 32));
 		return result;
 	}
 

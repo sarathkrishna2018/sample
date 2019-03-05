@@ -61,11 +61,11 @@ public class ProposalNotToReactActionDlServiceTest {
 	ProposalNotToReactRuleAction getProposalNotToReactRuleAction() {
 		ProposalNotToReactRuleAction proposalNotToReactRuleAction = new ProposalNotToReactRuleAction();
 		proposalNotToReactRuleAction.setReactionRuleId(1l);
-		List<Long> reaNreactSetRsns = Lists.newArrayList();
-		reaNreactSetRsns.add(1l);
-		reaNreactSetRsns.add(2l);
+		List<Integer> reaNreactSetRsns = Lists.newArrayList();
+		reaNreactSetRsns.add(1);
+		reaNreactSetRsns.add(2);
 		proposalNotToReactRuleAction.setNotToReactSetReasons(reaNreactSetRsns);
-		proposalNotToReactRuleAction.setFltoutTypeId(3l);
+		proposalNotToReactRuleAction.setFltoutTypeId(3);
 		return proposalNotToReactRuleAction;
 	}
 	private DeleteRuleInfoBo getDeleteRuleInfoBo() {

@@ -1,22 +1,22 @@
 package colruyt.rearulmgtdmnejb.enums;
 
 public enum SourceType {
-	ONLINE(1L,"Online", "Online"),
-	OFFLINE(2L,"Offline", "Offline"),
-	FOLDER(3L, "Folder", "Folder"),
-	EXTERNAL(4L,"External", "External"),
-	ALL(5L,"All", "All");
+	ONLINE(1,"Online", "Online"),
+	OFFLINE(2,"Offline", "Offline"),
+	FOLDER(3, "Folder", "Folder"),
+	EXTERNAL(4,"External", "External"),
+	ALL(5,"All", "All");
 	
-	private final long sourceTypeId;
+	private final int sourceTypeId;
 	private final String sourceTypeName;
 	private final String description;
 	
-	private SourceType(Long sourceTypeId, String sourceTypeName, String description) {
+	private SourceType(int sourceTypeId, String sourceTypeName, String description) {
 		this.sourceTypeId = sourceTypeId;
 		this.sourceTypeName = sourceTypeName;
 		this.description = description;
 	}
-	public Long getSourceTypeId() {
+	public int getSourceTypeId() {
 		return sourceTypeId;
 	}
 	public String getSourceTypeName() {

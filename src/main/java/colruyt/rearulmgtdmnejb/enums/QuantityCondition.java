@@ -1,22 +1,22 @@
 package colruyt.rearulmgtdmnejb.enums;
 
 public enum QuantityCondition {
-	NQTY_GREATER_THAN_EQUAL_TO_BQTY(1L),
-	NQTY_GREATER_THAN_BQTY(2L),
-	NQTY_LESS_THAN_EQUAL_TO_BQTY(3L),
-	NQTY_LESS_THAN_BQTY(4L),
-	NQTY_GREATER_THAN_EQUAL_TO_BQTY_AND_NOT_1(5L),
-	NQTY_LESS_THAN_EQUAL_TO_BQTY_AND_NOT_1(6L);
+	NQTY_GREATER_THAN_EQUAL_TO_BQTY(1),
+	NQTY_GREATER_THAN_BQTY(2),
+	NQTY_LESS_THAN_EQUAL_TO_BQTY(3),
+	NQTY_LESS_THAN_BQTY(4),
+	NQTY_GREATER_THAN_EQUAL_TO_BQTY_AND_NOT_1(5),
+	NQTY_LESS_THAN_EQUAL_TO_BQTY_AND_NOT_1(6);
 	
-	private Long id;
+	private int id;
 	
 	
 	
-	private QuantityCondition(Long id) {
+	private QuantityCondition(int id) {
 		this.id = id;
 		
 	}
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 	

@@ -16,15 +16,15 @@ public class RefRuleTypeBo implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	private long ruleTypeId;
+	private int ruleTypeId;
 	private List<RefLangBo> codeLang;
 	private String description;
 
-	public long getRuleTypeId() {
+	public int getRuleTypeId() {
 		return ruleTypeId;
 	}
 
-	public void setRuleTypeId(long ruleTypeId) {
+	public void setRuleTypeId(int ruleTypeId) {
 		this.ruleTypeId = ruleTypeId;
 	}
 

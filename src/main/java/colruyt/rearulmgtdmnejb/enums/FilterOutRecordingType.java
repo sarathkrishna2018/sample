@@ -1,16 +1,16 @@
 package colruyt.rearulmgtdmnejb.enums;
 
 public enum FilterOutRecordingType {
-	PRICE_RECORDING(1L), 
-	FILTER_AND_CLEAR_OUT(2L);
+	PRICE_RECORDING(1), 
+	FILTER_AND_CLEAR_OUT(2);
 	
-	private Long id;
+	private int id;
 
-	private FilterOutRecordingType(Long id) {
+	private FilterOutRecordingType(int id) {
 		this.id = id;
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 

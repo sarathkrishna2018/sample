@@ -80,7 +80,7 @@ public class ReferenceDataConverter implements Serializable {
 		for (SourceType sourceType : refSourceTypes) {
 			RefSourceTypeBo sourceTypeBo = new RefSourceTypeBo();
 			for (SourceType refSourceType : SourceType.values()) {
-				if (sourceType.getSourceTypeId().equals(refSourceType.getSourceTypeId())) {
+				if (sourceType.getSourceTypeId() == refSourceType.getSourceTypeId()) {
 					sourceTypeBo.setSourceName(refSourceType.getSourceTypeName());
 					sourceTypeBo.setSourceTypeId(refSourceType.getSourceTypeId());
 					refSourceTypeBoList.add(sourceTypeBo);

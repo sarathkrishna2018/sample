@@ -13,20 +13,20 @@ import javax.persistence.Embeddable;
 public class RefQuantityConditionTypeLangPK implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Column(name="QTY_COND_ID")
-	private long qtyCondId;
+	@Column(name = "QTY_COND_ID")
+	private int qtyCondId;
 
-	@Column(name="ISO_LANG_CODE")
+	@Column(name = "ISO_LANG_CODE")
 	private String isoLangCode;
-	
+
 	public RefQuantityConditionTypeLangPK() {
 	}
 
-	public long getQtyCondId() {
+	public int getQtyCondId() {
 		return qtyCondId;
 	}
 
-	public void setQtyCondId(long qtyCondId) {
+	public void setQtyCondId(int qtyCondId) {
 		this.qtyCondId = qtyCondId;
 	}
 
@@ -38,33 +38,25 @@ public class RefQuantityConditionTypeLangPK implements Serializable {
 		this.isoLangCode = isoLangCode;
 	}
 
-	
 	public boolean equals(Object obj) {
-		if (this == obj)
-		{
+		if (this == obj) {
 			return true;
 		}
-		if (obj == null)
-		{
+		if (obj == null) {
 			return false;
 		}
-		if (getClass() != obj.getClass())
-		{
+		if (getClass() != obj.getClass()) {
 			return false;
 		}
 		RefQuantityConditionTypeLangPK other = (RefQuantityConditionTypeLangPK) obj;
 		if (isoLangCode == null) {
-			if (other.isoLangCode != null)
-			{
+			if (other.isoLangCode != null) {
 				return false;
 			}
-		} 
-		else if (!isoLangCode.equals(other.isoLangCode))
-		{
+		} else if (!isoLangCode.equals(other.isoLangCode)) {
 			return false;
 		}
-		if (qtyCondId != other.qtyCondId)
-		{
+		if (qtyCondId != other.qtyCondId) {
 			return false;
 		}
 		return true;
@@ -74,9 +66,8 @@ public class RefQuantityConditionTypeLangPK implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((isoLangCode == null) ? 0 : isoLangCode.hashCode());
-		result = prime * result + (int) (qtyCondId ^ (qtyCondId >>> 32));
+		result = prime * result + (qtyCondId ^ (qtyCondId >>> 32));
 		return result;
 	}
-	
 
 }

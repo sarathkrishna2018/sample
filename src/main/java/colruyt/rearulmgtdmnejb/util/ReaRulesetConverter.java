@@ -59,7 +59,7 @@ public class ReaRulesetConverter implements Serializable {
 		return rulesetBoList;
 	}
 
-	public RefRuleTypeBo convertRulType(long ruleTypeid) {
+	public RefRuleTypeBo convertRulType(int ruleTypeid) {
 		RefRuleTypeBo refRuleTypeBo = new RefRuleTypeBo();
 		List<RefRuleTypeBo> refRuletype = referenceDataService.getAllRuleTypes();
 		for (RefRuleTypeBo ref : refRuletype) {

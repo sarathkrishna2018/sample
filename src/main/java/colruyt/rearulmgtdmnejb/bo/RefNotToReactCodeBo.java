@@ -15,15 +15,15 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class RefNotToReactCodeBo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private Long notToReactCodeTypeId;
+	private int notToReactCodeTypeId;
 	private List<RefLangBo> codeLang;
 	private String description;
 
-	public Long getNotToReactCodeTypeId() {
+	public int getNotToReactCodeTypeId() {
 		return notToReactCodeTypeId;
 	}
 
-	public void setNotToReactCodeTypeId(Long notToReactCodeTypeId) {
+	public void setNotToReactCodeTypeId(int notToReactCodeTypeId) {
 		this.notToReactCodeTypeId = notToReactCodeTypeId;
 	}
 

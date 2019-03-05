@@ -46,7 +46,7 @@ public class ProposeNotToReactRuleConverterTest {
 	}
 	@Test
 	public void convertReasonNotToReactSetTest(){
-		List<Long> expectedReaNreactSetRsn=proposeNotToReactRuleConverter.convertReasonNotToReactSet(getRefNotToReactCodeBo());	
+		List<Integer> expectedReaNreactSetRsn=proposeNotToReactRuleConverter.convertReasonNotToReactSet(getRefNotToReactCodeBo());	
 		assertEquals(expectedReaNreactSetRsn.size(),getRefNotToReactCodeBo().size());
 		
 	}
@@ -61,7 +61,7 @@ public class ProposeNotToReactRuleConverterTest {
 	private List<RefFilterOutRecordingTypeBo> getRefFilterOutRecordingTypeBoList() {
 		List<RefFilterOutRecordingTypeBo> refFilterOutRecordingTypeBos=Lists.newArrayList();
 		RefFilterOutRecordingTypeBo refFilterOutRecordingTypeBo=new RefFilterOutRecordingTypeBo();
-		refFilterOutRecordingTypeBo.setFilterOutTypeId(1l);
+		refFilterOutRecordingTypeBo.setFilterOutTypeId(1);
 		refFilterOutRecordingTypeBo.setDescription("xcx");
 		refFilterOutRecordingTypeBo.setCodeLang(getRefLangBo());
 		refFilterOutRecordingTypeBos.add(refFilterOutRecordingTypeBo);
@@ -78,7 +78,7 @@ public class ProposeNotToReactRuleConverterTest {
 	public ProposalNotToReactRuleActionRsnPK getReaNreactSetRsnPK(){
 		ProposalNotToReactRuleActionRsnPK reaNreactSetRsnPK=new ProposalNotToReactRuleActionRsnPK();
 		reaNreactSetRsnPK.setReactionRuleId(1l);
-		reaNreactSetRsnPK.setReasonId(1l);
+		reaNreactSetRsnPK.setReasonId(1);
 		return reaNreactSetRsnPK;
 	}
 	public ProposeNotToReactRuleBo getProposeNotToReactRuleBo(){
@@ -91,7 +91,7 @@ public class ProposeNotToReactRuleConverterTest {
 	public RefFilterOutRecordingTypeBo getRefFilterOutRecordingTypeBo()
 	{
 		RefFilterOutRecordingTypeBo refFilterOutRecordingTypeBo=new RefFilterOutRecordingTypeBo();
-		refFilterOutRecordingTypeBo.setFilterOutTypeId(1l);
+		refFilterOutRecordingTypeBo.setFilterOutTypeId(1);
 		refFilterOutRecordingTypeBo.setDescription("xcx");
 		refFilterOutRecordingTypeBo.setCodeLang(getRefLangBo());
 		return refFilterOutRecordingTypeBo;
@@ -110,7 +110,7 @@ public class ProposeNotToReactRuleConverterTest {
 		List<RefNotToReactCodeBo> refNotToReactCodeBolist=Lists.newArrayList();
 		RefNotToReactCodeBo refNotToReactCodeBo=new RefNotToReactCodeBo();
 		refNotToReactCodeBo.setCodeLang(getRefLangBo());
-		refNotToReactCodeBo.setNotToReactCodeTypeId(1l);
+		refNotToReactCodeBo.setNotToReactCodeTypeId(1);
 		refNotToReactCodeBo.setDescription("scx");
 		refNotToReactCodeBolist.add(refNotToReactCodeBo);
 		return refNotToReactCodeBolist;

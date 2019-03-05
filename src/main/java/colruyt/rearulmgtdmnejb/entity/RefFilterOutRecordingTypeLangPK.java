@@ -5,7 +5,6 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
-
 /**
  * The primary key class for the REF_FLTOUT_TYPE_LANG database table.
  * 
@@ -14,23 +13,27 @@ import javax.persistence.Embeddable;
 public class RefFilterOutRecordingTypeLangPK implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Column(name="FLTOUT_TYPE_ID")
-	private long fltoutTypeId;
+	@Column(name = "FLTOUT_TYPE_ID")
+	private int fltoutTypeId;
 
-	@Column(name="ISO_LANG_CODE")
+	@Column(name = "ISO_LANG_CODE")
 	private String isoLangCode;
 
 	public RefFilterOutRecordingTypeLangPK() {
 	}
-	public long getFltoutTypeId() {
+
+	public int getFltoutTypeId() {
 		return this.fltoutTypeId;
 	}
-	public void setFltoutTypeId(long fltoutTypeId) {
+
+	public void setFltoutTypeId(int fltoutTypeId) {
 		this.fltoutTypeId = fltoutTypeId;
 	}
+
 	public String getIsoLangCode() {
 		return this.isoLangCode;
 	}
+
 	public void setIsoLangCode(String isoLangCode) {
 		this.isoLangCode = isoLangCode;
 	}
@@ -42,18 +45,15 @@ public class RefFilterOutRecordingTypeLangPK implements Serializable {
 		if (!(other instanceof RefFilterOutRecordingTypeLangPK)) {
 			return false;
 		}
-		RefFilterOutRecordingTypeLangPK castOther = (RefFilterOutRecordingTypeLangPK)other;
-		return 
-			(this.fltoutTypeId == castOther.fltoutTypeId)
-			&& this.isoLangCode.equals(castOther.isoLangCode);
+		RefFilterOutRecordingTypeLangPK castOther = (RefFilterOutRecordingTypeLangPK) other;
+		return (this.fltoutTypeId == castOther.fltoutTypeId) && this.isoLangCode.equals(castOther.isoLangCode);
 	}
 
 	public int hashCode() {
 		final int prime = 31;
 		int hash = 17;
-		hash = hash * prime + ((int) (this.fltoutTypeId ^ (this.fltoutTypeId >>> 32)));
+		hash = hash * prime + (this.fltoutTypeId ^ (this.fltoutTypeId >>> 32));
 		hash = hash * prime + this.isoLangCode.hashCode();
-		
 		return hash;
 	}
 }

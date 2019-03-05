@@ -287,7 +287,7 @@ public class ReactionRuleSetServiceTest {
 	public List<RefActionTypeBo> getRefActionType() {
 		List<RefActionTypeBo> refActionTypelist = Lists.newArrayList();
 		RefActionTypeBo refActionType = new RefActionTypeBo();
-		refActionType.setActionTypeId(1l);
+		refActionType.setActionTypeId(1);
 		refActionType.setActionTypeValue("asa");
 		refActionType.setSequence(12l);
 		refActionTypelist.add(refActionType);

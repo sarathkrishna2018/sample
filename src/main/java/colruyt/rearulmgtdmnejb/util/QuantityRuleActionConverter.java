@@ -36,11 +36,11 @@ public class QuantityRuleActionConverter implements Serializable {
 		return quantityBo;
 	}
 
-	private RefQuantityPriceTypeBo convertQtyPriceType(Long qtyTypeId) {
+	private RefQuantityPriceTypeBo convertQtyPriceType(int qtyTypeId) {
 		RefQuantityPriceTypeBo priceType = new RefQuantityPriceTypeBo();
 		List<RefQuantityPriceTypeBo> priceTypeLst = referenceDataService.getAllQuantityPriceTypes();
 		for(int i=0; i<priceTypeLst.size();i++ ){
-			if(qtyTypeId.equals(priceTypeLst.get(i).getQuantityTypeId())){
+			if(qtyTypeId  == priceTypeLst.get(i).getQuantityTypeId()){
 				priceType.setQuantityTypeId(qtyTypeId);
 				priceType.setDescription(priceTypeLst.get(i).getDescription());
 				priceType.setCodeLang(priceTypeLst.get(i).getCodeLang());
@@ -49,7 +49,7 @@ public class QuantityRuleActionConverter implements Serializable {
 		return priceType;
 	}
 
-	private RefQuantityConditionTypeBo convertConditionType(Long qtyCondId) {
+	private RefQuantityConditionTypeBo convertConditionType(int qtyCondId) {
 		RefQuantityConditionTypeBo refQuantityConditionTypeBo = new RefQuantityConditionTypeBo();
 		List<RefQuantityConditionTypeBo> conditionTypeLst = referenceDataService.getAllQuantityConditionTypes();
 		for(int i=0; i<conditionTypeLst.size();i++ ){

@@ -15,15 +15,15 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class RefQuantityPriceTypeBo implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	private Long quantityTypeId;
+	private int quantityTypeId;
 	private List<RefLangBo> codeLang;
 	private String description;
 
-	public Long getQuantityTypeId() {
+	public int getQuantityTypeId() {
 		return quantityTypeId;
 	}
 
-	public void setQuantityTypeId(Long quantityTypeId) {
+	public void setQuantityTypeId(int quantityTypeId) {
 		this.quantityTypeId = quantityTypeId;
 	}
 

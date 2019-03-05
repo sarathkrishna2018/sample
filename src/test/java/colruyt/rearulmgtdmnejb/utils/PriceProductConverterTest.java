@@ -123,7 +123,7 @@ public class PriceProductConverterTest {
 		priceProductHierarchyBo.setLinkedContextHierarchyId(1l);
 		priceProductHierarchyBo.setName("AllProducts");
 		priceProductHierarchyBo.setParentValue("All");
-		priceProductHierarchyBo.setTypeId(1l);
+		priceProductHierarchyBo.setTypeId(1);
 		priceProductHierarchyBo.setValue("All");
 		priceProductHierarchyBos.add(priceProductHierarchyBo);
 		return priceProductHierarchyBos;

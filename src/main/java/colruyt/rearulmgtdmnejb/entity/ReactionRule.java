@@ -134,17 +134,17 @@ public class ReactionRule implements Serializable {
 	@CollectionTable(name = "REA_RULE_SRC", 
 			joinColumns = @JoinColumn(name = "REA_RULE_ID"))
 	@Column(name = "SOURCE_ID")
-	private List<Long> refSourceTypes;
+	private List<Integer> refSourceTypes;
 	
 	@ElementCollection(fetch = FetchType.EAGER)
 	@CollectionTable(name = "REA_RULE_ACTTYPE", 
 			joinColumns = @JoinColumn(name = "REA_RULE_ID"))
 	@Column(name = "ACTION_TYPE_ID")
-	private List<Long> refActionTypes;
+	private List<Integer> refActionTypes;
 	
 	public List<SourceType> getRefSourceTypes() {
 		List<SourceType> sourceTypes=Lists.newArrayList();
-		for(Long sourceTypeId : refSourceTypes){
+		for(Integer sourceTypeId : refSourceTypes){
 			sourceTypes.add(SourceType.forValue(sourceTypeId));
 		}
 		return sourceTypes;
@@ -159,7 +159,7 @@ public class ReactionRule implements Serializable {
 
 	public List<ActionType> getRefActionTypes(){
 		List<ActionType> actionTypes = Lists.newArrayList();
-		for(Long actionTypeId : refActionTypes) {
+		for(Integer actionTypeId : refActionTypes) {
 			actionTypes.add(ActionType.forValue(actionTypeId));
 		}
 		return actionTypes;

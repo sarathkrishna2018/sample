@@ -1,35 +1,35 @@
 package colruyt.rearulmgtdmnejb.enums;
 
 public enum ActionType {
-		PRICE_PROMO(1L,"Price Promo", 1L),
-		DISCOUNT_IN_PERCENT(2L,"Discount %",  2L),
-		DISCOUNT_IN_EURO(3L,"Discount Euro", 3L),
-		X_PLUS_Y(4L,"X+Y", 4L),
-		XNTH_FOR_Y_PERCENT_OFF(5L," Xnth for Y% off",  5L),
-		STAMPS(6L, "Stamps",  6L),
-		POINTS(7L,"Points",  7L),
-		GADGET_OR_PREMIUM(8L,"Gadget/Premium", 8L),
-		CASHBACK(9L,"Cashback",  9L),
-		OTHER_FREE_PRODUCTS(10L,"Other Free Products", 10L),
-		BON_ON_PACK(11L,"Bon on pack", 11L),	
-		SECOND_FOR_FIFTY_PERCENT(12L,"2nd for 50% off",  12L),
-		ONE_PLUS_ONE(13L,"1+1", 13L),
-		ALL(14L, "All", 14L),
-		NONE(15L, "None", 15L);
+		PRICE_PROMO(1,"Price Promo", 1L),
+		DISCOUNT_IN_PERCENT(2,"Discount %",  2L),
+		DISCOUNT_IN_EURO(3,"Discount Euro", 3L),
+		X_PLUS_Y(4,"X+Y", 4L),
+		XNTH_FOR_Y_PERCENT_OFF(5," Xnth for Y% off",  5L),
+		STAMPS(6, "Stamps",  6L),
+		POINTS(7,"Points",  7L),
+		GADGET_OR_PREMIUM(8,"Gadget/Premium", 8L),
+		CASHBACK(9,"Cashback",  9L),
+		OTHER_FREE_PRODUCTS(10,"Other Free Products", 10L),
+		BON_ON_PACK(11,"Bon on pack", 11L),	
+		SECOND_FOR_FIFTY_PERCENT(12,"2nd for 50% off",  12L),
+		ONE_PLUS_ONE(13,"1+1", 13L),
+		ALL(14, "All", 14L),
+		NONE(15, "None", 15L);
 
-	private long actionTypeId;
+	private int actionTypeId;
 	private String actionTypeValue;
 	private long sequence;
 		
 		 
-	private ActionType(long actionTypeId, String actionTypeValue, long sequence) {
+	private ActionType(int actionTypeId, String actionTypeValue, long sequence) {
 		this.actionTypeId = actionTypeId;
 		this.actionTypeValue = actionTypeValue;
 		this.sequence = sequence;
 	}
 
 
-	public long getActionTypeId() {
+	public int getActionTypeId() {
 		return actionTypeId;
 	}
 
@@ -40,7 +40,7 @@ public enum ActionType {
 	public long getSequence() {
 		return sequence;
 	}
-	public static ActionType forValue(long actionTypeId) {
+	public static ActionType forValue(int actionTypeId) {
 		for (ActionType actionType : ActionType.values()){
 			if(actionType.actionTypeId == (actionTypeId)){
 				return actionType;

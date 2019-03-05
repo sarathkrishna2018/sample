@@ -72,7 +72,7 @@ public class FilteringRuleServiceTest {
 
 	@Test
 	public void getReactionRulesTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		Long ruleId = 1l;
+		int ruleId = 1;
 		ReactionRulesetBo reactionRulesetBo = getReactionRulesetBo();
 		when(generalRuleService.getRuleTypeId(Mockito.anyString())).thenReturn(ruleId);
 		when(referenceDataService.findPkByType(Mockito.anyString())).thenReturn(ruleId);
@@ -150,7 +150,7 @@ public class FilteringRuleServiceTest {
 
 	private RefRuleTypeBo getRefRuleTypeBo() {
 		RefRuleTypeBo refRuleTypeBo = new RefRuleTypeBo();
-		refRuleTypeBo.setRuleTypeId(3L);
+		refRuleTypeBo.setRuleTypeId(3);
 		return refRuleTypeBo;
 	}
 
@@ -177,7 +177,7 @@ public class FilteringRuleServiceTest {
 	private List<RefActionTypeBo> getActionTypeList() {
 		List<RefActionTypeBo> refActionTypeBos = new ArrayList<>();
 		RefActionTypeBo refActionTypeBo = new RefActionTypeBo();
-		refActionTypeBo.setActionTypeId(1L);
+		refActionTypeBo.setActionTypeId(1);
 		refActionTypeBos.add(refActionTypeBo);
 		return refActionTypeBos;
 	}

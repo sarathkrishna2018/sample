@@ -16,15 +16,15 @@ public class RefFilterOutRecordingTypeBo implements Serializable{
 
 
 	private static final long serialVersionUID = 1L;
-	private Long filterOutTypeId;
+	private int filterOutTypeId;
 	private List<RefLangBo> codeLang;
 	private String description;
 
-	public Long getFilterOutTypeId() {
+	public int getFilterOutTypeId() {
 		return filterOutTypeId;
 	}
 
-	public void setFilterOutTypeId(Long filterOutTypeId) {
+	public void setFilterOutTypeId(int filterOutTypeId) {
 		this.filterOutTypeId = filterOutTypeId;
 	}
 

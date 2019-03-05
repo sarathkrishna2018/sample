@@ -18,7 +18,6 @@ import org.unitils.orm.jpa.annotation.JpaEntityManagerFactory;
 
 import com.google.common.collect.Lists;
 
-import colruyt.rearulmgtdmnejb.bo.DeleteRuleSetInfoBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.entity.ReactionRuleSet;
 import colruyt.rearulmgtdmnejb.enums.ActionType;
@@ -89,7 +88,7 @@ public class ReactionRuleSetDlServiceTest {
 		reactionRuleSet.setColruytGroupChainId(1l);
 		reactionRuleSet.setPriceCompetitorChainId(-73l);
 		reactionRuleSet.setReaRulesetId(501l);
-		reactionRuleSet.setRuleTypeId(4l);
+		reactionRuleSet.setRuleTypeId(4);
 		reactionRuleSet.setRulesetName("Name");
 		reactionRuleSet.setRulesetComment("Comment");
 		reactionRuleSet.setLstUpdateBy("ktr");

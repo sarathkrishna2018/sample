@@ -51,8 +51,8 @@ public class QuantityRuleDlServiceTest {
 	}
 	public QuantityRuleAction getReaQtyRule(){
 		QuantityRuleAction reaQtyRule=new QuantityRuleAction();
-		reaQtyRule.setQuantityConditionId(1l);
-		reaQtyRule.setQuantityTypeId(1l);
+		reaQtyRule.setQuantityConditionId(1);
+		reaQtyRule.setQuantityTypeId(1);
 		reaQtyRule.setReactionRuleId(1l);
 		return reaQtyRule;
 		

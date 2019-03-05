@@ -84,7 +84,7 @@ public class PriceProductServiceTest {
 		priceProductHierarchyBo.setLinkedContextHierarchyId(1l);
 		priceProductHierarchyBo.setName("xx");
 		priceProductHierarchyBo.setParentValue("sa");
-		priceProductHierarchyBo.setTypeId(1l);
+		priceProductHierarchyBo.setTypeId(1);
 		priceProductHierarchyBo.setChildHierarchy(getChildHierarchyList());
 		priceProductHierarchyBos.add(priceProductHierarchyBo);
 		return priceProductHierarchyBos;

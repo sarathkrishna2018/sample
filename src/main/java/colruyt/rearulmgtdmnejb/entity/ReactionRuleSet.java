@@ -33,7 +33,7 @@ public class ReactionRuleSet implements Serializable {
 	private long reaRulesetId;
 	
 	@Column(name="RULETYPE_ID")
-	private long ruleTypeId;
+	private int ruleTypeId;
 
 	@Column(name="CG_CHN_ID")
 	private long colruytGroupChainId;
@@ -114,11 +114,11 @@ public class ReactionRuleSet implements Serializable {
 		this.reactionRules = reaRules;
 	}
 
-	public long getRuleTypeId() {
+	public int getRuleTypeId() {
 		return ruleTypeId;
 	}
 
-	public void setRuleTypeId(long ruleTypeId) {
+	public void setRuleTypeId(int ruleTypeId) {
 		this.ruleTypeId = ruleTypeId;
 	}
 

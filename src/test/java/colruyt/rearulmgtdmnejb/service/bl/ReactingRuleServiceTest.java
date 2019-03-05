@@ -133,7 +133,7 @@ public class ReactingRuleServiceTest {
 	private List<RefActionTypeBo> getActionTypeList() {
 		List<RefActionTypeBo> refActionTypeBos = new ArrayList<>();
 		RefActionTypeBo refActionTypeBo = new RefActionTypeBo();
-		refActionTypeBo.setActionTypeId(1L);
+		refActionTypeBo.setActionTypeId(1);
 		refActionTypeBos.add(refActionTypeBo);
 		return refActionTypeBos;
 	}
@@ -149,7 +149,7 @@ public class ReactingRuleServiceTest {
 
 	private RefRuleTypeBo getRefRuleTypeBo() {
 		RefRuleTypeBo refRuleTypeBo = new RefRuleTypeBo();
-		refRuleTypeBo.setRuleTypeId(1L);
+		refRuleTypeBo.setRuleTypeId(1);
 		return refRuleTypeBo;
 	}
 

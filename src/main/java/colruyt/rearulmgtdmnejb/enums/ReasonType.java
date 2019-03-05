@@ -1,19 +1,19 @@
 package colruyt.rearulmgtdmnejb.enums;
 
 public enum ReasonType {
-	TEMP_NOT_ORDERABLE(1L),
-	RESELLER(2L),
-	OUTLET_ARTICLE(3L),
-	NO_LONGER_AVAILABLE(4L),
-	SECOND_HAND(5L),
-	SOLD_OUT_ONLINE(6L);
+	TEMP_NOT_ORDERABLE(1),
+	RESELLER(2),
+	OUTLET_ARTICLE(3),
+	NO_LONGER_AVAILABLE(4),
+	SECOND_HAND(5),
+	SOLD_OUT_ONLINE(6);
 		
-	private long reasonID;
-	public long getReasonID() {
+	private int reasonID;
+	public int getReasonID() {
 		return reasonID;
 	}
 	
-	private ReasonType(long reasonID) {
+	private ReasonType(int reasonID) {
 		this.reasonID = reasonID;
 		
 	}

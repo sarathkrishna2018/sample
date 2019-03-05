@@ -27,20 +27,20 @@ public class ProposalNotToReactRuleAction implements Serializable {
 	private long reactionRuleId;
 
 	@Column(name="FLTOUT_TYPE_ID")
-	private long fltoutTypeId;
+	private int fltoutTypeId;
 	
 	@ElementCollection(fetch = FetchType.EAGER)
 	@CollectionTable(name = "REA_NREACT_SET_RSN", 
 			joinColumns = @JoinColumn(name = "REA_RULE_ID"))
 	@Column(name = "REASON_ID")
-	private List<Long> notToReactSetReasons;
+	private List<Integer> notToReactSetReasons;
 	
 
-	public List<Long> getNotToReactSetReasons() {
+	public List<Integer> getNotToReactSetReasons() {
 		return notToReactSetReasons;
 	}
 
-	public void setNotToReactSetReasons(List<Long> reaNreactSetRsns) {
+	public void setNotToReactSetReasons(List<Integer> reaNreactSetRsns) {
 		this.notToReactSetReasons = reaNreactSetRsns;
 	}
 
@@ -52,11 +52,11 @@ public class ProposalNotToReactRuleAction implements Serializable {
 		this.reactionRuleId = reactionRuleId;
 	}
 	
-	public long getFltoutTypeId() {
+	public int getFltoutTypeId() {
 		return fltoutTypeId;
 	}
 
-	public void setFltoutTypeId(long fltoutTypeId) {
+	public void setFltoutTypeId(int fltoutTypeId) {
 		this.fltoutTypeId = fltoutTypeId;
 	}
 

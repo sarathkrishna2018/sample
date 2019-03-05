@@ -172,9 +172,9 @@ public class ReferenceDataService implements Serializable {
 	 * @param ruleType
 	 * @return
 	 */
-	public Long findPkByType(String ruleType){
+	public int findPkByType(String ruleType){
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_FINDRULETYPEID);
-		Long ruleTypeId = null;
+		int ruleTypeId = 0;
 		for(RefRuleTypeBo refRuleTypeBo: getAllRuleTypes()) {
 			for(RefLangBo refLangBo: refRuleTypeBo.getCodeLang()) {
 				if(refLangBo.getIsoLangCode().equalsIgnoreCase("EN") && refLangBo.getValue().equalsIgnoreCase(ruleType)) {

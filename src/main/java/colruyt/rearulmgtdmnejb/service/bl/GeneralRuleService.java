@@ -465,7 +465,7 @@ public abstract class GeneralRuleService implements Serializable {
 	 * @param ruleTypeName
 	 * @return long
 	 */
-	public long getRuleTypeId(String ruleTypeName) {
+	public int getRuleTypeId(String ruleTypeName) {
 		return referenceDataService.findPkByType(ruleTypeName);
 	}
 

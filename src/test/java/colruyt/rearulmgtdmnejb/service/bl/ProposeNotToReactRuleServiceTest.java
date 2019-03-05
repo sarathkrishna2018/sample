@@ -81,7 +81,7 @@ public class ProposeNotToReactRuleServiceTest {
 
 	@Test
 	public void getReactionRulesTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		Long ruleId = 1l;
+		int ruleId = 1;
 		ReactionRulesetBo reactionRulesetBo = getReactionRulesetBo();
 		when(generalRuleService.getRuleTypeId(Mockito.anyString())).thenReturn(ruleId);
 		when(referenceDataService.findPkByType(Mockito.anyString())).thenReturn(ruleId);
@@ -156,7 +156,7 @@ public class ProposeNotToReactRuleServiceTest {
 	private List<RefActionTypeBo> getActionTypeList() {
 		List<RefActionTypeBo> refActionTypeBos = new ArrayList<>();
 		RefActionTypeBo refActionTypeBo = new RefActionTypeBo();
-		refActionTypeBo.setActionTypeId(1L);
+		refActionTypeBo.setActionTypeId(1);
 		refActionTypeBos.add(refActionTypeBo);
 		return refActionTypeBos;
 	}
@@ -243,7 +243,7 @@ public class ProposeNotToReactRuleServiceTest {
 
 	private RefRuleTypeBo getRefRuleTypeBo() {
 		RefRuleTypeBo refRuleTypeBo = new RefRuleTypeBo();
-		refRuleTypeBo.setRuleTypeId(5L);
+		refRuleTypeBo.setRuleTypeId(5);
 		return refRuleTypeBo;
 	}
 
@@ -275,7 +275,7 @@ public class ProposeNotToReactRuleServiceTest {
 
 	public RefFilterOutRecordingTypeBo getRefFilterOutRecordingTypeBo() {
 		RefFilterOutRecordingTypeBo refFilterOutRecordingTypeBo = new RefFilterOutRecordingTypeBo();
-		refFilterOutRecordingTypeBo.setFilterOutTypeId(1l);
+		refFilterOutRecordingTypeBo.setFilterOutTypeId(1);
 		refFilterOutRecordingTypeBo.setDescription("xcx");
 		refFilterOutRecordingTypeBo.setCodeLang(getRefLangBo());
 		return refFilterOutRecordingTypeBo;
@@ -296,7 +296,7 @@ public class ProposeNotToReactRuleServiceTest {
 		List<RefNotToReactCodeBo> refNotToReactCodeBolist = Lists.newArrayList();
 		RefNotToReactCodeBo refNotToReactCodeBo = new RefNotToReactCodeBo();
 		refNotToReactCodeBo.setCodeLang(getRefLangBo());
-		refNotToReactCodeBo.setNotToReactCodeTypeId(1l);
+		refNotToReactCodeBo.setNotToReactCodeTypeId(1);
 		refNotToReactCodeBo.setDescription("scx");
 		refNotToReactCodeBolist.add(refNotToReactCodeBo);
 		return refNotToReactCodeBolist;
