@@ -54,7 +54,7 @@ public class ReferenceDataConverter implements Serializable {
 
 	public List<RefNotToReactCodeBo> convertRefNonReactingCodeType(ReasonType[] refReasonEnums,
 			List<RefReasonType> refReasonTypes) {
-		List<RefNotToReactCodeBo> refNotToReactCodeBoList = new ArrayList<>();
+		List<RefNotToReactCodeBo> refNotToReactCodeBoList = Lists.newArrayList();
 		for (ReasonType reasonType : refReasonEnums) {
 			RefNotToReactCodeBo refNotToReactCodeBo = new RefNotToReactCodeBo();
 			List<RefLangBo> refLangBos = Lists.newArrayList();
