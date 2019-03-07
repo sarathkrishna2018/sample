@@ -2,7 +2,7 @@ package colruyt.rearulmgtdmnejb.service.dl;
 
 import java.util.List;
 
-import org.assertj.core.util.Lists;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +12,8 @@ import org.unitils.database.util.TransactionMode;
 import org.unitils.dbunit.annotation.DataSet;
 import org.unitils.orm.jpa.JpaUnitils;
 import org.unitils.orm.jpa.annotation.JpaEntityManagerFactory;
+
+import com.google.common.collect.Lists;
 
 import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchyElement;

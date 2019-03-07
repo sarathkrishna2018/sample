@@ -32,23 +32,34 @@ public class ProposalNotToReactRuleActionRsnPK implements Serializable {
 		this.reasonId = reasonId;
 	}
 
-	public boolean equals(Object other) {
-		if (this == other) {
-			return true;
-		}
-		if (!(other instanceof ProposalNotToReactRuleActionRsnPK)) {
-			return false;
-		}
-		ProposalNotToReactRuleActionRsnPK castOther = (ProposalNotToReactRuleActionRsnPK) other;
-		return (this.reactionRuleId == castOther.reactionRuleId) && (this.reasonId == castOther.reasonId);
-	}
-
+	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int hash = 17;
-		hash = hash * prime + ((int) (this.reactionRuleId ^ (this.reactionRuleId >>> 32)));
-		hash = hash * prime + (this.reasonId ^ (this.reasonId >>> 32));
-
-		return hash;
+		int result = 1;
+		result = prime * result + (int) (reactionRuleId ^ (reactionRuleId >>> 32));
+		result = prime * result + reasonId;
+		return result;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		ProposalNotToReactRuleActionRsnPK other = (ProposalNotToReactRuleActionRsnPK) obj;
+		if (reactionRuleId != other.reactionRuleId) {
+			return false;
+		}
+		if (reasonId != other.reasonId) {
+			return false;
+		}
+		return true;
+	}
+
 }

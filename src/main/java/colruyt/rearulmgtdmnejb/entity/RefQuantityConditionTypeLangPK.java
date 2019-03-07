@@ -38,6 +38,16 @@ public class RefQuantityConditionTypeLangPK implements Serializable {
 		this.isoLangCode = isoLangCode;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((isoLangCode == null) ? 0 : isoLangCode.hashCode());
+		result = prime * result + qtyCondId;
+		return result;
+	}
+
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;
@@ -60,14 +70,6 @@ public class RefQuantityConditionTypeLangPK implements Serializable {
 			return false;
 		}
 		return true;
-	}
-
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((isoLangCode == null) ? 0 : isoLangCode.hashCode());
-		result = prime * result + (qtyCondId ^ (qtyCondId >>> 32));
-		return result;
 	}
 
 }

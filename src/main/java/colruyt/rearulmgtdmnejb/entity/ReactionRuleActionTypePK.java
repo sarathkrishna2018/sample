@@ -36,23 +36,34 @@ public class ReactionRuleActionTypePK implements Serializable {
 		this.reaRuleId = reaRuleId;
 	}
 
-	public boolean equals(Object other) {
-		if (this == other) {
-			return true;
-		}
-		if (!(other instanceof ReactionRuleActionTypePK)) {
-			return false;
-		}
-		ReactionRuleActionTypePK castOther = (ReactionRuleActionTypePK) other;
-		return (this.actionTypeId == castOther.actionTypeId) && (this.reaRuleId == castOther.reaRuleId);
-	}
-
+	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int hash = 17;
-		hash = hash * prime + (this.actionTypeId ^ (this.actionTypeId >>> 32));
-		hash = hash * prime + (int) ((this.reaRuleId ^ (this.reaRuleId >>> 32)));
-
-		return hash;
+		int result = 1;
+		result = prime * result + actionTypeId;
+		result = prime * result + (int) (reaRuleId ^ (reaRuleId >>> 32));
+		return result;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		ReactionRuleActionTypePK other = (ReactionRuleActionTypePK) obj;
+		if (actionTypeId != other.actionTypeId) {
+			return false;
+		}
+		if (reaRuleId != other.reaRuleId) {
+			return false;
+		}
+		return true;
+	}
+
 }

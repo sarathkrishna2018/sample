@@ -38,22 +38,38 @@ public class RefFilterOutRecordingTypeLangPK implements Serializable {
 		this.isoLangCode = isoLangCode;
 	}
 
-	public boolean equals(Object other) {
-		if (this == other) {
-			return true;
-		}
-		if (!(other instanceof RefFilterOutRecordingTypeLangPK)) {
-			return false;
-		}
-		RefFilterOutRecordingTypeLangPK castOther = (RefFilterOutRecordingTypeLangPK) other;
-		return (this.fltoutTypeId == castOther.fltoutTypeId) && this.isoLangCode.equals(castOther.isoLangCode);
-	}
-
+	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int hash = 17;
-		hash = hash * prime + (this.fltoutTypeId ^ (this.fltoutTypeId >>> 32));
-		hash = hash * prime + this.isoLangCode.hashCode();
-		return hash;
+		int result = 1;
+		result = prime * result + fltoutTypeId;
+		result = prime * result + ((isoLangCode == null) ? 0 : isoLangCode.hashCode());
+		return result;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		RefFilterOutRecordingTypeLangPK other = (RefFilterOutRecordingTypeLangPK) obj;
+		if (fltoutTypeId != other.fltoutTypeId) {
+			return false;
+		}
+		if (isoLangCode == null) {
+			if (other.isoLangCode != null) {
+				return false;
+			}
+		} else if (!isoLangCode.equals(other.isoLangCode)) {
+			return false;
+		}
+		return true;
+	}
+
 }
