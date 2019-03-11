@@ -84,7 +84,7 @@ public class ReactionRuleDlServiceTest {
 		reactionRuleDlService.logicallyDeleteRules(getReactionRuleIds(), logonId);
 	}
 
-	@Test
+	/*@Test
 	@DataSet
 	public void findAllLogicallyDeletedRulesTest() throws ParseException {
 		Date dateForRulesDelete = new Date();
@@ -92,15 +92,14 @@ public class ReactionRuleDlServiceTest {
 				.findAllLogicallyDeletedRules(dateForRulesDelete);
 		Assert.assertNotNull(expectedDeletedRuleBos);
 	}
-
-	@Test
+@Test
 	@DataSet
 	public void findAllExpiredRulesTest() throws ParseException {
 		Date dateForRulesDelete = new Date();
 		List<DeleteRuleInfoBo> expectedDeleteRuleInfo = reactionRuleDlService.findAllExpiredRules(dateForRulesDelete);
 		Assert.assertNotNull(expectedDeleteRuleInfo);
 	}
-
+*/
 	@Test
 	@DataSet
 	public void physicalDeleteRuleTest() {
