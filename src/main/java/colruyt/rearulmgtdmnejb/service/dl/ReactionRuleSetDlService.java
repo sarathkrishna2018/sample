@@ -132,10 +132,10 @@ public class ReactionRuleSetDlService implements Serializable {
 	}
 	
 	public List<DeleteRuleSetInfoBo> findAllLogicallyDeletedRuleSet(Date dateForRulesDelete) {		
-		List<DeleteRuleSetInfoBo> ruleSet = new ArrayList<DeleteRuleSetInfoBo>();
+		List<DeleteRuleSetInfoBo> ruleSet = new ArrayList<>();
 		Query query = entityManager.createNativeQuery("SELECT ruleSet.REA_RULESET_ID, ruleSet.RULETYPE_ID from"
-				+ " REA_RULESET ruleSet LEFT JOIN SOI_PPT_RULE soippt ON ruleSet.REA_RULESET_ID=soippt.REACT_RULESET_ID "
-				+ " LEFT JOIN SOI_CG_CHN_RULE soicg ON ruleSet.REA_RULESET_ID=soicg.REACT_RULESET_ID"
+				+ " {schema}.REA_RULESET ruleSet LEFT JOIN {schema}.SOI_PPT_RULE soippt ON ruleSet.REA_RULESET_ID=soippt.REACT_RULESET_ID "
+				+ " LEFT JOIN {schema}.SOI_CG_CHN_RULE soicg ON ruleSet.REA_RULESET_ID=soicg.REACT_RULESET_ID"
 				+ " where ruleSet.DATE_LOGICALLY_DELETED IS NOT NULL AND ruleSet.DATE_LOGICALLY_DELETED < (?1) AND soippt.REACT_RULESET_ID IS NULL AND soicg.REACT_RULESET_ID IS NULL");
 		query.setParameter(1, dateForRulesDelete, TemporalType.DATE);
 		List<Object[]> results = query.getResultList();
