@@ -44,7 +44,7 @@ public class ReactionRuleDlServiceTest extends UnitilsJUnit4 {
 	@DataSet("dataset/ReactionRuleDlServiceTest.xml")
 	public void createRuleTest() {
 		ReactionRule expectedReactionRule = reactionRuleDlService.createOrUpdate(getReactionRule());
-		assertThat(expectedReactionRule.getReaRulesetId() == 2L);
+		Assert.assertEquals(expectedReactionRule.getReaRulesetId(), 1L);
 
 	}
 
@@ -94,7 +94,7 @@ public class ReactionRuleDlServiceTest extends UnitilsJUnit4 {
 		reactionRuleDlService.logicallyDeleteRules(getReactionRuleIds(), logonId);
 	}
 
-	/*@Test
+	@Test
 	@DataSet("dataset/ReactionRuleSetDlServiceTest.xml")
 	public void findAllLogicallyDeletedRulesTest() throws ParseException {
 		Date newDate = new Date();
@@ -109,7 +109,7 @@ public class ReactionRuleDlServiceTest extends UnitilsJUnit4 {
 		List<DeleteRuleInfoBo> expectedDeleteRuleInfo = reactionRuleDlService.findAllExpiredRules(dateForRulesDelete);
 		assertThat(expectedDeleteRuleInfo.size()).isEqualTo(1);
 	}
-*/
+
 	@Test
 	@DataSet("dataset/ReactionRuleDlServiceTest.xml")
 	@ExpectedDataSet("result/PhysicalDeleteRuleTestResult.xml")
