@@ -29,8 +29,8 @@ import com.google.common.collect.Lists;
 
 import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
+import colruyt.rearulmgtdmnejb.util.DBUtil;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
-
 
 /**
  * @version 1.0
@@ -125,7 +125,6 @@ public class ReactionRuleDlService implements Serializable {
 		query.executeUpdate();
 	}
 
-	
 	public Long getMaxRulePriorityByRuleSetId(Long rulesetId) {
 		TypedQuery<Long> query = entityManager.createQuery(
 				"select max(reactionRule.rulePriority) from ReactionRule reactionRule where reactionRule.reaRulesetId = ?1",
@@ -147,12 +146,13 @@ public class ReactionRuleDlService implements Serializable {
 
 	public List<DeleteRuleInfoBo> findAllLogicallyDeletedRules(Date dateForRulesDelete) {
 		List<DeleteRuleInfoBo> rules = new ArrayList<>();
-		Query query = entityManager.createNativeQuery(
-				"SELECT rule.REA_RULE_ID, ruleSet.RULETYPE_ID from {schema}.REA_RULE rule "
-						+ "INNER JOIN {schema}.REA_RULESET ruleSet ON rule.REA_RULESET_ID =  ruleSet.REA_RULESET_ID where "
-						+ "rule.DATE_LOGICALLY_DELETED IS NOT NULL and rule.DATE_LOGICALLY_DELETED < (?1)");
-		query.setParameter(1, dateForRulesDelete, TemporalType.DATE);
-		List<Object[]> results = query.getResultList();
+		String query = "SELECT rule.REA_RULE_ID, ruleSet.RULETYPE_ID from SCHEMA.REA_RULE rule "
+				+ "INNER JOIN SCHEMA.REA_RULESET ruleSet ON rule.REA_RULESET_ID =  ruleSet.REA_RULESET_ID where "
+				+ "rule.DATE_LOGICALLY_DELETED IS NOT NULL and rule.DATE_LOGICALLY_DELETED < (?1)";
+		String queryWithSchemaName = DBUtil.updateQueryWithSchemaName(query, entityManager);
+		Query nativeQuery = entityManager.createNativeQuery(queryWithSchemaName);
+		nativeQuery.setParameter(1, dateForRulesDelete, TemporalType.DATE);
+		List<Object[]> results = nativeQuery.getResultList();
 		for (Object[] item : results) {
 			Long ruleId = ((BigDecimal) item[0]).longValue();
 			Long ruleType = ((BigDecimal) item[1]).longValue();
@@ -165,12 +165,14 @@ public class ReactionRuleDlService implements Serializable {
 
 	public List<DeleteRuleInfoBo> findAllExpiredRules(Date dateForRulesDelete) {
 		List<DeleteRuleInfoBo> rules = new ArrayList<>();
-		Query query = entityManager.createNativeQuery(
-				"SELECT rule.REA_RULE_ID, ruleSet.RULETYPE_ID from {schema}.REA_RULE rule "
-						+ "INNER JOIN {schema}.REA_RULESET ruleSet ON rule.REA_RULESET_ID =  ruleSet.REA_RULESET_ID where "
-						+ "rule.VALID_UPTO IS NOT NULL and rule.VALID_UPTO < (?1)");
-		query.setParameter(1, dateForRulesDelete, TemporalType.DATE);
-		List<Object[]> results = query.getResultList();
+		String query = "SELECT rule.REA_RULE_ID, ruleSet.RULETYPE_ID from SCHEMA.REA_RULE rule "
+				+ "INNER JOIN SCHEMA.REA_RULESET ruleSet ON rule.REA_RULESET_ID =  ruleSet.REA_RULESET_ID where "
+				+ "rule.VALID_UPTO IS NOT NULL and rule.VALID_UPTO < (?1)";
+		String queryWithSchemaName = DBUtil.updateQueryWithSchemaName(query, entityManager);
+		Query nativeQuery = entityManager.createNativeQuery(queryWithSchemaName);
+
+		nativeQuery.setParameter(1, dateForRulesDelete, TemporalType.DATE);
+		List<Object[]> results = nativeQuery.getResultList();
 		for (Object[] item : results) {
 			Long ruleId = ((BigDecimal) item[0]).longValue();
 			Long ruleType = ((BigDecimal) item[1]).longValue();
