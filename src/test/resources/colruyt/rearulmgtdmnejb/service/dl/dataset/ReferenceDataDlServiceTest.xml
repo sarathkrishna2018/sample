@@ -6,6 +6,12 @@
 		DESCRIPTION="Filter out the price recording"
 		ISO_LANG_CODE="EN"
 	/>
+	<FLTOUT_TYPE_LANG
+		FLTOUT_TYPE_ID="2"
+     	FLTOUT_TYPE_NAME="Filter "
+		DESCRIPTION="Filter out the price recording"
+		ISO_LANG_CODE="EN"
+	/>
 	<QTY_COND_LANG
 		QTY_COND_ID="1"
      	QTY_COND_NAME="NQTY >= BQTY"

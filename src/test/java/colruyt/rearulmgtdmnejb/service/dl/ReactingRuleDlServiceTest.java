@@ -1,13 +1,14 @@
 package colruyt.rearulmgtdmnejb.service.dl;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.util.Assert;
 import org.unitils.UnitilsJUnit4TestClassRunner;
 import org.unitils.database.annotations.Transactional;
 import org.unitils.database.util.TransactionMode;
 import org.unitils.dbunit.annotation.DataSet;
+import org.unitils.dbunit.annotation.ExpectedDataSet;
 import org.unitils.orm.jpa.JpaUnitils;
 import org.unitils.orm.jpa.annotation.JpaEntityManagerFactory;
 
@@ -27,19 +28,19 @@ public class ReactingRuleDlServiceTest {
 		JpaUnitils.injectEntityManagerInto(reactingRuleActionDlService);
 	}
 	@Test
-	@DataSet
 	public void createTest(){
 		ReactingRuleAction expectedReactingRule=reactingRuleActionDlService.createOrUpdate(getReactingRule());
-		Assert.notNull(expectedReactingRule);
+		Assert.assertEquals(expectedReactingRule.getReactionRuleId(), 1L);
 	}
 	@Test
-	@DataSet
+	@DataSet("dataset/ReactingRuleDlServiceTest.xml")
 	public void findByRuleIdTest(){
 		ReactingRuleAction expectedReactingRule=reactingRuleActionDlService.findByRuleId(1l);
-		Assert.notNull(expectedReactingRule);
+		Assert.assertEquals(expectedReactingRule.getReactionRuleId(), 1L);
 	}
 	@Test
-	@DataSet
+	@DataSet("dataset/ReactingRuleDlServiceTest.xml")
+	@ExpectedDataSet("result/ReactingRulePhysicalDeleteElementsTestResult.xml")
 	public void physicalDeleteElementsTest(){
 		reactingRuleActionDlService.physicalDeleteElements(getDeleteRuleInfoBo());
 	}

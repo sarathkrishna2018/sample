@@ -75,6 +75,7 @@
 	</xsd:complexType>
 	<xsd:complexType name="REA_NREACT_SET_RSN__type">
 		<xsd:attribute name="REASON_ID" use="optional" />
+		<xsd:attribute name="LST_UPDATE_TS" use="optional" />
 		<xsd:attribute name="REA_RULE_ID" use="optional" />
 	</xsd:complexType>
 	<xsd:complexType name="REA_NREACT_ACT__type">

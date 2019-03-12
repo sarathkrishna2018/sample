@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <dataset>
 	<REA_RULE_ACTTYPE
-		ACTION_TYPE_ID="1"
-		REA_RULE_ID="1"	
+		ACTION_TYPE_ID="2"
+		REA_RULE_ID="2"	
 	/>
 </dataset>	

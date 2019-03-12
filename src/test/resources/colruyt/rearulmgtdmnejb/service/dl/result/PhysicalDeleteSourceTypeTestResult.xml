@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <dataset>
 	<REA_RULE_SRC
-		SOURCE_ID="9"
-		REA_RULE_ID="1"	
+		SOURCE_ID="3"
+		REA_RULE_ID="2"	
 	/>
-</dataset>	
+</dataset>

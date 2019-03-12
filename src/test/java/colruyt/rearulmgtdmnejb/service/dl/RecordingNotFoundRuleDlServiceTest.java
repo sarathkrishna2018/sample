@@ -8,6 +8,7 @@ import org.unitils.UnitilsJUnit4TestClassRunner;
 import org.unitils.database.annotations.Transactional;
 import org.unitils.database.util.TransactionMode;
 import org.unitils.dbunit.annotation.DataSet;
+import org.unitils.dbunit.annotation.ExpectedDataSet;
 import org.unitils.orm.jpa.JpaUnitils;
 import org.unitils.orm.jpa.annotation.JpaEntityManagerFactory;
 
@@ -29,22 +30,22 @@ public class RecordingNotFoundRuleDlServiceTest {
 	}
 
 	@Test
-	@DataSet
 	public void createTest() {
 		RecordingNotFoundRuleAction expectedRecordingNotFoundRule = recordingNotFoundRuleActionDlService
 				.createOrUpdate(getrecordingNotFoundRuleAction());
-		Assert.assertNotNull(expectedRecordingNotFoundRule);
+		Assert.assertEquals(expectedRecordingNotFoundRule.getReaRuleId(), 1L);
 
 	}
 	@Test
-	@DataSet
+	@DataSet("dataset/RecordingNotFoundRuleDlServiceTest.xml")
 	public void findByRuleIdTest() {
 		RecordingNotFoundRuleAction expectedRecordingNotFoundRule = recordingNotFoundRuleActionDlService.findByRuleId(1l);
-		Assert.assertNotNull(expectedRecordingNotFoundRule);
+		Assert.assertEquals(expectedRecordingNotFoundRule.getReaRuleId(), 1L);
 	}
 
 	@Test
-	@DataSet
+	@DataSet("dataset/RecordingNotFoundRuleDlServiceTest.xml")
+	@ExpectedDataSet("result/RecordNotFoundPhysicalDeleteElementsTestResult.xml")
 	public void physicalDeleteElementsTest() {
 		recordingNotFoundRuleActionDlService.physicalDeleteElements(getDeleteRuleInfoBo());
 		

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<REA_REACTING_ACT
+		REA_RULE_ID="2"
+		CATCH_ALL_YN="Y"
+		REACTING_AMT="7.000"
+		REACTING_PERC="4.000"
+		THOLD_AMT="6.000"
+		THOLD_PERC="2.000"
+	/>
+</dataset>

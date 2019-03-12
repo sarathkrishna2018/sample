@@ -7,10 +7,8 @@
 		OWN_BRAND_YN="Y"
 		NAT_BRAND_YN="Y"
 		CHEAP_BRAND_YN="Y"
-		CREATED_BY="ktr"
-		LST_UPDATE_BY="ktr"
-
-
+		CREATED_BY="ake"
+		LST_UPDATE_BY="ake"
 	/>
 	<REA_PPD_HCHY_ELMNT 
 		PPD_HCHY_ELMNT_ID="1"
@@ -23,5 +21,6 @@
 		PPD_HCHY_ELMNT_ID="1"
 		LST_UPDATE_BY="ake"
 	/>
+	
 	
 </dataset>

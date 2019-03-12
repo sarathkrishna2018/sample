@@ -1,7 +1,8 @@
 package colruyt.rearulmgtdmnejb.service.dl;
 
-import java.util.List;
+import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -10,6 +11,7 @@ import org.unitils.UnitilsJUnit4TestClassRunner;
 import org.unitils.database.annotations.Transactional;
 import org.unitils.database.util.TransactionMode;
 import org.unitils.dbunit.annotation.DataSet;
+import org.unitils.dbunit.annotation.ExpectedDataSet;
 import org.unitils.orm.jpa.JpaUnitils;
 import org.unitils.orm.jpa.annotation.JpaEntityManagerFactory;
 
@@ -35,82 +37,92 @@ public class ProductHierarchySetDlServiceTest {
 	}
 
 	@Test
-	@DataSet
+	@DataSet("dataset/ProductHierarchySetDlServiceTest.xml")
 	public void createProductHierarachySetTest() {
 		PriceProductHierarchySet expectedPriceProductHierarchySet = productHierarchySetDlService
 				.create(getPriceProductHierarchySet());
-		Assert.assertNotNull(expectedPriceProductHierarchySet);
+		Assert.assertEquals(expectedPriceProductHierarchySet.getProductHierarchySetId(), new Long(504l));
 	}
 
 	@Test
-	@DataSet
+	@DataSet("dataset/ProductHierarchySetDlServiceTest.xml")
 	public void createProductHierarachySetElementTest() {
 		PriceProductHierarchySetElmnt expectedPriceProductHierarchySetElement = productHierarchySetDlService
 				.create(getPriceProductHierarchySetElmnt());
-		Assert.assertNotNull(expectedPriceProductHierarchySetElement);
+		Assert.assertEquals(expectedPriceProductHierarchySetElement.getId().getProductHierarchyElementId(), 1);
 	}
 
 	@Test
-	@DataSet
+	@DataSet("dataset/ProductHierarchySetDlServiceTest.xml")
 	public void findByPkTest() {
 		PriceProductHierarchySet expectedPriceProductHierarchySetElement = productHierarchySetDlService.findByPk(504l);
-		Assert.assertNotNull(expectedPriceProductHierarchySetElement);
+		Assert.assertEquals(expectedPriceProductHierarchySetElement.getProductHierarchySetId(), new Long(504l));
 	}
 
 	@Test
-	@DataSet
+	@DataSet("dataset/ProductHierarchySetDlServiceTest.xml")
+	@ExpectedDataSet("result/RemoveProductHierarchyElementTestResult.xml")
 	public void removeProductHierarchyElementTest() {
-		productHierarchySetDlService.removeProductHierarchyElement(504l);
+		productHierarchySetDlService.removeProductHierarchyElement(111l);
 	}
 
 	@Test
-	@DataSet
+	@DataSet("dataset/ProductHierarchySetDlServiceTest.xml")
 	public void findSetElementByElementIdsTest() {
 		List<PriceProductHierarchySetElmnt> expectedpriceProductHierarchySetElmntList = productHierarchySetDlService
-				.findSetElementByElementIds(getpriceProductHierarchySetElmntList());
-		Assert.assertNotNull(expectedpriceProductHierarchySetElmntList);
+				.findSetElementByElementIds(getpriceProductHierarchySetElmntValues());
+		assertThat(expectedpriceProductHierarchySetElmntList.size()).isEqualTo(1);
+
 	}
 
 	@Test
-	@DataSet
+	@DataSet("dataset/ProductHierarchySetDlServiceTest.xml")
 	public void findSetElementBySetIdsTest() {
 		List<Long> expectedpriceProductHierarchySetElmntList = productHierarchySetDlService
-				.findSetElementBySetIds(getpriceProductHierarchySetElmntList());
-		Assert.assertNotNull(expectedpriceProductHierarchySetElmntList);
+				.findSetElementBySetIds(getpriceProductHierarchySetIds());
+		assertThat(expectedpriceProductHierarchySetElmntList.size()).isEqualTo(1);
 	}
 
 	@Test
-	@DataSet
+	@DataSet("dataset/ProductHierarchySetDlServiceTest.xml")
+	@ExpectedDataSet("result/DeleteSetElementsTestResult.xml")
 	public void deleteSetElementsTest() {
-		productHierarchySetDlService.deleteSetElements(getpriceProductHierarchySetElmntList());
+		productHierarchySetDlService.deleteSetElements(getpriceProductHierarchySetIds());
 	}
 
 	@Test
-	@DataSet
+	@DataSet("dataset/ProductHierarchySetDlServiceTest.xml")
 	public void findProductSetByIdsTest() {
 		List<PriceProductHierarchySet> expectedpriceProductHierarchySetElmntList = productHierarchySetDlService
-				.findProductSetByIds(getpriceProductHierarchySetElmntList());
-		Assert.assertNotNull(expectedpriceProductHierarchySetElmntList);
+				.findProductSetByIds(getpriceProductHierarchySetIds());
+		assertThat(expectedpriceProductHierarchySetElmntList.size()).isEqualTo(1);
 	}
 
 	@Test
-	@DataSet
+	@DataSet("dataset/ProductHierarchySetDlServiceTest.xml")
 	public void getPriceProductHierarchySetElementIdTest() {
-		long expectedpriceProductHierarchySetElmntList = productHierarchySetDlService
-				.getPriceProductHierarchySetElementId(getDeleteRuleInfoBo());
-		Assert.assertNotNull(expectedpriceProductHierarchySetElmntList);
+		Long expectedResult=productHierarchySetDlService.getPriceProductHierarchySetElementId(getDeleteRuleInfoBo());
+		Assert.assertEquals(expectedResult, new Long(504l));
 	}
 
 	@Test
-	@DataSet
+	@DataSet("dataset/ProductHierarchySetDlServiceTest.xml")
+	@ExpectedDataSet("result/DeletePriceProductHierarchySetElemnetTestResult.xml")
 	public void deletePriceProductHierarchySetElemnetTest() {
-		productHierarchySetDlService.deletePriceProductHierarchySetElemnet(5l);
+		productHierarchySetDlService.deletePriceProductHierarchySetElemnet(111l);
 	}
 
 	@Test
-	@DataSet
+	@DataSet("dataset/ProductHierarchySetDlServiceTest.xml")
+	@ExpectedDataSet("result/DeletePriceProductHierarchySetTestResult.xml")
 	public void deletePriceProductHierarchySetTest() {
 		productHierarchySetDlService.deletePriceProductHierarchySet(getDeleteRuleInfoBo());
+	}
+
+	private List<Long> getpriceProductHierarchySetIds() {
+		List<Long> priceProductHierarchySetIds = Lists.newArrayList();
+		priceProductHierarchySetIds.add(504l);
+		return priceProductHierarchySetIds;
 	}
 
 	private PriceProductHierarchySet getPriceProductHierarchySet() {
@@ -122,7 +134,7 @@ public class ProductHierarchySetDlServiceTest {
 		reaPriceProductHierarchySet.setNationalBrand(true);
 		reaPriceProductHierarchySet.setOwnBrand(true);
 		reaPriceProductHierarchySet.setProductHierarchySetId(504l);
-		reaPriceProductHierarchySet.setReactionRuleId(2l);
+		reaPriceProductHierarchySet.setReactionRuleId(1l);
 		reaPriceProductHierarchySet.setPriceProductHierarchyElements(getPriceProductHierarchyElementList());
 		return reaPriceProductHierarchySet;
 	}
@@ -156,15 +168,14 @@ public class ProductHierarchySetDlServiceTest {
 		reaPpdHchysetElmnt.setLstUpdateBy("Sa");
 		PriceProductHierarchySetElmntPK hierarchySetElmntPK = new PriceProductHierarchySetElmntPK();
 		hierarchySetElmntPK.setProductHierarchyElementId(1L);
-		hierarchySetElmntPK.setProdicyHierarchySetId(1L);
+		hierarchySetElmntPK.setProdicyHierarchySetId(504L);
 		reaPpdHchysetElmnt.setId(hierarchySetElmntPK);
 		return reaPpdHchysetElmnt;
 	}
 
-	List<Long> getpriceProductHierarchySetElmntList() {
+	private List<Long> getpriceProductHierarchySetElmntValues() {
 		List<Long> priceProductHierarchySetElmntList = Lists.newArrayList();
-		priceProductHierarchySetElmntList.add(5l);
-		priceProductHierarchySetElmntList.add(2l);
+		priceProductHierarchySetElmntList.add(1l);
 		return priceProductHierarchySetElmntList;
 	}
 

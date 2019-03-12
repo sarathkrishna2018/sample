@@ -7,6 +7,7 @@ import org.unitils.UnitilsJUnit4TestClassRunner;
 import org.unitils.database.annotations.Transactional;
 import org.unitils.database.util.TransactionMode;
 import org.unitils.dbunit.annotation.DataSet;
+import org.unitils.dbunit.annotation.ExpectedDataSet;
 import org.unitils.orm.jpa.JpaUnitils;
 import org.unitils.orm.jpa.annotation.JpaEntityManagerFactory;
 
@@ -27,22 +28,22 @@ public class ReactionPeriodRuleDlServiceTest {
 	}
 
 	@Test
-	@DataSet
 	public void createTest() {
 		ReactionPeriodRuleAction expectedReactionPeriodRule = reactionPeriodActionDlService
 				.createOrUpdate(getreactionPeriodRuleAction());
-		Assert.assertNotNull(expectedReactionPeriodRule);
+		Assert.assertEquals(expectedReactionPeriodRule.getReaRuleId(), 1L);
 
 	}
 	@Test
-	@DataSet
+	@DataSet("dataset/ReactionPeriodRuleDlServiceTest.xml")
 	public void findByRuleIdTest() {
 		ReactionPeriodRuleAction expectedReactionPeriodRule = reactionPeriodActionDlService.findByRuleId(1l);
-		Assert.assertNotNull(expectedReactionPeriodRule);
+		Assert.assertEquals(expectedReactionPeriodRule.getReaRuleId(), 1L);
 	}
 
 	@Test
-	@DataSet
+	@DataSet("dataset/ReactionPeriodRuleDlServiceTest.xml")
+	@ExpectedDataSet("result/ReactionPeriodRulePhysicalDeleteElementsTestResult.xml")
 	public void physicalDeleteElementsTest() {
 		reactionPeriodActionDlService.physicalDeleteElements(getDeleteRuleInfoBo());
 		

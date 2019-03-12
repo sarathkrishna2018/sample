@@ -1,5 +1,9 @@
 package colruyt.rearulmgtdmnejb.service.dl;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
@@ -13,6 +17,7 @@ import org.unitils.UnitilsJUnit4TestClassRunner;
 import org.unitils.database.annotations.Transactional;
 import org.unitils.database.util.TransactionMode;
 import org.unitils.dbunit.annotation.DataSet;
+import org.unitils.dbunit.annotation.ExpectedDataSet;
 import org.unitils.orm.jpa.JpaUnitils;
 import org.unitils.orm.jpa.annotation.JpaEntityManagerFactory;
 
@@ -38,47 +43,45 @@ public class ReactionRuleSetDlServiceTest {
 	}
 
 	@Test
-	@DataSet
+	@DataSet("dataset/ReactionRuleSetDlServiceTest.xml")
 	public void createTest() {
 		ReactionRuleSet expectedReactionRuleSet = reactionRuleSetDlService.createOrUpdate(getReactionRuleSet());
-		Assert.assertNotNull(expectedReactionRuleSet);
+		Assert.assertEquals(expectedReactionRuleSet.getReaRulesetId(), new Long(501L));
 
 	}
 	@Test
-	@DataSet
+	@DataSet("dataset/ReactionRuleSetDlServiceTest.xml")
 	public void findByPkTest() {
 		ReactionRuleSet expectedReactionRuleSet = reactionRuleSetDlService.findByPk(501l);
-		Assert.assertNotNull(expectedReactionRuleSet);
+		Assert.assertEquals(expectedReactionRuleSet.getColruytGroupChainId(), 1);
 
 	}
 	@Test
-	@DataSet
+	@DataSet("dataset/ReactionRuleSetDlServiceTest.xml")
 	public void findByAttributesTest() {
-		List<ReactionRuleSet> expectedReactionRuleSetList = reactionRuleSetDlService.findByAttributes(1l, 63l, 2l);
-		Assert.assertNotNull(expectedReactionRuleSetList);
+		List<ReactionRuleSet> expectedReactionRuleSetList = reactionRuleSetDlService.findByAttributes(1l, 1l, 1l);
+		assertThat(expectedReactionRuleSetList.size()).isEqualTo(1);
 
 	}
 	@Test
-	@DataSet
+	@DataSet("dataset/ReactionRuleSetDlServiceTest.xml")
 	public void findByCgChainAndPCChainTest() {
-		List<ReactionRuleSet> expectedReactionRuleSetList = reactionRuleSetDlService.findByCgChainAndPCChain(1l, 63l);
-		Assert.assertNotNull(expectedReactionRuleSetList);
+		List<ReactionRuleSet> expectedReactionRuleSetList = reactionRuleSetDlService.findByCgChainAndPCChain(1l, 1l);
+		assertThat(expectedReactionRuleSetList.size()).isEqualTo(1);
 	}
 	@Test
-	@DataSet
-	public void logicallyDeleteRuleSetTest() {
+	@DataSet("dataset/ReactionRuleSetDlServiceTest.xml")
+	public void logicallyDeleteRuleSetTest() throws ParseException {
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		Date actualDate = formatter.parse(formatter.format(new Date()));
 		reactionRuleSetDlService.logicallyDeleteRuleSet(getReactionRuleSet());
+		ReactionRuleSet expectedReactionRuleSet = reactionRuleSetDlService.findByPk(501l);
+		Assert.assertEquals(expectedReactionRuleSet.getLogicallyDeletedDate(), actualDate);
 
 	}
-	/*@Test
-	@DataSet
-	public void findAllLogicallyDeletedRuleSetTest() {
-		Date date =new Date();
-		List<DeleteRuleSetInfoBo> expectedLogicallyDeletedRuleSet=reactionRuleSetDlService.findAllLogicallyDeletedRuleSet(date);
-		Assert.assertNotNull(expectedLogicallyDeletedRuleSet);
-	}*/
 	@Test
-	@DataSet
+	@DataSet("dataset/ReactionRuleSetDlServiceTest.xml")
+	@ExpectedDataSet("result/PhysicalDeleteAllRuleSetTestResult.xml")
 	public void physicalDeleteAllRuleSetTest() {
 		reactionRuleSetDlService.physicalDeleteAllRuleSet(getReactionRuleId());
 
@@ -141,7 +144,6 @@ public class ReactionRuleSetDlServiceTest {
 	private Set<Long> getReactionRuleId(){
 		Set<Long> reactionRuleIdSet = new HashSet<>();
 		reactionRuleIdSet.add(5l);
-		reactionRuleIdSet.add(2l);
 		return reactionRuleIdSet;
 	}
 

@@ -1,5 +1,7 @@
 package colruyt.rearulmgtdmnejb.service.dl;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.util.List;
 
 import org.junit.Before;
@@ -9,6 +11,7 @@ import org.unitils.UnitilsJUnit4TestClassRunner;
 import org.unitils.database.annotations.Transactional;
 import org.unitils.database.util.TransactionMode;
 import org.unitils.dbunit.annotation.DataSet;
+import org.unitils.dbunit.annotation.ExpectedDataSet;
 import org.unitils.orm.jpa.JpaUnitils;
 import org.unitils.orm.jpa.annotation.JpaEntityManagerFactory;
 
@@ -30,39 +33,51 @@ public class ProductHierarchyElementDlServiceTest {
 		productHierarchyElementDlService = new ProductHierarchyElementDlService();
 		JpaUnitils.injectEntityManagerInto(productHierarchyElementDlService);
 	}
+
 	@Test
-	@DataSet
-	public void findByHierarchyValueListTest(){
-		List<PriceProductHierarchyElement> expectedPriceProductHierarchyElement=productHierarchyElementDlService.findByHierarchyValueList(getProductHierarchyElmntValues());
-		Assert.assertNotNull(expectedPriceProductHierarchyElement);
+	@DataSet("dataset/ProductHierarchyElementDlServiceTest.xml")
+	public void findByHierarchyValueListTest() {
+		List<PriceProductHierarchyElement> expectedPriceProductHierarchyElement = productHierarchyElementDlService
+				.findByHierarchyValueList(getProductHierarchyElmntValues());
+		assertThat(expectedPriceProductHierarchyElement.size()).isEqualTo(2);
 	}
+
 	@Test
-	@DataSet
-	public void createProductHierarachyTest(){
-		PriceProductHierarchyElement expectedPriceProductHierarchyElement=productHierarchyElementDlService.create(getProductHchyElement());
-		Assert.assertNotNull(expectedPriceProductHierarchyElement);
+	@DataSet("dataset/ProductHierarchyElementDlServiceTest.xml")
+	public void createProductHierarachyTest() {
+		PriceProductHierarchyElement expectedPriceProductHierarchyElement = productHierarchyElementDlService
+				.create(getProductHchyElement());
+		Assert.assertEquals(expectedPriceProductHierarchyElement.getProductHierarchyElementId(), new Long(1l));
 	}
+
 	@Test
-	@DataSet
-	public void findAllElementsTest(){
-		List<PriceProductHierarchyElement> priceProductHierarchyElements=productHierarchyElementDlService.findAllElements();
-		Assert.assertNotNull(priceProductHierarchyElements);
+	@DataSet("dataset/ProductHierarchyElementDlServiceTest.xml")
+	public void findAllElementsTest() {
+		List<PriceProductHierarchyElement> priceProductHierarchyElements = productHierarchyElementDlService
+				.findAllElements();
+		assertThat(priceProductHierarchyElements.size()).isEqualTo(3);
 	}
+
 	@Test
-	@DataSet
-	public void deleteElementsTest(){
+	@DataSet("dataset/ProductHierarchyElementDlServiceTest.xml")
+	@ExpectedDataSet("result/DeleteElementsTestResult.xml")
+	public void deleteElementsTest() {
 		productHierarchyElementDlService.deleteElements(getElementsIds());
 	}
+
 	private List<Long> getElementsIds() {
-		List<Long> elementIds=Lists.newArrayList();
+		List<Long> elementIds = Lists.newArrayList();
 		elementIds.add(1l);
+		elementIds.add(2l);
 		return elementIds;
 	}
+
 	private List<String> getProductHierarchyElmntValues() {
-		List<String> productHierarchyElmnt=Lists.newArrayList();
+		List<String> productHierarchyElmnt = Lists.newArrayList();
 		productHierarchyElmnt.add("All");
 		return productHierarchyElmnt;
 	}
+
 	private PriceProductHierarchyElement getProductHchyElement() {
 		PriceProductHierarchyElement reaPpdHchyElmnt = new PriceProductHierarchyElement();
 		reaPpdHchyElmnt.setProductHierarchyElementId(1l);
@@ -72,6 +87,7 @@ public class ProductHierarchyElementDlServiceTest {
 		reaPpdHchyElmnt.setProdHrchySetElement(getReaPpdHchysetElmnt());
 		return reaPpdHchyElmnt;
 	}
+
 	private List<PriceProductHierarchySetElmnt> getReaPpdHchysetElmnt() {
 		List<PriceProductHierarchySetElmnt> reaPpdHchysetElmntlist = Lists.newArrayList();
 		PriceProductHierarchySetElmnt reaPpdHchysetElmnt = new PriceProductHierarchySetElmnt();
@@ -84,6 +100,5 @@ public class ProductHierarchyElementDlServiceTest {
 		return reaPpdHchysetElmntlist;
 
 	}
-
 
 }

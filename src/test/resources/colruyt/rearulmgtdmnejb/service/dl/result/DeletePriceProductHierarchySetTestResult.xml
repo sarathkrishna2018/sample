@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<REA_PPD_HCHYSET
+		PPD_HCHYSET_ID="111"
+		REA_RULE_ID="2"
+		ASSORTMENT_NAME="ALL"
+		OWN_BRAND_YN="Y"
+		NAT_BRAND_YN="Y"
+		CHEAP_BRAND_YN="Y"
+		CREATED_BY="ktr"
+		LST_UPDATE_BY="ktr"
+	/>
+	<REA_PPD_HCHY_ELMNT 
+		PPD_HCHY_ELMNT_ID="2"
+		PPD_HCHY_TYPE_ID="2"
+		PPD_HCHY_VALUE="All"
+		CREATED_BY="ake"	
+	/>
+	<REA_PPD_HCHYSET_ELMNT
+		PPD_HCHYSET_ID="111"
+		PPD_HCHY_ELMNT_ID="2"
+		LST_UPDATE_BY="ake"
+	/>
+</dataset>

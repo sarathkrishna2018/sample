@@ -10,6 +10,7 @@ import org.unitils.UnitilsJUnit4TestClassRunner;
 import org.unitils.database.annotations.Transactional;
 import org.unitils.database.util.TransactionMode;
 import org.unitils.dbunit.annotation.DataSet;
+import org.unitils.dbunit.annotation.ExpectedDataSet;
 import org.unitils.orm.jpa.JpaUnitils;
 import org.unitils.orm.jpa.annotation.JpaEntityManagerFactory;
 
@@ -31,28 +32,30 @@ public class ProposalNotToReactActionDlServiceTest {
 	}
 
 	@Test
-	@DataSet
+	@DataSet("dataset/ProposalNotToReactActionDlServiceTest.xml")
 	public void createTest() {
 		ProposalNotToReactRuleAction expectedProposalNotToReactRuleAction = proposalNotToReactActionDlService
 				.createOrUpdate(getProposalNotToReactRuleAction());
-		Assert.assertNotNull(expectedProposalNotToReactRuleAction);
+		Assert.assertEquals(expectedProposalNotToReactRuleAction.getReactionRuleId(), 1L);
 
 	}
 	@Test
-	@DataSet
+	@DataSet("dataset/ProposalNotToReactActionDlServiceTest.xml")
 	public void findByRuleIdTest() {
 		ProposalNotToReactRuleAction expectedProposalNotToReactRule = proposalNotToReactActionDlService.findByRuleId(1l);
-		Assert.assertNotNull(expectedProposalNotToReactRule);
+		Assert.assertEquals(expectedProposalNotToReactRule.getReactionRuleId(), 1L);
 	}
 
 	@Test
-	@DataSet
+	@DataSet("dataset/ProposalNotToReactActionDlServiceTest.xml")
+	@ExpectedDataSet("result/PhysicalDeleteElementsRsnTestResult.xml")
 	public void physicalDeleteElementsTest() {
 		proposalNotToReactActionDlService.physicalDeleteElements(getDeleteRuleInfoBo());
 		
 	}
 	@Test
-	@DataSet
+	@DataSet("dataset/ProposalNotToReactActionDlServiceTest.xml")
+	@ExpectedDataSet("result/PhysicalDeleteElementsRsnTestResult.xml")
 	public void physicalDeleteElementsRsnTest() {
 		proposalNotToReactActionDlService.physicalDeleteElementsRsn(getDeleteRuleInfoBo());
 		

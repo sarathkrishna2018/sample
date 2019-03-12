@@ -55,8 +55,8 @@ Create table REA_NREACT_ACT(
 --------------------------------------------------
 Create table REA_NREACT_SET_RSN(
 	REA_RULE_ID				DECIMAL(9)		NOT NULL,
-	REASON_ID			    DECIMAL(3)	    NOT NULL
-	
+	REASON_ID			    DECIMAL(3)	    NOT NULL,
+	LST_UPDATE_TS			TIMESTAMP(10)	NOT NULL
 );
 
 --------------------------------------------------

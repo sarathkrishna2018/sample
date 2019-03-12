@@ -8,6 +8,7 @@ import org.unitils.UnitilsJUnit4TestClassRunner;
 import org.unitils.database.annotations.Transactional;
 import org.unitils.database.util.TransactionMode;
 import org.unitils.dbunit.annotation.DataSet;
+import org.unitils.dbunit.annotation.ExpectedDataSet;
 import org.unitils.orm.jpa.JpaUnitils;
 import org.unitils.orm.jpa.annotation.JpaEntityManagerFactory;
 
@@ -28,31 +29,29 @@ public class FilteringRuleDlServiceTest {
 	}
 
 	@Test
-	@DataSet
 	public void createTest() {
 		FilteringRuleAction expectedFilteringRule = filteringRuleActionDlService.createOrUpdate(getReaFltRule());
-		Assert.assertNotNull(expectedFilteringRule);
-
+		Assert.assertEquals(expectedFilteringRule.getReactionRuleId(), 1L);
 	}
 
 	@Test
-	@DataSet
+	@DataSet("dataset/FilteringRuleDlServiceTest.xml")
 	public void findByRuleIdTest() {
-		FilteringRuleAction expectedFilteringRule = filteringRuleActionDlService.findByRuleId(1l);
-		Assert.assertNotNull(expectedFilteringRule);
+		FilteringRuleAction expectedFilteringRule = filteringRuleActionDlService.findByRuleId(2l);
+		Assert.assertEquals(expectedFilteringRule.getReactionRuleId(), 2L);
 	}
 
 	@Test
-	@DataSet
+	@DataSet("dataset/FilteringRuleDlServiceTest.xml")
+	@ExpectedDataSet("result/FilteringRulePhysicalDeleteElementsTestResult.xml")
 	public void physicalDeleteElementsTest() {
 		filteringRuleActionDlService.physicalDeleteElements(getDeleteRuleInfoBo());
-		
 	}
 
 	private DeleteRuleInfoBo getDeleteRuleInfoBo() {
-		DeleteRuleInfoBo deleteRuleInfoBo = new DeleteRuleInfoBo(1l, 1l);
+		DeleteRuleInfoBo deleteRuleInfoBo = new DeleteRuleInfoBo(1l, 3l);
 		deleteRuleInfoBo.setRuleId(1l);
-		deleteRuleInfoBo.setRuleType(1l);
+		deleteRuleInfoBo.setRuleType(3l);
 		return deleteRuleInfoBo;
 	}
 
