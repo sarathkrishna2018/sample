@@ -2,7 +2,6 @@ package colruyt.rearulmgtdmnejb.service.dl;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -145,7 +144,7 @@ public class ReactionRuleDlService implements Serializable {
 	}
 
 	public List<DeleteRuleInfoBo> findAllLogicallyDeletedRules(Date dateForRulesDelete) {
-		List<DeleteRuleInfoBo> rules = new ArrayList<>();
+		List<DeleteRuleInfoBo> rules = Lists.newArrayList();
 		String query = "SELECT rule.REA_RULE_ID, ruleSet.RULETYPE_ID from SCHEMA.REA_RULE rule "
 				+ "INNER JOIN SCHEMA.REA_RULESET ruleSet ON rule.REA_RULESET_ID =  ruleSet.REA_RULESET_ID where "
 				+ "rule.DATE_LOGICALLY_DELETED IS NOT NULL and rule.DATE_LOGICALLY_DELETED < (?1)";
@@ -164,7 +163,7 @@ public class ReactionRuleDlService implements Serializable {
 	}
 
 	public List<DeleteRuleInfoBo> findAllExpiredRules(Date dateForRulesDelete) {
-		List<DeleteRuleInfoBo> rules = new ArrayList<>();
+		List<DeleteRuleInfoBo> rules = Lists.newArrayList();
 		String query = "SELECT rule.REA_RULE_ID, ruleSet.RULETYPE_ID from SCHEMA.REA_RULE rule "
 				+ "INNER JOIN SCHEMA.REA_RULESET ruleSet ON rule.REA_RULESET_ID =  ruleSet.REA_RULESET_ID where "
 				+ "rule.VALID_UPTO IS NOT NULL and rule.VALID_UPTO < (?1)";

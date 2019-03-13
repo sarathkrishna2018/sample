@@ -2,7 +2,6 @@ package colruyt.rearulmgtdmnejb.service.dl;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -24,6 +23,8 @@ import javax.persistence.criteria.Root;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.google.common.collect.Lists;
 
 import colruyt.rearulmgtdmnejb.bo.DeleteRuleSetInfoBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionRuleSet;
@@ -137,7 +138,7 @@ public class ReactionRuleSetDlService implements Serializable {
 	}
 
 	public List<DeleteRuleSetInfoBo> findAllLogicallyDeletedRuleSet(Date dateForRulesDelete) {
-		List<DeleteRuleSetInfoBo> ruleSet = new ArrayList<>();
+		List<DeleteRuleSetInfoBo> ruleSet = Lists.newArrayList();
 		String query = "SELECT ruleSet.REA_RULESET_ID, ruleSet.RULETYPE_ID from"
 				+ " SCHEMA.REA_RULESET ruleSet LEFT JOIN SCHEMA.SOI_PPT_RULE soippt ON ruleSet.REA_RULESET_ID=soippt.REACT_RULESET_ID "
 				+ " LEFT JOIN SCHEMA.SOI_CG_CHN_RULE soicg ON ruleSet.REA_RULESET_ID=soicg.REACT_RULESET_ID"
