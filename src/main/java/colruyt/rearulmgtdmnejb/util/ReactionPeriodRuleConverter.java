@@ -14,7 +14,7 @@ public class ReactionPeriodRuleConverter implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public ReactionPeriodRuleAction convert(ReactionPeriodRuleBo reactionPeriodRuleBo) {
+	public ReactionPeriodRuleAction convertFromBo(ReactionPeriodRuleBo reactionPeriodRuleBo) {
 		ReactionPeriodRuleAction reactionPeriodRuleAction = new ReactionPeriodRuleAction();
 		reactionPeriodRuleAction.setReaRuleId(reactionPeriodRuleBo.getRuleId());
 		reactionPeriodRuleAction.setEndDtDays(reactionPeriodRuleBo.getEndDateMinusDate());
@@ -23,7 +23,7 @@ public class ReactionPeriodRuleConverter implements Serializable {
 
 	}
 
-	public ReactionPeriodRuleBo addReactionPeriodRuleAction(ReactionPeriodRuleAction reactionPeriodRuleAction,
+	public ReactionPeriodRuleBo convertToBo(ReactionPeriodRuleAction reactionPeriodRuleAction,
 			ReactionPeriodRuleBo reacPrdRuleBo) {
 		reacPrdRuleBo.setEndDateMinusDate(reactionPeriodRuleAction.getEndDtDays());
 		reacPrdRuleBo.setMinimumDays(reactionPeriodRuleAction.getMinDays());

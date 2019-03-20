@@ -26,7 +26,7 @@ public class ReaRulesetConverter implements Serializable {
 	@EJB
 	private ReferenceDataService referenceDataService;
 
-	public ReactionRuleSet convertReaRuleset(ReactionRuleSet existingReaRuleset, ReactionRulesetBo rulesetBo,
+	public ReactionRuleSet convertFromBo(ReactionRuleSet existingReaRuleset, ReactionRulesetBo rulesetBo,
 			String logonId) {
 		ReactionRuleSet reaRuleset = null;
 		if (existingReaRuleset != null) {
@@ -43,7 +43,7 @@ public class ReaRulesetConverter implements Serializable {
 		return reaRuleset;
 	}
 
-	public List<ReactionRulesetBo> convertRuleSetBo(List<ReactionRuleSet> ruleSetList) {
+	public List<ReactionRulesetBo> convertToBo(List<ReactionRuleSet> ruleSetList) {
 		List<ReactionRulesetBo> rulesetBoList = Lists.newArrayList();
 		for (ReactionRuleSet ruleSet : ruleSetList) {
 			ReactionRulesetBo ruleBo = new ReactionRulesetBo();
@@ -52,14 +52,14 @@ public class ReaRulesetConverter implements Serializable {
 			ruleBo.setComments(ruleSet.getRulesetComment());
 			ruleBo.setColruytGroupChainId(ruleSet.getColruytGroupChainId());
 			ruleBo.setPriceCompetitorChainId(ruleSet.getPriceCompetitorChainId());
-			RefRuleTypeBo ruleType = convertRulType(ruleSet.getRuleTypeId());
+			RefRuleTypeBo ruleType = convertToBo(ruleSet.getRuleTypeId());
 			ruleBo.setRefRuleTypeBo(ruleType);
 			rulesetBoList.add(ruleBo);
 		}
 		return rulesetBoList;
 	}
 
-	public RefRuleTypeBo convertRulType(int ruleTypeid) {
+	public RefRuleTypeBo convertToBo(int ruleTypeid) {
 		RefRuleTypeBo refRuleTypeBo = new RefRuleTypeBo();
 		List<RefRuleTypeBo> refRuletype = referenceDataService.getAllRuleTypes();
 		for (RefRuleTypeBo ref : refRuletype) {
@@ -75,7 +75,7 @@ public class ReaRulesetConverter implements Serializable {
 
 	}
 
-	public ReactionRulesetBo convertReactionRuleset(ReactionRuleSet reactionRuleSet) {
+	public ReactionRulesetBo convertToBo(ReactionRuleSet reactionRuleSet) {
 		ReactionRulesetBo reactionRulesetBo = new ReactionRulesetBo();
 		if (reactionRuleSet != null) {
 			reactionRulesetBo.setColruytGroupChainId(reactionRuleSet.getColruytGroupChainId());
@@ -83,7 +83,7 @@ public class ReaRulesetConverter implements Serializable {
 			reactionRulesetBo.setName(reactionRuleSet.getRulesetName());
 			reactionRulesetBo.setPriceCompetitorChainId(reactionRuleSet.getPriceCompetitorChainId());
 			reactionRulesetBo.setRulesetId(reactionRuleSet.getReaRulesetId());
-			reactionRulesetBo.setRuleLines(reaRuleConverter.convertRuleLine(reactionRuleSet.getReactionRules()));
+			reactionRulesetBo.setRuleLines(reaRuleConverter.convertToBo(reactionRuleSet.getReactionRules()));
 			reactionRulesetBo.setRefRuleTypeBo(new RefRuleTypeBo());
 			reactionRulesetBo.getRefRuleTypeBo().setRuleTypeId(reactionRuleSet.getRuleTypeId());
 

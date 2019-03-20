@@ -11,7 +11,7 @@ public class ProductCategoryBo implements ProductHierarchyBO,Serializable {
 	private static final long serialVersionUID=1L;
 	private String mainCategoryCode;
 	private String productCategoryCode;
-	private List<LangHirerachyBo> productCategoryLangs;
+	private List<LangHierarchyBo> productCategoryLangs;
 	private List<ProductGroupBo> productGroups;
 
 	public List<ProductGroupBo> getProductGroups() {
@@ -38,11 +38,11 @@ public class ProductCategoryBo implements ProductHierarchyBO,Serializable {
 		this.productCategoryCode = productCategoryCode;
 	}
 
-	public List<LangHirerachyBo> getProductCategoryLangs() {
+	public List<LangHierarchyBo> getProductCategoryLangs() {
 		return productCategoryLangs;
 	}
 
-	public void setProductCategoryLangs(List<LangHirerachyBo> productCategoryLangs) {
+	public void setProductCategoryLangs(List<LangHierarchyBo> productCategoryLangs) {
 		this.productCategoryLangs = productCategoryLangs;
 	}
 }

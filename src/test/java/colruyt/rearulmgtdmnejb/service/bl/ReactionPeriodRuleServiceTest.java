@@ -55,7 +55,7 @@ public class ReactionPeriodRuleServiceTest {
 
 	@Test
 	public void createRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		when(reactionPeriodRuleConverter.convert(Mockito.any(ReactionPeriodRuleBo.class))).thenReturn(getReaPrdAct());
+		when(reactionPeriodRuleConverter.convertFromBo(Mockito.any(ReactionPeriodRuleBo.class))).thenReturn(getReaPrdAct());
 		when(reactionPeriodActionDlService.createOrUpdate(Mockito.any(ReactionPeriodRuleAction.class)))
 				.thenReturn(getReaPrdAct());
 		GeneralRuleBo expectedReactionPrdRule = reactionPeriodRuleBlService
@@ -65,35 +65,17 @@ public class ReactionPeriodRuleServiceTest {
 
 	@Test
 	public void modifyRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		when(reactionPeriodRuleConverter.convert(Mockito.any(ReactionPeriodRuleBo.class))).thenReturn(getReaPrdAct());
+		when(reactionPeriodRuleConverter.convertFromBo(Mockito.any(ReactionPeriodRuleBo.class))).thenReturn(getReaPrdAct());
 		when(reactionPeriodActionDlService.createOrUpdate(Mockito.any(ReactionPeriodRuleAction.class)))
 				.thenReturn(getReaPrdAct());
 		GeneralRuleBo expectedReactionPrdRule = reactionPeriodRuleBlService
 				.modifyRuleSpecificAttributes(getReactionPeriodRuleBo());
 		Assert.assertEquals(new Long(1l), expectedReactionPrdRule.getRuleId());
 	}
-
-	/*@Test
-	public void getReactionRulesTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		int ruleId = 1;
-		ReactionRulesetBo reactionRulesetBo = getReactionRulesetBo();
-		when(referenceDataService.findPkByType(Mockito.anyString())).thenReturn(ruleId);
-		reactionRulesetBo.setRuleLines(getReactionRuleBoList());
-		when(generalRuleService.getRulesByRuleSetId(Mockito.anyLong())).thenReturn(getRuleList());
-		when(generalRuleService.getGeneralRuleAttributes(Mockito.any(ReactionRule.class),
-				Mockito.any(GeneralRuleBo.class))).thenReturn(getReactionPeriodRuleBo());
-		when(reactionPeriodActionDlService.findByRuleId(Mockito.anyLong())).thenReturn(getReaPrdAct());
-		when(reactionPeriodRuleConverter.addReactionPeriodRuleAction(Mockito.any(ReactionPeriodRuleAction.class),
-				Mockito.any(ReactionPeriodRuleBo.class))).thenReturn(getReactionPeriodRuleBo());
-		List<ReactionRulesetBo> expectedReactionPrdRule = reactionPeriodRuleBlService
-				.getReactionRules(getReaRuleList());
-		Assert.assertEquals(1l, expectedReactionPrdRule.size());
-	}*/
-
 	@Test
 	public void getRuleSpecificValuesTest() throws ReaRuleManagementException {
 		when(reactionPeriodActionDlService.findByRuleId(Mockito.anyLong())).thenReturn(getReaPrdAct());
-		when(reactionPeriodRuleConverter.addReactionPeriodRuleAction(Mockito.any(ReactionPeriodRuleAction.class),
+		when(reactionPeriodRuleConverter.convertToBo(Mockito.any(ReactionPeriodRuleAction.class),
 				Mockito.any(ReactionPeriodRuleBo.class))).thenReturn(getReactionPeriodRuleBo());
 		GeneralRuleBo expectedReactionPrdRule = reactionPeriodRuleBlService
 				.getRuleSpecificValues(getReactionPeriodRuleBo());

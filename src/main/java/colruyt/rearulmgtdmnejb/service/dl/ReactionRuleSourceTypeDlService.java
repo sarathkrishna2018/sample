@@ -13,9 +13,6 @@ import javax.persistence.Query;
 import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnConstants;
 
-/**
- * Session Bean implementation class ReactionRuleSourceTypeDlService
- */
 @Stateless
 @LocalBean
 @TransactionAttribute(TransactionAttributeType.MANDATORY)

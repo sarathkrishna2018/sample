@@ -1,6 +1,6 @@
 package colruyt.rearulmgtdmnejb.util;
 
-public class ReaRulMgtDmnDebugMessage {
+public class ReactionRuleDmnDebugMessage {
 	public static final String DEBUG_FILTERINGRULE = "Create Filtering Rule";
 	public static final String DEBUG_VALIDATEFILTERINGRULE = "Filtering Rule Mandatory field Validation";
 	public static final String DEBUG_MODIFYFILTERINGRULE = " Edit Filtering Rule";

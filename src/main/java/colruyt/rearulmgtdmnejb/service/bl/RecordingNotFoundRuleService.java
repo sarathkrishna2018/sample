@@ -25,7 +25,7 @@ import colruyt.rearulmgtdmnejb.exception.ReaRuleValidationException;
 import colruyt.rearulmgtdmnejb.service.dl.RecordingNotFoundRuleActionDlService;
 import colruyt.rearulmgtdmnejb.util.ExceptionMessageConstants;
 import colruyt.rearulmgtdmnejb.util.GeneralRulePriorityComparator;
-import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnDebugMessage;
+import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnDebugMessage;
 import colruyt.rearulmgtdmnejb.util.RecordingNotFoundRuleConverter;
 
 @Stateless
@@ -39,34 +39,20 @@ public class RecordingNotFoundRuleService extends GeneralRuleService implements 
 	@EJB
 	private RecordingNotFoundRuleActionDlService recordingNotFoundRuleActionDlService;
 
-	/**
-	 * This method is to create Recording Not Found Rule
-	 * 
-	 * @param reactionRuleBo
-	 * @throws ReaRuleManagementException
-	 * @throws ReaRuleValidationException
-	 */
 	@Override
 	public GeneralRuleBo createRuleSpecificAttributes(GeneralRuleBo reactionRuleBo)
 			throws ReaRuleValidationException, ReaRuleManagementException {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_RECORDNOTFOUNDRULE);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_RECORDNOTFOUNDRULE);
 		RecordingNotFoundRuleBo recordingNotFoundRuleBo = (RecordingNotFoundRuleBo) reactionRuleBo;
 		validateRuleInputs(recordingNotFoundRuleBo);
 		RecordingNotFoundRuleAction recordNotFoundRuleAction = recordingNotFoundRuleConverter
-				.convert(recordingNotFoundRuleBo);
+				.convertFromBo(recordingNotFoundRuleBo);
 		recordingNotFoundRuleActionDlService.createOrUpdate(recordNotFoundRuleAction);
 		return recordingNotFoundRuleBo;
 	}
 
-	/**
-	 * This method is to validate Recording Not Found Rule
-	 * 
-	 * @param recordingNotFoundRuleBo
-	 * @param ruleName
-	 * @throws ReaRuleManagementException
-	 */
 	private void validateRuleInputs(RecordingNotFoundRuleBo recordingNotFoundRuleBo) throws ReaRuleValidationException {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_VALIDATERECORDNOTFOUNDRULE);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_VALIDATERECORDNOTFOUNDRULE);
 		if (recordingNotFoundRuleBo != null) {
 			Long numberOfNotFoundRec = recordingNotFoundRuleBo.getNoOfNotFoundRecordings();
 			if (numberOfNotFoundRec == null) {
@@ -80,36 +66,22 @@ public class RecordingNotFoundRuleService extends GeneralRuleService implements 
 		}
 	}
 
-	/**
-	 * This method is to modify Recording Not Found Rule
-	 * 
-	 * @param reactionRuleBo
-	 * @throws ReaRuleValidationException
-	 * @throws ReaRuleManagementException
-	 */
 	@Override
 	public GeneralRuleBo modifyRuleSpecificAttributes(GeneralRuleBo reactionRuleBo)
 			throws ReaRuleValidationException, ReaRuleManagementException {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_MODIFYRECORDNOTFOUNDRULE);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_MODIFYRECORDNOTFOUNDRULE);
 		RecordingNotFoundRuleBo recordingNotFoundRuleBo = (RecordingNotFoundRuleBo) reactionRuleBo;
 		validateRuleInputs(recordingNotFoundRuleBo);
 		RecordingNotFoundRuleAction recordingNotFoundRuleAction = recordingNotFoundRuleConverter
-				.convert(recordingNotFoundRuleBo);
+				.convertFromBo(recordingNotFoundRuleBo);
 		recordingNotFoundRuleActionDlService.createOrUpdate(recordingNotFoundRuleAction);
 		return recordingNotFoundRuleBo;
 	}
 
-	/**
-	 * This method is to get Recording Not Found Rule
-	 * 
-	 * @param reactionRulesetBos
-	 * @throws ReaRuleValidationException
-	 * @throws ReaRuleManagementException
-	 */
 	@Override
 	public List<ReactionRulesetBo> getReactionRules(List<ReactionRulesetBo> reactionRulesetBos)
 			throws ReaRuleValidationException, ReaRuleManagementException {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_RETRIEVERECORDNOTFOUNDRULE);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_RETRIEVERECORDNOTFOUNDRULE);
 		List<ReactionRulesetBo> ruleSetBos = Lists.newArrayList();
 		for (ReactionRulesetBo reactionRulesetBo : reactionRulesetBos) {
 			if (reactionRulesetBo.getRefRuleTypeBo().getRuleTypeId() == RuleType.RECORD_NOT_FOUND.getRuleTypeID()) {
@@ -123,8 +95,8 @@ public class RecordingNotFoundRuleService extends GeneralRuleService implements 
 
 					RecordingNotFoundRuleAction recordNotFoundRule = recordingNotFoundRuleActionDlService
 							.findByRuleId(rule.getReaRuleId());
-					recordingNotFoundBo = recordingNotFoundRuleConverter
-							.addRecordingNotFoundRuleAction(recordNotFoundRule, recordingNotFoundBo);
+					recordingNotFoundBo = recordingNotFoundRuleConverter.convertToBo(recordNotFoundRule,
+							recordingNotFoundBo);
 					ruleBos.add(recordingNotFoundBo);
 
 				}
@@ -136,21 +108,14 @@ public class RecordingNotFoundRuleService extends GeneralRuleService implements 
 		return ruleSetBos;
 	}
 
-	/**
-	 * This method is to view Recording Not Found Rule
-	 * 
-	 * @param ruleId
-	 * @param ruleName
-	 * @throws ReaRuleManagementException
-	 */
 	@Override
 	public GeneralRuleBo getRuleSpecificValues(GeneralRuleBo ruleBo) throws ReaRuleManagementException {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_VIEWRECORDNOTFOUNDRULE);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_VIEWRECORDNOTFOUNDRULE);
 		RecordingNotFoundRuleBo recordNotFoundRuleBo = (RecordingNotFoundRuleBo) ruleBo;
 		RecordingNotFoundRuleAction recordingNotFoundRuleAction = recordingNotFoundRuleActionDlService
 				.findByRuleId(recordNotFoundRuleBo.getRuleId());
-		recordNotFoundRuleBo = recordingNotFoundRuleConverter
-				.addRecordingNotFoundRuleAction(recordingNotFoundRuleAction, recordNotFoundRuleBo);
+		recordNotFoundRuleBo = recordingNotFoundRuleConverter.convertToBo(recordingNotFoundRuleAction,
+				recordNotFoundRuleBo);
 		recordNotFoundRuleBo.setType(RuleType.RECORD_NOT_FOUND.getRuleTypeName());
 		return recordNotFoundRuleBo;
 	}

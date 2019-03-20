@@ -43,26 +43,12 @@ public class ReactionRuleSetDlService implements Serializable {
 	@PersistenceContext(unitName = ReactionRuleDmnConstants.PERSISTENCE_UNIT_NAME)
 	private transient EntityManager entityManager;
 
-	/**
-	 * This method is use to create or update Reaction Ruleset
-	 * 
-	 * @param reactionPricingRuleSet
-	 * @return ReactionRuleSet
-	 */
 	public ReactionRuleSet createOrUpdate(ReactionRuleSet reaRuleset) {
 		ReactionRuleSet ruleset = entityManager.merge(reaRuleset);
 		entityManager.flush();
 		return ruleset;
 	}
 
-	/**
-	 * this method is used to find the ReactionRuleSet based on search input's
-	 * 
-	 * @param cgChainId
-	 * @param pcChainId
-	 * @param ruleTypeId
-	 * @return list of ReactionRuleSet
-	 */
 	public List<ReactionRuleSet> findByAttributes(long cgChainId, long pcChainId, long ruleTypeId) {
 		List<ReactionRuleSet> reactionRulesets = null;
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
@@ -93,14 +79,6 @@ public class ReactionRuleSetDlService implements Serializable {
 		return reaRuleset;
 	}
 
-	/**
-	 * This method is used to get list of ReactionRuleSet based on cgChainId &
-	 * pcChainId
-	 * 
-	 * @param cgChainId
-	 * @param pcChainId
-	 * @return list of ReactionRuleSet
-	 */
 	public List<ReactionRuleSet> findByCgChainAndPCChain(long cgChainId, long pcChainId) {
 		List<ReactionRuleSet> reactionRulesets = null;
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
@@ -122,11 +100,6 @@ public class ReactionRuleSetDlService implements Serializable {
 		return reactionRulesets;
 	}
 
-	/**
-	 * This method is to delete Reaction Ruleset
-	 * 
-	 * @param reactionRuleSet
-	 */
 	public void logicallyDeleteRuleSet(ReactionRuleSet reactionRuleSet) {
 		Date updatedDate = new Date();
 		Query query = entityManager.createQuery(

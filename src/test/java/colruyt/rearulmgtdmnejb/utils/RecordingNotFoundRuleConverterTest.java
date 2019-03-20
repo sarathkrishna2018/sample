@@ -25,7 +25,7 @@ public class RecordingNotFoundRuleConverterTest {
 		RecordingNotFoundRuleAction recordNotFoundRuleAction=new RecordingNotFoundRuleAction();
 		recordNotFoundRuleAction.setReaRuleId(1L);
 		recordNotFoundRuleAction.setNoOfRecordNotFound(recordingNotFoundRule.getNoOfNotFoundRecordings());
-		RecordingNotFoundRuleAction expectedReaRnfAct=recordingNotFoundRuleConverter.convert(recordingNotFoundRule);
+		RecordingNotFoundRuleAction expectedReaRnfAct=recordingNotFoundRuleConverter.convertFromBo(recordingNotFoundRule);
 		Assert.assertEquals(new Long(12l), Long.valueOf(expectedReaRnfAct.getNoOfRecordNotFound()));
 		
 	}

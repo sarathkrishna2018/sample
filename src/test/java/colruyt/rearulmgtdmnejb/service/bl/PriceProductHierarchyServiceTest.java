@@ -49,7 +49,7 @@ public class PriceProductHierarchyServiceTest {
 	@TestedObject
 	private PriceProductHierarchyService priceProductHierarchyBlService;
 	@InjectIntoByType
-	private ProductHierarchyElementConverter productHrchyElmntConverter = Mockito.mock(ProductHierarchyElementConverter.class);
+	private ProductHierarchyElementConverter productHierarchyElementConverter = Mockito.mock(ProductHierarchyElementConverter.class);
 	@InjectIntoByType
 	private ProductHierarchyElementDlService productHierarchyElementDlService = Mockito
 			.mock(ProductHierarchyElementDlService.class);

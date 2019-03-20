@@ -26,11 +26,8 @@ import colruyt.rearulmgtdmnejb.service.dl.QuantityRuleActionDlService;
 import colruyt.rearulmgtdmnejb.util.ExceptionMessageConstants;
 import colruyt.rearulmgtdmnejb.util.GeneralRulePriorityComparator;
 import colruyt.rearulmgtdmnejb.util.QuantityRuleActionConverter;
-import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnDebugMessage;
+import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnDebugMessage;
 
-/**
- * extends "GeneralRuleService"
- */
 @Stateless
 @LocalBean
 public class QuantityRuleService extends GeneralRuleService implements Serializable {
@@ -42,32 +39,19 @@ public class QuantityRuleService extends GeneralRuleService implements Serializa
 	@EJB
 	private QuantityRuleActionDlService quantityRuleActionDlService;
 
-	/**
-	 * This method is to create Quantity Rule
-	 * 
-	 * @param reactionRuleBo
-	 * @throws ReaRuleValidationException
-	 * @throws ReaRuleManagementException
-	 */
 	@Override
 	public GeneralRuleBo createRuleSpecificAttributes(GeneralRuleBo reactionRuleBo)
 			throws ReaRuleValidationException, ReaRuleManagementException {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_QUANTITYRULE);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_QUANTITYRULE);
 		QuantityRuleBo quantityRuleBo = (QuantityRuleBo) reactionRuleBo;
 		validateRuleInputs(quantityRuleBo);
-		QuantityRuleAction quantityRuleAction = quantityRuleActionConvertor.convert(quantityRuleBo);
+		QuantityRuleAction quantityRuleAction = quantityRuleActionConvertor.convertFromBo(quantityRuleBo);
 		quantityRuleActionDlService.createOrUpdate(quantityRuleAction);
 		return quantityRuleBo;
 	}
 
-	/**
-	 * This method is to validate Quantity Rule Mandatory fields
-	 * 
-	 * @param quantityRuleBo
-	 * @throws ReaRuleValidationException
-	 */
-	private void validateRuleInputs(QuantityRuleBo quantityRuleBo) throws ReaRuleValidationException {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_VALIDATEQUANTITYRULE);
+	void validateRuleInputs(QuantityRuleBo quantityRuleBo) throws ReaRuleValidationException {
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_VALIDATEQUANTITYRULE);
 		if (quantityRuleBo != null) {
 			if (quantityRuleBo.getConditionType() == null || quantityRuleBo.getQuantityPriceType() == null) {
 				throw new ReaRuleValidationException(quantityRuleBo.getLangCode(),
@@ -76,35 +60,21 @@ public class QuantityRuleService extends GeneralRuleService implements Serializa
 		}
 	}
 
-	/**
-	 * This method is to modify Quantity Rule
-	 * 
-	 * @param reactionRuleBo
-	 * @throws ReaRuleValidationException
-	 * @throws ReaRuleManagementException
-	 */
 	@Override
 	public GeneralRuleBo modifyRuleSpecificAttributes(GeneralRuleBo reactionRuleBo)
 			throws ReaRuleValidationException, ReaRuleManagementException {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_MODIFYQUANTITYRULE);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_MODIFYQUANTITYRULE);
 		QuantityRuleBo quantityRuleBo = (QuantityRuleBo) reactionRuleBo;
 		validateRuleInputs(quantityRuleBo);
-		QuantityRuleAction quantityRuleAction = quantityRuleActionConvertor.convert(quantityRuleBo);
+		QuantityRuleAction quantityRuleAction = quantityRuleActionConvertor.convertFromBo(quantityRuleBo);
 		quantityRuleActionDlService.createOrUpdate(quantityRuleAction);
 		return quantityRuleBo;
 	}
 
-	/**
-	 * This method is to get Quantity Rule
-	 * 
-	 * @param reactionRulesetBos
-	 * @throws ReaRuleValidationException
-	 * @throws ReaRuleManagementException
-	 */
 	@Override
 	public List<ReactionRulesetBo> getReactionRules(List<ReactionRulesetBo> reactionRulesetBos)
 			throws ReaRuleValidationException, ReaRuleManagementException {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_RETRIEVEQUANTITYRULE);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_RETRIEVEQUANTITYRULE);
 		List<ReactionRulesetBo> ruleSetBos = Lists.newArrayList();
 		for (ReactionRulesetBo reactionRulesetBo : reactionRulesetBos) {
 			if (reactionRulesetBo.getRefRuleTypeBo().getRuleTypeId() == RuleType.QUANTITY.getRuleTypeID()) {
@@ -118,7 +88,7 @@ public class QuantityRuleService extends GeneralRuleService implements Serializa
 
 					QuantityRuleAction quantityRuleAction = quantityRuleActionDlService
 							.findByRuleId(rule.getReaRuleId());
-					quantityBo = quantityRuleActionConvertor.addQuantityRuleAction(quantityRuleAction, quantityBo);
+					quantityBo = quantityRuleActionConvertor.convertToBo(quantityRuleAction, quantityBo);
 					ruleBos.add(quantityBo);
 
 				}
@@ -130,19 +100,12 @@ public class QuantityRuleService extends GeneralRuleService implements Serializa
 		return ruleSetBos;
 	}
 
-	/**
-	 * This method is to view Quantity Rule
-	 * 
-	 * @param ruleId
-	 * @param ruleName
-	 * @throws ReaRuleManagementException
-	 */
 	@Override
 	public GeneralRuleBo getRuleSpecificValues(GeneralRuleBo ruleBo) throws ReaRuleManagementException {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_VIEWQUANTITYRULE);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_VIEWQUANTITYRULE);
 		QuantityRuleBo quantityBo = (QuantityRuleBo) ruleBo;
 		QuantityRuleAction quantityRuleAction = quantityRuleActionDlService.findByRuleId(quantityBo.getRuleId());
-		quantityBo = quantityRuleActionConvertor.addQuantityRuleAction(quantityRuleAction, quantityBo);
+		quantityBo = quantityRuleActionConvertor.convertToBo(quantityRuleAction, quantityBo);
 		quantityBo.setType(RuleType.QUANTITY.getRuleTypeName());
 		return quantityBo;
 

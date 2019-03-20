@@ -34,6 +34,7 @@ import colruyt.rearulmgtdmnejb.exception.ReaRuleValidationException;
 import colruyt.rearulmgtdmnejb.service.dl.FilteringRuleActionDlService;
 import colruyt.rearulmgtdmnejb.service.dl.ReactionRuleDlService;
 import colruyt.rearulmgtdmnejb.util.FilteringRuleActionConverter;
+import colruyt.rearulmgtdmnejb.util.ReaRuleConverter;
 import junit.framework.Assert;
 
 @Transactional
@@ -50,17 +51,18 @@ public class FilteringRuleServiceTest {
 	private FilteringRuleActionConverter filteringRuleActionConverter = Mockito
 			.mock(FilteringRuleActionConverter.class);
 	@InjectIntoByType
-	private ReactionRuleDlService reactionRuleDlService = Mockito
-			.mock(ReactionRuleDlService.class);
+	private ReactionRuleDlService reactionRuleDlService = Mockito.mock(ReactionRuleDlService.class);
 	@InjectMocks
 	private GeneralRuleService generalRuleService = Mockito.mock(GeneralRuleService.class);
 
 	@InjectIntoByType
 	private ReferenceDataService referenceDataService = Mockito.mock(ReferenceDataService.class);
+	@InjectIntoByType
+	private ReaRuleConverter reaRuleConverter = Mockito.mock(ReaRuleConverter.class);
 
 	@Test
 	public void createRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		when(filteringRuleActionConverter.convert(Mockito.any(FilteringRuleBo.class))).thenReturn(getReaFltRule());
+		when(filteringRuleActionConverter.convertFromBo(Mockito.any(FilteringRuleBo.class))).thenReturn(getReaFltRule());
 		when(filteringRuleActionDlService.createOrUpdate(Mockito.any(FilteringRuleAction.class)))
 				.thenReturn(getReaFltRule());
 		GeneralRuleBo expectedFilteringRule = filteringRuleBlService.createRuleSpecificAttributes(getFilteringRuleBo());
@@ -69,35 +71,16 @@ public class FilteringRuleServiceTest {
 
 	@Test
 	public void modifyRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		when(filteringRuleActionConverter.convert(Mockito.any(FilteringRuleBo.class))).thenReturn(getReaFltRule());
+		when(filteringRuleActionConverter.convertFromBo(Mockito.any(FilteringRuleBo.class))).thenReturn(getReaFltRule());
 		when(filteringRuleActionDlService.createOrUpdate(Mockito.any(FilteringRuleAction.class)))
 				.thenReturn(getReaFltRule());
 		GeneralRuleBo expectedFilteringRule = filteringRuleBlService.modifyRuleSpecificAttributes(getFilteringRuleBo());
 		Assert.assertEquals(new Long(1l), expectedFilteringRule.getRuleId());
 	}
-
-	/*@Test
-	public void getReactionRulesTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		int ruleId = 1;
-		ReactionRulesetBo reactionRulesetBo = getReactionRulesetBo();
-		//when(generalRuleService.getRuleTypeId(Mockito.anyString())).thenReturn(ruleId);
-		when(referenceDataService.findPkByType(Mockito.anyString())).thenReturn(ruleId);
-		reactionRulesetBo.setRuleLines(getReactionRuleBoList());
-		when(generalRuleService.getRulesByRuleSetId(Mockito.anyLong())).thenReturn(getRuleList());
-		when(reactionRuleDlService.findByRuleSetId(Mockito.anyLong())).thenReturn(getRuleList());
-		when(generalRuleService.getGeneralRuleAttributes(Mockito.any(ReactionRule.class),
-				Mockito.any(GeneralRuleBo.class))).thenReturn(getGeneralRuleBo());
-		when(filteringRuleActionDlService.findByRuleId(Mockito.anyLong())).thenReturn(getReaFltRule());
-		when(filteringRuleActionConverter.addFilteringRuleAction(Mockito.any(FilteringRuleAction.class),
-				Mockito.any(FilteringRuleBo.class))).thenReturn(getFilteringRuleBo());
-		List<ReactionRulesetBo> expectedFilteringRule = filteringRuleBlService.getReactionRules(getReaRuleList());
-		Assert.assertEquals(1l, expectedFilteringRule.size());
-	}*/
-
 	@Test
 	public void getRuleSpecificValuesTest() throws ReaRuleManagementException {
 		when(filteringRuleActionDlService.findByRuleId(Mockito.anyLong())).thenReturn(getReaFltRule());
-		when(filteringRuleActionConverter.addFilteringRuleAction(Mockito.any(FilteringRuleAction.class),
+		when(filteringRuleActionConverter.convertToBo(Mockito.any(FilteringRuleAction.class),
 				Mockito.any(FilteringRuleBo.class))).thenReturn(getFilteringRuleBo());
 		GeneralRuleBo expectedFilteringRule = filteringRuleBlService.getRuleSpecificValues(getFilteringRuleBo());
 		Assert.assertEquals(new Long(1l), expectedFilteringRule.getRuleId());
@@ -208,7 +191,7 @@ public class FilteringRuleServiceTest {
 		reactionRuleBo.setTemporaryDuration(false);
 		reactionRuleBo.setPostponedBenefit(false);
 		reactionRuleBo.setPriceProductHierarchySet(getPriceProductHierarchyList());
-		//reactionRuleBo.setReactionRulesetBo(getReactionRulesetBo());
+		// reactionRuleBo.setReactionRulesetBo(getReactionRulesetBo());
 		reactionRuleBo.setRefRuleTypeBo(getRefRuleTypeBo());
 		reactionRuleBo.setRuleId(1L);
 		reactionRuleBo.setRuleName("Rule");
@@ -219,7 +202,8 @@ public class FilteringRuleServiceTest {
 		generalRuleBos.add(reactionRuleBo);
 		return generalRuleBos;
 	}
-	private GeneralRuleBo getGeneralRuleBo(){
+
+	private GeneralRuleBo getGeneralRuleBo() {
 		GeneralRuleBo reactionRuleBo = new GeneralRuleBo();
 		reactionRuleBo.setActionSelectAll(true);
 		reactionRuleBo.setActionTypeList(getActionTypeList());
@@ -236,7 +220,7 @@ public class FilteringRuleServiceTest {
 		reactionRuleBo.setTemporaryDuration(false);
 		reactionRuleBo.setPostponedBenefit(false);
 		reactionRuleBo.setPriceProductHierarchySet(getPriceProductHierarchyList());
-		//reactionRuleBo.setReactionRulesetBo(getReactionRulesetBo());
+		// reactionRuleBo.setReactionRulesetBo(getReactionRulesetBo());
 		reactionRuleBo.setRefRuleTypeBo(getRefRuleTypeBo());
 		reactionRuleBo.setRuleId(1L);
 		reactionRuleBo.setRuleName("Rule");
@@ -284,21 +268,23 @@ public class FilteringRuleServiceTest {
 		reaRule.setRuleComment("good");
 		reaRule.setCreatedBy("sa");
 		reaRule.setLstUpdateBy("sa");
-		//reaRule.setRefActionTypes(getActionTypes());
-		//reaRule.setRefSourceTypes(getSourceTypes());
+		reaRule.setRefActionTypes(getActionTypes());
+		reaRule.setRefSourceTypes(getSourceTypes());
 		return reaRule;
 	}
-	private List<ActionType> getActionTypes(){
+
+	private List<ActionType> getActionTypes() {
 		List<ActionType> actionTypeList = Lists.newArrayList();
-		actionTypeList.set(1, ActionType.ALL);
+		actionTypeList.add(ActionType.ALL);
 		return actionTypeList;
-		
+
 	}
-	private List<SourceType> getSourceTypes(){
+
+	private List<SourceType> getSourceTypes() {
 		List<SourceType> sourceTypeList = Lists.newArrayList();
-		sourceTypeList.set(1, SourceType.ALL);
+		sourceTypeList.add(SourceType.ALL);
 		return sourceTypeList;
-		
+
 	}
 
 	private List<ReactionRule> getRuleList() {

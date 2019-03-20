@@ -57,7 +57,7 @@ public class ReaRulesetConverterTest {
 		reaRuleset.setRulesetComment(reactionRulesetBo.getComments());
 		reaRuleset.setRulesetName(reactionRulesetBo.getName());
 		reaRuleset.setLstUpdateBy(logonId);
-		ReactionRuleSet expectedReaRuleset=reaRulesetConverter.convertReaRuleset(reaRuleset, reactionRulesetBo, logonId);
+		ReactionRuleSet expectedReaRuleset=reaRulesetConverter.convertFromBo(reaRuleset, reactionRulesetBo, logonId);
 		assertEquals(new Long(1L), Long.valueOf(expectedReaRuleset.getColruytGroupChainId()));
 	}
 	@Test
@@ -71,8 +71,8 @@ public class ReaRulesetConverterTest {
 		reactionRulesetBo.setRefRuleTypeBo(getRefRuleType());
 		reactionRulesetBo.setRuleLines(getReactionRuleBo());
 		reactionRulesetBo.setRulesetId(reactionRuleSet.getReaRulesetId());
-		when(reaRuleConverter.convertRuleLine(Mockito.anyListOf(ReactionRule.class))).thenReturn(getReactionRuleBo());
-		ReactionRulesetBo expectedreactionRulesetBo=reaRulesetConverter.convertReactionRuleset(getReactRuleset());
+		when(reaRuleConverter.convertToBo(Mockito.anyListOf(ReactionRule.class))).thenReturn(getReactionRuleBo());
+		ReactionRulesetBo expectedreactionRulesetBo=reaRulesetConverter.convertToBo(getReactRuleset());
 		assertEquals(reactionRulesetBo.getRulesetId(), expectedreactionRulesetBo.getRulesetId());
 	}
 	/*@Test
@@ -114,7 +114,7 @@ public class ReaRulesetConverterTest {
 		ruleBo.setColruytGroupChainId(reactionRuleSet.getColruytGroupChainId());
 		ruleBo.setPriceCompetitorChainId(reactionRuleSet.getPriceCompetitorChainId());
 		rulesetBoList.add(ruleBo);
-		List<ReactionRulesetBo> expectedReactionRulesetBo=reaRulesetConverter.convertRuleSetBo(getReactionRuleSetlist());
+		List<ReactionRulesetBo> expectedReactionRulesetBo=reaRulesetConverter.convertToBo(getReactionRuleSetlist());
 		assertEquals(rulesetBoList.size(),expectedReactionRulesetBo.size());
 		
 		

@@ -52,7 +52,7 @@ public class PriceProductServiceTest {
 		when(priceProductUrlService.getAllHierarchyUrl()).thenReturn(getAllHierarchyUrl());
 		when(externalClientService.callGetService(Mockito.anyString())).thenReturn(getJSONString());
 		when(externalClientService.getGsonWithDateDeserializer()).thenReturn(getGson());
-		when(priceProductConvertor.convertProducts(Mockito.anyListOf(MainCategoryBo.class), Mockito.anyString()))
+		when(priceProductConvertor.convertToBo(Mockito.anyListOf(MainCategoryBo.class), Mockito.anyString()))
 				.thenReturn(getPriceProductHierarchyBoList());
 		Set<String> allHierarchyValuesFromPriceProduct = priceProductService.externalHierarchyValues();
 		Assert.assertNotNull(allHierarchyValuesFromPriceProduct);

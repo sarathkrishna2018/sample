@@ -48,9 +48,9 @@ public class PriceProductService implements Serializable {
 
 	public Set<String> externalHierarchyValues()
 			throws PriceProductExternalServiceException, PriceProductServiceDownException, IOException, ParseException {
-		PriceProductHierarchyResponseBo heriarchyBo = findHierarchyValues();
+		PriceProductHierarchyResponseBo hierarchyBo = findHierarchyValues();
 		List<PriceProductHierarchyBo> priceProductHierarchyBoList = priceProductConverter
-				.convertProducts(heriarchyBo.getResult(), ReactionRuleDmnConstants.LANG_CODE_NL);
+				.convertToBo(hierarchyBo.getResult(), ReactionRuleDmnConstants.LANG_CODE_NL);
 		List<PriceProductHierarchyBo> productList = getPriceProducts();
 		return getAllHierarchyValues(priceProductHierarchyBoList, productList);
 	}

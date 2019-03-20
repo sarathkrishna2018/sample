@@ -14,7 +14,7 @@ public class ReactingRuleConverter implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public ReactingRuleAction convert(ReactingRuleBo reactingRuleBo) {
+	public ReactingRuleAction convertFromBo(ReactingRuleBo reactingRuleBo) {
 		ReactingRuleAction reactingAct = new ReactingRuleAction();
 		reactingAct.setReactionRuleId(reactingRuleBo.getRuleId());
 		reactingAct.setReactingAmt(reactingRuleBo.getReactingAmount());
@@ -25,7 +25,7 @@ public class ReactingRuleConverter implements Serializable {
 		return reactingAct;
 	}
 
-	public ReactingRuleBo addingReactionRuleAction(ReactingRuleAction reactingRuleAction, ReactingRuleBo reactingBo) {
+	public ReactingRuleBo convertToBo(ReactingRuleAction reactingRuleAction, ReactingRuleBo reactingBo) {
 		reactingBo.setReactingAmount(reactingRuleAction.getReactingAmt());
 		reactingBo.setReactingPercentage(reactingRuleAction.getReactingPercentage());
 		reactingBo.setThresholdAmount(reactingRuleAction.getThresholdAmount());

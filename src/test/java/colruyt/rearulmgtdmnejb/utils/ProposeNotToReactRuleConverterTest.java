@@ -5,8 +5,6 @@ import static org.mockito.Mockito.when;
 
 import java.util.List;
 
-
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,82 +31,75 @@ public class ProposeNotToReactRuleConverterTest {
 	@TestedObject
 	private ProposeNotToReactRuleConverter proposeNotToReactRuleConverter;
 	@InjectIntoByType
-	private ReferenceDataService referenceDataService=Mockito.mock(ReferenceDataService.class);
-	
+	private ReferenceDataService referenceDataService = Mockito.mock(ReferenceDataService.class);
+
 	@Test
-	public void createTest(){
-		ProposeNotToReactRuleBo proposeNotToReactRuleBo=getProposeNotToReactRuleBo();
+	public void createTest() {
+		ProposeNotToReactRuleBo proposeNotToReactRuleBo = getProposeNotToReactRuleBo();
 		ProposalNotToReactRuleAction reaNreactAct = new ProposalNotToReactRuleAction();
 		reaNreactAct.setFltoutTypeId(proposeNotToReactRuleBo.getFilterOutType().getFilterOutTypeId());
-		ProposalNotToReactRuleAction expectedReaNreactAct=proposeNotToReactRuleConverter.convert(getProposeNotToReactRuleBo());	
+		ProposalNotToReactRuleAction expectedReaNreactAct = proposeNotToReactRuleConverter
+				.convertFromBo(getProposeNotToReactRuleBo());
 		assertEquals(expectedReaNreactAct.getFltoutTypeId(), reaNreactAct.getFltoutTypeId());
-		
+
 	}
-	@Test
-	public void convertReasonNotToReactSetTest(){
-		List<Integer> expectedReaNreactSetRsn=proposeNotToReactRuleConverter.convertReasonNotToReactSet(getRefNotToReactCodeBo());	
-		assertEquals(expectedReaNreactSetRsn.size(),getRefNotToReactCodeBo().size());
-		
-	}
-	/*@Test
-	public void convertToBoTest(){
-		when(referenceDataService.getAllFilterOutRecordingTypes()).thenReturn(getRefFilterOutRecordingTypeBoList());
-		when(referenceDataService.getAllNotToReactCodeTypes()).thenReturn(getRefNotToReactCodeBo());
-		ProposeNotToReactRuleBo expectedProposeNotToReactRuleBo=proposeNotToReactRuleConverter.convertToBo(getProposalNotToReactRuleAction(), getProposeNotToReactRuleBo());
-		Assert.assertEquals(getProposeNotToReactRuleBo().getRuleId(), expectedProposeNotToReactRuleBo.getRuleId());
-	}*/
-	
+
 	private List<RefFilterOutRecordingTypeBo> getRefFilterOutRecordingTypeBoList() {
-		List<RefFilterOutRecordingTypeBo> refFilterOutRecordingTypeBos=Lists.newArrayList();
-		RefFilterOutRecordingTypeBo refFilterOutRecordingTypeBo=new RefFilterOutRecordingTypeBo();
+		List<RefFilterOutRecordingTypeBo> refFilterOutRecordingTypeBos = Lists.newArrayList();
+		RefFilterOutRecordingTypeBo refFilterOutRecordingTypeBo = new RefFilterOutRecordingTypeBo();
 		refFilterOutRecordingTypeBo.setFilterOutTypeId(1);
 		refFilterOutRecordingTypeBo.setDescription("xcx");
 		refFilterOutRecordingTypeBo.setCodeLang(getRefLangBo());
 		refFilterOutRecordingTypeBos.add(refFilterOutRecordingTypeBo);
 		return refFilterOutRecordingTypeBos;
 	}
+
 	private ProposalNotToReactRuleAction getProposalNotToReactRuleAction() {
-		ProposalNotToReactRuleAction proposalNotToReactRuleAction=new ProposalNotToReactRuleAction();
+		ProposalNotToReactRuleAction proposalNotToReactRuleAction = new ProposalNotToReactRuleAction();
 		proposalNotToReactRuleAction.setFltoutTypeId(1);
 		proposalNotToReactRuleAction.setReactionRuleId(1);
-		
+
 		return proposalNotToReactRuleAction;
 	}
-	
-	public ProposalNotToReactRuleActionRsnPK getReaNreactSetRsnPK(){
-		ProposalNotToReactRuleActionRsnPK reaNreactSetRsnPK=new ProposalNotToReactRuleActionRsnPK();
+
+	public ProposalNotToReactRuleActionRsnPK getReaNreactSetRsnPK() {
+		ProposalNotToReactRuleActionRsnPK reaNreactSetRsnPK = new ProposalNotToReactRuleActionRsnPK();
 		reaNreactSetRsnPK.setReactionRuleId(1l);
 		reaNreactSetRsnPK.setReasonId(1);
 		return reaNreactSetRsnPK;
 	}
-	public ProposeNotToReactRuleBo getProposeNotToReactRuleBo(){
-		ProposeNotToReactRuleBo proposeNotToReactRuleBo=new ProposeNotToReactRuleBo();
+
+	public ProposeNotToReactRuleBo getProposeNotToReactRuleBo() {
+		ProposeNotToReactRuleBo proposeNotToReactRuleBo = new ProposeNotToReactRuleBo();
 		proposeNotToReactRuleBo.setRuleId(1l);
 		proposeNotToReactRuleBo.setFilterOutType(getRefFilterOutRecordingTypeBo());
 		proposeNotToReactRuleBo.setNotToReactCodes(getRefNotToReactCodeBo());
 		return proposeNotToReactRuleBo;
 	}
-	public RefFilterOutRecordingTypeBo getRefFilterOutRecordingTypeBo()
-	{
-		RefFilterOutRecordingTypeBo refFilterOutRecordingTypeBo=new RefFilterOutRecordingTypeBo();
+
+	public RefFilterOutRecordingTypeBo getRefFilterOutRecordingTypeBo() {
+		RefFilterOutRecordingTypeBo refFilterOutRecordingTypeBo = new RefFilterOutRecordingTypeBo();
 		refFilterOutRecordingTypeBo.setFilterOutTypeId(1);
 		refFilterOutRecordingTypeBo.setDescription("xcx");
 		refFilterOutRecordingTypeBo.setCodeLang(getRefLangBo());
 		return refFilterOutRecordingTypeBo;
-		
+
 	}
-	public List<RefLangBo> getRefLangBo(){
-		List<RefLangBo> refLangBolist=Lists.newArrayList();
-		RefLangBo refLangBo=new RefLangBo();
+
+	public List<RefLangBo> getRefLangBo() {
+		List<RefLangBo> refLangBolist = Lists.newArrayList();
+		RefLangBo refLangBo = new RefLangBo();
 		refLangBo.setIsoLangCode("EN");
-		refLangBo.setValue("English");;
+		refLangBo.setValue("English");
+		;
 		refLangBolist.add(refLangBo);
 		return refLangBolist;
-		
+
 	}
-	public List<RefNotToReactCodeBo> getRefNotToReactCodeBo(){
-		List<RefNotToReactCodeBo> refNotToReactCodeBolist=Lists.newArrayList();
-		RefNotToReactCodeBo refNotToReactCodeBo=new RefNotToReactCodeBo();
+
+	public List<RefNotToReactCodeBo> getRefNotToReactCodeBo() {
+		List<RefNotToReactCodeBo> refNotToReactCodeBolist = Lists.newArrayList();
+		RefNotToReactCodeBo refNotToReactCodeBo = new RefNotToReactCodeBo();
 		refNotToReactCodeBo.setCodeLang(getRefLangBo());
 		refNotToReactCodeBo.setNotToReactCodeTypeId(1);
 		refNotToReactCodeBo.setDescription("scx");

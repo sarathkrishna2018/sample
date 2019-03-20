@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -55,7 +53,7 @@ public class RecordingNotFoundRuleServiceTest {
 
 	@Test
 	public void createRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		when(recordingNotFoundRuleConverter.convert(Mockito.any(RecordingNotFoundRuleBo.class)))
+		when(recordingNotFoundRuleConverter.convertFromBo(Mockito.any(RecordingNotFoundRuleBo.class)))
 				.thenReturn(getRecordingNotFoundRule());
 		when(recordingNotFoundRuleActionDlService.createOrUpdate(Mockito.any(RecordingNotFoundRuleAction.class)))
 				.thenReturn(getRecordingNotFoundRule());
@@ -66,7 +64,7 @@ public class RecordingNotFoundRuleServiceTest {
 
 	@Test
 	public void modifyRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		when(recordingNotFoundRuleConverter.convert(Mockito.any(RecordingNotFoundRuleBo.class)))
+		when(recordingNotFoundRuleConverter.convertFromBo(Mockito.any(RecordingNotFoundRuleBo.class)))
 				.thenReturn(getRecordingNotFoundRule());
 		when(recordingNotFoundRuleActionDlService.createOrUpdate(Mockito.any(RecordingNotFoundRuleAction.class)))
 				.thenReturn(getRecordingNotFoundRule());
@@ -74,33 +72,13 @@ public class RecordingNotFoundRuleServiceTest {
 				.modifyRuleSpecificAttributes(getRecordingNotFoundRuleBo());
 		Assert.assertEquals(new Long(1l), expectedRecordNotFoundRule.getRuleId());
 	}
-/*
-	@Test
-	public void getReactionRulesTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		int ruleId = 1;
-		ReactionRulesetBo reactionRulesetBo = getReactionRulesetBo();
-		when(referenceDataService.findPkByType(Mockito.anyString())).thenReturn(ruleId);
-		reactionRulesetBo.setRuleLines(getReactionRuleBoList());
-		when(generalRuleService.getRulesByRuleSetId(Mockito.anyLong())).thenReturn(getRuleList());
-		when(generalRuleService.getGeneralRuleAttributes(Mockito.any(ReactionRule.class),
-				Mockito.any(GeneralRuleBo.class))).thenReturn(getRecordingNotFoundRuleBo());
-		when(recordingNotFoundRuleActionDlService.findByRuleId(Mockito.anyLong()))
-				.thenReturn(getRecordingNotFoundRule());
-		when(recordingNotFoundRuleConverter.addRecordingNotFoundRuleAction(
-				Mockito.any(RecordingNotFoundRuleAction.class), Mockito.any(RecordingNotFoundRuleBo.class)))
-						.thenReturn(getRecordingNotFoundRuleBo());
-		List<ReactionRulesetBo> expectedRecordNotFoundRule = recordingNotFoundRuleBlService
-				.getReactionRules(getReaRuleList());
-		Assert.assertEquals(1l, expectedRecordNotFoundRule.size());
-	}*/
 
 	@Test
 	public void getRuleSpecificValuesTest() throws ReaRuleManagementException {
 		when(recordingNotFoundRuleActionDlService.findByRuleId(Mockito.anyLong()))
 				.thenReturn(getRecordingNotFoundRule());
-		when(recordingNotFoundRuleConverter.addRecordingNotFoundRuleAction(
-				Mockito.any(RecordingNotFoundRuleAction.class), Mockito.any(RecordingNotFoundRuleBo.class)))
-						.thenReturn(getRecordingNotFoundRuleBo());
+		when(recordingNotFoundRuleConverter.convertToBo(Mockito.any(RecordingNotFoundRuleAction.class),
+				Mockito.any(RecordingNotFoundRuleBo.class))).thenReturn(getRecordingNotFoundRuleBo());
 		GeneralRuleBo expectedRecordNotFoundRule = recordingNotFoundRuleBlService
 				.getRuleSpecificValues(getRecordingNotFoundRuleBo());
 		Assert.assertEquals(new Long(1l), expectedRecordNotFoundRule.getRuleId());

@@ -1,11 +1,9 @@
 package colruyt.rearulmgtdmnejb.utils;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Date;
 import java.util.List;
-
-
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,15 +26,14 @@ import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmnt;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmntPK;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.util.ProductHierarchyElementConverter;
-import junit.framework.Assert;
 
 @Transactional
 @RunWith(UnitilsJUnit4TestClassRunner.class)
 
 
-public class ProductHrchyElmntConverterTest {
+public class ProductHierarchyElementConverterTest {
 	@TestedObject
-	private ProductHierarchyElementConverter productHrchyElmntConverter;
+	private ProductHierarchyElementConverter productHierarchyElementConverter;
 	@Test
 	public void createConverterTest(){
 		List<PriceProductHierarchyElement> reaPpdHchyElmnts=Lists.newArrayList();
@@ -47,14 +44,10 @@ public class ProductHrchyElmntConverterTest {
 		reaPpdHchyElmnt.setProductHierarchyTypeId(productHierarchyElement.getPriceProductHierarchyTypeId());
 		reaPpdHchyElmnt.setCreatedBy(logonId);
 		reaPpdHchyElmnts.add(reaPpdHchyElmnt);
-		List<PriceProductHierarchyElement> expectedReaPpdHchyElmnt=productHrchyElmntConverter.convertProductHierarchyElement(getProductHierarchyElement(), logonId);
+		List<PriceProductHierarchyElement> expectedReaPpdHchyElmnt=productHierarchyElementConverter.convertFromBo(getProductHierarchyElement(), logonId);
 		assertEquals(reaPpdHchyElmnts.size(),expectedReaPpdHchyElmnt.size());
 	}
-	@Test
-	public void convertAssortmentTest(){
-		GeneralRuleBo expectedGeneralRuleBo=productHrchyElmntConverter.convertAssortment(getRuleBo(), getRuleAction());
-		Assert.assertEquals(getRuleBo().getRuleId(), expectedGeneralRuleBo.getRuleId());
-	}
+	
 	private ReactionRule getRuleAction() {
 		Date validFromdate = new Date();
 		Date validTodate = new Date();

@@ -50,7 +50,7 @@ public class ReactingRuleServiceTest {
 
 	@Test
 	public void createRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		when(reactingRuleConverter.convert(Mockito.any(ReactingRuleBo.class))).thenReturn(getReareactingAct());
+		when(reactingRuleConverter.convertFromBo(Mockito.any(ReactingRuleBo.class))).thenReturn(getReareactingAct());
 		when(reactingRuleActionDlService.createOrUpdate(Mockito.any(ReactingRuleAction.class)))
 				.thenReturn(getReareactingAct());
 		GeneralRuleBo expectedReactingRule = reactingRuleBlService.createRuleSpecificAttributes(getReactingRuleBo());
@@ -59,7 +59,7 @@ public class ReactingRuleServiceTest {
 
 	@Test
 	public void modifyRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		when(reactingRuleConverter.convert(Mockito.any(ReactingRuleBo.class))).thenReturn(getReareactingAct());
+		when(reactingRuleConverter.convertFromBo(Mockito.any(ReactingRuleBo.class))).thenReturn(getReareactingAct());
 		when(reactingRuleActionDlService.createOrUpdate(Mockito.any(ReactingRuleAction.class)))
 				.thenReturn(getReareactingAct());
 		GeneralRuleBo expectedReactingRule = reactingRuleBlService.modifyRuleSpecificAttributes(getReactingRuleBo());
@@ -69,7 +69,7 @@ public class ReactingRuleServiceTest {
 	@Test
 	public void getRuleSpecificValuesTest() throws ReaRuleManagementException {
 		when(reactingRuleActionDlService.findByRuleId(Mockito.anyLong())).thenReturn(getReareactingAct());
-		when(reactingRuleConverter.addingReactionRuleAction(Mockito.any(ReactingRuleAction.class),
+		when(reactingRuleConverter.convertToBo(Mockito.any(ReactingRuleAction.class),
 				Mockito.any(ReactingRuleBo.class))).thenReturn(getReactingRuleBo());
 		GeneralRuleBo expectedReactingRule = reactingRuleBlService.getRuleSpecificValues(getReactingRuleBo());
 		Assert.assertEquals(new Long(1l), expectedReactingRule.getRuleId());

@@ -10,8 +10,10 @@ import javax.ejb.Stateless;
 import com.google.common.collect.Lists;
 
 import colruyt.rearulmgtdmnejb.bo.GeneralRuleBo;
+import colruyt.rearulmgtdmnejb.bo.ProductHierarchyElementBo;
 import colruyt.rearulmgtdmnejb.bo.RefActionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
+import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySet;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.enums.ActionType;
 import colruyt.rearulmgtdmnejb.enums.SourceType;
@@ -22,9 +24,9 @@ public class ReaRuleConverter implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@EJB
-	private ProductHierarchyElementConverter productHrchyElmntConverter;
+	private ProductHierarchyElementConverter productHierarchyElementConverter;
 
-	public ReactionRule convertRuleBo(ReactionRule existingReaRule, GeneralRuleBo reactionRuleBo) {
+	public ReactionRule convertFromBo(ReactionRule existingReaRule, GeneralRuleBo reactionRuleBo) {
 		ReactionRule reaRule = null;
 		if (existingReaRule != null) {
 			reaRule = existingReaRule;
@@ -50,38 +52,38 @@ public class ReaRuleConverter implements Serializable {
 		return reaRule;
 	}
 
-	public List<ActionType> convertRuleAction(GeneralRuleBo reactionRuleBo) {
+	public List<ActionType> convertFromActionTypeBo(List<RefActionTypeBo> actionTypeList) {
 
 		List<ActionType> actionTypeLst = Lists.newArrayList();
-		for (RefActionTypeBo actionBo : reactionRuleBo.getActionTypeList()) {
+		for (RefActionTypeBo actionBo : actionTypeList) {
 			actionTypeLst.add(ActionType.forValue(actionBo.getActionTypeId()));
 		}
 		return actionTypeLst;
 
 	}
 
-	public List<SourceType> convertRuleSource(GeneralRuleBo reactionRuleBo) {
+	public List<SourceType> convertFromSourceTypeBo(List<RefSourceTypeBo> sourceTypeList) {
 		List<SourceType> sourceList = Lists.newArrayList();
-		for (RefSourceTypeBo sourceBo : reactionRuleBo.getSourceTypeList()) {
+		for (RefSourceTypeBo sourceBo : sourceTypeList) {
 			sourceList.add(SourceType.forValue(sourceBo.getSourceTypeId()));
 		}
 		return sourceList;
 	}
 
-	public List<ActionType> convertAllAction(int idForAll) {
+	public List<ActionType> convertFromActionTypeAll(int idForAll) {
 		List<ActionType> actionTypes = Lists.newArrayList();
 		actionTypes.add(ActionType.forValue(idForAll));
 		return actionTypes;
 
 	}
 
-	public List<SourceType> convertAllSource(long idForAll) {
+	public List<SourceType> convertFromSourceTypeAll(int idForAll) {
 		List<SourceType> sourceTypes = Lists.newArrayList();
 		sourceTypes.add(SourceType.forValue(idForAll));
 		return sourceTypes;
 	}
 
-	public List<GeneralRuleBo> convertRuleLine(List<ReactionRule> reaRules) {
+	public List<GeneralRuleBo> convertToBo(List<ReactionRule> reaRules) {
 		List<GeneralRuleBo> ruleLines = Lists.newArrayList();
 		for (ReactionRule rule : reaRules) {
 			GeneralRuleBo ruleBo = new GeneralRuleBo();
@@ -105,7 +107,7 @@ public class ReaRuleConverter implements Serializable {
 		return ruleLines;
 	}
 
-	public GeneralRuleBo convertGeneralRuleBo(ReactionRule rule, GeneralRuleBo ruleBo) {
+	public GeneralRuleBo convertToBo(ReactionRule rule, GeneralRuleBo ruleBo) {
 		ruleBo.setRuleId(rule.getReaRuleId());
 		ruleBo.setRulesetId(rule.getReaRulesetId());
 		ruleBo.setRuleName(rule.getRuleName());
@@ -123,7 +125,21 @@ public class ReaRuleConverter implements Serializable {
 		ruleBo.setUpdatedOn(rule.getUpdatedOn());
 		ruleBo.setChildRuleId(rule.getChildRuleId());
 		ruleBo.setRulePriority(rule.getRulePriority());
-		return productHrchyElmntConverter.convertAssortment(ruleBo, rule);
+		return convertAssortment(ruleBo, rule);
 	}
 
+	private GeneralRuleBo convertAssortment(GeneralRuleBo ruleBo, ReactionRule rule) {
+		for (PriceProductHierarchySet set : rule.getPriceProductHierarchySet()) {
+			ruleBo.setAssortmentName(set.getAssortmentName());
+			ruleBo.setCheapBrand(set.getCheapBrand());
+			ruleBo.setNationalBrand(set.getNationalBrand());
+			ruleBo.setOwnBrand(set.getOwnBrand());
+			ruleBo.setProductHierarchySetId(set.getProductHierarchySetId());
+			List<ProductHierarchyElementBo> productHierarchyElementBolist = productHierarchyElementConverter
+					.convertToBo(set.getPriceProductHierarchyElements());
+			ruleBo.setPriceProductHierarchySet(productHierarchyElementBolist);
+
+		}
+		return ruleBo;
+	}
 }

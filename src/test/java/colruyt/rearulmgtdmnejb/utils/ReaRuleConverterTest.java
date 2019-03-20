@@ -1,11 +1,9 @@
 package colruyt.rearulmgtdmnejb.utils;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
 
 import java.util.Date;
 import java.util.List;
-
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -42,51 +40,49 @@ public class ReaRuleConverterTest {
 	@TestedObject
 	private ReaRuleConverter reaRuleConverter;
 	@InjectIntoByType
-	private ProductHierarchyElementConverter productHrchyElmntConverter = Mockito.mock(ProductHierarchyElementConverter.class);
+	private ProductHierarchyElementConverter productHierarchyElementConverter = Mockito.mock(ProductHierarchyElementConverter.class);
 
 	@Test
 	public void convertRuleBoTest() {
-		ReactionRule expectedReaRule = reaRuleConverter.convertRuleBo(getReactRule(), getReactionRule());
+		ReactionRule expectedReaRule = reaRuleConverter.convertFromBo(getReactRule(), getReactionRule());
 		Assert.assertEquals(getReactRule().getReaRuleId(), expectedReaRule.getReaRuleId());
 	}
 
 	@Test
 	public void convertRuleActionTest() {
-		List<ActionType> expectedReaRuleSetActtype=reaRuleConverter.convertRuleAction(getReactionRule());
+		List<ActionType> expectedReaRuleSetActtype=reaRuleConverter.convertFromActionTypeBo(getRefActionType());
 		assertEquals(1l, expectedReaRuleSetActtype.size());
 
 	}
 
 	@Test
 	public void convertRuleSourceTest() {
-		List<SourceType> expectedReaRuleSetSrc = reaRuleConverter.convertRuleSource(getReactionRule());
+		List<SourceType> expectedReaRuleSetSrc = reaRuleConverter.convertFromSourceTypeBo(getRefSourceType());
 		assertEquals(1, expectedReaRuleSetSrc.size());
 	}
 	
 	@Test
 	public void convertAllActionTest(){
 		int idForAll=1;
-		List<ActionType> expectedActionTypes=reaRuleConverter.convertAllAction(idForAll);
+		List<ActionType> expectedActionTypes=reaRuleConverter.convertFromActionTypeAll(idForAll);
 		Assert.assertNotNull(expectedActionTypes);
 	}
 	@Test
 	public void convertAllSourceTest(){
-		long idForAll=1;
-		List<SourceType> expectedSourceTypes=reaRuleConverter.convertAllSource(idForAll);
+		int idForAll=1;
+		List<SourceType> expectedSourceTypes=reaRuleConverter.convertFromSourceTypeAll(idForAll);
 		Assert.assertNotNull(expectedSourceTypes);
 	}
 
 	@Test
 	public void createconvertRuleLineTest() {
-		List<GeneralRuleBo> expectedGeneralRuleBoList = reaRuleConverter.convertRuleLine(getReactRuleList());
+		List<GeneralRuleBo> expectedGeneralRuleBoList = reaRuleConverter.convertToBo(getReactRuleList());
 		assertEquals(getruleLines().size(), expectedGeneralRuleBoList.size());
 	}
 
 	@Test
 	public void convertGeneralRuleBoTest() {
-		when(productHrchyElmntConverter.convertAssortment(Mockito.any(GeneralRuleBo.class),
-				Mockito.any(ReactionRule.class))).thenReturn(getReactionRule());
-		GeneralRuleBo expectedGeneralRuleBo = reaRuleConverter.convertGeneralRuleBo(getReactRule(), getReactionRule());
+		GeneralRuleBo expectedGeneralRuleBo = reaRuleConverter.convertToBo(getReactRule(), getReactionRule());
 		assertEquals(new Long(1l), expectedGeneralRuleBo.getRuleId());
 
 	}

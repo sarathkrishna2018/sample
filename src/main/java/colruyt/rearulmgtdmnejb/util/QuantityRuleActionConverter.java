@@ -22,7 +22,7 @@ public class QuantityRuleActionConverter implements Serializable {
 	@EJB
 	private ReferenceDataService referenceDataService;
 
-	public QuantityRuleAction convert(QuantityRuleBo quantityRuleBo) {
+	public QuantityRuleAction convertFromBo(QuantityRuleBo quantityRuleBo) {
 		QuantityRuleAction quantityRuleAction = new QuantityRuleAction();
 		quantityRuleAction.setReactionRuleId(quantityRuleBo.getRuleId());
 		quantityRuleAction.setQuantityConditionId(quantityRuleBo.getConditionType().getCodeTypeId());
@@ -30,13 +30,13 @@ public class QuantityRuleActionConverter implements Serializable {
 		return quantityRuleAction;
 	}
 
-	public QuantityRuleBo addQuantityRuleAction(QuantityRuleAction quantityRuleAction, QuantityRuleBo quantityBo) {
-		quantityBo.setConditionType(convertConditionType(quantityRuleAction.getQuantityConditionId()));
-		quantityBo.setQuantityPriceType(convertQtyPriceType(quantityRuleAction.getQuantityTypeId()));
+	public QuantityRuleBo convertToBo(QuantityRuleAction quantityRuleAction, QuantityRuleBo quantityBo) {
+		quantityBo.setConditionType(getRefQuantityConditionType(quantityRuleAction.getQuantityConditionId()));
+		quantityBo.setQuantityPriceType(getRefQuantityPriceType(quantityRuleAction.getQuantityTypeId()));
 		return quantityBo;
 	}
 
-	private RefQuantityPriceTypeBo convertQtyPriceType(int qtyTypeId) {
+	private RefQuantityPriceTypeBo getRefQuantityPriceType(int qtyTypeId) {
 		RefQuantityPriceTypeBo priceType = new RefQuantityPriceTypeBo();
 		List<RefQuantityPriceTypeBo> priceTypeLst = referenceDataService.getAllQuantityPriceTypes();
 		for(int i=0; i<priceTypeLst.size();i++ ){
@@ -49,7 +49,7 @@ public class QuantityRuleActionConverter implements Serializable {
 		return priceType;
 	}
 
-	private RefQuantityConditionTypeBo convertConditionType(int qtyCondId) {
+	private RefQuantityConditionTypeBo getRefQuantityConditionType(int qtyCondId) {
 		RefQuantityConditionTypeBo refQuantityConditionTypeBo = new RefQuantityConditionTypeBo();
 		List<RefQuantityConditionTypeBo> conditionTypeLst = referenceDataService.getAllQuantityConditionTypes();
 		for(int i=0; i<conditionTypeLst.size();i++ ){

@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -55,7 +53,7 @@ public class QuantityRuleServiceTest {
 
 	@Test
 	public void createRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		when(quantityRuleActionConverter.convert(Mockito.any(QuantityRuleBo.class))).thenReturn(getReaQtyRule());
+		when(quantityRuleActionConverter.convertFromBo(Mockito.any(QuantityRuleBo.class))).thenReturn(getReaQtyRule());
 		when(quantityRuleActionDlService.createOrUpdate(Mockito.any(QuantityRuleAction.class)))
 				.thenReturn(getReaQtyRule());
 		GeneralRuleBo expectedQuantityRule = quantityRuleBlService.createRuleSpecificAttributes(getQuantityRuleBo());
@@ -64,33 +62,17 @@ public class QuantityRuleServiceTest {
 
 	@Test
 	public void modifyRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		when(quantityRuleActionConverter.convert(Mockito.any(QuantityRuleBo.class))).thenReturn(getReaQtyRule());
+		when(quantityRuleActionConverter.convertFromBo(Mockito.any(QuantityRuleBo.class))).thenReturn(getReaQtyRule());
 		when(quantityRuleActionDlService.createOrUpdate(Mockito.any(QuantityRuleAction.class)))
 				.thenReturn(getReaQtyRule());
 		GeneralRuleBo expectedQuantityRule = quantityRuleBlService.modifyRuleSpecificAttributes(getQuantityRuleBo());
 		Assert.assertEquals(new Long(1l), expectedQuantityRule.getRuleId());
 	}
-/*
-	@Test
-	public void getReactionRulesTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		int ruleId = 1;
-		ReactionRulesetBo reactionRulesetBo = getReactionRulesetBo();
-		when(referenceDataService.findPkByType(Mockito.anyString())).thenReturn(ruleId);
-		reactionRulesetBo.setRuleLines(getReactionRuleBoList());
-		when(generalRuleService.getRulesByRuleSetId(Mockito.anyLong())).thenReturn(getRuleList());
-		when(generalRuleService.getGeneralRuleAttributes(Mockito.any(ReactionRule.class),
-				Mockito.any(GeneralRuleBo.class))).thenReturn(getQuantityRuleBo());
-		when(quantityRuleActionDlService.findByRuleId(Mockito.anyLong())).thenReturn(getReaQtyRule());
-		when(quantityRuleActionConverter.addQuantityRuleAction(Mockito.any(QuantityRuleAction.class),
-				Mockito.any(QuantityRuleBo.class))).thenReturn(getQuantityRuleBo());
-		List<ReactionRulesetBo> expectedQuantityRule = quantityRuleBlService.getReactionRules(getReaRuleList());
-		Assert.assertEquals(1l, expectedQuantityRule.size());
-	}*/
 
 	@Test
 	public void getRuleSpecificValuesTest() throws ReaRuleManagementException {
 		when(quantityRuleActionDlService.findByRuleId(Mockito.anyLong())).thenReturn(getReaQtyRule());
-		when(quantityRuleActionConverter.addQuantityRuleAction(Mockito.any(QuantityRuleAction.class),
+		when(quantityRuleActionConverter.convertToBo(Mockito.any(QuantityRuleAction.class),
 				Mockito.any(QuantityRuleBo.class))).thenReturn(getQuantityRuleBo());
 		GeneralRuleBo expectedQuantityRule = quantityRuleBlService.getRuleSpecificValues(getQuantityRuleBo());
 		Assert.assertEquals(new Long(1l), expectedQuantityRule.getRuleId());

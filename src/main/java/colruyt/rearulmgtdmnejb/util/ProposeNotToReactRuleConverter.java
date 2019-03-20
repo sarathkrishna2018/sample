@@ -23,33 +23,23 @@ public class ProposeNotToReactRuleConverter implements Serializable {
 	@EJB
 	private ReferenceDataService referenceDataService;
 
-	public ProposalNotToReactRuleAction convert(ProposeNotToReactRuleBo notToReactRule ) {
+	public ProposalNotToReactRuleAction convertFromBo(ProposeNotToReactRuleBo notToReactRule) {
 		ProposalNotToReactRuleAction notToReactRuleAction = new ProposalNotToReactRuleAction();
 		notToReactRuleAction.setReactionRuleId(notToReactRule.getRuleId());
 		notToReactRuleAction.setFltoutTypeId(notToReactRule.getFilterOutType().getFilterOutTypeId());
-		notToReactRuleAction.setNotToReactSetReasons(convertReasonNotToReactSet(notToReactRule.getNotToReactCodes()));
+		notToReactRuleAction
+				.setNotToReactSetReasons(getProposeNotToReactReasonIds(notToReactRule.getNotToReactCodes()));
 		return notToReactRuleAction;
 	}
-	
-	public List<Integer> convertReasonNotToReactSet(List<RefNotToReactCodeBo> notToReactCodes) {
-		List<Integer> reasonIds = Lists.newArrayList();
-		for(RefNotToReactCodeBo reasonCode : notToReactCodes){
-			reasonIds.add(reasonCode.getNotToReactCodeTypeId());
-		}
-		return reasonIds;
-	}
 
-	
 	public ProposeNotToReactRuleBo convertToBo(ProposalNotToReactRuleAction proposalNotToReactRuleAction,
 			ProposeNotToReactRuleBo proposeNTRRuleBo) {
-		proposeNTRRuleBo.setFilterOutType(convertFltOutType(proposalNotToReactRuleAction.getFltoutTypeId()));
-		proposeNTRRuleBo.setNotToReactCodes(convertReasonNotToReactSetBos(proposalNotToReactRuleAction.getNotToReactSetReasons()));
+		proposeNTRRuleBo.setFilterOutType(convertToBo(proposalNotToReactRuleAction.getFltoutTypeId()));
+		proposeNTRRuleBo.setNotToReactCodes(convertToBo(proposalNotToReactRuleAction.getNotToReactSetReasons()));
 		return proposeNTRRuleBo;
 	}
 
-	
-	private List<RefNotToReactCodeBo> convertReasonNotToReactSetBos(
-			List<Integer> reaNreactSetRsns) {
+	private List<RefNotToReactCodeBo> convertToBo(List<Integer> reaNreactSetRsns) {
 		List<RefNotToReactCodeBo> refNotToReact = referenceDataService.getAllNotToReactCodeTypes();
 		List<RefNotToReactCodeBo> notRoReactBos = Lists.newArrayList();
 		for (int i = 0; i < reaNreactSetRsns.size(); i++) {
@@ -66,11 +56,12 @@ public class ProposeNotToReactRuleConverter implements Serializable {
 		return notRoReactBos;
 	}
 
-	private RefFilterOutRecordingTypeBo convertFltOutType(int fltoutTypeId) {
+	private RefFilterOutRecordingTypeBo convertToBo(int fltoutTypeId) {
 		RefFilterOutRecordingTypeBo refFilterOutRecordingTypeBo = new RefFilterOutRecordingTypeBo();
-		List<RefFilterOutRecordingTypeBo> refFilterOutRecordingTypeLst = referenceDataService.getAllFilterOutRecordingTypes();
-		for(int i=0;i<refFilterOutRecordingTypeLst.size();i++){
-			if(fltoutTypeId==refFilterOutRecordingTypeLst.get(i).getFilterOutTypeId()){
+		List<RefFilterOutRecordingTypeBo> refFilterOutRecordingTypeLst = referenceDataService
+				.getAllFilterOutRecordingTypes();
+		for (int i = 0; i < refFilterOutRecordingTypeLst.size(); i++) {
+			if (fltoutTypeId == refFilterOutRecordingTypeLst.get(i).getFilterOutTypeId()) {
 				refFilterOutRecordingTypeBo.setFilterOutTypeId(fltoutTypeId);
 				refFilterOutRecordingTypeBo.setDescription(refFilterOutRecordingTypeLst.get(i).getDescription());
 				refFilterOutRecordingTypeBo.setCodeLang(refFilterOutRecordingTypeLst.get(i).getCodeLang());
@@ -78,4 +69,13 @@ public class ProposeNotToReactRuleConverter implements Serializable {
 		}
 		return refFilterOutRecordingTypeBo;
 	}
+
+	private List<Integer> getProposeNotToReactReasonIds(List<RefNotToReactCodeBo> notToReactCodes) {
+		List<Integer> reasonIds = Lists.newArrayList();
+		for (RefNotToReactCodeBo reasonCode : notToReactCodes) {
+			reasonIds.add(reasonCode.getNotToReactCodeTypeId());
+		}
+		return reasonIds;
+	}
+
 }

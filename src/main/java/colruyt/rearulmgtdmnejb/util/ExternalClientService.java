@@ -33,11 +33,6 @@ public class ExternalClientService implements Serializable {
 	@EJB
 	private CookieService cookieService;
 
-	/**
-	 * 
-	 * @param url
-	 * @throws RRMDomainException
-	 */
 	public String callGetService(String url) throws ServiceDownException, RRMDomainException {
 		Client client = Client.create();
 		WebResource webResource = client.resource(url);
@@ -54,12 +49,6 @@ public class ExternalClientService implements Serializable {
 		return jsonResponse;
 	}
 
-	/**
-	 * 
-	 * @param jsonResponse
-	 * @param response
-	 * @throws RRMDomainException
-	 */
 	private void handleException(ClientResponse response, String jsonResponse)
 			throws ServiceDownException, RRMDomainException {
 		if (Response.Status.INTERNAL_SERVER_ERROR.getStatusCode() == response.getStatus()

@@ -26,11 +26,7 @@ import colruyt.rearulmgtdmnejb.service.dl.FilteringRuleActionDlService;
 import colruyt.rearulmgtdmnejb.util.ExceptionMessageConstants;
 import colruyt.rearulmgtdmnejb.util.FilteringRuleActionConverter;
 import colruyt.rearulmgtdmnejb.util.GeneralRulePriorityComparator;
-import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnDebugMessage;
-
-/**
- * extends "GeneralRuleService"
- */
+import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnDebugMessage;
 
 @Stateless
 @LocalBean
@@ -44,32 +40,19 @@ public class FilteringRuleService extends GeneralRuleService implements Serializ
 	@EJB
 	private FilteringRuleActionConverter filteringRuleActionConverter;
 
-	/**
-	 * This Method is to Create FilteringRule
-	 * 
-	 * @param reactionRuleBo
-	 * @throws ReaRuleValidationException
-	 * @throws ReaRuleManagementException
-	 */
 	@Override
 	public GeneralRuleBo createRuleSpecificAttributes(GeneralRuleBo reactionRuleBo)
 			throws ReaRuleValidationException, ReaRuleManagementException {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_FILTERINGRULE);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_FILTERINGRULE);
 		FilteringRuleBo filteringRuleBo = (FilteringRuleBo) reactionRuleBo;
 		validateRuleInputs(filteringRuleBo);
-		FilteringRuleAction reaFltRule = filteringRuleActionConverter.convert(filteringRuleBo);
+		FilteringRuleAction reaFltRule = filteringRuleActionConverter.convertFromBo(filteringRuleBo);
 		filteringRuleActionDlService.createOrUpdate(reaFltRule);
 		return filteringRuleBo;
 	}
 
-	/**
-	 * This Method is to Validate FilteringRule Mandatory Fields
-	 * 
-	 * @param filteringRuleBo
-	 * @throws ReaRuleValidationException
-	 */
 	private void validateRuleInputs(FilteringRuleBo filteringRuleBo) throws ReaRuleValidationException {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_VALIDATEFILTERINGRULE);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_VALIDATEFILTERINGRULE);
 		if (filteringRuleBo != null) {
 			Double maxQuantity = filteringRuleBo.getMaxCompQuantity();
 			Double xTimeQuantity = filteringRuleBo.getxTimeQuantity();
@@ -81,36 +64,21 @@ public class FilteringRuleService extends GeneralRuleService implements Serializ
 		}
 	}
 
-	/**
-	 * This Method is to edit FilteringRule
-	 * 
-	 * @param reactionRuleBo
-	 * @throws ReaRuleValidationException
-	 * @throws ReaRuleManagementException
-	 */
 	@Override
 	public GeneralRuleBo modifyRuleSpecificAttributes(GeneralRuleBo reactionRuleBo)
 			throws ReaRuleValidationException, ReaRuleManagementException {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_MODIFYFILTERINGRULE);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_MODIFYFILTERINGRULE);
 		FilteringRuleBo filteringRuleBo = (FilteringRuleBo) reactionRuleBo;
 		validateRuleInputs(filteringRuleBo);
-		FilteringRuleAction reaFltRule = filteringRuleActionConverter.convert(filteringRuleBo);
+		FilteringRuleAction reaFltRule = filteringRuleActionConverter.convertFromBo(filteringRuleBo);
 		filteringRuleActionDlService.createOrUpdate(reaFltRule);
 		return filteringRuleBo;
 	}
 
-	/**
-	 * This Method is to get FilteringRule
-	 * 
-	 * @param reactionRulesetBos
-	 * @throws ReaRuleValidationException
-	 * @throws ReaRuleManagementException
-	 */
 	@Override
 	public List<ReactionRulesetBo> getReactionRules(List<ReactionRulesetBo> reactionRulesetBos)
 			throws ReaRuleValidationException, ReaRuleManagementException {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_RETRIEVEFILTERINGRULE);
-		//long ruleTypeId = super.getRuleTypeId(RuleType.FILTERING.getRuleTypeName());
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_RETRIEVEFILTERINGRULE);
 		List<ReactionRulesetBo> ruleSetBos = Lists.newArrayList();
 		for (ReactionRulesetBo reactionRulesetBo : reactionRulesetBos) {
 			if (reactionRulesetBo.getRefRuleTypeBo().getRuleTypeId() == RuleType.FILTERING.getRuleTypeID()) {
@@ -123,8 +91,7 @@ public class FilteringRuleService extends GeneralRuleService implements Serializ
 					FilteringRuleBo filteringRuleBo = (FilteringRuleBo) ruleBo;
 
 					FilteringRuleAction filteringRule = filteringRuleActionDlService.findByRuleId(rule.getReaRuleId());
-					filteringRuleBo = filteringRuleActionConverter.addFilteringRuleAction(filteringRule,
-							filteringRuleBo);
+					filteringRuleBo = filteringRuleActionConverter.convertToBo(filteringRule, filteringRuleBo);
 					ruleBos.add(filteringRuleBo);
 
 				}
@@ -136,19 +103,12 @@ public class FilteringRuleService extends GeneralRuleService implements Serializ
 		return ruleSetBos;
 	}
 
-	/**
-	 * This Method is to view FilteringRule
-	 * 
-	 * @param ruleId
-	 * @param ruleName
-	 * @throws ReaRuleManagementException
-	 */
 	@Override
 	public GeneralRuleBo getRuleSpecificValues(GeneralRuleBo ruleBo) throws ReaRuleManagementException {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_VIEWFILTERINGRULE);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_VIEWFILTERINGRULE);
 		FilteringRuleBo filteringRuleBo = (FilteringRuleBo) ruleBo;
 		FilteringRuleAction filteringRule = filteringRuleActionDlService.findByRuleId(filteringRuleBo.getRuleId());
-		filteringRuleBo = filteringRuleActionConverter.addFilteringRuleAction(filteringRule, filteringRuleBo);
+		filteringRuleBo = filteringRuleActionConverter.convertToBo(filteringRule, filteringRuleBo);
 		filteringRuleBo.setType(RuleType.FILTERING.getRuleTypeName());
 		return filteringRuleBo;
 	}

@@ -27,7 +27,7 @@ import colruyt.rearulmgtdmnejb.service.dl.ReactionRuleActionTypeDlService;
 import colruyt.rearulmgtdmnejb.service.dl.ReactionRuleDlService;
 import colruyt.rearulmgtdmnejb.service.dl.ReactionRuleSourceTypeDlService;
 import colruyt.rearulmgtdmnejb.util.ExceptionMessageConstants;
-import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnDebugMessage;
+import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnDebugMessage;
 import colruyt.rearulmgtdmnejb.util.ReaRuleConverter;
 import colruyt.rearulmgtdmnejb.util.ReferenceDataConverter;
 
@@ -68,14 +68,6 @@ public abstract class GeneralRuleService implements Serializable {
 
 	public abstract void physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo);
 
-	/**
-	 * Template pattern to create the Reaction Rule
-	 * 
-	 * @param reactionRuleBo
-	 * @return GeneralRuleBo
-	 * @throws ReaRuleValidationException
-	 * @throws ReaRuleManagementException
-	 */
 	public GeneralRuleBo createRule(GeneralRuleBo reactionRuleBo)
 			throws ReaRuleValidationException, ReaRuleManagementException {
 		GeneralRuleBo ruleBo = null;
@@ -87,14 +79,6 @@ public abstract class GeneralRuleService implements Serializable {
 		return createRuleSpecificAttributes(ruleBo);
 	}
 
-	/**
-	 * Template pattern to Modify Rule
-	 * 
-	 * @param reactionRuleBo
-	 * @return GeneralRuleBo
-	 * @throws ReaRuleValidationException
-	 * @throws ReaRuleManagementException
-	 */
 	public GeneralRuleBo modifyRule(GeneralRuleBo reactionRuleBo)
 			throws ReaRuleValidationException, ReaRuleManagementException {
 		ReactionRule existingReactionRule = findByRuleId(reactionRuleBo.getRuleId());
@@ -111,12 +95,6 @@ public abstract class GeneralRuleService implements Serializable {
 
 	}
 
-	/**
-	 * Update the validTo and childRule id in Rule table
-	 * 
-	 * @param childRuleBo
-	 * @param existingReactionRule
-	 */
 	private void appendTimeSliceParam(GeneralRuleBo childRuleBo, ReactionRule existingReactionRule) {
 		existingReactionRule.setChildRuleId(childRuleBo.getRuleId());
 		existingReactionRule.setValidUpto(DateUtils.addDays(childRuleBo.getValidFrom(), -1));
@@ -130,13 +108,6 @@ public abstract class GeneralRuleService implements Serializable {
 		return createRule(reactionRuleBo);
 	}
 
-	/**
-	 * Set Time Slice flag by validating the dates.
-	 * 
-	 * @param existingReactionRule
-	 * @param reactionRuleBo
-	 * @return
-	 */
 	private boolean checkForValidity(ReactionRule existingReactionRule, GeneralRuleBo reactionRuleBo) {
 		Date currentDate = new Date();
 		if (existingReactionRule.getValidFrom() != null
@@ -147,15 +118,6 @@ public abstract class GeneralRuleService implements Serializable {
 		return false;
 	}
 
-	/**
-	 * Template design pattern to get the Reaction rule
-	 * 
-	 * @param specificReactionRuleBo
-	 * @param ruleId
-	 * @param ruleType
-	 * @return
-	 * @throws ReaRuleManagementException
-	 */
 	public GeneralRuleBo viewReactionRule(GeneralRuleBo specificReactionRuleBo, long ruleId, String langCode)
 			throws ReaRuleManagementException {
 		ReactionRule reactionRule = getReactionRule(ruleId, langCode);
@@ -163,40 +125,31 @@ public abstract class GeneralRuleService implements Serializable {
 		return getRuleSpecificValues(ruleBo);
 	}
 
-	/**
-	 * This method is to create reaction rule
-	 * 
-	 * @param reactionRuleBo
-	 * @param isDuplicationAllowed
-	 * @return GeneralRuleBo
-	 * @throws ReaRuleValidationException
-	 * @throws ReaRuleManagementException
-	 */
 	private GeneralRuleBo createGeneralRuleAttributes(GeneralRuleBo reactionRuleBo, boolean isDuplicationAllowed)
 			throws ReaRuleValidationException, ReaRuleManagementException {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_REACTIONRULE);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_REACTIONRULE);
 		validateRuleInputs(reactionRuleBo);
 		ReactionRulesetBo reactionRulesetBo = reactionRuleSetService.createReactionRuleSet(
 				reactionRuleBo.getReactionRulesetBo(), isDuplicationAllowed, reactionRuleBo.getLogonId());
 		reactionRuleBo.setRulesetId(reactionRulesetBo.getRulesetId());
 		setRulePriority(reactionRulesetBo, reactionRuleBo);
-		ReactionRule reaRule = reaRuleConverter.convertRuleBo(null, reactionRuleBo);
+		ReactionRule reaRule = reaRuleConverter.convertFromBo(null, reactionRuleBo);
 		// action
 		if (reactionRuleBo.isActionSelectAll()) {
-			List<ActionType> actionLst = reaRuleConverter.convertAllAction(ActionType.ALL.getActionTypeId());
+			List<ActionType> actionLst = reaRuleConverter.convertFromActionTypeAll(ActionType.ALL.getActionTypeId());
 			reaRule.setRefActionTypes(actionLst);
 		} else if (!reactionRuleBo.isActionSelectAll() && reactionRuleBo.getActionTypeList() != null
 				&& !reactionRuleBo.getActionTypeList().isEmpty()) {
-			List<ActionType> actionLst = reaRuleConverter.convertRuleAction(reactionRuleBo);
+			List<ActionType> actionLst = reaRuleConverter.convertFromActionTypeBo(reactionRuleBo.getActionTypeList());
 			reaRule.setRefActionTypes(actionLst);
 		}
 		// source
 		if (reactionRuleBo.isSourceSelectAll()) {
-			List<SourceType> sourceLst = reaRuleConverter.convertAllSource(SourceType.ALL.getSourceTypeId());
+			List<SourceType> sourceLst = reaRuleConverter.convertFromSourceTypeAll(SourceType.ALL.getSourceTypeId());
 			reaRule.setRefSourceTypes(sourceLst);
 		} else if (!reactionRuleBo.isSourceSelectAll() && reactionRuleBo.getSourceTypeList() != null
 				&& !reactionRuleBo.getSourceTypeList().isEmpty()) {
-			List<SourceType> sourceLst = reaRuleConverter.convertRuleSource(reactionRuleBo);
+			List<SourceType> sourceLst = reaRuleConverter.convertFromSourceTypeBo(reactionRuleBo.getSourceTypeList());
 			reaRule.setRefSourceTypes(sourceLst);
 		}
 		reaRule = reactionRuleDlService.createOrUpdate(reaRule);
@@ -206,13 +159,6 @@ public abstract class GeneralRuleService implements Serializable {
 		return priceProductHierarchyService.createProductHierarchySet(reactionRuleBo);
 	}
 
-	/**
-	 * Method to set Rule Priority
-	 * 
-	 * @param reactionRulesetBo
-	 * @param reactionRuleBo
-	 * @return GeneralRuleBo
-	 */
 	private GeneralRuleBo setRulePriority(ReactionRulesetBo reactionRulesetBo, GeneralRuleBo reactionRuleBo) {
 		Long rulePriority = getAllRulesByRuleSetId(reactionRulesetBo.getRulesetId());
 
@@ -224,27 +170,13 @@ public abstract class GeneralRuleService implements Serializable {
 		return reactionRuleBo;
 	}
 
-	/**
-	 *This method is used to get all rules
-	 * 
-	 * @param rulesetId
-	 * @return
-	 */
-
 	private Long getAllRulesByRuleSetId(Long rulesetId) {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_GETREACTRULE);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_GETREACTRULE);
 		return reactionRuleDlService.getMaxRulePriorityByRuleSetId(rulesetId);
 	}
 
-	/**
-	 * This method is to get reaction rule
-	 * 
-	 * @param ruleId
-	 * @return ReactionRule
-	 * @throws ReaRuleManagementException
-	 */
 	public ReactionRule getReactionRule(long ruleId, String langCode) throws ReaRuleManagementException {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_GETREACTIONRULE);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_GETREACTIONRULE);
 		ReactionRule reactionRule = reactionRuleDlService.findByPk(ruleId);
 		if (reactionRule == null) {
 			throw new ReaRuleManagementException(langCode, ExceptionMessageConstants.MESSAGE_REACTION_RULE_ABSENT);
@@ -252,14 +184,8 @@ public abstract class GeneralRuleService implements Serializable {
 		return reactionRule;
 	}
 
-	/**
-	 * This method is used to validate mandatory fields
-	 * 
-	 * @param reactionRuleBo
-	 * @throws ReaRuleValidationException
-	 */
 	private void validateRuleInputs(GeneralRuleBo reactionRuleBo) throws ReaRuleValidationException {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_VALIDATEREACTIONRULE);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_VALIDATEREACTIONRULE);
 		if (!reactionRuleBo.isPermanentDuration() && !reactionRuleBo.isTemporaryDuration()) {
 			throw new ReaRuleValidationException(reactionRuleBo.getLangCode(),
 					ExceptionMessageConstants.MESSAGE_DURATION_ABSENT);
@@ -292,12 +218,6 @@ public abstract class GeneralRuleService implements Serializable {
 		}
 	}
 
-	/**
-	 * This method is to validate the Catch ALL input fields
-	 * 
-	 * @param reactionRuleBo
-	 * @throws ReaRuleValidationException
-	 */
 	private void catchAllValidation(GeneralRuleBo reactionRuleBo) throws ReaRuleValidationException {
 		if (reactionRuleBo.getValidTo() != null) {
 			throw new ReaRuleValidationException(reactionRuleBo.getLangCode(),
@@ -333,26 +253,15 @@ public abstract class GeneralRuleService implements Serializable {
 		}
 	}
 
-	/**
-	 * This method is to validate date field
-	 * 
-	 * @param reactionRuleBo
-	 */
 	private void dateValidation(GeneralRuleBo reactionRuleBo) {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_DATEVALIDATION);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_DATEVALIDATION);
 		if (reactionRuleBo.getValidFrom() == null) {
 			reactionRuleBo.setValidFrom(new Date());
 		}
 	}
 
-	/**
-	 * This method is to validate importance code
-	 * 
-	 * @param reactionRuleBo
-	 * @throws ReaRuleValidationException
-	 */
 	private void importanceCodeValidation(GeneralRuleBo reactionRuleBo) throws ReaRuleValidationException {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_IMPORTANCECODEVALIDATION);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_IMPORTANCECODEVALIDATION);
 		Long importanceCodeFrom = reactionRuleBo.getImportanceCodeFrom();
 		Long importanceCodeTo = reactionRuleBo.getImportanceCodeTo();
 		if (importanceCodeFrom > importanceCodeTo) {
@@ -365,42 +274,34 @@ public abstract class GeneralRuleService implements Serializable {
 		}
 	}
 
-	/**
-	 * This method is to edit reaction rule
-	 * 
-	 * @param reactionRuleBo
-	 * @return GeneralRuleBo
-	 * @throws ReaRuleValidationException
-	 * @throws ReaRuleManagementException
-	 */
 	private GeneralRuleBo modifyGeneralRuleAttributes(GeneralRuleBo reactionRuleBo)
 			throws ReaRuleValidationException, ReaRuleManagementException {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_MODIFYREACTIONRULE);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_MODIFYREACTIONRULE);
 		validateRuleInputs(reactionRuleBo);
 		ReactionRule existingReactionRule = reactionRuleDlService.findByPk(reactionRuleBo.getRuleId());
 		if (existingReactionRule == null) {
 			throw new ReaRuleManagementException(reactionRuleBo.getLangCode(),
 					ExceptionMessageConstants.MESSAGE_REACTION_RULE_ABSENT);
 		}
-		ReactionRule reaRule = reaRuleConverter.convertRuleBo(existingReactionRule, reactionRuleBo);
+		ReactionRule reaRule = reaRuleConverter.convertFromBo(existingReactionRule, reactionRuleBo);
 		reactionRuleBo.setRuleId(reaRule.getReaRuleId());
 		// action
 		if (reactionRuleBo.isActionSelectAll()) {
-			List<ActionType> actionLst = reaRuleConverter.convertAllAction(ActionType.ALL.getActionTypeId());
+			List<ActionType> actionLst = reaRuleConverter.convertFromActionTypeAll(ActionType.ALL.getActionTypeId());
 			reaRule.setRefActionTypes(actionLst);
 		} else if (!reactionRuleBo.isActionSelectAll() && reactionRuleBo.getActionTypeList() != null
 				&& !reactionRuleBo.getActionTypeList().isEmpty()) {
-			List<ActionType> actionLst = reaRuleConverter.convertRuleAction(reactionRuleBo);
+			List<ActionType> actionLst = reaRuleConverter.convertFromActionTypeBo(reactionRuleBo.getActionTypeList());
 			reaRule.setRefActionTypes(actionLst);
 		}
 		// source
 		if (reactionRuleBo.isSourceSelectAll()) {
-			List<SourceType> sourceLst = reaRuleConverter.convertAllSource(SourceType.ALL.getSourceTypeId());
+			List<SourceType> sourceLst = reaRuleConverter.convertFromSourceTypeAll(SourceType.ALL.getSourceTypeId());
 			reaRule.setRefSourceTypes(sourceLst);
 
 		} else if (!reactionRuleBo.isSourceSelectAll() && reactionRuleBo.getSourceTypeList() != null
 				&& !reactionRuleBo.getSourceTypeList().isEmpty()) {
-			List<SourceType> sourceLst = reaRuleConverter.convertRuleSource(reactionRuleBo);
+			List<SourceType> sourceLst = reaRuleConverter.convertFromSourceTypeBo(reactionRuleBo.getSourceTypeList());
 			reaRule.setRefSourceTypes(sourceLst);
 		}
 		reactionRuleDlService.createOrUpdate(reaRule);
@@ -409,33 +310,20 @@ public abstract class GeneralRuleService implements Serializable {
 
 	}
 
-	/**
-	 * This method is to get reaction rule using rulesetId
-	 * 
-	 * @param ruleSetId
-	 * @return
-	 */
 	public List<ReactionRule> getRulesByRuleSetId(long ruleSetId) {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_GETREACTRULE);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_GETREACTRULE);
 		return reactionRuleDlService.findByRuleSetId(ruleSetId);
 	}
 
-	/**
-	 * This method is to get general rule using
-	 * 
-	 * @param rule
-	 * @param ruleBo
-	 * @return
-	 */
 	public GeneralRuleBo getGeneralRuleAttributes(ReactionRule rule, GeneralRuleBo ruleBo) {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_GETGENERALRULE);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_GETGENERALRULE);
 		if (rule.getRefActionTypes() != null && rule.getRefActionTypes().get(0) == ActionType.ALL) {
 			List<RefActionTypeBo> actionTypes = referenceDataService.getAllActionTypes();
 			List<RefActionTypeBo> actionTypesExceptAll = referenceDataService.removeActionTypeAll(actionTypes, false);
 			ruleBo.setActionTypeList(actionTypesExceptAll);
 			ruleBo.setActionSelectAll(true);
 		} else {
-			ruleBo.setActionTypeList(referenceDataConverter.convertRefReaActiontype(rule.getRefActionTypes()));
+			ruleBo.setActionTypeList(referenceDataConverter.convertToActionTypeBo(rule.getRefActionTypes()));
 		}
 		if (rule.getRefSourceTypes() != null && rule.getRefSourceTypes().get(0) == SourceType.ALL) {
 			List<RefSourceTypeBo> sourceTypes = referenceDataService.getAllSourceTypes();
@@ -443,32 +331,14 @@ public abstract class GeneralRuleService implements Serializable {
 			ruleBo.setSourceTypeList(sourceTypesExceptAll);
 			ruleBo.setSourceSelectAll(true);
 		} else {
-			ruleBo.setSourceTypeList(referenceDataConverter.convertRefReaSource(rule.getRefSourceTypes()));
+			ruleBo.setSourceTypeList(referenceDataConverter.convertToSourceTypeBo(rule.getRefSourceTypes()));
 		}
-		return reaRuleConverter.convertGeneralRuleBo(rule, ruleBo);
+		return reaRuleConverter.convertToBo(rule, ruleBo);
 	}
 
-	/**
-	 * This method is to fetch Rule type id by Rule name
-	 * 
-	 * @param ruleTypeName
-	 * @return long
-	 */
-	public int getRuleTypeId(String ruleTypeName) {
-		return referenceDataService.findPkByType(ruleTypeName);
-	}
-
-	/**
-	 * This method is used to logically delete a rule
-	 * 
-	 * @param ruleId
-	 * @param langCode
-	 * @param logonId
-	 * @throws ReaRuleManagementException
-	 */
 	public void logicallyDeleteReactionRule(Long ruleId, String langCode, String logonId)
 			throws ReaRuleManagementException {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_GETGENERALRULE);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_GETGENERALRULE);
 		ReactionRule reactionRule = getReactionRule(ruleId, langCode);
 		ReactionRule parentReactionRule = reactionRuleDlService.findParentRule(ruleId);
 		// if rule is a child rule, then remove child entry from parent rule
@@ -486,12 +356,6 @@ public abstract class GeneralRuleService implements Serializable {
 		reactionRuleDlService.updateLogicallyDeletedDate(reactionRule);
 	}
 
-	/**
-	 * This method is to modify Priority of rules
-	 * 
-	 * @param ruleLines
-	 * @throws ReaRuleManagementException
-	 */
 	public void modifyPriorityOfRules(List<GeneralRuleBo> ruleLines) throws ReaRuleManagementException {
 		for (GeneralRuleBo generalRule : ruleLines) {
 			ReactionRule reactionRule = getReactionRule(generalRule.getRuleId(), generalRule.getLangCode());

@@ -19,7 +19,7 @@ import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleValidationException;
 import colruyt.rearulmgtdmnejb.service.dl.ReactionRuleSetDlService;
 import colruyt.rearulmgtdmnejb.util.ExceptionMessageConstants;
-import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnDebugMessage;
+import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnDebugMessage;
 import colruyt.rearulmgtdmnejb.util.ReaRulesetConverter;
 import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnConstants;
 
@@ -36,18 +36,9 @@ public class ReactionRuleSetService implements Serializable {
 	@EJB
 	private ReaRulesetConverter reaRulesetConverter;
 
-	/**
-	 * This method is to create Reaction RuleSet
-	 * 
-	 * @param reactionRulesetBo
-	 * @param isDuplicationAllowed
-	 * @param logonId
-	 * @return ReactionRulesetBo
-	 * @throws ReaRuleManagementException
-	 */
 	public ReactionRulesetBo createReactionRuleSet(ReactionRulesetBo reactionRulesetBo, boolean isDuplicationAllowed,
 			String userId) throws ReaRuleManagementException {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_CREATEREACTIONRULESET);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_CREATEREACTIONRULESET);
 		List<ReactionRuleSet> reactionRulesets = null;
 		ReactionRuleSet reaRuleset = null;
 		if (!isDuplicationAllowed && reactionRulesetBo.getRulesetId() == null) {
@@ -58,7 +49,7 @@ public class ReactionRuleSetService implements Serializable {
 			reaRuleset = reactionRuleSetDlService.findByPk(reactionRulesetBo.getRulesetId());
 		}
 		if (reactionRulesets == null || reactionRulesets.isEmpty()) {
-			reaRuleset = reaRulesetConverter.convertReaRuleset(reaRuleset, reactionRulesetBo, userId);
+			reaRuleset = reaRulesetConverter.convertFromBo(reaRuleset, reactionRulesetBo, userId);
 			reaRuleset = reactionRuleSetDlService.createOrUpdate(reaRuleset);
 			reactionRulesetBo.setRulesetId(reaRuleset.getReaRulesetId());
 		} else {
@@ -67,28 +58,13 @@ public class ReactionRuleSetService implements Serializable {
 		return reactionRulesetBo;
 	}
 
-	/**
-	 * This method is to find ruleSet
-	 * 
-	 * @param cgChainId
-	 * @param compChainId
-	 * @return List<ReactionRulesetBo>
-	 */
 	public List<ReactionRulesetBo> find(long cgChainId, long compChainId) {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_FINDREACTIONRULESET);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_FINDREACTIONRULESET);
 		List<ReactionRuleSet> ruleSetList = reactionRuleSetDlService.findByCgChainAndPCChain(cgChainId, compChainId);
-		return reaRulesetConverter.convertRuleSetBo(ruleSetList);
+		return reaRulesetConverter.convertToBo(ruleSetList);
 
 	}
 
-	/**
-	 * This method is to validate the search rule input params
-	 * 
-	 * @param cgChainId
-	 * @param compChainId
-	 * @param ruleType
-	 * @throws ReaRuleValidationException
-	 */
 	public void validateRuleSetInput(long cgChainId, long compChainId, String ruleType)
 			throws ReaRuleValidationException {
 		if (ruleType == null || ruleType.isEmpty()) {
@@ -105,28 +81,16 @@ public class ReactionRuleSetService implements Serializable {
 		}
 	}
 
-	/**
-	 * This method is to get Reaction RuleSet
-	 * 
-	 * @param rulesetId
-	 * @return ReactionRulesetBo
-	 * @throws ReaRuleManagementException
-	 */
 	public ReactionRulesetBo getReactionRuleset(long rulesetId) throws ReaRuleManagementException {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_RETRIEVEREACTIONRULESET);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_RETRIEVEREACTIONRULESET);
 		ReactionRuleSet reactionRuleSet = reactionRuleSetDlService.findByPk(rulesetId);
 		if (reactionRuleSet == null) {
 			throw new ReaRuleManagementException("EN", ExceptionMessageConstants.MESSAGE_REACTION_RULESET_ABSENT);
 		}
-		return reaRulesetConverter.convertReactionRuleset(reactionRuleSet);
+		return reaRulesetConverter.convertToBo(reactionRuleSet);
 
 	}
 
-	/**
-	 * This method is to edit Reaction Ruleset
-	 * 
-	 * @param reactionRuleSetBo
-	 */
 	public void modifyRuleSetDetails(ReactionRulesetBo reactionRuleSetBo, String logonId)
 			throws ReaRuleValidationException, ReaRuleManagementException {
 		ReactionRuleSet existingReactionRuleset = reactionRuleSetDlService.findByPk(reactionRuleSetBo.getRulesetId());
@@ -136,21 +100,13 @@ public class ReactionRuleSetService implements Serializable {
 		if (reactionRuleSetBo.getRefRuleTypeBo().getRuleTypeId() == 1 && (reactionRuleSetBo.getName().isEmpty())) {
 			throw new ReaRuleManagementException("EN", ExceptionMessageConstants.MESSAGE_REACTION_RULESETNAME_ABSENT);
 		} else {
-			ReactionRuleSet reaRuleset = reaRulesetConverter.convertReaRuleset(existingReactionRuleset,
-					reactionRuleSetBo, logonId);
+			ReactionRuleSet reaRuleset = reaRulesetConverter.convertFromBo(existingReactionRuleset, reactionRuleSetBo,
+					logonId);
 			reactionRuleSetDlService.createOrUpdate(reaRuleset);
 		}
 
 	}
 
-	/**
-	 * This method is to delete Reaction Ruleset
-	 * 
-	 * @param ruleSetId
-	 * @param langCode
-	 * @param logonId
-	 * @throws ReaRuleManagementException
-	 */
 	public void logicallyDeleteReactionRuleSet(Long ruleSetId, String langCode, String logonId)
 			throws ReaRuleManagementException {
 		ReactionRuleSet reactionRuleSet = reactionRuleSetDlService.findByPk(ruleSetId);

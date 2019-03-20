@@ -26,11 +26,8 @@ import colruyt.rearulmgtdmnejb.service.dl.ProposalNotToReactActionDlService;
 import colruyt.rearulmgtdmnejb.util.ExceptionMessageConstants;
 import colruyt.rearulmgtdmnejb.util.GeneralRulePriorityComparator;
 import colruyt.rearulmgtdmnejb.util.ProposeNotToReactRuleConverter;
-import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnDebugMessage;
+import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnDebugMessage;
 
-/**
- * extends "GeneralRuleService"
- */
 @Stateless
 @LocalBean
 public class ProposeNotToReactRuleService extends GeneralRuleService implements Serializable {
@@ -42,31 +39,19 @@ public class ProposeNotToReactRuleService extends GeneralRuleService implements 
 	@EJB
 	private ProposeNotToReactRuleConverter proposeNotToReactRuleConverter;
 
-	/**
-	 * This method is to create ProposeNotToReactRule
-	 * 
-	 * @param reactionRuleBo
-	 * @throws ReaRuleValidationException
-	 * @throws ReaRuleManagementException
-	 */
 	public GeneralRuleBo createRuleSpecificAttributes(GeneralRuleBo reactionRuleBo)
 			throws ReaRuleValidationException, ReaRuleManagementException {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_PROPOSENOTTOREACT);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_PROPOSENOTTOREACT);
 		ProposeNotToReactRuleBo notToReactRule = (ProposeNotToReactRuleBo) reactionRuleBo;
 		validateRuleInputs(notToReactRule);
-		ProposalNotToReactRuleAction notToReactRuleAction = proposeNotToReactRuleConverter.convert(notToReactRule);
+		ProposalNotToReactRuleAction notToReactRuleAction = proposeNotToReactRuleConverter
+				.convertFromBo(notToReactRule);
 		proposalNotToReactActionDlService.createOrUpdate(notToReactRuleAction);
 		return notToReactRule;
 	}
 
-	/**
-	 * This Method is to validate ProposeNotToReactRule Mandatory fields
-	 * 
-	 * @param notToReactRule
-	 * @throws ReaRuleValidationException
-	 */
 	private void validateRuleInputs(ProposeNotToReactRuleBo notToReactRule) throws ReaRuleValidationException {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_VALIDATEPROPOSENOTTOREACTRULE);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_VALIDATEPROPOSENOTTOREACTRULE);
 		if (notToReactRule != null) {
 			if (notToReactRule.getFilterOutType() == null || notToReactRule.getNotToReactCodes() == null
 					|| notToReactRule.getNotToReactCodes().isEmpty()) {
@@ -76,36 +61,22 @@ public class ProposeNotToReactRuleService extends GeneralRuleService implements 
 		}
 	}
 
-	/**
-	 * This Method is to edit ProposeNotToReact Rule
-	 * 
-	 * @param reactionRuleBo
-	 * @throws ReaRuleValidationException
-	 * @throws ReaRuleManagementException
-	 */
 	@Override
 	public GeneralRuleBo modifyRuleSpecificAttributes(GeneralRuleBo reactionRuleBo)
 			throws ReaRuleValidationException, ReaRuleManagementException {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_MODIFYPROPOSENOTTOREACTRULE);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_MODIFYPROPOSENOTTOREACTRULE);
 		ProposeNotToReactRuleBo proposeNotToReactRuleBo = (ProposeNotToReactRuleBo) reactionRuleBo;
 		validateRuleInputs(proposeNotToReactRuleBo);
 		ProposalNotToReactRuleAction proposalNotToReactRuleAction = proposeNotToReactRuleConverter
-				.convert(proposeNotToReactRuleBo);
+				.convertFromBo(proposeNotToReactRuleBo);
 		proposalNotToReactActionDlService.createOrUpdate(proposalNotToReactRuleAction);
 		return proposeNotToReactRuleBo;
 	}
 
-	/**
-	 * This Method is to get ProposeNotToReact Rule
-	 * 
-	 * @param reactionRulesetBos
-	 * @throws ReaRuleValidationException
-	 * @throws ReaRuleManagementException
-	 */
 	@Override
 	public List<ReactionRulesetBo> getReactionRules(List<ReactionRulesetBo> reactionRulesetBos)
 			throws ReaRuleValidationException, ReaRuleManagementException {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_RETRIEVEPROPOSENOTTOREACTRULE);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_RETRIEVEPROPOSENOTTOREACTRULE);
 		List<ReactionRulesetBo> ruleSetBos = Lists.newArrayList();
 		for (ReactionRulesetBo reactionRulesetBo : reactionRulesetBos) {
 			if (reactionRulesetBo.getRefRuleTypeBo().getRuleTypeId() == RuleType.PROPOSE_NOT_REACT.getRuleTypeID()) {
@@ -132,16 +103,9 @@ public class ProposeNotToReactRuleService extends GeneralRuleService implements 
 		return ruleSetBos;
 	}
 
-	/**
-	 * This Method is to View ProposeNotToReact Rule
-	 * 
-	 * @param ruleId
-	 * @param ruleName
-	 * @throws ReaRuleManagementException
-	 */
 	@Override
 	public GeneralRuleBo getRuleSpecificValues(GeneralRuleBo ruleBo) throws ReaRuleManagementException {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_VIEWPROPOSENOTTOREACTRULE);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_VIEWPROPOSENOTTOREACTRULE);
 		ProposeNotToReactRuleBo proposeNotToRactRuleBo = (ProposeNotToReactRuleBo) ruleBo;
 		ProposalNotToReactRuleAction proposalNotToReactRuleAction = proposalNotToReactActionDlService
 				.findByRuleId(proposeNotToRactRuleBo.getRuleId());

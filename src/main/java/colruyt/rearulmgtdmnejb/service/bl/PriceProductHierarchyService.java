@@ -25,7 +25,7 @@ import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmntPK;
 import colruyt.rearulmgtdmnejb.service.dl.ProductHierarchyElementDlService;
 import colruyt.rearulmgtdmnejb.service.dl.ProductHierarchySetDlService;
 import colruyt.rearulmgtdmnejb.util.ProductHierarchyElementConverter;
-import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnDebugMessage;
+import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnDebugMessage;
 
 @Stateless
 @LocalBean
@@ -33,7 +33,7 @@ public class PriceProductHierarchyService implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(PriceProductHierarchyService.class);
 	@EJB
-	ProductHierarchyElementConverter productHrchyElmntConverter;
+	ProductHierarchyElementConverter productHierarchyElementConverter;
 
 	@EJB
 	ProductHierarchyElementDlService productHierarchyElementDlService;
@@ -43,16 +43,8 @@ public class PriceProductHierarchyService implements Serializable {
 	@EJB
 	PriceProductService priceProductService;
 
-	/**
-	 * This method is to create ProductHierarchySet
-	 * 
-	 * @param productHierarchyElements
-	 * @param ownBrand
-	 * @param nationalBrand
-	 * @param cheapBrand
-	 */
 	public GeneralRuleBo createProductHierarchySet(GeneralRuleBo reactionRuleBo) {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_PRODUCTHIERARCHYSET);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_PRODUCTHIERARCHYSET);
 		List<PriceProductHierarchyElement> reaPpdHchyElmnts = getProductHrchyElmnt(
 				reactionRuleBo.getPriceProductHierarchySet(), reactionRuleBo.getLogonId());
 		PriceProductHierarchySet reaPpdHchyset = setProdHrchySet(reactionRuleBo);
@@ -63,18 +55,11 @@ public class PriceProductHierarchyService implements Serializable {
 		return reactionRuleBo;
 	}
 
-	/**
-	 * This method is to get ProductHierarchy element
-	 * 
-	 * @param productHierarchyElementBos
-	 * @param logonId
-	 * @return List<PriceProductHierarchyElement>
-	 */
 	public List<PriceProductHierarchyElement> getProductHrchyElmnt(
 			List<ProductHierarchyElementBo> productHierarchyElementBos, String logonId) {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_PRODUCTHIERARCHYELEMENT);
-		List<PriceProductHierarchyElement> reaPpdHchyElmnts = productHrchyElmntConverter
-				.convertProductHierarchyElement(productHierarchyElementBos, logonId);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_PRODUCTHIERARCHYELEMENT);
+		List<PriceProductHierarchyElement> reaPpdHchyElmnts = productHierarchyElementConverter
+				.convertFromBo(productHierarchyElementBos, logonId);
 		List<PriceProductHierarchyElement> existingProdHrchyList = getExistingProdHrchyElmnts(reaPpdHchyElmnts);
 		List<PriceProductHierarchyElement> combinedProdHrchyElmnList = Lists.newArrayList();
 		boolean hierarchyFound;
@@ -99,15 +84,9 @@ public class PriceProductHierarchyService implements Serializable {
 		return combinedProdHrchyElmnList;
 	}
 
-	/**
-	 * This method is to get existing PriceProductHierarchyElement
-	 * 
-	 * @param priceProductHierarchyElements
-	 * @return List<PriceProductHierarchyElement>
-	 */
 	private List<PriceProductHierarchyElement> getExistingProdHrchyElmnts(
 			List<PriceProductHierarchyElement> priceProductHierarchyElements) {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_PRODUCTHIERARCHYELEMENTEXISTING);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_PRODUCTHIERARCHYELEMENTEXISTING);
 		List<String> productHierarchyElmntValueLst = Lists.newArrayList();
 		for (PriceProductHierarchyElement reaPpdHchyElmnt : priceProductHierarchyElements) {
 			productHierarchyElmntValueLst.add(reaPpdHchyElmnt.getProdHrchyValue());
@@ -116,14 +95,8 @@ public class PriceProductHierarchyService implements Serializable {
 
 	}
 
-	/**
-	 * This method is used to set the ProductHierarchySet values
-	 * 
-	 * @param GeneralRuleBo
-	 * @return PriceProductHierarchySet
-	 */
 	private PriceProductHierarchySet setProdHrchySet(GeneralRuleBo reactionRuleBo) {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_PRODUCTHIERARCHYSETVALUE);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_PRODUCTHIERARCHYSETVALUE);
 		PriceProductHierarchySet reaPpdHchyset = new PriceProductHierarchySet();
 		if (reactionRuleBo.getProductHierarchySetId() != null) {
 			reaPpdHchyset = productHierarchySetDlService.findByPk(reactionRuleBo.getProductHierarchySetId());
@@ -138,16 +111,9 @@ public class PriceProductHierarchyService implements Serializable {
 		return reaPpdHchyset;
 	}
 
-	/**
-	 * This method is to create ProductHierarchySetElement
-	 * 
-	 * @param reaPriceProductHierarchyElements
-	 * @param productHierarchySetId
-	 * @param logonId
-	 */
 	public void createProductHierarchySetElement(List<PriceProductHierarchyElement> reaPriceProductHierarchyElements,
 			Long productHierarchySetId, String logonId) {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_PRODUCTHIERARCHYSETELEMENT);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_PRODUCTHIERARCHYSETELEMENT);
 		for (PriceProductHierarchyElement reaPpdHchyElmnt : reaPriceProductHierarchyElements) {
 			PriceProductHierarchySetElmnt reaPpdHchysetElmnt = new PriceProductHierarchySetElmnt();
 			PriceProductHierarchySetElmntPK reaPpdHchysetElmntPK = new PriceProductHierarchySetElmntPK();
@@ -163,12 +129,6 @@ public class PriceProductHierarchyService implements Serializable {
 		productHierarchySetDlService.removeProductHierarchyElement(productHieracrchySetId);
 	}
 
-	/**
-	 * This method is to get the list of ProductHierarchySetId
-	 * 
-	 * @param externalValueSet
-	 * @return the list of Hierarchy SetId's
-	 */
 	public List<Long> getproductHierarchySetIdList(Set<String> externalValueSet) {
 		List<Long> productHierarchySetIds = Lists.newArrayList();
 		List<PriceProductHierarchyElement> allElements = productHierarchyElementDlService.findAllElements();

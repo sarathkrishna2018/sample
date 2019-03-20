@@ -49,60 +49,60 @@ public class ReferenceDataConverterTest {
 
 	@Test
 	public void convertRefReaActiontypeListTest() {
-		List<RefActionTypeBo> expectedActionTypes = referenceDataConverter.convertRefReaActiontype(getRefActionType());
+		List<RefActionTypeBo> expectedActionTypes = referenceDataConverter.convertToActionTypeBo(getRefActionType());
 		Assert.assertNotNull(expectedActionTypes);
 	}
 
 	@Test
 	public void convertRefNonReactingCodeTypeTest() {
 		List<RefNotToReactCodeBo> expectedRefNonReactingCode = referenceDataConverter
-				.convertRefNonReactingCodeType(ReasonType.values(), getRefReasonTypes());
+				.convertToProposeNotToReactReasonBo(ReasonType.values(), getRefReasonTypes());
 		Assert.assertNotNull(expectedRefNonReactingCode);
 	}
 
 	@Test
 	public void convertRefReaSourceListTest() {
-		List<RefSourceTypeBo> expectedRefSourceType = referenceDataConverter.convertRefReaSource(getRefSourceTypes());
+		List<RefSourceTypeBo> expectedRefSourceType = referenceDataConverter.convertToSourceTypeBo(getRefSourceTypes());
 		Assert.assertNotNull(expectedRefSourceType);
 	}
 
 	@Test
 	public void convertRefReaActiontypeTest() {
 		List<RefActionTypeBo> expectedRefActionType = referenceDataConverter
-				.convertRefReaActiontype(ActionType.values());
+				.convertToActionTypeBo(ActionType.values());
 		Assert.assertNotNull(expectedRefActionType);
 	}
 
 	@Test
 	public void convertRefReaSourceTest() {
-		List<RefSourceTypeBo> expectedRefSourceType = referenceDataConverter.convertRefReaSource(SourceType.values());
+		List<RefSourceTypeBo> expectedRefSourceType = referenceDataConverter.convertToSourceTypeBo(SourceType.values());
 		Assert.assertNotNull(expectedRefSourceType);
 	}
 
 	@Test
 	public void convertRefQtyTypeTest() {
 		List<RefQuantityPriceTypeBo> expectedRefQuantityType = referenceDataConverter
-				.convertRefQtyType(QuantityType.values(), getQuantityTypes());
+				.convertToQuantityPriceTypeBo(QuantityType.values(), getQuantityTypes());
 		Assert.assertNotNull(expectedRefQuantityType);
 	}
 
 	@Test
 	public void convertRefQtyCondTest() {
 		List<RefQuantityConditionTypeBo> expectedRefQtyCond = referenceDataConverter
-				.convertRefQtyCond(QuantityCondition.values(), getRefQuantityConditionTypes());
+				.convertToQuantityConditionTypeBo(QuantityCondition.values(), getRefQuantityConditionTypes());
 		Assert.assertNotNull(expectedRefQtyCond);
 	}
 
 	@Test
 	public void convertRefFltoutTypeTest() {
 		List<RefFilterOutRecordingTypeBo> expectedRefFiltOut = referenceDataConverter
-				.convertRefFltoutType(FilterOutRecordingType.values(), getRefFiltOutRecordingTypes());
+				.convertToFilterOutRecordingTypeBo(FilterOutRecordingType.values(), getRefFiltOutRecordingTypes());
 		Assert.assertNotNull(expectedRefFiltOut);
 	}
 
 	@Test
 	public void convertRuleTypeTest() {
-		List<RefRuleTypeBo> expectedRefRuleType = referenceDataConverter.convertRuleType(RuleType.values(),
+		List<RefRuleTypeBo> expectedRefRuleType = referenceDataConverter.convertToRuleTypeBo(RuleType.values(),
 				getRefRuleTypes());
 		Assert.assertNotNull(expectedRefRuleType);
 	}

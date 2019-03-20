@@ -28,7 +28,7 @@ public class ReactionPeriodRuleConverterTest {
 		reactionPeriodRuleAction.setReaRuleId(1L);
 		reactionPeriodRuleAction.setEndDtDays(reactionPeriodRule.getEndDateMinusDate());
 		reactionPeriodRuleAction.setMinDays(reactionPeriodRule.getMinimumDays());
-		ReactionPeriodRuleAction expectedReaPrdAct=reactionPeriodRuleConverter.convert(reactionPeriodRule);
+		ReactionPeriodRuleAction expectedReaPrdAct=reactionPeriodRuleConverter.convertFromBo(reactionPeriodRule);
 		assertEquals(new Long(10l),expectedReaPrdAct.getEndDtDays());
 	}
 	public ReactionPeriodRuleBo getReactionPeriodRule(){

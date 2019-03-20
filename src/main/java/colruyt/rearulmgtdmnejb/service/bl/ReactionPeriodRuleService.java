@@ -25,16 +25,13 @@ import colruyt.rearulmgtdmnejb.exception.ReaRuleValidationException;
 import colruyt.rearulmgtdmnejb.service.dl.ReactionPeriodActionDlService;
 import colruyt.rearulmgtdmnejb.util.ExceptionMessageConstants;
 import colruyt.rearulmgtdmnejb.util.GeneralRulePriorityComparator;
-import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnDebugMessage;
+import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnDebugMessage;
 import colruyt.rearulmgtdmnejb.util.ReactionPeriodRuleConverter;
 
 @Stateless
 @LocalBean
 public class ReactionPeriodRuleService extends GeneralRuleService implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(ReactionPeriodRuleService.class);
 	@EJB
@@ -42,33 +39,21 @@ public class ReactionPeriodRuleService extends GeneralRuleService implements Ser
 	@EJB
 	private ReactionPeriodRuleConverter reactionPeriodRuleConverter;
 
-	/**
-	 * This method is to create Reaction Period Rule
-	 * 
-	 * @param reactionRuleBo
-	 * @throws ReaRuleValidationException
-	 * @throws ReaRuleManagementException
-	 */
 	@Override
 	public GeneralRuleBo createRuleSpecificAttributes(GeneralRuleBo reactionRuleBo)
 			throws ReaRuleValidationException, ReaRuleManagementException {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_REACTIONPERIODRULE);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_REACTIONPERIODRULE);
 		ReactionPeriodRuleBo reactionPeriodRuleBo = (ReactionPeriodRuleBo) reactionRuleBo;
 		validateRuleInputs(reactionPeriodRuleBo);
-		ReactionPeriodRuleAction reactionPeriodRuleAction = reactionPeriodRuleConverter.convert(reactionPeriodRuleBo);
+		ReactionPeriodRuleAction reactionPeriodRuleAction = reactionPeriodRuleConverter
+				.convertFromBo(reactionPeriodRuleBo);
 		reactionPeriodActionDlService.createOrUpdate(reactionPeriodRuleAction);
 		return reactionPeriodRuleBo;
 
 	}
 
-	/**
-	 * This method is to validate Reaction Period Rule
-	 * 
-	 * @param reactionPeriodRuleBo
-	 * @throws ReaRuleValidationException
-	 */
 	private void validateRuleInputs(ReactionPeriodRuleBo reactionPeriodRuleBo) throws ReaRuleValidationException {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_VALIDATEREACTIONPERIODRULE);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_VALIDATEREACTIONPERIODRULE);
 		if (reactionPeriodRuleBo != null) {
 			Long minDays = reactionPeriodRuleBo.getMinimumDays();
 			Long endDateMinusDate = reactionPeriodRuleBo.getEndDateMinusDate();
@@ -82,36 +67,22 @@ public class ReactionPeriodRuleService extends GeneralRuleService implements Ser
 
 	}
 
-	/**
-	 * This method is to modify Reaction Period Rule
-	 * 
-	 * @param reactionRuleBo
-	 * @throws ReaRuleValidationException
-	 * @throws ReaRuleManagementException
-	 */
 	@Override
 	public GeneralRuleBo modifyRuleSpecificAttributes(GeneralRuleBo reactionRuleBo)
 			throws ReaRuleValidationException, ReaRuleManagementException {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_MODIFYREACTIONPERIODRULE);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_MODIFYREACTIONPERIODRULE);
 		ReactionPeriodRuleBo reactionPeriodRuleBo = (ReactionPeriodRuleBo) reactionRuleBo;
 		validateRuleInputs(reactionPeriodRuleBo);
-		ReactionPeriodRuleAction reactionPeriodRuleAction = reactionPeriodRuleConverter.convert(reactionPeriodRuleBo);
+		ReactionPeriodRuleAction reactionPeriodRuleAction = reactionPeriodRuleConverter
+				.convertFromBo(reactionPeriodRuleBo);
 		reactionPeriodActionDlService.createOrUpdate(reactionPeriodRuleAction);
 		return reactionPeriodRuleBo;
 	}
 
-	/**
-	 * This method is to get Reaction Period Rule
-	 * 
-	 * @param reactionRulesetBos
-	 * @throws ReaRuleValidationException
-	 * @throws ReaRuleManagementException
-	 */
-
 	@Override
 	public List<ReactionRulesetBo> getReactionRules(List<ReactionRulesetBo> reactionRulesetBos)
 			throws ReaRuleValidationException, ReaRuleManagementException {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_RETRIEVEREACTIONPERIODRULE);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_RETRIEVEREACTIONPERIODRULE);
 		List<ReactionRulesetBo> ruleSetBos = Lists.newArrayList();
 		for (ReactionRulesetBo reactionRulesetBo : reactionRulesetBos) {
 			if (reactionRulesetBo.getRefRuleTypeBo().getRuleTypeId() == RuleType.REACTION_PERIOD.getRuleTypeID()) {
@@ -125,8 +96,7 @@ public class ReactionPeriodRuleService extends GeneralRuleService implements Ser
 
 					ReactionPeriodRuleAction reactionPeriodRuleAction = reactionPeriodActionDlService
 							.findByRuleId(rule.getReaRuleId());
-					reacPrdRuleBo = reactionPeriodRuleConverter.addReactionPeriodRuleAction(reactionPeriodRuleAction,
-							reacPrdRuleBo);
+					reacPrdRuleBo = reactionPeriodRuleConverter.convertToBo(reactionPeriodRuleAction, reacPrdRuleBo);
 					ruleBos.add(reacPrdRuleBo);
 
 				}
@@ -138,20 +108,13 @@ public class ReactionPeriodRuleService extends GeneralRuleService implements Ser
 		return ruleSetBos;
 	}
 
-	/**
-	 * This method is to view Reaction Period Rule
-	 * 
-	 * @param ruleId
-	 * @param ruleName
-	 * @throws ReaRuleManagementException
-	 */
 	@Override
 	public GeneralRuleBo getRuleSpecificValues(GeneralRuleBo ruleBo) throws ReaRuleManagementException {
-		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_VIEWREACTIONPERIODRULE);
+		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_VIEWREACTIONPERIODRULE);
 		ReactionPeriodRuleBo reaPrdRule = (ReactionPeriodRuleBo) ruleBo;
 		ReactionPeriodRuleAction reactionPeriodRuleAction = reactionPeriodActionDlService
 				.findByRuleId(reaPrdRule.getRuleId());
-		reaPrdRule = reactionPeriodRuleConverter.addReactionPeriodRuleAction(reactionPeriodRuleAction, reaPrdRule);
+		reaPrdRule = reactionPeriodRuleConverter.convertToBo(reactionPeriodRuleAction, reaPrdRule);
 		reaPrdRule.setType(RuleType.REACTION_PERIOD.getRuleTypeName());
 		return reaPrdRule;
 
