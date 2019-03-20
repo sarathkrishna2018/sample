@@ -5,10 +5,6 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
-/**
- * The primary key class for the REA_RULE_SRC database table.
- * 
- */
 @Embeddable
 public class ReactionRuleSourceTypePK implements Serializable {
 	// default serial version id, required for serializable classes.
@@ -50,17 +46,22 @@ public class ReactionRuleSourceTypePK implements Serializable {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj){
-			return true;}
-		if (obj == null){
-			return false;}
-		if (getClass() != obj.getClass()){
-			return false;}
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
 		ReactionRuleSourceTypePK other = (ReactionRuleSourceTypePK) obj;
-		if (reaRuleId != other.reaRuleId){
-			return false;}
-		if (sourceId != other.sourceId){
-			return false;}
+		if (reaRuleId != other.reaRuleId) {
+			return false;
+		}
+		if (sourceId != other.sourceId) {
+			return false;
+		}
 		return true;
 	}
 

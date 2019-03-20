@@ -8,19 +8,19 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="REA_REASON_LANG")
+@Table(name = "REA_REASON_LANG")
 public class RefReasonType implements Serializable {
-private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = 1L;
+
 	@EmbeddedId
 	private RefReasonTypeLangPK id;
 
-	@Column(name="REASON_NAME")
+	@Column(name = "REASON_NAME")
 	private String reasonName;
 
-	@Column(name="DESCRIPTION")
+	@Column(name = "DESCRIPTION")
 	private String description;
-	
+
 	public RefReasonType() {
 	}
 
@@ -47,5 +47,5 @@ private static final long serialVersionUID = 1L;
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
 }

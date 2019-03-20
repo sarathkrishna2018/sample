@@ -13,10 +13,10 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Lists;
 
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.bo.GeneralRuleBo;
 import colruyt.rearulmgtdmnejb.bo.ReactionPeriodRuleBo;
 import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
-import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionPeriodRuleAction;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.enums.RuleType;
@@ -112,10 +112,9 @@ public class ReactionPeriodRuleService extends GeneralRuleService implements Ser
 	public List<ReactionRulesetBo> getReactionRules(List<ReactionRulesetBo> reactionRulesetBos)
 			throws ReaRuleValidationException, ReaRuleManagementException {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_RETRIEVEREACTIONPERIODRULE);
-		long ruleTypeId = super.getRuleTypeId(RuleType.REACTION_PERIOD.getRuleTypeName());
 		List<ReactionRulesetBo> ruleSetBos = Lists.newArrayList();
 		for (ReactionRulesetBo reactionRulesetBo : reactionRulesetBos) {
-			if (reactionRulesetBo.getRefRuleTypeBo().getRuleTypeId() == ruleTypeId) {
+			if (reactionRulesetBo.getRefRuleTypeBo().getRuleTypeId() == RuleType.REACTION_PERIOD.getRuleTypeID()) {
 				List<GeneralRuleBo> ruleBos = Lists.newArrayList();
 				List<ReactionRule> ruleList = super.getRulesByRuleSetId(reactionRulesetBo.getRulesetId());
 				for (ReactionRule rule : ruleList) {

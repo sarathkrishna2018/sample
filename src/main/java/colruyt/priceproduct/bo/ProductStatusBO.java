@@ -1,14 +1,7 @@
-/**
- * 
- */
 package colruyt.priceproduct.bo;
 
 import java.io.Serializable;
 
-/**
- * @author grn9h68
- * 
- */
 public class ProductStatusBO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -22,14 +15,14 @@ public class ProductStatusBO implements Serializable {
 	}
 
 	private String code;
-    private String msgKey;
+	private String msgKey;
 
-    public String getCode() {
-        return code;
-    }
+	public String getCode() {
+		return code;
+	}
 
-    public String getMsgKey() {
-        return msgKey;
-    }
+	public String getMsgKey() {
+		return msgKey;
+	}
 
 }

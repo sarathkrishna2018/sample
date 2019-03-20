@@ -5,21 +5,14 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
-
-/**
- * @version 1.0
- * @created 28-nov-2018 9:01:50
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class RefQuantityConditionTypeBo implements Serializable {
 
-	
 	private static final long serialVersionUID = 1L;
 	private int codeTypeId;
 	private List<RefLangBo> codeLang;
 	private String description;
-	
+
 	public int getCodeTypeId() {
 		return codeTypeId;
 	}

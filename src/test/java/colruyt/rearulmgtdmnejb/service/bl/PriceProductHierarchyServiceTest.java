@@ -39,7 +39,7 @@ import colruyt.rearulmgtdmnejb.exception.PriceProductExternalServiceException;
 import colruyt.rearulmgtdmnejb.exception.PriceProductServiceDownException;
 import colruyt.rearulmgtdmnejb.service.dl.ProductHierarchyElementDlService;
 import colruyt.rearulmgtdmnejb.service.dl.ProductHierarchySetDlService;
-import colruyt.rearulmgtdmnejb.util.ProductHrchyElmntConverter;
+import colruyt.rearulmgtdmnejb.util.ProductHierarchyElementConverter;
 import junit.framework.Assert;
 
 @Transactional
@@ -49,7 +49,7 @@ public class PriceProductHierarchyServiceTest {
 	@TestedObject
 	private PriceProductHierarchyService priceProductHierarchyBlService;
 	@InjectIntoByType
-	private ProductHrchyElmntConverter productHrchyElmntConverter = Mockito.mock(ProductHrchyElmntConverter.class);
+	private ProductHierarchyElementConverter productHrchyElmntConverter = Mockito.mock(ProductHierarchyElementConverter.class);
 	@InjectIntoByType
 	private ProductHierarchyElementDlService productHierarchyElementDlService = Mockito
 			.mock(ProductHierarchyElementDlService.class);

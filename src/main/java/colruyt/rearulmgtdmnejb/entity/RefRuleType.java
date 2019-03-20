@@ -8,21 +8,21 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="RULETYPE_LANG")
+@Table(name = "RULETYPE_LANG")
 public class RefRuleType implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@EmbeddedId
 	private RefRuleTypeLangPK id;
-	
-	@Column(name="RULETYPE_NAME")
+
+	@Column(name = "RULETYPE_NAME")
 	private String ruleTypeName;
-	
-	@Column(name="DESCRIPTION")
+
+	@Column(name = "DESCRIPTION")
 	private String description;
-	
-	public RefRuleType(){
-		
+
+	public RefRuleType() {
+
 	}
 
 	public RefRuleTypeLangPK getId() {
@@ -48,5 +48,5 @@ public class RefRuleType implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
 }

@@ -42,7 +42,7 @@ import colruyt.rearulmgtdmnejb.exception.ReaRuleValidationException;
 import colruyt.rearulmgtdmnejb.service.dl.ReactionRuleActionTypeDlService;
 import colruyt.rearulmgtdmnejb.service.dl.ReactionRuleDlService;
 import colruyt.rearulmgtdmnejb.service.dl.ReactionRuleSourceTypeDlService;
-import colruyt.rearulmgtdmnejb.util.ProductHrchyElmntConverter;
+import colruyt.rearulmgtdmnejb.util.ProductHierarchyElementConverter;
 import colruyt.rearulmgtdmnejb.util.ReaRuleConverter;
 import colruyt.rearulmgtdmnejb.util.ReferenceDataConverter;
 import junit.framework.Assert;
@@ -73,7 +73,7 @@ public class GeneralRuleServiceTest {
 	@InjectIntoByType
 	private ReferenceDataService referenceDataService = Mockito.mock(ReferenceDataService.class);
 	@InjectMocks
-	private ProductHrchyElmntConverter productHrchyElmntConverter = Mockito.mock(ProductHrchyElmntConverter.class);
+	private ProductHierarchyElementConverter productHrchyElmntConverter = Mockito.mock(ProductHierarchyElementConverter.class);
 
 	@Test
 	public void createRuleTypeAllTest() throws ReaRuleValidationException, ReaRuleManagementException {
@@ -554,15 +554,6 @@ public class GeneralRuleServiceTest {
 	}
 
 	@Test
-	public void getRuleTypeIdTest() {
-		String ruleType = "Filtering";
-		int ruleTypeId = 3;
-		when(referenceDataService.findPkByType(Mockito.anyString())).thenReturn(ruleTypeId);
-		long expectedRuleTypeId = generalRuleService.getRuleTypeId(ruleType);
-		Assert.assertNotNull(expectedRuleTypeId);
-	}
-
-	@Test
 	public void modifyPriorityOfRulesTest() throws ReaRuleManagementException {
 		when(reactionRuleDlService.findByPk(Mockito.anyLong())).thenReturn(getReaRule());
 		when(reactionRuleDlService.createOrUpdate(Mockito.mock(ReactionRule.class))).thenReturn(getReaRule());
@@ -642,9 +633,8 @@ public class GeneralRuleServiceTest {
 	@Test
 	public void findAllLogicallyDeletedRulesTest() {
 		Date dateForRulesDelete = new Date();
-		Date dateDeleteRuleBefore = new Date();
 		when(reactionRuleDlService.findAllLogicallyDeletedRules(dateForRulesDelete)).thenReturn(getXPSRuleBoList());
-		List<DeleteRuleInfoBo> expectedRuleBo = generalRuleService.findAllLogicallyDeletedRules(dateDeleteRuleBefore);
+		List<DeleteRuleInfoBo> expectedRuleBo = generalRuleService.findAllLogicallyDeletedRules(dateForRulesDelete);
 		Assert.assertEquals(1l, expectedRuleBo.size());
 	}
 

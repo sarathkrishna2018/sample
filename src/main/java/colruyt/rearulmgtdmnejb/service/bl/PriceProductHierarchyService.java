@@ -24,23 +24,16 @@ import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmnt;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmntPK;
 import colruyt.rearulmgtdmnejb.service.dl.ProductHierarchyElementDlService;
 import colruyt.rearulmgtdmnejb.service.dl.ProductHierarchySetDlService;
-import colruyt.rearulmgtdmnejb.util.ProductHrchyElmntConverter;
+import colruyt.rearulmgtdmnejb.util.ProductHierarchyElementConverter;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnDebugMessage;
 
-/**
- * Session Bean implementation class PriceProductHierarchyBlService
- */
-/**
- * @author asi16ad
- *
- */
 @Stateless
 @LocalBean
 public class PriceProductHierarchyService implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(PriceProductHierarchyService.class);
 	@EJB
-	ProductHrchyElmntConverter productHrchyElmntConverter;
+	ProductHierarchyElementConverter productHrchyElmntConverter;
 
 	@EJB
 	ProductHierarchyElementDlService productHierarchyElementDlService;
@@ -65,7 +58,7 @@ public class PriceProductHierarchyService implements Serializable {
 		PriceProductHierarchySet reaPpdHchyset = setProdHrchySet(reactionRuleBo);
 		reaPpdHchyset = productHierarchySetDlService.create(reaPpdHchyset);
 		reactionRuleBo.setProductHierarchySetId(reaPpdHchyset.getProductHierarchySetId());
-		createProdHrchtSetElmnt(reaPpdHchyElmnts, reactionRuleBo.getProductHierarchySetId(),
+		createProductHierarchySetElement(reaPpdHchyElmnts, reactionRuleBo.getProductHierarchySetId(),
 				reactionRuleBo.getLogonId());
 		return reactionRuleBo;
 	}
@@ -89,7 +82,8 @@ public class PriceProductHierarchyService implements Serializable {
 			hierarchyFound = false;
 			for (PriceProductHierarchyElement existingProdHrchyElmnt : existingProdHrchyList) {
 				if (reaPpdHchyElmnt.getProdHrchyValue().equals(existingProdHrchyElmnt.getProdHrchyValue())
-						&& reaPpdHchyElmnt.getProductHierarchyTypeId().equals(existingProdHrchyElmnt.getProductHierarchyTypeId())) {
+						&& reaPpdHchyElmnt.getProductHierarchyTypeId()
+								.equals(existingProdHrchyElmnt.getProductHierarchyTypeId())) {
 					// same hierarchy element already exists in DB
 					hierarchyFound = true;
 					combinedProdHrchyElmnList.add(existingProdHrchyElmnt);
@@ -108,14 +102,14 @@ public class PriceProductHierarchyService implements Serializable {
 	/**
 	 * This method is to get existing PriceProductHierarchyElement
 	 * 
-	 * @param reaPpdHchyElmnts
+	 * @param priceProductHierarchyElements
 	 * @return List<PriceProductHierarchyElement>
 	 */
 	private List<PriceProductHierarchyElement> getExistingProdHrchyElmnts(
-			List<PriceProductHierarchyElement> reaPpdHchyElmnts) {
+			List<PriceProductHierarchyElement> priceProductHierarchyElements) {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_PRODUCTHIERARCHYELEMENTEXISTING);
 		List<String> productHierarchyElmntValueLst = Lists.newArrayList();
-		for (PriceProductHierarchyElement reaPpdHchyElmnt : reaPpdHchyElmnts) {
+		for (PriceProductHierarchyElement reaPpdHchyElmnt : priceProductHierarchyElements) {
 			productHierarchyElmntValueLst.add(reaPpdHchyElmnt.getProdHrchyValue());
 		}
 		return productHierarchyElementDlService.findByHierarchyValueList(productHierarchyElmntValueLst);
@@ -125,11 +119,8 @@ public class PriceProductHierarchyService implements Serializable {
 	/**
 	 * This method is used to set the ProductHierarchySet values
 	 * 
-	 * @param cGChainRuleBoObj
-	 * @param combinedProdHrchyElmnList
-	 * @param assortmentName
-	 * @param logonId
-	 * @return ProductHierarchySet
+	 * @param GeneralRuleBo
+	 * @return PriceProductHierarchySet
 	 */
 	private PriceProductHierarchySet setProdHrchySet(GeneralRuleBo reactionRuleBo) {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_PRODUCTHIERARCHYSETVALUE);
@@ -150,18 +141,18 @@ public class PriceProductHierarchyService implements Serializable {
 	/**
 	 * This method is to create ProductHierarchySetElement
 	 * 
-	 * @param reaPpdHchyElmnts
-	 * @param prodHrchySetId
+	 * @param reaPriceProductHierarchyElements
+	 * @param productHierarchySetId
 	 * @param logonId
 	 */
-	public void createProdHrchtSetElmnt(List<PriceProductHierarchyElement> reaPpdHchyElmnts, Long prodHrchySetId,
-			String logonId) {
+	public void createProductHierarchySetElement(List<PriceProductHierarchyElement> reaPriceProductHierarchyElements,
+			Long productHierarchySetId, String logonId) {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_PRODUCTHIERARCHYSETELEMENT);
-		for (PriceProductHierarchyElement reaPpdHchyElmnt : reaPpdHchyElmnts) {
+		for (PriceProductHierarchyElement reaPpdHchyElmnt : reaPriceProductHierarchyElements) {
 			PriceProductHierarchySetElmnt reaPpdHchysetElmnt = new PriceProductHierarchySetElmnt();
 			PriceProductHierarchySetElmntPK reaPpdHchysetElmntPK = new PriceProductHierarchySetElmntPK();
 			reaPpdHchysetElmntPK.setProductHierarchyElementId(reaPpdHchyElmnt.getProductHierarchyElementId());
-			reaPpdHchysetElmntPK.setProdicyHierarchySetId(prodHrchySetId);
+			reaPpdHchysetElmntPK.setProdicyHierarchySetId(productHierarchySetId);
 			reaPpdHchysetElmnt.setId(reaPpdHchysetElmntPK);
 			reaPpdHchysetElmnt.setLstUpdateBy(logonId);
 			productHierarchySetDlService.create(reaPpdHchysetElmnt);
@@ -173,8 +164,10 @@ public class PriceProductHierarchyService implements Serializable {
 	}
 
 	/**
+	 * This method is to get the list of ProductHierarchySetId
+	 * 
 	 * @param externalValueSet
-	 * @return the list of Hierarchy SetId's where the
+	 * @return the list of Hierarchy SetId's
 	 */
 	public List<Long> getproductHierarchySetIdList(Set<String> externalValueSet) {
 		List<Long> productHierarchySetIds = Lists.newArrayList();
@@ -200,11 +193,6 @@ public class PriceProductHierarchyService implements Serializable {
 		return productHierarchySetIds;
 	}
 
-	/**
-	 * 
-	 * @param hierarchyValuesFromSoi
-	 * @return
-	 */
 	private Set<String> convertHierarchyValueListToSet(List<PriceProductHierarchyElement> hierarchyValuesFromSoi) {
 		Set<String> hierarchyValueSet = new HashSet<>();
 		for (PriceProductHierarchyElement hierarchyValue : hierarchyValuesFromSoi) {

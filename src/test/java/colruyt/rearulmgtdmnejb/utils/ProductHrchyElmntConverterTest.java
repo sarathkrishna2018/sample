@@ -27,7 +27,7 @@ import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySet;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmnt;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmntPK;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
-import colruyt.rearulmgtdmnejb.util.ProductHrchyElmntConverter;
+import colruyt.rearulmgtdmnejb.util.ProductHierarchyElementConverter;
 import junit.framework.Assert;
 
 @Transactional
@@ -36,7 +36,7 @@ import junit.framework.Assert;
 
 public class ProductHrchyElmntConverterTest {
 	@TestedObject
-	private ProductHrchyElmntConverter productHrchyElmntConverter;
+	private ProductHierarchyElementConverter productHrchyElmntConverter;
 	@Test
 	public void createConverterTest(){
 		List<PriceProductHierarchyElement> reaPpdHchyElmnts=Lists.newArrayList();

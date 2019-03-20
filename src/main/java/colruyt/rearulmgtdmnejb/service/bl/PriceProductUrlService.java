@@ -11,9 +11,6 @@ import colruyt.coreutillib.security.ass.AssException;
 import colruyt.coreutillib.security.ass.AssToolUtil;
 import colruyt.rearulmgtdmnejb.util.ReactionRuleMgtConstants;
 
-/**
- * Session Bean implementation class PriceProductUrlService
- */
 @Stateless
 @LocalBean
 public class PriceProductUrlService implements Serializable {
@@ -27,10 +24,10 @@ public class PriceProductUrlService implements Serializable {
 	private static final String QUERY_PARAM_PREFIX = "?";
 	private static final String QUERY_PARAM_PRODUCTIDS = "products_ids=";
 	private static final String URL_PRICE_PRODUCT = "/priceproducts";
-	private static final String PATH_PARAM_PREFIX= "/";
+	private static final String PATH_PARAM_PREFIX = "/";
 	public static final String JAVA_PRICE_PRODUCT_MW_HOST = "java_price_product_mw_host";
-	public static final String PATH_PARAM_ALLHIERARCHIES ="all-hierarchies";
-	private static final String URL_PRODUCTS_HIERARCHY  = "/products-hierarchy";
+	public static final String PATH_PARAM_ALLHIERARCHIES = "all-hierarchies";
+	private static final String URL_PRODUCTS_HIERARCHY = "/products-hierarchy";
 
 	@PostConstruct
 	public void init() {
@@ -75,23 +72,24 @@ public class PriceProductUrlService implements Serializable {
 	private String prefixBaseUrl(String url) {
 		return BASE_URL + url;
 	}
-	
-	public String getPriceProductURLForPriceProductId(String priceProductId){
+
+	public String getPriceProductURLForPriceProductId(String priceProductId) {
 		StringBuilder url = new StringBuilder(prefixBaseUrl(URL_PRICE_PRODUCT));
 		url.append(PATH_PARAM_PREFIX);
 		url.append(priceProductId);
 		return url.toString();
 	}
+
 	public String getAllHierarchyUrl() {
 		StringBuilder url = new StringBuilder(URL_HIERARCHY);
 		url.append(PATH_PARAM_PREFIX);
 		return prefixBaseUrl(url.toString());
-		
-	
+
 	}
+
 	public String getAllProducts() {
 		StringBuilder url = new StringBuilder(URL_HIERARCHY);
-        url.append(URL_PRODUCTS_HIERARCHY);
+		url.append(URL_PRODUCTS_HIERARCHY);
 		return prefixBaseUrl(url.toString());
 	}
 }

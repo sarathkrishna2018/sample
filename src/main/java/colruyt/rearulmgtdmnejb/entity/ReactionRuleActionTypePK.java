@@ -5,10 +5,6 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
-/**
- * The primary key class for the REA_RULE_ACTTYPE database table.
- * 
- */
 @Embeddable
 public class ReactionRuleActionTypePK implements Serializable {
 	// default serial version id, required for serializable classes.

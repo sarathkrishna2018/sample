@@ -23,7 +23,7 @@ public class ReactingRuleActionDlService implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	public ReactingRuleAction createOrUpdate(ReactingRuleAction reaReactingAct) {
-		ReactingRuleAction reactingRuleAction =entityManager.merge(reaReactingAct);
+		ReactingRuleAction reactingRuleAction = entityManager.merge(reaReactingAct);
 		entityManager.flush();
 		return reactingRuleAction;
 
@@ -31,12 +31,13 @@ public class ReactingRuleActionDlService implements Serializable {
 
 	public ReactingRuleAction findByRuleId(long reaRuleId) {
 		return entityManager.find(ReactingRuleAction.class, reaRuleId);
-		
+
 	}
-	
+
 	public void physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo) {
-		Query query = entityManager.createQuery("Delete from  ReactingRuleAction reactingRuleAction where reactingRuleAction.reactionRuleId = (?1)");
-		query.setParameter(1, deleteRuleInfoBo.getRuleId()).executeUpdate();	
+		Query query = entityManager.createQuery(
+				"Delete from  ReactingRuleAction reactingRuleAction where reactingRuleAction.reactionRuleId = (?1)");
+		query.setParameter(1, deleteRuleInfoBo.getRuleId()).executeUpdate();
 		entityManager.clear();
 	}
 

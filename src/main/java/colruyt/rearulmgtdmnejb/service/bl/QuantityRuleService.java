@@ -13,10 +13,10 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Lists;
 
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.bo.GeneralRuleBo;
 import colruyt.rearulmgtdmnejb.bo.QuantityRuleBo;
 import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
-import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.QuantityRuleAction;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.enums.RuleType;
@@ -29,10 +29,7 @@ import colruyt.rearulmgtdmnejb.util.QuantityRuleActionConverter;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnDebugMessage;
 
 /**
- * extends "ReactionRuleBlService"
- * 
- * @version 1.0
- * @created 28-nov-2018 9:02:33
+ * extends "GeneralRuleService"
  */
 @Stateless
 @LocalBean
@@ -108,10 +105,9 @@ public class QuantityRuleService extends GeneralRuleService implements Serializa
 	public List<ReactionRulesetBo> getReactionRules(List<ReactionRulesetBo> reactionRulesetBos)
 			throws ReaRuleValidationException, ReaRuleManagementException {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_RETRIEVEQUANTITYRULE);
-		long ruleTypeId = super.getRuleTypeId(RuleType.QUANTITY.getRuleTypeName());
 		List<ReactionRulesetBo> ruleSetBos = Lists.newArrayList();
 		for (ReactionRulesetBo reactionRulesetBo : reactionRulesetBos) {
-			if (reactionRulesetBo.getRefRuleTypeBo().getRuleTypeId() == ruleTypeId) {
+			if (reactionRulesetBo.getRefRuleTypeBo().getRuleTypeId() == RuleType.QUANTITY.getRuleTypeID()) {
 				List<GeneralRuleBo> ruleBos = Lists.newArrayList();
 				List<ReactionRule> ruleList = super.getRulesByRuleSetId(reactionRulesetBo.getRulesetId());
 				for (ReactionRule rule : ruleList) {

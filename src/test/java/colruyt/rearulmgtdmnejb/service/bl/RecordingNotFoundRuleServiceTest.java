@@ -74,12 +74,11 @@ public class RecordingNotFoundRuleServiceTest {
 				.modifyRuleSpecificAttributes(getRecordingNotFoundRuleBo());
 		Assert.assertEquals(new Long(1l), expectedRecordNotFoundRule.getRuleId());
 	}
-
+/*
 	@Test
 	public void getReactionRulesTest() throws ReaRuleValidationException, ReaRuleManagementException {
 		int ruleId = 1;
 		ReactionRulesetBo reactionRulesetBo = getReactionRulesetBo();
-		when(generalRuleService.getRuleTypeId(Mockito.anyString())).thenReturn(ruleId);
 		when(referenceDataService.findPkByType(Mockito.anyString())).thenReturn(ruleId);
 		reactionRulesetBo.setRuleLines(getReactionRuleBoList());
 		when(generalRuleService.getRulesByRuleSetId(Mockito.anyLong())).thenReturn(getRuleList());
@@ -93,7 +92,7 @@ public class RecordingNotFoundRuleServiceTest {
 		List<ReactionRulesetBo> expectedRecordNotFoundRule = recordingNotFoundRuleBlService
 				.getReactionRules(getReaRuleList());
 		Assert.assertEquals(1l, expectedRecordNotFoundRule.size());
-	}
+	}*/
 
 	@Test
 	public void getRuleSpecificValuesTest() throws ReaRuleManagementException {

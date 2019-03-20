@@ -10,9 +10,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 
@@ -25,7 +22,6 @@ import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 public class ReactionRuleSourceTypeDlService implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private static final Logger logger = LoggerFactory.getLogger(ReactionRuleSourceTypeDlService.class);
 
 	@PersistenceContext(unitName = ReaRulMgtDmnConstants.PERSISTENCE_UNIT_NAME)
 	private transient EntityManager entityManager;

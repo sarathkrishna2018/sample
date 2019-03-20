@@ -18,10 +18,6 @@ import colruyt.rearulmgtdmnejb.entity.RefReasonType;
 import colruyt.rearulmgtdmnejb.entity.RefRuleType;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 
-/**
- * @version 1.0
- * @created 28-nov-2018 8:20:19
- */
 @Stateless
 @LocalBean
 @TransactionAttribute(TransactionAttributeType.MANDATORY)

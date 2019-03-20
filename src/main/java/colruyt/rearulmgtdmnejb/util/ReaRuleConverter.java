@@ -7,9 +7,6 @@ import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.google.common.collect.Lists;
 
 import colruyt.rearulmgtdmnejb.bo.GeneralRuleBo;
@@ -23,14 +20,13 @@ import colruyt.rearulmgtdmnejb.enums.SourceType;
 @LocalBean
 public class ReaRuleConverter implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private static final Logger logger = LoggerFactory.getLogger(ReaRuleConverter.class);
-	
+
 	@EJB
-	private ProductHrchyElmntConverter productHrchyElmntConverter;
-	
-	public ReactionRule convertRuleBo(ReactionRule existingReaRule, GeneralRuleBo reactionRuleBo){
-		ReactionRule reaRule =  null;
-		if(existingReaRule != null){
+	private ProductHierarchyElementConverter productHrchyElmntConverter;
+
+	public ReactionRule convertRuleBo(ReactionRule existingReaRule, GeneralRuleBo reactionRuleBo) {
+		ReactionRule reaRule = null;
+		if (existingReaRule != null) {
 			reaRule = existingReaRule;
 		} else {
 			reaRule = new ReactionRule();
@@ -50,18 +46,18 @@ public class ReaRuleConverter implements Serializable {
 		reaRule.setRuleComment(reactionRuleBo.getComments());
 		reaRule.setCreatedBy(reactionRuleBo.getLogonId());
 		reaRule.setLstUpdateBy(reactionRuleBo.getLogonId());
-		reaRule.setChildRuleId(reactionRuleBo.getChildRuleId());	
+		reaRule.setChildRuleId(reactionRuleBo.getChildRuleId());
 		return reaRule;
 	}
-	
+
 	public List<ActionType> convertRuleAction(GeneralRuleBo reactionRuleBo) {
-		
+
 		List<ActionType> actionTypeLst = Lists.newArrayList();
 		for (RefActionTypeBo actionBo : reactionRuleBo.getActionTypeList()) {
 			actionTypeLst.add(ActionType.forValue(actionBo.getActionTypeId()));
 		}
 		return actionTypeLst;
-		
+
 	}
 
 	public List<SourceType> convertRuleSource(GeneralRuleBo reactionRuleBo) {
@@ -72,23 +68,22 @@ public class ReaRuleConverter implements Serializable {
 		return sourceList;
 	}
 
-	public List<ActionType> convertAllAction(int idForAll){
-		List<ActionType> actionTypes=Lists.newArrayList();
+	public List<ActionType> convertAllAction(int idForAll) {
+		List<ActionType> actionTypes = Lists.newArrayList();
 		actionTypes.add(ActionType.forValue(idForAll));
 		return actionTypes;
-		
+
 	}
-	public List<SourceType> convertAllSource(long idForAll){
-		List<SourceType> sourceTypes=Lists.newArrayList();
+
+	public List<SourceType> convertAllSource(long idForAll) {
+		List<SourceType> sourceTypes = Lists.newArrayList();
 		sourceTypes.add(SourceType.forValue(idForAll));
 		return sourceTypes;
 	}
-	
-	
-	
+
 	public List<GeneralRuleBo> convertRuleLine(List<ReactionRule> reaRules) {
-		List<GeneralRuleBo>  ruleLines = Lists.newArrayList();
-		for(ReactionRule rule : reaRules){
+		List<GeneralRuleBo> ruleLines = Lists.newArrayList();
+		for (ReactionRule rule : reaRules) {
 			GeneralRuleBo ruleBo = new GeneralRuleBo();
 			ruleBo.setRuleId(rule.getReaRuleId());
 			ruleBo.setRulesetId(rule.getReaRulesetId());
@@ -109,7 +104,7 @@ public class ReaRuleConverter implements Serializable {
 		}
 		return ruleLines;
 	}
-	
+
 	public GeneralRuleBo convertGeneralRuleBo(ReactionRule rule, GeneralRuleBo ruleBo) {
 		ruleBo.setRuleId(rule.getReaRuleId());
 		ruleBo.setRulesetId(rule.getReaRulesetId());
@@ -128,10 +123,7 @@ public class ReaRuleConverter implements Serializable {
 		ruleBo.setUpdatedOn(rule.getUpdatedOn());
 		ruleBo.setChildRuleId(rule.getChildRuleId());
 		ruleBo.setRulePriority(rule.getRulePriority());
-		return productHrchyElmntConverter.convertAssortment(ruleBo,rule);
+		return productHrchyElmntConverter.convertAssortment(ruleBo, rule);
 	}
 
-	
-
-			
 }

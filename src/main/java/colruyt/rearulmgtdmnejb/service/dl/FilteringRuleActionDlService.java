@@ -14,10 +14,6 @@ import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.FilteringRuleAction;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 
-/**
- * @version 1.0
- * @created 28-nov-2018 8:20:19
- */
 @Stateless
 @LocalBean
 @TransactionAttribute(TransactionAttributeType.MANDATORY)
@@ -27,26 +23,21 @@ public class FilteringRuleActionDlService implements Serializable {
 	@PersistenceContext(unitName = ReaRulMgtDmnConstants.PERSISTENCE_UNIT_NAME)
 	private transient EntityManager entityManager;
 
-
-	/**
-	 * 
-	 * @param filteringRuleAction
-	 */
 	public FilteringRuleAction createOrUpdate(FilteringRuleAction reaFltRule) {
 		FilteringRuleAction fltRule = entityManager.merge(reaFltRule);
 		entityManager.flush();
 		return fltRule;
 	}
 
-
 	public FilteringRuleAction findByRuleId(Long ruleId) {
 		return entityManager.find(FilteringRuleAction.class, ruleId);
-				
+
 	}
-	
+
 	public void physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo) {
-		Query query = entityManager.createQuery("Delete from  FilteringRuleAction filteringRuleAction where filteringRuleAction.reactionRuleId = (?1)");
-		query.setParameter(1, deleteRuleInfoBo.getRuleId()).executeUpdate();	
+		Query query = entityManager.createQuery(
+				"Delete from  FilteringRuleAction filteringRuleAction where filteringRuleAction.reactionRuleId = (?1)");
+		query.setParameter(1, deleteRuleInfoBo.getRuleId()).executeUpdate();
 		entityManager.clear();
 	}
 

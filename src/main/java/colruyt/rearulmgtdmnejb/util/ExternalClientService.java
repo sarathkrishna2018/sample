@@ -24,51 +24,48 @@ import colruyt.rearulmgtdmnejb.service.bl.CookieService;
 import colruyt.rearulmgtdmnejb.exception.RRMDomainException;
 import colruyt.rearulmgtdmnejb.exception.ServiceDownException;
 
-
-/**
- * 
- * 
- */
 @Stateless
 @LocalBean
-public class ExternalClientService implements Serializable{
-	
+public class ExternalClientService implements Serializable {
+
 	private static final long serialVersionUID = 1L;
-	
+
 	@EJB
 	private CookieService cookieService;
-	
+
 	/**
 	 * 
 	 * @param url
-	 * @throws RRMDomainException 
+	 * @throws RRMDomainException
 	 */
-	public String callGetService(String url) throws  ServiceDownException, RRMDomainException {
+	public String callGetService(String url) throws ServiceDownException, RRMDomainException {
 		Client client = Client.create();
-		WebResource webResource = client.resource(url);		
+		WebResource webResource = client.resource(url);
 		Builder builder = webResource.type(MediaType.APPLICATION_JSON);
 		builder = builder.accept(MediaType.APPLICATION_JSON);
 		builder = builder.header(ReactionRuleMgtConstants.JWT_HEADER_NAME, cookieService.generateJWT());
 		ClientResponse response = builder.get(ClientResponse.class);
 		String jsonResponse = response.getEntity(String.class);
-		if (Response.Status.OK.getStatusCode() == response.getStatus() || Response.Status.CREATED.getStatusCode() == response.getStatus()) {
+		if (Response.Status.OK.getStatusCode() == response.getStatus()
+				|| Response.Status.CREATED.getStatusCode() == response.getStatus()) {
 			return jsonResponse;
 		}
 		handleException(response, jsonResponse);
 		return jsonResponse;
 	}
-	
+
 	/**
 	 * 
 	 * @param jsonResponse
 	 * @param response
-	 * @throws RRMDomainException 
+	 * @throws RRMDomainException
 	 */
-	private void handleException(ClientResponse response, String jsonResponse) throws ServiceDownException, RRMDomainException  {
+	private void handleException(ClientResponse response, String jsonResponse)
+			throws ServiceDownException, RRMDomainException {
 		if (Response.Status.INTERNAL_SERVER_ERROR.getStatusCode() == response.getStatus()
 				|| Response.Status.UNAUTHORIZED.getStatusCode() == response.getStatus()) {
 			throw new RRMDomainException(jsonResponse);
-		} 
+		}
 		if (Response.Status.UNAUTHORIZED.getStatusCode() == response.getStatus()) {
 			throw new ServiceDownException(jsonResponse);
 		} else {

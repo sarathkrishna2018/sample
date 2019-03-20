@@ -31,10 +31,6 @@ import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.util.DBUtil;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 
-/**
- * @version 1.0
- * @created 28-nov-2018 8:25:18
- */
 @Stateless
 @LocalBean
 @TransactionAttribute(TransactionAttributeType.MANDATORY)
@@ -47,11 +43,6 @@ public class ReactionRuleDlService implements Serializable {
 	@PersistenceContext(unitName = ReaRulMgtDmnConstants.PERSISTENCE_UNIT_NAME)
 	private transient EntityManager entityManager;
 
-	/**
-	 * 
-	 * @param reactionPricingRule
-	 * @return
-	 */
 	public ReactionRule createOrUpdate(ReactionRule reactionPricingRule) {
 		ReactionRule reactionRule = entityManager.merge(reactionPricingRule);
 		entityManager.flush();

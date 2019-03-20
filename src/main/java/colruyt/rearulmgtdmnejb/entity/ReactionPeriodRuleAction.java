@@ -7,24 +7,19 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
-/**
- * The persistent class for the REA_PRD_ACT database table.
- * 
- */
 @Entity
-@Table(name="REA_PRD_ACT")
+@Table(name = "REA_PRD_ACT")
 public class ReactionPeriodRuleAction implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="REA_RULE_ID")
+	@Column(name = "REA_RULE_ID")
 	private long reaRuleId;
 
-	@Column(name="END_DT_DAYS")
+	@Column(name = "END_DT_DAYS")
 	private long endDtDays;
 
-	@Column(name="MIN_DAYS")
+	@Column(name = "MIN_DAYS")
 	private long minDays;
 
 	public long getReaRuleId() {

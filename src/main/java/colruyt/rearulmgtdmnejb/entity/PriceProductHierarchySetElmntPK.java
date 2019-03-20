@@ -5,33 +5,29 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
-
-
-
-/**
- * The primary key class for the REA_PPD_HCHYSET_ELMNT database table.
- * 
- */
 @Embeddable
 public class PriceProductHierarchySetElmntPK implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 
-	@Column(name="PPD_HCHYSET_ID")
+	@Column(name = "PPD_HCHYSET_ID")
 	private long productHierarchySetId;
 
-	@Column(name="PPD_HCHY_ELMNT_ID")
+	@Column(name = "PPD_HCHY_ELMNT_ID")
 	private long productHierarchyElementId;
 
 	public long getProductHierarchySetId() {
 		return this.productHierarchySetId;
 	}
+
 	public void setProdicyHierarchySetId(long productHierarchySetId) {
 		this.productHierarchySetId = productHierarchySetId;
 	}
+
 	public long getProductHierarchyElementId() {
 		return this.productHierarchyElementId;
 	}
+
 	public void setProductHierarchyElementId(long productHierarchyElementId) {
 		this.productHierarchyElementId = productHierarchyElementId;
 	}
@@ -43,10 +39,9 @@ public class PriceProductHierarchySetElmntPK implements Serializable {
 		if (!(other instanceof PriceProductHierarchySetElmntPK)) {
 			return false;
 		}
-		PriceProductHierarchySetElmntPK castOther = (PriceProductHierarchySetElmntPK)other;
-		return 
-			(this.productHierarchySetId == castOther.productHierarchySetId)
-			&& (this.productHierarchyElementId == castOther.productHierarchyElementId);
+		PriceProductHierarchySetElmntPK castOther = (PriceProductHierarchySetElmntPK) other;
+		return (this.productHierarchySetId == castOther.productHierarchySetId)
+				&& (this.productHierarchyElementId == castOther.productHierarchyElementId);
 	}
 
 	public int hashCode() {
@@ -54,7 +49,7 @@ public class PriceProductHierarchySetElmntPK implements Serializable {
 		int hash = 17;
 		hash = hash * prime + ((int) (this.productHierarchySetId ^ (this.productHierarchySetId >>> 32)));
 		hash = hash * prime + ((int) (this.productHierarchyElementId ^ (this.productHierarchyElementId >>> 32)));
-		
+
 		return hash;
 	}
 }

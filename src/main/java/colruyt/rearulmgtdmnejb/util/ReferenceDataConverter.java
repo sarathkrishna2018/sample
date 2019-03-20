@@ -1,7 +1,6 @@
 package colruyt.rearulmgtdmnejb.util;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.LocalBean;

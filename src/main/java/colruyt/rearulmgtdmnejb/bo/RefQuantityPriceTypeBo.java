@@ -5,14 +5,8 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
-
-/**
- * @version 1.0
- * @created 29-nov-2018 13:22:07
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class RefQuantityPriceTypeBo implements Serializable{
+public class RefQuantityPriceTypeBo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private int quantityTypeId;

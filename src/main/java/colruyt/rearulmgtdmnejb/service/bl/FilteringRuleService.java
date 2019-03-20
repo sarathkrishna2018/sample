@@ -29,19 +29,9 @@ import colruyt.rearulmgtdmnejb.util.GeneralRulePriorityComparator;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnDebugMessage;
 
 /**
- * extends "ReactionRuleBlService"
- * 
- * @version 1.0
- * @created 28-nov-2018 8:17:02
+ * extends "GeneralRuleService"
  */
-/**
- * @author asi16ad
- *
- */
-/**
- * @author asi16ad
- *
- */
+
 @Stateless
 @LocalBean
 public class FilteringRuleService extends GeneralRuleService implements Serializable {
@@ -120,10 +110,10 @@ public class FilteringRuleService extends GeneralRuleService implements Serializ
 	public List<ReactionRulesetBo> getReactionRules(List<ReactionRulesetBo> reactionRulesetBos)
 			throws ReaRuleValidationException, ReaRuleManagementException {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_RETRIEVEFILTERINGRULE);
-		long ruleTypeId = super.getRuleTypeId(RuleType.FILTERING.getRuleTypeName());
+		//long ruleTypeId = super.getRuleTypeId(RuleType.FILTERING.getRuleTypeName());
 		List<ReactionRulesetBo> ruleSetBos = Lists.newArrayList();
 		for (ReactionRulesetBo reactionRulesetBo : reactionRulesetBos) {
-			if (reactionRulesetBo.getRefRuleTypeBo().getRuleTypeId() == ruleTypeId) {
+			if (reactionRulesetBo.getRefRuleTypeBo().getRuleTypeId() == RuleType.FILTERING.getRuleTypeID()) {
 				List<GeneralRuleBo> ruleBos = Lists.newArrayList();
 				List<ReactionRule> ruleList = super.getRulesByRuleSetId(reactionRulesetBo.getRulesetId());
 				for (ReactionRule rule : ruleList) {

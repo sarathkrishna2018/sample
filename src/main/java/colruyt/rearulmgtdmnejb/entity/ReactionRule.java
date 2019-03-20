@@ -26,125 +26,119 @@ import com.google.common.collect.Lists;
 import colruyt.rearulmgtdmnejb.enums.ActionType;
 import colruyt.rearulmgtdmnejb.enums.SourceType;
 
-/**
- * The persistent class for the REA_RULE database table.
- * 
- */
 @Entity
-@Table(name="REA_RULE")
+@Table(name = "REA_RULE")
 public class ReactionRule implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="REA_RULE_SEQ_GEN", sequenceName="SEQ_REA_RULE")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="REA_RULE_SEQ_GEN")
-	@Column(name="REA_RULE_ID")
+	@SequenceGenerator(name = "REA_RULE_SEQ_GEN", sequenceName = "SEQ_REA_RULE")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "REA_RULE_SEQ_GEN")
+	@Column(name = "REA_RULE_ID")
 	private long reaRuleId;
-	
-	@Column(name="REA_RULESET_ID")
+
+	@Column(name = "REA_RULESET_ID")
 	private long reaRulesetId;
 
-	@Column(name="CREATED_BY")
+	@Column(name = "CREATED_BY")
 	private String createdBy;
 
-	@Column(name="DIRECT_YN")
+	@Column(name = "DIRECT_YN")
 	@ExternalValues({ "true=Y", "false=N" })
 	@Type(String.class)
 	private boolean direct;
 
-	@Column(name="IC_FROM")
+	@Column(name = "IC_FROM")
 	private long importancecodeFrom;
 
-	@Column(name="IC_TO")
+	@Column(name = "IC_TO")
 	private long importancecodeTo;
 
-	@Column(name="LST_UPDATE_BY")
+	@Column(name = "LST_UPDATE_BY")
 	private String lstUpdateBy;
 
-	@Column(name="PERMENANT_YN")
+	@Column(name = "PERMENANT_YN")
 	@ExternalValues({ "true=Y", "false=N" })
 	@Type(String.class)
 	private boolean permenant;
 
-	@Column(name="POSTPONED_YN")
+	@Column(name = "POSTPONED_YN")
 	@ExternalValues({ "true=Y", "false=N" })
 	@Type(String.class)
 	private boolean postponed;
 
-	@Column(name="RECALCULATE_YN")
+	@Column(name = "RECALCULATE_YN")
 	@ExternalValues({ "true=Y", "false=N" })
 	@Type(String.class)
 	private boolean recalculate;
 
-	@Column(name="RULE_COMMENT")
+	@Column(name = "RULE_COMMENT")
 	private String ruleComment;
 
-	@Column(name="RULE_NAME")
+	@Column(name = "RULE_NAME")
 	private String ruleName;
 
-	@Column(name="RULE_PRIORITY")
+	@Column(name = "RULE_PRIORITY")
 	private long rulePriority;
 
-	@Column(name="TEMPORARY_YN")
+	@Column(name = "TEMPORARY_YN")
 	@ExternalValues({ "true=Y", "false=N" })
 	@Type(String.class)
 	private boolean temporary;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="VALID_FROM")
+	@Column(name = "VALID_FROM")
 	private Date validFrom;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="VALID_UPTO")
+	@Column(name = "VALID_UPTO")
 	private Date validUpto;
-	
+
 	@Temporal(TemporalType.DATE)
-	@Column(name="DATE_LOGICALLY_DELETED")
+	@Column(name = "DATE_LOGICALLY_DELETED")
 	private Date logicallyDeletedDate;
 
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "REA_RULE_ID", referencedColumnName="REA_RULE_ID")
-    private FilteringRuleAction filteringRuleAction;
-	
+	@JoinColumn(name = "REA_RULE_ID", referencedColumnName = "REA_RULE_ID")
+	private FilteringRuleAction filteringRuleAction;
+
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "REA_RULE_ID", referencedColumnName="REA_RULE_ID")
+	@JoinColumn(name = "REA_RULE_ID", referencedColumnName = "REA_RULE_ID")
 	private ProposalNotToReactRuleAction proposalNotToReactRuleAction;
 
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "REA_RULE_ID", referencedColumnName="REA_RULE_ID")
+	@JoinColumn(name = "REA_RULE_ID", referencedColumnName = "REA_RULE_ID")
 	private ReactionPeriodRuleAction reactionPeriodRuleAction;
 
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "REA_RULE_ID", referencedColumnName="REA_RULE_ID")
+	@JoinColumn(name = "REA_RULE_ID", referencedColumnName = "REA_RULE_ID")
 	private QuantityRuleAction quantityRuleAction;
 
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "REA_RULE_ID", referencedColumnName="REA_RULE_ID")
+	@JoinColumn(name = "REA_RULE_ID", referencedColumnName = "REA_RULE_ID")
 	private ReactingRuleAction reactingRuleAction;
 
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "REA_RULE_ID", referencedColumnName="REA_RULE_ID")
+	@JoinColumn(name = "REA_RULE_ID", referencedColumnName = "REA_RULE_ID")
 	private RecordingNotFoundRuleAction recordingNotFoundRuleAction;
-	
+
 	@OneToMany
-	@JoinColumn(name = "REA_RULE_ID", referencedColumnName="REA_RULE_ID")
+	@JoinColumn(name = "REA_RULE_ID", referencedColumnName = "REA_RULE_ID")
 	private List<PriceProductHierarchySet> priceProductHierarchySet;
-	
+
 	@ElementCollection(fetch = FetchType.EAGER)
-	@CollectionTable(name = "REA_RULE_SRC", 
-			joinColumns = @JoinColumn(name = "REA_RULE_ID"))
+	@CollectionTable(name = "REA_RULE_SRC", joinColumns = @JoinColumn(name = "REA_RULE_ID"))
 	@Column(name = "SOURCE_ID")
 	private List<Integer> refSourceTypes;
-	
+
 	@ElementCollection(fetch = FetchType.EAGER)
-	@CollectionTable(name = "REA_RULE_ACTTYPE", 
-			joinColumns = @JoinColumn(name = "REA_RULE_ID"))
+	@CollectionTable(name = "REA_RULE_ACTTYPE", joinColumns = @JoinColumn(name = "REA_RULE_ID"))
 	@Column(name = "ACTION_TYPE_ID")
 	private List<Integer> refActionTypes;
-	
+
 	public List<SourceType> getRefSourceTypes() {
-		List<SourceType> sourceTypes=Lists.newArrayList();
-		for(Integer sourceTypeId : refSourceTypes){
+		List<SourceType> sourceTypes = Lists.newArrayList();
+		for (Integer sourceTypeId : refSourceTypes) {
 			sourceTypes.add(SourceType.forValue(sourceTypeId));
 		}
 		return sourceTypes;
@@ -152,14 +146,14 @@ public class ReactionRule implements Serializable {
 
 	public void setRefSourceTypes(List<SourceType> sourceTypes) {
 		this.refSourceTypes = Lists.newArrayList();
-		for(SourceType sourceType:sourceTypes){
+		for (SourceType sourceType : sourceTypes) {
 			this.refSourceTypes.add(sourceType.getSourceTypeId());
 		}
 	}
 
-	public List<ActionType> getRefActionTypes(){
+	public List<ActionType> getRefActionTypes() {
 		List<ActionType> actionTypes = Lists.newArrayList();
-		for(Integer actionTypeId : refActionTypes) {
+		for (Integer actionTypeId : refActionTypes) {
 			actionTypes.add(ActionType.forValue(actionTypeId));
 		}
 		return actionTypes;
@@ -167,16 +161,17 @@ public class ReactionRule implements Serializable {
 
 	public void setRefActionTypes(List<ActionType> actionTypes) {
 		this.refActionTypes = Lists.newArrayList();
-		for(ActionType actionType : actionTypes) {
+		for (ActionType actionType : actionTypes) {
 			this.refActionTypes.add(actionType.getActionTypeId());
 		}
-	}  
-	@Column(name="LST_UPDATE_TS",insertable = false, updatable = false)
+	}
+
+	@Column(name = "LST_UPDATE_TS", insertable = false, updatable = false)
 	private Date updatedOn;
-	
-	@Column(name="C_REA_RULE_ID")
-	private Long childRuleId; 
-	
+
+	@Column(name = "C_REA_RULE_ID")
+	private Long childRuleId;
+
 	public Date getUpdatedOn() {
 		return updatedOn;
 	}
@@ -368,7 +363,7 @@ public class ReactionRule implements Serializable {
 	public void setRecordingNotFoundRuleAction(RecordingNotFoundRuleAction reaRnfAct) {
 		this.recordingNotFoundRuleAction = reaRnfAct;
 	}
-	
+
 	public Date getLogicallyDeletedDate() {
 		return logicallyDeletedDate;
 	}
@@ -385,5 +380,4 @@ public class ReactionRule implements Serializable {
 		this.childRuleId = childRuleId;
 	}
 
-	
 }

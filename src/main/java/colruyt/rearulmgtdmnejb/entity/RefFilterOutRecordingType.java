@@ -7,22 +7,18 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-/**
- * The persistent class for the REA_FLT_RULE database table.
- * 
- */
 @Entity
-@Table(name="FLTOUT_TYPE_LANG")
+@Table(name = "FLTOUT_TYPE_LANG")
 public class RefFilterOutRecordingType implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@EmbeddedId
 	private RefFilterOutRecordingTypeLangPK id;
 
-	@Column(name="FLTOUT_TYPE_NAME")
+	@Column(name = "FLTOUT_TYPE_NAME")
 	private String filterOutTypeName;
 
-	@Column(name="DESCRIPTION")
+	@Column(name = "DESCRIPTION")
 	private String description;
 
 	public RefFilterOutRecordingType() {
@@ -35,7 +31,6 @@ public class RefFilterOutRecordingType implements Serializable {
 	public void setId(RefFilterOutRecordingTypeLangPK id) {
 		this.id = id;
 	}
-
 
 	public String getFilterOutTypeName() {
 		return filterOutTypeName;

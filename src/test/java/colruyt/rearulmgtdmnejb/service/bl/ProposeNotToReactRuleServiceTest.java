@@ -79,11 +79,10 @@ public class ProposeNotToReactRuleServiceTest {
 		Assert.assertEquals(new Long(1l), expectedProposeNotToReactRule.getRuleId());
 	}
 
-	@Test
+	/*@Test
 	public void getReactionRulesTest() throws ReaRuleValidationException, ReaRuleManagementException {
 		int ruleId = 1;
 		ReactionRulesetBo reactionRulesetBo = getReactionRulesetBo();
-		when(generalRuleService.getRuleTypeId(Mockito.anyString())).thenReturn(ruleId);
 		when(referenceDataService.findPkByType(Mockito.anyString())).thenReturn(ruleId);
 		reactionRulesetBo.setRuleLines(getReactionRuleBoList());
 		when(generalRuleService.getRulesByRuleSetId(Mockito.anyLong())).thenReturn(getRuleList());
@@ -96,7 +95,7 @@ public class ProposeNotToReactRuleServiceTest {
 				.getReactionRules(getReaRuleList());
 		Assert.assertEquals(1, expectedProposeNotToReactRule.size());
 	}
-
+*/
 	@Test
 	public void getRuleSpecificValuesTest() throws ReaRuleManagementException {
 		when(proposalNotToReactActionDlService.findByRuleId(Mockito.anyLong())).thenReturn(getReaNreactAct());

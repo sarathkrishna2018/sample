@@ -1,7 +1,6 @@
 package colruyt.rearulmgtdmnejb.service.dl;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.List;
 
 import javax.ejb.LocalBean;

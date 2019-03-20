@@ -31,10 +31,6 @@ import colruyt.rearulmgtdmnejb.entity.ReactionRuleSet;
 import colruyt.rearulmgtdmnejb.util.DBUtil;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 
-/**
- * @version 1.0
- * @created 28-nov-2018 8:31:07
- */
 @Stateless
 @LocalBean
 @TransactionAttribute(TransactionAttributeType.MANDATORY)
@@ -48,8 +44,10 @@ public class ReactionRuleSetDlService implements Serializable {
 	private transient EntityManager entityManager;
 
 	/**
+	 * This method is use to create or update Reaction Ruleset
 	 * 
 	 * @param reactionPricingRuleSet
+	 * @return ReactionRuleSet
 	 */
 	public ReactionRuleSet createOrUpdate(ReactionRuleSet reaRuleset) {
 		ReactionRuleSet ruleset = entityManager.merge(reaRuleset);
@@ -58,9 +56,12 @@ public class ReactionRuleSetDlService implements Serializable {
 	}
 
 	/**
+	 * this method is used to find the ReactionRuleSet based on search input's
 	 * 
 	 * @param cgChainId
 	 * @param pcChainId
+	 * @param ruleTypeId
+	 * @return list of ReactionRuleSet
 	 */
 	public List<ReactionRuleSet> findByAttributes(long cgChainId, long pcChainId, long ruleTypeId) {
 		List<ReactionRuleSet> reactionRulesets = null;
@@ -86,10 +87,6 @@ public class ReactionRuleSetDlService implements Serializable {
 		return reactionRulesets;
 	}
 
-	/**
-	 * 
-	 * @param id
-	 */
 	public ReactionRuleSet findByPk(long reaRulesetId) {
 		ReactionRuleSet reaRuleset = entityManager.find(ReactionRuleSet.class, reaRulesetId);
 		entityManager.flush();
@@ -97,9 +94,12 @@ public class ReactionRuleSetDlService implements Serializable {
 	}
 
 	/**
+	 * This method is used to get list of ReactionRuleSet based on cgChainId &
+	 * pcChainId
 	 * 
 	 * @param cgChainId
 	 * @param pcChainId
+	 * @return list of ReactionRuleSet
 	 */
 	public List<ReactionRuleSet> findByCgChainAndPCChain(long cgChainId, long pcChainId) {
 		List<ReactionRuleSet> reactionRulesets = null;
@@ -123,7 +123,7 @@ public class ReactionRuleSetDlService implements Serializable {
 	}
 
 	/**
-	 * This method is to delete reaction ruleset
+	 * This method is to delete Reaction Ruleset
 	 * 
 	 * @param reactionRuleSet
 	 */

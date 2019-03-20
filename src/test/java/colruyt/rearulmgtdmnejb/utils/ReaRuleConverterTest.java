@@ -32,7 +32,7 @@ import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmntPK;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.enums.ActionType;
 import colruyt.rearulmgtdmnejb.enums.SourceType;
-import colruyt.rearulmgtdmnejb.util.ProductHrchyElmntConverter;
+import colruyt.rearulmgtdmnejb.util.ProductHierarchyElementConverter;
 import colruyt.rearulmgtdmnejb.util.ReaRuleConverter;
 
 @Transactional
@@ -42,7 +42,7 @@ public class ReaRuleConverterTest {
 	@TestedObject
 	private ReaRuleConverter reaRuleConverter;
 	@InjectIntoByType
-	private ProductHrchyElmntConverter productHrchyElmntConverter = Mockito.mock(ProductHrchyElmntConverter.class);
+	private ProductHierarchyElementConverter productHrchyElmntConverter = Mockito.mock(ProductHierarchyElementConverter.class);
 
 	@Test
 	public void convertRuleBoTest() {

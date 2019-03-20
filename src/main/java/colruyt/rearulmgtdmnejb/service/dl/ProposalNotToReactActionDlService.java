@@ -14,10 +14,6 @@ import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleAction;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 
-/**
- * @version 1.0
- * @created 04-dec-2018 15:05:16
- */
 @Stateless
 @LocalBean
 @TransactionAttribute(TransactionAttributeType.MANDATORY)
@@ -33,23 +29,24 @@ public class ProposalNotToReactActionDlService implements Serializable {
 		return proposalNotToReactRuleAction;
 
 	}
-	
+
 	public ProposalNotToReactRuleAction findByRuleId(long reaRuleId) {
 		return entityManager.find(ProposalNotToReactRuleAction.class, reaRuleId);
-		
+
 	}
-	
+
 	public void physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo) {
-		Query query = entityManager.createQuery("Delete from  ProposalNotToReactRuleAction proposalNotToReactRuleAction where proposalNotToReactRuleAction.reactionRuleId = (?1)");
-		query.setParameter(1, deleteRuleInfoBo.getRuleId()).executeUpdate();	
+		Query query = entityManager.createQuery(
+				"Delete from  ProposalNotToReactRuleAction proposalNotToReactRuleAction where proposalNotToReactRuleAction.reactionRuleId = (?1)");
+		query.setParameter(1, deleteRuleInfoBo.getRuleId()).executeUpdate();
 		entityManager.clear();
 	}
-	
+
 	public void physicalDeleteElementsRsn(DeleteRuleInfoBo deleteRuleInfoBo) {
-		Query query = entityManager.createQuery("Delete from  ProposalNotToReactRuleActionRsn prsn where prsn.id.reactionRuleId = (?1)");
-		query.setParameter(1, deleteRuleInfoBo.getRuleId()).executeUpdate();	
+		Query query = entityManager
+				.createQuery("Delete from  ProposalNotToReactRuleActionRsn prsn where prsn.id.reactionRuleId = (?1)");
+		query.setParameter(1, deleteRuleInfoBo.getRuleId()).executeUpdate();
 		entityManager.clear();
 	}
-	
 
 }

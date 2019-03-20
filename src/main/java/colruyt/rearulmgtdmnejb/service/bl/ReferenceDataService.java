@@ -52,10 +52,9 @@ public class ReferenceDataService implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(ReferenceDataService.class);
 
-
 	@EJB
 	private ReferenceDataConverter referenceDataConvertor;
-	
+
 	@EJB
 	private ReferenceDataDlService referenceDataDlService;
 
@@ -76,30 +75,33 @@ public class ReferenceDataService implements Serializable {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_REFERENCEDATASERVICE);
 		ActionType[] actionTypeEnums = ActionType.values();
 		refActionTypeList = referenceDataConvertor.convertRefReaActiontype(actionTypeEnums);
-		
-		ReasonType[] refReasonValues = ReasonType.values();
-		List<RefReasonType> refReasonTypes =referenceDataDlService.findAllRefReasonType();
-		refNotToReactCodeList = referenceDataConvertor.convertRefNonReactingCodeType(refReasonValues,refReasonTypes);
-		
-		QuantityCondition[] quantityConditionEnum = QuantityCondition.values();
-		List<RefQuantityConditionType> refQuantityConditionTypes =referenceDataDlService.findAllRefQuantityCondition();
-		refQuantityConditionList = referenceDataConvertor.convertRefQtyCond(quantityConditionEnum,refQuantityConditionTypes);
-		
-		QuantityType[] refQuantityTypeValues = QuantityType.values();
-		List<RefQuantityType> refQuantityTypes =referenceDataDlService.findAllRefQuantityType();
-		refQuantityPriceTypeList = referenceDataConvertor.convertRefQtyType(refQuantityTypeValues,refQuantityTypes);
 
-		SourceType[]  sourceTypeEnums = SourceType.values();
+		ReasonType[] refReasonValues = ReasonType.values();
+		List<RefReasonType> refReasonTypes = referenceDataDlService.findAllRefReasonType();
+		refNotToReactCodeList = referenceDataConvertor.convertRefNonReactingCodeType(refReasonValues, refReasonTypes);
+
+		QuantityCondition[] quantityConditionEnum = QuantityCondition.values();
+		List<RefQuantityConditionType> refQuantityConditionTypes = referenceDataDlService.findAllRefQuantityCondition();
+		refQuantityConditionList = referenceDataConvertor.convertRefQtyCond(quantityConditionEnum,
+				refQuantityConditionTypes);
+
+		QuantityType[] refQuantityTypeValues = QuantityType.values();
+		List<RefQuantityType> refQuantityTypes = referenceDataDlService.findAllRefQuantityType();
+		refQuantityPriceTypeList = referenceDataConvertor.convertRefQtyType(refQuantityTypeValues, refQuantityTypes);
+
+		SourceType[] sourceTypeEnums = SourceType.values();
 		refSourceTypeList = referenceDataConvertor.convertRefReaSource(sourceTypeEnums);
-		
+
 		FilterOutRecordingType[] filterOutRecordingTypeEnums = FilterOutRecordingType.values();
-		List<RefFilterOutRecordingType> refFilterOutRecordingTypes =referenceDataDlService.findAllRefFilterOutRecordingTypes();
-		refFilterOutRecordingTypeList = referenceDataConvertor.convertRefFltoutType(filterOutRecordingTypeEnums, refFilterOutRecordingTypes);
- 		
+		List<RefFilterOutRecordingType> refFilterOutRecordingTypes = referenceDataDlService
+				.findAllRefFilterOutRecordingTypes();
+		refFilterOutRecordingTypeList = referenceDataConvertor.convertRefFltoutType(filterOutRecordingTypeEnums,
+				refFilterOutRecordingTypes);
+
 		RuleType[] refRuleTypeValues = RuleType.values();
-		List<RefRuleType> refRuleTypes=referenceDataDlService.findAllRuleType();
-		refRuleTypeList = referenceDataConvertor.convertRuleType(refRuleTypeValues,refRuleTypes);
-		
+		List<RefRuleType> refRuleTypes = referenceDataDlService.findAllRuleType();
+		refRuleTypeList = referenceDataConvertor.convertRuleType(refRuleTypeValues, refRuleTypes);
+
 	}
 
 	public List<RefActionTypeBo> getAllActionTypes() {
@@ -130,75 +132,85 @@ public class ReferenceDataService implements Serializable {
 		return refFilterOutRecordingTypeList;
 	}
 
-	/**This method is to remove actionTypeAll
+	/**
+	 * This method is to remove actionTypeAll
+	 * 
 	 * @param allActionType
 	 * @return
 	 */
 	public List<RefActionTypeBo> removeActionTypeAll(List<RefActionTypeBo> allActionType, Boolean getAllTypes) {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_REMOVEALLACTION);
 		List<RefActionTypeBo> finalActionList = Lists.newArrayList();
-		for(RefActionTypeBo action : allActionType){
-			if(getAllTypes){
-				if(!(action.getActionTypeValue().equalsIgnoreCase(ActionType.ALL.getActionTypeValue()) )){
+		for (RefActionTypeBo action : allActionType) {
+			if (getAllTypes) {
+				if (!(action.getActionTypeValue().equalsIgnoreCase(ActionType.ALL.getActionTypeValue()))) {
 					finalActionList.add(action);
-				}	
-			}
-			else{
-				if(!(action.getActionTypeValue().equalsIgnoreCase(ActionType.ALL.getActionTypeValue()) || action.getActionTypeValue().equalsIgnoreCase(ActionType.NONE.getActionTypeValue()))){
+				}
+			} else {
+				if (!(action.getActionTypeValue().equalsIgnoreCase(ActionType.ALL.getActionTypeValue())
+						|| action.getActionTypeValue().equalsIgnoreCase(ActionType.NONE.getActionTypeValue()))) {
 					finalActionList.add(action);
-				}	
+				}
 			}
-			
+
 		}
 		return finalActionList;
 	}
 
-	/**This method is to remove sourceTypeAll
+	/**
+	 * This method is to remove sourceTypeAll
+	 * 
 	 * @param allSourceType
 	 * @return
 	 */
 	public List<RefSourceTypeBo> removeSourceTypeAll(List<RefSourceTypeBo> allSourceType) {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_REMOVEALLSOURCE);
 		List<RefSourceTypeBo> finalSourceList = Lists.newArrayList();
-		for(RefSourceTypeBo source : allSourceType){
-			if(!source.getSourceName().equalsIgnoreCase(SourceType.ALL.getSourceTypeName())){
+		for (RefSourceTypeBo source : allSourceType) {
+			if (!source.getSourceName().equalsIgnoreCase(SourceType.ALL.getSourceTypeName())) {
 				finalSourceList.add(source);
 			}
 		}
 		return finalSourceList;
 	}
-	
-	/**This method is to find ruleTypeId
+
+	/**
+	 * This method is to find ruleTypeId
+	 * 
 	 * @param ruleType
 	 * @return
 	 */
-	public int findPkByType(String ruleType){
+	public int findPkByType(String ruleType) {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_FINDRULETYPEID);
 		int ruleTypeId = 0;
-		for(RefRuleTypeBo refRuleTypeBo: getAllRuleTypes()) {
-			for(RefLangBo refLangBo: refRuleTypeBo.getCodeLang()) {
-				if(refLangBo.getIsoLangCode().equalsIgnoreCase("EN") && refLangBo.getValue().equalsIgnoreCase(ruleType)) {
+		for (RefRuleTypeBo refRuleTypeBo : getAllRuleTypes()) {
+			for (RefLangBo refLangBo : refRuleTypeBo.getCodeLang()) {
+				if (refLangBo.getIsoLangCode().equalsIgnoreCase("EN")
+						&& refLangBo.getValue().equalsIgnoreCase(ruleType)) {
 					ruleTypeId = refRuleTypeBo.getRuleTypeId();
 				}
 			}
 		}
 		return ruleTypeId;
 	}
-	/** This method is to find ruleType 
+
+	/**
+	 * This method is to find ruleType
+	 * 
 	 * @param ruleTypeId
 	 * @return
 	 */
-	public String findTypeByPk(long ruleTypeId){
+	public String findTypeByPk(long ruleTypeId) {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_FINDRULETYPE);
-		String ruleType="";
-		for(RefRuleTypeBo refRuleTypeBo:getAllRuleTypes()){
-			for(RefLangBo refLangBo:refRuleTypeBo.getCodeLang()){
-				if(refRuleTypeBo.getRuleTypeId()==ruleTypeId){
-					ruleType=refLangBo.getValue();
+		String ruleType = "";
+		for (RefRuleTypeBo refRuleTypeBo : getAllRuleTypes()) {
+			for (RefLangBo refLangBo : refRuleTypeBo.getCodeLang()) {
+				if (refRuleTypeBo.getRuleTypeId() == ruleTypeId) {
+					ruleType = refLangBo.getValue();
 				}
 			}
 		}
 		return ruleType;
 	}
-	
+
 }

@@ -31,11 +31,6 @@ import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnDebugMessage;
 import colruyt.rearulmgtdmnejb.util.ReaRuleConverter;
 import colruyt.rearulmgtdmnejb.util.ReferenceDataConverter;
 
-/**
- * @version 1.0
- * @created 28-nov-2018 12:05:11
- */
-
 @LocalBean
 public abstract class GeneralRuleService implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -123,9 +118,9 @@ public abstract class GeneralRuleService implements Serializable {
 	 * @param existingReactionRule
 	 */
 	private void appendTimeSliceParam(GeneralRuleBo childRuleBo, ReactionRule existingReactionRule) {
-			existingReactionRule.setChildRuleId(childRuleBo.getRuleId());
-			existingReactionRule.setValidUpto(DateUtils.addDays(childRuleBo.getValidFrom(), -1));
-			reactionRuleDlService.createOrUpdate(existingReactionRule);
+		existingReactionRule.setChildRuleId(childRuleBo.getRuleId());
+		existingReactionRule.setValidUpto(DateUtils.addDays(childRuleBo.getValidFrom(), -1));
+		reactionRuleDlService.createOrUpdate(existingReactionRule);
 	}
 
 	private GeneralRuleBo createRuleLine(GeneralRuleBo reactionRuleBo)
@@ -144,7 +139,9 @@ public abstract class GeneralRuleService implements Serializable {
 	 */
 	private boolean checkForValidity(ReactionRule existingReactionRule, GeneralRuleBo reactionRuleBo) {
 		Date currentDate = new Date();
-		if (existingReactionRule.getValidFrom() != null && existingReactionRule.getValidFrom().compareTo(currentDate)<=0 && existingReactionRule.getValidFrom().compareTo(reactionRuleBo.getValidFrom())<0) {
+		if (existingReactionRule.getValidFrom() != null
+				&& existingReactionRule.getValidFrom().compareTo(currentDate) <= 0
+				&& existingReactionRule.getValidFrom().compareTo(reactionRuleBo.getValidFrom()) < 0) {
 			return true;
 		}
 		return false;
@@ -186,8 +183,7 @@ public abstract class GeneralRuleService implements Serializable {
 		ReactionRule reaRule = reaRuleConverter.convertRuleBo(null, reactionRuleBo);
 		// action
 		if (reactionRuleBo.isActionSelectAll()) {
-			List<ActionType> actionLst = reaRuleConverter
-					.convertAllAction(ActionType.ALL.getActionTypeId());
+			List<ActionType> actionLst = reaRuleConverter.convertAllAction(ActionType.ALL.getActionTypeId());
 			reaRule.setRefActionTypes(actionLst);
 		} else if (!reactionRuleBo.isActionSelectAll() && reactionRuleBo.getActionTypeList() != null
 				&& !reactionRuleBo.getActionTypeList().isEmpty()) {
@@ -196,8 +192,7 @@ public abstract class GeneralRuleService implements Serializable {
 		}
 		// source
 		if (reactionRuleBo.isSourceSelectAll()) {
-			List<SourceType> sourceLst = reaRuleConverter
-					.convertAllSource(SourceType.ALL.getSourceTypeId());
+			List<SourceType> sourceLst = reaRuleConverter.convertAllSource(SourceType.ALL.getSourceTypeId());
 			reaRule.setRefSourceTypes(sourceLst);
 		} else if (!reactionRuleBo.isSourceSelectAll() && reactionRuleBo.getSourceTypeList() != null
 				&& !reactionRuleBo.getSourceTypeList().isEmpty()) {
@@ -220,19 +215,17 @@ public abstract class GeneralRuleService implements Serializable {
 	 */
 	private GeneralRuleBo setRulePriority(ReactionRulesetBo reactionRulesetBo, GeneralRuleBo reactionRuleBo) {
 		Long rulePriority = getAllRulesByRuleSetId(reactionRulesetBo.getRulesetId());
-			
-		if (rulePriority == null && reactionRuleBo.getRulePriority()==null) 
-		{
-			reactionRuleBo.setRulePriority(1L);        }
-		else if(rulePriority != null && reactionRuleBo.getRulePriority()==null)
-		{           
-			reactionRuleBo.setRulePriority(rulePriority + 1L);      
-		}        
+
+		if (rulePriority == null && reactionRuleBo.getRulePriority() == null) {
+			reactionRuleBo.setRulePriority(1L);
+		} else if (rulePriority != null && reactionRuleBo.getRulePriority() == null) {
+			reactionRuleBo.setRulePriority(rulePriority + 1L);
+		}
 		return reactionRuleBo;
 	}
 
 	/**
-	 * Get all rules
+	 *This method is used to get all rules
 	 * 
 	 * @param rulesetId
 	 * @return
@@ -393,8 +386,7 @@ public abstract class GeneralRuleService implements Serializable {
 		reactionRuleBo.setRuleId(reaRule.getReaRuleId());
 		// action
 		if (reactionRuleBo.isActionSelectAll()) {
-			List<ActionType> actionLst = reaRuleConverter
-					.convertAllAction(ActionType.ALL.getActionTypeId());
+			List<ActionType> actionLst = reaRuleConverter.convertAllAction(ActionType.ALL.getActionTypeId());
 			reaRule.setRefActionTypes(actionLst);
 		} else if (!reactionRuleBo.isActionSelectAll() && reactionRuleBo.getActionTypeList() != null
 				&& !reactionRuleBo.getActionTypeList().isEmpty()) {
@@ -403,10 +395,9 @@ public abstract class GeneralRuleService implements Serializable {
 		}
 		// source
 		if (reactionRuleBo.isSourceSelectAll()) {
-			List<SourceType> sourceLst = reaRuleConverter
-					.convertAllSource(SourceType.ALL.getSourceTypeId());
+			List<SourceType> sourceLst = reaRuleConverter.convertAllSource(SourceType.ALL.getSourceTypeId());
 			reaRule.setRefSourceTypes(sourceLst);
-			
+
 		} else if (!reactionRuleBo.isSourceSelectAll() && reactionRuleBo.getSourceTypeList() != null
 				&& !reactionRuleBo.getSourceTypeList().isEmpty()) {
 			List<SourceType> sourceLst = reaRuleConverter.convertRuleSource(reactionRuleBo);
@@ -438,8 +429,7 @@ public abstract class GeneralRuleService implements Serializable {
 	 */
 	public GeneralRuleBo getGeneralRuleAttributes(ReactionRule rule, GeneralRuleBo ruleBo) {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_GETGENERALRULE);
-		if (rule.getRefActionTypes() != null
-				&& rule.getRefActionTypes().get(0) == ActionType.ALL) {
+		if (rule.getRefActionTypes() != null && rule.getRefActionTypes().get(0) == ActionType.ALL) {
 			List<RefActionTypeBo> actionTypes = referenceDataService.getAllActionTypes();
 			List<RefActionTypeBo> actionTypesExceptAll = referenceDataService.removeActionTypeAll(actionTypes, false);
 			ruleBo.setActionTypeList(actionTypesExceptAll);
@@ -447,8 +437,7 @@ public abstract class GeneralRuleService implements Serializable {
 		} else {
 			ruleBo.setActionTypeList(referenceDataConverter.convertRefReaActiontype(rule.getRefActionTypes()));
 		}
-		if (rule.getRefSourceTypes() != null
-				&& rule.getRefSourceTypes().get(0) == SourceType.ALL) {
+		if (rule.getRefSourceTypes() != null && rule.getRefSourceTypes().get(0) == SourceType.ALL) {
 			List<RefSourceTypeBo> sourceTypes = referenceDataService.getAllSourceTypes();
 			List<RefSourceTypeBo> sourceTypesExceptAll = referenceDataService.removeSourceTypeAll(sourceTypes);
 			ruleBo.setSourceTypeList(sourceTypesExceptAll);
@@ -532,7 +521,7 @@ public abstract class GeneralRuleService implements Serializable {
 	}
 
 	public List<DeleteRuleInfoBo> findAllLogicallyDeletedRules(Date dateDeleteRuleBefore) {
-		return  reactionRuleDlService.findAllLogicallyDeletedRules(dateDeleteRuleBefore);
+		return reactionRuleDlService.findAllLogicallyDeletedRules(dateDeleteRuleBefore);
 	}
 
 	public List<DeleteRuleInfoBo> findAllExpiredRules(Date dateDeleteRuleBefore) {

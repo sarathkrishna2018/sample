@@ -18,54 +18,49 @@ import org.apache.openjpa.persistence.ExternalValues;
 import org.apache.openjpa.persistence.Type;
 import javax.persistence.JoinTable;
 
-
-/**
- * The persistent class for the REA_PPD_HCHYSET database table.
- * 
- */
 @Entity
-@Table(name="REA_PPD_HCHYSET")
+@Table(name = "REA_PPD_HCHYSET")
 public class PriceProductHierarchySet implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="REA_PPD_HCHYSET_SEQ_GEN", sequenceName="SEQ_REA_PPD_HCHYSET")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="REA_PPD_HCHYSET_SEQ_GEN")
-	@Column(name="PPD_HCHYSET_ID")
+	@SequenceGenerator(name = "REA_PPD_HCHYSET_SEQ_GEN", sequenceName = "SEQ_REA_PPD_HCHYSET")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "REA_PPD_HCHYSET_SEQ_GEN")
+	@Column(name = "PPD_HCHYSET_ID")
 	private long productHierarchySetId;
-	
-	@Column(name="REA_RULE_ID")
+
+	@Column(name = "REA_RULE_ID")
 	private long reactionRuleId;
 
-	@Column(name="ASSORTMENT_NAME")
+	@Column(name = "ASSORTMENT_NAME")
 	private String assortmentName;
 
-	@Column(name="CHEAP_BRAND_YN")
+	@Column(name = "CHEAP_BRAND_YN")
 	@ExternalValues({ "true=Y", "false=N" })
 	@Type(String.class)
 	private boolean cheapBrand;
 
-	@Column(name="CREATED_BY")
+	@Column(name = "CREATED_BY")
 	private String createdBy;
 
-	@Column(name="LST_UPDATE_BY")
+	@Column(name = "LST_UPDATE_BY")
 	private String lstUpdateBy;
 
-	@Column(name="NAT_BRAND_YN")
+	@Column(name = "NAT_BRAND_YN")
 	@ExternalValues({ "true=Y", "false=N" })
 	@Type(String.class)
 	private boolean nationalBrand;
 
-	@Column(name="OWN_BRAND_YN")
+	@Column(name = "OWN_BRAND_YN")
 	@ExternalValues({ "true=Y", "false=N" })
 	@Type(String.class)
 	private boolean ownBrand;
-	
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH, orphanRemoval = false)
 	@JoinTable(name = "REA_PPD_HCHYSET_ELMNT", joinColumns = @JoinColumn(name = "PPD_HCHYSET_ID"), inverseJoinColumns = @JoinColumn(name = "PPD_HCHY_ELMNT_ID"))
 	private List<PriceProductHierarchyElement> priceProductHierarchyElements;
-	
+
 	public Long getProductHierarchySetId() {
 		return this.productHierarchySetId;
 	}
@@ -121,7 +116,7 @@ public class PriceProductHierarchySet implements Serializable {
 	public void setOwnBrand(boolean ownBrandYn) {
 		this.ownBrand = ownBrandYn;
 	}
-	
+
 	public Long getReaRuleId() {
 		return this.reactionRuleId;
 	}
@@ -129,6 +124,7 @@ public class PriceProductHierarchySet implements Serializable {
 	public void setReactionRuleId(long reactionRuleId) {
 		this.reactionRuleId = reactionRuleId;
 	}
+
 	public List<PriceProductHierarchyElement> getPriceProductHierarchyElements() {
 		return priceProductHierarchyElements;
 	}
@@ -141,5 +137,4 @@ public class PriceProductHierarchySet implements Serializable {
 		this.productHierarchySetId = ppdHchysetId;
 	}
 
-	
 }

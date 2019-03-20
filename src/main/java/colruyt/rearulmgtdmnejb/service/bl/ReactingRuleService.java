@@ -13,10 +13,10 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Lists;
 
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.bo.GeneralRuleBo;
 import colruyt.rearulmgtdmnejb.bo.ReactingRuleBo;
 import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
-import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.ReactingRuleAction;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.enums.RuleType;
@@ -30,9 +30,6 @@ import colruyt.rearulmgtdmnejb.util.ReactingRuleConverter;
 
 /**
  * extends "ReactionRuleBlService"
- * 
- * @version 1.0
- * @created 04-dec-2018 15:04:07
  */
 @Stateless
 @LocalBean
@@ -46,7 +43,7 @@ public class ReactingRuleService extends GeneralRuleService implements Serializa
 	private ReactingRuleActionDlService reactingRuleActionDlService;
 
 	/**
-	 * This method is to create reacting rule
+	 * This method is to create Reacting Rule
 	 * 
 	 * @param reactionRuleBo
 	 * @throws ReaRuleManagementException
@@ -64,7 +61,7 @@ public class ReactingRuleService extends GeneralRuleService implements Serializa
 	}
 
 	/**
-	 * This method is to validate reacting rule mandatory fields
+	 * This method is to validate Reacting Rule mandatory fields
 	 * 
 	 * @param reactingRuleBo
 	 * @throws ReaRuleValidationException
@@ -90,7 +87,7 @@ public class ReactingRuleService extends GeneralRuleService implements Serializa
 	}
 
 	/**
-	 * This method is to modify reacting rule
+	 * This method is to modify Reacting Rule
 	 * 
 	 * @param reactionRuleBo
 	 * @throws ReaRuleManagementException
@@ -108,7 +105,7 @@ public class ReactingRuleService extends GeneralRuleService implements Serializa
 	}
 
 	/**
-	 * This method is to get reacting rule
+	 * This method is to get Reacting Rule
 	 * 
 	 * @param reactionRulesetBos
 	 * @throws ReaRuleManagementException
@@ -118,10 +115,9 @@ public class ReactingRuleService extends GeneralRuleService implements Serializa
 	public List<ReactionRulesetBo> getReactionRules(List<ReactionRulesetBo> reactionRulesetBos)
 			throws ReaRuleValidationException, ReaRuleManagementException {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_RETRIEVEREACTINGRULE);
-		long ruleTypeId = super.getRuleTypeId(RuleType.REACTING.getRuleTypeName());
 		List<ReactionRulesetBo> ruleSetBos = Lists.newArrayList();
 		for (ReactionRulesetBo reactionRulesetBo : reactionRulesetBos) {
-			if (reactionRulesetBo.getRefRuleTypeBo().getRuleTypeId() == ruleTypeId) {
+			if (reactionRulesetBo.getRefRuleTypeBo().getRuleTypeId() == RuleType.REACTING.getRuleTypeID()) {
 				List<GeneralRuleBo> ruleBos = Lists.newArrayList();
 				List<ReactionRule> ruleList = super.getRulesByRuleSetId(reactionRulesetBo.getRulesetId());
 				for (ReactionRule rule : ruleList) {
@@ -145,7 +141,7 @@ public class ReactingRuleService extends GeneralRuleService implements Serializa
 	}
 
 	/**
-	 * This method is to view reacting rule
+	 * This method is to view Reacting Rule
 	 * 
 	 * @param ruleId
 	 * @param ruleName

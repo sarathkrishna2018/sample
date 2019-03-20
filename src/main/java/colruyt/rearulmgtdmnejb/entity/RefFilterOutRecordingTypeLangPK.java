@@ -5,10 +5,6 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
-/**
- * The primary key class for the REF_FLTOUT_TYPE_LANG database table.
- * 
- */
 @Embeddable
 public class RefFilterOutRecordingTypeLangPK implements Serializable {
 	private static final long serialVersionUID = 1L;

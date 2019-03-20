@@ -10,34 +10,30 @@ import javax.persistence.Table;
 import org.apache.openjpa.persistence.ExternalValues;
 import org.apache.openjpa.persistence.Type;
 
-/**
- * The persistent class for the REA_REACTING_ACT database table.
- * 
- */
 @Entity
-@Table(name="REA_REACTING_ACT")
+@Table(name = "REA_REACTING_ACT")
 public class ReactingRuleAction implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="REA_RULE_ID")
+	@Column(name = "REA_RULE_ID")
 	private long reactionRuleId;
 
-	@Column(name="CATCH_ALL_YN")
+	@Column(name = "CATCH_ALL_YN")
 	@ExternalValues({ "true=Y", "false=N" })
 	@Type(String.class)
 	private boolean catchAll;
 
-	@Column(name="REACTING_AMT")
+	@Column(name = "REACTING_AMT")
 	private Double reactingAmt;
 
-	@Column(name="REACTING_PERC")
+	@Column(name = "REACTING_PERC")
 	private Double reactingPercentage;
 
-	@Column(name="THOLD_AMT")
+	@Column(name = "THOLD_AMT")
 	private Double thresholdAmount;
 
-	@Column(name="THOLD_PERC")
+	@Column(name = "THOLD_PERC")
 	private Double thresholdPercentage;
 
 	public long getReactionRuleId() {

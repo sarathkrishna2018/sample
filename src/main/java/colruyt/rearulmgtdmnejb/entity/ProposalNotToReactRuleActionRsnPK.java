@@ -7,7 +7,6 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class ProposalNotToReactRuleActionRsnPK implements Serializable {
-	// default serial version id, required for serializable classes.
 	private static final long serialVersionUID = 1L;
 
 	@Column(name = "REA_RULE_ID")

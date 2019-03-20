@@ -16,9 +16,6 @@ import org.slf4j.LoggerFactory;
 import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 
-/**
- * Session Bean implementation class ReactionRuleActionTypeDlService
- */
 @Stateless
 @LocalBean
 @TransactionAttribute(TransactionAttributeType.MANDATORY)
@@ -30,9 +27,10 @@ public class ReactionRuleActionTypeDlService implements Serializable {
 	@PersistenceContext(unitName = ReaRulMgtDmnConstants.PERSISTENCE_UNIT_NAME)
 	private transient EntityManager entityManager;
 
-	public void physicalDeleteActionForRules(DeleteRuleInfoBo deleteRuleInfoBo){
-		Query query = entityManager.createQuery("Delete from  ReactionRuleActionType reactionRuleActionType where reactionRuleActionType.id.reaRuleId = (?1)");
-		query.setParameter(1, deleteRuleInfoBo.getRuleId()).executeUpdate();	
+	public void physicalDeleteActionForRules(DeleteRuleInfoBo deleteRuleInfoBo) {
+		Query query = entityManager.createQuery(
+				"Delete from  ReactionRuleActionType reactionRuleActionType where reactionRuleActionType.id.reaRuleId = (?1)");
+		query.setParameter(1, deleteRuleInfoBo.getRuleId()).executeUpdate();
 		entityManager.clear();
 	}
 

@@ -16,7 +16,7 @@ import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 
 @Stateless
 @LocalBean
-public class ProductHrchyElmntConverter implements Serializable {
+public class ProductHierarchyElementConverter implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 		

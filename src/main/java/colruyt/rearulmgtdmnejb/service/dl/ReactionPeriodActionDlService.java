@@ -19,27 +19,24 @@ import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 @TransactionAttribute(TransactionAttributeType.MANDATORY)
 public class ReactionPeriodActionDlService implements Serializable {
 
-	
 	private static final long serialVersionUID = 1L;
-	@PersistenceContext(unitName=ReaRulMgtDmnConstants.PERSISTENCE_UNIT_NAME)
+	@PersistenceContext(unitName = ReaRulMgtDmnConstants.PERSISTENCE_UNIT_NAME)
 	private transient EntityManager entityManager;
-	/**
-	 * 
-	 * @param reactionPeriodRule
-	 */
-	public ReactionPeriodRuleAction createOrUpdate(ReactionPeriodRuleAction reactionPeriodRule){
-		ReactionPeriodRuleAction reactionPeriodRuleAction =entityManager.merge(reactionPeriodRule);
+
+	public ReactionPeriodRuleAction createOrUpdate(ReactionPeriodRuleAction reactionPeriodRule) {
+		ReactionPeriodRuleAction reactionPeriodRuleAction = entityManager.merge(reactionPeriodRule);
 		entityManager.flush();
 		return reactionPeriodRuleAction;
 	}
-	
+
 	public ReactionPeriodRuleAction findByRuleId(long reaRuleId) {
 		return entityManager.find(ReactionPeriodRuleAction.class, reaRuleId);
 	}
 
 	public void physicalDeleteElements(DeleteRuleInfoBo deleteRuleInfoBo) {
-		Query query = entityManager.createQuery("Delete from  ReactionPeriodRuleAction reactionPeriodRuleAction where reactionPeriodRuleAction.reaRuleId = (?1)");
-		query.setParameter(1, deleteRuleInfoBo.getRuleId()).executeUpdate();	
+		Query query = entityManager.createQuery(
+				"Delete from  ReactionPeriodRuleAction reactionPeriodRuleAction where reactionPeriodRuleAction.reaRuleId = (?1)");
+		query.setParameter(1, deleteRuleInfoBo.getRuleId()).executeUpdate();
 		entityManager.clear();
 	}
 }

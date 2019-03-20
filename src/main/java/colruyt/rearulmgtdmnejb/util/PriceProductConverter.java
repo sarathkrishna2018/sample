@@ -18,15 +18,15 @@ import colruyt.rearulmgtdmnejb.enums.PriceProductHierarchyType;
 
 @Stateless
 @LocalBean
-public class PriceProductConverter implements Serializable{
-	
+public class PriceProductConverter implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @param userLang
 	 * @return
 	 */
-	public static List<String> getLanguagePreference(String userLang){
+	public static List<String> getLanguagePreference(String userLang) {
 		List<String> langOrder = ReactionRuleMgtConstants.LANG_PREFERENCE_NL;
 		if (ReactionRuleMgtConstants.LANG_CODE_EN.equals(userLang)) {
 			langOrder = ReactionRuleMgtConstants.LANG_PREFERENCE_EN;
@@ -37,13 +37,11 @@ public class PriceProductConverter implements Serializable{
 		}
 		return langOrder;
 	}
-	
-	
-	
+
 	/**
 	 * @param langHierarchyList
 	 * @param langPrioriyList
-	 * @return
+	 * @return name of lang Hirerachy
 	 */
 	private String getNameByLanguagePriority(List<LangHirerachyBo> langHierarchyList, List<String> langPrioriyList) {
 		for (String langCode : langPrioriyList) {
@@ -56,14 +54,6 @@ public class PriceProductConverter implements Serializable{
 		return null;
 	}
 
-
-	
-	
-
-	
-	
-	
-	
 	public List<PriceProductHierarchyBo> convertProducts(List<MainCategoryBo> mainCategoryBoList, String langCode) {
 		List<PriceProductHierarchyBo> priceProductHierarchyBoList = Lists.newArrayList();
 		for (MainCategoryBo mainCategoryBo : mainCategoryBoList) {
@@ -71,11 +61,12 @@ public class PriceProductConverter implements Serializable{
 		}
 		return priceProductHierarchyBoList;
 	}
+
 	/**
 	 * @param mainCategoryBo
 	 * @param segmentPriceProductMap
 	 * @param langCode
-	 * @return
+	 * @return PriceProductHierarchyBo
 	 */
 	public PriceProductHierarchyBo convert(MainCategoryBo mainCategoryBo, String langCode) {
 
@@ -94,11 +85,12 @@ public class PriceProductConverter implements Serializable{
 		}
 		return hierarchyBo;
 	}
+
 	/**
 	 * @param productCategoryBo
 	 * @param segmentPriceProductMap
 	 * @param langCode
-	 * @return
+	 * @return PriceProductHierarchyBo
 	 */
 	private PriceProductHierarchyBo convert(ProductCategoryBo productCategoryBo, String langCode) {
 		List<String> langPrioList = getLanguagePreference(langCode);
@@ -120,7 +112,7 @@ public class PriceProductConverter implements Serializable{
 	 * @param productGroup
 	 * @param segmentPriceProductMap
 	 * @param langCode
-	 * @return
+	 * @return PriceProductHierarchyBo
 	 */
 	private PriceProductHierarchyBo convert(ProductGroupBo productGroup, String langCode) {
 		List<String> langPrioList = getLanguagePreference(langCode);
@@ -138,12 +130,12 @@ public class PriceProductConverter implements Serializable{
 
 		return hierarchyBo;
 	}
-	
+
 	/**
 	 * @param productSegmentBO
 	 * @param segmentPriceProductMap
 	 * @param langCode
-	 * @return
+	 * @return PriceProductHierarchyBo
 	 */
 	private PriceProductHierarchyBo convertProductSegment(ProductSegmentBo productSegmentBO, String langCode) {
 		List<String> langPrioList = getLanguagePreference(langCode);
@@ -155,5 +147,4 @@ public class PriceProductConverter implements Serializable{
 		return hierarchyBo;
 	}
 
-	
 }

@@ -13,10 +13,10 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Lists;
 
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.bo.GeneralRuleBo;
 import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
 import colruyt.rearulmgtdmnejb.bo.RecordingNotFoundRuleBo;
-import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.entity.RecordingNotFoundRuleAction;
 import colruyt.rearulmgtdmnejb.enums.RuleType;
@@ -31,9 +31,7 @@ import colruyt.rearulmgtdmnejb.util.RecordingNotFoundRuleConverter;
 @Stateless
 @LocalBean
 public class RecordingNotFoundRuleService extends GeneralRuleService implements Serializable {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(RecordingNotFoundRuleService.class);
 	@EJB
@@ -112,10 +110,9 @@ public class RecordingNotFoundRuleService extends GeneralRuleService implements 
 	public List<ReactionRulesetBo> getReactionRules(List<ReactionRulesetBo> reactionRulesetBos)
 			throws ReaRuleValidationException, ReaRuleManagementException {
 		logger.debug(ReaRulMgtDmnDebugMessage.DEBUG_RETRIEVERECORDNOTFOUNDRULE);
-		long ruleTypeId = super.getRuleTypeId(RuleType.RECORD_NOT_FOUND.getRuleTypeName());
 		List<ReactionRulesetBo> ruleSetBos = Lists.newArrayList();
 		for (ReactionRulesetBo reactionRulesetBo : reactionRulesetBos) {
-			if (reactionRulesetBo.getRefRuleTypeBo().getRuleTypeId() == ruleTypeId) {
+			if (reactionRulesetBo.getRefRuleTypeBo().getRuleTypeId() == RuleType.RECORD_NOT_FOUND.getRuleTypeID()) {
 				List<GeneralRuleBo> ruleBos = Lists.newArrayList();
 				List<ReactionRule> ruleList = super.getRulesByRuleSetId(reactionRulesetBo.getRulesetId());
 				for (ReactionRule rule : ruleList) {

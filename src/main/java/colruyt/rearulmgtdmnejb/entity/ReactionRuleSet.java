@@ -16,46 +16,41 @@ import javax.persistence.TemporalType;
 
 import java.util.Date;
 
-
-/**
- * The persistent class for the REA_RULESET database table.
- * 
- */
 @Entity
-@Table(name="REA_RULESET")
+@Table(name = "REA_RULESET")
 public class ReactionRuleSet implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="REA_RULESET_ID")
-	@SequenceGenerator(name="REA_RULESET_SEQ_GEN", sequenceName="SEQ_REA_RULESET")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="REA_RULESET_SEQ_GEN")
+	@Column(name = "REA_RULESET_ID")
+	@SequenceGenerator(name = "REA_RULESET_SEQ_GEN", sequenceName = "SEQ_REA_RULESET")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "REA_RULESET_SEQ_GEN")
 	private long reaRulesetId;
-	
-	@Column(name="RULETYPE_ID")
+
+	@Column(name = "RULETYPE_ID")
 	private int ruleTypeId;
 
-	@Column(name="CG_CHN_ID")
+	@Column(name = "CG_CHN_ID")
 	private long colruytGroupChainId;
 
-	@Column(name="COMP_CHAIN_ID")
+	@Column(name = "COMP_CHAIN_ID")
 	private long priceCompetitorChainId;
 
-	@Column(name="LST_UPDATE_BY")
+	@Column(name = "LST_UPDATE_BY")
 	private String lstUpdateBy;
 
-	@Column(name="RULESET_COMMENT")
+	@Column(name = "RULESET_COMMENT")
 	private String rulesetComment;
 
-	@Column(name="RULESET_NAME")
+	@Column(name = "RULESET_NAME")
 	private String rulesetName;
-	
+
 	@Temporal(TemporalType.DATE)
-	@Column(name="DATE_LOGICALLY_DELETED")
+	@Column(name = "DATE_LOGICALLY_DELETED")
 	private Date logicallyDeletedDate;
-	
+
 	@OneToMany()
-	@JoinColumn(name = "REA_RULESET_ID", referencedColumnName="REA_RULESET_ID")
+	@JoinColumn(name = "REA_RULESET_ID", referencedColumnName = "REA_RULESET_ID")
 	private List<ReactionRule> reactionRules;
 
 	public Long getReaRulesetId() {

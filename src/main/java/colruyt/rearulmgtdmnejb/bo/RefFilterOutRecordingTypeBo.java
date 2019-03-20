@@ -5,15 +5,8 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
-
-/**
- * @version 1.0
- * @created 29-nov-2018 13:21:52
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class RefFilterOutRecordingTypeBo implements Serializable{
-
+public class RefFilterOutRecordingTypeBo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private int filterOutTypeId;
@@ -43,6 +36,5 @@ public class RefFilterOutRecordingTypeBo implements Serializable{
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
 
 }

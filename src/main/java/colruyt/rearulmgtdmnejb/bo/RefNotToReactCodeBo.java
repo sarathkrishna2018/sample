@@ -5,12 +5,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
-
-/**
- * @version 1.0
- * @created 29-nov-2018 13:21:57
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class RefNotToReactCodeBo implements Serializable {
 

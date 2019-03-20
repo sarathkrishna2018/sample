@@ -23,11 +23,6 @@ import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnDebugMessage;
 import colruyt.rearulmgtdmnejb.util.ReaRulesetConverter;
 
-
-/**
- * @version 1.0
- * @created 28-nov-2018 12:03:10
- */
 @Stateless
 @LocalBean
 public class ReactionRuleSetService implements Serializable {
@@ -42,7 +37,7 @@ public class ReactionRuleSetService implements Serializable {
 	private ReaRulesetConverter reaRulesetConverter;
 
 	/**
-	 * This method is to create ruleSet
+	 * This method is to create Reaction RuleSet
 	 * 
 	 * @param reactionRulesetBo
 	 * @param isDuplicationAllowed
@@ -111,7 +106,7 @@ public class ReactionRuleSetService implements Serializable {
 	}
 
 	/**
-	 * This method is to get reaction ruleSet
+	 * This method is to get Reaction RuleSet
 	 * 
 	 * @param rulesetId
 	 * @return ReactionRulesetBo
@@ -128,7 +123,7 @@ public class ReactionRuleSetService implements Serializable {
 	}
 
 	/**
-	 * This method is to edit reaction ruleset
+	 * This method is to edit Reaction Ruleset
 	 * 
 	 * @param reactionRuleSetBo
 	 */
@@ -138,18 +133,19 @@ public class ReactionRuleSetService implements Serializable {
 		if (existingReactionRuleset == null) {
 			throw new ReaRuleManagementException("EN", ExceptionMessageConstants.MESSAGE_REACTION_RULESET_ABSENT);
 		}
-		if(reactionRuleSetBo.getRefRuleTypeBo().getRuleTypeId() == 1  && (reactionRuleSetBo.getName().isEmpty() )){
+		if (reactionRuleSetBo.getRefRuleTypeBo().getRuleTypeId() == 1 && (reactionRuleSetBo.getName().isEmpty())) {
 			throw new ReaRuleManagementException("EN", ExceptionMessageConstants.MESSAGE_REACTION_RULESETNAME_ABSENT);
+		} else {
+			ReactionRuleSet reaRuleset = reaRulesetConverter.convertReaRuleset(existingReactionRuleset,
+					reactionRuleSetBo, logonId);
+			reactionRuleSetDlService.createOrUpdate(reaRuleset);
 		}
-		else{
-		ReactionRuleSet reaRuleset = reaRulesetConverter.convertReaRuleset(existingReactionRuleset, reactionRuleSetBo,
-				logonId);
-		reactionRuleSetDlService.createOrUpdate(reaRuleset);
-		}
-		
+
 	}
+
 	/**
-	 * This method is to delete reaction ruleset
+	 * This method is to delete Reaction Ruleset
+	 * 
 	 * @param ruleSetId
 	 * @param langCode
 	 * @param logonId
@@ -164,13 +160,14 @@ public class ReactionRuleSetService implements Serializable {
 		reactionRuleSet.setLstUpdateBy(logonId);
 		reactionRuleSetDlService.logicallyDeleteRuleSet(reactionRuleSet);
 	}
-	
+
 	public List<DeleteRuleSetInfoBo> findAllLogicallyDeletedRuleSet(Date dateDeleteRuleSetBefore) {
-		List<DeleteRuleSetInfoBo> ruleSetList = reactionRuleSetDlService.findAllLogicallyDeletedRuleSet(dateDeleteRuleSetBefore);
+		List<DeleteRuleSetInfoBo> ruleSetList = reactionRuleSetDlService
+				.findAllLogicallyDeletedRuleSet(dateDeleteRuleSetBefore);
 		return ruleSetList;
 	}
-	
-	public void physicalDeleteAllRuleSet(Set<Long> ruleSetIds){
+
+	public void physicalDeleteAllRuleSet(Set<Long> ruleSetIds) {
 		reactionRuleSetDlService.physicalDeleteAllRuleSet(ruleSetIds);
 	}
 }
