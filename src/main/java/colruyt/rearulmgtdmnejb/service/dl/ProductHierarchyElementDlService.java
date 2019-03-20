@@ -17,7 +17,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchyElement;
-import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
+import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnConstants;
 
 @Stateless
 @LocalBean
@@ -25,7 +25,7 @@ import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 public class ProductHierarchyElementDlService implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	@PersistenceContext(unitName = ReaRulMgtDmnConstants.PERSISTENCE_UNIT_NAME)
+	@PersistenceContext(unitName = ReactionRuleDmnConstants.PERSISTENCE_UNIT_NAME)
 	private transient EntityManager entityManager;
 
 	public List<PriceProductHierarchyElement> findByHierarchyValueList(List<String> productHierarchyElmntValues) {

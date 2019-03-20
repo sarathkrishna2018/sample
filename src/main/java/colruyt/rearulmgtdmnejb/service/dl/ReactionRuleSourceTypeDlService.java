@@ -11,7 +11,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
-import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
+import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnConstants;
 
 /**
  * Session Bean implementation class ReactionRuleSourceTypeDlService
@@ -23,7 +23,7 @@ public class ReactionRuleSourceTypeDlService implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@PersistenceContext(unitName = ReaRulMgtDmnConstants.PERSISTENCE_UNIT_NAME)
+	@PersistenceContext(unitName = ReactionRuleDmnConstants.PERSISTENCE_UNIT_NAME)
 	private transient EntityManager entityManager;
 
 	public void physicalDeleteSourceType(DeleteRuleInfoBo deleteRuleInfoBo){

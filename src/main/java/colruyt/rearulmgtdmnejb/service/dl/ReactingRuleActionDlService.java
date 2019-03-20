@@ -12,13 +12,13 @@ import javax.persistence.Query;
 
 import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.ReactingRuleAction;
-import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
+import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnConstants;
 
 @Stateless
 @LocalBean
 @TransactionAttribute(TransactionAttributeType.MANDATORY)
 public class ReactingRuleActionDlService implements Serializable {
-	@PersistenceContext(unitName = ReaRulMgtDmnConstants.PERSISTENCE_UNIT_NAME)
+	@PersistenceContext(unitName = ReactionRuleDmnConstants.PERSISTENCE_UNIT_NAME)
 	private transient EntityManager entityManager;
 	private static final long serialVersionUID = 1L;
 

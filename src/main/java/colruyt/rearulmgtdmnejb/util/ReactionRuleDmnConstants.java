@@ -3,9 +3,9 @@ package colruyt.rearulmgtdmnejb.util;
 import java.util.Arrays;
 import java.util.List;
 
-public class ReactionRuleMgtConstants {
+public class ReactionRuleDmnConstants {
 	public static final String PERSISTENCE_UNIT_NAME ="db2_prcgd001";
-	public static final String RULE_TYPE_FILTERING_ = "Filtering";
+	public static final String RULE_TYPE_FILTERING = "Filtering";
 	public static final String RULE_TYPE_QUANTITY = "Quantity";
 	public static final String RULE_TYPE_REACTING = "Reacting";
 	public static final String RULE_TYPE_RECORD_NOT_FOUND = "Record Not Found";

@@ -12,7 +12,7 @@ import javax.persistence.Query;
 
 import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.FilteringRuleAction;
-import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
+import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnConstants;
 
 @Stateless
 @LocalBean
@@ -20,7 +20,7 @@ import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 public class FilteringRuleActionDlService implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	@PersistenceContext(unitName = ReaRulMgtDmnConstants.PERSISTENCE_UNIT_NAME)
+	@PersistenceContext(unitName = ReactionRuleDmnConstants.PERSISTENCE_UNIT_NAME)
 	private transient EntityManager entityManager;
 
 	public FilteringRuleAction createOrUpdate(FilteringRuleAction reaFltRule) {

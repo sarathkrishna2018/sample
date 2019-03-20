@@ -16,7 +16,7 @@ import colruyt.rearulmgtdmnejb.entity.RefQuantityConditionType;
 import colruyt.rearulmgtdmnejb.entity.RefQuantityType;
 import colruyt.rearulmgtdmnejb.entity.RefReasonType;
 import colruyt.rearulmgtdmnejb.entity.RefRuleType;
-import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
+import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnConstants;
 
 @Stateless
 @LocalBean
@@ -24,7 +24,7 @@ import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 public class ReferenceDataDlService implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	@PersistenceContext(unitName = ReaRulMgtDmnConstants.PERSISTENCE_UNIT_NAME)
+	@PersistenceContext(unitName = ReactionRuleDmnConstants.PERSISTENCE_UNIT_NAME)
 	private transient EntityManager entityManager;
 
 	public List<RefFilterOutRecordingType> findAllRefFilterOutRecordingTypes() {

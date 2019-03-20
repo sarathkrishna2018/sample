@@ -27,13 +27,13 @@ public class PriceProductConverter implements Serializable {
 	 * @return
 	 */
 	public static List<String> getLanguagePreference(String userLang) {
-		List<String> langOrder = ReactionRuleMgtConstants.LANG_PREFERENCE_NL;
-		if (ReactionRuleMgtConstants.LANG_CODE_EN.equals(userLang)) {
-			langOrder = ReactionRuleMgtConstants.LANG_PREFERENCE_EN;
-		} else if (ReactionRuleMgtConstants.LANG_CODE_NL.equals(userLang)) {
-			langOrder = ReactionRuleMgtConstants.LANG_PREFERENCE_NL;
-		} else if (ReactionRuleMgtConstants.LANG_CODE_FR.equals(userLang)) {
-			langOrder = ReactionRuleMgtConstants.LANG_PREFERENCE_FR;
+		List<String> langOrder = ReactionRuleDmnConstants.LANG_PREFERENCE_NL;
+		if (ReactionRuleDmnConstants.LANG_CODE_EN.equals(userLang)) {
+			langOrder = ReactionRuleDmnConstants.LANG_PREFERENCE_EN;
+		} else if (ReactionRuleDmnConstants.LANG_CODE_NL.equals(userLang)) {
+			langOrder = ReactionRuleDmnConstants.LANG_PREFERENCE_NL;
+		} else if (ReactionRuleDmnConstants.LANG_CODE_FR.equals(userLang)) {
+			langOrder = ReactionRuleDmnConstants.LANG_PREFERENCE_FR;
 		}
 		return langOrder;
 	}
@@ -73,7 +73,7 @@ public class PriceProductConverter implements Serializable {
 		List<String> langPrioList = getLanguagePreference(langCode);
 		String name = getNameByLanguagePriority(mainCategoryBo.getMainCategoryLangs(), langPrioList);
 		PriceProductHierarchyBo hierarchyBo = new PriceProductHierarchyBo(name, mainCategoryBo.getMainCategoryCode(),
-				ReactionRuleMgtConstants.PRICE_PRODUCT_HIERARCHY_ALL_VALUE,
+				ReactionRuleDmnConstants.PRICE_PRODUCT_HIERARCHY_ALL_VALUE,
 				PriceProductHierarchyType.MAIN_CATEGORY.getTypeId());
 		if (mainCategoryBo.getProductCategories() != null) {
 			List<PriceProductHierarchyBo> productHierarchy = Lists.newArrayList();

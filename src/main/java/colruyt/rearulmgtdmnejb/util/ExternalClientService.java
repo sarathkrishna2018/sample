@@ -43,7 +43,7 @@ public class ExternalClientService implements Serializable {
 		WebResource webResource = client.resource(url);
 		Builder builder = webResource.type(MediaType.APPLICATION_JSON);
 		builder = builder.accept(MediaType.APPLICATION_JSON);
-		builder = builder.header(ReactionRuleMgtConstants.JWT_HEADER_NAME, cookieService.generateJWT());
+		builder = builder.header(ReactionRuleDmnConstants.JWT_HEADER_NAME, cookieService.generateJWT());
 		ClientResponse response = builder.get(ClientResponse.class);
 		String jsonResponse = response.getEntity(String.class);
 		if (Response.Status.OK.getStatusCode() == response.getStatus()

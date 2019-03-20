@@ -9,16 +9,16 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
+import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnConstants;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
-@JsonSubTypes({ @Type(value = FilteringRuleBo.class, name = ReaRulMgtDmnConstants.RULE_TYPE_FILTERING),
-		@Type(value = QuantityRuleBo.class, name = ReaRulMgtDmnConstants.RULE_TYPE_QUANTITY),
-		@Type(value = RecordingNotFoundRuleBo.class, name = ReaRulMgtDmnConstants.RULE_TYPE_RECORD_NOT_FOUND),
-		@Type(value = ProposeNotToReactRuleBo.class, name = ReaRulMgtDmnConstants.RULE_TYPE_PROPOSED_NOT_REACT),
-		@Type(value = ReactingRuleBo.class, name = ReaRulMgtDmnConstants.RULE_TYPE_REACTING),
-		@Type(value = ReactionPeriodRuleBo.class, name = ReaRulMgtDmnConstants.RULE_TYPE_REACTION_PERIOD) })
+@JsonSubTypes({ @Type(value = FilteringRuleBo.class, name = ReactionRuleDmnConstants.RULE_TYPE_FILTERING),
+		@Type(value = QuantityRuleBo.class, name = ReactionRuleDmnConstants.RULE_TYPE_QUANTITY),
+		@Type(value = RecordingNotFoundRuleBo.class, name = ReactionRuleDmnConstants.RULE_TYPE_RECORD_NOT_FOUND),
+		@Type(value = ProposeNotToReactRuleBo.class, name = ReactionRuleDmnConstants.RULE_TYPE_PROPOSED_NOT_REACT),
+		@Type(value = ReactingRuleBo.class, name = ReactionRuleDmnConstants.RULE_TYPE_REACTING),
+		@Type(value = ReactionPeriodRuleBo.class, name = ReactionRuleDmnConstants.RULE_TYPE_REACTION_PERIOD) })
 public class GeneralRuleBo implements Serializable {
 
 	private static final long serialVersionUID = 1L;

@@ -12,16 +12,16 @@ import javax.ejb.Stateless;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
 import colruyt.rearulmgtdmnejb.bo.DeleteRuleSetInfoBo;
+import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionRuleSet;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleValidationException;
 import colruyt.rearulmgtdmnejb.service.dl.ReactionRuleSetDlService;
 import colruyt.rearulmgtdmnejb.util.ExceptionMessageConstants;
-import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
 import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnDebugMessage;
 import colruyt.rearulmgtdmnejb.util.ReaRulesetConverter;
+import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnConstants;
 
 @Stateless
 @LocalBean
@@ -92,15 +92,15 @@ public class ReactionRuleSetService implements Serializable {
 	public void validateRuleSetInput(long cgChainId, long compChainId, String ruleType)
 			throws ReaRuleValidationException {
 		if (ruleType == null || ruleType.isEmpty()) {
-			throw new ReaRuleValidationException(ReaRulMgtDmnConstants.LANG_CODE_EN,
+			throw new ReaRuleValidationException(ReactionRuleDmnConstants.LANG_CODE_EN,
 					ExceptionMessageConstants.MESSAGE_RULETYPE_ABSENT);
 		}
 		if (cgChainId == 0) {
-			throw new ReaRuleValidationException(ReaRulMgtDmnConstants.LANG_CODE_EN,
+			throw new ReaRuleValidationException(ReactionRuleDmnConstants.LANG_CODE_EN,
 					ExceptionMessageConstants.MESSAGE_INVALID_CGCHAIN);
 		}
 		if (compChainId == 0) {
-			throw new ReaRuleValidationException(ReaRulMgtDmnConstants.LANG_CODE_EN,
+			throw new ReaRuleValidationException(ReactionRuleDmnConstants.LANG_CODE_EN,
 					ExceptionMessageConstants.MESSAGE_INVALID_PCCHAIN);
 		}
 	}

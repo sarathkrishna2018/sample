@@ -27,7 +27,7 @@ import colruyt.rearulmgtdmnejb.exception.ServiceDownException;
 import colruyt.rearulmgtdmnejb.util.ExternalClientService;
 import colruyt.rearulmgtdmnejb.util.MockData;
 import colruyt.rearulmgtdmnejb.util.PriceProductConverter;
-import colruyt.rearulmgtdmnejb.util.ReactionRuleMgtConstants;
+import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnConstants;
 
 @Stateless
 @LocalBean
@@ -50,7 +50,7 @@ public class PriceProductService implements Serializable {
 			throws PriceProductExternalServiceException, PriceProductServiceDownException, IOException, ParseException {
 		PriceProductHierarchyResponseBo heriarchyBo = findHierarchyValues();
 		List<PriceProductHierarchyBo> priceProductHierarchyBoList = priceProductConverter
-				.convertProducts(heriarchyBo.getResult(), ReactionRuleMgtConstants.LANG_CODE_NL);
+				.convertProducts(heriarchyBo.getResult(), ReactionRuleDmnConstants.LANG_CODE_NL);
 		List<PriceProductHierarchyBo> productList = getPriceProducts();
 		return getAllHierarchyValues(priceProductHierarchyBoList, productList);
 	}

@@ -9,7 +9,7 @@ import javax.ejb.Stateless;
 
 import colruyt.coreutillib.security.ass.AssException;
 import colruyt.coreutillib.security.ass.AssToolUtil;
-import colruyt.rearulmgtdmnejb.util.ReactionRuleMgtConstants;
+import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnConstants;
 
 @Stateless
 @LocalBean
@@ -61,7 +61,7 @@ public class PriceProductUrlService implements Serializable {
 			queryParam.append(value);
 
 			if (segmentlen < hierarchyValues.size() - 1) {
-				queryParam.append(ReactionRuleMgtConstants.COMMA);
+				queryParam.append(ReactionRuleDmnConstants.COMMA);
 			}
 			segmentlen++;
 		}

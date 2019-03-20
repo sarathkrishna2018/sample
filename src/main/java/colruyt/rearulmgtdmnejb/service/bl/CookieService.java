@@ -16,7 +16,7 @@ import org.jose4j.lang.JoseException;
 
 import colruyt.coreutillib.security.ass.AssException;
 import colruyt.coreutillib.security.ass.AssToolUtil;
-import colruyt.rearulmgtdmnejb.util.ReactionRuleMgtConstants;
+import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnConstants;
 
 
 @Stateless
@@ -30,7 +30,7 @@ public class CookieService implements Serializable {
 	@PostConstruct
 	public void init(){
 		try{
-		String assSecretKey = AssToolUtil.getSecureValue(ReactionRuleMgtConstants.PRICECONFIG_SECRET_KEY);
+		String assSecretKey = AssToolUtil.getSecureValue(ReactionRuleDmnConstants.PRICECONFIG_SECRET_KEY);
 			SECRET_KEY_BYTES = assSecretKey.getBytes(StandardCharsets.UTF_8);
 		}catch(AssException e){
 			throw new RuntimeException(e);
@@ -40,9 +40,9 @@ public class CookieService implements Serializable {
 	public String generateJWT() {
 		try {
 			JwtClaims claims = new JwtClaims();
-			claims.setExpirationTimeMinutesInTheFuture(ReactionRuleMgtConstants.EXPIRY_MINUTES);
-			claims.setSubject(ReactionRuleMgtConstants.APPLICATION_NAME);
-			claims.setClaim(ReactionRuleMgtConstants.SUB, ReactionRuleMgtConstants.APPLICATION_NAME);
+			claims.setExpirationTimeMinutesInTheFuture(ReactionRuleDmnConstants.EXPIRY_MINUTES);
+			claims.setSubject(ReactionRuleDmnConstants.APPLICATION_NAME);
+			claims.setClaim(ReactionRuleDmnConstants.SUB, ReactionRuleDmnConstants.APPLICATION_NAME);
 			Key key = new HmacKey(SECRET_KEY_BYTES);
 			JsonWebSignature jws = new JsonWebSignature();
 			jws.setPayload(claims.toJson());

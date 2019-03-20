@@ -29,7 +29,7 @@ import com.google.common.collect.Lists;
 import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.util.DBUtil;
-import colruyt.rearulmgtdmnejb.util.ReaRulMgtDmnConstants;
+import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnConstants;
 
 @Stateless
 @LocalBean
@@ -40,7 +40,7 @@ public class ReactionRuleDlService implements Serializable {
 
 	private static final Logger logger = LoggerFactory.getLogger(ReactionRuleDlService.class);
 
-	@PersistenceContext(unitName = ReaRulMgtDmnConstants.PERSISTENCE_UNIT_NAME)
+	@PersistenceContext(unitName = ReactionRuleDmnConstants.PERSISTENCE_UNIT_NAME)
 	private transient EntityManager entityManager;
 
 	public ReactionRule createOrUpdate(ReactionRule reactionPricingRule) {
