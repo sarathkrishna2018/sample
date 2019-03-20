@@ -1,7 +1,6 @@
 package colruyt.rearulmgtdmnejb.service.bl;
 
 import static org.junit.Assert.assertEquals;
-
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -11,8 +10,6 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-
-
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -73,10 +70,12 @@ public class GeneralRuleServiceTest {
 	@InjectIntoByType
 	private ReferenceDataService referenceDataService = Mockito.mock(ReferenceDataService.class);
 	@InjectMocks
-	private ProductHierarchyElementConverter productHrchyElmntConverter = Mockito.mock(ProductHierarchyElementConverter.class);
+	private ProductHierarchyElementConverter productHrchyElmntConverter = Mockito
+			.mock(ProductHierarchyElementConverter.class);
 
 	@Test
-	public void createRuleTypeAllTest() throws ReaRuleValidationException, ReaRuleManagementException {
+	public void createGeneralRule_IsActionAndSourceSelectAllTest()
+			throws ReaRuleValidationException, ReaRuleManagementException {
 		when(reactionRuleSetBlService.createReactionRuleSet(Mockito.any(ReactionRulesetBo.class), Mockito.anyBoolean(),
 				Mockito.anyString())).thenReturn(createReactionRuleset());
 		when(reaRuleConverter.convertRuleBo(Mockito.isNull(ReactionRule.class), Mockito.any(GeneralRuleBo.class)))
@@ -87,11 +86,12 @@ public class GeneralRuleServiceTest {
 		when(generalRuleService.createRuleSpecificAttributes(Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReactionRuleBo());
 		GeneralRuleBo expectedReactionRule = generalRuleService.createRule(getReactionRuleBo());
-		assertEquals(new Long(1l), expectedReactionRule.getRuleId());
+		assertEquals(true, expectedReactionRule.isActionSelectAll());
 	}
 
 	@Test
-	public void createRuleSourceandActionTest() throws ReaRuleManagementException, ReaRuleValidationException {
+	public void createGeneralRule_RuleSourceandActionTest()
+			throws ReaRuleManagementException, ReaRuleValidationException {
 		GeneralRuleBo generalRuleBo = getReactionRuleBo();
 		generalRuleBo.setCatchAll(false);
 		generalRuleBo.setActionSelectAll(false);
@@ -108,7 +108,7 @@ public class GeneralRuleServiceTest {
 		when(generalRuleService.createRuleSpecificAttributes(Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(generalRuleBo);
 		GeneralRuleBo expectedReactionRule = generalRuleService.createRule(generalRuleBo);
-		assertEquals(new Long(1l), expectedReactionRule.getRuleId());
+		assertEquals(false, expectedReactionRule.isActionSelectAll());
 
 	}
 
@@ -124,7 +124,7 @@ public class GeneralRuleServiceTest {
 		when(generalRuleService.createRuleSpecificAttributes(Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReactionRuleBo());
 		GeneralRuleBo expectedReactionRule = generalRuleService.createRule(getReactingRuleBO());
-		assertEquals(new Long(1l), expectedReactionRule.getRuleId());
+		assertEquals(true, expectedReactionRule.isActionSelectAll());
 	}
 
 	@Test(expected = ReaRuleValidationException.class)
@@ -439,7 +439,8 @@ public class GeneralRuleServiceTest {
 	}
 
 	@Test
-	public void modifyRuleTypeAllTest() throws ReaRuleValidationException, ReaRuleManagementException {
+	public void modifyGeneralRule_isActionAndSourceSelectAllTest()
+			throws ReaRuleValidationException, ReaRuleManagementException {
 		when(reactionRuleDlService.findByPk(Mockito.anyLong())).thenReturn(getReaRule());
 		when(reactionRuleSetBlService.createReactionRuleSet(Mockito.any(ReactionRulesetBo.class), Mockito.anyBoolean(),
 				Mockito.anyString())).thenReturn(createReactionRuleset());
@@ -453,12 +454,12 @@ public class GeneralRuleServiceTest {
 		when(generalRuleService.modifyRuleSpecificAttributes(Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReactionRuleBo());
 		GeneralRuleBo expectedRuleBo = generalRuleService.modifyRule(getReactionRuleBo());
-		assertEquals(new Long(1l), expectedRuleBo.getRuleId());
+		assertEquals(true, expectedRuleBo.isActionSelectAll());
 
 	}
 
 	@Test
-	public void modifyRuleSourceandActionTest() throws ReaRuleValidationException, ReaRuleManagementException {
+	public void modifyGeneralRule_SourceandActionTest() throws ReaRuleValidationException, ReaRuleManagementException {
 		GeneralRuleBo generalRuleBo = getReactionRuleBo();
 		generalRuleBo.setCatchAll(false);
 		generalRuleBo.setActionSelectAll(false);
@@ -475,7 +476,7 @@ public class GeneralRuleServiceTest {
 		when(generalRuleService.modifyRuleSpecificAttributes(Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(generalRuleBo);
 		GeneralRuleBo expectedRuleBo = generalRuleService.modifyRule(generalRuleBo);
-		assertEquals(new Long(1l), expectedRuleBo.getRuleId());
+		assertEquals(false, expectedRuleBo.isActionSelectAll());
 	}
 
 	@Test
@@ -501,7 +502,7 @@ public class GeneralRuleServiceTest {
 		when(generalRuleService.modifyRuleSpecificAttributes(Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(generalRuleBo);
 		GeneralRuleBo expectedRuleBo = generalRuleService.modifyRule(generalRuleBo);
-		assertEquals(new Long(1l), expectedRuleBo.getRuleId());
+		assertEquals(new Long(1l), expectedRuleBo.getChildRuleId());
 	}
 
 	@Test
@@ -516,7 +517,7 @@ public class GeneralRuleServiceTest {
 		when(generalRuleService.getRuleSpecificValues(Mockito.any(GeneralRuleBo.class)))
 				.thenReturn(getReactionRuleBo());
 		GeneralRuleBo expectedRuleBo = generalRuleService.viewReactionRule(getReactionRuleBo(), 1l, "En");
-		Assert.assertNotNull(expectedRuleBo);
+		assertEquals(new Long(1l),expectedRuleBo.getRuleId());
 	}
 
 	@Test
@@ -525,7 +526,7 @@ public class GeneralRuleServiceTest {
 		String langCode = "EN";
 		when(reactionRuleDlService.findByPk(Mockito.anyLong())).thenReturn(getReaRule());
 		ReactionRule expectedReactionRule = generalRuleService.getReactionRule(ruleId, langCode);
-		Assert.assertNotNull(expectedReactionRule);
+		assertEquals(1,expectedReactionRule.getReaRulesetId());
 	}
 
 	@Test
