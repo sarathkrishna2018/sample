@@ -53,9 +53,6 @@ public class ReferenceDataService implements Serializable {
 	private static final Logger logger = LoggerFactory.getLogger(ReferenceDataService.class);
 
 	@EJB
-	private ReferenceDataConverter referenceDataConvertor;
-
-	@EJB
 	private ReferenceDataDlService referenceDataDlService;
 
 	private List<RefActionTypeBo> refActionTypeList = Lists.newArrayList();
@@ -74,33 +71,35 @@ public class ReferenceDataService implements Serializable {
 	private void init() {
 		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_REFERENCEDATASERVICE);
 		ActionType[] actionTypeEnums = ActionType.values();
-		refActionTypeList = referenceDataConvertor.convertToActionTypeBo(actionTypeEnums);
+		refActionTypeList = ReferenceDataConverter.convertToActionTypeBo(actionTypeEnums);
 
 		ReasonType[] refReasonValues = ReasonType.values();
 		List<RefReasonType> refReasonTypes = referenceDataDlService.findAllRefReasonType();
-		refNotToReactCodeList = referenceDataConvertor.convertToProposeNotToReactReasonBo(refReasonValues, refReasonTypes);
+		refNotToReactCodeList = ReferenceDataConverter.convertToProposeNotToReactReasonBo(refReasonValues,
+				refReasonTypes);
 
 		QuantityCondition[] quantityConditionEnum = QuantityCondition.values();
 		List<RefQuantityConditionType> refQuantityConditionTypes = referenceDataDlService.findAllRefQuantityCondition();
-		refQuantityConditionList = referenceDataConvertor.convertToQuantityConditionTypeBo(quantityConditionEnum,
+		refQuantityConditionList = ReferenceDataConverter.convertToQuantityConditionTypeBo(quantityConditionEnum,
 				refQuantityConditionTypes);
 
 		QuantityType[] refQuantityTypeValues = QuantityType.values();
 		List<RefQuantityType> refQuantityTypes = referenceDataDlService.findAllRefQuantityType();
-		refQuantityPriceTypeList = referenceDataConvertor.convertToQuantityPriceTypeBo(refQuantityTypeValues, refQuantityTypes);
+		refQuantityPriceTypeList = ReferenceDataConverter.convertToQuantityPriceTypeBo(refQuantityTypeValues,
+				refQuantityTypes);
 
 		SourceType[] sourceTypeEnums = SourceType.values();
-		refSourceTypeList = referenceDataConvertor.convertToSourceTypeBo(sourceTypeEnums);
+		refSourceTypeList = ReferenceDataConverter.convertToSourceTypeBo(sourceTypeEnums);
 
 		FilterOutRecordingType[] filterOutRecordingTypeEnums = FilterOutRecordingType.values();
 		List<RefFilterOutRecordingType> refFilterOutRecordingTypes = referenceDataDlService
 				.findAllRefFilterOutRecordingTypes();
-		refFilterOutRecordingTypeList = referenceDataConvertor.convertToFilterOutRecordingTypeBo(filterOutRecordingTypeEnums,
-				refFilterOutRecordingTypes);
+		refFilterOutRecordingTypeList = ReferenceDataConverter
+				.convertToFilterOutRecordingTypeBo(filterOutRecordingTypeEnums, refFilterOutRecordingTypes);
 
 		RuleType[] refRuleTypeValues = RuleType.values();
 		List<RefRuleType> refRuleTypes = referenceDataDlService.findAllRuleType();
-		refRuleTypeList = referenceDataConvertor.convertToRuleTypeBo(refRuleTypeValues, refRuleTypes);
+		refRuleTypeList = ReferenceDataConverter.convertToRuleTypeBo(refRuleTypeValues, refRuleTypes);
 
 	}
 

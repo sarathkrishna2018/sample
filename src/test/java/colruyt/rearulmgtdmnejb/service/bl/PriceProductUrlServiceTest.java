@@ -49,20 +49,6 @@ public class PriceProductUrlServiceTest {
 		Assert.assertNotSame(expectedPriceProductURL, url);
 	}
 	@Test
-	public void getCommaSeperatedValuesForURLTest(){
-		String commaValue="Baby,girl";
-		String expectedCommaValue=priceProductUrlService.getCommaSeperatedValuesForURL(getHierarchyValues());
-		Assert.assertEquals(expectedCommaValue, commaValue);
-		
-	}
-	@Test
-	public void getCommaSeperatedValuesForURLFailTest(){
-		String commaValue="Baby;girl";
-		String expectedCommaValue=priceProductUrlService.getCommaSeperatedValuesForURL(getHierarchyValues());
-		Assert.assertNotSame(expectedCommaValue, commaValue);
-		
-	}
-	@Test
 	public void getPriceProductURLForPriceProductIdTest(){
 		String url="http://test-priceproductmw.colruyt.int/priceproductmw/priceproducts/XX";
 		String priceProductId="XX";

@@ -8,11 +8,8 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.unitils.UnitilsJUnit4TestClassRunner;
 import org.unitils.database.annotations.Transactional;
-import org.unitils.inject.annotation.InjectIntoByType;
-import org.unitils.inject.annotation.TestedObject;
 
 import com.google.common.collect.Lists;
 
@@ -25,64 +22,60 @@ import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchyElement;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySet;
-import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmnt;
-import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmntPK;
+import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElement;
+import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElementPK;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.enums.ActionType;
 import colruyt.rearulmgtdmnejb.enums.SourceType;
-import colruyt.rearulmgtdmnejb.util.ProductHierarchyElementConverter;
 import colruyt.rearulmgtdmnejb.util.ReaRuleConverter;
 
 @Transactional
 @RunWith(UnitilsJUnit4TestClassRunner.class)
 
 public class ReaRuleConverterTest {
-	@TestedObject
-	private ReaRuleConverter reaRuleConverter;
-	@InjectIntoByType
-	private ProductHierarchyElementConverter productHierarchyElementConverter = Mockito.mock(ProductHierarchyElementConverter.class);
-
+	
 	@Test
 	public void convertRuleBoTest() {
-		ReactionRule expectedReaRule = reaRuleConverter.convertFromBo(getReactRule(), getReactionRule());
+		ReactionRule expectedReaRule = ReaRuleConverter.convertFromBo(getReactRule(), getReactionRule());
 		Assert.assertEquals(getReactRule().getReaRuleId(), expectedReaRule.getReaRuleId());
 	}
 
 	@Test
 	public void convertRuleActionTest() {
-		List<ActionType> expectedReaRuleSetActtype=reaRuleConverter.convertFromActionTypeBo(getRefActionType());
+		List<ActionType> expectedReaRuleSetActtype = ReaRuleConverter.convertFromActionTypeBo(getRefActionType());
 		assertEquals(1l, expectedReaRuleSetActtype.size());
 
 	}
 
 	@Test
 	public void convertRuleSourceTest() {
-		List<SourceType> expectedReaRuleSetSrc = reaRuleConverter.convertFromSourceTypeBo(getRefSourceType());
+		List<SourceType> expectedReaRuleSetSrc = ReaRuleConverter.convertFromSourceTypeBo(getRefSourceType());
 		assertEquals(1, expectedReaRuleSetSrc.size());
 	}
-	
+
 	@Test
-	public void convertAllActionTest(){
-		int idForAll=1;
-		List<ActionType> expectedActionTypes=reaRuleConverter.convertFromActionTypeAll(idForAll);
+	public void convertAllActionTest() {
+		int idForAll = 1;
+		List<ActionType> expectedActionTypes = ReaRuleConverter.convertFromActionTypeAll(idForAll);
 		Assert.assertNotNull(expectedActionTypes);
 	}
+
 	@Test
-	public void convertAllSourceTest(){
-		int idForAll=1;
-		List<SourceType> expectedSourceTypes=reaRuleConverter.convertFromSourceTypeAll(idForAll);
+	public void convertAllSourceTest() {
+		int idForAll = 1;
+		List<SourceType> expectedSourceTypes = ReaRuleConverter.convertFromSourceTypeAll(idForAll);
 		Assert.assertNotNull(expectedSourceTypes);
 	}
 
 	@Test
 	public void createconvertRuleLineTest() {
-		List<GeneralRuleBo> expectedGeneralRuleBoList = reaRuleConverter.convertToBo(getReactRuleList());
+		List<GeneralRuleBo> expectedGeneralRuleBoList = ReaRuleConverter.convertToBo(getReactRuleList());
 		assertEquals(getruleLines().size(), expectedGeneralRuleBoList.size());
 	}
 
 	@Test
 	public void convertGeneralRuleBoTest() {
-		GeneralRuleBo expectedGeneralRuleBo = reaRuleConverter.convertToBo(getReactRule(), getReactionRule());
+		GeneralRuleBo expectedGeneralRuleBo = ReaRuleConverter.convertToBo(getReactRule(), getReactionRule());
 		assertEquals(new Long(1l), expectedGeneralRuleBo.getRuleId());
 
 	}
@@ -196,17 +189,17 @@ public class ReaRuleConverterTest {
 		return productHierarchyElements;
 	}
 
-	private List<PriceProductHierarchySetElmnt> getreaPpdHchysetElmnts() {
-		List<PriceProductHierarchySetElmnt> priceProductHierarchySetElmnts = Lists.newArrayList();
-		PriceProductHierarchySetElmnt priceProductHierarchySetElmnt = new PriceProductHierarchySetElmnt();
+	private List<PriceProductHierarchySetElement> getreaPpdHchysetElmnts() {
+		List<PriceProductHierarchySetElement> priceProductHierarchySetElmnts = Lists.newArrayList();
+		PriceProductHierarchySetElement priceProductHierarchySetElmnt = new PriceProductHierarchySetElement();
 		priceProductHierarchySetElmnt.setId(getppdid());
 		priceProductHierarchySetElmnt.setLstUpdateBy("sa");
 		priceProductHierarchySetElmnts.add(priceProductHierarchySetElmnt);
 		return priceProductHierarchySetElmnts;
 	}
 
-	private PriceProductHierarchySetElmntPK getppdid() {
-		PriceProductHierarchySetElmntPK priceProductHierarchySetElmntPK = new PriceProductHierarchySetElmntPK();
+	private PriceProductHierarchySetElementPK getppdid() {
+		PriceProductHierarchySetElementPK priceProductHierarchySetElmntPK = new PriceProductHierarchySetElementPK();
 		priceProductHierarchySetElmntPK.setProductHierarchyElementId(1);
 		priceProductHierarchySetElmntPK.setProdicyHierarchySetId(1);
 		return priceProductHierarchySetElmntPK;

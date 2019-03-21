@@ -3,20 +3,16 @@ package colruyt.rearulmgtdmnejb.util;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.ejb.LocalBean;
-import javax.ejb.Stateless;
-
 import com.google.common.collect.Lists;
 
 import colruyt.rearulmgtdmnejb.bo.ProductHierarchyElementBo;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchyElement;
 
-@Stateless
-@LocalBean
+
 public class ProductHierarchyElementConverter implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	public List<PriceProductHierarchyElement> convertFromBo(List<ProductHierarchyElementBo> productHierarchyElementBos,
+	public static List<PriceProductHierarchyElement> convertFromBo(List<ProductHierarchyElementBo> productHierarchyElementBos,
 			String logonId) {
 		List<PriceProductHierarchyElement> reaPpdHchyElmnts = Lists.newArrayList();
 		for (ProductHierarchyElementBo productHierarchyElementBo : productHierarchyElementBos) {
@@ -32,7 +28,7 @@ public class ProductHierarchyElementConverter implements Serializable {
 		return reaPpdHchyElmnts;
 	}
 
-	public List<ProductHierarchyElementBo> convertToBo(
+	public static List<ProductHierarchyElementBo> convertToBo(
 			List<PriceProductHierarchyElement> priceProductHierarchyElements) {
 		List<ProductHierarchyElementBo> productHierarchyElementBolist = Lists.newArrayList();
 		for (PriceProductHierarchyElement ppHchyElement : priceProductHierarchyElements) {

@@ -36,15 +36,13 @@ public class ProposeNotToReactRuleService extends GeneralRuleService implements 
 	private static final Logger logger = LoggerFactory.getLogger(ProposeNotToReactRuleService.class);
 	@EJB
 	private ProposalNotToReactActionDlService proposalNotToReactActionDlService;
-	@EJB
-	private ProposeNotToReactRuleConverter proposeNotToReactRuleConverter;
 
 	public GeneralRuleBo createRuleSpecificAttributes(GeneralRuleBo reactionRuleBo)
 			throws ReaRuleValidationException, ReaRuleManagementException {
 		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_PROPOSENOTTOREACT);
 		ProposeNotToReactRuleBo notToReactRule = (ProposeNotToReactRuleBo) reactionRuleBo;
 		validateRuleInputs(notToReactRule);
-		ProposalNotToReactRuleAction notToReactRuleAction = proposeNotToReactRuleConverter
+		ProposalNotToReactRuleAction notToReactRuleAction = ProposeNotToReactRuleConverter
 				.convertFromBo(notToReactRule);
 		proposalNotToReactActionDlService.createOrUpdate(notToReactRuleAction);
 		return notToReactRule;
@@ -67,7 +65,7 @@ public class ProposeNotToReactRuleService extends GeneralRuleService implements 
 		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_MODIFYPROPOSENOTTOREACTRULE);
 		ProposeNotToReactRuleBo proposeNotToReactRuleBo = (ProposeNotToReactRuleBo) reactionRuleBo;
 		validateRuleInputs(proposeNotToReactRuleBo);
-		ProposalNotToReactRuleAction proposalNotToReactRuleAction = proposeNotToReactRuleConverter
+		ProposalNotToReactRuleAction proposalNotToReactRuleAction = ProposeNotToReactRuleConverter
 				.convertFromBo(proposeNotToReactRuleBo);
 		proposalNotToReactActionDlService.createOrUpdate(proposalNotToReactRuleAction);
 		return proposeNotToReactRuleBo;
@@ -90,7 +88,7 @@ public class ProposeNotToReactRuleService extends GeneralRuleService implements 
 
 					ProposalNotToReactRuleAction proposalNotToReactRuleAction = proposalNotToReactActionDlService
 							.findByRuleId(rule.getReaRuleId());
-					proposeNTRRuleBo = proposeNotToReactRuleConverter.convertToBo(proposalNotToReactRuleAction,
+					proposeNTRRuleBo = ProposeNotToReactRuleConverter.convertToBo(proposalNotToReactRuleAction,
 							proposeNTRRuleBo);
 					ruleBos.add(proposeNTRRuleBo);
 				}
@@ -109,7 +107,7 @@ public class ProposeNotToReactRuleService extends GeneralRuleService implements 
 		ProposeNotToReactRuleBo proposeNotToRactRuleBo = (ProposeNotToReactRuleBo) ruleBo;
 		ProposalNotToReactRuleAction proposalNotToReactRuleAction = proposalNotToReactActionDlService
 				.findByRuleId(proposeNotToRactRuleBo.getRuleId());
-		proposeNotToRactRuleBo = proposeNotToReactRuleConverter.convertToBo(proposalNotToReactRuleAction,
+		proposeNotToRactRuleBo = ProposeNotToReactRuleConverter.convertToBo(proposalNotToReactRuleAction,
 				proposeNotToRactRuleBo);
 		proposeNotToRactRuleBo.setType(RuleType.PROPOSE_NOT_REACT.getRuleTypeName());
 		return proposeNotToRactRuleBo;

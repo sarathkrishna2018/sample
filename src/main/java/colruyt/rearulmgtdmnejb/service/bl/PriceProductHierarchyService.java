@@ -15,13 +15,13 @@ import org.slf4j.LoggerFactory;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.bo.GeneralRuleBo;
 import colruyt.rearulmgtdmnejb.bo.ProductHierarchyElementBo;
-import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchyElement;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySet;
-import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmnt;
-import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmntPK;
+import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElement;
+import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElementPK;
 import colruyt.rearulmgtdmnejb.service.dl.ProductHierarchyElementDlService;
 import colruyt.rearulmgtdmnejb.service.dl.ProductHierarchySetDlService;
 import colruyt.rearulmgtdmnejb.util.ProductHierarchyElementConverter;
@@ -32,9 +32,7 @@ import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnDebugMessage;
 public class PriceProductHierarchyService implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(PriceProductHierarchyService.class);
-	@EJB
-	ProductHierarchyElementConverter productHierarchyElementConverter;
-
+	
 	@EJB
 	ProductHierarchyElementDlService productHierarchyElementDlService;
 
@@ -58,7 +56,7 @@ public class PriceProductHierarchyService implements Serializable {
 	public List<PriceProductHierarchyElement> getProductHrchyElmnt(
 			List<ProductHierarchyElementBo> productHierarchyElementBos, String logonId) {
 		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_PRODUCTHIERARCHYELEMENT);
-		List<PriceProductHierarchyElement> reaPpdHchyElmnts = productHierarchyElementConverter
+		List<PriceProductHierarchyElement> reaPpdHchyElmnts = ProductHierarchyElementConverter
 				.convertFromBo(productHierarchyElementBos, logonId);
 		List<PriceProductHierarchyElement> existingProdHrchyList = getExistingProdHrchyElmnts(reaPpdHchyElmnts);
 		List<PriceProductHierarchyElement> combinedProdHrchyElmnList = Lists.newArrayList();
@@ -115,8 +113,8 @@ public class PriceProductHierarchyService implements Serializable {
 			Long productHierarchySetId, String logonId) {
 		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_PRODUCTHIERARCHYSETELEMENT);
 		for (PriceProductHierarchyElement reaPpdHchyElmnt : reaPriceProductHierarchyElements) {
-			PriceProductHierarchySetElmnt reaPpdHchysetElmnt = new PriceProductHierarchySetElmnt();
-			PriceProductHierarchySetElmntPK reaPpdHchysetElmntPK = new PriceProductHierarchySetElmntPK();
+			PriceProductHierarchySetElement reaPpdHchysetElmnt = new PriceProductHierarchySetElement();
+			PriceProductHierarchySetElementPK reaPpdHchysetElmntPK = new PriceProductHierarchySetElementPK();
 			reaPpdHchysetElmntPK.setProductHierarchyElementId(reaPpdHchyElmnt.getProductHierarchyElementId());
 			reaPpdHchysetElmntPK.setProdicyHierarchySetId(productHierarchySetId);
 			reaPpdHchysetElmnt.setId(reaPpdHchysetElmntPK);
@@ -137,10 +135,10 @@ public class PriceProductHierarchyService implements Serializable {
 			Set<String> deletedElements = Sets.difference(productHierarchyElementSet, externalValueSet);
 			List<Long> toBeDeletedElements = findByElementValueList(deletedElements, allElements);
 			if (!toBeDeletedElements.isEmpty()) {
-				List<PriceProductHierarchySetElmnt> toBeDeletedSetElements = productHierarchySetDlService
+				List<PriceProductHierarchySetElement> toBeDeletedSetElements = productHierarchySetDlService
 						.findSetElementByElementIds(toBeDeletedElements);
 				List<Long> setIds = Lists.newArrayList();
-				for (PriceProductHierarchySetElmnt priceProductHierarchySetElement : toBeDeletedSetElements) {
+				for (PriceProductHierarchySetElement priceProductHierarchySetElement : toBeDeletedSetElements) {
 					setIds.add(priceProductHierarchySetElement.getId().getProductHierarchySetId());
 				}
 				productHierarchySetIds = productHierarchySetDlService.findSetElementBySetIds(setIds);

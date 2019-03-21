@@ -1,14 +1,11 @@
 package colruyt.rearulmgtdmnejb.utils;
 
-import static org.junit.Assert.*;
-
-
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.unitils.UnitilsJUnit4TestClassRunner;
 import org.unitils.database.annotations.Transactional;
-import org.unitils.inject.annotation.TestedObject;
 
 import colruyt.rearulmgtdmnejb.bo.ReactingRuleBo;
 import colruyt.rearulmgtdmnejb.entity.ReactingRuleAction;
@@ -17,8 +14,6 @@ import colruyt.rearulmgtdmnejb.util.ReactingRuleConverter;
 @Transactional
 @RunWith(UnitilsJUnit4TestClassRunner.class)
 public class ReactingRuleConverterTest {
-	@TestedObject
-	private ReactingRuleConverter reactingRuleConverter;
 	@Test
 	public void createConverterTest(){
 		ReactingRuleBo reactingRuleBo=getReactingRuleBo();
@@ -28,7 +23,7 @@ public class ReactingRuleConverterTest {
 		reactingRuleAction.setReactingPercentage(reactingRuleBo.getReactingAmount());
 		reactingRuleAction.setThresholdAmount(reactingRuleBo.getThresholdAmount());
 		reactingRuleAction.setThresholdPercentage(reactingRuleBo.getThresholdPercentage());
-		ReactingRuleAction expectedReaReactingAct=reactingRuleConverter.convertFromBo(reactingRuleBo);
+		ReactingRuleAction expectedReaReactingAct=ReactingRuleConverter.convertFromBo(reactingRuleBo);
 		assertEquals(new Double(12d),expectedReaReactingAct.getReactingAmt());	
 	}
 	public ReactingRuleBo getReactingRuleBo(){

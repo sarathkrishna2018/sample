@@ -9,7 +9,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.unitils.UnitilsJUnit4TestClassRunner;
 import org.unitils.database.annotations.Transactional;
-import org.unitils.inject.annotation.TestedObject;
 
 import com.google.common.collect.Lists;
 
@@ -22,32 +21,30 @@ import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchyElement;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySet;
-import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmnt;
-import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmntPK;
+import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElement;
+import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElementPK;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.util.ProductHierarchyElementConverter;
 
 @Transactional
 @RunWith(UnitilsJUnit4TestClassRunner.class)
 
-
 public class ProductHierarchyElementConverterTest {
-	@TestedObject
-	private ProductHierarchyElementConverter productHierarchyElementConverter;
 	@Test
-	public void createConverterTest(){
-		List<PriceProductHierarchyElement> reaPpdHchyElmnts=Lists.newArrayList();
-		ProductHierarchyElementBo productHierarchyElement=createProductHierarchyElementBo();
-		PriceProductHierarchyElement reaPpdHchyElmnt=new PriceProductHierarchyElement();
-		String logonId="sa";
+	public void createConverterTest() {
+		List<PriceProductHierarchyElement> reaPpdHchyElmnts = Lists.newArrayList();
+		ProductHierarchyElementBo productHierarchyElement = createProductHierarchyElementBo();
+		PriceProductHierarchyElement reaPpdHchyElmnt = new PriceProductHierarchyElement();
+		String logonId = "sa";
 		reaPpdHchyElmnt.setPpdHchyValue(productHierarchyElement.getPriceProductHierarchyValue());
 		reaPpdHchyElmnt.setProductHierarchyTypeId(productHierarchyElement.getPriceProductHierarchyTypeId());
 		reaPpdHchyElmnt.setCreatedBy(logonId);
 		reaPpdHchyElmnts.add(reaPpdHchyElmnt);
-		List<PriceProductHierarchyElement> expectedReaPpdHchyElmnt=productHierarchyElementConverter.convertFromBo(getProductHierarchyElement(), logonId);
-		assertEquals(reaPpdHchyElmnts.size(),expectedReaPpdHchyElmnt.size());
+		List<PriceProductHierarchyElement> expectedReaPpdHchyElmnt = ProductHierarchyElementConverter
+				.convertFromBo(getProductHierarchyElement(), logonId);
+		assertEquals(reaPpdHchyElmnts.size(), expectedReaPpdHchyElmnt.size());
 	}
-	
+
 	private ReactionRule getRuleAction() {
 		Date validFromdate = new Date();
 		Date validTodate = new Date();
@@ -70,22 +67,24 @@ public class ProductHierarchyElementConverterTest {
 		reaRule.setPriceProductHierarchySet(getReaPpdHchysets());
 		return reaRule;
 	}
+
 	private List<PriceProductHierarchySet> getReaPpdHchysets() {
-		 List<PriceProductHierarchySet> priceProductHierarchySets=Lists.newArrayList();
-		 PriceProductHierarchySet priceProductHierarchySet=new PriceProductHierarchySet();
-		 priceProductHierarchySet.setAssortmentName("all");
-		 priceProductHierarchySet.setCheapBrand(false);
-		 priceProductHierarchySet.setCreatedBy("ake");
-		 priceProductHierarchySet.setLstUpdateBy("ake");
-		 priceProductHierarchySet.setProdHrchySetId(1l);
-		 priceProductHierarchySet.setPriceProductHierarchyElements(getPriceProductHierarchyElements());
-		 priceProductHierarchySet.setReactionRuleId(1);
-		 priceProductHierarchySets.add(priceProductHierarchySet);
+		List<PriceProductHierarchySet> priceProductHierarchySets = Lists.newArrayList();
+		PriceProductHierarchySet priceProductHierarchySet = new PriceProductHierarchySet();
+		priceProductHierarchySet.setAssortmentName("all");
+		priceProductHierarchySet.setCheapBrand(false);
+		priceProductHierarchySet.setCreatedBy("ake");
+		priceProductHierarchySet.setLstUpdateBy("ake");
+		priceProductHierarchySet.setProdHrchySetId(1l);
+		priceProductHierarchySet.setPriceProductHierarchyElements(getPriceProductHierarchyElements());
+		priceProductHierarchySet.setReactionRuleId(1);
+		priceProductHierarchySets.add(priceProductHierarchySet);
 		return priceProductHierarchySets;
 	}
+
 	private List<PriceProductHierarchyElement> getPriceProductHierarchyElements() {
-		List<PriceProductHierarchyElement> priceProductHierarchyElements=Lists.newArrayList();
-		PriceProductHierarchyElement priceProductHierarchyElement=new PriceProductHierarchyElement();
+		List<PriceProductHierarchyElement> priceProductHierarchyElements = Lists.newArrayList();
+		PriceProductHierarchyElement priceProductHierarchyElement = new PriceProductHierarchyElement();
 		priceProductHierarchyElement.setCreatedBy("ak");
 		priceProductHierarchyElement.setProductHierarchyElementId(1l);
 		priceProductHierarchyElement.setProductHierarchyTypeId(1l);
@@ -94,21 +93,23 @@ public class ProductHierarchyElementConverterTest {
 		priceProductHierarchyElements.add(priceProductHierarchyElement);
 		return priceProductHierarchyElements;
 	}
-	private List<PriceProductHierarchySetElmnt> getReaPpdHchysetElmnts() {
-		List<PriceProductHierarchySetElmnt> priceProductHierarchySetElmnts=Lists.newArrayList();
-		PriceProductHierarchySetElmnt priceProductHierarchySetElmnt=new PriceProductHierarchySetElmnt();
+
+	private List<PriceProductHierarchySetElement> getReaPpdHchysetElmnts() {
+		List<PriceProductHierarchySetElement> priceProductHierarchySetElmnts = Lists.newArrayList();
+		PriceProductHierarchySetElement priceProductHierarchySetElmnt = new PriceProductHierarchySetElement();
 		priceProductHierarchySetElmnt.setId(getPriceProductHierarchySetElmntPK());
 		priceProductHierarchySetElmnt.setLstUpdateBy("ake");
 		priceProductHierarchySetElmnts.add(priceProductHierarchySetElmnt);
 		return priceProductHierarchySetElmnts;
 	}
-	private PriceProductHierarchySetElmntPK getPriceProductHierarchySetElmntPK() {
-		PriceProductHierarchySetElmntPK priceProductHierarchySetElmntPK=new PriceProductHierarchySetElmntPK();
+
+	private PriceProductHierarchySetElementPK getPriceProductHierarchySetElmntPK() {
+		PriceProductHierarchySetElementPK priceProductHierarchySetElmntPK = new PriceProductHierarchySetElementPK();
 		priceProductHierarchySetElmntPK.setProductHierarchyElementId(1);
 		priceProductHierarchySetElmntPK.setProdicyHierarchySetId(1);
 		return priceProductHierarchySetElmntPK;
 	}
-	
+
 	private GeneralRuleBo getRuleBo() {
 		GeneralRuleBo reactionRuleBo = new GeneralRuleBo();
 		Date validFromdate = new Date();
@@ -144,6 +145,7 @@ public class ProductHierarchyElementConverterTest {
 		reactionRuleBo.setPriceProductHierarchySet(getProductHierarchyElement());
 		return reactionRuleBo;
 	}
+
 	private List<RefActionTypeBo> getRefActionTypeBo() {
 		List<RefActionTypeBo> refActionTypeBolist = Lists.newArrayList();
 		RefActionTypeBo refActionTypeBo = new RefActionTypeBo();
@@ -163,6 +165,7 @@ public class ProductHierarchyElementConverterTest {
 		refSourceTypeBolist.add(refSourceTypeBo);
 		return refSourceTypeBolist;
 	}
+
 	private RefRuleTypeBo getRefRuleType() {
 		RefRuleTypeBo refRuleType = new RefRuleTypeBo();
 		refRuleType.setDescription("asa");
@@ -190,22 +193,24 @@ public class ProductHierarchyElementConverterTest {
 		reactionRuleset.setComments("good");
 		return reactionRuleset;
 	}
-	private ProductHierarchyElementBo createProductHierarchyElementBo(){
-		ProductHierarchyElementBo productHierarchyElementBo=new ProductHierarchyElementBo();
+
+	private ProductHierarchyElementBo createProductHierarchyElementBo() {
+		ProductHierarchyElementBo productHierarchyElementBo = new ProductHierarchyElementBo();
 		productHierarchyElementBo.setId(1l);
 		productHierarchyElementBo.setPriceProductHierarchyTypeId(1l);
 		productHierarchyElementBo.setPriceProductHierarchyValue("All products");
 		return productHierarchyElementBo;
 	}
-	private List<ProductHierarchyElementBo> getProductHierarchyElement(){
-		List<ProductHierarchyElementBo> productHierarchyElementlist=Lists.newArrayList();
-		ProductHierarchyElementBo productHierarchyElementBo=new ProductHierarchyElementBo();
+
+	private List<ProductHierarchyElementBo> getProductHierarchyElement() {
+		List<ProductHierarchyElementBo> productHierarchyElementlist = Lists.newArrayList();
+		ProductHierarchyElementBo productHierarchyElementBo = new ProductHierarchyElementBo();
 		productHierarchyElementBo.setId(1l);
 		productHierarchyElementBo.setPriceProductHierarchyTypeId(1l);
 		productHierarchyElementBo.setPriceProductHierarchyValue("All products");
 		productHierarchyElementlist.add(productHierarchyElementBo);
 		return productHierarchyElementlist;
-		
+
 	}
 
 }

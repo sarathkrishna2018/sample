@@ -3,9 +3,6 @@ package colruyt.rearulmgtdmnejb.util;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.ejb.LocalBean;
-import javax.ejb.Stateless;
-
 import com.google.common.collect.Lists;
 
 import colruyt.rearulmgtdmnejb.bo.RefActionTypeBo;
@@ -29,13 +26,11 @@ import colruyt.rearulmgtdmnejb.enums.ReasonType;
 import colruyt.rearulmgtdmnejb.enums.RuleType;
 import colruyt.rearulmgtdmnejb.enums.SourceType;
 
-@Stateless
-@LocalBean
 public class ReferenceDataConverter implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public List<RefActionTypeBo> convertToActionTypeBo(List<ActionType> refActionTypes) {
+	public static List<RefActionTypeBo> convertToActionTypeBo(List<ActionType> refActionTypes) {
 		List<RefActionTypeBo> refActionTypeBoList = Lists.newArrayList();
 		for (ActionType ruleAction : refActionTypes) {
 			RefActionTypeBo actionTypeBo = new RefActionTypeBo();
@@ -51,7 +46,7 @@ public class ReferenceDataConverter implements Serializable {
 		return refActionTypeBoList;
 	}
 
-	public List<RefNotToReactCodeBo> convertToProposeNotToReactReasonBo(ReasonType[] refReasonEnums,
+	public static List<RefNotToReactCodeBo> convertToProposeNotToReactReasonBo(ReasonType[] refReasonEnums,
 			List<RefReasonType> refReasonTypes) {
 		List<RefNotToReactCodeBo> refNotToReactCodeBoList = Lists.newArrayList();
 		for (ReasonType reasonType : refReasonEnums) {
@@ -74,7 +69,7 @@ public class ReferenceDataConverter implements Serializable {
 		return refNotToReactCodeBoList;
 	}
 
-	public List<RefSourceTypeBo> convertToSourceTypeBo(List<SourceType> refSourceTypes) {
+	public static List<RefSourceTypeBo> convertToSourceTypeBo(List<SourceType> refSourceTypes) {
 		List<RefSourceTypeBo> refSourceTypeBoList = Lists.newArrayList();
 		for (SourceType sourceType : refSourceTypes) {
 			RefSourceTypeBo sourceTypeBo = new RefSourceTypeBo();
@@ -89,7 +84,7 @@ public class ReferenceDataConverter implements Serializable {
 		return refSourceTypeBoList;
 	}
 
-	public List<RefActionTypeBo> convertToActionTypeBo(ActionType[] actionTypeEnums) {
+	public static List<RefActionTypeBo> convertToActionTypeBo(ActionType[] actionTypeEnums) {
 		List<RefActionTypeBo> refActionTypeBos = Lists.newArrayList();
 		RefActionTypeBo refActionTypeBo;
 		for (ActionType actionType : actionTypeEnums) {
@@ -102,7 +97,7 @@ public class ReferenceDataConverter implements Serializable {
 		return refActionTypeBos;
 	}
 
-	public List<RefSourceTypeBo> convertToSourceTypeBo(SourceType[] sourceTypeEnums) {
+	public static List<RefSourceTypeBo> convertToSourceTypeBo(SourceType[] sourceTypeEnums) {
 		List<RefSourceTypeBo> refSourceTypeBos = Lists.newArrayList();
 		RefSourceTypeBo refSourceTypeBo;
 		for (SourceType sourceType : sourceTypeEnums) {
@@ -114,7 +109,7 @@ public class ReferenceDataConverter implements Serializable {
 		return refSourceTypeBos;
 	}
 
-	public List<RefQuantityPriceTypeBo> convertToQuantityPriceTypeBo(QuantityType[] refQuantityTypeValues,
+	public static List<RefQuantityPriceTypeBo> convertToQuantityPriceTypeBo(QuantityType[] refQuantityTypeValues,
 			List<RefQuantityType> quantityTypes) {
 		List<RefQuantityPriceTypeBo> refQuantityPriceTypeBoList = Lists.newArrayList();
 		for (QuantityType quantityType : refQuantityTypeValues) {
@@ -136,7 +131,7 @@ public class ReferenceDataConverter implements Serializable {
 		return refQuantityPriceTypeBoList;
 	}
 
-	public List<RefQuantityConditionTypeBo> convertToQuantityConditionTypeBo(QuantityCondition[] quantityConditionEnums,
+	public static  List<RefQuantityConditionTypeBo> convertToQuantityConditionTypeBo(QuantityCondition[] quantityConditionEnums,
 			List<RefQuantityConditionType> refQuantityConditionTypes) {
 		List<RefQuantityConditionTypeBo> refQuantityConditionTypeBoList = Lists.newArrayList();
 		for (QuantityCondition quantityCondition : quantityConditionEnums) {
@@ -159,7 +154,7 @@ public class ReferenceDataConverter implements Serializable {
 		return refQuantityConditionTypeBoList;
 	}
 
-	public List<RefFilterOutRecordingTypeBo> convertToFilterOutRecordingTypeBo(FilterOutRecordingType[] filterOutRecordingTypeEnums,
+	public static List<RefFilterOutRecordingTypeBo> convertToFilterOutRecordingTypeBo(FilterOutRecordingType[] filterOutRecordingTypeEnums,
 			List<RefFilterOutRecordingType> refFilterOutRecordingTypes) {
 		List<RefFilterOutRecordingTypeBo> refFilterOutRecordingTypeBos = Lists.newArrayList();
 		for (FilterOutRecordingType filterOutRecordingType : filterOutRecordingTypeEnums) {
@@ -182,7 +177,7 @@ public class ReferenceDataConverter implements Serializable {
 		return refFilterOutRecordingTypeBos;
 	}
 
-	public List<RefRuleTypeBo> convertToRuleTypeBo(RuleType[] refRuleTypeValues, List<RefRuleType> refRuleTypes) {
+	public static List<RefRuleTypeBo> convertToRuleTypeBo(RuleType[] refRuleTypeValues, List<RefRuleType> refRuleTypes) {
 		List<RefRuleTypeBo> refRuleTypeBoList = Lists.newArrayList();
 		for (RuleType ruleType : refRuleTypeValues) {
 			RefRuleTypeBo refRuleTypeBo = new RefRuleTypeBo();

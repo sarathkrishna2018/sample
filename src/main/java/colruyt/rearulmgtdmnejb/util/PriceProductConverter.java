@@ -3,9 +3,6 @@ package colruyt.rearulmgtdmnejb.util;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.ejb.LocalBean;
-import javax.ejb.Stateless;
-
 import com.google.common.collect.Lists;
 
 import colruyt.priceproduct.bo.LangHierarchyBo;
@@ -16,13 +13,11 @@ import colruyt.priceproduct.bo.ProductGroupBo;
 import colruyt.priceproduct.bo.ProductSegmentBo;
 import colruyt.rearulmgtdmnejb.enums.PriceProductHierarchyType;
 
-@Stateless
-@LocalBean
 public class PriceProductConverter implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public List<PriceProductHierarchyBo> convertToBo(List<MainCategoryBo> mainCategoryBoList, String langCode) {
+	public static List<PriceProductHierarchyBo> convertToBo(List<MainCategoryBo> mainCategoryBoList, String langCode) {
 		List<PriceProductHierarchyBo> priceProductHierarchyBoList = Lists.newArrayList();
 		for (MainCategoryBo mainCategoryBo : mainCategoryBoList) {
 			priceProductHierarchyBoList.add(convertToBo((MainCategoryBo) mainCategoryBo, langCode));
@@ -30,7 +25,7 @@ public class PriceProductConverter implements Serializable {
 		return priceProductHierarchyBoList;
 	}
 
-	public PriceProductHierarchyBo convertToBo(MainCategoryBo mainCategoryBo, String langCode) {
+	public static PriceProductHierarchyBo convertToBo(MainCategoryBo mainCategoryBo, String langCode) {
 
 		List<String> langPrioList = getLanguagePreference(langCode);
 		String name = getNameByLanguagePriority(mainCategoryBo.getMainCategoryLangs(), langPrioList);
@@ -48,7 +43,7 @@ public class PriceProductConverter implements Serializable {
 		return hierarchyBo;
 	}
 
-	private PriceProductHierarchyBo convertToBo(ProductCategoryBo productCategoryBo, String langCode) {
+	private static PriceProductHierarchyBo convertToBo(ProductCategoryBo productCategoryBo, String langCode) {
 		List<String> langPrioList = getLanguagePreference(langCode);
 		String name = getNameByLanguagePriority(productCategoryBo.getProductCategoryLangs(), langPrioList);
 		PriceProductHierarchyBo hierarchyBo = new PriceProductHierarchyBo(name,
@@ -64,7 +59,7 @@ public class PriceProductConverter implements Serializable {
 		return hierarchyBo;
 	}
 
-	private PriceProductHierarchyBo convertToBo(ProductGroupBo productGroup, String langCode) {
+	private static PriceProductHierarchyBo convertToBo(ProductGroupBo productGroup, String langCode) {
 		List<String> langPrioList = getLanguagePreference(langCode);
 		String name = getNameByLanguagePriority(productGroup.getProductGroupLangs(), langPrioList);
 		PriceProductHierarchyBo hierarchyBo = new PriceProductHierarchyBo(name, productGroup.getProductGroupCode(),
@@ -81,7 +76,7 @@ public class PriceProductConverter implements Serializable {
 		return hierarchyBo;
 	}
 
-	private PriceProductHierarchyBo convertToBo(ProductSegmentBo productSegmentBO, String langCode) {
+	private static PriceProductHierarchyBo convertToBo(ProductSegmentBo productSegmentBO, String langCode) {
 		List<String> langPrioList = getLanguagePreference(langCode);
 		String name = getNameByLanguagePriority(productSegmentBO.getProductSegmentLangs(), langPrioList);
 		PriceProductHierarchyBo hierarchyBo = new PriceProductHierarchyBo(name,
@@ -103,11 +98,12 @@ public class PriceProductConverter implements Serializable {
 		return langOrder;
 	}
 
-	private String getNameByLanguagePriority(List<LangHierarchyBo> langHierarchyList, List<String> langPrioriyList) {
+	private static String getNameByLanguagePriority(List<LangHierarchyBo> langHierarchyList,
+			List<String> langPrioriyList) {
 		for (String langCode : langPrioriyList) {
-			for (LangHierarchyBo langHirerachyBo : langHierarchyList) {
-				if (langCode.equals(langHirerachyBo.getRefIsoLanguage().getIsoLangCode())) {
-					return langHirerachyBo.getName();
+			for (LangHierarchyBo langHierarchyBo : langHierarchyList) {
+				if (langCode.equals(langHierarchyBo.getRefIsoLanguage().getIsoLangCode())) {
+					return langHierarchyBo.getName();
 				}
 			}
 		}

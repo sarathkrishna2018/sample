@@ -25,8 +25,8 @@ import colruyt.rearulmgtdmnejb.exception.ReaRuleValidationException;
 import colruyt.rearulmgtdmnejb.service.dl.ReactingRuleActionDlService;
 import colruyt.rearulmgtdmnejb.util.ExceptionMessageConstants;
 import colruyt.rearulmgtdmnejb.util.GeneralRulePriorityComparator;
-import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnDebugMessage;
 import colruyt.rearulmgtdmnejb.util.ReactingRuleConverter;
+import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnDebugMessage;
 
 @Stateless
 @LocalBean
@@ -34,8 +34,6 @@ public class ReactingRuleService extends GeneralRuleService implements Serializa
 
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(ReactingRuleService.class);
-	@EJB
-	private ReactingRuleConverter reactingRuleConverter;
 	@EJB
 	private ReactingRuleActionDlService reactingRuleActionDlService;
 
@@ -45,7 +43,7 @@ public class ReactingRuleService extends GeneralRuleService implements Serializa
 		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_REACTINGRULE);
 		ReactingRuleBo reactingRuleBo = (ReactingRuleBo) reactionRuleBo;
 		validateRuleInputs(reactingRuleBo);
-		ReactingRuleAction reactingRuleAction = reactingRuleConverter.convertFromBo(reactingRuleBo);
+		ReactingRuleAction reactingRuleAction = ReactingRuleConverter.convertFromBo(reactingRuleBo);
 		reactingRuleActionDlService.createOrUpdate(reactingRuleAction);
 		return reactingRuleBo;
 	}
@@ -76,7 +74,7 @@ public class ReactingRuleService extends GeneralRuleService implements Serializa
 		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_MODIFYREACTINGRULE);
 		ReactingRuleBo reactingRuleBo = (ReactingRuleBo) reactionRuleBo;
 		validateRuleInputs(reactingRuleBo);
-		ReactingRuleAction reactingRuleAction = reactingRuleConverter.convertFromBo(reactingRuleBo);
+		ReactingRuleAction reactingRuleAction = ReactingRuleConverter.convertFromBo(reactingRuleBo);
 		reactingRuleActionDlService.createOrUpdate(reactingRuleAction);
 		return reactingRuleBo;
 	}
@@ -98,7 +96,7 @@ public class ReactingRuleService extends GeneralRuleService implements Serializa
 
 					ReactingRuleAction reactingRuleAction = reactingRuleActionDlService
 							.findByRuleId(rule.getReaRuleId());
-					reactingBo = reactingRuleConverter.convertToBo(reactingRuleAction, reactingBo);
+					reactingBo = ReactingRuleConverter.convertToBo(reactingRuleAction, reactingBo);
 					ruleBos.add(reactingBo);
 
 				}
@@ -115,7 +113,7 @@ public class ReactingRuleService extends GeneralRuleService implements Serializa
 		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_VIEWREACTINGRULE);
 		ReactingRuleBo reactRuleBo = (ReactingRuleBo) ruleBo;
 		ReactingRuleAction reactingRuleAction = reactingRuleActionDlService.findByRuleId(reactRuleBo.getRuleId());
-		reactRuleBo = reactingRuleConverter.convertToBo(reactingRuleAction, reactRuleBo);
+		reactRuleBo = ReactingRuleConverter.convertToBo(reactingRuleAction, reactRuleBo);
 		reactRuleBo.setType(RuleType.REACTING.getRuleTypeName());
 		return reactRuleBo;
 	}

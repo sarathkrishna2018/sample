@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-
-
 import org.jose4j.json.internal.json_simple.parser.ParseException;
 import org.junit.Assert;
 import org.junit.Test;
@@ -24,9 +22,14 @@ import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import colruyt.priceproduct.bo.LangHierarchyBo;
 import colruyt.priceproduct.bo.MainCategoryBo;
-import colruyt.priceproduct.bo.PriceProductHierarchyResponseBo;
 import colruyt.priceproduct.bo.PriceProductHierarchyBo;
+import colruyt.priceproduct.bo.PriceProductHierarchyResponseBo;
+import colruyt.priceproduct.bo.ProductCategoryBo;
+import colruyt.priceproduct.bo.ProductGroupBo;
+import colruyt.priceproduct.bo.ProductSegmentBo;
+import colruyt.priceproduct.bo.RefIsoLangBO;
 import colruyt.rearulmgtdmnejb.exception.PriceProductExternalServiceException;
 import colruyt.rearulmgtdmnejb.exception.PriceProductServiceDownException;
 import colruyt.rearulmgtdmnejb.exception.RRMDomainException;
@@ -43,8 +46,6 @@ public class PriceProductServiceTest {
 	private PriceProductUrlService priceProductUrlService = Mockito.mock(PriceProductUrlService.class);
 	@InjectIntoByType
 	private ExternalClientService externalClientService = Mockito.mock(ExternalClientService.class);
-	@InjectIntoByType
-	private PriceProductConverter priceProductConvertor = Mockito.mock(PriceProductConverter.class);
 
 	@Test
 	public void externalHierrachyValuesTest() throws UnsupportedEncodingException, PriceProductExternalServiceException,
@@ -52,8 +53,8 @@ public class PriceProductServiceTest {
 		when(priceProductUrlService.getAllHierarchyUrl()).thenReturn(getAllHierarchyUrl());
 		when(externalClientService.callGetService(Mockito.anyString())).thenReturn(getJSONString());
 		when(externalClientService.getGsonWithDateDeserializer()).thenReturn(getGson());
-		when(priceProductConvertor.convertToBo(Mockito.anyListOf(MainCategoryBo.class), Mockito.anyString()))
-				.thenReturn(getPriceProductHierarchyBoList());
+		PriceProductConverter.convertToBo(getMainCategoryBoList(), "ktr");
+		PriceProductConverter.convertToBo(getMainCategoryBo(), "ktr");
 		Set<String> allHierarchyValuesFromPriceProduct = priceProductService.externalHierarchyValues();
 		Assert.assertNotNull(allHierarchyValuesFromPriceProduct);
 	}
@@ -131,5 +132,65 @@ public class PriceProductServiceTest {
 	private String getJSONString() {
 		String jsonString = "{\"ruleName\":\"Propose Not To ReactRule\", \"assortmentName\":\"all\",\"catchAll\":false, \"nationalBrand\":false, \"ownBrand\":false, \"importanceCodeFrom\":4 ,\"importanceCodeTo\" : 88, \"cheapBrand\":true, \"permanentDuration\":false,\"postponedBenefit\":false, \"directBenefit\":true, \"temporaryDuration\":true,\"logonId\":\"rra1kni\",\"sourceSelectAll\":true,\"actionSelectAll\":true, \"reactionRulesetBo\" : { 		\"colruytGroupChainId\":100, 		\"priceCompetitorChainId\":212, 		\"refRuleTypeBo\" : { 			\"ruleTypeId\":5 		} 	}, \"refRuleTypeBo\": { 	\"ruleTypeId\":5, 	\"ruleTypeName\":\"Propose Not To React\" }, \"actionTypeList\" : [{ 	\"actionTypeId\" : 10, 	\"actionTypeValue\" : \"Points\", 	\"sequence\" : 1 } 	], 	\"sourceTypeList\" : [{ 		\"sourceTypeId\":4, 		\"sourceTypeValue\": \"Offline\" 	}], 	\"priceProductHierarchySet\":[{ 			\"priceProductHierarchyTypeId\":98, 		\"priceProductHierarchyValue\":\"seg1585\" 	}], 	 	\"type\" : \"Propose Not To React\", 	 \"filterOutType\":{ 	 	\"filterOutTypeId\":1 	 }, 	 \"notToReactCodes\":[{ 	 	\"notToReactCodeTypeId\":1 	 }]	 	 }";
 		return jsonString;
+	}
+
+	private List<MainCategoryBo> getMainCategoryBoList() {
+		List<MainCategoryBo> mainCategoryBoList = Lists.newArrayList();
+		mainCategoryBoList.add(getMainCategoryBo());
+		return mainCategoryBoList;
+	}
+
+	private MainCategoryBo getMainCategoryBo() {
+		MainCategoryBo mainCategoryBo = new MainCategoryBo();
+		mainCategoryBo.setMainCategoryCode("All");
+		mainCategoryBo.setMainCategoryLangs(getLangHierarchyBo());
+		mainCategoryBo.setProductCategories(getProductCategoryBo());
+		return mainCategoryBo;
+	}
+
+	private List<LangHierarchyBo> getLangHierarchyBo() {
+		List<LangHierarchyBo> langHierarchyBoList = Lists.newArrayList();
+		LangHierarchyBo langHierarchyBo = new LangHierarchyBo();
+		langHierarchyBo.setName("eng");
+		langHierarchyBo.setRefIsoLanguage(getRefIsoLangBO());
+		langHierarchyBoList.add(langHierarchyBo);
+		return langHierarchyBoList;
+	}
+
+	private RefIsoLangBO getRefIsoLangBO() {
+		RefIsoLangBO refIsoLangBO = new RefIsoLangBO();
+		refIsoLangBO.setIsoLangCode("EN");
+		return refIsoLangBO;
+
+	}
+
+	private List<ProductCategoryBo> getProductCategoryBo() {
+		List<ProductCategoryBo> productCategoryBoList = Lists.newArrayList();
+		ProductCategoryBo productCategoryBo = new ProductCategoryBo();
+		productCategoryBo.setMainCategoryCode("all");
+		productCategoryBo.setProductCategoryLangs(getLangHierarchyBo());
+		productCategoryBo.setProductCategoryCode("all");
+		productCategoryBo.setProductGroups(getProductGroupBoList());
+		productCategoryBoList.add(productCategoryBo);
+		return productCategoryBoList;
+	}
+	private List<ProductGroupBo> getProductGroupBoList(){
+		List<ProductGroupBo> productGroupBoList = Lists.newArrayList();
+		ProductGroupBo productGroupBo= new ProductGroupBo();
+		productGroupBo.setProductCategoryCode("");
+		productGroupBo.setProductGroupCode("");
+		productGroupBo.setProductGroupLangs(getLangHierarchyBo());
+		productGroupBo.setProductSegments(getProductSegmentBoList());
+		productGroupBoList.add(productGroupBo);
+		return productGroupBoList;
+	}
+	private List<ProductSegmentBo> getProductSegmentBoList(){
+		List<ProductSegmentBo> productSegmentBoList = Lists.newArrayList();
+		ProductSegmentBo productSegmentBo= new ProductSegmentBo();
+		productSegmentBo.setProductGroupCode("");
+		productSegmentBo.setProductSegmentCode("");
+		productSegmentBo.setProductSegmentLangs(getLangHierarchyBo());
+		productSegmentBoList.add(productSegmentBo);
+		return productSegmentBoList;
 	}
 }

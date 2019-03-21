@@ -35,8 +35,6 @@ public class RecordingNotFoundRuleService extends GeneralRuleService implements 
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(RecordingNotFoundRuleService.class);
 	@EJB
-	private RecordingNotFoundRuleConverter recordingNotFoundRuleConverter;
-	@EJB
 	private RecordingNotFoundRuleActionDlService recordingNotFoundRuleActionDlService;
 
 	@Override
@@ -45,7 +43,7 @@ public class RecordingNotFoundRuleService extends GeneralRuleService implements 
 		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_RECORDNOTFOUNDRULE);
 		RecordingNotFoundRuleBo recordingNotFoundRuleBo = (RecordingNotFoundRuleBo) reactionRuleBo;
 		validateRuleInputs(recordingNotFoundRuleBo);
-		RecordingNotFoundRuleAction recordNotFoundRuleAction = recordingNotFoundRuleConverter
+		RecordingNotFoundRuleAction recordNotFoundRuleAction = RecordingNotFoundRuleConverter
 				.convertFromBo(recordingNotFoundRuleBo);
 		recordingNotFoundRuleActionDlService.createOrUpdate(recordNotFoundRuleAction);
 		return recordingNotFoundRuleBo;
@@ -72,7 +70,7 @@ public class RecordingNotFoundRuleService extends GeneralRuleService implements 
 		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_MODIFYRECORDNOTFOUNDRULE);
 		RecordingNotFoundRuleBo recordingNotFoundRuleBo = (RecordingNotFoundRuleBo) reactionRuleBo;
 		validateRuleInputs(recordingNotFoundRuleBo);
-		RecordingNotFoundRuleAction recordingNotFoundRuleAction = recordingNotFoundRuleConverter
+		RecordingNotFoundRuleAction recordingNotFoundRuleAction = RecordingNotFoundRuleConverter
 				.convertFromBo(recordingNotFoundRuleBo);
 		recordingNotFoundRuleActionDlService.createOrUpdate(recordingNotFoundRuleAction);
 		return recordingNotFoundRuleBo;
@@ -95,7 +93,7 @@ public class RecordingNotFoundRuleService extends GeneralRuleService implements 
 
 					RecordingNotFoundRuleAction recordNotFoundRule = recordingNotFoundRuleActionDlService
 							.findByRuleId(rule.getReaRuleId());
-					recordingNotFoundBo = recordingNotFoundRuleConverter.convertToBo(recordNotFoundRule,
+					recordingNotFoundBo = RecordingNotFoundRuleConverter.convertToBo(recordNotFoundRule,
 							recordingNotFoundBo);
 					ruleBos.add(recordingNotFoundBo);
 
@@ -114,7 +112,7 @@ public class RecordingNotFoundRuleService extends GeneralRuleService implements 
 		RecordingNotFoundRuleBo recordNotFoundRuleBo = (RecordingNotFoundRuleBo) ruleBo;
 		RecordingNotFoundRuleAction recordingNotFoundRuleAction = recordingNotFoundRuleActionDlService
 				.findByRuleId(recordNotFoundRuleBo.getRuleId());
-		recordNotFoundRuleBo = recordingNotFoundRuleConverter.convertToBo(recordingNotFoundRuleAction,
+		recordNotFoundRuleBo = RecordingNotFoundRuleConverter.convertToBo(recordingNotFoundRuleAction,
 				recordNotFoundRuleBo);
 		recordNotFoundRuleBo.setType(RuleType.RECORD_NOT_FOUND.getRuleTypeName());
 		return recordNotFoundRuleBo;

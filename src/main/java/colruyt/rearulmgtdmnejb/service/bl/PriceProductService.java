@@ -18,8 +18,8 @@ import org.slf4j.LoggerFactory;
 import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 
-import colruyt.priceproduct.bo.PriceProductHierarchyResponseBo;
 import colruyt.priceproduct.bo.PriceProductHierarchyBo;
+import colruyt.priceproduct.bo.PriceProductHierarchyResponseBo;
 import colruyt.rearulmgtdmnejb.exception.PriceProductExternalServiceException;
 import colruyt.rearulmgtdmnejb.exception.PriceProductServiceDownException;
 import colruyt.rearulmgtdmnejb.exception.RRMDomainException;
@@ -41,15 +41,12 @@ public class PriceProductService implements Serializable {
 	@EJB
 	private ExternalClientService externalClientService;
 
-	@EJB
-	private PriceProductConverter priceProductConverter;
-
 	private static final Logger logger = LoggerFactory.getLogger(PriceProductService.class);
 
 	public Set<String> externalHierarchyValues()
 			throws PriceProductExternalServiceException, PriceProductServiceDownException, IOException, ParseException {
 		PriceProductHierarchyResponseBo hierarchyBo = findHierarchyValues();
-		List<PriceProductHierarchyBo> priceProductHierarchyBoList = priceProductConverter
+		List<PriceProductHierarchyBo> priceProductHierarchyBoList = PriceProductConverter
 				.convertToBo(hierarchyBo.getResult(), ReactionRuleDmnConstants.LANG_CODE_NL);
 		List<PriceProductHierarchyBo> productList = getPriceProducts();
 		return getAllHierarchyValues(priceProductHierarchyBoList, productList);

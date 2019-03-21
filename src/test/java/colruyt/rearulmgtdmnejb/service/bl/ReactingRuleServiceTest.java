@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -30,7 +28,6 @@ import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleValidationException;
 import colruyt.rearulmgtdmnejb.service.dl.ReactingRuleActionDlService;
-import colruyt.rearulmgtdmnejb.util.ReactingRuleConverter;
 import junit.framework.Assert;
 
 @Transactional
@@ -40,8 +37,6 @@ public class ReactingRuleServiceTest {
 	private ReactingRuleService reactingRuleBlService;
 	@InjectIntoByType
 	private ReactingRuleActionDlService reactingRuleActionDlService = Mockito.mock(ReactingRuleActionDlService.class);;
-	@InjectIntoByType
-	private ReactingRuleConverter reactingRuleConverter = Mockito.mock(ReactingRuleConverter.class);
 	@InjectMocks
 	private GeneralRuleService generalRuleService = Mockito.mock(GeneralRuleService.class);
 
@@ -50,7 +45,6 @@ public class ReactingRuleServiceTest {
 
 	@Test
 	public void createRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		when(reactingRuleConverter.convertFromBo(Mockito.any(ReactingRuleBo.class))).thenReturn(getReareactingAct());
 		when(reactingRuleActionDlService.createOrUpdate(Mockito.any(ReactingRuleAction.class)))
 				.thenReturn(getReareactingAct());
 		GeneralRuleBo expectedReactingRule = reactingRuleBlService.createRuleSpecificAttributes(getReactingRuleBo());
@@ -59,7 +53,6 @@ public class ReactingRuleServiceTest {
 
 	@Test
 	public void modifyRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		when(reactingRuleConverter.convertFromBo(Mockito.any(ReactingRuleBo.class))).thenReturn(getReareactingAct());
 		when(reactingRuleActionDlService.createOrUpdate(Mockito.any(ReactingRuleAction.class)))
 				.thenReturn(getReareactingAct());
 		GeneralRuleBo expectedReactingRule = reactingRuleBlService.modifyRuleSpecificAttributes(getReactingRuleBo());
@@ -68,9 +61,6 @@ public class ReactingRuleServiceTest {
 
 	@Test
 	public void getRuleSpecificValuesTest() throws ReaRuleManagementException {
-		when(reactingRuleActionDlService.findByRuleId(Mockito.anyLong())).thenReturn(getReareactingAct());
-		when(reactingRuleConverter.convertToBo(Mockito.any(ReactingRuleAction.class),
-				Mockito.any(ReactingRuleBo.class))).thenReturn(getReactingRuleBo());
 		GeneralRuleBo expectedReactingRule = reactingRuleBlService.getRuleSpecificValues(getReactingRuleBo());
 		Assert.assertEquals(new Long(1l), expectedReactingRule.getRuleId());
 	}

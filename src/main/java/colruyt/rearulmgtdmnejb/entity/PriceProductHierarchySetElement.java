@@ -9,20 +9,20 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "REA_PPD_HCHYSET_ELMNT")
-public class PriceProductHierarchySetElmnt implements Serializable {
+public class PriceProductHierarchySetElement implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
-	private PriceProductHierarchySetElmntPK id;
+	private PriceProductHierarchySetElementPK id;
 
 	@Column(name = "LST_UPDATE_BY")
 	private String lstUpdateBy;
 
-	public PriceProductHierarchySetElmntPK getId() {
+	public PriceProductHierarchySetElementPK getId() {
 		return this.id;
 	}
 
-	public void setId(PriceProductHierarchySetElmntPK id) {
+	public void setId(PriceProductHierarchySetElementPK id) {
 		this.id = id;
 	}
 

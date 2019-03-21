@@ -14,7 +14,7 @@ import javax.persistence.TypedQuery;
 
 import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySet;
-import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmnt;
+import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElement;
 import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnConstants;
 
 @Stateless
@@ -32,8 +32,8 @@ public class ProductHierarchySetDlService implements Serializable{
 		return reaPpdHchy;
 	}
 	
-	public PriceProductHierarchySetElmnt create(PriceProductHierarchySetElmnt reaPpdHchysetElmnt) {
-		PriceProductHierarchySetElmnt ppdHchysetElmnt=  entityManager.merge(reaPpdHchysetElmnt);
+	public PriceProductHierarchySetElement create(PriceProductHierarchySetElement reaPpdHchysetElmnt) {
+		PriceProductHierarchySetElement ppdHchysetElmnt=  entityManager.merge(reaPpdHchysetElmnt);
 		entityManager.flush();
 		return ppdHchysetElmnt;
 	}
@@ -48,7 +48,7 @@ public class ProductHierarchySetDlService implements Serializable{
 		
 	}
 	
-	public List<PriceProductHierarchySetElmnt> findSetElementByElementIds(List<Long> elementValues){
+	public List<PriceProductHierarchySetElement> findSetElementByElementIds(List<Long> elementValues){
 		Query query = entityManager.createQuery("select distinct priceProductHierarchySetElmnt from  PriceProductHierarchySetElmnt priceProductHierarchySetElmnt where priceProductHierarchySetElmnt.id.productHierarchyElementId IN ?1");
 		return query.setParameter(1, elementValues).getResultList();	
 		

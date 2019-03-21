@@ -1,18 +1,13 @@
 package colruyt.rearulmgtdmnejb.utils;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
 
 import java.util.List;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.unitils.UnitilsJUnit4TestClassRunner;
 import org.unitils.database.annotations.Transactional;
-import org.unitils.inject.annotation.InjectIntoByType;
-import org.unitils.inject.annotation.TestedObject;
 
 import com.google.common.collect.Lists;
 
@@ -22,23 +17,18 @@ import colruyt.rearulmgtdmnejb.bo.RefLangBo;
 import colruyt.rearulmgtdmnejb.bo.RefNotToReactCodeBo;
 import colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleAction;
 import colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleActionRsnPK;
-import colruyt.rearulmgtdmnejb.service.bl.ReferenceDataService;
 import colruyt.rearulmgtdmnejb.util.ProposeNotToReactRuleConverter;
 
 @Transactional
 @RunWith(UnitilsJUnit4TestClassRunner.class)
 public class ProposeNotToReactRuleConverterTest {
-	@TestedObject
-	private ProposeNotToReactRuleConverter proposeNotToReactRuleConverter;
-	@InjectIntoByType
-	private ReferenceDataService referenceDataService = Mockito.mock(ReferenceDataService.class);
 
 	@Test
 	public void createTest() {
 		ProposeNotToReactRuleBo proposeNotToReactRuleBo = getProposeNotToReactRuleBo();
 		ProposalNotToReactRuleAction reaNreactAct = new ProposalNotToReactRuleAction();
 		reaNreactAct.setFltoutTypeId(proposeNotToReactRuleBo.getFilterOutType().getFilterOutTypeId());
-		ProposalNotToReactRuleAction expectedReaNreactAct = proposeNotToReactRuleConverter
+		ProposalNotToReactRuleAction expectedReaNreactAct = ProposeNotToReactRuleConverter
 				.convertFromBo(getProposeNotToReactRuleBo());
 		assertEquals(expectedReaNreactAct.getFltoutTypeId(), reaNreactAct.getFltoutTypeId());
 

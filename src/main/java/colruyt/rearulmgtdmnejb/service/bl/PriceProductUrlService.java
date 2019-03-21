@@ -7,9 +7,10 @@ import javax.annotation.PostConstruct;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
+import org.apache.commons.lang.StringUtils;
+
 import colruyt.coreutillib.security.ass.AssException;
 import colruyt.coreutillib.security.ass.AssToolUtil;
-import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnConstants;
 
 @Stateless
 @LocalBean
@@ -41,7 +42,7 @@ public class PriceProductUrlService implements Serializable {
 	public String getPriceProductUrlForHierarchyList(List<String> hierarchyValueList) {
 		StringBuilder url = new StringBuilder(URL_HIERARCHY);
 		url.append(QUERY_PARAM_LIST_CATEGORY_IDS);
-		url.append(getCommaSeperatedValuesForURL(hierarchyValueList));
+		url.append(StringUtils.join(hierarchyValueList, ","));
 		url.append(QUERY_PARAM_EXCLUSION);
 		return prefixBaseUrl(url.toString());
 	}
@@ -50,25 +51,9 @@ public class PriceProductUrlService implements Serializable {
 		StringBuilder url = new StringBuilder(prefixBaseUrl(URL_PRICE_PRODUCT));
 		url.append(QUERY_PARAM_PREFIX);
 		url.append(QUERY_PARAM_PRODUCTIDS);
-		url.append(getCommaSeperatedValuesForURL(productList));
+		url.append(StringUtils.join(productList, ","));
 		return url.toString();
 	}
-
-	public static String getCommaSeperatedValuesForURL(List<String> hierarchyValues) {
-		StringBuilder queryParam = new StringBuilder();
-		int segmentlen = 0;
-		for (String value : hierarchyValues) {
-			queryParam.append(value);
-
-			if (segmentlen < hierarchyValues.size() - 1) {
-				queryParam.append(ReactionRuleDmnConstants.COMMA);
-			}
-			segmentlen++;
-		}
-		return queryParam.toString();
-
-	}
-
 	private String prefixBaseUrl(String url) {
 		return BASE_URL + url;
 	}

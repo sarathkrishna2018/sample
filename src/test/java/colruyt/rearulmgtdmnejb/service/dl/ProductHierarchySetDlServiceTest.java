@@ -20,8 +20,8 @@ import com.google.common.collect.Lists;
 import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchyElement;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySet;
-import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmnt;
-import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmntPK;
+import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElement;
+import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElementPK;
 import junit.framework.Assert;
 
 @JpaEntityManagerFactory(persistenceUnit = "in_memory_database_testing", configFile = "/META-INF/persistence-test.xml")
@@ -47,7 +47,7 @@ public class ProductHierarchySetDlServiceTest {
 	@Test
 	@DataSet("dataset/ProductHierarchySetDlServiceTest.xml")
 	public void createProductHierarachySetElementTest() {
-		PriceProductHierarchySetElmnt expectedPriceProductHierarchySetElement = productHierarchySetDlService
+		PriceProductHierarchySetElement expectedPriceProductHierarchySetElement = productHierarchySetDlService
 				.create(getPriceProductHierarchySetElmnt());
 		Assert.assertEquals(expectedPriceProductHierarchySetElement.getId().getProductHierarchyElementId(), 1);
 	}
@@ -69,7 +69,7 @@ public class ProductHierarchySetDlServiceTest {
 	@Test
 	@DataSet("dataset/ProductHierarchySetDlServiceTest.xml")
 	public void findSetElementByElementIdsTest() {
-		List<PriceProductHierarchySetElmnt> expectedpriceProductHierarchySetElmntList = productHierarchySetDlService
+		List<PriceProductHierarchySetElement> expectedpriceProductHierarchySetElmntList = productHierarchySetDlService
 				.findSetElementByElementIds(getpriceProductHierarchySetElmntValues());
 		assertThat(expectedpriceProductHierarchySetElmntList.size()).isEqualTo(1);
 
@@ -155,18 +155,18 @@ public class ProductHierarchySetDlServiceTest {
 		return reaPpdHchyElmnt;
 	}
 
-	private List<PriceProductHierarchySetElmnt> getReaPpdHchysetElmnt() {
-		List<PriceProductHierarchySetElmnt> reaPpdHchysetElmntlist = Lists.newArrayList();
-		PriceProductHierarchySetElmnt reaPpdHchysetElmnt = getPriceProductHierarchySetElmnt();
+	private List<PriceProductHierarchySetElement> getReaPpdHchysetElmnt() {
+		List<PriceProductHierarchySetElement> reaPpdHchysetElmntlist = Lists.newArrayList();
+		PriceProductHierarchySetElement reaPpdHchysetElmnt = getPriceProductHierarchySetElmnt();
 		reaPpdHchysetElmntlist.add(reaPpdHchysetElmnt);
 		return reaPpdHchysetElmntlist;
 
 	}
 
-	private PriceProductHierarchySetElmnt getPriceProductHierarchySetElmnt() {
-		PriceProductHierarchySetElmnt reaPpdHchysetElmnt = new PriceProductHierarchySetElmnt();
+	private PriceProductHierarchySetElement getPriceProductHierarchySetElmnt() {
+		PriceProductHierarchySetElement reaPpdHchysetElmnt = new PriceProductHierarchySetElement();
 		reaPpdHchysetElmnt.setLstUpdateBy("Sa");
-		PriceProductHierarchySetElmntPK hierarchySetElmntPK = new PriceProductHierarchySetElmntPK();
+		PriceProductHierarchySetElementPK hierarchySetElmntPK = new PriceProductHierarchySetElementPK();
 		hierarchySetElmntPK.setProductHierarchyElementId(1L);
 		hierarchySetElmntPK.setProdicyHierarchySetId(504L);
 		reaPpdHchysetElmnt.setId(hierarchySetElmntPK);

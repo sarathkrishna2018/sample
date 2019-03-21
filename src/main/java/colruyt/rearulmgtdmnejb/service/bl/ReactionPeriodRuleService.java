@@ -25,8 +25,8 @@ import colruyt.rearulmgtdmnejb.exception.ReaRuleValidationException;
 import colruyt.rearulmgtdmnejb.service.dl.ReactionPeriodActionDlService;
 import colruyt.rearulmgtdmnejb.util.ExceptionMessageConstants;
 import colruyt.rearulmgtdmnejb.util.GeneralRulePriorityComparator;
-import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnDebugMessage;
 import colruyt.rearulmgtdmnejb.util.ReactionPeriodRuleConverter;
+import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnDebugMessage;
 
 @Stateless
 @LocalBean
@@ -36,8 +36,6 @@ public class ReactionPeriodRuleService extends GeneralRuleService implements Ser
 	private static final Logger logger = LoggerFactory.getLogger(ReactionPeriodRuleService.class);
 	@EJB
 	private ReactionPeriodActionDlService reactionPeriodActionDlService;
-	@EJB
-	private ReactionPeriodRuleConverter reactionPeriodRuleConverter;
 
 	@Override
 	public GeneralRuleBo createRuleSpecificAttributes(GeneralRuleBo reactionRuleBo)
@@ -45,7 +43,7 @@ public class ReactionPeriodRuleService extends GeneralRuleService implements Ser
 		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_REACTIONPERIODRULE);
 		ReactionPeriodRuleBo reactionPeriodRuleBo = (ReactionPeriodRuleBo) reactionRuleBo;
 		validateRuleInputs(reactionPeriodRuleBo);
-		ReactionPeriodRuleAction reactionPeriodRuleAction = reactionPeriodRuleConverter
+		ReactionPeriodRuleAction reactionPeriodRuleAction = ReactionPeriodRuleConverter
 				.convertFromBo(reactionPeriodRuleBo);
 		reactionPeriodActionDlService.createOrUpdate(reactionPeriodRuleAction);
 		return reactionPeriodRuleBo;
@@ -73,7 +71,7 @@ public class ReactionPeriodRuleService extends GeneralRuleService implements Ser
 		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_MODIFYREACTIONPERIODRULE);
 		ReactionPeriodRuleBo reactionPeriodRuleBo = (ReactionPeriodRuleBo) reactionRuleBo;
 		validateRuleInputs(reactionPeriodRuleBo);
-		ReactionPeriodRuleAction reactionPeriodRuleAction = reactionPeriodRuleConverter
+		ReactionPeriodRuleAction reactionPeriodRuleAction = ReactionPeriodRuleConverter
 				.convertFromBo(reactionPeriodRuleBo);
 		reactionPeriodActionDlService.createOrUpdate(reactionPeriodRuleAction);
 		return reactionPeriodRuleBo;
@@ -96,7 +94,7 @@ public class ReactionPeriodRuleService extends GeneralRuleService implements Ser
 
 					ReactionPeriodRuleAction reactionPeriodRuleAction = reactionPeriodActionDlService
 							.findByRuleId(rule.getReaRuleId());
-					reacPrdRuleBo = reactionPeriodRuleConverter.convertToBo(reactionPeriodRuleAction, reacPrdRuleBo);
+					reacPrdRuleBo = ReactionPeriodRuleConverter.convertToBo(reactionPeriodRuleAction, reacPrdRuleBo);
 					ruleBos.add(reacPrdRuleBo);
 
 				}
@@ -114,7 +112,7 @@ public class ReactionPeriodRuleService extends GeneralRuleService implements Ser
 		ReactionPeriodRuleBo reaPrdRule = (ReactionPeriodRuleBo) ruleBo;
 		ReactionPeriodRuleAction reactionPeriodRuleAction = reactionPeriodActionDlService
 				.findByRuleId(reaPrdRule.getRuleId());
-		reaPrdRule = reactionPeriodRuleConverter.convertToBo(reactionPeriodRuleAction, reaPrdRule);
+		reaPrdRule = ReactionPeriodRuleConverter.convertToBo(reactionPeriodRuleAction, reaPrdRule);
 		reaPrdRule.setType(RuleType.REACTION_PERIOD.getRuleTypeName());
 		return reaPrdRule;
 

@@ -6,7 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class PriceProductHierarchySetElmntPK implements Serializable {
+public class PriceProductHierarchySetElementPK implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -36,10 +36,10 @@ public class PriceProductHierarchySetElmntPK implements Serializable {
 		if (this == other) {
 			return true;
 		}
-		if (!(other instanceof PriceProductHierarchySetElmntPK)) {
+		if (!(other instanceof PriceProductHierarchySetElementPK)) {
 			return false;
 		}
-		PriceProductHierarchySetElmntPK castOther = (PriceProductHierarchySetElmntPK) other;
+		PriceProductHierarchySetElementPK castOther = (PriceProductHierarchySetElementPK) other;
 		return (this.productHierarchySetId == castOther.productHierarchySetId)
 				&& (this.productHierarchyElementId == castOther.productHierarchyElementId);
 	}

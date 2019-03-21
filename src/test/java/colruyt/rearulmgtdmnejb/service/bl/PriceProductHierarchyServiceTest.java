@@ -11,7 +11,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-
 import org.jose4j.json.internal.json_simple.parser.ParseException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,13 +32,12 @@ import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchyElement;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySet;
-import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmnt;
-import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmntPK;
+import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElement;
+import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElementPK;
 import colruyt.rearulmgtdmnejb.exception.PriceProductExternalServiceException;
 import colruyt.rearulmgtdmnejb.exception.PriceProductServiceDownException;
 import colruyt.rearulmgtdmnejb.service.dl.ProductHierarchyElementDlService;
 import colruyt.rearulmgtdmnejb.service.dl.ProductHierarchySetDlService;
-import colruyt.rearulmgtdmnejb.util.ProductHierarchyElementConverter;
 import junit.framework.Assert;
 
 @Transactional
@@ -49,8 +47,6 @@ public class PriceProductHierarchyServiceTest {
 	@TestedObject
 	private PriceProductHierarchyService priceProductHierarchyBlService;
 	@InjectIntoByType
-	private ProductHierarchyElementConverter productHierarchyElementConverter = Mockito.mock(ProductHierarchyElementConverter.class);
-	@InjectIntoByType
 	private ProductHierarchyElementDlService productHierarchyElementDlService = Mockito
 			.mock(ProductHierarchyElementDlService.class);
 	@InjectIntoByType
@@ -59,9 +55,8 @@ public class PriceProductHierarchyServiceTest {
 
 	@Test
 	public void createProductHierarchySetTest() {
-		String logonId = "xyz";
 		long productHierarchySetId = 1l;
-		when(priceProductHierarchyBlService.getProductHrchyElmnt(getProductHierarchyElement(), logonId))
+		when(priceProductHierarchyBlService.getProductHrchyElmnt(Mockito.anyListOf(ProductHierarchyElementBo.class), "ktr"))
 				.thenReturn(getReaPpdHchyElmnt());
 		when(productHierarchySetDlService.create(Mockito.any(PriceProductHierarchySet.class)))
 				.thenReturn(getReaPpdHchyset());
@@ -75,9 +70,8 @@ public class PriceProductHierarchyServiceTest {
 
 	@Test
 	public void createProductHierarchySetFailTest() {
-		String logonId = "sa";
 		long productHierarchySetId = 1l;
-		when(priceProductHierarchyBlService.getProductHrchyElmnt(getProductHierarchyElement(), logonId))
+		when(priceProductHierarchyBlService.getProductHrchyElmnt(Mockito.anyListOf(ProductHierarchyElementBo.class), "ktr"))
 				.thenReturn(getReaPpdHchyElmnt());
 		when(productHierarchySetDlService.create(Mockito.any(PriceProductHierarchySet.class)))
 				.thenReturn(getReaPpdHchyset());
@@ -285,17 +279,20 @@ public class PriceProductHierarchyServiceTest {
 
 	}
 
-	public List<PriceProductHierarchySetElmnt> getReaPpdHchysetElmnt() {
-		List<PriceProductHierarchySetElmnt> reaPpdHchysetElmntlist = Lists.newArrayList();
-		PriceProductHierarchySetElmnt reaPpdHchysetElmnt = new PriceProductHierarchySetElmnt();
+	public List<PriceProductHierarchySetElement> getReaPpdHchysetElmnt() {
+		List<PriceProductHierarchySetElement> reaPpdHchysetElmntlist = Lists.newArrayList();
+		PriceProductHierarchySetElement reaPpdHchysetElmnt = new PriceProductHierarchySetElement();
 		reaPpdHchysetElmnt.setLstUpdateBy("Sa");
-		PriceProductHierarchySetElmntPK hierarchySetElmntPK = new PriceProductHierarchySetElmntPK();
-		hierarchySetElmntPK.setProductHierarchyElementId(1L);
-		hierarchySetElmntPK.setProdicyHierarchySetId(1L);
-		reaPpdHchysetElmnt.setId(hierarchySetElmntPK);
+		reaPpdHchysetElmnt.setId(getPriceProductHierarchySetElementPK());
 		reaPpdHchysetElmntlist.add(reaPpdHchysetElmnt);
 		return reaPpdHchysetElmntlist;
-
+	}
+	private PriceProductHierarchySetElementPK getPriceProductHierarchySetElementPK(){
+		PriceProductHierarchySetElementPK hierarchySetElmntPK = new PriceProductHierarchySetElementPK();
+		hierarchySetElmntPK.setProductHierarchyElementId(1L);
+		hierarchySetElmntPK.setProdicyHierarchySetId(1L);
+		return hierarchySetElmntPK;
+		
 	}
 
 	public PriceProductHierarchyElement createReaPpdHchyElmnt() {

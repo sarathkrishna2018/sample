@@ -1,25 +1,21 @@
 package colruyt.rearulmgtdmnejb.utils;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
 
 import java.util.Date;
 import java.util.List;
 
-
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mockito;
 import org.unitils.UnitilsJUnit4TestClassRunner;
 import org.unitils.database.annotations.Transactional;
-import org.unitils.inject.annotation.InjectIntoByType;
-import org.unitils.inject.annotation.TestedObject;
 
 import com.google.common.collect.Lists;
 
-import colruyt.rearulmgtdmnejb.bo.ProductHierarchyElementBo;
 import colruyt.rearulmgtdmnejb.bo.GeneralRuleBo;
+import colruyt.rearulmgtdmnejb.bo.ProductHierarchyElementBo;
 import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
 import colruyt.rearulmgtdmnejb.bo.RefActionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefLangBo;
@@ -27,24 +23,19 @@ import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchyElement;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySet;
-import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmnt;
-import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmntPK;
+import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElement;
+import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElementPK;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.entity.ReactionRuleSet;
-
 import colruyt.rearulmgtdmnejb.service.bl.ReferenceDataService;
-import colruyt.rearulmgtdmnejb.util.ReaRuleConverter;
 import colruyt.rearulmgtdmnejb.util.ReaRulesetConverter;
 
 @Transactional
 @RunWith(UnitilsJUnit4TestClassRunner.class)
 
 public class ReaRulesetConverterTest {
-	@TestedObject
-	private ReaRulesetConverter reaRulesetConverter;
-	@InjectIntoByType
-	private ReaRuleConverter reaRuleConverter=Mockito.mock(ReaRuleConverter.class);
-	@InjectIntoByType
+	
+	@InjectMocks
 	private ReferenceDataService referenceDataService=Mockito.mock(ReferenceDataService.class);
 	@Test
 	public void createConverterTest(){
@@ -57,7 +48,7 @@ public class ReaRulesetConverterTest {
 		reaRuleset.setRulesetComment(reactionRulesetBo.getComments());
 		reaRuleset.setRulesetName(reactionRulesetBo.getName());
 		reaRuleset.setLstUpdateBy(logonId);
-		ReactionRuleSet expectedReaRuleset=reaRulesetConverter.convertFromBo(reaRuleset, reactionRulesetBo, logonId);
+		ReactionRuleSet expectedReaRuleset=ReaRulesetConverter.convertFromBo(reaRuleset, reactionRulesetBo, logonId);
 		assertEquals(new Long(1L), Long.valueOf(expectedReaRuleset.getColruytGroupChainId()));
 	}
 	@Test
@@ -71,8 +62,7 @@ public class ReaRulesetConverterTest {
 		reactionRulesetBo.setRefRuleTypeBo(getRefRuleType());
 		reactionRulesetBo.setRuleLines(getReactionRuleBo());
 		reactionRulesetBo.setRulesetId(reactionRuleSet.getReaRulesetId());
-		when(reaRuleConverter.convertToBo(Mockito.anyListOf(ReactionRule.class))).thenReturn(getReactionRuleBo());
-		ReactionRulesetBo expectedreactionRulesetBo=reaRulesetConverter.convertToBo(getReactRuleset());
+		ReactionRulesetBo expectedreactionRulesetBo=ReaRulesetConverter.convertToBo(getReactRuleset());
 		assertEquals(reactionRulesetBo.getRulesetId(), expectedreactionRulesetBo.getRulesetId());
 	}
 	/*@Test
@@ -114,7 +104,7 @@ public class ReaRulesetConverterTest {
 		ruleBo.setColruytGroupChainId(reactionRuleSet.getColruytGroupChainId());
 		ruleBo.setPriceCompetitorChainId(reactionRuleSet.getPriceCompetitorChainId());
 		rulesetBoList.add(ruleBo);
-		List<ReactionRulesetBo> expectedReactionRulesetBo=reaRulesetConverter.convertToBo(getReactionRuleSetlist());
+		List<ReactionRulesetBo> expectedReactionRulesetBo=ReaRulesetConverter.convertToBo(getReactionRuleSetlist());
 		assertEquals(rulesetBoList.size(),expectedReactionRulesetBo.size());
 		
 		
@@ -242,17 +232,17 @@ public class ReaRulesetConverterTest {
 		productHierarchyElements.add(priceProductHierarchyElement);
 		return productHierarchyElements;
 	}
-	private List<PriceProductHierarchySetElmnt> getreaPpdHchysetElmnts() {
-		List<PriceProductHierarchySetElmnt> priceProductHierarchySetElmnts=Lists.newArrayList();
-		PriceProductHierarchySetElmnt priceProductHierarchySetElmnt=new PriceProductHierarchySetElmnt();
+	private List<PriceProductHierarchySetElement> getreaPpdHchysetElmnts() {
+		List<PriceProductHierarchySetElement> priceProductHierarchySetElmnts=Lists.newArrayList();
+		PriceProductHierarchySetElement priceProductHierarchySetElmnt=new PriceProductHierarchySetElement();
 		priceProductHierarchySetElmnt.setId(getppdid());
 		priceProductHierarchySetElmnt.setLstUpdateBy("sa");
 		priceProductHierarchySetElmnts.add(priceProductHierarchySetElmnt);
 		return priceProductHierarchySetElmnts;
 	}
 
-	private PriceProductHierarchySetElmntPK getppdid() {
-		PriceProductHierarchySetElmntPK priceProductHierarchySetElmntPK=new PriceProductHierarchySetElmntPK();
+	private PriceProductHierarchySetElementPK getppdid() {
+		PriceProductHierarchySetElementPK priceProductHierarchySetElmntPK=new PriceProductHierarchySetElementPK();
 		priceProductHierarchySetElmntPK.setProductHierarchyElementId(1);
 		priceProductHierarchySetElmntPK.setProdicyHierarchySetId(1);
 		return priceProductHierarchySetElmntPK;

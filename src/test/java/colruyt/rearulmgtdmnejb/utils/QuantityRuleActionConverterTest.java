@@ -1,16 +1,15 @@
 package colruyt.rearulmgtdmnejb.utils;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mockito;
 import org.unitils.UnitilsJUnit4TestClassRunner;
-import org.unitils.database.annotations.Transactional;
-import org.unitils.inject.annotation.InjectIntoByType;
 import org.unitils.inject.annotation.TestedObject;
 
 import com.google.common.collect.Lists;
@@ -23,13 +22,13 @@ import colruyt.rearulmgtdmnejb.entity.QuantityRuleAction;
 import colruyt.rearulmgtdmnejb.service.bl.ReferenceDataService;
 import colruyt.rearulmgtdmnejb.util.QuantityRuleActionConverter;
 
-@Transactional
+
 @RunWith(UnitilsJUnit4TestClassRunner.class)
 public class QuantityRuleActionConverterTest {
 	@TestedObject
 	private QuantityRuleActionConverter quantityRuleActionConverter;
 
-	@InjectIntoByType
+	@InjectMocks
 	private ReferenceDataService referenceDataService = Mockito.mock(ReferenceDataService.class);
 
 	@Test
@@ -39,7 +38,7 @@ public class QuantityRuleActionConverterTest {
 		quantityRuleAction.setReactionRuleId(1L);
 		quantityRuleAction.setQuantityConditionId(quantityRule.getConditionType().getCodeTypeId());
 		quantityRuleAction.setQuantityTypeId(quantityRule.getQuantityPriceType().getQuantityTypeId());
-		QuantityRuleAction expectedReaQtyRule = quantityRuleActionConverter.convertFromBo(quantityRule);
+		QuantityRuleAction expectedReaQtyRule = QuantityRuleActionConverter.convertFromBo(quantityRule);
 		assertEquals(2, expectedReaQtyRule.getQuantityTypeId());
 
 	}
@@ -48,14 +47,13 @@ public class QuantityRuleActionConverterTest {
 	public void convertToBoTest() {
 		QuantityRuleAction qtyRule = getReaQtyRule();
 		QuantityRuleBo quantityRule = getQuantityRule();
-		when(referenceDataService.getAllQuantityPriceTypes()).thenReturn(getPriceTypeLst());
 		when(referenceDataService.getAllQuantityConditionTypes()).thenReturn(getQtyCondLst());
+		when(referenceDataService.getAllQuantityPriceTypes()).thenReturn(getPriceTypeLst());  
 		quantityRule.setQuantityPriceType(getRefQuantityPriceType());
 		quantityRule.setConditionType(getRefQuantityConditionType());
-		QuantityRuleBo qtyRuleBo = quantityRuleActionConverter.convertToBo(qtyRule, quantityRule);
+		QuantityRuleBo qtyRuleBo = QuantityRuleActionConverter.convertToBo(qtyRule, quantityRule);
 		assertEquals(qtyRuleBo.getQuantityPriceType(), quantityRule.getQuantityPriceType());
 		assertEquals(qtyRuleBo.getConditionType(), quantityRule.getConditionType());
-
 	}
 
 	private List<RefQuantityConditionTypeBo> getQtyCondLst() {
@@ -77,6 +75,7 @@ public class QuantityRuleActionConverterTest {
 		quantityRule.setRuleId(1L);
 		quantityRule.setConditionType(getRefQuantityConditionType());
 		quantityRule.setQuantityPriceType(getRefQuantityPriceType());
+		
 		return quantityRule;
 
 	}
@@ -111,6 +110,7 @@ public class QuantityRuleActionConverterTest {
 		QuantityRuleAction reaQtyRule = new QuantityRuleAction();
 		reaQtyRule.setQuantityConditionId(1);
 		reaQtyRule.setQuantityTypeId(1);
+		reaQtyRule.setReactionRuleId(1L);
 		return reaQtyRule;
 	}
 

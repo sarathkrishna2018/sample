@@ -23,6 +23,7 @@ import colruyt.rearulmgtdmnejb.bo.ProductHierarchyElementBo;
 import colruyt.rearulmgtdmnejb.bo.QuantityRuleBo;
 import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
 import colruyt.rearulmgtdmnejb.bo.RefActionTypeBo;
+import colruyt.rearulmgtdmnejb.bo.RefLangBo;
 import colruyt.rearulmgtdmnejb.bo.RefQuantityConditionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefQuantityPriceTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
@@ -32,7 +33,6 @@ import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleValidationException;
 import colruyt.rearulmgtdmnejb.service.dl.QuantityRuleActionDlService;
-import colruyt.rearulmgtdmnejb.util.QuantityRuleActionConverter;
 import junit.framework.Assert;
 
 @Transactional
@@ -41,8 +41,6 @@ import junit.framework.Assert;
 public class QuantityRuleServiceTest {
 	@TestedObject
 	private QuantityRuleService quantityRuleBlService;
-	@InjectIntoByType
-	private QuantityRuleActionConverter quantityRuleActionConverter = Mockito.mock(QuantityRuleActionConverter.class);;
 	@InjectIntoByType
 	private QuantityRuleActionDlService quantityRuleActionDlService = Mockito.mock(QuantityRuleActionDlService.class);
 	@InjectMocks
@@ -53,7 +51,6 @@ public class QuantityRuleServiceTest {
 
 	@Test
 	public void createRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		when(quantityRuleActionConverter.convertFromBo(Mockito.any(QuantityRuleBo.class))).thenReturn(getReaQtyRule());
 		when(quantityRuleActionDlService.createOrUpdate(Mockito.any(QuantityRuleAction.class)))
 				.thenReturn(getReaQtyRule());
 		GeneralRuleBo expectedQuantityRule = quantityRuleBlService.createRuleSpecificAttributes(getQuantityRuleBo());
@@ -62,7 +59,6 @@ public class QuantityRuleServiceTest {
 
 	@Test
 	public void modifyRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		when(quantityRuleActionConverter.convertFromBo(Mockito.any(QuantityRuleBo.class))).thenReturn(getReaQtyRule());
 		when(quantityRuleActionDlService.createOrUpdate(Mockito.any(QuantityRuleAction.class)))
 				.thenReturn(getReaQtyRule());
 		GeneralRuleBo expectedQuantityRule = quantityRuleBlService.modifyRuleSpecificAttributes(getQuantityRuleBo());
@@ -72,8 +68,7 @@ public class QuantityRuleServiceTest {
 	@Test
 	public void getRuleSpecificValuesTest() throws ReaRuleManagementException {
 		when(quantityRuleActionDlService.findByRuleId(Mockito.anyLong())).thenReturn(getReaQtyRule());
-		when(quantityRuleActionConverter.convertToBo(Mockito.any(QuantityRuleAction.class),
-				Mockito.any(QuantityRuleBo.class))).thenReturn(getQuantityRuleBo());
+		when(referenceDataService.getAllQuantityConditionTypes()).thenReturn(getQtyCondLst());
 		GeneralRuleBo expectedQuantityRule = quantityRuleBlService.getRuleSpecificValues(getQuantityRuleBo());
 		Assert.assertEquals(new Long(1l), expectedQuantityRule.getRuleId());
 	}
@@ -250,6 +245,29 @@ public class QuantityRuleServiceTest {
 		ReactionRulesetBo ruleSetBo = getReactionRulesetBo();
 		reaList.add(ruleSetBo);
 		return reaList;
+	}
+	private List<RefQuantityConditionTypeBo> getQtyCondLst() {
+		List<RefQuantityConditionTypeBo> qtyCondLst = Lists.newArrayList();
+		RefQuantityConditionTypeBo refQuantityConditionType = getRefQuantityConditionType();
+		qtyCondLst.add(refQuantityConditionType);
+		return qtyCondLst;
+	}
+	public RefQuantityConditionTypeBo getRefQuantityConditionType() {
+		RefQuantityConditionTypeBo refQuantityConditionType = new RefQuantityConditionTypeBo();
+		refQuantityConditionType.setCodeTypeId(1);
+		refQuantityConditionType.setDescription("English");
+		refQuantityConditionType.setCodeLang(getRefLangBo());
+		return refQuantityConditionType;
+	}
+
+	public List<RefLangBo> getRefLangBo() {
+		List<RefLangBo> refLanglist = Lists.newArrayList();
+		RefLangBo refLang = new RefLangBo();
+		refLang.setIsoLangCode("EN");
+		refLang.setValue("English");
+		refLanglist.add(refLang);
+		return refLanglist;
+
 	}
 
 }

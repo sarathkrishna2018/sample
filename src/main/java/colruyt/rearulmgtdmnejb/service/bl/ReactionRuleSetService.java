@@ -19,9 +19,9 @@ import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleValidationException;
 import colruyt.rearulmgtdmnejb.service.dl.ReactionRuleSetDlService;
 import colruyt.rearulmgtdmnejb.util.ExceptionMessageConstants;
-import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnDebugMessage;
 import colruyt.rearulmgtdmnejb.util.ReaRulesetConverter;
 import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnConstants;
+import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnDebugMessage;
 
 @Stateless
 @LocalBean
@@ -32,9 +32,6 @@ public class ReactionRuleSetService implements Serializable {
 
 	@EJB
 	private ReactionRuleSetDlService reactionRuleSetDlService;
-
-	@EJB
-	private ReaRulesetConverter reaRulesetConverter;
 
 	public ReactionRulesetBo createReactionRuleSet(ReactionRulesetBo reactionRulesetBo, boolean isDuplicationAllowed,
 			String userId) throws ReaRuleManagementException {
@@ -49,7 +46,7 @@ public class ReactionRuleSetService implements Serializable {
 			reaRuleset = reactionRuleSetDlService.findByPk(reactionRulesetBo.getRulesetId());
 		}
 		if (reactionRulesets == null || reactionRulesets.isEmpty()) {
-			reaRuleset = reaRulesetConverter.convertFromBo(reaRuleset, reactionRulesetBo, userId);
+			reaRuleset = ReaRulesetConverter.convertFromBo(reaRuleset, reactionRulesetBo, userId);
 			reaRuleset = reactionRuleSetDlService.createOrUpdate(reaRuleset);
 			reactionRulesetBo.setRulesetId(reaRuleset.getReaRulesetId());
 		} else {
@@ -61,7 +58,7 @@ public class ReactionRuleSetService implements Serializable {
 	public List<ReactionRulesetBo> find(long cgChainId, long compChainId) {
 		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_FINDREACTIONRULESET);
 		List<ReactionRuleSet> ruleSetList = reactionRuleSetDlService.findByCgChainAndPCChain(cgChainId, compChainId);
-		return reaRulesetConverter.convertToBo(ruleSetList);
+		return ReaRulesetConverter.convertToBo(ruleSetList);
 
 	}
 
@@ -87,7 +84,7 @@ public class ReactionRuleSetService implements Serializable {
 		if (reactionRuleSet == null) {
 			throw new ReaRuleManagementException("EN", ExceptionMessageConstants.MESSAGE_REACTION_RULESET_ABSENT);
 		}
-		return reaRulesetConverter.convertToBo(reactionRuleSet);
+		return ReaRulesetConverter.convertToBo(reactionRuleSet);
 
 	}
 
@@ -100,7 +97,7 @@ public class ReactionRuleSetService implements Serializable {
 		if (reactionRuleSetBo.getRefRuleTypeBo().getRuleTypeId() == 1 && (reactionRuleSetBo.getName().isEmpty())) {
 			throw new ReaRuleManagementException("EN", ExceptionMessageConstants.MESSAGE_REACTION_RULESETNAME_ABSENT);
 		} else {
-			ReactionRuleSet reaRuleset = reaRulesetConverter.convertFromBo(existingReactionRuleset, reactionRuleSetBo,
+			ReactionRuleSet reaRuleset = ReaRulesetConverter.convertFromBo(existingReactionRuleset, reactionRuleSetBo,
 					logonId);
 			reactionRuleSetDlService.createOrUpdate(reaRuleset);
 		}

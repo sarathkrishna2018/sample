@@ -18,8 +18,8 @@ import org.unitils.orm.jpa.annotation.JpaEntityManagerFactory;
 import com.google.common.collect.Lists;
 
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchyElement;
-import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmnt;
-import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmntPK;
+import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElement;
+import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElementPK;
 import junit.framework.Assert;
 
 @JpaEntityManagerFactory(persistenceUnit = "in_memory_database_testing", configFile = "/META-INF/persistence-test.xml")
@@ -88,11 +88,11 @@ public class ProductHierarchyElementDlServiceTest {
 		return reaPpdHchyElmnt;
 	}
 
-	private List<PriceProductHierarchySetElmnt> getReaPpdHchysetElmnt() {
-		List<PriceProductHierarchySetElmnt> reaPpdHchysetElmntlist = Lists.newArrayList();
-		PriceProductHierarchySetElmnt reaPpdHchysetElmnt = new PriceProductHierarchySetElmnt();
+	private List<PriceProductHierarchySetElement> getReaPpdHchysetElmnt() {
+		List<PriceProductHierarchySetElement> reaPpdHchysetElmntlist = Lists.newArrayList();
+		PriceProductHierarchySetElement reaPpdHchysetElmnt = new PriceProductHierarchySetElement();
 		reaPpdHchysetElmnt.setLstUpdateBy("Sa");
-		PriceProductHierarchySetElmntPK hierarchySetElmntPK = new PriceProductHierarchySetElmntPK();
+		PriceProductHierarchySetElementPK hierarchySetElmntPK = new PriceProductHierarchySetElementPK();
 		hierarchySetElmntPK.setProductHierarchyElementId(1L);
 		hierarchySetElmntPK.setProdicyHierarchySetId(1L);
 		reaPpdHchysetElmnt.setId(hierarchySetElmntPK);

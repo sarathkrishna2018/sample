@@ -33,8 +33,6 @@ import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleValidationException;
 import colruyt.rearulmgtdmnejb.service.dl.FilteringRuleActionDlService;
 import colruyt.rearulmgtdmnejb.service.dl.ReactionRuleDlService;
-import colruyt.rearulmgtdmnejb.util.FilteringRuleActionConverter;
-import colruyt.rearulmgtdmnejb.util.ReaRuleConverter;
 import junit.framework.Assert;
 
 @Transactional
@@ -48,21 +46,15 @@ public class FilteringRuleServiceTest {
 	private FilteringRuleActionDlService filteringRuleActionDlService = Mockito
 			.mock(FilteringRuleActionDlService.class);
 	@InjectIntoByType
-	private FilteringRuleActionConverter filteringRuleActionConverter = Mockito
-			.mock(FilteringRuleActionConverter.class);
-	@InjectIntoByType
 	private ReactionRuleDlService reactionRuleDlService = Mockito.mock(ReactionRuleDlService.class);
 	@InjectMocks
 	private GeneralRuleService generalRuleService = Mockito.mock(GeneralRuleService.class);
 
 	@InjectIntoByType
 	private ReferenceDataService referenceDataService = Mockito.mock(ReferenceDataService.class);
-	@InjectIntoByType
-	private ReaRuleConverter reaRuleConverter = Mockito.mock(ReaRuleConverter.class);
-
+	
 	@Test
 	public void createRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		when(filteringRuleActionConverter.convertFromBo(Mockito.any(FilteringRuleBo.class))).thenReturn(getReaFltRule());
 		when(filteringRuleActionDlService.createOrUpdate(Mockito.any(FilteringRuleAction.class)))
 				.thenReturn(getReaFltRule());
 		GeneralRuleBo expectedFilteringRule = filteringRuleBlService.createRuleSpecificAttributes(getFilteringRuleBo());
@@ -71,7 +63,6 @@ public class FilteringRuleServiceTest {
 
 	@Test
 	public void modifyRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		when(filteringRuleActionConverter.convertFromBo(Mockito.any(FilteringRuleBo.class))).thenReturn(getReaFltRule());
 		when(filteringRuleActionDlService.createOrUpdate(Mockito.any(FilteringRuleAction.class)))
 				.thenReturn(getReaFltRule());
 		GeneralRuleBo expectedFilteringRule = filteringRuleBlService.modifyRuleSpecificAttributes(getFilteringRuleBo());
@@ -80,8 +71,6 @@ public class FilteringRuleServiceTest {
 	@Test
 	public void getRuleSpecificValuesTest() throws ReaRuleManagementException {
 		when(filteringRuleActionDlService.findByRuleId(Mockito.anyLong())).thenReturn(getReaFltRule());
-		when(filteringRuleActionConverter.convertToBo(Mockito.any(FilteringRuleAction.class),
-				Mockito.any(FilteringRuleBo.class))).thenReturn(getFilteringRuleBo());
 		GeneralRuleBo expectedFilteringRule = filteringRuleBlService.getRuleSpecificValues(getFilteringRuleBo());
 		Assert.assertEquals(new Long(1l), expectedFilteringRule.getRuleId());
 	}

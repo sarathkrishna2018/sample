@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -37,7 +35,6 @@ import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleValidationException;
 import colruyt.rearulmgtdmnejb.service.dl.ProposalNotToReactActionDlService;
-import colruyt.rearulmgtdmnejb.util.ProposeNotToReactRuleConverter;
 import junit.framework.Assert;
 
 @Transactional
@@ -48,9 +45,6 @@ public class ProposeNotToReactRuleServiceTest {
 	@InjectIntoByType
 	private ProposalNotToReactActionDlService proposalNotToReactActionDlService = Mockito
 			.mock(ProposalNotToReactActionDlService.class);
-	@InjectIntoByType
-	private ProposeNotToReactRuleConverter proposeNotToReactRuleConverter = Mockito
-			.mock(ProposeNotToReactRuleConverter.class);
 	@InjectMocks
 	private GeneralRuleService generalRuleService = Mockito.mock(GeneralRuleService.class);
 
@@ -59,8 +53,6 @@ public class ProposeNotToReactRuleServiceTest {
 
 	@Test
 	public void createRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		when(proposeNotToReactRuleConverter.convertFromBo(Mockito.any(ProposeNotToReactRuleBo.class)))
-				.thenReturn(getReaNreactAct());
 		when(proposalNotToReactActionDlService.createOrUpdate(Mockito.any(ProposalNotToReactRuleAction.class)))
 				.thenReturn(getReaNreactAct());
 		GeneralRuleBo expectedProposeNotToReactRule = proposeNotToReactRuleService
@@ -70,8 +62,6 @@ public class ProposeNotToReactRuleServiceTest {
 
 	@Test
 	public void modifyRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException {
-		when(proposeNotToReactRuleConverter.convertFromBo(Mockito.any(ProposeNotToReactRuleBo.class)))
-				.thenReturn(getReaNreactAct());
 		when(proposalNotToReactActionDlService.createOrUpdate(Mockito.any(ProposalNotToReactRuleAction.class)))
 				.thenReturn(getReaNreactAct());
 		GeneralRuleBo expectedProposeNotToReactRule = proposeNotToReactRuleService
@@ -81,8 +71,6 @@ public class ProposeNotToReactRuleServiceTest {
 	@Test
 	public void getRuleSpecificValuesTest() throws ReaRuleManagementException {
 		when(proposalNotToReactActionDlService.findByRuleId(Mockito.anyLong())).thenReturn(getReaNreactAct());
-		when(proposeNotToReactRuleConverter.convertToBo(Mockito.any(ProposalNotToReactRuleAction.class),
-				Mockito.any(ProposeNotToReactRuleBo.class))).thenReturn(getProposeNotToReactRuleBo());
 		GeneralRuleBo expectedProposeNotToReactRule = proposeNotToReactRuleService
 				.getRuleSpecificValues(getProposeNotToReactRuleBo());
 		Assert.assertEquals(new Long(1l), expectedProposeNotToReactRule.getRuleId());

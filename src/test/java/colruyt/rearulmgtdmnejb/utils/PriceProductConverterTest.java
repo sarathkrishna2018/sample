@@ -7,7 +7,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.unitils.UnitilsJUnit4TestClassRunner;
 import org.unitils.database.annotations.Transactional;
-import org.unitils.inject.annotation.TestedObject;
 
 import com.google.common.collect.Lists;
 
@@ -23,13 +22,10 @@ import colruyt.rearulmgtdmnejb.util.PriceProductConverter;
 @Transactional
 @RunWith(UnitilsJUnit4TestClassRunner.class)
 public class PriceProductConverterTest {
-	@TestedObject
-	private PriceProductConverter priceProductConverter;
-
 	@Test
 	public void convertProductsTest() {
 		String langCode = "EN";
-		List<PriceProductHierarchyBo> expectedProducts = priceProductConverter.convertToBo(getMainCategoryBoList(),
+		List<PriceProductHierarchyBo> expectedProducts = PriceProductConverter.convertToBo(getMainCategoryBoList(),
 				langCode);
 		Assert.assertEquals(getMainCategoryBoList().size(), expectedProducts.size());
 	}
@@ -37,7 +33,7 @@ public class PriceProductConverterTest {
 	@Test
 	public void convertProductsFailTest() {
 		String langCode = "EN";
-		List<PriceProductHierarchyBo> expectedProducts = priceProductConverter.convertToBo(getMainCategoryBoList(),
+		List<PriceProductHierarchyBo> expectedProducts = PriceProductConverter.convertToBo(getMainCategoryBoList(),
 				langCode);
 		Assert.assertNotSame(new Long(5l), expectedProducts.size());
 	}
@@ -45,7 +41,7 @@ public class PriceProductConverterTest {
 	@Test
 	public void convertTest() {
 		String langCode = "EN";
-		PriceProductHierarchyBo expectedPriceProductHierarchy = priceProductConverter.convertToBo(getMainCategoryBo(),
+		PriceProductHierarchyBo expectedPriceProductHierarchy = PriceProductConverter.convertToBo(getMainCategoryBo(),
 				langCode);
 		Assert.assertNotNull(expectedPriceProductHierarchy);
 	}
@@ -53,7 +49,7 @@ public class PriceProductConverterTest {
 	@Test
 	public void convertFailTest() {
 		String langCode = "EN";
-		PriceProductHierarchyBo expectedPriceProductHierarchy = priceProductConverter.convertToBo(getMainCategoryBo(),
+		PriceProductHierarchyBo expectedPriceProductHierarchy = PriceProductConverter.convertToBo(getMainCategoryBo(),
 				langCode);
 		Assert.assertNotSame(new Long(5l), expectedPriceProductHierarchy.getChildHierarchy().size());
 
@@ -128,12 +124,12 @@ public class PriceProductConverterTest {
 	}
 
 	private List<LangHierarchyBo> getMainCategoryLang() {
-		List<LangHierarchyBo> langHirerachyBos = Lists.newArrayList();
-		LangHierarchyBo langHirerachyBo = new LangHierarchyBo();
-		langHirerachyBo.setName("Eng");
-		langHirerachyBo.setRefIsoLanguage(getRefIsoLanguage());
-		langHirerachyBos.add(langHirerachyBo);
-		return langHirerachyBos;
+		List<LangHierarchyBo> langHierarchyBos = Lists.newArrayList();
+		LangHierarchyBo langHierarchyBo = new LangHierarchyBo();
+		langHierarchyBo.setName("Eng");
+		langHierarchyBo.setRefIsoLanguage(getRefIsoLanguage());
+		langHierarchyBos.add(langHierarchyBo);
+		return langHierarchyBos;
 	}
 
 	private RefIsoLangBO getRefIsoLanguage() {

@@ -2,19 +2,14 @@ package colruyt.rearulmgtdmnejb.util;
 
 import java.io.Serializable;
 
-import javax.ejb.LocalBean;
-import javax.ejb.Stateless;
-
 import colruyt.rearulmgtdmnejb.bo.ReactingRuleBo;
 import colruyt.rearulmgtdmnejb.entity.ReactingRuleAction;
 
-@Stateless
-@LocalBean
 public class ReactingRuleConverter implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public ReactingRuleAction convertFromBo(ReactingRuleBo reactingRuleBo) {
+	public static ReactingRuleAction convertFromBo(ReactingRuleBo reactingRuleBo) {
 		ReactingRuleAction reactingAct = new ReactingRuleAction();
 		reactingAct.setReactionRuleId(reactingRuleBo.getRuleId());
 		reactingAct.setReactingAmt(reactingRuleBo.getReactingAmount());
@@ -25,7 +20,7 @@ public class ReactingRuleConverter implements Serializable {
 		return reactingAct;
 	}
 
-	public ReactingRuleBo convertToBo(ReactingRuleAction reactingRuleAction, ReactingRuleBo reactingBo) {
+	public static ReactingRuleBo convertToBo(ReactingRuleAction reactingRuleAction, ReactingRuleBo reactingBo) {
 		reactingBo.setReactingAmount(reactingRuleAction.getReactingAmt());
 		reactingBo.setReactingPercentage(reactingRuleAction.getReactingPercentage());
 		reactingBo.setThresholdAmount(reactingRuleAction.getThresholdAmount());

@@ -13,10 +13,10 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Lists;
 
+import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.bo.FilteringRuleBo;
 import colruyt.rearulmgtdmnejb.bo.GeneralRuleBo;
 import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
-import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.entity.FilteringRuleAction;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.enums.RuleType;
@@ -37,8 +37,6 @@ public class FilteringRuleService extends GeneralRuleService implements Serializ
 
 	@EJB
 	private FilteringRuleActionDlService filteringRuleActionDlService;
-	@EJB
-	private FilteringRuleActionConverter filteringRuleActionConverter;
 
 	@Override
 	public GeneralRuleBo createRuleSpecificAttributes(GeneralRuleBo reactionRuleBo)
@@ -46,7 +44,7 @@ public class FilteringRuleService extends GeneralRuleService implements Serializ
 		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_FILTERINGRULE);
 		FilteringRuleBo filteringRuleBo = (FilteringRuleBo) reactionRuleBo;
 		validateRuleInputs(filteringRuleBo);
-		FilteringRuleAction reaFltRule = filteringRuleActionConverter.convertFromBo(filteringRuleBo);
+		FilteringRuleAction reaFltRule = FilteringRuleActionConverter.convertFromBo(filteringRuleBo);
 		filteringRuleActionDlService.createOrUpdate(reaFltRule);
 		return filteringRuleBo;
 	}
@@ -70,7 +68,7 @@ public class FilteringRuleService extends GeneralRuleService implements Serializ
 		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_MODIFYFILTERINGRULE);
 		FilteringRuleBo filteringRuleBo = (FilteringRuleBo) reactionRuleBo;
 		validateRuleInputs(filteringRuleBo);
-		FilteringRuleAction reaFltRule = filteringRuleActionConverter.convertFromBo(filteringRuleBo);
+		FilteringRuleAction reaFltRule = FilteringRuleActionConverter.convertFromBo(filteringRuleBo);
 		filteringRuleActionDlService.createOrUpdate(reaFltRule);
 		return filteringRuleBo;
 	}
@@ -91,7 +89,7 @@ public class FilteringRuleService extends GeneralRuleService implements Serializ
 					FilteringRuleBo filteringRuleBo = (FilteringRuleBo) ruleBo;
 
 					FilteringRuleAction filteringRule = filteringRuleActionDlService.findByRuleId(rule.getReaRuleId());
-					filteringRuleBo = filteringRuleActionConverter.convertToBo(filteringRule, filteringRuleBo);
+					filteringRuleBo = FilteringRuleActionConverter.convertToBo(filteringRule, filteringRuleBo);
 					ruleBos.add(filteringRuleBo);
 
 				}
@@ -108,7 +106,7 @@ public class FilteringRuleService extends GeneralRuleService implements Serializ
 		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_VIEWFILTERINGRULE);
 		FilteringRuleBo filteringRuleBo = (FilteringRuleBo) ruleBo;
 		FilteringRuleAction filteringRule = filteringRuleActionDlService.findByRuleId(filteringRuleBo.getRuleId());
-		filteringRuleBo = filteringRuleActionConverter.convertToBo(filteringRule, filteringRuleBo);
+		filteringRuleBo = FilteringRuleActionConverter.convertToBo(filteringRule, filteringRuleBo);
 		filteringRuleBo.setType(RuleType.FILTERING.getRuleTypeName());
 		return filteringRuleBo;
 	}
