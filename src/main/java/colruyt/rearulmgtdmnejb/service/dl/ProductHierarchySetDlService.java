@@ -43,25 +43,25 @@ public class ProductHierarchySetDlService implements Serializable{
 	}
 
 	public void removeProductHierarchyElement(Long productHieracrchySetId) {
-		Query query = entityManager.createQuery("Delete from  PriceProductHierarchySetElmnt priceProductHierarchySetElmnt where priceProductHierarchySetElmnt.id.productHierarchySetId = ?1");
+		Query query = entityManager.createQuery("Delete from  PriceProductHierarchySetElement priceProductHierarchySetElement where priceProductHierarchySetElement.id.productHierarchySetId = ?1");
 		query.setParameter(1, productHieracrchySetId).executeUpdate();	
 		
 	}
 	
 	public List<PriceProductHierarchySetElement> findSetElementByElementIds(List<Long> elementValues){
-		Query query = entityManager.createQuery("select distinct priceProductHierarchySetElmnt from  PriceProductHierarchySetElmnt priceProductHierarchySetElmnt where priceProductHierarchySetElmnt.id.productHierarchyElementId IN ?1");
+		Query query = entityManager.createQuery("select distinct priceProductHierarchySetElement from  PriceProductHierarchySetElement priceProductHierarchySetElement where priceProductHierarchySetElement.id.productHierarchyElementId IN ?1");
 		return query.setParameter(1, elementValues).getResultList();	
 		
 	}
 	public List<Long> findSetElementBySetIds(List<Long> setIds){
-		Query query = entityManager.createQuery("select priceProductHierarchySetElmnt.id.productHierarchySetId from  PriceProductHierarchySetElmnt priceProductHierarchySetElmnt where priceProductHierarchySetElmnt.id.productHierarchySetId IN ?1  group by priceProductHierarchySetElmnt.id.productHierarchySetId having count(priceProductHierarchySetElmnt.id.productHierarchyElementId)=1");
+		Query query = entityManager.createQuery("select priceProductHierarchySetElement.id.productHierarchySetId from  PriceProductHierarchySetElement priceProductHierarchySetElement where priceProductHierarchySetElement.id.productHierarchySetId IN ?1  group by priceProductHierarchySetElement.id.productHierarchySetId having count(priceProductHierarchySetElement.id.productHierarchyElementId)=1");
 		return query.setParameter(1, setIds).getResultList();	
 		
 	}
 	
 	
 	public void deleteSetElements(List<Long> productHieracrchySetList) {
-		Query query = entityManager.createQuery("Delete from  PriceProductHierarchySetElmnt priceProductHierarchySetElmnt where priceProductHierarchySetElmnt.id.productHierarchyElementId IN ?1");
+		Query query = entityManager.createQuery("Delete from  PriceProductHierarchySetElement priceProductHierarchySetElement where priceProductHierarchySetElement.id.productHierarchyElementId IN ?1");
 		query.setParameter(1, productHieracrchySetList).executeUpdate();	
 		entityManager.clear();
 	}
@@ -78,7 +78,7 @@ public class ProductHierarchySetDlService implements Serializable{
 	}
 	
 	public void deletePriceProductHierarchySetElemnet(Long ppdHchysetId){
-		Query query = entityManager.createQuery("Delete from  PriceProductHierarchySetElmnt pphse where pphse.id.productHierarchySetId = (?1)");
+		Query query = entityManager.createQuery("Delete from  PriceProductHierarchySetElement pphse where pphse.id.productHierarchySetId = (?1)");
 		query.setParameter(1, ppdHchysetId).executeUpdate();	
 		entityManager.clear();
 	}

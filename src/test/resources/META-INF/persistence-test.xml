@@ -15,8 +15,8 @@
 		<class>colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleAction</class>
 		<class>colruyt.rearulmgtdmnejb.entity.PriceProductHierarchyElement</class>
 		<class>colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySet</class>
-		<class>colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmnt</class>
-		<class>colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElmntPK</class>
+		<class>colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElement</class>
+		<class>colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElementPK</class>
 		<class>colruyt.rearulmgtdmnejb.entity.ReactionPeriodRuleAction</class>
 		<class>colruyt.rearulmgtdmnejb.entity.QuantityRuleAction</class>
 		<class>colruyt.rearulmgtdmnejb.entity.ReactingRuleAction</class>
