@@ -1,16 +1,12 @@
 package colruyt.rearulmgtdmnejb.utils;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
 
 import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mockito;
 import org.unitils.UnitilsJUnit4TestClassRunner;
-import org.unitils.inject.annotation.TestedObject;
 
 import com.google.common.collect.Lists;
 
@@ -19,17 +15,11 @@ import colruyt.rearulmgtdmnejb.bo.RefLangBo;
 import colruyt.rearulmgtdmnejb.bo.RefQuantityConditionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefQuantityPriceTypeBo;
 import colruyt.rearulmgtdmnejb.entity.QuantityRuleAction;
-import colruyt.rearulmgtdmnejb.service.bl.ReferenceDataService;
 import colruyt.rearulmgtdmnejb.util.QuantityRuleActionConverter;
 
 
 @RunWith(UnitilsJUnit4TestClassRunner.class)
 public class QuantityRuleActionConverterTest {
-	@TestedObject
-	private QuantityRuleActionConverter quantityRuleActionConverter;
-
-	@InjectMocks
-	private ReferenceDataService referenceDataService = Mockito.mock(ReferenceDataService.class);
 
 	@Test
 	public void createConverterTest() {
@@ -47,11 +37,9 @@ public class QuantityRuleActionConverterTest {
 	public void convertToBoTest() {
 		QuantityRuleAction qtyRule = getReaQtyRule();
 		QuantityRuleBo quantityRule = getQuantityRule();
-		when(referenceDataService.getAllQuantityConditionTypes()).thenReturn(getQtyCondLst());
-		when(referenceDataService.getAllQuantityPriceTypes()).thenReturn(getPriceTypeLst());  
 		quantityRule.setQuantityPriceType(getRefQuantityPriceType());
 		quantityRule.setConditionType(getRefQuantityConditionType());
-		QuantityRuleBo qtyRuleBo = QuantityRuleActionConverter.convertToBo(qtyRule, quantityRule);
+		QuantityRuleBo qtyRuleBo = QuantityRuleActionConverter.convertToBo(qtyRule, quantityRule,getPriceTypeLst(),getQtyCondLst());
 		assertEquals(qtyRuleBo.getQuantityPriceType(), quantityRule.getQuantityPriceType());
 		assertEquals(qtyRuleBo.getConditionType(), quantityRule.getConditionType());
 	}

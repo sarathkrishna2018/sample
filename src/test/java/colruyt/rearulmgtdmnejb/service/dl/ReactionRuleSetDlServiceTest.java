@@ -43,7 +43,8 @@ public class ReactionRuleSetDlServiceTest {
 	}
 
 	@Test
-	@DataSet("dataset/ReactionRuleSetDlServiceTest.xml")
+	@DataSet("dataset/ReactionRulsetDlServiceCreateTest.xml")
+	@ExpectedDataSet("result/ReactionRuleSetCreateTestResult.xml")
 	public void createTest() {
 		ReactionRuleSet expectedReactionRuleSet = reactionRuleSetDlService.createOrUpdate(getReactionRuleSet());
 		Assert.assertEquals(expectedReactionRuleSet.getReaRulesetId(), new Long(501L));
@@ -54,6 +55,9 @@ public class ReactionRuleSetDlServiceTest {
 	public void findByPkTest() {
 		ReactionRuleSet expectedReactionRuleSet = reactionRuleSetDlService.findByPk(501l);
 		Assert.assertEquals(expectedReactionRuleSet.getColruytGroupChainId(), 1);
+		Assert.assertEquals(expectedReactionRuleSet.getPriceCompetitorChainId(), 63);
+		Assert.assertEquals(expectedReactionRuleSet.getRuleTypeId(), 2);
+		Assert.assertEquals(expectedReactionRuleSet.getRulesetName(), "Name");
 
 	}
 	@Test
@@ -61,13 +65,19 @@ public class ReactionRuleSetDlServiceTest {
 	public void findByAttributesTest() {
 		List<ReactionRuleSet> expectedReactionRuleSetList = reactionRuleSetDlService.findByAttributes(1l, 1l, 1l);
 		assertThat(expectedReactionRuleSetList.size()).isEqualTo(1);
-
+		Assert.assertEquals(expectedReactionRuleSetList.get(0).getRulesetName(), "Name");
+		Assert.assertEquals(expectedReactionRuleSetList.get(0).getRuleTypeId(), 1L);
+		Assert.assertEquals(expectedReactionRuleSetList.get(0).getLstUpdateBy(), "ktr");
+		
 	}
 	@Test
 	@DataSet("dataset/ReactionRuleSetDlServiceTest.xml")
 	public void findByCgChainAndPCChainTest() {
 		List<ReactionRuleSet> expectedReactionRuleSetList = reactionRuleSetDlService.findByCgChainAndPCChain(1l, 1l);
 		assertThat(expectedReactionRuleSetList.size()).isEqualTo(1);
+		Assert.assertEquals(expectedReactionRuleSetList.get(0).getRulesetName(), "Name");
+		Assert.assertEquals(expectedReactionRuleSetList.get(0).getRuleTypeId(), 1L);
+		Assert.assertEquals(expectedReactionRuleSetList.get(0).getLstUpdateBy(), "ktr");
 	}
 	@Test
 	@DataSet("dataset/ReactionRuleSetDlServiceTest.xml")
@@ -77,6 +87,9 @@ public class ReactionRuleSetDlServiceTest {
 		reactionRuleSetDlService.logicallyDeleteRuleSet(getReactionRuleSet());
 		ReactionRuleSet expectedReactionRuleSet = reactionRuleSetDlService.findByPk(501l);
 		Assert.assertEquals(expectedReactionRuleSet.getLogicallyDeletedDate(), actualDate);
+		Assert.assertEquals(expectedReactionRuleSet.getColruytGroupChainId(), 1);
+		Assert.assertEquals(expectedReactionRuleSet.getPriceCompetitorChainId(), 63);
+		Assert.assertEquals(expectedReactionRuleSet.getRulesetName(), "Name");
 
 	}
 	@Test
@@ -89,14 +102,13 @@ public class ReactionRuleSetDlServiceTest {
 	private ReactionRuleSet getReactionRuleSet() {
 		ReactionRuleSet reactionRuleSet = new ReactionRuleSet();
 		reactionRuleSet.setColruytGroupChainId(1l);
-		reactionRuleSet.setPriceCompetitorChainId(-73l);
+		reactionRuleSet.setPriceCompetitorChainId(63l);
 		reactionRuleSet.setReaRulesetId(501l);
-		reactionRuleSet.setRuleTypeId(4);
+		reactionRuleSet.setRuleTypeId(2);
 		reactionRuleSet.setRulesetName("Name");
 		reactionRuleSet.setRulesetComment("Comment");
 		reactionRuleSet.setLstUpdateBy("ktr");
-		Date date =new Date();
-		reactionRuleSet.setLogicallyDeletedDate(date);
+		reactionRuleSet.setLogicallyDeletedDate(null);
 		reactionRuleSet.setReactionRules(getReactionRuleList());
 		return reactionRuleSet;
 	}
@@ -112,20 +124,20 @@ public class ReactionRuleSetDlServiceTest {
 		Date validTodate = new Date();
 		ReactionRule reactionRule = new ReactionRule();
 		reactionRule.setReaRuleId(1L);
-		reactionRule.setReaRulesetId(1l);
-		reactionRule.setRuleName("Filtering");
+		reactionRule.setReaRulesetId(501l);
+		reactionRule.setRuleName("Sample");
 		reactionRule.setImportancecodeFrom(10);
-		reactionRule.setImportancecodeTo(5);
+		reactionRule.setImportancecodeTo(20);
 		reactionRule.setDirect(true);
-		reactionRule.setPostponed(true);
+		reactionRule.setPostponed(false);
 		reactionRule.setPermenant(true);
-		reactionRule.setTemporary(false);
+		reactionRule.setTemporary(true);
 		reactionRule.setValidFrom(validFromdate);
 		reactionRule.setValidUpto(validTodate);
 		reactionRule.setRecalculate(false);
-		reactionRule.setRuleComment("good");
-		reactionRule.setCreatedBy("sa");
-		reactionRule.setLstUpdateBy("sa");
+		reactionRule.setRuleComment("Good");
+		reactionRule.setCreatedBy("ktr");
+		reactionRule.setLstUpdateBy("ktr");
 		reactionRule.setRefActionTypes(getActionTypeList());
 		reactionRule.setRefSourceTypes(getSourceTypeList());
 		reactionRule.setChildRuleId(2l);

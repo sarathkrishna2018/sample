@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 
 import colruyt.rearulmgtdmnejb.bo.DeleteRuleSetInfoBo;
 import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
+import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionRuleSet;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleValidationException;
@@ -32,6 +33,8 @@ public class ReactionRuleSetService implements Serializable {
 
 	@EJB
 	private ReactionRuleSetDlService reactionRuleSetDlService;
+	@EJB
+	private static ReferenceDataService referenceDataService;
 
 	public ReactionRulesetBo createReactionRuleSet(ReactionRulesetBo reactionRulesetBo, boolean isDuplicationAllowed,
 			String userId) throws ReaRuleManagementException {
@@ -58,7 +61,8 @@ public class ReactionRuleSetService implements Serializable {
 	public List<ReactionRulesetBo> find(long cgChainId, long compChainId) {
 		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_FINDREACTIONRULESET);
 		List<ReactionRuleSet> ruleSetList = reactionRuleSetDlService.findByCgChainAndPCChain(cgChainId, compChainId);
-		return ReaRulesetConverter.convertToBo(ruleSetList);
+		List<RefRuleTypeBo> refRuletype = referenceDataService.getAllRuleTypes();
+		return ReaRulesetConverter.convertToBo(ruleSetList,refRuletype);
 
 	}
 

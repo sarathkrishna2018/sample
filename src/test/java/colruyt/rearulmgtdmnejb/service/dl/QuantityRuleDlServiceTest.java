@@ -30,6 +30,7 @@ public class QuantityRuleDlServiceTest {
 	}
 
 	@Test
+	@ExpectedDataSet("result/QuantityRuleCreateTestResult.xml")
 	public void createTest() {
 		QuantityRuleAction expectedQuantityRule = quantityRuleActionDlService.createOrUpdate(getReaQtyRule());
 		Assert.assertEquals(expectedQuantityRule.getReactionRuleId(), 1L);
@@ -40,6 +41,8 @@ public class QuantityRuleDlServiceTest {
 	public void findByRuleIdTest() {
 		QuantityRuleAction expectedQuantityRule = quantityRuleActionDlService.findByRuleId(1);
 		Assert.assertEquals(expectedQuantityRule.getReactionRuleId(), 1L);
+		Assert.assertEquals(expectedQuantityRule.getQuantityTypeId(), 2L);
+		Assert.assertEquals(expectedQuantityRule.getQuantityConditionId(), 4L);
 	}
 
 	@Test
@@ -58,8 +61,8 @@ public class QuantityRuleDlServiceTest {
 
 	public QuantityRuleAction getReaQtyRule() {
 		QuantityRuleAction reaQtyRule = new QuantityRuleAction();
-		reaQtyRule.setQuantityConditionId(1);
-		reaQtyRule.setQuantityTypeId(1);
+		reaQtyRule.setQuantityConditionId(4);
+		reaQtyRule.setQuantityTypeId(2);
 		reaQtyRule.setReactionRuleId(1l);
 		return reaQtyRule;
 

@@ -28,17 +28,21 @@ public class ReactionPeriodRuleDlServiceTest {
 	}
 
 	@Test
+	@ExpectedDataSet("result/ReactionPeriodRuleCreateTestResult.xml")
 	public void createTest() {
 		ReactionPeriodRuleAction expectedReactionPeriodRule = reactionPeriodActionDlService
 				.createOrUpdate(getreactionPeriodRuleAction());
 		Assert.assertEquals(expectedReactionPeriodRule.getReaRuleId(), 1L);
 
 	}
+
 	@Test
 	@DataSet("dataset/ReactionPeriodRuleDlServiceTest.xml")
 	public void findByRuleIdTest() {
 		ReactionPeriodRuleAction expectedReactionPeriodRule = reactionPeriodActionDlService.findByRuleId(1l);
 		Assert.assertEquals(expectedReactionPeriodRule.getReaRuleId(), 1L);
+		Assert.assertEquals(expectedReactionPeriodRule.getEndDtDays(), new Long(5L));
+		Assert.assertEquals(expectedReactionPeriodRule.getMinDays(), new Long(2L));
 	}
 
 	@Test
@@ -46,15 +50,17 @@ public class ReactionPeriodRuleDlServiceTest {
 	@ExpectedDataSet("result/ReactionPeriodRulePhysicalDeleteElementsTestResult.xml")
 	public void physicalDeleteElementsTest() {
 		reactionPeriodActionDlService.physicalDeleteElements(getDeleteRuleInfoBo());
-		
+
 	}
+
 	public ReactionPeriodRuleAction getreactionPeriodRuleAction() {
 		ReactionPeriodRuleAction reactionPeriodRuleAction = new ReactionPeriodRuleAction();
 		reactionPeriodRuleAction.setReaRuleId(1l);
-		reactionPeriodRuleAction.setEndDtDays(10l);
-		reactionPeriodRuleAction.setMinDays(8l);
+		reactionPeriodRuleAction.setEndDtDays(5l);
+		reactionPeriodRuleAction.setMinDays(2l);
 		return reactionPeriodRuleAction;
 	}
+
 	private DeleteRuleInfoBo getDeleteRuleInfoBo() {
 		DeleteRuleInfoBo deleteRuleInfoBo = new DeleteRuleInfoBo(1l, 1l);
 		deleteRuleInfoBo.setRuleId(1l);

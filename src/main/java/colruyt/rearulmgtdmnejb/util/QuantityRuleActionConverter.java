@@ -3,19 +3,15 @@ package colruyt.rearulmgtdmnejb.util;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.ejb.EJB;
-
 import colruyt.rearulmgtdmnejb.bo.QuantityRuleBo;
 import colruyt.rearulmgtdmnejb.bo.RefQuantityConditionTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefQuantityPriceTypeBo;
 import colruyt.rearulmgtdmnejb.entity.QuantityRuleAction;
-import colruyt.rearulmgtdmnejb.service.bl.ReferenceDataService;
 
 public class QuantityRuleActionConverter implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	@EJB
-	private static ReferenceDataService referenceDataService;
+	
 
 	public static QuantityRuleAction convertFromBo(QuantityRuleBo quantityRuleBo) {
 		QuantityRuleAction quantityRuleAction = new QuantityRuleAction();
@@ -25,15 +21,14 @@ public class QuantityRuleActionConverter implements Serializable {
 		return quantityRuleAction;
 	}
 
-	public static QuantityRuleBo convertToBo(QuantityRuleAction quantityRuleAction, QuantityRuleBo quantityBo) {
-		quantityBo.setConditionType(getRefQuantityConditionType(quantityRuleAction.getQuantityConditionId()));
-		quantityBo.setQuantityPriceType(getRefQuantityPriceType(quantityRuleAction.getQuantityTypeId()));
+	public static QuantityRuleBo convertToBo(QuantityRuleAction quantityRuleAction, QuantityRuleBo quantityBo, List<RefQuantityPriceTypeBo> priceTypeLst, List<RefQuantityConditionTypeBo> conditionTypeLst) {
+		quantityBo.setConditionType(getRefQuantityConditionType(quantityRuleAction.getQuantityConditionId(), conditionTypeLst));
+		quantityBo.setQuantityPriceType(getRefQuantityPriceType(quantityRuleAction.getQuantityTypeId(), priceTypeLst));
 		return quantityBo;
 	}
 
-	private static RefQuantityPriceTypeBo getRefQuantityPriceType(int qtyTypeId) {
+	private static RefQuantityPriceTypeBo getRefQuantityPriceType(int qtyTypeId,  List<RefQuantityPriceTypeBo> priceTypeLst) {
 		RefQuantityPriceTypeBo priceType = new RefQuantityPriceTypeBo();
-		List<RefQuantityPriceTypeBo> priceTypeLst = referenceDataService.getAllQuantityPriceTypes();
 		for (int i = 0; i < priceTypeLst.size(); i++) {
 			if (qtyTypeId == priceTypeLst.get(i).getQuantityTypeId()) {
 				priceType.setQuantityTypeId(qtyTypeId);
@@ -44,9 +39,8 @@ public class QuantityRuleActionConverter implements Serializable {
 		return priceType;
 	}
 
-	private static RefQuantityConditionTypeBo getRefQuantityConditionType(int qtyCondId) {
+	private static RefQuantityConditionTypeBo getRefQuantityConditionType(int qtyCondId,List<RefQuantityConditionTypeBo> conditionTypeLst ) {
 		RefQuantityConditionTypeBo refQuantityConditionTypeBo = new RefQuantityConditionTypeBo();
-		List<RefQuantityConditionTypeBo> conditionTypeLst = referenceDataService.getAllQuantityConditionTypes();
 		for (int i = 0; i < conditionTypeLst.size(); i++) {
 			if (qtyCondId == conditionTypeLst.get(i).getCodeTypeId()) {
 				refQuantityConditionTypeBo.setCodeTypeId(qtyCondId);

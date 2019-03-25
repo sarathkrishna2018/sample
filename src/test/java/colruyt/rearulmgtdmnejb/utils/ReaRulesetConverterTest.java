@@ -95,6 +95,7 @@ public class ReaRulesetConverterTest {
 		assertEquals(refRuleTypeBoList.size(),expectedRefRuleTypeBo.size());	
 		
 	}*/
+
 	@Test
 	public void convertRuleSetBoTest(){
 		List<ReactionRulesetBo> rulesetBoList = Lists.newArrayList();
@@ -104,11 +105,20 @@ public class ReaRulesetConverterTest {
 		ruleBo.setColruytGroupChainId(reactionRuleSet.getColruytGroupChainId());
 		ruleBo.setPriceCompetitorChainId(reactionRuleSet.getPriceCompetitorChainId());
 		rulesetBoList.add(ruleBo);
-		List<ReactionRulesetBo> expectedReactionRulesetBo=ReaRulesetConverter.convertToBo(getReactionRuleSetlist());
+		List<ReactionRulesetBo> expectedReactionRulesetBo=ReaRulesetConverter.convertToBo(getReactionRuleSetlist(),getRefRuleTypeBoList());
 		assertEquals(rulesetBoList.size(),expectedReactionRulesetBo.size());
 		
 		
 	}
+	private List<RefRuleTypeBo> getRefRuleTypeBoList(){
+		List<RefRuleTypeBo> refRuleTypeBoList = Lists.newArrayList();
+		RefRuleTypeBo refRuleTypeBo=new RefRuleTypeBo();
+		refRuleTypeBo.setRuleTypeId(1);
+		refRuleTypeBo.setDescription("all");
+		refRuleTypeBo.setCodeLang(getRefLang());
+		refRuleTypeBoList.add(refRuleTypeBo);
+		return refRuleTypeBoList;
+  }
 	private List<ReactionRuleSet> getReactionRuleSetlist() {
 		List<ReactionRuleSet> ruleSetList=Lists.newArrayList();
 		ReactionRuleSet reactionRuleSet=new ReactionRuleSet();

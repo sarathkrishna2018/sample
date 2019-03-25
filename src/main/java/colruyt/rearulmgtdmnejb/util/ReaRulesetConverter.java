@@ -3,21 +3,17 @@ package colruyt.rearulmgtdmnejb.util;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.ejb.EJB;
-
 import com.google.common.collect.Lists;
 
 import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
 import colruyt.rearulmgtdmnejb.bo.RefLangBo;
 import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionRuleSet;
-import colruyt.rearulmgtdmnejb.service.bl.ReferenceDataService;
 
 public class ReaRulesetConverter implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@EJB
-	private static ReferenceDataService referenceDataService;
+	
 
 	public static ReactionRuleSet convertFromBo(ReactionRuleSet existingReaRuleset, ReactionRulesetBo rulesetBo,
 			String logonId) {
@@ -36,7 +32,7 @@ public class ReaRulesetConverter implements Serializable {
 		return reaRuleset;
 	}
 
-	public static List<ReactionRulesetBo> convertToBo(List<ReactionRuleSet> ruleSetList) {
+	public static List<ReactionRulesetBo> convertToBo(List<ReactionRuleSet> ruleSetList,List<RefRuleTypeBo> refRuletype) {
 		List<ReactionRulesetBo> rulesetBoList = Lists.newArrayList();
 		for (ReactionRuleSet ruleSet : ruleSetList) {
 			ReactionRulesetBo ruleBo = new ReactionRulesetBo();
@@ -45,16 +41,15 @@ public class ReaRulesetConverter implements Serializable {
 			ruleBo.setComments(ruleSet.getRulesetComment());
 			ruleBo.setColruytGroupChainId(ruleSet.getColruytGroupChainId());
 			ruleBo.setPriceCompetitorChainId(ruleSet.getPriceCompetitorChainId());
-			RefRuleTypeBo ruleType = convertToBo(ruleSet.getRuleTypeId());
+			RefRuleTypeBo ruleType = convertToBo(ruleSet.getRuleTypeId(),refRuletype);
 			ruleBo.setRefRuleTypeBo(ruleType);
 			rulesetBoList.add(ruleBo);
 		}
 		return rulesetBoList;
 	}
 
-	public static RefRuleTypeBo convertToBo(int ruleTypeid) {
+	public static RefRuleTypeBo convertToBo(int ruleTypeid,List<RefRuleTypeBo> refRuletype) {
 		RefRuleTypeBo refRuleTypeBo = new RefRuleTypeBo();
-		List<RefRuleTypeBo> refRuletype = referenceDataService.getAllRuleTypes();
 		for (RefRuleTypeBo ref : refRuletype) {
 			if (ref.getRuleTypeId() == ruleTypeid) {
 				List<RefLangBo> refLangList = ref.getCodeLang();

@@ -56,7 +56,7 @@ public class ReactionRuleSetServiceTest {
 		assertEquals(new Long(1l), expectedReactionRuleset.getRulesetId());
 	}
 
-	@Test
+	/*@Test
 	public void findReactionRuleSetTest() {
 		long cgChainId = 1;
 		long compChainId = 2;
@@ -64,9 +64,9 @@ public class ReactionRuleSetServiceTest {
 				.thenReturn(getReactionRuleset());
 		List<ReactionRulesetBo> expectedReactionRulesetBo = reactionRuleSetBlService.find(cgChainId, compChainId);
 		Assert.assertNotNull(expectedReactionRulesetBo);
-	}
+	}*/
 
-	@Test
+	/*@Test
 	public void findReactionRuleSetFailTest() {
 		List<ReactionRulesetBo> reactionRulesetBos = getReactionRuleSetList();
 		long cgChainId = 1;
@@ -75,7 +75,7 @@ public class ReactionRuleSetServiceTest {
 				.thenReturn(getReactionRuleset());
 		List<ReactionRulesetBo> expectedReactionRulesetBo = reactionRuleSetBlService.find(cgChainId, compChainId);
 		Assert.assertNotSame(reactionRulesetBos.size(), expectedReactionRulesetBo.size());
-	}
+	}*/
 
 	@Test
 	public void getReactionRulesetTest() throws ReaRuleManagementException {

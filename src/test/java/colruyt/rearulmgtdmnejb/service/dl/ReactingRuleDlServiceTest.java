@@ -28,6 +28,7 @@ public class ReactingRuleDlServiceTest {
 		JpaUnitils.injectEntityManagerInto(reactingRuleActionDlService);
 	}
 	@Test
+	@ExpectedDataSet("result/ReactingRuleCreateTestResult.xml")
 	public void createTest(){
 		ReactingRuleAction expectedReactingRule=reactingRuleActionDlService.createOrUpdate(getReactingRule());
 		Assert.assertEquals(expectedReactingRule.getReactionRuleId(), 1L);
@@ -37,6 +38,11 @@ public class ReactingRuleDlServiceTest {
 	public void findByRuleIdTest(){
 		ReactingRuleAction expectedReactingRule=reactingRuleActionDlService.findByRuleId(1l);
 		Assert.assertEquals(expectedReactingRule.getReactionRuleId(), 1L);
+		Assert.assertEquals(expectedReactingRule.getCatchAll(), true);
+		Assert.assertEquals(expectedReactingRule.getReactingAmt(), 7,0);
+		Assert.assertEquals(expectedReactingRule.getReactingPercentage(), 3,0);
+		Assert.assertEquals(expectedReactingRule.getThresholdAmount(), 5,0);
+		Assert.assertEquals(expectedReactingRule.getThresholdPercentage(), 2,0);
 	}
 	@Test
 	@DataSet("dataset/ReactingRuleDlServiceTest.xml")
@@ -53,8 +59,11 @@ public class ReactingRuleDlServiceTest {
 	public ReactingRuleAction getReactingRule(){
 		ReactingRuleAction reactingRuleAction=new ReactingRuleAction();
 		reactingRuleAction.setCatchAll(true);
-		reactingRuleAction.setReactingAmt(12d);
-		reactingRuleAction.setReactionRuleId(1l);
+		reactingRuleAction.setReactingAmt(7d);
+		reactingRuleAction.setReactionRuleId(1);
+		reactingRuleAction.setReactingPercentage(3d);
+		reactingRuleAction.setThresholdAmount(5d);
+		reactingRuleAction.setThresholdPercentage(2d);
 		return reactingRuleAction;	
 		
 	}

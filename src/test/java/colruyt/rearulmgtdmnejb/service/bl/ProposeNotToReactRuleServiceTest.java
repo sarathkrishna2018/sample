@@ -68,13 +68,13 @@ public class ProposeNotToReactRuleServiceTest {
 				.modifyRuleSpecificAttributes(getProposeNotToReactRuleBo());
 		Assert.assertEquals(new Long(1l), expectedProposeNotToReactRule.getRuleId());
 	}
-	@Test
+	/*@Test
 	public void getRuleSpecificValuesTest() throws ReaRuleManagementException {
 		when(proposalNotToReactActionDlService.findByRuleId(Mockito.anyLong())).thenReturn(getReaNreactAct());
 		GeneralRuleBo expectedProposeNotToReactRule = proposeNotToReactRuleService
 				.getRuleSpecificValues(getProposeNotToReactRuleBo());
 		Assert.assertEquals(new Long(1l), expectedProposeNotToReactRule.getRuleId());
-	}
+	}*/
 
 	@Test
 	public void physicalDeleteElementsTest() {

@@ -41,7 +41,8 @@ public class ReactionRuleDlServiceTest extends UnitilsJUnit4 {
 	}
 
 	@Test
-	@DataSet("dataset/ReactionRuleDlServiceTest.xml")
+	@DataSet("dataset/ReactionRuleDlServiceCreateTest.xml")
+	@ExpectedDataSet("result/ReactionRuleCreateTestResult.xml")
 	public void createRuleTest() {
 		ReactionRule expectedReactionRule = reactionRuleDlService.createOrUpdate(getReactionRule());
 		Assert.assertEquals(expectedReactionRule.getReaRulesetId(), 1L);
@@ -53,6 +54,9 @@ public class ReactionRuleDlServiceTest extends UnitilsJUnit4 {
 	public void findByPkTest() {
 		ReactionRule expectedReactionRule = reactionRuleDlService.findByPk(1l);
 		Assert.assertEquals(expectedReactionRule.getReaRuleId(), 1L);
+		Assert.assertEquals(expectedReactionRule.getReaRulesetId(), 1L);
+		Assert.assertEquals(expectedReactionRule.getRuleName(),"Sample");
+		Assert.assertEquals(expectedReactionRule.getCreatedBy(), "ake");
 	}
 
 	@Test
@@ -60,6 +64,9 @@ public class ReactionRuleDlServiceTest extends UnitilsJUnit4 {
 	public void findByRuleSetId() {
 		List<ReactionRule> expectedReactionRules = reactionRuleDlService.findByRuleSetId(2l);
 		assertThat(expectedReactionRules.size()).isEqualTo(3);
+		Assert.assertEquals(expectedReactionRules.get(0).getReaRuleId(), 2L);
+		Assert.assertEquals(expectedReactionRules.get(0).getReaRulesetId(), 2L);
+		Assert.assertEquals(expectedReactionRules.get(0).getRuleName(), "Sample");
 	}
 
 	@Test
@@ -67,6 +74,9 @@ public class ReactionRuleDlServiceTest extends UnitilsJUnit4 {
 	public void findParentRule() {
 		ReactionRule expectedChildReactionRule = reactionRuleDlService.findParentRule(3l);
 		Assert.assertEquals(expectedChildReactionRule.getChildRuleId(), new Long(3L));
+		Assert.assertEquals(expectedChildReactionRule.getReaRuleId(), 2L);
+		Assert.assertEquals(expectedChildReactionRule.getReaRulesetId(), 2L);
+		Assert.assertEquals(expectedChildReactionRule.getRuleName(), "Sample");
 	}
 
 	@Test
@@ -77,6 +87,9 @@ public class ReactionRuleDlServiceTest extends UnitilsJUnit4 {
 		reactionRuleDlService.updateLogicallyDeletedDate(getReactionRule());
 		ReactionRule expectedReactionRule = reactionRuleDlService.findByPk(1l);
 		Assert.assertEquals(expectedReactionRule.getLogicallyDeletedDate(), actualDate);
+		Assert.assertEquals(expectedReactionRule.getChildRuleId(), new Long(2L));
+		Assert.assertEquals(expectedReactionRule.getReaRuleId(), 1L);
+		Assert.assertEquals(expectedReactionRule.getReaRulesetId(), 1L);
 	}
 
 	@Test
@@ -100,6 +113,8 @@ public class ReactionRuleDlServiceTest extends UnitilsJUnit4 {
 		Date newDate = new Date();
 		List<DeleteRuleInfoBo> expectedDeletedRuleBos = reactionRuleDlService.findAllLogicallyDeletedRules(newDate);
 		assertThat(expectedDeletedRuleBos.size()).isEqualTo(1);
+		Assert.assertEquals(expectedDeletedRuleBos.get(0).getRuleId(), new Long(1L));
+		Assert.assertEquals(expectedDeletedRuleBos.get(0).getRuleType(), new Long(2L));
 	}
 
 	@Test
@@ -108,6 +123,8 @@ public class ReactionRuleDlServiceTest extends UnitilsJUnit4 {
 		Date dateForRulesDelete = new Date();
 		List<DeleteRuleInfoBo> expectedDeleteRuleInfo = reactionRuleDlService.findAllExpiredRules(dateForRulesDelete);
 		assertThat(expectedDeleteRuleInfo.size()).isEqualTo(1);
+		Assert.assertEquals(expectedDeleteRuleInfo.get(0).getRuleId(), new Long(2L));
+		Assert.assertEquals(expectedDeleteRuleInfo.get(0).getRuleType(), new Long(1L));
 	}
 
 	@Test
@@ -132,20 +149,18 @@ public class ReactionRuleDlServiceTest extends UnitilsJUnit4 {
 	}
 
 	private ReactionRule getReactionRule() {
-		Date validFromdate = new Date();
-		Date validTodate = new Date();
 		ReactionRule reactionRule = new ReactionRule();
 		reactionRule.setReaRuleId(1L);
 		reactionRule.setReaRulesetId(1L);
 		reactionRule.setRuleName("Filtering");
 		reactionRule.setImportancecodeFrom(10);
-		reactionRule.setImportancecodeTo(5);
+		reactionRule.setImportancecodeTo(20);
 		reactionRule.setDirect(true);
 		reactionRule.setPostponed(true);
 		reactionRule.setPermenant(true);
 		reactionRule.setTemporary(false);
-		reactionRule.setValidFrom(validFromdate);
-		reactionRule.setValidUpto(validTodate);
+		reactionRule.setValidFrom(null);
+		reactionRule.setValidUpto(null);
 		reactionRule.setRecalculate(false);
 		reactionRule.setRuleComment("good");
 		reactionRule.setCreatedBy("sa");

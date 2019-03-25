@@ -17,6 +17,8 @@ import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.bo.GeneralRuleBo;
 import colruyt.rearulmgtdmnejb.bo.ProposeNotToReactRuleBo;
 import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
+import colruyt.rearulmgtdmnejb.bo.RefFilterOutRecordingTypeBo;
+import colruyt.rearulmgtdmnejb.bo.RefNotToReactCodeBo;
 import colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleAction;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.enums.RuleType;
@@ -36,6 +38,8 @@ public class ProposeNotToReactRuleService extends GeneralRuleService implements 
 	private static final Logger logger = LoggerFactory.getLogger(ProposeNotToReactRuleService.class);
 	@EJB
 	private ProposalNotToReactActionDlService proposalNotToReactActionDlService;
+	@EJB
+	private static ReferenceDataService referenceDataService;
 
 	public GeneralRuleBo createRuleSpecificAttributes(GeneralRuleBo reactionRuleBo)
 			throws ReaRuleValidationException, ReaRuleManagementException {
@@ -80,6 +84,9 @@ public class ProposeNotToReactRuleService extends GeneralRuleService implements 
 			if (reactionRulesetBo.getRefRuleTypeBo().getRuleTypeId() == RuleType.PROPOSE_NOT_REACT.getRuleTypeID()) {
 				List<GeneralRuleBo> ruleBos = Lists.newArrayList();
 				List<ReactionRule> ruleList = super.getRulesByRuleSetId(reactionRulesetBo.getRulesetId());
+				List<RefNotToReactCodeBo> refNotToReact = referenceDataService.getAllNotToReactCodeTypes();
+				List<RefFilterOutRecordingTypeBo> refFilterOutRecordingTypeLst = referenceDataService
+						.getAllFilterOutRecordingTypes();
 				for (ReactionRule rule : ruleList) {
 
 					ProposeNotToReactRuleBo proposeNotToReactRuleBo = new ProposeNotToReactRuleBo();
@@ -89,7 +96,7 @@ public class ProposeNotToReactRuleService extends GeneralRuleService implements 
 					ProposalNotToReactRuleAction proposalNotToReactRuleAction = proposalNotToReactActionDlService
 							.findByRuleId(rule.getReaRuleId());
 					proposeNTRRuleBo = ProposeNotToReactRuleConverter.convertToBo(proposalNotToReactRuleAction,
-							proposeNTRRuleBo);
+							proposeNTRRuleBo,refNotToReact,refFilterOutRecordingTypeLst );
 					ruleBos.add(proposeNTRRuleBo);
 				}
 				Collections.sort(ruleBos, new GeneralRulePriorityComparator());
@@ -107,8 +114,11 @@ public class ProposeNotToReactRuleService extends GeneralRuleService implements 
 		ProposeNotToReactRuleBo proposeNotToRactRuleBo = (ProposeNotToReactRuleBo) ruleBo;
 		ProposalNotToReactRuleAction proposalNotToReactRuleAction = proposalNotToReactActionDlService
 				.findByRuleId(proposeNotToRactRuleBo.getRuleId());
+		List<RefNotToReactCodeBo> refNotToReact = referenceDataService.getAllNotToReactCodeTypes();
+		List<RefFilterOutRecordingTypeBo> refFilterOutRecordingTypeLst = referenceDataService
+				.getAllFilterOutRecordingTypes();
 		proposeNotToRactRuleBo = ProposeNotToReactRuleConverter.convertToBo(proposalNotToReactRuleAction,
-				proposeNotToRactRuleBo);
+				proposeNotToRactRuleBo,refNotToReact,refFilterOutRecordingTypeLst );
 		proposeNotToRactRuleBo.setType(RuleType.PROPOSE_NOT_REACT.getRuleTypeName());
 		return proposeNotToRactRuleBo;
 	}

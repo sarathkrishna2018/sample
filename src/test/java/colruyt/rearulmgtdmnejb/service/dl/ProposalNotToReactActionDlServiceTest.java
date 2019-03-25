@@ -32,7 +32,7 @@ public class ProposalNotToReactActionDlServiceTest {
 	}
 
 	@Test
-	@DataSet("dataset/ProposalNotToReactActionDlServiceTest.xml")
+	@ExpectedDataSet("result/ProposalNotToReactCreateTestResult.xml")
 	public void createTest() {
 		ProposalNotToReactRuleAction expectedProposalNotToReactRuleAction = proposalNotToReactActionDlService
 				.createOrUpdate(getProposalNotToReactRuleAction());
@@ -42,8 +42,12 @@ public class ProposalNotToReactActionDlServiceTest {
 	@Test
 	@DataSet("dataset/ProposalNotToReactActionDlServiceTest.xml")
 	public void findByRuleIdTest() {
+		List<Integer> notToReactSetReasonsId=Lists.newArrayList();
+		notToReactSetReasonsId.add(2);
 		ProposalNotToReactRuleAction expectedProposalNotToReactRule = proposalNotToReactActionDlService.findByRuleId(1l);
 		Assert.assertEquals(expectedProposalNotToReactRule.getReactionRuleId(), 1L);
+		Assert.assertEquals(expectedProposalNotToReactRule.getFltoutTypeId(), 5);
+		Assert.assertEquals(expectedProposalNotToReactRule.getNotToReactSetReasons(), notToReactSetReasonsId);
 	}
 
 	@Test
@@ -68,7 +72,7 @@ public class ProposalNotToReactActionDlServiceTest {
 		reaNreactSetRsns.add(1);
 		reaNreactSetRsns.add(2);
 		proposalNotToReactRuleAction.setNotToReactSetReasons(reaNreactSetRsns);
-		proposalNotToReactRuleAction.setFltoutTypeId(3);
+		proposalNotToReactRuleAction.setFltoutTypeId(5);
 		return proposalNotToReactRuleAction;
 	}
 	private DeleteRuleInfoBo getDeleteRuleInfoBo() {

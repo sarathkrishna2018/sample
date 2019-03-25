@@ -29,6 +29,7 @@ public class FilteringRuleDlServiceTest {
 	}
 
 	@Test
+	@ExpectedDataSet("result/FilteringRuleCreateTestResult.xml")
 	public void createTest() {
 		FilteringRuleAction expectedFilteringRule = filteringRuleActionDlService.createOrUpdate(getReaFltRule());
 		Assert.assertEquals(expectedFilteringRule.getReactionRuleId(), 1L);
@@ -39,6 +40,8 @@ public class FilteringRuleDlServiceTest {
 	public void findByRuleIdTest() {
 		FilteringRuleAction expectedFilteringRule = filteringRuleActionDlService.findByRuleId(2l);
 		Assert.assertEquals(expectedFilteringRule.getReactionRuleId(), 2L);
+		Assert.assertEquals(expectedFilteringRule.getMaximumCompetitorQuantity(), 1.0,0);
+		Assert.assertEquals(expectedFilteringRule.getXTimeQty(), 2.5,0);
 	}
 
 	@Test
@@ -57,9 +60,9 @@ public class FilteringRuleDlServiceTest {
 
 	private FilteringRuleAction getReaFltRule() {
 		FilteringRuleAction reaFlt = new FilteringRuleAction();
-		reaFlt.setMaximumCompetitorQuantity(5d);
+		reaFlt.setMaximumCompetitorQuantity(2.0);
 		reaFlt.setReactionRuleId(1);
-		reaFlt.setXTimeQty(2d);
+		reaFlt.setXTimeQty(3.5);
 		return reaFlt;
 	}
 

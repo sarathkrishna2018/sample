@@ -38,6 +38,7 @@ public class ProductHierarchySetDlServiceTest {
 
 	@Test
 	@DataSet("dataset/ProductHierarchySetDlServiceTest.xml")
+	@ExpectedDataSet("result/ProductHierarchySetCreateTestResult.xml")
 	public void createProductHierarachySetTest() {
 		PriceProductHierarchySet expectedPriceProductHierarchySet = productHierarchySetDlService
 				.create(getPriceProductHierarchySet());
@@ -46,6 +47,7 @@ public class ProductHierarchySetDlServiceTest {
 
 	@Test
 	@DataSet("dataset/ProductHierarchySetDlServiceTest.xml")
+	@ExpectedDataSet("result/ProductHierarchySetCreateTestResult.xml")
 	public void createProductHierarachySetElementTest() {
 		PriceProductHierarchySetElement expectedPriceProductHierarchySetElement = productHierarchySetDlService
 				.create(getPriceProductHierarchySetElmnt());
@@ -57,6 +59,9 @@ public class ProductHierarchySetDlServiceTest {
 	public void findByPkTest() {
 		PriceProductHierarchySet expectedPriceProductHierarchySetElement = productHierarchySetDlService.findByPk(504l);
 		Assert.assertEquals(expectedPriceProductHierarchySetElement.getProductHierarchySetId(), new Long(504l));
+		Assert.assertEquals(expectedPriceProductHierarchySetElement.getAssortmentName(), "ALL");
+		Assert.assertEquals(expectedPriceProductHierarchySetElement.getCheapBrand(), true );
+		Assert.assertEquals(expectedPriceProductHierarchySetElement.getReaRuleId(), new Long(1l));
 	}
 
 	@Test
@@ -72,7 +77,9 @@ public class ProductHierarchySetDlServiceTest {
 		List<PriceProductHierarchySetElement> expectedpriceProductHierarchySetElmntList = productHierarchySetDlService
 				.findSetElementByElementIds(getpriceProductHierarchySetElmntValues());
 		assertThat(expectedpriceProductHierarchySetElmntList.size()).isEqualTo(1);
-
+		Assert.assertEquals(expectedpriceProductHierarchySetElmntList.get(0).getId().getProductHierarchyElementId(), 1l);
+		Assert.assertEquals(expectedpriceProductHierarchySetElmntList.get(0).getId().getProductHierarchySetId(), 504l);
+		Assert.assertEquals(expectedpriceProductHierarchySetElmntList.get(0).getLstUpdateBy(), "ktr");
 	}
 
 	@Test
@@ -150,7 +157,7 @@ public class ProductHierarchySetDlServiceTest {
 		reaPpdHchyElmnt.setProductHierarchyElementId(1l);
 		reaPpdHchyElmnt.setProductHierarchyTypeId(1l);
 		reaPpdHchyElmnt.setPpdHchyValue("ASA");
-		reaPpdHchyElmnt.setCreatedBy("SA");
+		reaPpdHchyElmnt.setCreatedBy("ktr");
 		reaPpdHchyElmnt.setProdHrchySetElement(getReaPpdHchysetElmnt());
 		return reaPpdHchyElmnt;
 	}
@@ -165,7 +172,7 @@ public class ProductHierarchySetDlServiceTest {
 
 	private PriceProductHierarchySetElement getPriceProductHierarchySetElmnt() {
 		PriceProductHierarchySetElement reaPpdHchysetElmnt = new PriceProductHierarchySetElement();
-		reaPpdHchysetElmnt.setLstUpdateBy("Sa");
+		reaPpdHchysetElmnt.setLstUpdateBy("ktr");
 		PriceProductHierarchySetElementPK hierarchySetElmntPK = new PriceProductHierarchySetElementPK();
 		hierarchySetElmntPK.setProductHierarchyElementId(1L);
 		hierarchySetElmntPK.setProdicyHierarchySetId(504L);

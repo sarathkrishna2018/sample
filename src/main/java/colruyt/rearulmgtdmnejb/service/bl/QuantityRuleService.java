@@ -17,6 +17,8 @@ import colruyt.rearulmgtdmnejb.bo.DeleteRuleInfoBo;
 import colruyt.rearulmgtdmnejb.bo.GeneralRuleBo;
 import colruyt.rearulmgtdmnejb.bo.QuantityRuleBo;
 import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
+import colruyt.rearulmgtdmnejb.bo.RefQuantityConditionTypeBo;
+import colruyt.rearulmgtdmnejb.bo.RefQuantityPriceTypeBo;
 import colruyt.rearulmgtdmnejb.entity.QuantityRuleAction;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.enums.RuleType;
@@ -36,6 +38,8 @@ public class QuantityRuleService extends GeneralRuleService implements Serializa
 	private static final Logger logger = LoggerFactory.getLogger(QuantityRuleService.class);
 	@EJB
 	private QuantityRuleActionDlService quantityRuleActionDlService;
+	@EJB
+	private  ReferenceDataService referenceDataService;
 
 	@Override
 	public GeneralRuleBo createRuleSpecificAttributes(GeneralRuleBo reactionRuleBo)
@@ -78,6 +82,8 @@ public class QuantityRuleService extends GeneralRuleService implements Serializa
 			if (reactionRulesetBo.getRefRuleTypeBo().getRuleTypeId() == RuleType.QUANTITY.getRuleTypeID()) {
 				List<GeneralRuleBo> ruleBos = Lists.newArrayList();
 				List<ReactionRule> ruleList = super.getRulesByRuleSetId(reactionRulesetBo.getRulesetId());
+				List<RefQuantityPriceTypeBo> priceTypeLst = referenceDataService.getAllQuantityPriceTypes();
+				List<RefQuantityConditionTypeBo> conditionTypeLst = referenceDataService.getAllQuantityConditionTypes();
 				for (ReactionRule rule : ruleList) {
 
 					QuantityRuleBo quantityRuleBo = new QuantityRuleBo();
@@ -86,7 +92,7 @@ public class QuantityRuleService extends GeneralRuleService implements Serializa
 
 					QuantityRuleAction quantityRuleAction = quantityRuleActionDlService
 							.findByRuleId(rule.getReaRuleId());
-					quantityBo = QuantityRuleActionConverter.convertToBo(quantityRuleAction, quantityBo);
+					quantityBo = QuantityRuleActionConverter.convertToBo(quantityRuleAction, quantityBo, priceTypeLst,conditionTypeLst );
 					ruleBos.add(quantityBo);
 
 				}
@@ -103,7 +109,9 @@ public class QuantityRuleService extends GeneralRuleService implements Serializa
 		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_VIEWQUANTITYRULE);
 		QuantityRuleBo quantityBo = (QuantityRuleBo) ruleBo;
 		QuantityRuleAction quantityRuleAction = quantityRuleActionDlService.findByRuleId(quantityBo.getRuleId());
-		quantityBo = QuantityRuleActionConverter.convertToBo(quantityRuleAction, quantityBo);
+		List<RefQuantityPriceTypeBo> priceTypeLst = referenceDataService.getAllQuantityPriceTypes();
+		List<RefQuantityConditionTypeBo> conditionTypeLst = referenceDataService.getAllQuantityConditionTypes();
+		quantityBo = QuantityRuleActionConverter.convertToBo(quantityRuleAction, quantityBo, priceTypeLst, conditionTypeLst);
 		quantityBo.setType(RuleType.QUANTITY.getRuleTypeName());
 		return quantityBo;
 
