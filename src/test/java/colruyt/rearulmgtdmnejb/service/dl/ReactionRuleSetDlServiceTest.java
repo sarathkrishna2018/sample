@@ -47,17 +47,17 @@ public class ReactionRuleSetDlServiceTest {
 	@ExpectedDataSet("result/ReactionRuleSetCreateTestResult.xml")
 	public void createTest() {
 		ReactionRuleSet expectedReactionRuleSet = reactionRuleSetDlService.createOrUpdate(getReactionRuleSet());
-		Assert.assertEquals(expectedReactionRuleSet.getReaRulesetId(), new Long(501L));
+		Assert.assertEquals(new Long(501L) ,expectedReactionRuleSet.getReaRulesetId());
 
 	}
 	@Test
 	@DataSet("dataset/ReactionRuleSetDlServiceTest.xml")
 	public void findByPkTest() {
 		ReactionRuleSet expectedReactionRuleSet = reactionRuleSetDlService.findByPk(501l);
-		Assert.assertEquals(expectedReactionRuleSet.getColruytGroupChainId(), 1);
-		Assert.assertEquals(expectedReactionRuleSet.getPriceCompetitorChainId(), 63);
-		Assert.assertEquals(expectedReactionRuleSet.getRuleTypeId(), 2);
-		Assert.assertEquals(expectedReactionRuleSet.getRulesetName(), "Name");
+		Assert.assertEquals(1,expectedReactionRuleSet.getColruytGroupChainId());
+		Assert.assertEquals(63,expectedReactionRuleSet.getPriceCompetitorChainId());
+		Assert.assertEquals(2, expectedReactionRuleSet.getRuleTypeId());
+		Assert.assertEquals("Name" ,expectedReactionRuleSet.getRulesetName());
 
 	}
 	@Test
@@ -65,9 +65,9 @@ public class ReactionRuleSetDlServiceTest {
 	public void findByAttributesTest() {
 		List<ReactionRuleSet> expectedReactionRuleSetList = reactionRuleSetDlService.findByAttributes(1l, 1l, 1l);
 		assertThat(expectedReactionRuleSetList.size()).isEqualTo(1);
-		Assert.assertEquals(expectedReactionRuleSetList.get(0).getRulesetName(), "Name");
-		Assert.assertEquals(expectedReactionRuleSetList.get(0).getRuleTypeId(), 1L);
-		Assert.assertEquals(expectedReactionRuleSetList.get(0).getLstUpdateBy(), "ktr");
+		Assert.assertEquals("Name",expectedReactionRuleSetList.get(0).getRulesetName());
+		Assert.assertEquals(1L,expectedReactionRuleSetList.get(0).getRuleTypeId());
+		Assert.assertEquals("ktr",expectedReactionRuleSetList.get(0).getLstUpdateBy());
 		
 	}
 	@Test
@@ -75,9 +75,9 @@ public class ReactionRuleSetDlServiceTest {
 	public void findByCgChainAndPCChainTest() {
 		List<ReactionRuleSet> expectedReactionRuleSetList = reactionRuleSetDlService.findByCgChainAndPCChain(1l, 1l);
 		assertThat(expectedReactionRuleSetList.size()).isEqualTo(1);
-		Assert.assertEquals(expectedReactionRuleSetList.get(0).getRulesetName(), "Name");
-		Assert.assertEquals(expectedReactionRuleSetList.get(0).getRuleTypeId(), 1L);
-		Assert.assertEquals(expectedReactionRuleSetList.get(0).getLstUpdateBy(), "ktr");
+		Assert.assertEquals("Name",expectedReactionRuleSetList.get(0).getRulesetName());
+		Assert.assertEquals(1L,expectedReactionRuleSetList.get(0).getRuleTypeId());
+		Assert.assertEquals("ktr",expectedReactionRuleSetList.get(0).getLstUpdateBy());
 	}
 	@Test
 	@DataSet("dataset/ReactionRuleSetDlServiceTest.xml")
@@ -86,10 +86,10 @@ public class ReactionRuleSetDlServiceTest {
 		Date actualDate = formatter.parse(formatter.format(new Date()));
 		reactionRuleSetDlService.logicallyDeleteRuleSet(getReactionRuleSet());
 		ReactionRuleSet expectedReactionRuleSet = reactionRuleSetDlService.findByPk(501l);
-		Assert.assertEquals(expectedReactionRuleSet.getLogicallyDeletedDate(), actualDate);
-		Assert.assertEquals(expectedReactionRuleSet.getColruytGroupChainId(), 1);
-		Assert.assertEquals(expectedReactionRuleSet.getPriceCompetitorChainId(), 63);
-		Assert.assertEquals(expectedReactionRuleSet.getRulesetName(), "Name");
+		Assert.assertEquals(actualDate ,expectedReactionRuleSet.getLogicallyDeletedDate());
+		Assert.assertEquals(1,expectedReactionRuleSet.getColruytGroupChainId());
+		Assert.assertEquals(63,expectedReactionRuleSet.getPriceCompetitorChainId());
+		Assert.assertEquals("Name",expectedReactionRuleSet.getRulesetName());
 
 	}
 	@Test

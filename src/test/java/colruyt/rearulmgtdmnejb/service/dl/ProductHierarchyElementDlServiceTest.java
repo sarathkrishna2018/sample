@@ -40,10 +40,10 @@ public class ProductHierarchyElementDlServiceTest {
 		List<PriceProductHierarchyElement> expectedPriceProductHierarchyElement = productHierarchyElementDlService
 				.findByHierarchyValueList(getProductHierarchyElmntValues());
 		assertThat(expectedPriceProductHierarchyElement.size()).isEqualTo(2);
-		Assert.assertEquals(expectedPriceProductHierarchyElement.get(0).getProductHierarchyElementId(), new Long(1l));
-		Assert.assertEquals(expectedPriceProductHierarchyElement.get(0).getProductHierarchyTypeId(), new Long(1l));
-		Assert.assertEquals(expectedPriceProductHierarchyElement.get(0).getCreatedBy(), "ake");
-		Assert.assertEquals(expectedPriceProductHierarchyElement.get(0).getProdHrchyValue(), "All");
+		Assert.assertEquals( new Long(1l),expectedPriceProductHierarchyElement.get(0).getProductHierarchyElementId());
+		Assert.assertEquals( new Long(1l) ,expectedPriceProductHierarchyElement.get(0).getProductHierarchyTypeId());
+		Assert.assertEquals("ake",expectedPriceProductHierarchyElement.get(0).getCreatedBy());
+		Assert.assertEquals("All",expectedPriceProductHierarchyElement.get(0).getProdHrchyValue());
 	}
 
 	@Test
@@ -52,10 +52,10 @@ public class ProductHierarchyElementDlServiceTest {
 	public void createProductHierarachyTest() {
 		PriceProductHierarchyElement expectedPriceProductHierarchyElement = productHierarchyElementDlService
 				.create(getProductHchyElement());
-		Assert.assertEquals(expectedPriceProductHierarchyElement.getProductHierarchyElementId(), new Long(1l));
-		Assert.assertEquals(expectedPriceProductHierarchyElement.getProductHierarchyTypeId(), new Long(1l));
-		Assert.assertEquals(expectedPriceProductHierarchyElement.getCreatedBy(), "SA");
-		Assert.assertEquals(expectedPriceProductHierarchyElement.getProdHrchyValue(), "All");
+		Assert.assertEquals( new Long(1l),expectedPriceProductHierarchyElement.getProductHierarchyElementId());
+		Assert.assertEquals( new Long(1l),expectedPriceProductHierarchyElement.getProductHierarchyTypeId());
+		Assert.assertEquals("SA",expectedPriceProductHierarchyElement.getCreatedBy());
+		Assert.assertEquals("All",expectedPriceProductHierarchyElement.getProdHrchyValue());
 	}
 
 	@Test
@@ -64,10 +64,10 @@ public class ProductHierarchyElementDlServiceTest {
 		List<PriceProductHierarchyElement> priceProductHierarchyElements = productHierarchyElementDlService
 				.findAllElements();
 		assertThat(priceProductHierarchyElements.size()).isEqualTo(3);
-		Assert.assertEquals(priceProductHierarchyElements.get(1).getProdHrchyValue(), "All");
-		Assert.assertEquals(priceProductHierarchyElements.get(1).getCreatedBy(), "ake");
-		Assert.assertEquals(priceProductHierarchyElements.get(1).getProductHierarchyElementId(), new Long(2l));
-		Assert.assertEquals(priceProductHierarchyElements.get(1).getProductHierarchyTypeId(), new Long(2l));
+		Assert.assertEquals("All",priceProductHierarchyElements.get(1).getProdHrchyValue() );
+		Assert.assertEquals("ake",priceProductHierarchyElements.get(1).getCreatedBy());
+		Assert.assertEquals( new Long(2l),priceProductHierarchyElements.get(1).getProductHierarchyElementId());
+		Assert.assertEquals( new Long(2l),priceProductHierarchyElements.get(1).getProductHierarchyTypeId());
 	}
 
 	@Test

@@ -42,7 +42,7 @@ public class ProductHierarchySetDlServiceTest {
 	public void createProductHierarachySetTest() {
 		PriceProductHierarchySet expectedPriceProductHierarchySet = productHierarchySetDlService
 				.create(getPriceProductHierarchySet());
-		Assert.assertEquals(expectedPriceProductHierarchySet.getProductHierarchySetId(), new Long(504l));
+		Assert.assertEquals(new Long(504l) ,expectedPriceProductHierarchySet.getProductHierarchySetId());
 	}
 
 	@Test
@@ -51,17 +51,17 @@ public class ProductHierarchySetDlServiceTest {
 	public void createProductHierarachySetElementTest() {
 		PriceProductHierarchySetElement expectedPriceProductHierarchySetElement = productHierarchySetDlService
 				.create(getPriceProductHierarchySetElmnt());
-		Assert.assertEquals(expectedPriceProductHierarchySetElement.getId().getProductHierarchyElementId(), 1);
+		Assert.assertEquals(1,expectedPriceProductHierarchySetElement.getId().getProductHierarchyElementId());
 	}
 
 	@Test
 	@DataSet("dataset/ProductHierarchySetDlServiceTest.xml")
 	public void findByPkTest() {
 		PriceProductHierarchySet expectedPriceProductHierarchySetElement = productHierarchySetDlService.findByPk(504l);
-		Assert.assertEquals(expectedPriceProductHierarchySetElement.getProductHierarchySetId(), new Long(504l));
-		Assert.assertEquals(expectedPriceProductHierarchySetElement.getAssortmentName(), "ALL");
-		Assert.assertEquals(expectedPriceProductHierarchySetElement.getCheapBrand(), true );
-		Assert.assertEquals(expectedPriceProductHierarchySetElement.getReaRuleId(), new Long(1l));
+		Assert.assertEquals( new Long(504l),expectedPriceProductHierarchySetElement.getProductHierarchySetId());
+		Assert.assertEquals("ALL",expectedPriceProductHierarchySetElement.getAssortmentName());
+		Assert.assertEquals(true,expectedPriceProductHierarchySetElement.getCheapBrand() );
+		Assert.assertEquals(new Long(1l),expectedPriceProductHierarchySetElement.getReaRuleId());
 	}
 
 	@Test
@@ -77,9 +77,9 @@ public class ProductHierarchySetDlServiceTest {
 		List<PriceProductHierarchySetElement> expectedpriceProductHierarchySetElmntList = productHierarchySetDlService
 				.findSetElementByElementIds(getpriceProductHierarchySetElmntValues());
 		assertThat(expectedpriceProductHierarchySetElmntList.size()).isEqualTo(1);
-		Assert.assertEquals(expectedpriceProductHierarchySetElmntList.get(0).getId().getProductHierarchyElementId(), 1l);
-		Assert.assertEquals(expectedpriceProductHierarchySetElmntList.get(0).getId().getProductHierarchySetId(), 504l);
-		Assert.assertEquals(expectedpriceProductHierarchySetElmntList.get(0).getLstUpdateBy(), "ktr");
+		Assert.assertEquals(1l,expectedpriceProductHierarchySetElmntList.get(0).getId().getProductHierarchyElementId());
+		Assert.assertEquals(504l,expectedpriceProductHierarchySetElmntList.get(0).getId().getProductHierarchySetId());
+		Assert.assertEquals("ktr",expectedpriceProductHierarchySetElmntList.get(0).getLstUpdateBy());
 	}
 
 	@Test
@@ -109,7 +109,7 @@ public class ProductHierarchySetDlServiceTest {
 	@DataSet("dataset/ProductHierarchySetDlServiceTest.xml")
 	public void getPriceProductHierarchySetElementIdTest() {
 		Long expectedResult=productHierarchySetDlService.getPriceProductHierarchySetElementId(getDeleteRuleInfoBo());
-		Assert.assertEquals(expectedResult, new Long(504l));
+		Assert.assertEquals(new Long(504l) ,expectedResult);
 	}
 
 	@Test

@@ -33,16 +33,16 @@ public class QuantityRuleDlServiceTest {
 	@ExpectedDataSet("result/QuantityRuleCreateTestResult.xml")
 	public void createTest() {
 		QuantityRuleAction expectedQuantityRule = quantityRuleActionDlService.createOrUpdate(getReaQtyRule());
-		Assert.assertEquals(expectedQuantityRule.getReactionRuleId(), 1L);
+		Assert.assertEquals(1L,expectedQuantityRule.getReactionRuleId());
 	}
 
 	@Test
 	@DataSet("dataset/QuantityRuleDlServiceTest.xml")
 	public void findByRuleIdTest() {
 		QuantityRuleAction expectedQuantityRule = quantityRuleActionDlService.findByRuleId(1);
-		Assert.assertEquals(expectedQuantityRule.getReactionRuleId(), 1L);
-		Assert.assertEquals(expectedQuantityRule.getQuantityTypeId(), 2L);
-		Assert.assertEquals(expectedQuantityRule.getQuantityConditionId(), 4L);
+		Assert.assertEquals(1L,expectedQuantityRule.getReactionRuleId());
+		Assert.assertEquals(2L,expectedQuantityRule.getQuantityTypeId());
+		Assert.assertEquals(4L,expectedQuantityRule.getQuantityConditionId());
 	}
 
 	@Test

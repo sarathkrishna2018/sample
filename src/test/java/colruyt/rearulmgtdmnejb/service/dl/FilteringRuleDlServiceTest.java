@@ -39,7 +39,7 @@ public class FilteringRuleDlServiceTest {
 	@DataSet("dataset/FilteringRuleDlServiceTest.xml")
 	public void findByRuleIdTest() {
 		FilteringRuleAction expectedFilteringRule = filteringRuleActionDlService.findByRuleId(2l);
-		Assert.assertEquals(expectedFilteringRule.getReactionRuleId(), 2L);
+		Assert.assertEquals(2L,expectedFilteringRule.getReactionRuleId());
 		Assert.assertEquals( new Double(1.0),expectedFilteringRule.getMaximumCompetitorQuantity());
 		Assert.assertEquals(new Double(2.5) ,expectedFilteringRule.getXTimeQty());
 	}
