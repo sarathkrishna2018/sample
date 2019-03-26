@@ -345,10 +345,10 @@ public abstract class GeneralRuleService implements Serializable {
 		// if rule is a parent, then logically delete child rule
 		if (reactionRule.getChildRuleId() != null) {
 			ReactionRule childRule = getReactionRule(reactionRule.getChildRuleId(), langCode);
-			childRule.setLstUpdateBy(logonId);
+			childRule.setLastUpdateBy(logonId);
 			reactionRuleDlService.updateLogicallyDeletedDate(childRule);
 		}
-		reactionRule.setLstUpdateBy(logonId);
+		reactionRule.setLastUpdateBy(logonId);
 		reactionRuleDlService.updateLogicallyDeletedDate(reactionRule);
 	}
 
@@ -367,7 +367,7 @@ public abstract class GeneralRuleService implements Serializable {
 	}
 
 	public void deleteReactionRule(ReactionRule reactionRule, String logonId) {
-		reactionRule.setLstUpdateBy(logonId);
+		reactionRule.setLastUpdateBy(logonId);
 		reactionRuleDlService.updateLogicallyDeletedDate(reactionRule);
 
 	}

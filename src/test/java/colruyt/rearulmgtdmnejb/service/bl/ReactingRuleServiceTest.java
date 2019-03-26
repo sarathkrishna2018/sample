@@ -158,7 +158,7 @@ public class ReactingRuleServiceTest {
 		ReactingRuleAction reaReactingAct = new ReactingRuleAction();
 		reaReactingAct.setReactionRuleId(1l);
 		reaReactingAct.setCatchAll(true);
-		reaReactingAct.setReactingAmt(12d);
+		reaReactingAct.setReactingAmount(12d);
 		reaReactingAct.setReactingPercentage(8d);
 		reaReactingAct.setThresholdAmount(10d);
 		reaReactingAct.setThresholdPercentage(6d);
@@ -184,7 +184,7 @@ public class ReactingRuleServiceTest {
 		reaRule.setRecalculate(false);
 		reaRule.setRuleComment("good");
 		reaRule.setCreatedBy("sa");
-		reaRule.setLstUpdateBy("sa");
+		reaRule.setLastUpdateBy("sa");
 		return reaRule;
 	}
 

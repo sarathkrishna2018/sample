@@ -29,8 +29,8 @@ import colruyt.rearulmgtdmnejb.bo.RefNotToReactCodeBo;
 import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefSourceTypeBo;
 import colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleAction;
-import colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleActionRsn;
-import colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleActionRsnPK;
+import colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleReason;
+import colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleReasonPK;
 import colruyt.rearulmgtdmnejb.entity.ReactionRule;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleValidationException;
@@ -151,7 +151,7 @@ public class ProposeNotToReactRuleServiceTest {
 		reaRule.setRecalculate(false);
 		reaRule.setRuleComment("good");
 		reaRule.setCreatedBy("sa");
-		reaRule.setLstUpdateBy("sa");
+		reaRule.setLastUpdateBy("sa");
 		return reaRule;
 	}
 
@@ -190,7 +190,7 @@ public class ProposeNotToReactRuleServiceTest {
 	private ProposalNotToReactRuleAction getReaNreactAct() {
 		ProposalNotToReactRuleAction reaNreactAct = new ProposalNotToReactRuleAction();
 		reaNreactAct.setReactionRuleId(1);
-		reaNreactAct.setFltoutTypeId(2);
+		reaNreactAct.setFilterOutTypeId(2);
 		return reaNreactAct;
 	}
 
@@ -219,17 +219,17 @@ public class ProposeNotToReactRuleServiceTest {
 		return reactionRulesetBo;
 	}
 
-	private List<ProposalNotToReactRuleActionRsn> getReaNreactSetRsn() {
-		List<ProposalNotToReactRuleActionRsn> reaNreactSetRsnlist = Lists.newArrayList();
-		ProposalNotToReactRuleActionRsn reaNreactSetRsn = new ProposalNotToReactRuleActionRsn();
+	private List<ProposalNotToReactRuleReason> getReaNreactSetRsn() {
+		List<ProposalNotToReactRuleReason> reaNreactSetRsnlist = Lists.newArrayList();
+		ProposalNotToReactRuleReason reaNreactSetRsn = new ProposalNotToReactRuleReason();
 		reaNreactSetRsn.setId(getreaNreactSetRsnPK());
-		reaNreactSetRsn.setLstUpdateBy("xxx");
+		reaNreactSetRsn.setLastUpdateBy("xxx");
 		reaNreactSetRsnlist.add(reaNreactSetRsn);
 		return reaNreactSetRsnlist;
 	}
 
-	private ProposalNotToReactRuleActionRsnPK getreaNreactSetRsnPK() {
-		ProposalNotToReactRuleActionRsnPK reaNreactSetRsnPK = new ProposalNotToReactRuleActionRsnPK();
+	private ProposalNotToReactRuleReasonPK getreaNreactSetRsnPK() {
+		ProposalNotToReactRuleReasonPK reaNreactSetRsnPK = new ProposalNotToReactRuleReasonPK();
 		reaNreactSetRsnPK.setReactionRuleId(1);
 		reaNreactSetRsnPK.setReasonId(2);
 		return reaNreactSetRsnPK;

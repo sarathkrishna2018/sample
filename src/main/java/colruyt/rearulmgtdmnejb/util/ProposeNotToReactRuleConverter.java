@@ -19,7 +19,7 @@ public class ProposeNotToReactRuleConverter implements Serializable {
 	public static ProposalNotToReactRuleAction convertFromBo(ProposeNotToReactRuleBo notToReactRule) {
 		ProposalNotToReactRuleAction notToReactRuleAction = new ProposalNotToReactRuleAction();
 		notToReactRuleAction.setReactionRuleId(notToReactRule.getRuleId());
-		notToReactRuleAction.setFltoutTypeId(notToReactRule.getFilterOutType().getFilterOutTypeId());
+		notToReactRuleAction.setFilterOutTypeId(notToReactRule.getFilterOutType().getFilterOutTypeId());
 		notToReactRuleAction
 				.setNotToReactSetReasons(getProposeNotToReactReasonIds(notToReactRule.getNotToReactCodes()));
 		return notToReactRuleAction;
@@ -27,7 +27,7 @@ public class ProposeNotToReactRuleConverter implements Serializable {
 
 	public static ProposeNotToReactRuleBo convertToBo(ProposalNotToReactRuleAction proposalNotToReactRuleAction,
 			ProposeNotToReactRuleBo proposeNTRRuleBo,List<RefNotToReactCodeBo> refNotToReact, List<RefFilterOutRecordingTypeBo> refFilterOutRecordingTypeLst) {
-		proposeNTRRuleBo.setFilterOutType(convertToBo(proposalNotToReactRuleAction.getFltoutTypeId(),refFilterOutRecordingTypeLst));
+		proposeNTRRuleBo.setFilterOutType(convertToBo(proposalNotToReactRuleAction.getFilterOutTypeId(),refFilterOutRecordingTypeLst));
 		proposeNTRRuleBo.setNotToReactCodes(convertToBo(proposalNotToReactRuleAction.getNotToReactSetReasons(),refNotToReact));
 		return proposeNTRRuleBo;
 	}

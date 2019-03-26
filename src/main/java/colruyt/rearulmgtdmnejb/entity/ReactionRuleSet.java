@@ -37,7 +37,7 @@ public class ReactionRuleSet implements Serializable {
 	private long priceCompetitorChainId;
 
 	@Column(name = "LST_UPDATE_BY")
-	private String lstUpdateBy;
+	private String lastUpdateBy;
 
 	@Column(name = "RULESET_COMMENT")
 	private String rulesetComment;
@@ -77,12 +77,12 @@ public class ReactionRuleSet implements Serializable {
 		this.priceCompetitorChainId = compChainId;
 	}
 
-	public String getLstUpdateBy() {
-		return this.lstUpdateBy;
+	public String getLastUpdateBy() {
+		return this.lastUpdateBy;
 	}
 
-	public void setLstUpdateBy(String lstUpdateBy) {
-		this.lstUpdateBy = lstUpdateBy;
+	public void setLastUpdateBy(String lstUpdateBy) {
+		this.lastUpdateBy = lstUpdateBy;
 	}
 
 	public String getRulesetComment() {

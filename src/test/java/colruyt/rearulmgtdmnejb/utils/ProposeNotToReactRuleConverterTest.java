@@ -16,7 +16,7 @@ import colruyt.rearulmgtdmnejb.bo.RefFilterOutRecordingTypeBo;
 import colruyt.rearulmgtdmnejb.bo.RefLangBo;
 import colruyt.rearulmgtdmnejb.bo.RefNotToReactCodeBo;
 import colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleAction;
-import colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleActionRsnPK;
+import colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleReasonPK;
 import colruyt.rearulmgtdmnejb.util.ProposeNotToReactRuleConverter;
 
 @Transactional
@@ -27,10 +27,10 @@ public class ProposeNotToReactRuleConverterTest {
 	public void createTest() {
 		ProposeNotToReactRuleBo proposeNotToReactRuleBo = getProposeNotToReactRuleBo();
 		ProposalNotToReactRuleAction reaNreactAct = new ProposalNotToReactRuleAction();
-		reaNreactAct.setFltoutTypeId(proposeNotToReactRuleBo.getFilterOutType().getFilterOutTypeId());
+		reaNreactAct.setFilterOutTypeId(proposeNotToReactRuleBo.getFilterOutType().getFilterOutTypeId());
 		ProposalNotToReactRuleAction expectedReaNreactAct = ProposeNotToReactRuleConverter
 				.convertFromBo(getProposeNotToReactRuleBo());
-		assertEquals(expectedReaNreactAct.getFltoutTypeId(), reaNreactAct.getFltoutTypeId());
+		assertEquals(expectedReaNreactAct.getFilterOutTypeId(), reaNreactAct.getFilterOutTypeId());
 
 	}
 
@@ -46,14 +46,14 @@ public class ProposeNotToReactRuleConverterTest {
 
 	private ProposalNotToReactRuleAction getProposalNotToReactRuleAction() {
 		ProposalNotToReactRuleAction proposalNotToReactRuleAction = new ProposalNotToReactRuleAction();
-		proposalNotToReactRuleAction.setFltoutTypeId(1);
+		proposalNotToReactRuleAction.setFilterOutTypeId(1);
 		proposalNotToReactRuleAction.setReactionRuleId(1);
 
 		return proposalNotToReactRuleAction;
 	}
 
-	private ProposalNotToReactRuleActionRsnPK getReaNreactSetRsnPK() {
-		ProposalNotToReactRuleActionRsnPK reaNreactSetRsnPK = new ProposalNotToReactRuleActionRsnPK();
+	private ProposalNotToReactRuleReasonPK getReaNreactSetRsnPK() {
+		ProposalNotToReactRuleReasonPK reaNreactSetRsnPK = new ProposalNotToReactRuleReasonPK();
 		reaNreactSetRsnPK.setReactionRuleId(1l);
 		reaNreactSetRsnPK.setReasonId(1);
 		return reaNreactSetRsnPK;

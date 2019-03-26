@@ -39,7 +39,7 @@ public class ReactingRuleDlServiceTest {
 		ReactingRuleAction expectedReactingRule=reactingRuleActionDlService.findByRuleId(1l);
 		Assert.assertEquals(1L,expectedReactingRule.getReactionRuleId());
 		Assert.assertEquals(true ,expectedReactingRule.getCatchAll());
-		Assert.assertEquals(new Double(7),expectedReactingRule.getReactingAmt());
+		Assert.assertEquals(new Double(7),expectedReactingRule.getReactingAmount());
 		Assert.assertEquals(new Double(3),expectedReactingRule.getReactingPercentage());
 		Assert.assertEquals(new Double(5),expectedReactingRule.getThresholdAmount());
 		Assert.assertEquals(new Double(2),expectedReactingRule.getThresholdPercentage());
@@ -59,7 +59,7 @@ public class ReactingRuleDlServiceTest {
 	private ReactingRuleAction getReactingRule(){
 		ReactingRuleAction reactingRuleAction=new ReactingRuleAction();
 		reactingRuleAction.setCatchAll(true);
-		reactingRuleAction.setReactingAmt(7d);
+		reactingRuleAction.setReactingAmount(7d);
 		reactingRuleAction.setReactionRuleId(1);
 		reactingRuleAction.setReactingPercentage(3d);
 		reactingRuleAction.setThresholdAmount(5d);

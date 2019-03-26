@@ -55,7 +55,7 @@ public class ReactionRule implements Serializable {
 	private long importancecodeTo;
 
 	@Column(name = "LST_UPDATE_BY")
-	private String lstUpdateBy;
+	private String lastUpdateBy;
 
 	@Column(name = "PERMENANT_YN")
 	@ExternalValues({ "true=Y", "false=N" })
@@ -228,12 +228,12 @@ public class ReactionRule implements Serializable {
 		this.direct = directYn;
 	}
 
-	public String getLstUpdateBy() {
-		return this.lstUpdateBy;
+	public String getLastUpdateBy() {
+		return this.lastUpdateBy;
 	}
 
-	public void setLstUpdateBy(String lstUpdateBy) {
-		this.lstUpdateBy = lstUpdateBy;
+	public void setLastUpdateBy(String lstUpdateBy) {
+		this.lastUpdateBy = lstUpdateBy;
 	}
 
 	public boolean getPermenant() {

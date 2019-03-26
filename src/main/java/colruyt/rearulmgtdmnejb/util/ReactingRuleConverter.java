@@ -12,7 +12,7 @@ public class ReactingRuleConverter implements Serializable {
 	public static ReactingRuleAction convertFromBo(ReactingRuleBo reactingRuleBo) {
 		ReactingRuleAction reactingAct = new ReactingRuleAction();
 		reactingAct.setReactionRuleId(reactingRuleBo.getRuleId());
-		reactingAct.setReactingAmt(reactingRuleBo.getReactingAmount());
+		reactingAct.setReactingAmount(reactingRuleBo.getReactingAmount());
 		reactingAct.setReactingPercentage(reactingRuleBo.getReactingPercentage());
 		reactingAct.setThresholdAmount(reactingRuleBo.getThresholdAmount());
 		reactingAct.setThresholdPercentage(reactingRuleBo.getThresholdPercentage());
@@ -21,7 +21,7 @@ public class ReactingRuleConverter implements Serializable {
 	}
 
 	public static ReactingRuleBo convertToBo(ReactingRuleAction reactingRuleAction, ReactingRuleBo reactingBo) {
-		reactingBo.setReactingAmount(reactingRuleAction.getReactingAmt());
+		reactingBo.setReactingAmount(reactingRuleAction.getReactingAmount());
 		reactingBo.setReactingPercentage(reactingRuleAction.getReactingPercentage());
 		reactingBo.setThresholdAmount(reactingRuleAction.getThresholdAmount());
 		reactingBo.setThresholdPercentage(reactingRuleAction.getThresholdPercentage());

@@ -28,7 +28,7 @@ public class ReaRulesetConverter implements Serializable {
 		reaRuleset.setRuleTypeId(rulesetBo.getRefRuleTypeBo().getRuleTypeId());
 		reaRuleset.setRulesetComment(rulesetBo.getComments());
 		reaRuleset.setRulesetName(rulesetBo.getName());
-		reaRuleset.setLstUpdateBy(logonId);
+		reaRuleset.setLastUpdateBy(logonId);
 		return reaRuleset;
 	}
 

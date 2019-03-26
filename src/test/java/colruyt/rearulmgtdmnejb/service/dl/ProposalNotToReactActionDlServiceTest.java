@@ -46,7 +46,7 @@ public class ProposalNotToReactActionDlServiceTest {
 		notToReactSetReasonsId.add(2);
 		ProposalNotToReactRuleAction expectedProposalNotToReactRule = proposalNotToReactActionDlService.findByRuleId(1l);
 		Assert.assertEquals(1L,expectedProposalNotToReactRule.getReactionRuleId());
-		Assert.assertEquals(5,expectedProposalNotToReactRule.getFltoutTypeId());
+		Assert.assertEquals(5,expectedProposalNotToReactRule.getFilterOutTypeId());
 		Assert.assertEquals(notToReactSetReasonsId, expectedProposalNotToReactRule.getNotToReactSetReasons() );
 	}
 
@@ -72,7 +72,7 @@ public class ProposalNotToReactActionDlServiceTest {
 		reaNreactSetRsns.add(1);
 		reaNreactSetRsns.add(2);
 		proposalNotToReactRuleAction.setNotToReactSetReasons(reaNreactSetRsns);
-		proposalNotToReactRuleAction.setFltoutTypeId(5);
+		proposalNotToReactRuleAction.setFilterOutTypeId(5);
 		return proposalNotToReactRuleAction;
 	}
 	private DeleteRuleInfoBo getDeleteRuleInfoBo() {

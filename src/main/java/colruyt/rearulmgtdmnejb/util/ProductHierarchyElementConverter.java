@@ -20,7 +20,7 @@ public class ProductHierarchyElementConverter implements Serializable {
 			if (productHierarchyElementBo.getId() != null) {
 				reaPpdHchyElmnt.setProductHierarchyElementId(productHierarchyElementBo.getId());
 			}
-			reaPpdHchyElmnt.setPpdHchyValue(productHierarchyElementBo.getPriceProductHierarchyValue());
+			reaPpdHchyElmnt.setProductHierarchyValue(productHierarchyElementBo.getPriceProductHierarchyValue());
 			reaPpdHchyElmnt.setProductHierarchyTypeId(productHierarchyElementBo.getPriceProductHierarchyTypeId());
 			reaPpdHchyElmnt.setCreatedBy(logonId);
 			reaPpdHchyElmnts.add(reaPpdHchyElmnt);
@@ -35,7 +35,7 @@ public class ProductHierarchyElementConverter implements Serializable {
 			ProductHierarchyElementBo productHierarchyElementBo = new ProductHierarchyElementBo();
 			productHierarchyElementBo.setId(ppHchyElement.getProductHierarchyElementId());
 			productHierarchyElementBo.setPriceProductHierarchyTypeId(ppHchyElement.getProductHierarchyTypeId());
-			productHierarchyElementBo.setPriceProductHierarchyValue(ppHchyElement.getProdHrchyValue());
+			productHierarchyElementBo.setPriceProductHierarchyValue(ppHchyElement.getProductHierarchyValue());
 			productHierarchyElementBolist.add(productHierarchyElementBo);
 		}
 

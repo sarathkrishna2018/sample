@@ -31,12 +31,12 @@ public class PriceProductHierarchyElement implements Serializable {
 	private long productHierarchyTypeId;
 
 	@Column(name = "PPD_HCHY_VALUE")
-	private String prodHrchyValue;
+	private String productHierarchyValue;
 
 	// bi-directional many-to-one association to ReaPpdHchysetElmnt
 	@OneToMany
 	@JoinColumn(name = "PPD_HCHY_ELMNT_ID", referencedColumnName = "PPD_HCHY_ELMNT_ID")
-	private List<PriceProductHierarchySetElement> prodHrchySetElement;
+	private List<PriceProductHierarchySetElement> productHierarchySetElement;
 
 	public Long getProductHierarchyElementId() {
 		return this.productHierarchyElementId;
@@ -62,20 +62,20 @@ public class PriceProductHierarchyElement implements Serializable {
 		this.productHierarchyTypeId = productHierarchyTypeId;
 	}
 
-	public String getProdHrchyValue() {
-		return this.prodHrchyValue;
+	public String getProductHierarchyValue() {
+		return this.productHierarchyValue;
 	}
 
-	public void setPpdHchyValue(String ppdHchyValue) {
-		this.prodHrchyValue = ppdHchyValue;
+	public void setProductHierarchyValue(String productHierarchyValue) {
+		this.productHierarchyValue = productHierarchyValue;
 	}
 
-	public List<PriceProductHierarchySetElement> getProdHrchySetElement() {
-		return this.prodHrchySetElement;
+	public List<PriceProductHierarchySetElement> getProductHierarchySetElement() {
+		return this.productHierarchySetElement;
 	}
 
-	public void setProdHrchySetElement(List<PriceProductHierarchySetElement> reaPpdHchysetElmnts) {
-		this.prodHrchySetElement = reaPpdHchysetElmnts;
+	public void setProductHierarchySetElement(List<PriceProductHierarchySetElement> reaProductHierarchySetElements) {
+		this.productHierarchySetElement = reaProductHierarchySetElements;
 	}
 
 }

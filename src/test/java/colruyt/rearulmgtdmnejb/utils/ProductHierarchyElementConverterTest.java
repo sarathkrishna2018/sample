@@ -36,7 +36,7 @@ public class ProductHierarchyElementConverterTest {
 		ProductHierarchyElementBo productHierarchyElement = createProductHierarchyElementBo();
 		PriceProductHierarchyElement reaPpdHchyElmnt = new PriceProductHierarchyElement();
 		String logonId = "sa";
-		reaPpdHchyElmnt.setPpdHchyValue(productHierarchyElement.getPriceProductHierarchyValue());
+		reaPpdHchyElmnt.setProductHierarchyValue(productHierarchyElement.getPriceProductHierarchyValue());
 		reaPpdHchyElmnt.setProductHierarchyTypeId(productHierarchyElement.getPriceProductHierarchyTypeId());
 		reaPpdHchyElmnt.setCreatedBy(logonId);
 		reaPpdHchyElmnts.add(reaPpdHchyElmnt);
@@ -63,7 +63,7 @@ public class ProductHierarchyElementConverterTest {
 		reaRule.setRecalculate(false);
 		reaRule.setRuleComment("good");
 		reaRule.setCreatedBy("sa");
-		reaRule.setLstUpdateBy("sa");
+		reaRule.setLastUpdateBy("sa");
 		reaRule.setPriceProductHierarchySet(getReaPpdHchysets());
 		return reaRule;
 	}
@@ -74,7 +74,7 @@ public class ProductHierarchyElementConverterTest {
 		priceProductHierarchySet.setAssortmentName("all");
 		priceProductHierarchySet.setCheapBrand(false);
 		priceProductHierarchySet.setCreatedBy("ake");
-		priceProductHierarchySet.setLstUpdateBy("ake");
+		priceProductHierarchySet.setLastUpdateBy("ake");
 		priceProductHierarchySet.setProdHrchySetId(1l);
 		priceProductHierarchySet.setPriceProductHierarchyElements(getPriceProductHierarchyElements());
 		priceProductHierarchySet.setReactionRuleId(1);
@@ -88,8 +88,8 @@ public class ProductHierarchyElementConverterTest {
 		priceProductHierarchyElement.setCreatedBy("ak");
 		priceProductHierarchyElement.setProductHierarchyElementId(1l);
 		priceProductHierarchyElement.setProductHierarchyTypeId(1l);
-		priceProductHierarchyElement.setPpdHchyValue("All");
-		priceProductHierarchyElement.setProdHrchySetElement(getReaPpdHchysetElmnts());
+		priceProductHierarchyElement.setProductHierarchyValue("All");
+		priceProductHierarchyElement.setProductHierarchySetElement(getReaPpdHchysetElmnts());
 		priceProductHierarchyElements.add(priceProductHierarchyElement);
 		return priceProductHierarchyElements;
 	}
@@ -98,7 +98,7 @@ public class ProductHierarchyElementConverterTest {
 		List<PriceProductHierarchySetElement> priceProductHierarchySetElmnts = Lists.newArrayList();
 		PriceProductHierarchySetElement priceProductHierarchySetElmnt = new PriceProductHierarchySetElement();
 		priceProductHierarchySetElmnt.setId(getPriceProductHierarchySetElmntPK());
-		priceProductHierarchySetElmnt.setLstUpdateBy("ake");
+		priceProductHierarchySetElmnt.setLastUpdateBy("ake");
 		priceProductHierarchySetElmnts.add(priceProductHierarchySetElmnt);
 		return priceProductHierarchySetElmnts;
 	}

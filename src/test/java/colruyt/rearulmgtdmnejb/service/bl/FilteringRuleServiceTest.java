@@ -256,7 +256,7 @@ public class FilteringRuleServiceTest {
 		reaRule.setRecalculate(false);
 		reaRule.setRuleComment("good");
 		reaRule.setCreatedBy("sa");
-		reaRule.setLstUpdateBy("sa");
+		reaRule.setLastUpdateBy("sa");
 		reaRule.setRefActionTypes(getActionTypes());
 		reaRule.setRefSourceTypes(getSourceTypes());
 		return reaRule;

@@ -10,7 +10,7 @@ public class RefFilterOutRecordingTypeLangPK implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Column(name = "FLTOUT_TYPE_ID")
-	private int fltoutTypeId;
+	private int filterOutTypeId;
 
 	@Column(name = "ISO_LANG_CODE")
 	private String isoLangCode;
@@ -18,12 +18,12 @@ public class RefFilterOutRecordingTypeLangPK implements Serializable {
 	public RefFilterOutRecordingTypeLangPK() {
 	}
 
-	public int getFltoutTypeId() {
-		return this.fltoutTypeId;
+	public int getFilterOutTypeId() {
+		return this.filterOutTypeId;
 	}
 
-	public void setFltoutTypeId(int fltoutTypeId) {
-		this.fltoutTypeId = fltoutTypeId;
+	public void setFilterOutTypeId(int fltoutTypeId) {
+		this.filterOutTypeId = fltoutTypeId;
 	}
 
 	public String getIsoLangCode() {
@@ -38,7 +38,7 @@ public class RefFilterOutRecordingTypeLangPK implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + fltoutTypeId;
+		result = prime * result + filterOutTypeId;
 		result = prime * result + ((isoLangCode == null) ? 0 : isoLangCode.hashCode());
 		return result;
 	}
@@ -55,7 +55,7 @@ public class RefFilterOutRecordingTypeLangPK implements Serializable {
 			return false;
 		}
 		RefFilterOutRecordingTypeLangPK other = (RefFilterOutRecordingTypeLangPK) obj;
-		if (fltoutTypeId != other.fltoutTypeId) {
+		if (filterOutTypeId != other.filterOutTypeId) {
 			return false;
 		}
 		if (isoLangCode == null) {

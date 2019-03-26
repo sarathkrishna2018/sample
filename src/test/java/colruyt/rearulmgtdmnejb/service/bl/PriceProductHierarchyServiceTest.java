@@ -246,7 +246,7 @@ public class PriceProductHierarchyServiceTest {
 		reaPpdHchyset.setAssortmentName("Asa");
 		reaPpdHchyset.setCheapBrand(true);
 		reaPpdHchyset.setCreatedBy("Sa");
-		reaPpdHchyset.setLstUpdateBy("Sa");
+		reaPpdHchyset.setLastUpdateBy("Sa");
 		reaPpdHchyset.setNationalBrand(true);
 		reaPpdHchyset.setOwnBrand(true);
 		reaPpdHchyset.setProdHrchySetId(1l);
@@ -271,9 +271,9 @@ public class PriceProductHierarchyServiceTest {
 		PriceProductHierarchyElement reaPpdHchyElmnt = new PriceProductHierarchyElement();
 		reaPpdHchyElmnt.setProductHierarchyElementId(1l);
 		reaPpdHchyElmnt.setProductHierarchyTypeId(1l);
-		reaPpdHchyElmnt.setPpdHchyValue("ASA");
+		reaPpdHchyElmnt.setProductHierarchyValue("ASA");
 		reaPpdHchyElmnt.setCreatedBy("SA");
-		reaPpdHchyElmnt.setProdHrchySetElement(getReaPpdHchysetElmnt());
+		reaPpdHchyElmnt.setProductHierarchySetElement(getReaPpdHchysetElmnt());
 		reaPpdHchyElmntlist.add(reaPpdHchyElmnt);
 		return reaPpdHchyElmntlist;
 
@@ -282,7 +282,7 @@ public class PriceProductHierarchyServiceTest {
 	private List<PriceProductHierarchySetElement> getReaPpdHchysetElmnt() {
 		List<PriceProductHierarchySetElement> reaPpdHchysetElmntlist = Lists.newArrayList();
 		PriceProductHierarchySetElement reaPpdHchysetElmnt = new PriceProductHierarchySetElement();
-		reaPpdHchysetElmnt.setLstUpdateBy("Sa");
+		reaPpdHchysetElmnt.setLastUpdateBy("Sa");
 		reaPpdHchysetElmnt.setId(getPriceProductHierarchySetElementPK());
 		reaPpdHchysetElmntlist.add(reaPpdHchysetElmnt);
 		return reaPpdHchysetElmntlist;
@@ -299,9 +299,9 @@ public class PriceProductHierarchyServiceTest {
 		PriceProductHierarchyElement reaPpdHchyElmnt = new PriceProductHierarchyElement();
 		reaPpdHchyElmnt.setProductHierarchyElementId(1l);
 		reaPpdHchyElmnt.setProductHierarchyTypeId(1l);
-		reaPpdHchyElmnt.setPpdHchyValue("ASA");
+		reaPpdHchyElmnt.setProductHierarchyValue("ASA");
 		reaPpdHchyElmnt.setCreatedBy("SA");
-		reaPpdHchyElmnt.setProdHrchySetElement(getReaPpdHchysetElmnt());
+		reaPpdHchyElmnt.setProductHierarchySetElement(getReaPpdHchysetElmnt());
 		return reaPpdHchyElmnt;
 
 	}

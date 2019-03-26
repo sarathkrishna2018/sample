@@ -40,7 +40,7 @@ public class ReaRuleConverter implements Serializable {
 		reaRule.setRecalculate(reactionRuleBo.isRecalculate());
 		reaRule.setRuleComment(reactionRuleBo.getComments());
 		reaRule.setCreatedBy(reactionRuleBo.getLogonId());
-		reaRule.setLstUpdateBy(reactionRuleBo.getLogonId());
+		reaRule.setLastUpdateBy(reactionRuleBo.getLogonId());
 		reaRule.setChildRuleId(reactionRuleBo.getChildRuleId());
 		return reaRule;
 	}
@@ -93,7 +93,7 @@ public class ReaRuleConverter implements Serializable {
 			ruleBo.setValidTo(rule.getValidUpto());
 			ruleBo.setRecalculate(rule.getRecalculate());
 			ruleBo.setComments(rule.getRuleComment());
-			ruleBo.setLogonId(rule.getLstUpdateBy());
+			ruleBo.setLogonId(rule.getLastUpdateBy());
 			ruleBo.setChildRuleId(rule.getChildRuleId());
 			ruleLines.add(ruleBo);
 		}
@@ -114,7 +114,7 @@ public class ReaRuleConverter implements Serializable {
 		ruleBo.setValidTo(rule.getValidUpto());
 		ruleBo.setRecalculate(rule.getRecalculate());
 		ruleBo.setComments(rule.getRuleComment());
-		ruleBo.setUpdatedBy(rule.getLstUpdateBy());
+		ruleBo.setUpdatedBy(rule.getLastUpdateBy());
 		ruleBo.setUpdatedOn(rule.getUpdatedOn());
 		ruleBo.setChildRuleId(rule.getChildRuleId());
 		ruleBo.setRulePriority(rule.getRulePriority());

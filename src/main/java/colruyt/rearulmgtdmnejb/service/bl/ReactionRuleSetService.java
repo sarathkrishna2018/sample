@@ -114,7 +114,7 @@ public class ReactionRuleSetService implements Serializable {
 		if (reactionRuleSet == null) {
 			throw new ReaRuleManagementException(langCode, ExceptionMessageConstants.MESSAGE_REACTION_RULESET_ABSENT);
 		}
-		reactionRuleSet.setLstUpdateBy(logonId);
+		reactionRuleSet.setLastUpdateBy(logonId);
 		reactionRuleSetDlService.logicallyDeleteRuleSet(reactionRuleSet);
 	}
 

@@ -17,7 +17,7 @@ public class ReactionPeriodRuleAction implements Serializable {
 	private long reaRuleId;
 
 	@Column(name = "END_DT_DAYS")
-	private long endDtDays;
+	private long endDateDays;
 
 	@Column(name = "MIN_DAYS")
 	private long minDays;
@@ -31,11 +31,11 @@ public class ReactionPeriodRuleAction implements Serializable {
 	}
 
 	public Long getEndDtDays() {
-		return this.endDtDays;
+		return this.endDateDays;
 	}
 
 	public void setEndDtDays(Long endDtDays) {
-		this.endDtDays = endDtDays;
+		this.endDateDays = endDtDays;
 	}
 
 	public Long getMinDays() {

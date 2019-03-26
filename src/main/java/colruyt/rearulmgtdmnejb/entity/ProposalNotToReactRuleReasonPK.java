@@ -6,7 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class ProposalNotToReactRuleActionRsnPK implements Serializable {
+public class ProposalNotToReactRuleReasonPK implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Column(name = "REA_RULE_ID")
@@ -51,7 +51,7 @@ public class ProposalNotToReactRuleActionRsnPK implements Serializable {
 		if (getClass() != obj.getClass()) {
 			return false;
 		}
-		ProposalNotToReactRuleActionRsnPK other = (ProposalNotToReactRuleActionRsnPK) obj;
+		ProposalNotToReactRuleReasonPK other = (ProposalNotToReactRuleReasonPK) obj;
 		if (reactionRuleId != other.reactionRuleId) {
 			return false;
 		}

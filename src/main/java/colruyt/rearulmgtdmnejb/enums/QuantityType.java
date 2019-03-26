@@ -5,12 +5,12 @@ public enum QuantityType {
 	P2_NQTY(2),
 	P2_BQTY(3);
 	
-	private int qtyTypeId;
-	public int getQtyTypeId() {
-		return qtyTypeId;
+	private int quantityTypeId;
+	public int getQuantityTypeId() {
+		return quantityTypeId;
 	}	
 	private QuantityType(int qtyTypeId) {
-		this.qtyTypeId = qtyTypeId;
+		this.quantityTypeId = qtyTypeId;
 		
 	}
 }

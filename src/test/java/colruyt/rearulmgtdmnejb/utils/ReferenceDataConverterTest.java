@@ -132,7 +132,7 @@ public class ReferenceDataConverterTest {
 
 	private RefFilterOutRecordingTypeLangPK getFiltOutId() {
 		RefFilterOutRecordingTypeLangPK refFilterOutRecordingTypeLangPK = new RefFilterOutRecordingTypeLangPK();
-		refFilterOutRecordingTypeLangPK.setFltoutTypeId(1);
+		refFilterOutRecordingTypeLangPK.setFilterOutTypeId(1);
 		refFilterOutRecordingTypeLangPK.setIsoLangCode("En");
 		return refFilterOutRecordingTypeLangPK;
 	}
@@ -150,7 +150,7 @@ public class ReferenceDataConverterTest {
 	private RefQuantityConditionTypeLangPK getRefQtyCondId() {
 		RefQuantityConditionTypeLangPK refQuantityConditionTypeLangPK = new RefQuantityConditionTypeLangPK();
 		refQuantityConditionTypeLangPK.setIsoLangCode("En");
-		refQuantityConditionTypeLangPK.setQtyCondId(1);
+		refQuantityConditionTypeLangPK.setQuantityConditionId(1);
 		return refQuantityConditionTypeLangPK;
 	}
 

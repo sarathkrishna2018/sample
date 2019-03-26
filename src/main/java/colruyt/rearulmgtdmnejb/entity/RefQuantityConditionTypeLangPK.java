@@ -10,7 +10,7 @@ public class RefQuantityConditionTypeLangPK implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Column(name = "QTY_COND_ID")
-	private int qtyCondId;
+	private int quantityConditionId;
 
 	@Column(name = "ISO_LANG_CODE")
 	private String isoLangCode;
@@ -18,12 +18,12 @@ public class RefQuantityConditionTypeLangPK implements Serializable {
 	public RefQuantityConditionTypeLangPK() {
 	}
 
-	public int getQtyCondId() {
-		return qtyCondId;
+	public int getQuantityConditionId() {
+		return quantityConditionId;
 	}
 
-	public void setQtyCondId(int qtyCondId) {
-		this.qtyCondId = qtyCondId;
+	public void setQuantityConditionId(int qtyCondId) {
+		this.quantityConditionId = qtyCondId;
 	}
 
 	public String getIsoLangCode() {
@@ -39,7 +39,7 @@ public class RefQuantityConditionTypeLangPK implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((isoLangCode == null) ? 0 : isoLangCode.hashCode());
-		result = prime * result + qtyCondId;
+		result = prime * result + quantityConditionId;
 		return result;
 	}
 
@@ -62,7 +62,7 @@ public class RefQuantityConditionTypeLangPK implements Serializable {
 		} else if (!isoLangCode.equals(other.isoLangCode)) {
 			return false;
 		}
-		if (qtyCondId != other.qtyCondId) {
+		if (quantityConditionId != other.quantityConditionId) {
 			return false;
 		}
 		return true;

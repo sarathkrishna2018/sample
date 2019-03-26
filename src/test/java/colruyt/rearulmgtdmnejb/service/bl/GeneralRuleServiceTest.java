@@ -684,7 +684,7 @@ public class GeneralRuleServiceTest {
 		reaRule.setRecalculate(false);
 		reaRule.setRuleComment("good");
 		reaRule.setCreatedBy("sa");
-		reaRule.setLstUpdateBy("sa");
+		reaRule.setLastUpdateBy("sa");
 		reaRulelist.add(reaRule);
 		return reaRulelist;
 
@@ -821,7 +821,7 @@ public class GeneralRuleServiceTest {
 		reaRule.setRecalculate(false);
 		reaRule.setRuleComment("good");
 		reaRule.setCreatedBy("sa");
-		reaRule.setLstUpdateBy("sa");
+		reaRule.setLastUpdateBy("sa");
 		reaRule.setRefActionTypes(getActionTypeList());
 		reaRule.setRefSourceTypes(getSourceTypeList());
 		reaRule.setChildRuleId(1l);
@@ -866,8 +866,8 @@ public class GeneralRuleServiceTest {
 		priceProductHierarchyElement.setCreatedBy("ktr");
 		priceProductHierarchyElement.setProductHierarchyElementId(1l);
 		priceProductHierarchyElement.setProductHierarchyTypeId(2l);
-		priceProductHierarchyElement.setProdHrchySetElement(getPriceProductHierarchySetElmntList());
-		priceProductHierarchyElement.setPpdHchyValue("ALL");
+		priceProductHierarchyElement.setProductHierarchySetElement(getPriceProductHierarchySetElmntList());
+		priceProductHierarchyElement.setProductHierarchyValue("ALL");
 		priceProductHierarchyElementList.add(priceProductHierarchyElement);
 		return priceProductHierarchyElementList;
 	}
@@ -878,7 +878,7 @@ public class GeneralRuleServiceTest {
 		priceProductHierarchySetElmntPK.setProdicyHierarchySetId(1);
 		priceProductHierarchySetElmntPK.setProductHierarchyElementId(1);
 		priceProductHierarchySetElmnt.setId(priceProductHierarchySetElmntPK);
-		priceProductHierarchySetElmnt.setLstUpdateBy("ktr");
+		priceProductHierarchySetElmnt.setLastUpdateBy("ktr");
 		priceProductHierarchySetElmntList.add(priceProductHierarchySetElmnt);
 		return priceProductHierarchySetElmntList; 
 	}

@@ -25,7 +25,7 @@ public class ReactingRuleAction implements Serializable {
 	private boolean catchAll;
 
 	@Column(name = "REACTING_AMT")
-	private Double reactingAmt;
+	private Double reactingAmount;
 
 	@Column(name = "REACTING_PERC")
 	private Double reactingPercentage;
@@ -52,12 +52,12 @@ public class ReactingRuleAction implements Serializable {
 		this.catchAll = catchAllYn;
 	}
 
-	public Double getReactingAmt() {
-		return reactingAmt;
+	public Double getReactingAmount() {
+		return reactingAmount;
 	}
 
-	public void setReactingAmt(Double reactingAmt) {
-		this.reactingAmt = reactingAmt;
+	public void setReactingAmount(Double reactingAmt) {
+		this.reactingAmount = reactingAmt;
 	}
 
 	public Double getReactingPercentage() {

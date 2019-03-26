@@ -8,26 +8,26 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "REA_PPD_HCHYSET_ELMNT")
-public class PriceProductHierarchySetElement implements Serializable {
+@Table(name="REA_NREACT_SET_RSN")
+public class ProposalNotToReactRuleReason implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
 	@EmbeddedId
-	private PriceProductHierarchySetElementPK id;
-
-	@Column(name = "LST_UPDATE_BY")
+	private ProposalNotToReactRuleReasonPK id;
+	
+	@Column(name="LST_UPDATE_BY")
 	private String lastUpdateBy;
 
-	public PriceProductHierarchySetElementPK getId() {
-		return this.id;
+	public ProposalNotToReactRuleReasonPK getId() {
+		return id;
 	}
 
-	public void setId(PriceProductHierarchySetElementPK id) {
+	public void setId(ProposalNotToReactRuleReasonPK id) {
 		this.id = id;
 	}
 
 	public String getLastUpdateBy() {
-		return this.lastUpdateBy;
+		return lastUpdateBy;
 	}
 
 	public void setLastUpdateBy(String lstUpdateBy) {

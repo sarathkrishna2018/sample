@@ -115,9 +115,9 @@ public class ReferenceDataConverter implements Serializable {
 		for (QuantityType quantityType : refQuantityTypeValues) {
 			RefQuantityPriceTypeBo refQuantityPriceTypeBo = new RefQuantityPriceTypeBo();
 			List<RefLangBo> refLangBos = Lists.newArrayList();
-			refQuantityPriceTypeBo.setQuantityTypeId(quantityType.getQtyTypeId());
+			refQuantityPriceTypeBo.setQuantityTypeId(quantityType.getQuantityTypeId());
 			for (RefQuantityType refQuantityType : quantityTypes) {
-				if (refQuantityType.getId().getQuantityTypeId() == quantityType.getQtyTypeId()) {
+				if (refQuantityType.getId().getQuantityTypeId() == quantityType.getQuantityTypeId()) {
 					RefLangBo refLangBo = new RefLangBo();
 					refLangBo.setIsoLangCode(refQuantityType.getId().getIsoLangCode());
 					refLangBo.setValue(refQuantityType.getQuantityTypeName());
@@ -139,7 +139,7 @@ public class ReferenceDataConverter implements Serializable {
 			List<RefLangBo> refLangBos = Lists.newArrayList();
 			refQuantityConditionTypeBo.setCodeTypeId(quantityCondition.getId());
 			for (RefQuantityConditionType refQuantityConditionType : refQuantityConditionTypes) {
-				if (refQuantityConditionType.getId().getQtyCondId() == quantityCondition.getId()) {
+				if (refQuantityConditionType.getId().getQuantityConditionId() == quantityCondition.getId()) {
 					RefLangBo refLangBo = new RefLangBo();
 					refLangBo.setIsoLangCode(refQuantityConditionType.getId().getIsoLangCode());
 					refLangBo.setValue(refQuantityConditionType.getQuantityConditionName());
@@ -162,7 +162,7 @@ public class ReferenceDataConverter implements Serializable {
 			List<RefLangBo> codeLangs = Lists.newArrayList();
 			filterOutRecordingTypeBo.setFilterOutTypeId(filterOutRecordingType.getId());
 			for (RefFilterOutRecordingType refFilterOutRecordingType : refFilterOutRecordingTypes) {
-				if (refFilterOutRecordingType.getId().getFltoutTypeId() == filterOutRecordingType.getId()) {
+				if (refFilterOutRecordingType.getId().getFilterOutTypeId() == filterOutRecordingType.getId()) {
 					RefLangBo langBo = new RefLangBo();
 					langBo.setIsoLangCode(refFilterOutRecordingType.getId().getIsoLangCode());
 					langBo.setValue(refFilterOutRecordingType.getFilterOutTypeName());

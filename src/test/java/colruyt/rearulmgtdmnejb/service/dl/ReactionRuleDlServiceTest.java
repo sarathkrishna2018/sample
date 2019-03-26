@@ -164,7 +164,7 @@ public class ReactionRuleDlServiceTest extends UnitilsJUnit4 {
 		reactionRule.setRecalculate(false);
 		reactionRule.setRuleComment("good");
 		reactionRule.setCreatedBy("sa");
-		reactionRule.setLstUpdateBy("sa");
+		reactionRule.setLastUpdateBy("sa");
 		reactionRule.setRefActionTypes(getActionTypeList());
 		reactionRule.setRefSourceTypes(getSourceTypeList());
 		reactionRule.setChildRuleId(3l);

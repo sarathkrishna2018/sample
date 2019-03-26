@@ -67,7 +67,7 @@ public class ReactionRuleSetDlServiceTest {
 		assertThat(expectedReactionRuleSetList.size()).isEqualTo(1);
 		Assert.assertEquals("Name",expectedReactionRuleSetList.get(0).getRulesetName());
 		Assert.assertEquals(1L,expectedReactionRuleSetList.get(0).getRuleTypeId());
-		Assert.assertEquals("ktr",expectedReactionRuleSetList.get(0).getLstUpdateBy());
+		Assert.assertEquals("ktr",expectedReactionRuleSetList.get(0).getLastUpdateBy());
 		
 	}
 	@Test
@@ -77,7 +77,7 @@ public class ReactionRuleSetDlServiceTest {
 		assertThat(expectedReactionRuleSetList.size()).isEqualTo(1);
 		Assert.assertEquals("Name",expectedReactionRuleSetList.get(0).getRulesetName());
 		Assert.assertEquals(1L,expectedReactionRuleSetList.get(0).getRuleTypeId());
-		Assert.assertEquals("ktr",expectedReactionRuleSetList.get(0).getLstUpdateBy());
+		Assert.assertEquals("ktr",expectedReactionRuleSetList.get(0).getLastUpdateBy());
 	}
 	@Test
 	@DataSet("dataset/ReactionRuleSetDlServiceTest.xml")
@@ -107,7 +107,7 @@ public class ReactionRuleSetDlServiceTest {
 		reactionRuleSet.setRuleTypeId(2);
 		reactionRuleSet.setRulesetName("Name");
 		reactionRuleSet.setRulesetComment("Comment");
-		reactionRuleSet.setLstUpdateBy("ktr");
+		reactionRuleSet.setLastUpdateBy("ktr");
 		reactionRuleSet.setLogicallyDeletedDate(null);
 		reactionRuleSet.setReactionRules(getReactionRuleList());
 		return reactionRuleSet;
@@ -137,7 +137,7 @@ public class ReactionRuleSetDlServiceTest {
 		reactionRule.setRecalculate(false);
 		reactionRule.setRuleComment("Good");
 		reactionRule.setCreatedBy("ktr");
-		reactionRule.setLstUpdateBy("ktr");
+		reactionRule.setLastUpdateBy("ktr");
 		reactionRule.setRefActionTypes(getActionTypeList());
 		reactionRule.setRefSourceTypes(getSourceTypeList());
 		reactionRule.setChildRuleId(2l);

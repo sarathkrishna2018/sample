@@ -79,7 +79,7 @@ public class ProductHierarchySetDlServiceTest {
 		assertThat(expectedpriceProductHierarchySetElmntList.size()).isEqualTo(1);
 		Assert.assertEquals(1l,expectedpriceProductHierarchySetElmntList.get(0).getId().getProductHierarchyElementId());
 		Assert.assertEquals(504l,expectedpriceProductHierarchySetElmntList.get(0).getId().getProductHierarchySetId());
-		Assert.assertEquals("ktr",expectedpriceProductHierarchySetElmntList.get(0).getLstUpdateBy());
+		Assert.assertEquals("ktr",expectedpriceProductHierarchySetElmntList.get(0).getLastUpdateBy());
 	}
 
 	@Test
@@ -137,7 +137,7 @@ public class ProductHierarchySetDlServiceTest {
 		reaPriceProductHierarchySet.setAssortmentName("ALL");
 		reaPriceProductHierarchySet.setCheapBrand(true);
 		reaPriceProductHierarchySet.setCreatedBy("ktr");
-		reaPriceProductHierarchySet.setLstUpdateBy("ktr");
+		reaPriceProductHierarchySet.setLastUpdateBy("ktr");
 		reaPriceProductHierarchySet.setNationalBrand(true);
 		reaPriceProductHierarchySet.setOwnBrand(true);
 		reaPriceProductHierarchySet.setProductHierarchySetId(504l);
@@ -156,9 +156,9 @@ public class ProductHierarchySetDlServiceTest {
 		PriceProductHierarchyElement reaPpdHchyElmnt = new PriceProductHierarchyElement();
 		reaPpdHchyElmnt.setProductHierarchyElementId(1l);
 		reaPpdHchyElmnt.setProductHierarchyTypeId(1l);
-		reaPpdHchyElmnt.setPpdHchyValue("ASA");
+		reaPpdHchyElmnt.setProductHierarchyValue("ASA");
 		reaPpdHchyElmnt.setCreatedBy("ktr");
-		reaPpdHchyElmnt.setProdHrchySetElement(getReaPpdHchysetElmnt());
+		reaPpdHchyElmnt.setProductHierarchySetElement(getReaPpdHchysetElmnt());
 		return reaPpdHchyElmnt;
 	}
 
@@ -172,7 +172,7 @@ public class ProductHierarchySetDlServiceTest {
 
 	private PriceProductHierarchySetElement getPriceProductHierarchySetElmnt() {
 		PriceProductHierarchySetElement reaPpdHchysetElmnt = new PriceProductHierarchySetElement();
-		reaPpdHchysetElmnt.setLstUpdateBy("ktr");
+		reaPpdHchysetElmnt.setLastUpdateBy("ktr");
 		PriceProductHierarchySetElementPK hierarchySetElmntPK = new PriceProductHierarchySetElementPK();
 		hierarchySetElmntPK.setProductHierarchyElementId(1L);
 		hierarchySetElmntPK.setProdicyHierarchySetId(504L);
