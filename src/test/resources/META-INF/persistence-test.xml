@@ -34,8 +34,8 @@
 		<class>colruyt.rearulmgtdmnejb.entity.RefReasonTypeLangPK</class>
 		<class>colruyt.rearulmgtdmnejb.entity.RefRuleType</class>
 		<class>colruyt.rearulmgtdmnejb.entity.RefRuleTypeLangPK</class>
-		<class>colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleActionRsn</class>
-		<class>colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleActionRsnPK</class>
+		<class>colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleReason</class>
+		<class>colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleReasonPK</class>
 		<class>colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleAction</class>
 		<class>colruyt.rearulmgtdmnejb.entity.RefQuantityConditionType</class>
 		<class>colruyt.rearulmgtdmnejb.entity.RefQuantityConditionTypeLangPK</class>

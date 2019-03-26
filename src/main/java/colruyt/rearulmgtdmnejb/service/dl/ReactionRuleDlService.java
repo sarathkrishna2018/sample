@@ -120,7 +120,7 @@ public class ReactionRuleDlService implements Serializable {
 	public void logicallyDeleteRules(List<Long> reactionRuleIds, String logonId) {
 		Date updatedDate = new Date();
 		Query query = entityManager.createQuery(
-				"update ReactionRule reactionRule set reactionRule.logicallyDeletedDate=?1,reactionRule.lstUpdateBy=?2 where reactionRule.reaRuleId IN ?3",
+				"update ReactionRule reactionRule set reactionRule.logicallyDeletedDate=?1,reactionRule.lastUpdateBy=?2 where reactionRule.reaRuleId IN ?3",
 				ReactionRule.class);
 		query.setParameter(1, updatedDate);
 		query.setParameter(2, logonId);

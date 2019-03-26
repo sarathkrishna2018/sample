@@ -33,7 +33,7 @@ public class ProductHierarchyElementDlService implements Serializable {
 		CriteriaQuery<PriceProductHierarchyElement> criteriaQuery = criteriaBuilder
 				.createQuery(PriceProductHierarchyElement.class);
 		Root<PriceProductHierarchyElement> hierarchyRoot = criteriaQuery.from(PriceProductHierarchyElement.class);
-		Path<String> hierarchyValuePath = hierarchyRoot.get("prodHrchyValue");
+		Path<String> hierarchyValuePath = hierarchyRoot.get("productHierarchyValue");
 		Predicate valuePredicate = hierarchyValuePath.in(productHierarchyElmntValues);
 		criteriaQuery.where(valuePredicate);
 		return entityManager.createQuery(criteriaQuery).getResultList();
