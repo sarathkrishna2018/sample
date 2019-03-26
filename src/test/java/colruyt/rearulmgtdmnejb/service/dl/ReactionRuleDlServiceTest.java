@@ -45,7 +45,7 @@ public class ReactionRuleDlServiceTest extends UnitilsJUnit4 {
 	@ExpectedDataSet("result/ReactionRuleCreateTestResult.xml")
 	public void createRuleTest() {
 		ReactionRule expectedReactionRule = reactionRuleDlService.createOrUpdate(getReactionRule());
-		Assert.assertEquals(expectedReactionRule.getReaRulesetId(), 1L);
+		Assert.assertEquals(1L,expectedReactionRule.getReaRulesetId());
 
 	}
 
@@ -53,10 +53,10 @@ public class ReactionRuleDlServiceTest extends UnitilsJUnit4 {
 	@DataSet("dataset/ReactionRuleDlServiceTest.xml")
 	public void findByPkTest() {
 		ReactionRule expectedReactionRule = reactionRuleDlService.findByPk(1l);
-		Assert.assertEquals(expectedReactionRule.getReaRuleId(), 1L);
-		Assert.assertEquals(expectedReactionRule.getReaRulesetId(), 1L);
-		Assert.assertEquals(expectedReactionRule.getRuleName(),"Sample");
-		Assert.assertEquals(expectedReactionRule.getCreatedBy(), "ake");
+		Assert.assertEquals(1L,expectedReactionRule.getReaRuleId());
+		Assert.assertEquals(1L,expectedReactionRule.getReaRulesetId());
+		Assert.assertEquals("Sample",expectedReactionRule.getRuleName());
+		Assert.assertEquals("ake" ,expectedReactionRule.getCreatedBy());
 	}
 
 	@Test
@@ -64,19 +64,19 @@ public class ReactionRuleDlServiceTest extends UnitilsJUnit4 {
 	public void findByRuleSetId() {
 		List<ReactionRule> expectedReactionRules = reactionRuleDlService.findByRuleSetId(2l);
 		assertThat(expectedReactionRules.size()).isEqualTo(3);
-		Assert.assertEquals(expectedReactionRules.get(0).getReaRuleId(), 2L);
-		Assert.assertEquals(expectedReactionRules.get(0).getReaRulesetId(), 2L);
-		Assert.assertEquals(expectedReactionRules.get(0).getRuleName(), "Sample");
+		Assert.assertEquals(2L,expectedReactionRules.get(0).getReaRuleId());
+		Assert.assertEquals(2L,expectedReactionRules.get(0).getReaRulesetId());
+		Assert.assertEquals("Sample",expectedReactionRules.get(0).getRuleName() );
 	}
 
 	@Test
 	@DataSet("dataset/ReactionRuleDlServiceTest.xml")
 	public void findParentRule() {
 		ReactionRule expectedChildReactionRule = reactionRuleDlService.findParentRule(3l);
-		Assert.assertEquals(expectedChildReactionRule.getChildRuleId(), new Long(3L));
-		Assert.assertEquals(expectedChildReactionRule.getReaRuleId(), 2L);
-		Assert.assertEquals(expectedChildReactionRule.getReaRulesetId(), 2L);
-		Assert.assertEquals(expectedChildReactionRule.getRuleName(), "Sample");
+		Assert.assertEquals(new Long(3L),expectedChildReactionRule.getChildRuleId() );
+		Assert.assertEquals(2L,expectedChildReactionRule.getReaRuleId() );
+		Assert.assertEquals(2L ,expectedChildReactionRule.getReaRulesetId());
+		Assert.assertEquals("Sample" ,expectedChildReactionRule.getRuleName());
 	}
 
 	@Test
@@ -86,10 +86,10 @@ public class ReactionRuleDlServiceTest extends UnitilsJUnit4 {
 		Date actualDate = formatter.parse(formatter.format(new Date()));
 		reactionRuleDlService.updateLogicallyDeletedDate(getReactionRule());
 		ReactionRule expectedReactionRule = reactionRuleDlService.findByPk(1l);
-		Assert.assertEquals(expectedReactionRule.getLogicallyDeletedDate(), actualDate);
-		Assert.assertEquals(expectedReactionRule.getChildRuleId(), new Long(2L));
-		Assert.assertEquals(expectedReactionRule.getReaRuleId(), 1L);
-		Assert.assertEquals(expectedReactionRule.getReaRulesetId(), 1L);
+		Assert.assertEquals(actualDate,expectedReactionRule.getLogicallyDeletedDate());
+		Assert.assertEquals( new Long(2L),expectedReactionRule.getChildRuleId());
+		Assert.assertEquals(1L,expectedReactionRule.getReaRuleId());
+		Assert.assertEquals(1L,expectedReactionRule.getReaRulesetId());
 	}
 
 	@Test

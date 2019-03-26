@@ -34,15 +34,15 @@ public class RecordingNotFoundRuleDlServiceTest {
 	public void createTest() {
 		RecordingNotFoundRuleAction expectedRecordingNotFoundRule = recordingNotFoundRuleActionDlService
 				.createOrUpdate(getrecordingNotFoundRuleAction());
-		Assert.assertEquals(expectedRecordingNotFoundRule.getReaRuleId(), 1L);
+		Assert.assertEquals(1L,expectedRecordingNotFoundRule.getReaRuleId());
 
 	}
 	@Test
 	@DataSet("dataset/RecordingNotFoundRuleDlServiceTest.xml")
 	public void findByRuleIdTest() {
 		RecordingNotFoundRuleAction expectedRecordingNotFoundRule = recordingNotFoundRuleActionDlService.findByRuleId(1l);
-		Assert.assertEquals(expectedRecordingNotFoundRule.getReaRuleId(), 1L);
-		Assert.assertEquals(expectedRecordingNotFoundRule.getNoOfRecordNotFound(), 4L);
+		Assert.assertEquals(1L,expectedRecordingNotFoundRule.getReaRuleId());
+		Assert.assertEquals(4L,expectedRecordingNotFoundRule.getNoOfRecordNotFound());
 	}
 
 	@Test

@@ -31,18 +31,18 @@ public class ReactingRuleDlServiceTest {
 	@ExpectedDataSet("result/ReactingRuleCreateTestResult.xml")
 	public void createTest(){
 		ReactingRuleAction expectedReactingRule=reactingRuleActionDlService.createOrUpdate(getReactingRule());
-		Assert.assertEquals(expectedReactingRule.getReactionRuleId(), 1L);
+		Assert.assertEquals(1L,expectedReactingRule.getReactionRuleId(), 1L);
 	}
 	@Test
 	@DataSet("dataset/ReactingRuleDlServiceTest.xml")
 	public void findByRuleIdTest(){
 		ReactingRuleAction expectedReactingRule=reactingRuleActionDlService.findByRuleId(1l);
-		Assert.assertEquals(expectedReactingRule.getReactionRuleId(), 1L);
-		Assert.assertEquals(expectedReactingRule.getCatchAll(), true);
-		Assert.assertEquals(expectedReactingRule.getReactingAmt(), 7,0);
-		Assert.assertEquals(expectedReactingRule.getReactingPercentage(), 3,0);
-		Assert.assertEquals(expectedReactingRule.getThresholdAmount(), 5,0);
-		Assert.assertEquals(expectedReactingRule.getThresholdPercentage(), 2,0);
+		Assert.assertEquals(1L,expectedReactingRule.getReactionRuleId());
+		Assert.assertEquals(true ,expectedReactingRule.getCatchAll());
+		Assert.assertEquals(new Double(7),expectedReactingRule.getReactingAmt());
+		Assert.assertEquals(new Double(3),expectedReactingRule.getReactingPercentage());
+		Assert.assertEquals(new Double(5),expectedReactingRule.getThresholdAmount());
+		Assert.assertEquals(new Double(2),expectedReactingRule.getThresholdPercentage());
 	}
 	@Test
 	@DataSet("dataset/ReactingRuleDlServiceTest.xml")

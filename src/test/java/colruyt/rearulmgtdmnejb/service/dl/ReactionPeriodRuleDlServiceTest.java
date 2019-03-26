@@ -32,7 +32,7 @@ public class ReactionPeriodRuleDlServiceTest {
 	public void createTest() {
 		ReactionPeriodRuleAction expectedReactionPeriodRule = reactionPeriodActionDlService
 				.createOrUpdate(getreactionPeriodRuleAction());
-		Assert.assertEquals(expectedReactionPeriodRule.getReaRuleId(), 1L);
+		Assert.assertEquals(1L,expectedReactionPeriodRule.getReaRuleId());
 
 	}
 
@@ -40,9 +40,9 @@ public class ReactionPeriodRuleDlServiceTest {
 	@DataSet("dataset/ReactionPeriodRuleDlServiceTest.xml")
 	public void findByRuleIdTest() {
 		ReactionPeriodRuleAction expectedReactionPeriodRule = reactionPeriodActionDlService.findByRuleId(1l);
-		Assert.assertEquals(expectedReactionPeriodRule.getReaRuleId(), 1L);
-		Assert.assertEquals(expectedReactionPeriodRule.getEndDtDays(), new Long(5L));
-		Assert.assertEquals(expectedReactionPeriodRule.getMinDays(), new Long(2L));
+		Assert.assertEquals(1L,expectedReactionPeriodRule.getReaRuleId());
+		Assert.assertEquals( new Long(5L), expectedReactionPeriodRule.getEndDtDays());
+		Assert.assertEquals( new Long(2L), expectedReactionPeriodRule.getMinDays());
 	}
 
 	@Test

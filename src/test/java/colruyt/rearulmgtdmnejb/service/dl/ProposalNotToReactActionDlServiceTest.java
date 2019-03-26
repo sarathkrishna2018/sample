@@ -36,7 +36,7 @@ public class ProposalNotToReactActionDlServiceTest {
 	public void createTest() {
 		ProposalNotToReactRuleAction expectedProposalNotToReactRuleAction = proposalNotToReactActionDlService
 				.createOrUpdate(getProposalNotToReactRuleAction());
-		Assert.assertEquals(expectedProposalNotToReactRuleAction.getReactionRuleId(), 1L);
+		Assert.assertEquals(1L,expectedProposalNotToReactRuleAction.getReactionRuleId());
 
 	}
 	@Test
@@ -45,9 +45,9 @@ public class ProposalNotToReactActionDlServiceTest {
 		List<Integer> notToReactSetReasonsId=Lists.newArrayList();
 		notToReactSetReasonsId.add(2);
 		ProposalNotToReactRuleAction expectedProposalNotToReactRule = proposalNotToReactActionDlService.findByRuleId(1l);
-		Assert.assertEquals(expectedProposalNotToReactRule.getReactionRuleId(), 1L);
-		Assert.assertEquals(expectedProposalNotToReactRule.getFltoutTypeId(), 5);
-		Assert.assertEquals(expectedProposalNotToReactRule.getNotToReactSetReasons(), notToReactSetReasonsId);
+		Assert.assertEquals(1L,expectedProposalNotToReactRule.getReactionRuleId());
+		Assert.assertEquals(5,expectedProposalNotToReactRule.getFltoutTypeId());
+		Assert.assertEquals(notToReactSetReasonsId, expectedProposalNotToReactRule.getNotToReactSetReasons() );
 	}
 
 	@Test

@@ -32,7 +32,7 @@ public class FilteringRuleDlServiceTest {
 	@ExpectedDataSet("result/FilteringRuleCreateTestResult.xml")
 	public void createTest() {
 		FilteringRuleAction expectedFilteringRule = filteringRuleActionDlService.createOrUpdate(getReaFltRule());
-		Assert.assertEquals(expectedFilteringRule.getReactionRuleId(), 1L);
+		Assert.assertEquals(1L,expectedFilteringRule.getReactionRuleId());
 	}
 
 	@Test
@@ -40,8 +40,8 @@ public class FilteringRuleDlServiceTest {
 	public void findByRuleIdTest() {
 		FilteringRuleAction expectedFilteringRule = filteringRuleActionDlService.findByRuleId(2l);
 		Assert.assertEquals(expectedFilteringRule.getReactionRuleId(), 2L);
-		Assert.assertEquals(expectedFilteringRule.getMaximumCompetitorQuantity(), 1.0,0);
-		Assert.assertEquals(expectedFilteringRule.getXTimeQty(), 2.5,0);
+		Assert.assertEquals( new Double(1.0),expectedFilteringRule.getMaximumCompetitorQuantity());
+		Assert.assertEquals(new Double(2.5) ,expectedFilteringRule.getXTimeQty());
 	}
 
 	@Test
