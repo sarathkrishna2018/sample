@@ -65,7 +65,7 @@ public class ProposalNotToReactActionDlServiceTest {
 		
 	}
 
-	ProposalNotToReactRuleAction getProposalNotToReactRuleAction() {
+	private ProposalNotToReactRuleAction getProposalNotToReactRuleAction() {
 		ProposalNotToReactRuleAction proposalNotToReactRuleAction = new ProposalNotToReactRuleAction();
 		proposalNotToReactRuleAction.setReactionRuleId(1l);
 		List<Integer> reaNreactSetRsns = Lists.newArrayList();

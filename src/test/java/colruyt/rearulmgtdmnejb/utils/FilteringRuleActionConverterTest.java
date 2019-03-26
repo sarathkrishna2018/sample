@@ -53,7 +53,7 @@ public class FilteringRuleActionConverterTest {
 		assertEquals(finalBo.getxTimeQuantity(), filteringRuleBo.getxTimeQuantity());
 	}
 
-	public FilteringRuleBo getFilteringRuleBo() {
+	private FilteringRuleBo getFilteringRuleBo() {
 		FilteringRuleBo filteringRuleBo = new FilteringRuleBo();
 		filteringRuleBo.setRuleId(1L);
 		filteringRuleBo.setMaxCompQuantity(12d);
@@ -61,7 +61,7 @@ public class FilteringRuleActionConverterTest {
 		return filteringRuleBo;
 	}
 
-	public FilteringRuleAction getReaFltRule() {
+	private FilteringRuleAction getReaFltRule() {
 		FilteringRuleAction reaFltRule = new FilteringRuleAction();
 		reaFltRule.setMaximumCompetitorQuantity(12d);
 		reaFltRule.setXTimeQty(1d);

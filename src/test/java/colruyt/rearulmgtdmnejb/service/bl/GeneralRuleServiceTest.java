@@ -882,7 +882,7 @@ public class GeneralRuleServiceTest {
 		priceProductHierarchySetElmntList.add(priceProductHierarchySetElmnt);
 		return priceProductHierarchySetElmntList; 
 	}
-	List<PriceProductHierarchySet> getPriceProductHierarchySetList(){
+	private List<PriceProductHierarchySet> getPriceProductHierarchySetList(){
 		List<PriceProductHierarchySet> priceProductHierarchySetList = Lists.newArrayList();
 		PriceProductHierarchySet priceProductHierarchySet = new PriceProductHierarchySet();
 		priceProductHierarchySet.setAssortmentName("All");

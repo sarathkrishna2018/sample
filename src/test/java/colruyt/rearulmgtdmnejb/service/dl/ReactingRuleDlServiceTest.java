@@ -56,7 +56,7 @@ public class ReactingRuleDlServiceTest {
 		deleteRuleInfoBo.setRuleType(1l);
 		return deleteRuleInfoBo;
 	}
-	public ReactingRuleAction getReactingRule(){
+	private ReactingRuleAction getReactingRule(){
 		ReactingRuleAction reactingRuleAction=new ReactingRuleAction();
 		reactingRuleAction.setCatchAll(true);
 		reactingRuleAction.setReactingAmt(7d);

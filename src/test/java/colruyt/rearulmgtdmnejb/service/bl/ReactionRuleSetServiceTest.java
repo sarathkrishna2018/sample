@@ -56,27 +56,6 @@ public class ReactionRuleSetServiceTest {
 		assertEquals(new Long(1l), expectedReactionRuleset.getRulesetId());
 	}
 
-	/*@Test
-	public void findReactionRuleSetTest() {
-		long cgChainId = 1;
-		long compChainId = 2;
-		when(reactionRuleSetDlService.findByCgChainAndPCChain(Mockito.anyLong(), Mockito.anyLong()))
-				.thenReturn(getReactionRuleset());
-		List<ReactionRulesetBo> expectedReactionRulesetBo = reactionRuleSetBlService.find(cgChainId, compChainId);
-		Assert.assertNotNull(expectedReactionRulesetBo);
-	}*/
-
-	/*@Test
-	public void findReactionRuleSetFailTest() {
-		List<ReactionRulesetBo> reactionRulesetBos = getReactionRuleSetList();
-		long cgChainId = 1;
-		long compChainId = 2;
-		when(reactionRuleSetDlService.findByCgChainAndPCChain(Mockito.anyLong(), Mockito.anyLong()))
-				.thenReturn(getReactionRuleset());
-		List<ReactionRulesetBo> expectedReactionRulesetBo = reactionRuleSetBlService.find(cgChainId, compChainId);
-		Assert.assertNotSame(reactionRulesetBos.size(), expectedReactionRulesetBo.size());
-	}*/
-
 	@Test
 	public void getReactionRulesetTest() throws ReaRuleManagementException {
 		long rulesetId = 1;
@@ -156,7 +135,7 @@ public class ReactionRuleSetServiceTest {
 		return reactionRulesetBos;
 	}
 
-	public ReactionRulesetBo getReaRulesetBo() {
+	private ReactionRulesetBo getReaRulesetBo() {
 		ReactionRulesetBo reactionRulesetBo = new ReactionRulesetBo();
 		reactionRulesetBo.setColruytGroupChainId(1l);
 		reactionRulesetBo.setComments("good");
@@ -169,7 +148,7 @@ public class ReactionRuleSetServiceTest {
 
 	}
 
-	public ReactionRulesetBo getReactionRulesetBo() {
+	private ReactionRulesetBo getReactionRulesetBo() {
 		ReactionRulesetBo reactionRulesetBo = new ReactionRulesetBo();
 		reactionRulesetBo.setColruytGroupChainId(1l);
 		reactionRulesetBo.setComments("good");
@@ -182,7 +161,7 @@ public class ReactionRuleSetServiceTest {
 
 	}
 
-	public ReactionRulesetBo getReactionRulesetId() {
+	private ReactionRulesetBo getReactionRulesetId() {
 		ReactionRulesetBo reactionRulesetBo = new ReactionRulesetBo();
 		reactionRulesetBo.setColruytGroupChainId(1l);
 		reactionRulesetBo.setComments("good");
@@ -195,7 +174,7 @@ public class ReactionRuleSetServiceTest {
 
 	}
 
-	public RefRuleTypeBo getRefRuleTypeBo() {
+	private RefRuleTypeBo getRefRuleTypeBo() {
 		RefRuleTypeBo refRuleTypeBo = new RefRuleTypeBo();
 		refRuleTypeBo.setRuleTypeId(1);
 		refRuleTypeBo.setCodeLang(getRefLangBo());
@@ -203,7 +182,7 @@ public class ReactionRuleSetServiceTest {
 		return refRuleTypeBo;
 	}
 
-	public List<RefLangBo> getRefLangBo() {
+	private List<RefLangBo> getRefLangBo() {
 		List<RefLangBo> refLangBolist = Lists.newArrayList();
 		RefLangBo refLangBo = new RefLangBo();
 		refLangBo.setIsoLangCode("En");
@@ -213,7 +192,7 @@ public class ReactionRuleSetServiceTest {
 
 	}
 
-	public List<GeneralRuleBo> getReactionRuleBo() {
+	private List<GeneralRuleBo> getReactionRuleBo() {
 		List<GeneralRuleBo> reactionRuleBolist = Lists.newArrayList();
 		GeneralRuleBo reactionRuleBo = new GeneralRuleBo();
 		reactionRuleBo.setRuleName("Filtering");
@@ -246,7 +225,7 @@ public class ReactionRuleSetServiceTest {
 
 	}
 
-	public RefRuleTypeBo getRefRuleType() {
+	private RefRuleTypeBo getRefRuleType() {
 		RefRuleTypeBo refRuleType = new RefRuleTypeBo();
 		refRuleType.setDescription("asa");
 		refRuleType.setRuleTypeId(1);
@@ -254,7 +233,7 @@ public class ReactionRuleSetServiceTest {
 		return refRuleType;
 	}
 
-	public List<RefLangBo> getRefLang() {
+	private List<RefLangBo> getRefLang() {
 		List<RefLangBo> refLanglist = Lists.newArrayList();
 		RefLangBo refLang = new RefLangBo();
 		refLang.setIsoLangCode("EN");
@@ -263,7 +242,7 @@ public class ReactionRuleSetServiceTest {
 		return refLanglist;
 	}
 
-	public List<RefActionTypeBo> getRefActionType() {
+	private List<RefActionTypeBo> getRefActionType() {
 		List<RefActionTypeBo> refActionTypelist = Lists.newArrayList();
 		RefActionTypeBo refActionType = new RefActionTypeBo();
 		refActionType.setActionTypeId(1);
@@ -274,7 +253,7 @@ public class ReactionRuleSetServiceTest {
 
 	}
 
-	public List<ProductHierarchyElementBo> getProductHierarchyElement() {
+	private List<ProductHierarchyElementBo> getProductHierarchyElement() {
 		List<ProductHierarchyElementBo> productHierarchyElementlist = Lists.newArrayList();
 		ProductHierarchyElementBo productHierarchyElement = new ProductHierarchyElementBo();
 		productHierarchyElement.setId(1l);
@@ -284,7 +263,7 @@ public class ReactionRuleSetServiceTest {
 		return productHierarchyElementlist;
 	}
 
-	public List<RefSourceTypeBo> getRefSourceType() {
+	private List<RefSourceTypeBo> getRefSourceType() {
 		List<RefSourceTypeBo> refSourceTypelist = Lists.newArrayList();
 		RefSourceTypeBo refSourceType = new RefSourceTypeBo();
 		refSourceType.setSourceName("online");
@@ -293,7 +272,7 @@ public class ReactionRuleSetServiceTest {
 		return refSourceTypelist;
 	}
 
-	public ReactionRulesetBo createReactionRuleset() {
+	private ReactionRulesetBo createReactionRuleset() {
 		ReactionRulesetBo reactionRuleset = new ReactionRulesetBo();
 		reactionRuleset.setColruytGroupChainId(1l);
 		reactionRuleset.setPriceCompetitorChainId(2l);
@@ -304,7 +283,7 @@ public class ReactionRuleSetServiceTest {
 		return reactionRuleset;
 	}
 
-	public ReactionRuleSet getReaRuleset() {
+	private ReactionRuleSet getReaRuleset() {
 		ReactionRuleSet reaRuleset = new ReactionRuleSet();
 		reaRuleset.setColruytGroupChainId(1l);
 		reaRuleset.setPriceCompetitorChainId(1l);
@@ -318,7 +297,7 @@ public class ReactionRuleSetServiceTest {
 
 	}
 
-	public List<ReactionRuleSet> getReactionRuleset() {
+	private List<ReactionRuleSet> getReactionRuleset() {
 		List<ReactionRuleSet> reaRulesetlist = Lists.newArrayList();
 		ReactionRuleSet reaRuleset = new ReactionRuleSet();
 		reaRuleset.setColruytGroupChainId(1l);
@@ -334,7 +313,7 @@ public class ReactionRuleSetServiceTest {
 
 	}
 
-	public List<ReactionRule> getReaRule() {
+	private List<ReactionRule> getReaRule() {
 		List<ReactionRule> reaRulelist = Lists.newArrayList();
 		ReactionRule reaRule = new ReactionRule();
 		reaRule.setReaRulesetId(1l);

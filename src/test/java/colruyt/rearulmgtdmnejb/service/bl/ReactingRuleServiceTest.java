@@ -80,7 +80,7 @@ public class ReactingRuleServiceTest {
 		return xpsRuleBo;
 	}
 
-	public ReactingRuleBo getReactingRuleBo() {
+	private ReactingRuleBo getReactingRuleBo() {
 		ReactingRuleBo reactingRuleBo = new ReactingRuleBo();
 		reactingRuleBo.setActionSelectAll(false);
 		reactingRuleBo.setActionTypeList(getActionTypeList());
@@ -154,7 +154,7 @@ public class ReactingRuleServiceTest {
 		return reactionRulesetBo;
 	}
 
-	public ReactingRuleAction getReareactingAct() {
+	private ReactingRuleAction getReareactingAct() {
 		ReactingRuleAction reaReactingAct = new ReactingRuleAction();
 		reaReactingAct.setReactionRuleId(1l);
 		reaReactingAct.setCatchAll(true);
@@ -166,7 +166,7 @@ public class ReactingRuleServiceTest {
 
 	}
 
-	public ReactionRule getReaRule() {
+	private ReactionRule getReaRule() {
 		Date validFromdate = new Date();
 		Date validTodate = new Date();
 		ReactionRule reaRule = new ReactionRule();
@@ -188,7 +188,7 @@ public class ReactingRuleServiceTest {
 		return reaRule;
 	}
 
-	public ReactionRulesetBo createReactionRuleset() {
+	private ReactionRulesetBo createReactionRuleset() {
 		ReactionRulesetBo reactionRuleset = new ReactionRulesetBo();
 		reactionRuleset.setColruytGroupChainId(1l);
 		reactionRuleset.setPriceCompetitorChainId(2l);

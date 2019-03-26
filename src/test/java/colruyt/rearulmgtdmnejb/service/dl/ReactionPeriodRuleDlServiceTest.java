@@ -53,7 +53,7 @@ public class ReactionPeriodRuleDlServiceTest {
 
 	}
 
-	public ReactionPeriodRuleAction getreactionPeriodRuleAction() {
+	private ReactionPeriodRuleAction getreactionPeriodRuleAction() {
 		ReactionPeriodRuleAction reactionPeriodRuleAction = new ReactionPeriodRuleAction();
 		reactionPeriodRuleAction.setReaRuleId(1l);
 		reactionPeriodRuleAction.setEndDtDays(5l);

@@ -160,7 +160,7 @@ public class PriceProductHierarchyServiceTest {
 		return prdHrySetIdList;
 	}
 
-	public GeneralRuleBo getReactionRuleBo() {
+	private GeneralRuleBo getReactionRuleBo() {
 		GeneralRuleBo reactionRuleBo = new GeneralRuleBo();
 		Date validFromdate = new Date();
 		Date validTodate = new Date();
@@ -193,7 +193,7 @@ public class PriceProductHierarchyServiceTest {
 		return reactionRuleBo;
 	}
 
-	public RefRuleTypeBo getRefRuleType() {
+	private RefRuleTypeBo getRefRuleType() {
 		RefRuleTypeBo refRuleType = new RefRuleTypeBo();
 		refRuleType.setDescription("asa");
 		refRuleType.setRuleTypeId(1);
@@ -201,7 +201,7 @@ public class PriceProductHierarchyServiceTest {
 		return refRuleType;
 	}
 
-	public List<RefLangBo> getRefLang() {
+	private List<RefLangBo> getRefLang() {
 		List<RefLangBo> refLanglist = Lists.newArrayList();
 		RefLangBo refLang = new RefLangBo();
 		refLang.setIsoLangCode("EN");
@@ -210,7 +210,7 @@ public class PriceProductHierarchyServiceTest {
 		return refLanglist;
 	}
 
-	public ReactionRulesetBo createReactionRuleset() {
+	private ReactionRulesetBo createReactionRuleset() {
 		ReactionRulesetBo reactionRuleset = new ReactionRulesetBo();
 		reactionRuleset.setColruytGroupChainId(1l);
 		reactionRuleset.setPriceCompetitorChainId(2l);
@@ -221,7 +221,7 @@ public class PriceProductHierarchyServiceTest {
 		return reactionRuleset;
 	}
 
-	public List<RefActionTypeBo> getRefActionType() {
+	private List<RefActionTypeBo> getRefActionType() {
 		List<RefActionTypeBo> refActionTypelist = Lists.newArrayList();
 		RefActionTypeBo refActionType = new RefActionTypeBo();
 		refActionType.setActionTypeId(1);
@@ -232,7 +232,7 @@ public class PriceProductHierarchyServiceTest {
 
 	}
 
-	public List<RefSourceTypeBo> getRefSourceType() {
+	private List<RefSourceTypeBo> getRefSourceType() {
 		List<RefSourceTypeBo> refSourceTypelist = Lists.newArrayList();
 		RefSourceTypeBo refSourceType = new RefSourceTypeBo();
 		refSourceType.setSourceName("online");
@@ -241,7 +241,7 @@ public class PriceProductHierarchyServiceTest {
 		return refSourceTypelist;
 	}
 
-	public PriceProductHierarchySet getReaPpdHchyset() {
+	private PriceProductHierarchySet getReaPpdHchyset() {
 		PriceProductHierarchySet reaPpdHchyset = new PriceProductHierarchySet();
 		reaPpdHchyset.setAssortmentName("Asa");
 		reaPpdHchyset.setCheapBrand(true);
@@ -255,7 +255,7 @@ public class PriceProductHierarchyServiceTest {
 
 	}
 
-	public List<ProductHierarchyElementBo> getProductHierarchyElement() {
+	private List<ProductHierarchyElementBo> getProductHierarchyElement() {
 		List<ProductHierarchyElementBo> productHierarchyElementlist = Lists.newArrayList();
 		ProductHierarchyElementBo productHierarchyElementBo = new ProductHierarchyElementBo();
 		productHierarchyElementBo.setId(1l);
@@ -266,7 +266,7 @@ public class PriceProductHierarchyServiceTest {
 
 	}
 
-	public List<PriceProductHierarchyElement> getReaPpdHchyElmnt() {
+	private List<PriceProductHierarchyElement> getReaPpdHchyElmnt() {
 		List<PriceProductHierarchyElement> reaPpdHchyElmntlist = Lists.newArrayList();
 		PriceProductHierarchyElement reaPpdHchyElmnt = new PriceProductHierarchyElement();
 		reaPpdHchyElmnt.setProductHierarchyElementId(1l);
@@ -279,7 +279,7 @@ public class PriceProductHierarchyServiceTest {
 
 	}
 
-	public List<PriceProductHierarchySetElement> getReaPpdHchysetElmnt() {
+	private List<PriceProductHierarchySetElement> getReaPpdHchysetElmnt() {
 		List<PriceProductHierarchySetElement> reaPpdHchysetElmntlist = Lists.newArrayList();
 		PriceProductHierarchySetElement reaPpdHchysetElmnt = new PriceProductHierarchySetElement();
 		reaPpdHchysetElmnt.setLstUpdateBy("Sa");
@@ -295,7 +295,7 @@ public class PriceProductHierarchyServiceTest {
 		
 	}
 
-	public PriceProductHierarchyElement createReaPpdHchyElmnt() {
+	private PriceProductHierarchyElement createReaPpdHchyElmnt() {
 		PriceProductHierarchyElement reaPpdHchyElmnt = new PriceProductHierarchyElement();
 		reaPpdHchyElmnt.setProductHierarchyElementId(1l);
 		reaPpdHchyElmnt.setProductHierarchyTypeId(1l);

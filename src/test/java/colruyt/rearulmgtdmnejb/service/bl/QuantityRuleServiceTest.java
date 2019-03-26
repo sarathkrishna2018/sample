@@ -64,15 +64,6 @@ public class QuantityRuleServiceTest {
 		Assert.assertEquals(new Long(1l), expectedQuantityRule.getRuleId());
 	}
 
-	/*@Test
-	public void getRuleSpecificValuesTest() throws ReaRuleManagementException {
-		when(quantityRuleActionDlService.findByRuleId(Mockito.anyLong())).thenReturn(getReaQtyRule());
-		when(referenceDataService.getAllQuantityConditionTypes()).thenReturn(getQtyCondLst());
-		when(referenceDataService.getAllQuantityPriceTypes()).thenReturn(getPriceTypeLst());  
-        GeneralRuleBo expectedQuantityRule = quantityRuleBlService.getRuleSpecificValues(getQuantityRuleBo());
-		Assert.assertEquals(new Long(1l), expectedQuantityRule.getRuleId());
-	}*/
-
 	@Test
 	public void physicalDeleteElementsTest() {
 		Mockito.doNothing().when(quantityRuleActionDlService).physicalDeleteElements(getXpsRuleBo());
@@ -194,7 +185,7 @@ public class QuantityRuleServiceTest {
 		return generalRuleBos;
 	}
 
-	public ReactionRulesetBo createReactionRuleset() {
+	private ReactionRulesetBo createReactionRuleset() {
 		ReactionRulesetBo reactionRuleset = new ReactionRulesetBo();
 		reactionRuleset.setColruytGroupChainId(1l);
 		reactionRuleset.setPriceCompetitorChainId(2l);
@@ -204,14 +195,14 @@ public class QuantityRuleServiceTest {
 		return reactionRuleset;
 	}
 
-	public QuantityRuleAction getReaQtyRule() {
+	private QuantityRuleAction getReaQtyRule() {
 		QuantityRuleAction reaQtyRule = new QuantityRuleAction();
 		reaQtyRule.setQuantityConditionId(1);
 
 		return reaQtyRule;
 	}
 
-	public ReactionRule getReaRule() {
+	private ReactionRule getReaRule() {
 		Date validFromdate = new Date();
 		Date validTodate = new Date();
 		ReactionRule reaRule = new ReactionRule();
@@ -252,7 +243,7 @@ public class QuantityRuleServiceTest {
 		qtyCondLst.add(refQuantityConditionType);
 		return qtyCondLst;
 	}
-	public RefQuantityConditionTypeBo getRefQuantityConditionType() {
+	private RefQuantityConditionTypeBo getRefQuantityConditionType() {
 		RefQuantityConditionTypeBo refQuantityConditionType = new RefQuantityConditionTypeBo();
 		refQuantityConditionType.setCodeTypeId(1);
 		refQuantityConditionType.setDescription("English");
@@ -260,7 +251,7 @@ public class QuantityRuleServiceTest {
 		return refQuantityConditionType;
 	}
 
-	public List<RefLangBo> getRefLangBo() {
+	private List<RefLangBo> getRefLangBo() {
 		List<RefLangBo> refLanglist = Lists.newArrayList();
 		RefLangBo refLang = new RefLangBo();
 		refLang.setIsoLangCode("EN");

@@ -80,12 +80,6 @@ public class ReactionRuleDlService implements Serializable {
 		return ruleList;
 	}
 
-	/**
-	 * This method is used to find Parent rule by using child rule id
-	 * 
-	 * @param childRuleId
-	 * @return
-	 */
 	public ReactionRule findParentRule(Long childRuleId) {
 		ReactionRule parentRule;
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();

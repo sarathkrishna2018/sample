@@ -87,7 +87,7 @@ public class ReactionPeriodRuleServiceTest {
 		return xpsRuleBo;
 	}
 
-	public ReactionPeriodRuleBo getReactionPeriodRuleBo() {
+	private ReactionPeriodRuleBo getReactionPeriodRuleBo() {
 		ReactionPeriodRuleBo reactionPeriodRuleBo = new ReactionPeriodRuleBo();
 		reactionPeriodRuleBo.setActionSelectAll(false);
 		reactionPeriodRuleBo.setActionTypeList(getActionTypeList());
@@ -192,7 +192,7 @@ public class ReactionPeriodRuleServiceTest {
 		return reactionRulesetBo;
 	}
 
-	public ReactionRule getReaRule() {
+	private ReactionRule getReaRule() {
 		Date validFromdate = new Date();
 		Date validTodate = new Date();
 		ReactionRule reaRule = new ReactionRule();
@@ -214,7 +214,7 @@ public class ReactionPeriodRuleServiceTest {
 		return reaRule;
 	}
 
-	public ReactionRulesetBo createReactionRuleset() {
+	private ReactionRulesetBo createReactionRuleset() {
 		ReactionRulesetBo reactionRuleset = new ReactionRulesetBo();
 		reactionRuleset.setColruytGroupChainId(1l);
 		reactionRuleset.setPriceCompetitorChainId(2l);
@@ -223,8 +223,7 @@ public class ReactionPeriodRuleServiceTest {
 		reactionRuleset.setComments("good");
 		return reactionRuleset;
 	}
-
-	public ReactionPeriodRuleAction getReaPrdAct() {
+	private ReactionPeriodRuleAction getReaPrdAct() {
 		ReactionPeriodRuleAction reaPrdAct = new ReactionPeriodRuleAction();
 		reaPrdAct.setReaRuleId(1l);
 		reaPrdAct.setEndDtDays(10l);

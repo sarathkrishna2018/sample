@@ -190,7 +190,7 @@ public class RecordingNotFoundRuleServiceTest {
 		return generalRuleBos;
 	}
 
-	public ReactionRulesetBo createReactionRuleset() {
+	private ReactionRulesetBo createReactionRuleset() {
 		ReactionRulesetBo reactionRuleset = new ReactionRulesetBo();
 		reactionRuleset.setColruytGroupChainId(1l);
 		reactionRuleset.setPriceCompetitorChainId(2l);
@@ -200,13 +200,13 @@ public class RecordingNotFoundRuleServiceTest {
 		return reactionRuleset;
 	}
 
-	public RecordingNotFoundRuleAction getRecordingNotFoundRule() {
+	private RecordingNotFoundRuleAction getRecordingNotFoundRule() {
 		RecordingNotFoundRuleAction reaRnfAct = new RecordingNotFoundRuleAction();
 		reaRnfAct.setNoOfRecordNotFound(5L);
 		return reaRnfAct;
 	}
 
-	public ReactionRule getReaRule() {
+	private ReactionRule getReaRule() {
 		Date validFromdate = new Date();
 		Date validTodate = new Date();
 		ReactionRule reaRule = new ReactionRule();

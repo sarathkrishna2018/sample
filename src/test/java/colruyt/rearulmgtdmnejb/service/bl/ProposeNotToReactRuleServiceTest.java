@@ -68,13 +68,6 @@ public class ProposeNotToReactRuleServiceTest {
 				.modifyRuleSpecificAttributes(getProposeNotToReactRuleBo());
 		Assert.assertEquals(new Long(1l), expectedProposeNotToReactRule.getRuleId());
 	}
-	/*@Test
-	public void getRuleSpecificValuesTest() throws ReaRuleManagementException {
-		when(proposalNotToReactActionDlService.findByRuleId(Mockito.anyLong())).thenReturn(getReaNreactAct());
-		GeneralRuleBo expectedProposeNotToReactRule = proposeNotToReactRuleService
-				.getRuleSpecificValues(getProposeNotToReactRuleBo());
-		Assert.assertEquals(new Long(1l), expectedProposeNotToReactRule.getRuleId());
-	}*/
 
 	@Test
 	public void physicalDeleteElementsTest() {
@@ -130,7 +123,7 @@ public class ProposeNotToReactRuleServiceTest {
 		return refActionTypeBos;
 	}
 
-	public ReactionRulesetBo createReactionRuleset() {
+	private ReactionRulesetBo createReactionRuleset() {
 		ReactionRulesetBo reactionRuleset = new ReactionRulesetBo();
 		reactionRuleset.setColruytGroupChainId(1l);
 		reactionRuleset.setPriceCompetitorChainId(2l);
@@ -140,7 +133,7 @@ public class ProposeNotToReactRuleServiceTest {
 		return reactionRuleset;
 	}
 
-	public ReactionRule getReaRule() {
+	private ReactionRule getReaRule() {
 		Date validFromdate = new Date();
 		Date validTodate = new Date();
 		ReactionRule reaRule = new ReactionRule();
@@ -162,7 +155,7 @@ public class ProposeNotToReactRuleServiceTest {
 		return reaRule;
 	}
 
-	public ProposeNotToReactRuleBo getProposeNotToReactRuleBo() {
+	private ProposeNotToReactRuleBo getProposeNotToReactRuleBo() {
 		ProposeNotToReactRuleBo proposeNotToReactRuleBo = new ProposeNotToReactRuleBo();
 		proposeNotToReactRuleBo.setActionSelectAll(false);
 		proposeNotToReactRuleBo.setActionTypeList(getActionTypeList());
@@ -194,7 +187,7 @@ public class ProposeNotToReactRuleServiceTest {
 		return proposeNotToReactRuleBo;
 	}
 
-	public ProposalNotToReactRuleAction getReaNreactAct() {
+	private ProposalNotToReactRuleAction getReaNreactAct() {
 		ProposalNotToReactRuleAction reaNreactAct = new ProposalNotToReactRuleAction();
 		reaNreactAct.setReactionRuleId(1);
 		reaNreactAct.setFltoutTypeId(2);
@@ -226,7 +219,7 @@ public class ProposeNotToReactRuleServiceTest {
 		return reactionRulesetBo;
 	}
 
-	public List<ProposalNotToReactRuleActionRsn> getReaNreactSetRsn() {
+	private List<ProposalNotToReactRuleActionRsn> getReaNreactSetRsn() {
 		List<ProposalNotToReactRuleActionRsn> reaNreactSetRsnlist = Lists.newArrayList();
 		ProposalNotToReactRuleActionRsn reaNreactSetRsn = new ProposalNotToReactRuleActionRsn();
 		reaNreactSetRsn.setId(getreaNreactSetRsnPK());
@@ -235,14 +228,14 @@ public class ProposeNotToReactRuleServiceTest {
 		return reaNreactSetRsnlist;
 	}
 
-	public ProposalNotToReactRuleActionRsnPK getreaNreactSetRsnPK() {
+	private ProposalNotToReactRuleActionRsnPK getreaNreactSetRsnPK() {
 		ProposalNotToReactRuleActionRsnPK reaNreactSetRsnPK = new ProposalNotToReactRuleActionRsnPK();
 		reaNreactSetRsnPK.setReactionRuleId(1);
 		reaNreactSetRsnPK.setReasonId(2);
 		return reaNreactSetRsnPK;
 	}
 
-	public RefFilterOutRecordingTypeBo getRefFilterOutRecordingTypeBo() {
+	private RefFilterOutRecordingTypeBo getRefFilterOutRecordingTypeBo() {
 		RefFilterOutRecordingTypeBo refFilterOutRecordingTypeBo = new RefFilterOutRecordingTypeBo();
 		refFilterOutRecordingTypeBo.setFilterOutTypeId(1);
 		refFilterOutRecordingTypeBo.setDescription("xcx");
@@ -251,7 +244,7 @@ public class ProposeNotToReactRuleServiceTest {
 
 	}
 
-	public List<RefLangBo> getRefLangBo() {
+	private List<RefLangBo> getRefLangBo() {
 		List<RefLangBo> refLangBolist = Lists.newArrayList();
 		RefLangBo refLangBo = new RefLangBo();
 		refLangBo.setIsoLangCode("EN");

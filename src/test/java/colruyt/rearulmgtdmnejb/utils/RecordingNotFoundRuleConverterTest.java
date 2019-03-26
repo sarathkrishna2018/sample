@@ -27,7 +27,7 @@ public class RecordingNotFoundRuleConverterTest {
 
 	}
 
-	public RecordingNotFoundRuleBo getRecordingNotFoundRule() {
+	private RecordingNotFoundRuleBo getRecordingNotFoundRule() {
 		RecordingNotFoundRuleBo recordingNotFoundRule = new RecordingNotFoundRuleBo();
 		recordingNotFoundRule.setRuleId(1L);
 		recordingNotFoundRule.setNoOfNotFoundRecordings(12l);

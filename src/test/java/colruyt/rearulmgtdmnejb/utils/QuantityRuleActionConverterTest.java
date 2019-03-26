@@ -58,7 +58,7 @@ public class QuantityRuleActionConverterTest {
 		return qtyPriceTypeLst;
 	}
 
-	public QuantityRuleBo getQuantityRule() {
+	private QuantityRuleBo getQuantityRule() {
 		QuantityRuleBo quantityRule = new QuantityRuleBo();
 		quantityRule.setRuleId(1L);
 		quantityRule.setConditionType(getRefQuantityConditionType());
@@ -68,7 +68,7 @@ public class QuantityRuleActionConverterTest {
 
 	}
 
-	public RefQuantityConditionTypeBo getRefQuantityConditionType() {
+	private RefQuantityConditionTypeBo getRefQuantityConditionType() {
 		RefQuantityConditionTypeBo refQuantityConditionType = new RefQuantityConditionTypeBo();
 		refQuantityConditionType.setCodeTypeId(1);
 		refQuantityConditionType.setDescription("English");
@@ -76,7 +76,7 @@ public class QuantityRuleActionConverterTest {
 		return refQuantityConditionType;
 	}
 
-	public RefQuantityPriceTypeBo getRefQuantityPriceType() {
+	private RefQuantityPriceTypeBo getRefQuantityPriceType() {
 		RefQuantityPriceTypeBo refQuantityPriceType = new RefQuantityPriceTypeBo();
 		refQuantityPriceType.setCodeLang(getRefLangBo());
 		refQuantityPriceType.setDescription("English");
@@ -84,7 +84,7 @@ public class QuantityRuleActionConverterTest {
 		return refQuantityPriceType;
 	}
 
-	public List<RefLangBo> getRefLangBo() {
+	private List<RefLangBo> getRefLangBo() {
 		List<RefLangBo> refLanglist = Lists.newArrayList();
 		RefLangBo refLang = new RefLangBo();
 		refLang.setIsoLangCode("EN");
@@ -94,7 +94,7 @@ public class QuantityRuleActionConverterTest {
 
 	}
 
-	public QuantityRuleAction getReaQtyRule() {
+	private QuantityRuleAction getReaQtyRule() {
 		QuantityRuleAction reaQtyRule = new QuantityRuleAction();
 		reaQtyRule.setQuantityConditionId(1);
 		reaQtyRule.setQuantityTypeId(1);

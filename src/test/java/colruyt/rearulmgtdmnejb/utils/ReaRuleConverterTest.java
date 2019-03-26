@@ -205,7 +205,7 @@ public class ReaRuleConverterTest {
 		return priceProductHierarchySetElmntPK;
 	}
 
-	public GeneralRuleBo getReactionRule() {
+	private GeneralRuleBo getReactionRule() {
 		GeneralRuleBo reactionRuleBo = new GeneralRuleBo();
 		Date validFromdate = new Date();
 		Date validTodate = new Date();
@@ -237,7 +237,7 @@ public class ReaRuleConverterTest {
 		return reactionRuleBo;
 	}
 
-	public RefRuleTypeBo getRefRuleType() {
+	private RefRuleTypeBo getRefRuleType() {
 		RefRuleTypeBo refRuleType = new RefRuleTypeBo();
 		refRuleType.setDescription("asa");
 		refRuleType.setRuleTypeId(1);
@@ -245,7 +245,7 @@ public class ReaRuleConverterTest {
 		return refRuleType;
 	}
 
-	public List<RefLangBo> getRefLang() {
+	private List<RefLangBo> getRefLang() {
 		List<RefLangBo> refLanglist = Lists.newArrayList();
 		RefLangBo refLang = new RefLangBo();
 		refLang.setIsoLangCode("EN");
@@ -254,7 +254,7 @@ public class ReaRuleConverterTest {
 		return refLanglist;
 	}
 
-	public ReactionRulesetBo createReactionRuleset() {
+	private ReactionRulesetBo createReactionRuleset() {
 		ReactionRulesetBo reactionRuleset = new ReactionRulesetBo();
 		reactionRuleset.setColruytGroupChainId(1l);
 		reactionRuleset.setPriceCompetitorChainId(2l);
@@ -265,7 +265,7 @@ public class ReaRuleConverterTest {
 		return reactionRuleset;
 	}
 
-	public List<RefActionTypeBo> getRefActionType() {
+	private List<RefActionTypeBo> getRefActionType() {
 		List<RefActionTypeBo> refActionTypelist = Lists.newArrayList();
 		RefActionTypeBo refActionType = new RefActionTypeBo();
 		refActionType.setActionTypeId(1);
@@ -276,7 +276,7 @@ public class ReaRuleConverterTest {
 
 	}
 
-	public List<ProductHierarchyElementBo> getProductHierarchyElement() {
+	private List<ProductHierarchyElementBo> getProductHierarchyElement() {
 		List<ProductHierarchyElementBo> productHierarchyElementlist = Lists.newArrayList();
 		ProductHierarchyElementBo productHierarchyElement = new ProductHierarchyElementBo();
 		productHierarchyElement.setId(1l);
@@ -286,7 +286,7 @@ public class ReaRuleConverterTest {
 		return productHierarchyElementlist;
 	}
 
-	public List<RefSourceTypeBo> getRefSourceType() {
+	private List<RefSourceTypeBo> getRefSourceType() {
 		List<RefSourceTypeBo> refSourceTypelist = Lists.newArrayList();
 		RefSourceTypeBo refSourceType = new RefSourceTypeBo();
 		refSourceType.setSourceName("online");
@@ -295,7 +295,7 @@ public class ReaRuleConverterTest {
 		return refSourceTypelist;
 	}
 
-	public RefActionTypeBo createRefActionType() {
+	private RefActionTypeBo createRefActionType() {
 		RefActionTypeBo refActionType = new RefActionTypeBo();
 		refActionType.setActionTypeId(1);
 		refActionType.setActionTypeValue("asa");
@@ -303,7 +303,7 @@ public class ReaRuleConverterTest {
 		return refActionType;
 	}
 
-	public RefSourceTypeBo createRefSourceTypeBo() {
+	private RefSourceTypeBo createRefSourceTypeBo() {
 		RefSourceTypeBo refSourceType = new RefSourceTypeBo();
 		refSourceType.setSourceName("online");
 		refSourceType.setSourceTypeId(1);

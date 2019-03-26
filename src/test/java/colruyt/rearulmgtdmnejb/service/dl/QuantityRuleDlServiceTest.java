@@ -59,7 +59,7 @@ public class QuantityRuleDlServiceTest {
 		return deleteRuleInfoBo;
 	}
 
-	public QuantityRuleAction getReaQtyRule() {
+	private QuantityRuleAction getReaQtyRule() {
 		QuantityRuleAction reaQtyRule = new QuantityRuleAction();
 		reaQtyRule.setQuantityConditionId(4);
 		reaQtyRule.setQuantityTypeId(2);

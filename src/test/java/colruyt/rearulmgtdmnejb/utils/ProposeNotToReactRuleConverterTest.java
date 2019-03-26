@@ -52,14 +52,14 @@ public class ProposeNotToReactRuleConverterTest {
 		return proposalNotToReactRuleAction;
 	}
 
-	public ProposalNotToReactRuleActionRsnPK getReaNreactSetRsnPK() {
+	private ProposalNotToReactRuleActionRsnPK getReaNreactSetRsnPK() {
 		ProposalNotToReactRuleActionRsnPK reaNreactSetRsnPK = new ProposalNotToReactRuleActionRsnPK();
 		reaNreactSetRsnPK.setReactionRuleId(1l);
 		reaNreactSetRsnPK.setReasonId(1);
 		return reaNreactSetRsnPK;
 	}
 
-	public ProposeNotToReactRuleBo getProposeNotToReactRuleBo() {
+	private ProposeNotToReactRuleBo getProposeNotToReactRuleBo() {
 		ProposeNotToReactRuleBo proposeNotToReactRuleBo = new ProposeNotToReactRuleBo();
 		proposeNotToReactRuleBo.setRuleId(1l);
 		proposeNotToReactRuleBo.setFilterOutType(getRefFilterOutRecordingTypeBo());
@@ -67,7 +67,7 @@ public class ProposeNotToReactRuleConverterTest {
 		return proposeNotToReactRuleBo;
 	}
 
-	public RefFilterOutRecordingTypeBo getRefFilterOutRecordingTypeBo() {
+	private RefFilterOutRecordingTypeBo getRefFilterOutRecordingTypeBo() {
 		RefFilterOutRecordingTypeBo refFilterOutRecordingTypeBo = new RefFilterOutRecordingTypeBo();
 		refFilterOutRecordingTypeBo.setFilterOutTypeId(1);
 		refFilterOutRecordingTypeBo.setDescription("xcx");
@@ -76,7 +76,7 @@ public class ProposeNotToReactRuleConverterTest {
 
 	}
 
-	public List<RefLangBo> getRefLangBo() {
+	private List<RefLangBo> getRefLangBo() {
 		List<RefLangBo> refLangBolist = Lists.newArrayList();
 		RefLangBo refLangBo = new RefLangBo();
 		refLangBo.setIsoLangCode("EN");
@@ -87,7 +87,7 @@ public class ProposeNotToReactRuleConverterTest {
 
 	}
 
-	public List<RefNotToReactCodeBo> getRefNotToReactCodeBo() {
+	private List<RefNotToReactCodeBo> getRefNotToReactCodeBo() {
 		List<RefNotToReactCodeBo> refNotToReactCodeBolist = Lists.newArrayList();
 		RefNotToReactCodeBo refNotToReactCodeBo = new RefNotToReactCodeBo();
 		refNotToReactCodeBo.setCodeLang(getRefLangBo());

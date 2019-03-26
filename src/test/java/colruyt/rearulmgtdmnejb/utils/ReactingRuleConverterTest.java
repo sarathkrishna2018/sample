@@ -26,7 +26,7 @@ public class ReactingRuleConverterTest {
 		ReactingRuleAction expectedReaReactingAct=ReactingRuleConverter.convertFromBo(reactingRuleBo);
 		assertEquals(new Double(12d),expectedReaReactingAct.getReactingAmt());	
 	}
-	public ReactingRuleBo getReactingRuleBo(){
+	private ReactingRuleBo getReactingRuleBo(){
 		ReactingRuleBo reactingRule=new ReactingRuleBo();
 		reactingRule.setRuleId(1L);
 		reactingRule.setReactingAmount(12d);

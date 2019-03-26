@@ -220,7 +220,7 @@ public class FilteringRuleServiceTest {
 		return reactionRuleBo;
 	}
 
-	public ReactionRulesetBo createReactionRuleset() {
+	private ReactionRulesetBo createReactionRuleset() {
 		ReactionRulesetBo reactionRuleset = new ReactionRulesetBo();
 		reactionRuleset.setColruytGroupChainId(1l);
 		reactionRuleset.setPriceCompetitorChainId(2l);
@@ -230,7 +230,7 @@ public class FilteringRuleServiceTest {
 		return reactionRuleset;
 	}
 
-	public FilteringRuleAction getReaFltRule() {
+	private FilteringRuleAction getReaFltRule() {
 		FilteringRuleAction reaFltRule = new FilteringRuleAction();
 		reaFltRule.setReactionRuleId(1l);
 		reaFltRule.setMaximumCompetitorQuantity(12d);
@@ -238,7 +238,7 @@ public class FilteringRuleServiceTest {
 		return reaFltRule;
 	}
 
-	public ReactionRule getReaRule() {
+	private ReactionRule getReaRule() {
 		Date validFromdate = new Date();
 		Date validTodate = new Date();
 		ReactionRule reaRule = new ReactionRule();
