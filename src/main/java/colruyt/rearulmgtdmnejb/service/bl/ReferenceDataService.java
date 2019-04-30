@@ -41,6 +41,8 @@ import colruyt.rearulmgtdmnejb.enums.SourceType;
 import colruyt.rearulmgtdmnejb.service.dl.ReferenceDataDlService;
 import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnDebugMessage;
 import colruyt.rearulmgtdmnejb.util.ReferenceDataConverter;
+import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnConstants;
+
 
 @Singleton
 @Startup
@@ -166,7 +168,7 @@ public class ReferenceDataService implements Serializable {
 		String ruleType = "";
 		for (RefRuleTypeBo refRuleTypeBo : getAllRuleTypes()) {
 			for (RefLangBo refLangBo : refRuleTypeBo.getCodeLang()) {
-				if (refRuleTypeBo.getRuleTypeId() == ruleTypeId) {
+				if (refLangBo.getIsoLangCode().equalsIgnoreCase(ReactionRuleDmnConstants.LANG_CODE_EN) && refRuleTypeBo.getRuleTypeId() == ruleTypeId) {
 					ruleType = refLangBo.getValue();
 				}
 			}
