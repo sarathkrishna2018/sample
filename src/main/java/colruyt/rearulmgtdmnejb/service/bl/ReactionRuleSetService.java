@@ -16,6 +16,7 @@ import colruyt.rearulmgtdmnejb.bo.DeleteRuleSetInfoBo;
 import colruyt.rearulmgtdmnejb.bo.ReactionRulesetBo;
 import colruyt.rearulmgtdmnejb.bo.RefRuleTypeBo;
 import colruyt.rearulmgtdmnejb.entity.ReactionRuleSet;
+import colruyt.rearulmgtdmnejb.enums.RuleType;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleValidationException;
 import colruyt.rearulmgtdmnejb.service.dl.ReactionRuleSetDlService;
@@ -53,14 +54,14 @@ public class ReactionRuleSetService implements Serializable {
 			reaRuleset = reactionRuleSetDlService.createOrUpdate(reaRuleset);
 			reactionRulesetBo.setRulesetId(reaRuleset.getReaRulesetId());
 		} else {
-			throw new ReaRuleManagementException("EN", ExceptionMessageConstants.MESSAGE_DUPLICATE_RULESET);
+			throw new ReaRuleManagementException(ReactionRuleDmnConstants.LANG_CODE_EN, ExceptionMessageConstants.MESSAGE_DUPLICATE_RULESET);
 		}
 		return reactionRulesetBo;
 	}
 
-	public List<ReactionRulesetBo> find(long cgChainId, long compChainId) {
+	public List<ReactionRulesetBo> find(long cgChainId, long compChainId, String ruleType) {
 		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_FINDREACTIONRULESET);
-		List<ReactionRuleSet> ruleSetList = reactionRuleSetDlService.findByCgChainAndPCChain(cgChainId, compChainId);
+		List<ReactionRuleSet> ruleSetList = reactionRuleSetDlService.findByAttributes(cgChainId, compChainId, RuleType.forValue(ruleType).getRuleTypeID());
 		List<RefRuleTypeBo> refRuletype = referenceDataService.getAllRuleTypes();
 		return ReaRulesetConverter.convertToBo(ruleSetList,refRuletype);
 
@@ -71,6 +72,11 @@ public class ReactionRuleSetService implements Serializable {
 		if (ruleType == null || ruleType.isEmpty()) {
 			throw new ReaRuleValidationException(ReactionRuleDmnConstants.LANG_CODE_EN,
 					ExceptionMessageConstants.MESSAGE_RULETYPE_ABSENT);
+		}
+		
+		if (!RuleType.ruleTypeNames().contains(ruleType)) {
+			throw new ReaRuleValidationException(ReactionRuleDmnConstants.LANG_CODE_EN,
+					ExceptionMessageConstants.MESSAGE_INVALID_RULETYPE);
 		}
 		if (cgChainId == 0) {
 			throw new ReaRuleValidationException(ReactionRuleDmnConstants.LANG_CODE_EN,
@@ -86,7 +92,7 @@ public class ReactionRuleSetService implements Serializable {
 		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_RETRIEVEREACTIONRULESET);
 		ReactionRuleSet reactionRuleSet = reactionRuleSetDlService.findByPk(rulesetId);
 		if (reactionRuleSet == null) {
-			throw new ReaRuleManagementException("EN", ExceptionMessageConstants.MESSAGE_REACTION_RULESET_ABSENT);
+			throw new ReaRuleManagementException(ReactionRuleDmnConstants.LANG_CODE_EN, ExceptionMessageConstants.MESSAGE_REACTION_RULESET_ABSENT);
 		}
 		return ReaRulesetConverter.convertToBo(reactionRuleSet);
 
@@ -96,10 +102,10 @@ public class ReactionRuleSetService implements Serializable {
 			throws ReaRuleValidationException, ReaRuleManagementException {
 		ReactionRuleSet existingReactionRuleset = reactionRuleSetDlService.findByPk(reactionRuleSetBo.getRulesetId());
 		if (existingReactionRuleset == null) {
-			throw new ReaRuleManagementException("EN", ExceptionMessageConstants.MESSAGE_REACTION_RULESET_ABSENT);
+			throw new ReaRuleManagementException(ReactionRuleDmnConstants.LANG_CODE_EN, ExceptionMessageConstants.MESSAGE_REACTION_RULESET_ABSENT);
 		}
 		if (reactionRuleSetBo.getRefRuleTypeBo().getRuleTypeId() == 1 && (reactionRuleSetBo.getName().isEmpty())) {
-			throw new ReaRuleManagementException("EN", ExceptionMessageConstants.MESSAGE_REACTION_RULESETNAME_ABSENT);
+			throw new ReaRuleManagementException(ReactionRuleDmnConstants.LANG_CODE_EN, ExceptionMessageConstants.MESSAGE_REACTION_RULESETNAME_ABSENT);
 		} else {
 			ReactionRuleSet reaRuleset = ReaRulesetConverter.convertFromBo(existingReactionRuleset, reactionRuleSetBo,
 					logonId);
