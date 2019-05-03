@@ -8,7 +8,7 @@ public class ActionTypeTest {
 	@Test
 	public void actionTypeEnumTest(){
 	      ActionType[] actionTypeEnums = ActionType.values();
-	       assertEquals(15,actionTypeEnums.length);
+	       assertEquals(16,actionTypeEnums.length);
 	   }
 	
 	@Test

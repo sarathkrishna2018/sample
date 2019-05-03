@@ -2,7 +2,7 @@ package colruyt.rearulmgtdmnejb.enums;
 
 public enum FilterOutRecordingType {
 	PRICE_RECORDING(1), 
-	FILTER_AND_CLEAR_OUT(2);
+	FILTER_PRICE_RECORDING_AND_STOP_REACTING(2);
 	
 	private int id;
 
