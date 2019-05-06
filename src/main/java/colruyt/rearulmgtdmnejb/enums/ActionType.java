@@ -14,9 +14,9 @@ public enum ActionType {
 		BON_ON_PACK(11,"Bon on pack", 11L),	
 		SECOND_FOR_FIFTY_PERCENT(12,"2nd for 50% off",  12L),
 		ONE_PLUS_ONE(13,"1+1", 13L),
-		FREE_CONTENT(14,"Free Content",14L),
-		ALL(15, "All", 15L),
-		NONE(16, "None", 16L);
+		FREE_CONTENT(16,"Free Content",16L),
+		ALL(14, "All", 14L),
+		NONE(15, "None", 15L);
 
 	private int actionTypeId;
 	private String actionTypeValue;
