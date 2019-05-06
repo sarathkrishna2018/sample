@@ -4,8 +4,14 @@ import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import colruyt.rearulmgtdmnejb.enums.RuleType;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class QuantityRuleBo extends GeneralRuleBo implements Serializable {
+	
+	public QuantityRuleBo(){
+		this.setType(RuleType.QUANTITY.getRuleTypeName());
+	}
 
 	private static final long serialVersionUID = 1L;
 	private RefQuantityConditionTypeBo conditionType;

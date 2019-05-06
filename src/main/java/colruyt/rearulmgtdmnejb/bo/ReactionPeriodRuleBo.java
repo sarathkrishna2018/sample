@@ -2,9 +2,16 @@ package colruyt.rearulmgtdmnejb.bo;
 
 import java.io.Serializable;
 
+import colruyt.rearulmgtdmnejb.enums.RuleType;
+
 public class ReactionPeriodRuleBo extends GeneralRuleBo implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
+	
+	public ReactionPeriodRuleBo(){
+		this.setType(RuleType.REACTION_PERIOD.getRuleTypeName());
+	}
+	
 	private Long endDateMinusDate;
 	private Long minimumDays;
 

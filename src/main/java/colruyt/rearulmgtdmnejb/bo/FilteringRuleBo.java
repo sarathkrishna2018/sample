@@ -4,8 +4,14 @@ import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreType;
 
+import colruyt.rearulmgtdmnejb.enums.RuleType;
+
 @JsonIgnoreType(value = true)
 public class FilteringRuleBo extends GeneralRuleBo implements Serializable {
+	
+	public FilteringRuleBo(){
+		this.setType(RuleType.FILTERING.getRuleTypeName());
+	}
 
 	private static final long serialVersionUID = 1L;
 	private Double maxCompQuantity;
