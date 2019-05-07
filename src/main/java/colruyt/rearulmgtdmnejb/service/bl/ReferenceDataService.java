@@ -142,8 +142,7 @@ public class ReferenceDataService implements Serializable {
 					finalActionList.add(action);
 				}
 			} else {
-				if (!(action.getActionTypeValue().equalsIgnoreCase(ActionType.ALL.getActionTypeValue())
-						|| action.getActionTypeValue().equalsIgnoreCase(ActionType.NONE.getActionTypeValue()))) {
+				if (!(action.getActionTypeValue().equalsIgnoreCase(ActionType.ALL.getActionTypeValue()))) {
 					finalActionList.add(action);
 				}
 			}
