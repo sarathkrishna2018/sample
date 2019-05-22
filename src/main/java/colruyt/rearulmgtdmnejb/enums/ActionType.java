@@ -4,19 +4,17 @@ public enum ActionType {
 		PRICE_PROMO(1,"Price Promo", 1L),
 		DISCOUNT_IN_PERCENT(2,"Discount %",  2L),
 		DISCOUNT_IN_EURO(3,"Discount Euro", 3L),
-		X_PLUS_Y(4,"X+Y", 4L),
 		XNTH_FOR_Y_PERCENT_OFF(5," Xnth for Y% off",  5L),
-		STAMPS(6, "Stamps",  6L),
-		POINTS(7,"Points",  7L),
-		GADGET_OR_PREMIUM(8,"Gadget/Premium", 8L),
-		CASHBACK(9,"Cashback",  9L),
-		OTHER_FREE_PRODUCTS(10,"Other Free Products", 10L),
-		BON_ON_PACK(11,"Bon on pack", 11L),	
-		SECOND_FOR_FIFTY_PERCENT(12,"2nd for 50% off",  12L),
-		ONE_PLUS_ONE(13,"1+1", 13L),
+		POINTS(6,"Points",  7L),
+		STAMPS(7, "Stamps",  6L),
+		X_PLUS_Y(11,"X+Y", 4L),
+		GADGET_OR_PREMIUM(12,"Gadget/Premium", 8L),
+		OTHER_FREE_PRODUCTS(13,"Other Free Products", 10L),
+		CASHBACK(14,"Cashback",  9L),
+		BON_ON_PACK(15,"Bon on pack", 11L),	
 		FREE_CONTENT(16,"Free Content",16L),
-		ALL(14, "All", 14L),
-		NONE(15, "None", 15L);
+		ALL(40, "All", 14L),
+		NONE(50, "None", 15L);
 
 	private int actionTypeId;
 	private String actionTypeValue;

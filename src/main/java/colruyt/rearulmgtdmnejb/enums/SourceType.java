@@ -1,11 +1,12 @@
 package colruyt.rearulmgtdmnejb.enums;
 
 public enum SourceType {
-	ONLINE(1,"Online", "Online"),
-	OFFLINE(2,"Offline", "Offline"),
-	FOLDER(3, "Folder", "Folder"),
+	OFFLINE(1,"Offline", "Offline"),
+	ONLINE(3,"Online", "Online"),
 	EXTERNAL(4,"External", "External"),
-	ALL(5,"All", "All");
+	FOLDER(5, "Folder", "Folder"),
+	CUSTOMER(6,"Customer", "Customer"),
+	ALL(40,"All", "All");
 	
 	private final int sourceTypeId;
 	private final String sourceTypeName;
