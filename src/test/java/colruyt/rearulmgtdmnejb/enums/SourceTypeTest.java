@@ -8,7 +8,7 @@ public class SourceTypeTest {
 	@Test
 	public void sourceTypeEnumTest() {
 		SourceType[] sourceTypeEnums = SourceType.values();
-		assertEquals(5,sourceTypeEnums.length);
+		assertEquals(6,sourceTypeEnums.length);
 	}
 
 	@Test
