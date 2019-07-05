@@ -61,7 +61,7 @@ public class ReactionRuleSetDlServiceTest {
 
 	}
 	@Test
-	@DataSet("dataset/ReactionRuleSetDlServiceTest.xml")
+	@DataSet("dataset/ReactionRuleSetDlServiceFindTest.xml")
 	public void findByAttributesTest() {
 		List<ReactionRuleSet> expectedReactionRuleSetList = reactionRuleSetDlService.findByAttributes(1l, 1l, 1l);
 		assertThat(expectedReactionRuleSetList.size()).isEqualTo(1);
@@ -71,7 +71,7 @@ public class ReactionRuleSetDlServiceTest {
 		
 	}
 	@Test
-	@DataSet("dataset/ReactionRuleSetDlServiceTest.xml")
+	@DataSet("dataset/ReactionRuleSetDlServiceFindTest.xml")
 	public void findByCgChainAndPCChainTest() {
 		List<ReactionRuleSet> expectedReactionRuleSetList = reactionRuleSetDlService.findByCgChainAndPCChain(1l, 1l);
 		assertThat(expectedReactionRuleSetList.size()).isEqualTo(1);
