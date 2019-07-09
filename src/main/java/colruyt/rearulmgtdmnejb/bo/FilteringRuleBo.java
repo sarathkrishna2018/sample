@@ -8,29 +8,29 @@ import colruyt.rearulmgtdmnejb.enums.RuleType;
 
 @JsonIgnoreType(value = true)
 public class FilteringRuleBo extends GeneralRuleBo implements Serializable {
-	
-	public FilteringRuleBo(){
+
+	public FilteringRuleBo() {
 		this.setType(RuleType.FILTERING.getRuleTypeName());
 	}
 
 	private static final long serialVersionUID = 1L;
-	private Double maxCompQuantity;
-	private Double xTimeQuantity;
+	private Double maxTimesRecordingProduct;
+	private Double maxTimesPriceArticle;
 
-	public Double getMaxCompQuantity() {
-		return maxCompQuantity;
+	public Double getMaxTimesRecordingProduct() {
+		return maxTimesRecordingProduct;
 	}
 
-	public void setMaxCompQuantity(Double maxCompQuantity) {
-		this.maxCompQuantity = maxCompQuantity;
+	public void setMaxTimesRecordingProduct(Double maxTimesRecordingProduct) {
+		this.maxTimesRecordingProduct = maxTimesRecordingProduct;
 	}
 
-	public Double getxTimeQuantity() {
-		return xTimeQuantity;
+	public Double getMaxTimesPriceArticle() {
+		return maxTimesPriceArticle;
 	}
 
-	public void setxTimeQuantity(Double xTimeQuantity) {
-		this.xTimeQuantity = xTimeQuantity;
+	public void setMaxTimesPriceArticle(Double maxTimesPriceArticle) {
+		this.maxTimesPriceArticle = maxTimesPriceArticle;
 	}
 
 }
