@@ -16,10 +16,10 @@ public class FilteringRuleAction implements Serializable {
 	private long reactionRuleId;
 
 	@Column(name = "MAX_COMP_QTY")
-	private Double maximumCompetitorQuantity;
+	private Double maxTimesRecordingProduct;
 
 	@Column(name = "X_TIME_QTY")
-	private Double xTimeQty;
+	private Double maxTimesPriceArticle;
 
 	public long getReactionRuleId() {
 		return this.reactionRuleId;
@@ -29,20 +29,20 @@ public class FilteringRuleAction implements Serializable {
 		this.reactionRuleId = reactionRuleId;
 	}
 
-	public Double getMaximumCompetitorQuantity() {
-		return this.maximumCompetitorQuantity;
+	public Double getMaxTimesRecordingProduct() {
+		return this.maxTimesRecordingProduct;
 	}
 
-	public void setMaximumCompetitorQuantity(Double maximumCompetitorQuantity) {
-		this.maximumCompetitorQuantity = maximumCompetitorQuantity;
+	public void setMaxTimesRecordingProduct(Double maxTimesRecordingProduct) {
+		this.maxTimesRecordingProduct = maxTimesRecordingProduct;
 	}
 
-	public Double getXTimeQty() {
-		return this.xTimeQty;
+	public Double getMaxTimesPriceArticle() {
+		return this.maxTimesPriceArticle;
 	}
 
-	public void setXTimeQty(Double xTimeQty) {
-		this.xTimeQty = xTimeQty;
+	public void setMaxTimesPriceArticle(Double maxTimesPriceArticle) {
+		this.maxTimesPriceArticle = maxTimesPriceArticle;
 	}
 
 }

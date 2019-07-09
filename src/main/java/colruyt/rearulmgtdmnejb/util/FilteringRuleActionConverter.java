@@ -5,28 +5,28 @@ import java.io.Serializable;
 import colruyt.rearulmgtdmnejb.bo.FilteringRuleBo;
 import colruyt.rearulmgtdmnejb.entity.FilteringRuleAction;
 
+public class FilteringRuleActionConverter implements Serializable {
 
-public class FilteringRuleActionConverter  implements Serializable {
-	
 	private static final long serialVersionUID = 1L;
 
 	public static FilteringRuleAction convertFromBo(FilteringRuleBo filteringRuleBo) {
 		FilteringRuleAction filteringRuleAction = new FilteringRuleAction();
 		filteringRuleAction.setReactionRuleId(filteringRuleBo.getRuleId());
-		filteringRuleAction.setMaximumCompetitorQuantity(filteringRuleBo.getMaxCompQuantity());
-		filteringRuleAction.setXTimeQty(filteringRuleBo.getxTimeQuantity());
+		filteringRuleAction.setMaxTimesRecordingProduct(filteringRuleBo.getMaxTimesRecordingProduct());
+		filteringRuleAction.setMaxTimesPriceArticle(filteringRuleBo.getMaxTimesPriceArticle());
 		return filteringRuleAction;
 	}
-	public static FilteringRuleBo convertToBo(FilteringRuleAction filteringRuleAction){
-		FilteringRuleBo filteringRuleBo=new FilteringRuleBo();
-		filteringRuleBo.setMaxCompQuantity(filteringRuleAction.getMaximumCompetitorQuantity());
-		filteringRuleBo.setxTimeQuantity(filteringRuleAction.getXTimeQty());
+
+	public static FilteringRuleBo convertToBo(FilteringRuleAction filteringRuleAction) {
+		FilteringRuleBo filteringRuleBo = new FilteringRuleBo();
+		filteringRuleBo.setMaxTimesRecordingProduct(filteringRuleAction.getMaxTimesRecordingProduct());
+		filteringRuleBo.setMaxTimesPriceArticle(filteringRuleAction.getMaxTimesPriceArticle());
 		return filteringRuleBo;
 	}
-		
+
 	public static FilteringRuleBo convertToBo(FilteringRuleAction filteringRule, FilteringRuleBo filteringRuleBo) {
-		filteringRuleBo.setMaxCompQuantity(filteringRule.getMaximumCompetitorQuantity());
-		filteringRuleBo.setxTimeQuantity(filteringRule.getXTimeQty());
+		filteringRuleBo.setMaxTimesRecordingProduct(filteringRule.getMaxTimesRecordingProduct());
+		filteringRuleBo.setMaxTimesPriceArticle(filteringRule.getMaxTimesPriceArticle());
 		return filteringRuleBo;
 	}
 

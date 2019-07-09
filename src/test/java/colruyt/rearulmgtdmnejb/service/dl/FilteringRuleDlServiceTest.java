@@ -32,16 +32,16 @@ public class FilteringRuleDlServiceTest {
 	@ExpectedDataSet("result/FilteringRuleCreateTestResult.xml")
 	public void createTest() {
 		FilteringRuleAction expectedFilteringRule = filteringRuleActionDlService.createOrUpdate(getReaFltRule());
-		Assert.assertEquals(1L,expectedFilteringRule.getReactionRuleId());
+		Assert.assertEquals(1L, expectedFilteringRule.getReactionRuleId());
 	}
 
 	@Test
 	@DataSet("dataset/FilteringRuleDlServiceTest.xml")
 	public void findByRuleIdTest() {
 		FilteringRuleAction expectedFilteringRule = filteringRuleActionDlService.findByRuleId(2l);
-		Assert.assertEquals(2L,expectedFilteringRule.getReactionRuleId());
-		Assert.assertEquals( new Double(1.0),expectedFilteringRule.getMaximumCompetitorQuantity());
-		Assert.assertEquals(new Double(2.5) ,expectedFilteringRule.getXTimeQty());
+		Assert.assertEquals(2L, expectedFilteringRule.getReactionRuleId());
+		Assert.assertEquals(new Double(1.0), expectedFilteringRule.getMaxTimesRecordingProduct());
+		Assert.assertEquals(new Double(2.5), expectedFilteringRule.getMaxTimesPriceArticle());
 	}
 
 	@Test
@@ -60,9 +60,9 @@ public class FilteringRuleDlServiceTest {
 
 	private FilteringRuleAction getReaFltRule() {
 		FilteringRuleAction reaFlt = new FilteringRuleAction();
-		reaFlt.setMaximumCompetitorQuantity(2.0);
+		reaFlt.setMaxTimesRecordingProduct(2.0);
 		reaFlt.setReactionRuleId(1);
-		reaFlt.setXTimeQty(3.5);
+		reaFlt.setMaxTimesPriceArticle(3.5);
 		return reaFlt;
 	}
 
