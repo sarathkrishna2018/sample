@@ -52,9 +52,10 @@ public class FilteringRuleService extends GeneralRuleService implements Serializ
 	private void validateRuleInputs(FilteringRuleBo filteringRuleBo) throws ReaRuleValidationException {
 		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_VALIDATEFILTERINGRULE);
 		if (filteringRuleBo != null) {
-			Double maxQuantity = filteringRuleBo.getMaxCompQuantity();
-			Double xTimeQuantity = filteringRuleBo.getxTimeQuantity();
-			if ((maxQuantity != null && maxQuantity < 0) || (xTimeQuantity != null && xTimeQuantity < 0)) {
+			Double maxTimesRecordingProduct = filteringRuleBo.getMaxTimesRecordingProduct();
+			Double maxTimesPriceArticle = filteringRuleBo.getMaxTimesPriceArticle();
+			if ((maxTimesRecordingProduct != null && maxTimesRecordingProduct < 0)
+					|| (maxTimesPriceArticle != null && maxTimesPriceArticle < 0)) {
 				throw new ReaRuleValidationException(filteringRuleBo.getLangCode(),
 						ExceptionMessageConstants.MESSAGE_FILTERING_RULE_VALIDATION);
 			}

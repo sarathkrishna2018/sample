@@ -52,7 +52,7 @@ public class FilteringRuleServiceTest {
 
 	@InjectIntoByType
 	private ReferenceDataService referenceDataService = Mockito.mock(ReferenceDataService.class);
-	
+
 	@Test
 	public void createRuleSpecificAttributesTest() throws ReaRuleValidationException, ReaRuleManagementException {
 		when(filteringRuleActionDlService.createOrUpdate(Mockito.any(FilteringRuleAction.class)))
@@ -68,6 +68,7 @@ public class FilteringRuleServiceTest {
 		GeneralRuleBo expectedFilteringRule = filteringRuleBlService.modifyRuleSpecificAttributes(getFilteringRuleBo());
 		Assert.assertEquals(new Long(1l), expectedFilteringRule.getRuleId());
 	}
+
 	@Test
 	public void getRuleSpecificValuesTest() throws ReaRuleManagementException {
 		when(filteringRuleActionDlService.findByRuleId(Mockito.anyLong())).thenReturn(getReaFltRule());
@@ -100,7 +101,7 @@ public class FilteringRuleServiceTest {
 		filteringRuleBo.setImportanceCodeTo(5L);
 		filteringRuleBo.setLangCode("EN");
 		filteringRuleBo.setLogonId("xyz");
-		filteringRuleBo.setMaxCompQuantity(5D);
+		filteringRuleBo.setMaxTimesRecordingProduct(5D);
 		filteringRuleBo.setNationalBrand(false);
 		filteringRuleBo.setOwnBrand(false);
 		filteringRuleBo.setPermanentDuration(true);
@@ -233,8 +234,8 @@ public class FilteringRuleServiceTest {
 	private FilteringRuleAction getReaFltRule() {
 		FilteringRuleAction reaFltRule = new FilteringRuleAction();
 		reaFltRule.setReactionRuleId(1l);
-		reaFltRule.setMaximumCompetitorQuantity(12d);
-		reaFltRule.setXTimeQty(1d);
+		reaFltRule.setMaxTimesRecordingProduct(12d);
+		reaFltRule.setMaxTimesPriceArticle(1d);
 		return reaFltRule;
 	}
 
