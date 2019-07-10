@@ -15,10 +15,10 @@ public class FilteringRuleAction implements Serializable {
 	@Column(name = "REA_RULE_ID")
 	private long reactionRuleId;
 
-	@Column(name = "MAX_COMP_QTY")
+	@Column(name = "MAX_TIME_REC_PRD")
 	private Double maxTimesRecordingProduct;
 
-	@Column(name = "X_TIME_QTY")
+	@Column(name = "MAX_TIME_PA")
 	private Double maxTimesPriceArticle;
 
 	public long getReactionRuleId() {

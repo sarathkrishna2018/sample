@@ -3,8 +3,8 @@
 --------------------------------------------------
 Create table REA_FLT_RULE (
     REA_RULE_ID                    DECIMAL(9)          NOT NULL   ,
-    MAX_COMP_QTY                   DECIMAL(5, 3)                  ,
-    X_TIME_QTY                     DECIMAL(5, 3)                  );
+    MAX_TIME_REC_PRD                   DECIMAL(5, 3)                  ,
+    MAX_TIME_PA                     DECIMAL(5, 3)                  );
 --------------------------------------------------
 -- Create Table REA_PRD_ACT
 --------------------------------------------------

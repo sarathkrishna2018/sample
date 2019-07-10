@@ -3,12 +3,12 @@
 <dataset>
 	<REA_FLT_RULE
 		REA_RULE_ID="1"
-     	MAX_COMP_QTY="2.0"
-		X_TIME_QTY="3.5"
+     	MAX_TIME_REC_PRD="2.0"
+		MAX_TIME_PA="3.5"
 	/>	
 	<REA_FLT_RULE
 		REA_RULE_ID="2"
-     	MAX_COMP_QTY="1.000"
-		X_TIME_QTY="2.500"
+     	MAX_TIME_REC_PRD="1.000"
+		MAX_TIME_PA="2.500"
 	/>	
 </dataset>
