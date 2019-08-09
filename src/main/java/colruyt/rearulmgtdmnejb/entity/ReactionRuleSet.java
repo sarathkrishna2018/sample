@@ -23,7 +23,7 @@ public class ReactionRuleSet implements Serializable {
 
 	@Id
 	@Column(name = "REA_RULESET_ID")
-	@SequenceGenerator(name = "REA_RULESET_SEQ_GEN", sequenceName = "SEQ_REA_RULESET")
+	@SequenceGenerator(name = "REA_RULESET_SEQ_GEN", allocationSize=1, sequenceName = "SEQ_REA_RULESET")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "REA_RULESET_SEQ_GEN")
 	private long reaRulesetId;
 

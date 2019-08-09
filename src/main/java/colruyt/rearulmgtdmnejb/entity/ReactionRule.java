@@ -32,7 +32,7 @@ public class ReactionRule implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name = "REA_RULE_SEQ_GEN", sequenceName = "SEQ_REA_RULE")
+	@SequenceGenerator(name = "REA_RULE_SEQ_GEN", allocationSize=1, sequenceName = "SEQ_REA_RULE")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "REA_RULE_SEQ_GEN")
 	@Column(name = "REA_RULE_ID")
 	private long reaRuleId;

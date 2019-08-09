@@ -19,7 +19,7 @@ public class PriceProductHierarchyElement implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name = "REA_PPD_HCHY_ELMNT_SEQ_GEN", sequenceName = "SEQ_REA_PPD_HCHY_ELMNT")
+	@SequenceGenerator(name = "REA_PPD_HCHY_ELMNT_SEQ_GEN", allocationSize=1, sequenceName = "SEQ_REA_PPD_HCHY_ELMNT")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "REA_PPD_HCHY_ELMNT_SEQ_GEN")
 	@Column(name = "PPD_HCHY_ELMNT_ID")
 	private long productHierarchyElementId;
