@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 
 import org.apache.commons.lang.time.DateUtils;
 import org.slf4j.Logger;
@@ -31,6 +32,7 @@ import colruyt.rearulmgtdmnejb.util.ReaRuleConverter;
 import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnDebugMessage;
 import colruyt.rearulmgtdmnejb.util.ReferenceDataConverter;
 
+@Stateless
 @LocalBean
 public abstract class GeneralRuleService implements Serializable {
 	private static final long serialVersionUID = 1L;
