@@ -82,11 +82,11 @@ public class FilteringRuleService extends GeneralRuleService implements Serializ
 		for (ReactionRulesetBo reactionRulesetBo : reactionRulesetBos) {
 			if (reactionRulesetBo.getRefRuleTypeBo().getRuleTypeId() == RuleType.FILTERING.getRuleTypeID()) {
 				List<GeneralRuleBo> ruleBos = Lists.newArrayList();
-				List<ReactionRule> ruleList = super.getRulesByRuleSetId(reactionRulesetBo.getRulesetId());
+				List<ReactionRule> ruleList = getRulesByRuleSetId(reactionRulesetBo.getRulesetId());
 				for (ReactionRule rule : ruleList) {
 
 					FilteringRuleBo filteringBo = new FilteringRuleBo();
-					GeneralRuleBo ruleBo = super.getGeneralRuleAttributes(rule, filteringBo);
+					GeneralRuleBo ruleBo = getGeneralRuleAttributes(rule, filteringBo);
 					FilteringRuleBo filteringRuleBo = (FilteringRuleBo) ruleBo;
 
 					FilteringRuleAction filteringRule = filteringRuleActionDlService.findByRuleId(rule.getReaRuleId());

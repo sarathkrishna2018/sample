@@ -49,6 +49,7 @@ public class ReactionRuleSetDlService implements Serializable {
 		return ruleset;
 	}
 
+	@TransactionAttribute(TransactionAttributeType.SUPPORTS)
 	public List<ReactionRuleSet> findByAttributes(long cgChainId, long pcChainId, long ruleTypeId) {
 		List<ReactionRuleSet> reactionRulesets = null;
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
