@@ -2,8 +2,11 @@ package colruyt.rearulmgtdmnejb.entity;
 
 import java.io.Serializable;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -49,7 +52,7 @@ public class ReactionRuleSet implements Serializable {
 	@Column(name = "DATE_LOGICALLY_DELETED")
 	private Date logicallyDeletedDate;
 
-	@OneToMany()
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "REA_RULESET_ID", referencedColumnName = "REA_RULESET_ID")
 	private List<ReactionRule> reactionRules;
 
