@@ -552,7 +552,7 @@ public class GeneralRuleServiceTest {
 		when(referenceDataService.removeSourceTypeAll(Mockito.anyListOf(RefSourceTypeBo.class)))
 				.thenReturn(getRefSourceTypeBo());
 		GeneralRuleBo expectedGeneralRuleAttributes = generalRuleService.getGeneralRuleAttributes(getReaRule(),
-				getReactionRuleBo());
+				getReactionRuleBo(), false);
 		Assert.assertNotNull(expectedGeneralRuleAttributes);
 	}
 
@@ -565,7 +565,7 @@ public class GeneralRuleServiceTest {
 		when(referenceDataService.removeSourceTypeAll(Mockito.anyListOf(RefSourceTypeBo.class)))
 				.thenReturn(getRefSourceTypeBo());
 		GeneralRuleBo expectedGeneralRuleAttributes = generalRuleService.getGeneralRuleAttributes(getReaRule(),
-				getReactionRuleBo());
+				getReactionRuleBo(), false);
 		Assert.assertNotSame(new Long(99l), expectedGeneralRuleAttributes.getRuleId());
 	}
 

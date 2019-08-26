@@ -91,7 +91,7 @@ public class ReactingRuleService extends GeneralRuleService implements Serializa
 				for (ReactionRule rule : ruleList) {
 
 					ReactingRuleBo reactingRuleBo = new ReactingRuleBo();
-					GeneralRuleBo ruleBo = super.getGeneralRuleAttributes(rule, reactingRuleBo);
+					GeneralRuleBo ruleBo = getGeneralRuleAttributes(rule, reactingRuleBo, false);
 					ReactingRuleBo reactingBo = (ReactingRuleBo) ruleBo;
 
 					ReactingRuleAction reactingRuleAction = reactingRuleActionDlService

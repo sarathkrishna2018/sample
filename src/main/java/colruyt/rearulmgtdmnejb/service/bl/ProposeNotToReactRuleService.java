@@ -90,7 +90,7 @@ public class ProposeNotToReactRuleService extends GeneralRuleService implements 
 				for (ReactionRule rule : ruleList) {
 
 					ProposeNotToReactRuleBo proposeNotToReactRuleBo = new ProposeNotToReactRuleBo();
-					GeneralRuleBo ruleBo = super.getGeneralRuleAttributes(rule, proposeNotToReactRuleBo);
+					GeneralRuleBo ruleBo = getGeneralRuleAttributes(rule, proposeNotToReactRuleBo, false);
 					ProposeNotToReactRuleBo proposeNTRRuleBo = (ProposeNotToReactRuleBo) ruleBo;
 
 					ProposalNotToReactRuleAction proposalNotToReactRuleAction = proposalNotToReactActionDlService

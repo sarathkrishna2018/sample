@@ -100,7 +100,7 @@ public class ReaRuleConverter implements Serializable {
 		return ruleLines;
 	}
 
-	public static GeneralRuleBo convertToBo(ReactionRule rule, GeneralRuleBo ruleBo) {
+	public static GeneralRuleBo convertToBo(ReactionRule rule, GeneralRuleBo ruleBo, boolean populateHierarchy) {
 		ruleBo.setRuleId(rule.getReaRuleId());
 		ruleBo.setRulesetId(rule.getReaRulesetId());
 		ruleBo.setRuleName(rule.getRuleName());
@@ -118,20 +118,21 @@ public class ReaRuleConverter implements Serializable {
 		ruleBo.setUpdatedOn(rule.getUpdatedOn());
 		ruleBo.setChildRuleId(rule.getChildRuleId());
 		ruleBo.setRulePriority(rule.getRulePriority());
-		return convertAssortment(ruleBo, rule);
+		return convertAssortment(ruleBo, rule, populateHierarchy);
 	}
 
-	private static GeneralRuleBo convertAssortment(GeneralRuleBo ruleBo, ReactionRule rule) {
+	private static GeneralRuleBo convertAssortment(GeneralRuleBo ruleBo, ReactionRule rule, boolean populateHierarchy) {
 		for (PriceProductHierarchySet set : rule.getPriceProductHierarchySet()) {
 			ruleBo.setAssortmentName(set.getAssortmentName());
 			ruleBo.setCheapBrand(set.getCheapBrand());
 			ruleBo.setNationalBrand(set.getNationalBrand());
 			ruleBo.setOwnBrand(set.getOwnBrand());
 			ruleBo.setProductHierarchySetId(set.getProductHierarchySetId());
-			List<ProductHierarchyElementBo> productHierarchyElementBolist = ProductHierarchyElementConverter
-					.convertToBo(set.getPriceProductHierarchyElements());
-			ruleBo.setPriceProductHierarchySet(productHierarchyElementBolist);
-
+			if(populateHierarchy) {
+				List<ProductHierarchyElementBo> productHierarchyElementBolist = ProductHierarchyElementConverter
+						.convertToBo(set.getPriceProductHierarchyElements());
+				ruleBo.setPriceProductHierarchySet(productHierarchyElementBolist);
+			}
 		}
 		return ruleBo;
 	}

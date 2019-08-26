@@ -23,7 +23,6 @@ import colruyt.rearulmgtdmnejb.enums.ActionType;
 import colruyt.rearulmgtdmnejb.enums.SourceType;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleManagementException;
 import colruyt.rearulmgtdmnejb.exception.ReaRuleValidationException;
-import colruyt.rearulmgtdmnejb.service.dl.ProductHierarchySetDlService;
 import colruyt.rearulmgtdmnejb.service.dl.ReactionRuleActionTypeDlService;
 import colruyt.rearulmgtdmnejb.service.dl.ReactionRuleDlService;
 import colruyt.rearulmgtdmnejb.service.dl.ReactionRuleSourceTypeDlService;
@@ -49,9 +48,6 @@ public abstract class GeneralRuleService implements Serializable {
 	private PriceProductHierarchyService priceProductHierarchyService;
 	@EJB
 	private ReferenceDataService referenceDataService;
-
-	@EJB
-	ProductHierarchySetDlService productHierarchySetDlService;
 
 	public abstract GeneralRuleBo createRuleSpecificAttributes(GeneralRuleBo reactionRuleBo)
 			throws ReaRuleValidationException, ReaRuleManagementException;
@@ -119,7 +115,7 @@ public abstract class GeneralRuleService implements Serializable {
 	public GeneralRuleBo viewReactionRule(GeneralRuleBo specificReactionRuleBo, long ruleId, String langCode)
 			throws ReaRuleManagementException {
 		ReactionRule reactionRule = getReactionRule(ruleId, langCode);
-		GeneralRuleBo ruleBo = getGeneralRuleAttributes(reactionRule, specificReactionRuleBo);
+		GeneralRuleBo ruleBo = getGeneralRuleAttributes(reactionRule, specificReactionRuleBo, true);
 		return getRuleSpecificValues(ruleBo);
 	}
 
@@ -313,7 +309,7 @@ public abstract class GeneralRuleService implements Serializable {
 		return reactionRuleDlService.findByRuleSetId(ruleSetId);
 	}
 
-	public GeneralRuleBo getGeneralRuleAttributes(ReactionRule rule, GeneralRuleBo ruleBo) {
+	public GeneralRuleBo getGeneralRuleAttributes(ReactionRule rule, GeneralRuleBo ruleBo, boolean populateHierarchy) {
 		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_GETGENERALRULE);
 		if (rule.getRefActionTypes() != null && rule.getRefActionTypes().get(0) == ActionType.ALL) {
 			List<RefActionTypeBo> actionTypes = referenceDataService.getAllActionTypes();
@@ -331,7 +327,8 @@ public abstract class GeneralRuleService implements Serializable {
 		} else {
 			ruleBo.setSourceTypeList(ReferenceDataConverter.convertToSourceTypeBo(rule.getRefSourceTypes()));
 		}
-		return ReaRuleConverter.convertToBo(rule, ruleBo);
+		
+		return ReaRuleConverter.convertToBo(rule, ruleBo, populateHierarchy);
 	}
 
 	public void logicallyDeleteReactionRule(Long ruleId, String langCode, String logonId)

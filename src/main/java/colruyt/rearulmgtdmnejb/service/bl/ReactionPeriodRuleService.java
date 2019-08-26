@@ -89,7 +89,7 @@ public class ReactionPeriodRuleService extends GeneralRuleService implements Ser
 				for (ReactionRule rule : ruleList) {
 
 					ReactionPeriodRuleBo reactionPeriodRuleBo = new ReactionPeriodRuleBo();
-					GeneralRuleBo ruleBo = super.getGeneralRuleAttributes(rule, reactionPeriodRuleBo);
+					GeneralRuleBo ruleBo = getGeneralRuleAttributes(rule, reactionPeriodRuleBo, false);
 					ReactionPeriodRuleBo reacPrdRuleBo = (ReactionPeriodRuleBo) ruleBo;
 
 					ReactionPeriodRuleAction reactionPeriodRuleAction = reactionPeriodActionDlService

@@ -59,15 +59,17 @@ public class ReactionRuleDlServiceTest extends UnitilsJUnit4 {
 		Assert.assertEquals("ake" ,expectedReactionRule.getCreatedBy());
 	}
 
-	@Test
-	@DataSet("dataset/ReactionRuleDlServiceTest.xml")
-	public void findByRuleSetId() {
-		List<ReactionRule> expectedReactionRules = reactionRuleDlService.findByRuleSetId(2l);
-		assertThat(expectedReactionRules.size()).isEqualTo(3);
-		Assert.assertEquals(2L,expectedReactionRules.get(0).getReaRuleId());
-		Assert.assertEquals(2L,expectedReactionRules.get(0).getReaRulesetId());
-		Assert.assertEquals("Sample",expectedReactionRules.get(0).getRuleName() );
-	}
+	/*
+	 * @Test
+	 * 
+	 * @DataSet("dataset/ReactionRuleDlServiceTestFindRuleSet.xml") public void
+	 * findByRuleSetId() { List<ReactionRule> expectedReactionRules =
+	 * reactionRuleDlService.findByRuleSetId(2l);
+	 * assertThat(expectedReactionRules.size()).isEqualTo(3);
+	 * Assert.assertEquals(2L,expectedReactionRules.get(0).getReaRuleId());
+	 * Assert.assertEquals(2L,expectedReactionRules.get(0).getReaRulesetId());
+	 * Assert.assertEquals("Sample",expectedReactionRules.get(0).getRuleName() ); }
+	 */
 
 	@Test
 	@DataSet("dataset/ReactionRuleDlServiceTest.xml")

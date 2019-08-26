@@ -88,7 +88,7 @@ public class RecordingNotFoundRuleService extends GeneralRuleService implements 
 				for (ReactionRule rule : ruleList) {
 
 					RecordingNotFoundRuleBo recordingNotFoundRuleBo = new RecordingNotFoundRuleBo();
-					GeneralRuleBo ruleBo = super.getGeneralRuleAttributes(rule, recordingNotFoundRuleBo);
+					GeneralRuleBo ruleBo = getGeneralRuleAttributes(rule, recordingNotFoundRuleBo, false);
 					RecordingNotFoundRuleBo recordingNotFoundBo = (RecordingNotFoundRuleBo) ruleBo;
 
 					RecordingNotFoundRuleAction recordNotFoundRule = recordingNotFoundRuleActionDlService

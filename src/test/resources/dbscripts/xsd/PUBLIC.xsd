@@ -48,8 +48,8 @@
 	</xsd:complexType>
 	<xsd:complexType name="REA_FLT_RULE__type">
 		<xsd:attribute name="MAX_TIME_PA" use="optional" />
-		<xsd:attribute name="MAX_TIME_REC_PRD" use="optional" />
 		<xsd:attribute name="REA_RULE_ID" use="optional" />
+		<xsd:attribute name="MAX_TIME_REC_PRD" use="optional" />
 	</xsd:complexType>
 	<xsd:complexType name="QTY_TYPE_LANG__type">
 		<xsd:attribute name="QTY_TYPE_ID" use="optional" />

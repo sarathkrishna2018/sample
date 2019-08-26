@@ -87,7 +87,7 @@ public class QuantityRuleService extends GeneralRuleService implements Serializa
 				for (ReactionRule rule : ruleList) {
 
 					QuantityRuleBo quantityRuleBo = new QuantityRuleBo();
-					GeneralRuleBo ruleBo = super.getGeneralRuleAttributes(rule, quantityRuleBo);
+					GeneralRuleBo ruleBo = getGeneralRuleAttributes(rule, quantityRuleBo, false);
 					QuantityRuleBo quantityBo = (QuantityRuleBo) ruleBo;
 
 					QuantityRuleAction quantityRuleAction = quantityRuleActionDlService

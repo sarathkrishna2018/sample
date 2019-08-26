@@ -59,6 +59,7 @@ public class ReactionRuleDlService implements Serializable {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<ReactionRule> criteriaQuery = criteriaBuilder.createQuery(ReactionRule.class);
 		Root<ReactionRule> root = criteriaQuery.from(ReactionRule.class);
+		root.fetch("priceProductHierarchySet");
 		List<Predicate> predicateList = Lists.newArrayList();
 		Predicate ruleSetPredicate = criteriaBuilder.equal(root.<Long>get("reaRulesetId"), ruleSetId);
 		predicateList.add(ruleSetPredicate);

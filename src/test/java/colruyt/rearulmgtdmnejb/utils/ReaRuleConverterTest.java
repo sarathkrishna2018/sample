@@ -75,7 +75,7 @@ public class ReaRuleConverterTest {
 
 	@Test
 	public void convertGeneralRuleBoTest() {
-		GeneralRuleBo expectedGeneralRuleBo = ReaRuleConverter.convertToBo(getReactRule(), getReactionRule());
+		GeneralRuleBo expectedGeneralRuleBo = ReaRuleConverter.convertToBo(getReactRule(), getReactionRule(), true);
 		assertEquals(new Long(1l), expectedGeneralRuleBo.getRuleId());
 
 	}
