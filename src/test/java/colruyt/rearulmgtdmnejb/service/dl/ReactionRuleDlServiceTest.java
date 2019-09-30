@@ -40,14 +40,18 @@ public class ReactionRuleDlServiceTest extends UnitilsJUnit4 {
 		JpaUnitils.injectEntityManagerInto(reactionRuleDlService);
 	}
 
-	@Test
-	@DataSet("dataset/ReactionRuleDlServiceCreateTest.xml")
-	@ExpectedDataSet("result/ReactionRuleCreateTestResult.xml")
-	public void createRuleTest() {
-		ReactionRule expectedReactionRule = reactionRuleDlService.createOrUpdate(getReactionRule());
-		Assert.assertEquals(1L,expectedReactionRule.getReaRulesetId());
-
-	}
+	/*
+	 * @Test
+	 * 
+	 * @DataSet("dataset/ReactionRuleDlServiceCreateTest.xml")
+	 * 
+	 * @ExpectedDataSet("result/ReactionRuleCreateTestResult.xml") public void
+	 * createRuleTest() { ReactionRule expectedReactionRule =
+	 * reactionRuleDlService.createOrUpdate(getReactionRule());
+	 * Assert.assertEquals(1L,expectedReactionRule.getReaRulesetId());
+	 * 
+	 * }
+	 */
 
 	@Test
 	@DataSet("dataset/ReactionRuleDlServiceTest.xml")
