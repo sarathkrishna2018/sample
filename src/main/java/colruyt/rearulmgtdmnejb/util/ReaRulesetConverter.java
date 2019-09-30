@@ -71,7 +71,6 @@ public class ReaRulesetConverter implements Serializable {
 			reactionRulesetBo.setName(reactionRuleSet.getRulesetName());
 			reactionRulesetBo.setPriceCompetitorChainId(reactionRuleSet.getPriceCompetitorChainId());
 			reactionRulesetBo.setRulesetId(reactionRuleSet.getReaRulesetId());
-			reactionRulesetBo.setRuleLines(ReaRuleConverter.convertToBo(reactionRuleSet.getReactionRules()));
 			reactionRulesetBo.setRefRuleTypeBo(new RefRuleTypeBo());
 			reactionRulesetBo.getRefRuleTypeBo().setRuleTypeId(reactionRuleSet.getRuleTypeId());
 

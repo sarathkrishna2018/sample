@@ -109,7 +109,6 @@ public class ReactionRuleSetDlServiceTest {
 		reactionRuleSet.setRulesetComment("Comment");
 		reactionRuleSet.setLastUpdateBy("ktr");
 		reactionRuleSet.setLogicallyDeletedDate(null);
-		reactionRuleSet.setReactionRules(getReactionRuleList());
 		return reactionRuleSet;
 	}
 	private List<ReactionRule> getReactionRuleList(){

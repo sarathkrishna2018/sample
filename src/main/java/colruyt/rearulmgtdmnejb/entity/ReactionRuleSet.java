@@ -52,10 +52,6 @@ public class ReactionRuleSet implements Serializable {
 	@Column(name = "DATE_LOGICALLY_DELETED")
 	private Date logicallyDeletedDate;
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
-	@JoinColumn(name = "REA_RULESET_ID", referencedColumnName = "REA_RULESET_ID")
-	private List<ReactionRule> reactionRules;
-
 	public Long getReaRulesetId() {
 		return this.reaRulesetId;
 	}
@@ -102,14 +98,6 @@ public class ReactionRuleSet implements Serializable {
 
 	public void setRulesetName(String rulesetName) {
 		this.rulesetName = rulesetName;
-	}
-
-	public List<ReactionRule> getReactionRules() {
-		return this.reactionRules;
-	}
-
-	public void setReactionRules(List<ReactionRule> reaRules) {
-		this.reactionRules = reaRules;
 	}
 
 	public int getRuleTypeId() {

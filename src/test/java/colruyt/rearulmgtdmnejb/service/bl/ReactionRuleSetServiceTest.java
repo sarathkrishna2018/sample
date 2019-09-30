@@ -288,7 +288,6 @@ public class ReactionRuleSetServiceTest {
 		reaRuleset.setColruytGroupChainId(1l);
 		reaRuleset.setPriceCompetitorChainId(1l);
 		reaRuleset.setLastUpdateBy("sa");
-		reaRuleset.setReactionRules(getReaRule());
 		reaRuleset.setReaRulesetId(1l);
 		reaRuleset.setRulesetComment("good");
 		reaRuleset.setRulesetName("asa");
@@ -303,7 +302,6 @@ public class ReactionRuleSetServiceTest {
 		reaRuleset.setColruytGroupChainId(1l);
 		reaRuleset.setPriceCompetitorChainId(1l);
 		reaRuleset.setLastUpdateBy("sa");
-		reaRuleset.setReactionRules(getReaRule());
 		reaRuleset.setReaRulesetId(1l);
 		reaRuleset.setRulesetComment("good");
 		reaRuleset.setRulesetName("asa");
