@@ -2,14 +2,9 @@ package colruyt.rearulmgtdmnejb.service.bl;
 
 import static org.mockito.Mockito.when;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-import org.jose4j.json.internal.json_simple.parser.ParseException;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,6 +22,7 @@ import colruyt.priceproduct.bo.LangHierarchyBo;
 import colruyt.priceproduct.bo.MainCategoryBo;
 import colruyt.priceproduct.bo.PriceProductHierarchyBo;
 import colruyt.priceproduct.bo.PriceProductHierarchyResponseBo;
+import colruyt.priceproduct.bo.PriceProductResponseBo;
 import colruyt.priceproduct.bo.ProductCategoryBo;
 import colruyt.priceproduct.bo.ProductGroupBo;
 import colruyt.priceproduct.bo.ProductSegmentBo;
@@ -36,7 +32,6 @@ import colruyt.rearulmgtdmnejb.exception.PriceProductServiceDownException;
 import colruyt.rearulmgtdmnejb.exception.RRMDomainException;
 import colruyt.rearulmgtdmnejb.exception.ServiceDownException;
 import colruyt.rearulmgtdmnejb.util.ExternalClientService;
-import colruyt.rearulmgtdmnejb.util.PriceProductConverter;
 
 @Transactional
 @RunWith(UnitilsJUnit4TestClassRunner.class)
@@ -59,8 +54,13 @@ public class PriceProductServiceTest {
 	}
 
 	@Test
-	public void getPriceProductsTest() throws UnsupportedEncodingException, IOException, ParseException {
-		List<PriceProductHierarchyBo> hierarchyBos = priceProductService.getPriceProducts();
+	public void getPriceProductsTest() throws PriceProductExternalServiceException, PriceProductServiceDownException, ServiceDownException, RRMDomainException {
+		String priceProductUrl = "http://test-priceproductdmnmw.colruyt.int/priceproductdmnmw/";
+		String responseJson = "[{\"id\":-6606,\"name\":null},{\"id\":-6605,\"name\":null}]";
+		when(priceProductUrlService.getPriceProductURL()).thenReturn(priceProductUrl);
+		when(externalClientService.callGetService(Mockito.anyString())).thenReturn(responseJson);
+		when(externalClientService.getGsonWithDateDeserializer()).thenReturn(getGson());
+		List<PriceProductResponseBo> hierarchyBos = priceProductService.getPriceProducts();
 		Assert.assertNotNull(hierarchyBos);
 	}
 
