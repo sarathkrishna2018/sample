@@ -32,6 +32,10 @@ public class PriceProductUrlService implements Serializable {
 	private static final String URL_PRODUCTS_HIERARCHY = "/products-hierarchy";
 	private static final String PRICE_PRODUCT_API = "api";
 
+	private static final String PRICE_PRODUCT_DMNMW_TEST_URL = "http://test-priceproductdmnmw.colruyt.int/priceproductdmnmw/";
+    private static final String PRICE_PRODUCT_DMNMW_SYST_URL = "http://syst-priceproductdmnmw.colruyt.int/priceproductdmnmw/";
+    private static final String PRICE_PRODUCT_DMNMW_URL = "http://priceproductdmnmw.colruyt.int/priceproductdmnmw/";
+
 	@PostConstruct
 	public void init() {
 		try {
@@ -67,11 +71,11 @@ public class PriceProductUrlService implements Serializable {
 	private void formPriceProductBaseUrl(){
 
 		if(PromotionLevel.is(PromotionLevel.ontw) || PromotionLevel.is(PromotionLevel.test)){
-			BASE_URL = "http://test-priceproductdmnmw.colruyt.int/priceproductdmnmw/";
+			BASE_URL = PRICE_PRODUCT_DMNMW_TEST_URL;
 		} else if(PromotionLevel.is(PromotionLevel.syst)){
-			BASE_URL = "http://syst-priceproductdmnmw.colruyt.int/priceproductdmnmw/";
+			BASE_URL = PRICE_PRODUCT_DMNMW_SYST_URL;
 		} else {
-			BASE_URL = "http://priceproductdmnmw.colruyt.int/priceproductdmnmw/";
+			BASE_URL = PRICE_PRODUCT_DMNMW_URL;
 		}
 	}
 
