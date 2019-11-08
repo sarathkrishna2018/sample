@@ -1,7 +1,9 @@
 package colruyt.rearulmgtdmnejb.utils;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import colruyt.priceproduct.bo.PriceProductResponseBo;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -53,6 +55,22 @@ public class PriceProductConverterTest {
 				langCode);
 		Assert.assertNotSame(new Long(5l), expectedPriceProductHierarchy.getChildHierarchy().size());
 
+	}
+
+	@Test
+	public void convertToPriceProductHierarchyBosTest(){
+		List<PriceProductResponseBo> priceProductResponseBos = new ArrayList<>();
+		PriceProductResponseBo priceProductResponseBo = new PriceProductResponseBo();
+		priceProductResponseBo.setId(1L);
+		List<String> names = new ArrayList<>();
+		names.add("bread 500g");
+		names.add("brood 500g");
+		priceProductResponseBo.setName(names);
+		priceProductResponseBos.add(priceProductResponseBo);
+		List<PriceProductHierarchyBo> priceProductHierarchyBos = PriceProductConverter
+				.convertToPriceProductHierarchyBos(priceProductResponseBos);
+		Assert.assertNotNull(priceProductHierarchyBos);
+		Assert.assertEquals(1,priceProductHierarchyBos.size());
 	}
 
 	private MainCategoryBo getMainCategoryBo() {
