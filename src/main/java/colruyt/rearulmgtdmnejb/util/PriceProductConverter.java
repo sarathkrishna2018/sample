@@ -1,8 +1,10 @@
 package colruyt.rearulmgtdmnejb.util;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
+import colruyt.priceproduct.bo.PriceProductResponseBo;
 import com.google.common.collect.Lists;
 
 import colruyt.priceproduct.bo.LangHierarchyBo;
@@ -84,6 +86,22 @@ public class PriceProductConverter implements Serializable {
 				PriceProductHierarchyType.PRODUCT_SEGMENT.getTypeId());
 
 		return hierarchyBo;
+	}
+
+	public static List<PriceProductHierarchyBo> convertToPriceProductHierarchyBos(List<PriceProductResponseBo> priceProductResponseBos){
+
+		List<PriceProductHierarchyBo> priceProductHierarchyBos = new ArrayList<>();
+		for(PriceProductResponseBo priceProductBO:priceProductResponseBos){
+			PriceProductHierarchyBo priceProductHierarchyBo = convertToPriceProductHierarchyBo(priceProductBO);
+			priceProductHierarchyBos.add(priceProductHierarchyBo);
+		}
+		return priceProductHierarchyBos;
+	}
+
+	private static PriceProductHierarchyBo convertToPriceProductHierarchyBo(PriceProductResponseBo priceProductResponseBo){
+		PriceProductHierarchyBo priceProductHierarchyBo = new PriceProductHierarchyBo();
+		priceProductHierarchyBo.setValue(String.valueOf(priceProductResponseBo.getId()));
+		return priceProductHierarchyBo;
 	}
 
 	private static List<String> getLanguagePreference(String userLang) {

@@ -1,7 +1,7 @@
 package colruyt.rearulmgtdmnejb.service.bl;
 
-import java.io.IOException;
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -10,12 +10,10 @@ import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
-import org.jose4j.json.internal.json_simple.JSONArray;
-import org.jose4j.json.internal.json_simple.parser.ParseException;
+import colruyt.priceproduct.bo.PriceProductResponseBo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 
 import colruyt.priceproduct.bo.PriceProductHierarchyBo;
@@ -25,7 +23,6 @@ import colruyt.rearulmgtdmnejb.exception.PriceProductServiceDownException;
 import colruyt.rearulmgtdmnejb.exception.RRMDomainException;
 import colruyt.rearulmgtdmnejb.exception.ServiceDownException;
 import colruyt.rearulmgtdmnejb.util.ExternalClientService;
-import colruyt.rearulmgtdmnejb.util.MockData;
 import colruyt.rearulmgtdmnejb.util.PriceProductConverter;
 import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnConstants;
 
@@ -44,11 +41,13 @@ public class PriceProductService implements Serializable {
 	private static final Logger logger = LoggerFactory.getLogger(PriceProductService.class);
 
 	public Set<String> externalHierarchyValues()
-			throws PriceProductExternalServiceException, PriceProductServiceDownException, IOException, ParseException {
+			throws PriceProductExternalServiceException, PriceProductServiceDownException {
 		PriceProductHierarchyResponseBo hierarchyBo = findHierarchyValues();
 		List<PriceProductHierarchyBo> priceProductHierarchyBoList = PriceProductConverter
 				.convertToBo(hierarchyBo.getResult(), ReactionRuleDmnConstants.LANG_CODE_NL);
-		List<PriceProductHierarchyBo> productList = getPriceProducts();
+		List<PriceProductResponseBo> priceProductResponseBos = getPriceProducts();
+		List<PriceProductHierarchyBo> productList = PriceProductConverter
+				.convertToPriceProductHierarchyBos(priceProductResponseBos);
 		return getAllHierarchyValues(priceProductHierarchyBoList, productList);
 	}
 
@@ -95,19 +94,23 @@ public class PriceProductService implements Serializable {
 		return allHierarchyValues;
 	}
 
-	public List<PriceProductHierarchyBo> getPriceProducts() throws IOException, ParseException {
-		String fileName = "products";
-		JSONArray jsonobj = MockData.getInstance().getJsonValues(fileName);
-		List<PriceProductHierarchyBo> priceProductHierarchyBos = Lists.newArrayList();
-		for (Object jsonobj1 : jsonobj) {
-			PriceProductHierarchyBo priceProductHierarchyBo = (new Gson().fromJson(jsonobj1.toString(),
-					PriceProductHierarchyBo.class));
-			if (priceProductHierarchyBo.getValue() != null) {
-				priceProductHierarchyBos.add(priceProductHierarchyBo);
-			}
-		}
-		return priceProductHierarchyBos;
 
+	public List<PriceProductResponseBo> getPriceProducts() throws PriceProductExternalServiceException, PriceProductServiceDownException {
+
+		String url = priceProductUrlService.getPriceProductURL();
+		String jsonString;
+		try {
+			jsonString = externalClientService.callGetService(url);
+			Gson gson = externalClientService.getGsonWithDateDeserializer();
+            PriceProductResponseBo[] priceProductBOArray = gson.fromJson(jsonString, PriceProductResponseBo[].class);
+            return Arrays.asList(priceProductBOArray);
+		} catch (RRMDomainException e) {
+			logger.info("Domain Exception", e);
+			throw new PriceProductExternalServiceException(e);
+		} catch (ServiceDownException e) {
+			logger.info("Service down", e);
+			throw new PriceProductServiceDownException(e);
+		}
 	}
 
 }

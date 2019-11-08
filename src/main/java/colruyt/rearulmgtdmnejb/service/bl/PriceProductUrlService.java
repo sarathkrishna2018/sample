@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
+import colruyt.coreutillib.system.PromotionLevel;
 import org.apache.commons.lang.StringUtils;
 
 import colruyt.coreutillib.security.ass.AssException;
@@ -29,6 +30,11 @@ public class PriceProductUrlService implements Serializable {
 	public static final String JAVA_PRICE_PRODUCT_MW_HOST = "java_price_product_mw_host";
 	public static final String PATH_PARAM_ALLHIERARCHIES = "all-hierarchies";
 	private static final String URL_PRODUCTS_HIERARCHY = "/products-hierarchy";
+	private static final String PRICE_PRODUCT_API = "api";
+
+	private static final String PRICE_PRODUCT_DMNMW_TEST_URL = "http://test-priceproductdmnmw.colruyt.int/priceproductdmnmw/";
+    private static final String PRICE_PRODUCT_DMNMW_SYST_URL = "http://syst-priceproductdmnmw.colruyt.int/priceproductdmnmw/";
+    private static final String PRICE_PRODUCT_DMNMW_URL = "http://priceproductdmnmw.colruyt.int/priceproductdmnmw/";
 
 	@PostConstruct
 	public void init() {
@@ -54,6 +60,25 @@ public class PriceProductUrlService implements Serializable {
 		url.append(StringUtils.join(productList, ","));
 		return url.toString();
 	}
+
+	public String getPriceProductURL() {
+		formPriceProductBaseUrl();
+		StringBuilder url = new StringBuilder(prefixBaseUrl(PRICE_PRODUCT_API));
+		url.append(URL_PRICE_PRODUCT);
+		return url.toString();
+	}
+
+	private void formPriceProductBaseUrl(){
+
+		if(PromotionLevel.is(PromotionLevel.ontw) || PromotionLevel.is(PromotionLevel.test)){
+			BASE_URL = PRICE_PRODUCT_DMNMW_TEST_URL;
+		} else if(PromotionLevel.is(PromotionLevel.syst)){
+			BASE_URL = PRICE_PRODUCT_DMNMW_SYST_URL;
+		} else {
+			BASE_URL = PRICE_PRODUCT_DMNMW_URL;
+		}
+	}
+
 	private String prefixBaseUrl(String url) {
 		return BASE_URL + url;
 	}
