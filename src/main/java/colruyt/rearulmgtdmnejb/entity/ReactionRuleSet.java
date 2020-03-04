@@ -1,23 +1,17 @@
 package colruyt.rearulmgtdmnejb.entity;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import java.util.Date;
 
 @Entity
 @Table(name = "REA_RULESET")
@@ -51,10 +45,6 @@ public class ReactionRuleSet implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column(name = "DATE_LOGICALLY_DELETED")
 	private Date logicallyDeletedDate;
-
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
-	@JoinColumn(name = "REA_RULESET_ID", referencedColumnName = "REA_RULESET_ID")
-	private List<ReactionRule> reactionRules;
 
 	public Long getReaRulesetId() {
 		return this.reaRulesetId;
@@ -102,14 +92,6 @@ public class ReactionRuleSet implements Serializable {
 
 	public void setRulesetName(String rulesetName) {
 		this.rulesetName = rulesetName;
-	}
-
-	public List<ReactionRule> getReactionRules() {
-		return this.reactionRules;
-	}
-
-	public void setReactionRules(List<ReactionRule> reaRules) {
-		this.reactionRules = reaRules;
 	}
 
 	public int getRuleTypeId() {

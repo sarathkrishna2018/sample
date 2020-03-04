@@ -29,6 +29,7 @@ import colruyt.rearulmgtdmnejb.util.ReactionRuleDmnDebugMessage;
 
 @Stateless
 @LocalBean
+@TransactionAttribute(TransactionAttributeType.REQUIRED)
 public class ReactionRuleSetService implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -61,7 +62,6 @@ public class ReactionRuleSetService implements Serializable {
 		return reactionRulesetBo;
 	}
 
-	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	public List<ReactionRulesetBo> find(long cgChainId, long compChainId, String ruleType) {
 		logger.debug(ReactionRuleDmnDebugMessage.DEBUG_FINDREACTIONRULESET);
 		List<ReactionRuleSet> ruleSetList = reactionRuleSetDlService.findByAttributes(cgChainId, compChainId, RuleType.forValue(ruleType).getRuleTypeID());

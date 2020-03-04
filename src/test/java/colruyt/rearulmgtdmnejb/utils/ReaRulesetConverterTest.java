@@ -89,7 +89,6 @@ public class ReaRulesetConverterTest {
 		reactionRuleSet.setColruytGroupChainId(1);
 		reactionRuleSet.setPriceCompetitorChainId(2);
 		reactionRuleSet.setLastUpdateBy("Sa");
-		reactionRuleSet.setReactionRules(getReactRuleList());
 		reactionRuleSet.setReaRulesetId(12l);
 		reactionRuleSet.setRulesetComment("Good");
 		reactionRuleSet.setRulesetName("Filr");
@@ -102,7 +101,6 @@ public class ReaRulesetConverterTest {
 		reactionRuleSet.setColruytGroupChainId(1);
 		reactionRuleSet.setPriceCompetitorChainId(2);
 		reactionRuleSet.setLastUpdateBy("Sa");
-		reactionRuleSet.setReactionRules(getReactRuleList());
 		reactionRuleSet.setReaRulesetId(12l);
 		reactionRuleSet.setRulesetComment("Good");
 		reactionRuleSet.setRulesetName("Filr");
