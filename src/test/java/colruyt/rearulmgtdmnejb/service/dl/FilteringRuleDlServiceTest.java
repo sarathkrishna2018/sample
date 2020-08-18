@@ -1,4 +1,4 @@
-package colruyt.rearulmgtdmnejb.service.dl;
+/*package colruyt.rearulmgtdmnejb.service.dl;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -67,3 +67,4 @@ public class FilteringRuleDlServiceTest {
 	}
 
 }
+*/
