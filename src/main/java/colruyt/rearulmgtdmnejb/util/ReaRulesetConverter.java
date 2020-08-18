@@ -23,8 +23,14 @@ public class ReaRulesetConverter implements Serializable {
 		} else {
 			reaRuleset = new ReactionRuleSet();
 		}
-		reaRuleset.setColruytGroupChainId(rulesetBo.getColruytGroupChainId());
-		reaRuleset.setPriceCompetitorChainId(rulesetBo.getPriceCompetitorChainId());
+		if(rulesetBo.getColruytGroupChainId() != 0) {
+			reaRuleset.setColruytGroupChainId(rulesetBo.getColruytGroupChainId());
+		}
+		
+		if(rulesetBo.getPriceCompetitorChainId() != 0) {
+			reaRuleset.setPriceCompetitorChainId(rulesetBo.getPriceCompetitorChainId());
+		}
+		
 		reaRuleset.setRuleTypeId(rulesetBo.getRefRuleTypeBo().getRuleTypeId());
 		reaRuleset.setRulesetComment(rulesetBo.getComments());
 		reaRuleset.setRulesetName(rulesetBo.getName());

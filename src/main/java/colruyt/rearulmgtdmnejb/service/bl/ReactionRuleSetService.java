@@ -56,6 +56,8 @@ public class ReactionRuleSetService implements Serializable {
 			reaRuleset = ReaRulesetConverter.convertFromBo(reaRuleset, reactionRulesetBo, userId);
 			reaRuleset = reactionRuleSetDlService.createOrUpdate(reaRuleset);
 			reactionRulesetBo.setRulesetId(reaRuleset.getReaRulesetId());
+			reactionRulesetBo.setColruytGroupChainId(reaRuleset.getColruytGroupChainId());
+			reactionRulesetBo.setPriceCompetitorChainId(reaRuleset.getPriceCompetitorChainId());
 		} else {
 			throw new ReaRuleManagementException(ReactionRuleDmnConstants.LANG_CODE_EN, ExceptionMessageConstants.MESSAGE_DUPLICATE_RULESET);
 		}
