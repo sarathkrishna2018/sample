@@ -22,7 +22,6 @@ import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchyElement;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElement;
 import colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElementPK;
 
-
 @JpaEntityManagerFactory(persistenceUnit = "in_memory_database_testing", configFile = "/META-INF/persistence-test.xml")
 @Transactional(TransactionMode.ROLLBACK)
 @RunWith(UnitilsJUnit4TestClassRunner.class)
