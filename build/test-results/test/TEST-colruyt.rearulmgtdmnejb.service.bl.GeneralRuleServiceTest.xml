@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" tests="39" skipped="0" failures="0" errors="0" timestamp="2020-08-20T10:53:52" hostname="f5f2d81ae076" time="0.726">
+  <properties/>
+  <testcase name="createRuleTypeImportanceCodeValidationTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.252"/>
+  <testcase name="modifyPriorityOfRulesTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.071"/>
+  <testcase name="getRulesByRuleSetIdFailTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.008"/>
+  <testcase name="createValidatePermanentandTempTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.009"/>
+  <testcase name="modifyPriorityOfRulesFailTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.005"/>
+  <testcase name="modifyGeneralRule_isActionAndSourceSelectAllTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.023"/>
+  <testcase name="createRuleTypeCatchAllCheapandNationalTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.009"/>
+  <testcase name="physicalDeleteRulesTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.004"/>
+  <testcase name="modifyPriorityOfRulesHavingChildTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.01"/>
+  <testcase name="logicallyDeleteReactionRuleFailTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.007"/>
+  <testcase name="getReactionRuleTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.004"/>
+  <testcase name="findAllLogicallyDeletedRulesTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.002"/>
+  <testcase name="logicallyDeleteReactionRuleHavingChildTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.005"/>
+  <testcase name="createRuleTypeCatchAllPostandDirectTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.007"/>
+  <testcase name="createValidateHierarchySetTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.005"/>
+  <testcase name="createValidateImportanceCodeTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.005"/>
+  <testcase name="logicallyDeleteReactionRuleTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.006"/>
+  <testcase name="createValidateRuleNameTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.005"/>
+  <testcase name="createRuleTypeDateValidationTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.008"/>
+  <testcase name="findAllExpiredRulesTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.003"/>
+  <testcase name="createRuleTypeCatchAllActionAllTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.008"/>
+  <testcase name="createReactingRule" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.013"/>
+  <testcase name="viewReactionRuleTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.026"/>
+  <testcase name="createRuleTypeImportanceCodeValidationElseTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.015"/>
+  <testcase name="createGeneralRule_RuleSourceandActionTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.013"/>
+  <testcase name="modifyChildRuleTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.01"/>
+  <testcase name="deleteReactionRuleTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.002"/>
+  <testcase name="createValidateCheapandNationalBrandTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.007"/>
+  <testcase name="createValidateAssortmentNameTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.008"/>
+  <testcase name="createRuleTypeCatchAllPermanentandTempTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.008"/>
+  <testcase name="getGeneralRuleAttributesTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.007"/>
+  <testcase name="createGeneralRule_IsActionAndSourceSelectAllTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.009"/>
+  <testcase name="createRuleTypeCatchAllAssortmentNameTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.011"/>
+  <testcase name="getGeneralRuleAttributesFailTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.005"/>
+  <testcase name="getReactionRuleFailTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.005"/>
+  <testcase name="logicallyDeleteReactionRulesTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.002"/>
+  <testcase name="createRuleTypeCatchAllRuleNameTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.009"/>
+  <testcase name="getRulesByRuleSetIdTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.003"/>
+  <testcase name="modifyGeneralRule_SourceandActionTest" classname="colruyt.rearulmgtdmnejb.service.bl.GeneralRuleServiceTest" time="0.009"/>
+  <system-out><![CDATA[2020-08-20 12:53:52,470 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Create Reaction Rule
+2020-08-20 12:53:52,474 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Validate reaction Rule
+2020-08-20 12:53:52,475 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService -  Reaction Rule date validation 
+2020-08-20 12:53:52,476 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Reaction rule importance code validation 
+2020-08-20 12:53:52,544 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Retrieve Reaction Rule
+2020-08-20 12:53:52,554 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Retrieve Reaction Rule
+2020-08-20 12:53:52,566 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Get Reaction Rule using rulesetId
+2020-08-20 12:53:52,580 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Create Reaction Rule
+2020-08-20 12:53:52,582 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Validate reaction Rule
+2020-08-20 12:53:52,590 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Retrieve Reaction Rule
+2020-08-20 12:53:52,601 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Create Reaction Rule
+2020-08-20 12:53:52,602 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Validate reaction Rule
+2020-08-20 12:53:52,604 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService -  Reaction Rule date validation 
+2020-08-20 12:53:52,605 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Reaction rule importance code validation 
+2020-08-20 12:53:52,607 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Get Reaction Rule using rulesetId
+2020-08-20 12:53:52,626 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Create Reaction Rule
+2020-08-20 12:53:52,627 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Validate reaction Rule
+2020-08-20 12:53:52,628 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService -  Reaction Rule date validation 
+2020-08-20 12:53:52,629 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Reaction rule importance code validation 
+2020-08-20 12:53:52,643 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Retrieve Reaction Rule
+2020-08-20 12:53:52,648 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Retrieve Reaction Rule
+2020-08-20 12:53:52,654 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Get Reaction Rule using reaction rule and generalRule
+2020-08-20 12:53:52,656 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Retrieve Reaction Rule
+2020-08-20 12:53:52,666 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Retrieve Reaction Rule
+2020-08-20 12:53:52,674 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Get Reaction Rule using reaction rule and generalRule
+2020-08-20 12:53:52,675 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Retrieve Reaction Rule
+2020-08-20 12:53:52,682 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Create Reaction Rule
+2020-08-20 12:53:52,683 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Validate reaction Rule
+2020-08-20 12:53:52,684 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService -  Reaction Rule date validation 
+2020-08-20 12:53:52,685 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Reaction rule importance code validation 
+2020-08-20 12:53:52,691 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Create Reaction Rule
+2020-08-20 12:53:52,692 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Validate reaction Rule
+2020-08-20 12:53:52,707 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Create Reaction Rule
+2020-08-20 12:53:52,708 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Validate reaction Rule
+2020-08-20 12:53:52,715 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Get Reaction Rule using reaction rule and generalRule
+2020-08-20 12:53:52,717 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Retrieve Reaction Rule
+2020-08-20 12:53:52,723 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Create Reaction Rule
+2020-08-20 12:53:52,724 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Validate reaction Rule
+2020-08-20 12:53:52,732 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Create Reaction Rule
+2020-08-20 12:53:52,733 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Validate reaction Rule
+2020-08-20 12:53:52,733 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService -  Reaction Rule date validation 
+2020-08-20 12:53:52,734 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Reaction rule importance code validation 
+2020-08-20 12:53:52,735 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Get Reaction Rule using rulesetId
+2020-08-20 12:53:52,746 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Create Reaction Rule
+2020-08-20 12:53:52,747 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Validate reaction Rule
+2020-08-20 12:53:52,747 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService -  Reaction Rule date validation 
+2020-08-20 12:53:52,748 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Reaction rule importance code validation 
+2020-08-20 12:53:52,754 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Create Reaction Rule
+2020-08-20 12:53:52,755 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Validate reaction Rule
+2020-08-20 12:53:52,757 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService -  Reaction Rule date validation 
+2020-08-20 12:53:52,759 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Reaction rule importance code validation 
+2020-08-20 12:53:52,762 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Get Reaction Rule using rulesetId
+2020-08-20 12:53:52,769 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Retrieve Reaction Rule
+2020-08-20 12:53:52,771 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Get Reaction Rule using reaction rule and generalRule
+2020-08-20 12:53:52,809 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Create Reaction Rule
+2020-08-20 12:53:52,810 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Validate reaction Rule
+2020-08-20 12:53:52,811 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService -  Reaction Rule date validation 
+2020-08-20 12:53:52,812 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Reaction rule importance code validation 
+2020-08-20 12:53:52,825 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Create Reaction Rule
+2020-08-20 12:53:52,827 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Validate reaction Rule
+2020-08-20 12:53:52,828 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService -  Reaction Rule date validation 
+2020-08-20 12:53:52,829 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Reaction rule importance code validation 
+2020-08-20 12:53:52,830 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Get Reaction Rule using rulesetId
+2020-08-20 12:53:52,838 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Create Reaction Rule
+2020-08-20 12:53:52,838 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Validate reaction Rule
+2020-08-20 12:53:52,839 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService -  Reaction Rule date validation 
+2020-08-20 12:53:52,840 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Reaction rule importance code validation 
+2020-08-20 12:53:52,843 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Get Reaction Rule using rulesetId
+2020-08-20 12:53:52,853 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Create Reaction Rule
+2020-08-20 12:53:52,854 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Validate reaction Rule
+2020-08-20 12:53:52,865 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Create Reaction Rule
+2020-08-20 12:53:52,866 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Validate reaction Rule
+2020-08-20 12:53:52,872 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Create Reaction Rule
+2020-08-20 12:53:52,874 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Validate reaction Rule
+2020-08-20 12:53:52,875 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService -  Reaction Rule date validation 
+2020-08-20 12:53:52,876 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Reaction rule importance code validation 
+2020-08-20 12:53:52,884 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Get Reaction Rule using reaction rule and generalRule
+2020-08-20 12:53:52,891 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Create Reaction Rule
+2020-08-20 12:53:52,892 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Validate reaction Rule
+2020-08-20 12:53:52,893 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService -  Reaction Rule date validation 
+2020-08-20 12:53:52,894 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Reaction rule importance code validation 
+2020-08-20 12:53:52,895 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Get Reaction Rule using rulesetId
+2020-08-20 12:53:52,905 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Create Reaction Rule
+2020-08-20 12:53:52,906 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Validate reaction Rule
+2020-08-20 12:53:52,907 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService -  Reaction Rule date validation 
+2020-08-20 12:53:52,908 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Reaction rule importance code validation 
+2020-08-20 12:53:52,915 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Get Reaction Rule using reaction rule and generalRule
+2020-08-20 12:53:52,921 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Retrieve Reaction Rule
+2020-08-20 12:53:52,934 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Create Reaction Rule
+2020-08-20 12:53:52,935 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Validate reaction Rule
+2020-08-20 12:53:52,936 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService -  Reaction Rule date validation 
+2020-08-20 12:53:52,937 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Reaction rule importance code validation 
+2020-08-20 12:53:52,943 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Get Reaction Rule using rulesetId
+2020-08-20 12:53:52,948 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Modify Reaction Rule
+2020-08-20 12:53:52,949 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Validate reaction Rule
+2020-08-20 12:53:52,950 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService -  Reaction Rule date validation 
+2020-08-20 12:53:52,953 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.GeneralRuleService - Reaction rule importance code validation 
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

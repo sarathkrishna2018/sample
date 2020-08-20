@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<dataset>
+	<REA_FLT_RULE
+		REA_RULE_ID="1"
+     	MAX_TIME_REC_PRD="2.000"
+		MAX_TIME_PA="3.500"
+	/>	
+</dataset>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="colruyt.rearulmgtdmnejb.service.bl.ReactionRuleSetServiceTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2020-08-20T10:53:53" hostname="f5f2d81ae076" time="0.055">
+  <properties/>
+  <testcase name="getReactionRulesetTest" classname="colruyt.rearulmgtdmnejb.service.bl.ReactionRuleSetServiceTest" time="0.012"/>
+  <testcase name="createReactionRuleSetTest" classname="colruyt.rearulmgtdmnejb.service.bl.ReactionRuleSetServiceTest" time="0.01"/>
+  <testcase name="modifyRuleSetDetailsTest" classname="colruyt.rearulmgtdmnejb.service.bl.ReactionRuleSetServiceTest" time="0.002"/>
+  <testcase name="findAllLogicallyDeletedRuleSetTest" classname="colruyt.rearulmgtdmnejb.service.bl.ReactionRuleSetServiceTest" time="0.009"/>
+  <testcase name="logicallyDeleteReactionRuleSetFailTest" classname="colruyt.rearulmgtdmnejb.service.bl.ReactionRuleSetServiceTest" time="0.002"/>
+  <testcase name="getReactionRulesetFailTest" classname="colruyt.rearulmgtdmnejb.service.bl.ReactionRuleSetServiceTest" time="0.003"/>
+  <testcase name="logicallyDeleteReactionRuleSetTest" classname="colruyt.rearulmgtdmnejb.service.bl.ReactionRuleSetServiceTest" time="0.002"/>
+  <system-out><![CDATA[2020-08-20 12:53:53,903 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.ReactionRuleSetService - Get Reaction Ruleset 
+2020-08-20 12:53:53,924 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.ReactionRuleSetService - Create Reaction Ruleset
+2020-08-20 12:53:53,951 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.ReactionRuleSetService - Get Reaction Ruleset 
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="colruyt.rearulmgtdmnejb.service.bl.PriceProductUrlServiceTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2020-08-20T10:53:53" hostname="f5f2d81ae076" time="0.02">
+  <properties/>
+  <testcase name="getPriceProductURLForPriceProductIdFailTest" classname="colruyt.rearulmgtdmnejb.service.bl.PriceProductUrlServiceTest" time="0.001"/>
+  <testcase name="getPriceProductURLTest" classname="colruyt.rearulmgtdmnejb.service.bl.PriceProductUrlServiceTest" time="0.012"/>
+  <testcase name="getAllProductsTest" classname="colruyt.rearulmgtdmnejb.service.bl.PriceProductUrlServiceTest" time="0.0"/>
+  <testcase name="getPriceProductURLFailTest" classname="colruyt.rearulmgtdmnejb.service.bl.PriceProductUrlServiceTest" time="0.001"/>
+  <testcase name="getPriceProductUrlFailTest" classname="colruyt.rearulmgtdmnejb.service.bl.PriceProductUrlServiceTest" time="0.0"/>
+  <testcase name="getAllHierarchyUrlTest" classname="colruyt.rearulmgtdmnejb.service.bl.PriceProductUrlServiceTest" time="0.0"/>
+  <testcase name="getAllHierarchyUrlFailTest" classname="colruyt.rearulmgtdmnejb.service.bl.PriceProductUrlServiceTest" time="0.002"/>
+  <testcase name="getPriceProductURLForPriceProductIdTest" classname="colruyt.rearulmgtdmnejb.service.bl.PriceProductUrlServiceTest" time="0.001"/>
+  <testcase name="getPriceProductUrlTest" classname="colruyt.rearulmgtdmnejb.service.bl.PriceProductUrlServiceTest" time="0.0"/>
+  <testcase name="getAllProductsFailTest" classname="colruyt.rearulmgtdmnejb.service.bl.PriceProductUrlServiceTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

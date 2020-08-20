@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<REA_NREACT_ACT
+		REA_RULE_ID="1"
+		FLTOUT_TYPE_ID="5"
+	/>
+	<REA_NREACT_SET_RSN
+		REA_RULE_ID="1"
+		REASON_ID="2"
+		
+	/>
+	
+	<REA_NREACT_ACT
+		REA_RULE_ID="2"
+		FLTOUT_TYPE_ID="3"
+	/>
+	<REA_NREACT_SET_RSN
+		REA_RULE_ID="2"
+		REASON_ID="1"
+		
+	/>
+</dataset>

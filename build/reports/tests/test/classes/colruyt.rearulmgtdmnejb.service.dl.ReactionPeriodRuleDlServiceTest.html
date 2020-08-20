@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class colruyt.rearulmgtdmnejb.service.dl.ReactionPeriodRuleDlServiceTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class colruyt.rearulmgtdmnejb.service.dl.ReactionPeriodRuleDlServiceTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/colruyt.rearulmgtdmnejb.service.dl.html">colruyt.rearulmgtdmnejb.service.dl</a> &gt; ReactionPeriodRuleDlServiceTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">3</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.288s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard error</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">createTest</td>
+<td class="success">0.051s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">findByRuleIdTest</td>
+<td class="success">0.098s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">physicalDeleteElementsTest</td>
+<td class="success">0.139s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard error</h2>
+<span class="code">
+<pre>Aug 20, 2020 12:54:19 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/dataset/ReactionPeriodRuleDlServiceTest.xml]
+21226  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; batching prepstmnt 2071729577 insert into &quot;PUBLIC&quot;.&quot;REA_PRD_ACT&quot; (&quot;REA_RULE_ID&quot;, &quot;END_DT_DAYS&quot;, &quot;MIN_DAYS&quot;) values (?, ?, ?) [params=?, ?, ?]
+21226  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+21227  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; batching prepstmnt 2071729577 insert into &quot;PUBLIC&quot;.&quot;REA_PRD_ACT&quot; (&quot;REA_RULE_ID&quot;, &quot;END_DT_DAYS&quot;, &quot;MIN_DAYS&quot;) values (?, ?, ?) [params=?, ?, ?]
+21229  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+21230  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing batch prepstmnt 2071729577 insert into &quot;PUBLIC&quot;.&quot;REA_PRD_ACT&quot; (&quot;REA_RULE_ID&quot;, &quot;END_DT_DAYS&quot;, &quot;MIN_DAYS&quot;) values (?, ?, ?) [params=?, ?, ?]
+21234  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [4 ms] spent
+21240  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing prepstmnt 1041678606 SELECT t0.END_DT_DAYS, t0.MIN_DAYS FROM PUBLIC.REA_PRD_ACT t0 WHERE t0.REA_RULE_ID = ? [params=?]
+21254  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+Aug 20, 2020 12:54:20 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@66e16d7a
+21258  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing prepstmnt 1684877276 UPDATE PUBLIC.REA_PRD_ACT SET END_DT_DAYS = ?, MIN_DAYS = ? WHERE REA_RULE_ID = ? [params=?, ?, ?]
+21286  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [28 ms] spent
+Aug 20, 2020 12:54:20 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/dataset/ReactionPeriodRuleDlServiceTest.xml]
+21360  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; batching prepstmnt 17884306 insert into &quot;PUBLIC&quot;.&quot;REA_PRD_ACT&quot; (&quot;REA_RULE_ID&quot;, &quot;END_DT_DAYS&quot;, &quot;MIN_DAYS&quot;) values (?, ?, ?) [params=?, ?, ?]
+21360  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+21361  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; batching prepstmnt 17884306 insert into &quot;PUBLIC&quot;.&quot;REA_PRD_ACT&quot; (&quot;REA_RULE_ID&quot;, &quot;END_DT_DAYS&quot;, &quot;MIN_DAYS&quot;) values (?, ?, ?) [params=?, ?, ?]
+21361  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+21361  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing batch prepstmnt 17884306 insert into &quot;PUBLIC&quot;.&quot;REA_PRD_ACT&quot; (&quot;REA_RULE_ID&quot;, &quot;END_DT_DAYS&quot;, &quot;MIN_DAYS&quot;) values (?, ?, ?) [params=?, ?, ?]
+21361  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+21398  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing prepstmnt 433822590 DELETE FROM PUBLIC.REA_PRD_ACT t0 WHERE (t0.REA_RULE_ID = ?) [params=?]
+21401  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [1 ms] spent
+Aug 20, 2020 12:54:20 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/result/ReactionPeriodRulePhysicalDeleteElementsTestResult.xml]
+Aug 20, 2020 12:54:20 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@6befc682
+21417  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing stmnt 1798688731 select &quot;REA_RULE_ID&quot;, &quot;END_DT_DAYS&quot;, &quot;MIN_DAYS&quot; from &quot;PUBLIC&quot;.&quot;REA_PRD_ACT&quot;
+21420  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [1 ms] spent
+Aug 20, 2020 12:54:20 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@6befc682
+21430  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing prepstmnt 931104422 SELECT t0.END_DT_DAYS, t0.MIN_DAYS FROM PUBLIC.REA_PRD_ACT t0 WHERE t0.REA_RULE_ID = ? [params=?]
+21437  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [1 ms] spent
+21440  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing prepstmnt 497973651 INSERT INTO PUBLIC.REA_PRD_ACT (REA_RULE_ID, END_DT_DAYS, MIN_DAYS) VALUES (?, ?, ?) [params=?, ?, ?]
+21440  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+Aug 20, 2020 12:54:20 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/result/ReactionPeriodRuleCreateTestResult.xml]
+Aug 20, 2020 12:54:20 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@4cff672b
+21460  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing prepstmnt 1188640387 UPDATE PUBLIC.REA_PRD_ACT SET END_DT_DAYS = ?, MIN_DAYS = ? WHERE REA_RULE_ID = ? [params=?, ?, ?]
+21461  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+21464  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing stmnt 676707626 select &quot;REA_RULE_ID&quot;, &quot;END_DT_DAYS&quot;, &quot;MIN_DAYS&quot; from &quot;PUBLIC&quot;.&quot;REA_PRD_ACT&quot;
+21468  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [3 ms] spent
+Aug 20, 2020 12:54:20 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@4cff672b
+21472  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing prepstmnt 1641242722 UPDATE PUBLIC.REA_PRD_ACT SET END_DT_DAYS = ?, MIN_DAYS = ? WHERE REA_RULE_ID = ? [params=?, ?, ?]
+21475  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [1 ms] spent
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 6.5.1</a> at Aug 20, 2020 12:54:25 PM</p>
+</div>
+</div>
+</body>
+</html>

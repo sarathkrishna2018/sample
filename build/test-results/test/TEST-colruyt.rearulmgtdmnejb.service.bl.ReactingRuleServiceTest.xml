@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="colruyt.rearulmgtdmnejb.service.bl.ReactingRuleServiceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-08-20T10:53:53" hostname="f5f2d81ae076" time="0.052">
+  <properties/>
+  <testcase name="physicalDeleteElementsTest" classname="colruyt.rearulmgtdmnejb.service.bl.ReactingRuleServiceTest" time="0.025"/>
+  <testcase name="createRuleSpecificAttributesTest" classname="colruyt.rearulmgtdmnejb.service.bl.ReactingRuleServiceTest" time="0.012"/>
+  <testcase name="getRuleSpecificValuesTest" classname="colruyt.rearulmgtdmnejb.service.bl.ReactingRuleServiceTest" time="0.003"/>
+  <testcase name="modifyRuleSpecificAttributesTest" classname="colruyt.rearulmgtdmnejb.service.bl.ReactingRuleServiceTest" time="0.008"/>
+  <system-out><![CDATA[2020-08-20 12:53:53,747 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.ReactingRuleService - physicalDeleteElements is 1
+2020-08-20 12:53:53,753 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.ReactingRuleService - Create Reacting Rule
+2020-08-20 12:53:53,754 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.ReactingRuleService - Reacting Rule Mandatory field Validation
+2020-08-20 12:53:53,766 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.ReactingRuleService - View Reacting Rule
+2020-08-20 12:53:53,772 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.ReactingRuleService -  Edit Reacting Rule
+2020-08-20 12:53:53,773 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.ReactingRuleService - Reacting Rule Mandatory field Validation
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

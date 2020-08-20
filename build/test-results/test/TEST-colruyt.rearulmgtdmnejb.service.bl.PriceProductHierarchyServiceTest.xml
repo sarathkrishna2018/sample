@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="colruyt.rearulmgtdmnejb.service.bl.PriceProductHierarchyServiceTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2020-08-20T10:53:53" hostname="f5f2d81ae076" time="0.07">
+  <properties/>
+  <testcase name="physicalDeleteElementsTest" classname="colruyt.rearulmgtdmnejb.service.bl.PriceProductHierarchyServiceTest" time="0.01"/>
+  <testcase name="findProductHierarchySetsTest" classname="colruyt.rearulmgtdmnejb.service.bl.PriceProductHierarchyServiceTest" time="0.002"/>
+  <testcase name="manageExternalChangesTest" classname="colruyt.rearulmgtdmnejb.service.bl.PriceProductHierarchyServiceTest" time="0.036"/>
+  <testcase name="createProductHierarchySetTest" classname="colruyt.rearulmgtdmnejb.service.bl.PriceProductHierarchyServiceTest" time="0.012"/>
+  <testcase name="createProductHierarchySetFailTest" classname="colruyt.rearulmgtdmnejb.service.bl.PriceProductHierarchyServiceTest" time="0.004"/>
+  <testcase name="findByElementValueListTest" classname="colruyt.rearulmgtdmnejb.service.bl.PriceProductHierarchyServiceTest" time="0.001"/>
+  <system-out><![CDATA[2020-08-20 12:53:53,019 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.PriceProductHierarchyService - physicalDeleteElements 1
+2020-08-20 12:53:53,062 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.PriceProductHierarchyService - Get Product Hierarchy Element
+2020-08-20 12:53:53,068 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.PriceProductHierarchyService - Get Existing Product Hierarchy Element
+2020-08-20 12:53:53,070 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.PriceProductHierarchyService - Create Product HierarchySet
+2020-08-20 12:53:53,070 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.PriceProductHierarchyService - Get Product Hierarchy Element
+2020-08-20 12:53:53,071 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.PriceProductHierarchyService - Get Existing Product Hierarchy Element
+2020-08-20 12:53:53,071 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.PriceProductHierarchyService - Set Product Hierarchy set values 
+2020-08-20 12:53:53,072 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.PriceProductHierarchyService - Create Product HierarchySet Element
+2020-08-20 12:53:53,074 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.PriceProductHierarchyService - Get Product Hierarchy Element
+2020-08-20 12:53:53,075 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.PriceProductHierarchyService - Get Existing Product Hierarchy Element
+2020-08-20 12:53:53,076 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.PriceProductHierarchyService - Create Product HierarchySet
+2020-08-20 12:53:53,076 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.PriceProductHierarchyService - Get Product Hierarchy Element
+2020-08-20 12:53:53,076 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.PriceProductHierarchyService - Get Existing Product Hierarchy Element
+2020-08-20 12:53:53,076 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.PriceProductHierarchyService - Set Product Hierarchy set values 
+2020-08-20 12:53:53,077 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.PriceProductHierarchyService - Create Product HierarchySet Element
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

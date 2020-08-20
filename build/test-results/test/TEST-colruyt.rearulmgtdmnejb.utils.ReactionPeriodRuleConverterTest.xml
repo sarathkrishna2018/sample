@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="colruyt.rearulmgtdmnejb.utils.ReactionPeriodRuleConverterTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-08-20T10:54:22" hostname="f5f2d81ae076" time="0.009">
+  <properties/>
+  <testcase name="createConverterTest" classname="colruyt.rearulmgtdmnejb.utils.ReactionPeriodRuleConverterTest" time="0.009"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

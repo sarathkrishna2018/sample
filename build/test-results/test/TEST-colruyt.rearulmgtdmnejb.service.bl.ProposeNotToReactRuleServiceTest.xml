@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="colruyt.rearulmgtdmnejb.service.bl.ProposeNotToReactRuleServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-08-20T10:53:53" hostname="f5f2d81ae076" time="0.09">
+  <properties/>
+  <testcase name="physicalDeleteElementsTest" classname="colruyt.rearulmgtdmnejb.service.bl.ProposeNotToReactRuleServiceTest" time="0.047"/>
+  <testcase name="createRuleSpecificAttributesTest" classname="colruyt.rearulmgtdmnejb.service.bl.ProposeNotToReactRuleServiceTest" time="0.027"/>
+  <testcase name="modifyRuleSpecificAttributesTest" classname="colruyt.rearulmgtdmnejb.service.bl.ProposeNotToReactRuleServiceTest" time="0.01"/>
+  <system-out><![CDATA[2020-08-20 12:53:53,569 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.ProposeNotToReactRuleService - physicalDeleteElements 1
+2020-08-20 12:53:53,581 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.ProposeNotToReactRuleService - Create Propose Not to React Rule
+2020-08-20 12:53:53,589 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.ProposeNotToReactRuleService - Propose Not to React Rule Mandatory field Validation
+2020-08-20 12:53:53,606 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.ProposeNotToReactRuleService -  Edit Propose Not to React Rule
+2020-08-20 12:53:53,613 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.ProposeNotToReactRuleService - Propose Not to React Rule Mandatory field Validation
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

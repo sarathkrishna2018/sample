@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class colruyt.rearulmgtdmnejb.service.dl.ReactingRuleDlServiceTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class colruyt.rearulmgtdmnejb.service.dl.ReactingRuleDlServiceTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/colruyt.rearulmgtdmnejb.service.dl.html">colruyt.rearulmgtdmnejb.service.dl</a> &gt; ReactingRuleDlServiceTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">3</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.159s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard error</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">createTest</td>
+<td class="success">0.058s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">findByRuleIdTest</td>
+<td class="success">0.049s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">physicalDeleteElementsTest</td>
+<td class="success">0.052s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard error</h2>
+<span class="code">
+<pre>Aug 20, 2020 12:54:19 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/dataset/ReactingRuleDlServiceTest.xml]
+21021  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; batching prepstmnt 674351127 insert into &quot;PUBLIC&quot;.&quot;REA_REACTING_ACT&quot; (&quot;REA_RULE_ID&quot;, &quot;CATCH_ALL_YN&quot;, &quot;REACTING_AMT&quot;, &quot;REACTING_PERC&quot;, &quot;THOLD_AMT&quot;, &quot;THOLD_PERC&quot;) values (?, ?, ?, ?, ?, ?) [params=?, ?, ?, ?, ?, ?]
+21022  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+21022  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; batching prepstmnt 674351127 insert into &quot;PUBLIC&quot;.&quot;REA_REACTING_ACT&quot; (&quot;REA_RULE_ID&quot;, &quot;CATCH_ALL_YN&quot;, &quot;REACTING_AMT&quot;, &quot;REACTING_PERC&quot;, &quot;THOLD_AMT&quot;, &quot;THOLD_PERC&quot;) values (?, ?, ?, ?, ?, ?) [params=?, ?, ?, ?, ?, ?]
+21022  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+21023  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing batch prepstmnt 674351127 insert into &quot;PUBLIC&quot;.&quot;REA_REACTING_ACT&quot; (&quot;REA_RULE_ID&quot;, &quot;CATCH_ALL_YN&quot;, &quot;REACTING_AMT&quot;, &quot;REACTING_PERC&quot;, &quot;THOLD_AMT&quot;, &quot;THOLD_PERC&quot;) values (?, ?, ?, ?, ?, ?) [params=?, ?, ?, ?, ?, ?]
+21024  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [1 ms] spent
+21025  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing prepstmnt 527989488 SELECT t0.CATCH_ALL_YN, t0.REACTING_AMT, t0.REACTING_PERC, t0.THOLD_AMT, t0.THOLD_PERC FROM PUBLIC.REA_REACTING_ACT t0 WHERE t0.REA_RULE_ID = ? [params=?]
+21026  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+Aug 20, 2020 12:54:19 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@4f8fffd8
+21035  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing prepstmnt 1450512452 UPDATE PUBLIC.REA_REACTING_ACT SET CATCH_ALL_YN = ?, REACTING_AMT = ?, REACTING_PERC = ?, THOLD_AMT = ?, THOLD_PERC = ? WHERE REA_RULE_ID = ? [params=?, ?, ?, ?, ?, ?]
+21036  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+Aug 20, 2020 12:54:19 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/dataset/ReactingRuleDlServiceTest.xml]
+21056  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; batching prepstmnt 951297074 insert into &quot;PUBLIC&quot;.&quot;REA_REACTING_ACT&quot; (&quot;REA_RULE_ID&quot;, &quot;CATCH_ALL_YN&quot;, &quot;REACTING_AMT&quot;, &quot;REACTING_PERC&quot;, &quot;THOLD_AMT&quot;, &quot;THOLD_PERC&quot;) values (?, ?, ?, ?, ?, ?) [params=?, ?, ?, ?, ?, ?]
+21057  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+21057  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; batching prepstmnt 951297074 insert into &quot;PUBLIC&quot;.&quot;REA_REACTING_ACT&quot; (&quot;REA_RULE_ID&quot;, &quot;CATCH_ALL_YN&quot;, &quot;REACTING_AMT&quot;, &quot;REACTING_PERC&quot;, &quot;THOLD_AMT&quot;, &quot;THOLD_PERC&quot;) values (?, ?, ?, ?, ?, ?) [params=?, ?, ?, ?, ?, ?]
+21058  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+21058  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing batch prepstmnt 951297074 insert into &quot;PUBLIC&quot;.&quot;REA_REACTING_ACT&quot; (&quot;REA_RULE_ID&quot;, &quot;CATCH_ALL_YN&quot;, &quot;REACTING_AMT&quot;, &quot;REACTING_PERC&quot;, &quot;THOLD_AMT&quot;, &quot;THOLD_PERC&quot;) values (?, ?, ?, ?, ?, ?) [params=?, ?, ?, ?, ?, ?]
+21059  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+21070  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing prepstmnt 1527538865 DELETE FROM PUBLIC.REA_REACTING_ACT t0 WHERE (t0.REA_RULE_ID = ?) [params=?]
+21072  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+Aug 20, 2020 12:54:19 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/result/ReactingRulePhysicalDeleteElementsTestResult.xml]
+Aug 20, 2020 12:54:19 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@6f43d658
+21087  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing stmnt 238725100 select &quot;REA_RULE_ID&quot;, &quot;CATCH_ALL_YN&quot;, &quot;REACTING_AMT&quot;, &quot;REACTING_PERC&quot;, &quot;THOLD_AMT&quot;, &quot;THOLD_PERC&quot; from &quot;PUBLIC&quot;.&quot;REA_REACTING_ACT&quot;
+21088  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+Aug 20, 2020 12:54:19 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@6f43d658
+21100  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing prepstmnt 620828260 SELECT t0.CATCH_ALL_YN, t0.REACTING_AMT, t0.REACTING_PERC, t0.THOLD_AMT, t0.THOLD_PERC FROM PUBLIC.REA_REACTING_ACT t0 WHERE t0.REA_RULE_ID = ? [params=?]
+21103  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+21106  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing prepstmnt 541908650 INSERT INTO PUBLIC.REA_REACTING_ACT (REA_RULE_ID, CATCH_ALL_YN, REACTING_AMT, REACTING_PERC, THOLD_AMT, THOLD_PERC) VALUES (?, ?, ?, ?, ?, ?) [params=?, ?, ?, ?, ?, ?]
+21107  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [1 ms] spent
+Aug 20, 2020 12:54:19 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/result/ReactingRuleCreateTestResult.xml]
+Aug 20, 2020 12:54:19 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@797d5e67
+21126  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing prepstmnt 116884996 UPDATE PUBLIC.REA_REACTING_ACT SET CATCH_ALL_YN = ?, REACTING_AMT = ?, REACTING_PERC = ?, THOLD_AMT = ?, THOLD_PERC = ? WHERE REA_RULE_ID = ? [params=?, ?, ?, ?, ?, ?]
+21128  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+21136  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing stmnt 1074311678 select &quot;REA_RULE_ID&quot;, &quot;CATCH_ALL_YN&quot;, &quot;REACTING_AMT&quot;, &quot;REACTING_PERC&quot;, &quot;THOLD_AMT&quot;, &quot;THOLD_PERC&quot; from &quot;PUBLIC&quot;.&quot;REA_REACTING_ACT&quot;
+21138  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [1 ms] spent
+Aug 20, 2020 12:54:19 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@797d5e67
+21151  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing prepstmnt 1297290324 UPDATE PUBLIC.REA_REACTING_ACT SET CATCH_ALL_YN = ?, REACTING_AMT = ?, REACTING_PERC = ?, THOLD_AMT = ?, THOLD_PERC = ? WHERE REA_RULE_ID = ? [params=?, ?, ?, ?, ?, ?]
+21153  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [1 ms] spent
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 6.5.1</a> at Aug 20, 2020 12:54:25 PM</p>
+</div>
+</div>
+</body>
+</html>

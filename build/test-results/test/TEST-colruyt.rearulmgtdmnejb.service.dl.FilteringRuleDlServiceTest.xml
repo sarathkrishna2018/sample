@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="colruyt.rearulmgtdmnejb.service.dl.FilteringRuleDlServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-08-20T10:53:54" hostname="f5f2d81ae076" time="21.853">
+  <properties/>
+  <testcase name="findByRuleIdTest" classname="colruyt.rearulmgtdmnejb.service.dl.FilteringRuleDlServiceTest" time="21.128"/>
+  <testcase name="physicalDeleteElementsTest" classname="colruyt.rearulmgtdmnejb.service.dl.FilteringRuleDlServiceTest" time="0.629"/>
+  <testcase name="createTest" classname="colruyt.rearulmgtdmnejb.service.dl.FilteringRuleDlServiceTest" time="0.093"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Aug 20, 2020 12:53:54 PM org.unitils.database.config.PropertiesDataSourceFactory createDataSource
+INFO: Creating data source. Driver: org.h2.Driver, url: jdbc:h2:mem:test, user: sa, password: <not shown>
+Aug 20, 2020 12:53:54 PM org.unitils.database.DatabaseModule updateDatabase
+INFO: Checking if database has to be updated.
+Aug 20, 2020 12:53:55 PM org.unitils.dbmaintainer.version.impl.DefaultExecutedScriptInfoSource checkExecutedScriptsTable
+WARNING: Executed scripts table "PUBLIC"."DBMAINTAIN_SCRIPTS" doesn't exist yet or is invalid. A new one is created automatically.
+Aug 20, 2020 12:53:55 PM org.unitils.dbmaintainer.structure.impl.DefaultConstraintsDisabler disableConstraints
+INFO: Disabling constraints in database schema PUBLIC
+Aug 20, 2020 12:53:55 PM org.unitils.dbmaintainer.clean.impl.DefaultDBClearer clearSchemas
+INFO: Clearing (dropping) database schema PUBLIC
+Aug 20, 2020 12:53:56 PM org.unitils.dbmaintainer.DBMaintainer updateDatabase
+INFO: Database update scripts have been found and will be executed on the database.
+Aug 20, 2020 12:53:56 PM org.unitils.dbmaintainer.clean.impl.DefaultDBCleaner cleanSchemas
+INFO: Cleaning database schema PUBLIC
+Aug 20, 2020 12:53:56 PM org.unitils.dbmaintainer.DBMaintainer executeScripts
+INFO: Executing script 001_setup_db.sql
+Aug 20, 2020 12:53:56 PM org.unitils.dbmaintainer.structure.impl.DefaultConstraintsDisabler disableConstraints
+INFO: Disabling constraints in database schema PUBLIC
+Aug 20, 2020 12:53:56 PM org.unitils.dbmaintainer.structure.impl.DefaultSequenceUpdater updateSequences
+INFO: Updating sequences and identity columns in database schema PUBLIC
+Aug 20, 2020 12:53:57 PM org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean createNativeEntityManagerFactory
+INFO: Building JPA container EntityManagerFactory for persistence unit 'in_memory_database_testing'
+130  in_memory_database_testing  WARN   [Test worker] openjpa.Runtime - An error occurred while registering a ClassTransformer with PersistenceUnitInfo: name 'in_memory_database_testing', root URL [file:/home/gradle/project/build/resources/test]. The error has been consumed. To see it, set your openjpa.Runtime log level to TRACE. Load-time class transformation will not be available.
+246  in_memory_database_testing  WARN   [Test worker] openjpa.Runtime - Could not create the optional validation provider. Reason returned: "A default ValidatorFactory could not be created."
+8120  in_memory_database_testing  WARN   [Test worker] openjpa.Enhance - Creating subclass for "[class colruyt.rearulmgtdmnejb.entity.RefReasonType, class colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElementPK, class colruyt.rearulmgtdmnejb.entity.RefQuantityConditionTypeLangPK, class colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleReason, class colruyt.rearulmgtdmnejb.entity.QuantityRuleAction, class colruyt.rearulmgtdmnejb.entity.ReactionRuleActionType, class colruyt.rearulmgtdmnejb.entity.RefRuleTypeLangPK, class colruyt.rearulmgtdmnejb.entity.ReactionPeriodRuleAction, class colruyt.rearulmgtdmnejb.entity.ReactionRuleSourceType, class colruyt.rearulmgtdmnejb.entity.RefRuleType, class colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleAction, class colruyt.rearulmgtdmnejb.entity.ReactionRule, class colruyt.rearulmgtdmnejb.entity.ReactionRuleSourceTypePK, class colruyt.rearulmgtdmnejb.entity.RefFilterOutRecordingType, class colruyt.rearulmgtdmnejb.entity.FilteringRuleAction, class colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleReasonPK, class colruyt.rearulmgtdmnejb.entity.PriceProductHierarchyElement, class colruyt.rearulmgtdmnejb.entity.RefQuantityTypeLangPK, class colruyt.rearulmgtdmnejb.entity.RecordingNotFoundRuleAction, class colruyt.rearulmgtdmnejb.entity.RefQuantityType, class colruyt.rearulmgtdmnejb.entity.ReactingRuleAction, class colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySet, class colruyt.rearulmgtdmnejb.entity.RefReasonTypeLangPK, class colruyt.rearulmgtdmnejb.entity.RefQuantityConditionType, class colruyt.rearulmgtdmnejb.entity.RefFilterOutRecordingTypeLangPK, class colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElement, class colruyt.rearulmgtdmnejb.entity.ReactionRuleActionTypePK, class colruyt.rearulmgtdmnejb.entity.ReactionRuleSet]". This means that your application will be less efficient and will consume more memory than it would if you ran the OpenJPA enhancer. Additionally, lazy loading will not be available for one-to-one and many-to-one persistent attributes in types using field access; they will be loaded eagerly instead.
+14661  in_memory_database_testing  WARN   [Test worker] openjpa.Enhance - The field filteringRuleAction in type colruyt.rearulmgtdmnejb.entity.ReactionRule is configured to be lazily loaded, but lazy loading is not available for classes that use field access when not running the OpenJPA enhancer or when dynamic class redefinition is not available.
+14661  in_memory_database_testing  WARN   [Test worker] openjpa.Enhance - The field proposalNotToReactRuleAction in type colruyt.rearulmgtdmnejb.entity.ReactionRule is configured to be lazily loaded, but lazy loading is not available for classes that use field access when not running the OpenJPA enhancer or when dynamic class redefinition is not available.
+14662  in_memory_database_testing  WARN   [Test worker] openjpa.Enhance - The field quantityRuleAction in type colruyt.rearulmgtdmnejb.entity.ReactionRule is configured to be lazily loaded, but lazy loading is not available for classes that use field access when not running the OpenJPA enhancer or when dynamic class redefinition is not available.
+14662  in_memory_database_testing  WARN   [Test worker] openjpa.Enhance - The field reactingRuleAction in type colruyt.rearulmgtdmnejb.entity.ReactionRule is configured to be lazily loaded, but lazy loading is not available for classes that use field access when not running the OpenJPA enhancer or when dynamic class redefinition is not available.
+14663  in_memory_database_testing  WARN   [Test worker] openjpa.Enhance - The field reactionPeriodRuleAction in type colruyt.rearulmgtdmnejb.entity.ReactionRule is configured to be lazily loaded, but lazy loading is not available for classes that use field access when not running the OpenJPA enhancer or when dynamic class redefinition is not available.
+14663  in_memory_database_testing  WARN   [Test worker] openjpa.Enhance - The field recordingNotFoundRuleAction in type colruyt.rearulmgtdmnejb.entity.ReactionRule is configured to be lazily loaded, but lazy loading is not available for classes that use field access when not running the OpenJPA enhancer or when dynamic class redefinition is not available.
+Aug 20, 2020 12:54:13 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/dataset/FilteringRuleDlServiceTest.xml]
+15916  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 1320456490 insert into "PUBLIC"."REA_FLT_RULE" ("REA_RULE_ID", "MAX_TIME_REC_PRD", "MAX_TIME_PA") values (?, ?, ?) [params=?, ?, ?]
+15933  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+15933  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 1320456490 insert into "PUBLIC"."REA_FLT_RULE" ("REA_RULE_ID", "MAX_TIME_REC_PRD", "MAX_TIME_PA") values (?, ?, ?) [params=?, ?, ?]
+15934  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+15934  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing batch prepstmnt 1320456490 insert into "PUBLIC"."REA_FLT_RULE" ("REA_RULE_ID", "MAX_TIME_REC_PRD", "MAX_TIME_PA") values (?, ?, ?) [params=?, ?, ?]
+15940  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [5 ms] spent
+16172  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 595559840 SELECT t0.MAX_TIME_PA, t0.MAX_TIME_REC_PRD FROM PUBLIC.REA_FLT_RULE t0 WHERE t0.REA_RULE_ID = ? [params=?]
+16192  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [5 ms] spent
+Aug 20, 2020 12:54:14 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@7a086e63
+16348  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 1371780556 UPDATE PUBLIC.REA_FLT_RULE SET MAX_TIME_PA = ?, MAX_TIME_REC_PRD = ? WHERE REA_RULE_ID = ? [params=?, ?, ?]
+16349  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+Aug 20, 2020 12:54:15 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/dataset/FilteringRuleDlServiceTest.xml]
+16561  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 175175818 insert into "PUBLIC"."REA_FLT_RULE" ("REA_RULE_ID", "MAX_TIME_REC_PRD", "MAX_TIME_PA") values (?, ?, ?) [params=?, ?, ?]
+16572  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+16588  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 175175818 insert into "PUBLIC"."REA_FLT_RULE" ("REA_RULE_ID", "MAX_TIME_REC_PRD", "MAX_TIME_PA") values (?, ?, ?) [params=?, ?, ?]
+16590  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+16592  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing batch prepstmnt 175175818 insert into "PUBLIC"."REA_FLT_RULE" ("REA_RULE_ID", "MAX_TIME_REC_PRD", "MAX_TIME_PA") values (?, ?, ?) [params=?, ?, ?]
+16605  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [12 ms] spent
+16912  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 214499258 DELETE FROM PUBLIC.REA_FLT_RULE t0 WHERE (t0.REA_RULE_ID = ?) [params=?]
+16913  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+Aug 20, 2020 12:54:15 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/result/FilteringRulePhysicalDeleteElementsTestResult.xml]
+Aug 20, 2020 12:54:15 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@6275d826
+16970  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing stmnt 1069662055 select "REA_RULE_ID", "MAX_TIME_REC_PRD", "MAX_TIME_PA" from "PUBLIC"."REA_FLT_RULE"
+16971  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+Aug 20, 2020 12:54:15 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@6275d826
+17065  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 537565225 SELECT t0.MAX_TIME_PA, t0.MAX_TIME_REC_PRD FROM PUBLIC.REA_FLT_RULE t0 WHERE t0.REA_RULE_ID = ? [params=?]
+17071  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+17083  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 1167104279 INSERT INTO PUBLIC.REA_FLT_RULE (REA_RULE_ID, MAX_TIME_PA, MAX_TIME_REC_PRD) VALUES (?, ?, ?) [params=?, ?, ?]
+17084  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+Aug 20, 2020 12:54:15 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/result/FilteringRuleCreateTestResult.xml]
+Aug 20, 2020 12:54:15 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@61534f4
+17100  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 318014539 UPDATE PUBLIC.REA_FLT_RULE SET MAX_TIME_PA = ?, MAX_TIME_REC_PRD = ? WHERE REA_RULE_ID = ? [params=?, ?, ?]
+17100  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+17114  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing stmnt 1623656051 select "REA_RULE_ID", "MAX_TIME_REC_PRD", "MAX_TIME_PA" from "PUBLIC"."REA_FLT_RULE"
+17115  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+Aug 20, 2020 12:54:15 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@61534f4
+17120  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 1794989368 UPDATE PUBLIC.REA_FLT_RULE SET MAX_TIME_PA = ?, MAX_TIME_REC_PRD = ? WHERE REA_RULE_ID = ? [params=?, ?, ?]
+17121  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+]]></system-err>
+</testsuite>

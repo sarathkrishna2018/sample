@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="colruyt.rearulmgtdmnejb.utils.ReaRulesetConverterTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-08-20T10:54:22" hostname="f5f2d81ae076" time="0.009">
+  <properties/>
+  <testcase name="convertReactionRulesetTest" classname="colruyt.rearulmgtdmnejb.utils.ReaRulesetConverterTest" time="0.004"/>
+  <testcase name="createConverterTest" classname="colruyt.rearulmgtdmnejb.utils.ReaRulesetConverterTest" time="0.002"/>
+  <testcase name="convertRuleSetBoTest" classname="colruyt.rearulmgtdmnejb.utils.ReaRulesetConverterTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

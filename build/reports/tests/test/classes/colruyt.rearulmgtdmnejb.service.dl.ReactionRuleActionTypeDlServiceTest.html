@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class colruyt.rearulmgtdmnejb.service.dl.ReactionRuleActionTypeDlServiceTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class colruyt.rearulmgtdmnejb.service.dl.ReactionRuleActionTypeDlServiceTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/colruyt.rearulmgtdmnejb.service.dl.html">colruyt.rearulmgtdmnejb.service.dl</a> &gt; ReactionRuleActionTypeDlServiceTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">1</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.161s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard error</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">physicalDeleteActionForRulesTest</td>
+<td class="success">0.161s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard error</h2>
+<span class="code">
+<pre>Aug 20, 2020 12:54:20 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/dataset/ReactionRuleActionTypeDlServiceTest.xml]
+21550  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; batching prepstmnt 1660287952 insert into &quot;PUBLIC&quot;.&quot;REA_RULE_ACTTYPE&quot; (&quot;ACTION_TYPE_ID&quot;, &quot;REA_RULE_ID&quot;) values (?, ?) [params=?, ?]
+21551  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+21555  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; batching prepstmnt 1660287952 insert into &quot;PUBLIC&quot;.&quot;REA_RULE_ACTTYPE&quot; (&quot;ACTION_TYPE_ID&quot;, &quot;REA_RULE_ID&quot;) values (?, ?) [params=?, ?]
+21555  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+21556  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing batch prepstmnt 1660287952 insert into &quot;PUBLIC&quot;.&quot;REA_RULE_ACTTYPE&quot; (&quot;ACTION_TYPE_ID&quot;, &quot;REA_RULE_ID&quot;) values (?, ?) [params=?, ?]
+21572  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [16 ms] spent
+21615  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing prepstmnt 172948441 DELETE FROM PUBLIC.REA_RULE_ACTTYPE t0 WHERE (t0.REA_RULE_ID = ?) [params=?]
+21616  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+Aug 20, 2020 12:54:20 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/result/PhysicalDeleteActionForRulesTestResult.xml]
+Aug 20, 2020 12:54:20 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@7b3a2a75
+21642  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing stmnt 2050364970 select &quot;REA_RULE_ID&quot;, &quot;ACTION_TYPE_ID&quot; from &quot;PUBLIC&quot;.&quot;REA_RULE_ACTTYPE&quot;
+21643  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [1 ms] spent
+Aug 20, 2020 12:54:20 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@7b3a2a75
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 6.5.1</a> at Aug 20, 2020 12:54:25 PM</p>
+</div>
+</div>
+</body>
+</html>

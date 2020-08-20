@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="colruyt.rearulmgtdmnejb.service.dl.QuantityRuleDlServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-08-20T10:54:19" hostname="f5f2d81ae076" time="0.182">
+  <properties/>
+  <testcase name="findByRuleIdTest" classname="colruyt.rearulmgtdmnejb.service.dl.QuantityRuleDlServiceTest" time="0.059"/>
+  <testcase name="physicalDeleteElementsTest" classname="colruyt.rearulmgtdmnejb.service.dl.QuantityRuleDlServiceTest" time="0.071"/>
+  <testcase name="createTest" classname="colruyt.rearulmgtdmnejb.service.dl.QuantityRuleDlServiceTest" time="0.05"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Aug 20, 2020 12:54:19 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/dataset/QuantityRuleDlServiceTest.xml]
+20835  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 391440296 insert into "PUBLIC"."REA_QTY_RULE" ("REA_RULE_ID", "QTY_COND_ID", "QTY_TYPE_ID") values (?, ?, ?) [params=?, ?, ?]
+20835  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+20836  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 391440296 insert into "PUBLIC"."REA_QTY_RULE" ("REA_RULE_ID", "QTY_COND_ID", "QTY_TYPE_ID") values (?, ?, ?) [params=?, ?, ?]
+20836  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+20837  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing batch prepstmnt 391440296 insert into "PUBLIC"."REA_QTY_RULE" ("REA_RULE_ID", "QTY_COND_ID", "QTY_TYPE_ID") values (?, ?, ?) [params=?, ?, ?]
+20841  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [4 ms] spent
+20846  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 138061940 SELECT t0.QTY_COND_ID, t0.QTY_TYPE_ID FROM PUBLIC.REA_QTY_RULE t0 WHERE t0.REA_RULE_ID = ? [params=?]
+20847  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+Aug 20, 2020 12:54:19 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@29dcbe9
+20854  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 944642852 UPDATE PUBLIC.REA_QTY_RULE SET QTY_COND_ID = ?, QTY_TYPE_ID = ? WHERE REA_RULE_ID = ? [params=?, ?, ?]
+20858  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+Aug 20, 2020 12:54:19 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/dataset/QuantityRuleDlServiceTest.xml]
+20879  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 1980398517 insert into "PUBLIC"."REA_QTY_RULE" ("REA_RULE_ID", "QTY_COND_ID", "QTY_TYPE_ID") values (?, ?, ?) [params=?, ?, ?]
+20880  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+20881  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 1980398517 insert into "PUBLIC"."REA_QTY_RULE" ("REA_RULE_ID", "QTY_COND_ID", "QTY_TYPE_ID") values (?, ?, ?) [params=?, ?, ?]
+20883  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+20884  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing batch prepstmnt 1980398517 insert into "PUBLIC"."REA_QTY_RULE" ("REA_RULE_ID", "QTY_COND_ID", "QTY_TYPE_ID") values (?, ?, ?) [params=?, ?, ?]
+20892  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [8 ms] spent
+20907  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 1223426490 DELETE FROM PUBLIC.REA_QTY_RULE t0 WHERE (t0.REA_RULE_ID = ?) [params=?]
+20908  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+Aug 20, 2020 12:54:19 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/result/QuantityRulePhysicalDeleteElementsTestResult.xml]
+Aug 20, 2020 12:54:19 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@3207ddee
+20925  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing stmnt 897454924 select "REA_RULE_ID", "QTY_COND_ID", "QTY_TYPE_ID" from "PUBLIC"."REA_QTY_RULE"
+20927  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+Aug 20, 2020 12:54:19 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@3207ddee
+20936  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 733274723 SELECT t0.QTY_COND_ID, t0.QTY_TYPE_ID FROM PUBLIC.REA_QTY_RULE t0 WHERE t0.REA_RULE_ID = ? [params=?]
+20937  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+20942  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 1611485290 INSERT INTO PUBLIC.REA_QTY_RULE (REA_RULE_ID, QTY_COND_ID, QTY_TYPE_ID) VALUES (?, ?, ?) [params=?, ?, ?]
+20944  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+Aug 20, 2020 12:54:19 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/result/QuantityRuleCreateTestResult.xml]
+Aug 20, 2020 12:54:19 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@5cb90358
+20963  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 1659523081 UPDATE PUBLIC.REA_QTY_RULE SET QTY_COND_ID = ?, QTY_TYPE_ID = ? WHERE REA_RULE_ID = ? [params=?, ?, ?]
+20966  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [3 ms] spent
+20968  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing stmnt 1760481854 select "REA_RULE_ID", "QTY_COND_ID", "QTY_TYPE_ID" from "PUBLIC"."REA_QTY_RULE"
+20970  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+Aug 20, 2020 12:54:19 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@5cb90358
+20975  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 756602736 UPDATE PUBLIC.REA_QTY_RULE SET QTY_COND_ID = ?, QTY_TYPE_ID = ? WHERE REA_RULE_ID = ? [params=?, ?, ?]
+20977  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+]]></system-err>
+</testsuite>

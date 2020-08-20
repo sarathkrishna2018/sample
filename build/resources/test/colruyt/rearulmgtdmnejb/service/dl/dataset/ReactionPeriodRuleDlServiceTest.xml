@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<REA_PRD_ACT
+		REA_RULE_ID="1"
+		END_DT_DAYS="5"
+		MIN_DAYS="2"
+	/>
+	<REA_PRD_ACT
+		REA_RULE_ID="2"
+		END_DT_DAYS="7"
+		MIN_DAYS="2"
+	/>
+
+</dataset>

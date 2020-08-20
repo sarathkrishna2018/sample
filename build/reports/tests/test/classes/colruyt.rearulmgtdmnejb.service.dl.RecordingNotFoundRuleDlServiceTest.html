@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class colruyt.rearulmgtdmnejb.service.dl.RecordingNotFoundRuleDlServiceTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class colruyt.rearulmgtdmnejb.service.dl.RecordingNotFoundRuleDlServiceTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/colruyt.rearulmgtdmnejb.service.dl.html">colruyt.rearulmgtdmnejb.service.dl</a> &gt; RecordingNotFoundRuleDlServiceTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">3</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.152s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard error</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">createTest</td>
+<td class="success">0.058s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">findByRuleIdTest</td>
+<td class="success">0.045s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">physicalDeleteElementsTest</td>
+<td class="success">0.049s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard error</h2>
+<span class="code">
+<pre>Aug 20, 2020 12:54:22 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/dataset/RecordingNotFoundRuleDlServiceTest.xml]
+23482  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; batching prepstmnt 1745024658 insert into &quot;PUBLIC&quot;.&quot;REA_RNF_ACT&quot; (&quot;REA_RULE_ID&quot;, &quot;NO_OF_RNF&quot;) values (?, ?) [params=?, ?]
+23482  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+23483  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; batching prepstmnt 1745024658 insert into &quot;PUBLIC&quot;.&quot;REA_RNF_ACT&quot; (&quot;REA_RULE_ID&quot;, &quot;NO_OF_RNF&quot;) values (?, ?) [params=?, ?]
+23483  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+23483  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing batch prepstmnt 1745024658 insert into &quot;PUBLIC&quot;.&quot;REA_RNF_ACT&quot; (&quot;REA_RULE_ID&quot;, &quot;NO_OF_RNF&quot;) values (?, ?) [params=?, ?]
+23484  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [1 ms] spent
+23488  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing prepstmnt 122180430 SELECT t0.NO_OF_RNF FROM PUBLIC.REA_RNF_ACT t0 WHERE t0.REA_RULE_ID = ? [params=?]
+23490  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [1 ms] spent
+Aug 20, 2020 12:54:22 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@3e3d189d
+23493  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing prepstmnt 440343191 UPDATE PUBLIC.REA_RNF_ACT SET NO_OF_RNF = ? WHERE REA_RULE_ID = ? [params=?, ?]
+23493  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+Aug 20, 2020 12:54:22 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/dataset/RecordingNotFoundRuleDlServiceTest.xml]
+23509  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; batching prepstmnt 1614835581 insert into &quot;PUBLIC&quot;.&quot;REA_RNF_ACT&quot; (&quot;REA_RULE_ID&quot;, &quot;NO_OF_RNF&quot;) values (?, ?) [params=?, ?]
+23510  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+23510  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; batching prepstmnt 1614835581 insert into &quot;PUBLIC&quot;.&quot;REA_RNF_ACT&quot; (&quot;REA_RULE_ID&quot;, &quot;NO_OF_RNF&quot;) values (?, ?) [params=?, ?]
+23510  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+23511  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing batch prepstmnt 1614835581 insert into &quot;PUBLIC&quot;.&quot;REA_RNF_ACT&quot; (&quot;REA_RULE_ID&quot;, &quot;NO_OF_RNF&quot;) values (?, ?) [params=?, ?]
+23511  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+23530  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing prepstmnt 1710544615 DELETE FROM PUBLIC.REA_RNF_ACT t0 WHERE (t0.REA_RULE_ID = ?) [params=?]
+23531  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [1 ms] spent
+Aug 20, 2020 12:54:22 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/result/RecordNotFoundPhysicalDeleteElementsTestResult.xml]
+Aug 20, 2020 12:54:22 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@33a92aaa
+23542  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing stmnt 934880193 select &quot;REA_RULE_ID&quot;, &quot;NO_OF_RNF&quot; from &quot;PUBLIC&quot;.&quot;REA_RNF_ACT&quot;
+23543  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [1 ms] spent
+Aug 20, 2020 12:54:22 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@33a92aaa
+23552  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing prepstmnt 738665800 SELECT t0.NO_OF_RNF FROM PUBLIC.REA_RNF_ACT t0 WHERE t0.REA_RULE_ID = ? [params=?]
+23553  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+23555  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing prepstmnt 830661682 INSERT INTO PUBLIC.REA_RNF_ACT (REA_RULE_ID, NO_OF_RNF) VALUES (?, ?) [params=?, ?]
+23556  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+Aug 20, 2020 12:54:22 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/result/RecordNotFoundCreateTestResult.xml]
+Aug 20, 2020 12:54:22 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@546e2bd4
+23586  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing prepstmnt 1551519727 UPDATE PUBLIC.REA_RNF_ACT SET NO_OF_RNF = ? WHERE REA_RULE_ID = ? [params=?, ?]
+23587  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+23588  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing stmnt 2055181094 select &quot;REA_RULE_ID&quot;, &quot;NO_OF_RNF&quot; from &quot;PUBLIC&quot;.&quot;REA_RNF_ACT&quot;
+23588  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+Aug 20, 2020 12:54:22 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@546e2bd4
+23594  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing prepstmnt 2086889031 UPDATE PUBLIC.REA_RNF_ACT SET NO_OF_RNF = ? WHERE REA_RULE_ID = ? [params=?, ?]
+23595  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [1 ms] spent
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 6.5.1</a> at Aug 20, 2020 12:54:25 PM</p>
+</div>
+</div>
+</body>
+</html>

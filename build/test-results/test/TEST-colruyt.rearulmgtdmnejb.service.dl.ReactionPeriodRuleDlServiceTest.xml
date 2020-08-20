@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="colruyt.rearulmgtdmnejb.service.dl.ReactionPeriodRuleDlServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-08-20T10:54:19" hostname="f5f2d81ae076" time="0.289">
+  <properties/>
+  <testcase name="findByRuleIdTest" classname="colruyt.rearulmgtdmnejb.service.dl.ReactionPeriodRuleDlServiceTest" time="0.098"/>
+  <testcase name="physicalDeleteElementsTest" classname="colruyt.rearulmgtdmnejb.service.dl.ReactionPeriodRuleDlServiceTest" time="0.139"/>
+  <testcase name="createTest" classname="colruyt.rearulmgtdmnejb.service.dl.ReactionPeriodRuleDlServiceTest" time="0.051"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Aug 20, 2020 12:54:19 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/dataset/ReactionPeriodRuleDlServiceTest.xml]
+21226  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 2071729577 insert into "PUBLIC"."REA_PRD_ACT" ("REA_RULE_ID", "END_DT_DAYS", "MIN_DAYS") values (?, ?, ?) [params=?, ?, ?]
+21226  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+21227  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 2071729577 insert into "PUBLIC"."REA_PRD_ACT" ("REA_RULE_ID", "END_DT_DAYS", "MIN_DAYS") values (?, ?, ?) [params=?, ?, ?]
+21229  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+21230  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing batch prepstmnt 2071729577 insert into "PUBLIC"."REA_PRD_ACT" ("REA_RULE_ID", "END_DT_DAYS", "MIN_DAYS") values (?, ?, ?) [params=?, ?, ?]
+21234  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [4 ms] spent
+21240  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 1041678606 SELECT t0.END_DT_DAYS, t0.MIN_DAYS FROM PUBLIC.REA_PRD_ACT t0 WHERE t0.REA_RULE_ID = ? [params=?]
+21254  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+Aug 20, 2020 12:54:20 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@66e16d7a
+21258  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 1684877276 UPDATE PUBLIC.REA_PRD_ACT SET END_DT_DAYS = ?, MIN_DAYS = ? WHERE REA_RULE_ID = ? [params=?, ?, ?]
+21286  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [28 ms] spent
+Aug 20, 2020 12:54:20 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/dataset/ReactionPeriodRuleDlServiceTest.xml]
+21360  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 17884306 insert into "PUBLIC"."REA_PRD_ACT" ("REA_RULE_ID", "END_DT_DAYS", "MIN_DAYS") values (?, ?, ?) [params=?, ?, ?]
+21360  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+21361  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 17884306 insert into "PUBLIC"."REA_PRD_ACT" ("REA_RULE_ID", "END_DT_DAYS", "MIN_DAYS") values (?, ?, ?) [params=?, ?, ?]
+21361  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+21361  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing batch prepstmnt 17884306 insert into "PUBLIC"."REA_PRD_ACT" ("REA_RULE_ID", "END_DT_DAYS", "MIN_DAYS") values (?, ?, ?) [params=?, ?, ?]
+21361  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+21398  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 433822590 DELETE FROM PUBLIC.REA_PRD_ACT t0 WHERE (t0.REA_RULE_ID = ?) [params=?]
+21401  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+Aug 20, 2020 12:54:20 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/result/ReactionPeriodRulePhysicalDeleteElementsTestResult.xml]
+Aug 20, 2020 12:54:20 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@6befc682
+21417  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing stmnt 1798688731 select "REA_RULE_ID", "END_DT_DAYS", "MIN_DAYS" from "PUBLIC"."REA_PRD_ACT"
+21420  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+Aug 20, 2020 12:54:20 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@6befc682
+21430  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 931104422 SELECT t0.END_DT_DAYS, t0.MIN_DAYS FROM PUBLIC.REA_PRD_ACT t0 WHERE t0.REA_RULE_ID = ? [params=?]
+21437  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+21440  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 497973651 INSERT INTO PUBLIC.REA_PRD_ACT (REA_RULE_ID, END_DT_DAYS, MIN_DAYS) VALUES (?, ?, ?) [params=?, ?, ?]
+21440  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+Aug 20, 2020 12:54:20 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/result/ReactionPeriodRuleCreateTestResult.xml]
+Aug 20, 2020 12:54:20 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@4cff672b
+21460  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 1188640387 UPDATE PUBLIC.REA_PRD_ACT SET END_DT_DAYS = ?, MIN_DAYS = ? WHERE REA_RULE_ID = ? [params=?, ?, ?]
+21461  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+21464  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing stmnt 676707626 select "REA_RULE_ID", "END_DT_DAYS", "MIN_DAYS" from "PUBLIC"."REA_PRD_ACT"
+21468  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [3 ms] spent
+Aug 20, 2020 12:54:20 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@4cff672b
+21472  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 1641242722 UPDATE PUBLIC.REA_PRD_ACT SET END_DT_DAYS = ?, MIN_DAYS = ? WHERE REA_RULE_ID = ? [params=?, ?, ?]
+21475  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+]]></system-err>
+</testsuite>

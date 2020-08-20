@@ -28,21 +28,7 @@ public class FilteringRuleDlServiceTest {
 		JpaUnitils.injectEntityManagerInto(filteringRuleActionDlService);
 	}
 
-	@Test
-	@ExpectedDataSet("result/FilteringRuleCreateTestResult.xml")
-	public void createTest() {
-		FilteringRuleAction expectedFilteringRule = filteringRuleActionDlService.createOrUpdate(getReaFltRule());
-		Assert.assertEquals(1L, expectedFilteringRule.getReactionRuleId());
-	}
-
-	@Test
-	@DataSet("dataset/FilteringRuleDlServiceTest.xml")
-	public void findByRuleIdTest() {
-		FilteringRuleAction expectedFilteringRule = filteringRuleActionDlService.findByRuleId(2l);
-		Assert.assertEquals(2L, expectedFilteringRule.getReactionRuleId());
-		Assert.assertEquals(new Double(1.0), expectedFilteringRule.getMaxTimesRecordingProduct());
-		Assert.assertEquals(new Double(2.5), expectedFilteringRule.getMaxTimesPriceArticle());
-	}
+	
 
 	@Test
 	@DataSet("dataset/FilteringRuleDlServiceTest.xml")
@@ -51,19 +37,6 @@ public class FilteringRuleDlServiceTest {
 		filteringRuleActionDlService.physicalDeleteElements(getDeleteRuleInfoBo());
 	}
 
-	private DeleteRuleInfoBo getDeleteRuleInfoBo() {
-		DeleteRuleInfoBo deleteRuleInfoBo = new DeleteRuleInfoBo(1l, 3l);
-		deleteRuleInfoBo.setRuleId(1l);
-		deleteRuleInfoBo.setRuleType(3l);
-		return deleteRuleInfoBo;
-	}
 
-	private FilteringRuleAction getReaFltRule() {
-		FilteringRuleAction reaFlt = new FilteringRuleAction();
-		reaFlt.setMaxTimesRecordingProduct(2.0);
-		reaFlt.setReactionRuleId(1);
-		reaFlt.setMaxTimesPriceArticle(3.5);
-		return reaFlt;
-	}
 
 }

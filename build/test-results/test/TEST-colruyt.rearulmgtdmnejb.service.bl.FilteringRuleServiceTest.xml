@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="colruyt.rearulmgtdmnejb.service.bl.FilteringRuleServiceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-08-20T10:53:51" hostname="f5f2d81ae076" time="0.267">
+  <properties/>
+  <testcase name="physicalDeleteElementsTest" classname="colruyt.rearulmgtdmnejb.service.bl.FilteringRuleServiceTest" time="0.175"/>
+  <testcase name="createRuleSpecificAttributesTest" classname="colruyt.rearulmgtdmnejb.service.bl.FilteringRuleServiceTest" time="0.061"/>
+  <testcase name="getRuleSpecificValuesTest" classname="colruyt.rearulmgtdmnejb.service.bl.FilteringRuleServiceTest" time="0.009"/>
+  <testcase name="modifyRuleSpecificAttributesTest" classname="colruyt.rearulmgtdmnejb.service.bl.FilteringRuleServiceTest" time="0.011"/>
+  <system-out><![CDATA[2020-08-20 12:53:51,976 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.FilteringRuleService - physicalDeleteElements 1
+2020-08-20 12:53:52,048 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.FilteringRuleService - Create Filtering Rule
+2020-08-20 12:53:52,051 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.FilteringRuleService - Filtering Rule Mandatory field Validation
+2020-08-20 12:53:52,075 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.FilteringRuleService - View Filtering Rule
+2020-08-20 12:53:52,088 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.FilteringRuleService -  Edit Filtering Rule
+2020-08-20 12:53:52,090 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.FilteringRuleService - Filtering Rule Mandatory field Validation
+]]></system-out>
+  <system-err><![CDATA[Aug 20, 2020 12:53:48 PM org.unitils.core.ConfigurationLoader loadLocalConfiguration
+INFO: No local configuration file unitils-local.properties found.
+]]></system-err>
+</testsuite>

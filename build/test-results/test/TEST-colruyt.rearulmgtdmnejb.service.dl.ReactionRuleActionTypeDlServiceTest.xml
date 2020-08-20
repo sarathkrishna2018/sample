@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="colruyt.rearulmgtdmnejb.service.dl.ReactionRuleActionTypeDlServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-08-20T10:54:20" hostname="f5f2d81ae076" time="0.161">
+  <properties/>
+  <testcase name="physicalDeleteActionForRulesTest" classname="colruyt.rearulmgtdmnejb.service.dl.ReactionRuleActionTypeDlServiceTest" time="0.161"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Aug 20, 2020 12:54:20 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/dataset/ReactionRuleActionTypeDlServiceTest.xml]
+21550  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 1660287952 insert into "PUBLIC"."REA_RULE_ACTTYPE" ("ACTION_TYPE_ID", "REA_RULE_ID") values (?, ?) [params=?, ?]
+21551  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+21555  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 1660287952 insert into "PUBLIC"."REA_RULE_ACTTYPE" ("ACTION_TYPE_ID", "REA_RULE_ID") values (?, ?) [params=?, ?]
+21555  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+21556  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing batch prepstmnt 1660287952 insert into "PUBLIC"."REA_RULE_ACTTYPE" ("ACTION_TYPE_ID", "REA_RULE_ID") values (?, ?) [params=?, ?]
+21572  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [16 ms] spent
+21615  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 172948441 DELETE FROM PUBLIC.REA_RULE_ACTTYPE t0 WHERE (t0.REA_RULE_ID = ?) [params=?]
+21616  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+Aug 20, 2020 12:54:20 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/result/PhysicalDeleteActionForRulesTestResult.xml]
+Aug 20, 2020 12:54:20 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@7b3a2a75
+21642  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing stmnt 2050364970 select "REA_RULE_ID", "ACTION_TYPE_ID" from "PUBLIC"."REA_RULE_ACTTYPE"
+21643  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+Aug 20, 2020 12:54:20 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@7b3a2a75
+]]></system-err>
+</testsuite>

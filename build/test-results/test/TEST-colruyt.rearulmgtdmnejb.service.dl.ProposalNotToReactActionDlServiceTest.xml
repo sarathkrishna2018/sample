@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="colruyt.rearulmgtdmnejb.service.dl.ProposalNotToReactActionDlServiceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-08-20T10:54:19" hostname="f5f2d81ae076" time="0.324">
+  <properties/>
+  <testcase name="findByRuleIdTest" classname="colruyt.rearulmgtdmnejb.service.dl.ProposalNotToReactActionDlServiceTest" time="0.052"/>
+  <testcase name="physicalDeleteElementsTest" classname="colruyt.rearulmgtdmnejb.service.dl.ProposalNotToReactActionDlServiceTest" time="0.097"/>
+  <testcase name="physicalDeleteElementsRsnTest" classname="colruyt.rearulmgtdmnejb.service.dl.ProposalNotToReactActionDlServiceTest" time="0.085"/>
+  <testcase name="createTest" classname="colruyt.rearulmgtdmnejb.service.dl.ProposalNotToReactActionDlServiceTest" time="0.085"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Aug 20, 2020 12:54:19 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/dataset/ProposalNotToReactActionDlServiceTest.xml]
+20482  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 2014809519 insert into "PUBLIC"."REA_NREACT_ACT" ("REA_RULE_ID", "FLTOUT_TYPE_ID") values (?, ?) [params=?, ?]
+20483  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+20483  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 2014809519 insert into "PUBLIC"."REA_NREACT_ACT" ("REA_RULE_ID", "FLTOUT_TYPE_ID") values (?, ?) [params=?, ?]
+20483  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+20484  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing batch prepstmnt 2014809519 insert into "PUBLIC"."REA_NREACT_ACT" ("REA_RULE_ID", "FLTOUT_TYPE_ID") values (?, ?) [params=?, ?]
+20485  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+20492  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 1167555445 insert into "PUBLIC"."REA_NREACT_SET_RSN" ("REA_RULE_ID", "REASON_ID") values (?, ?) [params=?, ?]
+20492  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+20493  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 1167555445 insert into "PUBLIC"."REA_NREACT_SET_RSN" ("REA_RULE_ID", "REASON_ID") values (?, ?) [params=?, ?]
+20493  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+20493  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing batch prepstmnt 1167555445 insert into "PUBLIC"."REA_NREACT_SET_RSN" ("REA_RULE_ID", "REASON_ID") values (?, ?) [params=?, ?]
+20495  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+20501  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 1885073714 SELECT t0.FLTOUT_TYPE_ID, t1.REA_RULE_ID, t1.REASON_ID FROM PUBLIC.REA_NREACT_ACT t0 LEFT OUTER JOIN PUBLIC.REA_NREACT_SET_RSN t1 ON t0.REA_RULE_ID = t1.REA_RULE_ID WHERE t0.REA_RULE_ID = ? ORDER BY t1.REA_RULE_ID ASC [params=?]
+20503  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+Aug 20, 2020 12:54:19 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@31cfcb5c
+20512  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 628079009 UPDATE PUBLIC.REA_NREACT_ACT SET FLTOUT_TYPE_ID = ? WHERE REA_RULE_ID = ? [params=?, ?]
+20512  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+Aug 20, 2020 12:54:19 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/dataset/ProposalNotToReactActionDlServiceTest.xml]
+20528  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 160735652 insert into "PUBLIC"."REA_NREACT_ACT" ("REA_RULE_ID", "FLTOUT_TYPE_ID") values (?, ?) [params=?, ?]
+20529  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+20530  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 160735652 insert into "PUBLIC"."REA_NREACT_ACT" ("REA_RULE_ID", "FLTOUT_TYPE_ID") values (?, ?) [params=?, ?]
+20530  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+20530  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing batch prepstmnt 160735652 insert into "PUBLIC"."REA_NREACT_ACT" ("REA_RULE_ID", "FLTOUT_TYPE_ID") values (?, ?) [params=?, ?]
+20531  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+20533  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 643093491 insert into "PUBLIC"."REA_NREACT_SET_RSN" ("REA_RULE_ID", "REASON_ID") values (?, ?) [params=?, ?]
+20536  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+20537  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 643093491 insert into "PUBLIC"."REA_NREACT_SET_RSN" ("REA_RULE_ID", "REASON_ID") values (?, ?) [params=?, ?]
+20538  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+20538  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing batch prepstmnt 643093491 insert into "PUBLIC"."REA_NREACT_SET_RSN" ("REA_RULE_ID", "REASON_ID") values (?, ?) [params=?, ?]
+20540  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+20566  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 1174900536 DELETE FROM PUBLIC.REA_NREACT_ACT t0 WHERE (t0.REA_RULE_ID = ?) [params=?]
+20574  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+Aug 20, 2020 12:54:19 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/result/PhysicalDeleteElementsRsnTestResult.xml]
+Aug 20, 2020 12:54:19 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@194e4a19
+20598  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing stmnt 598982115 select "REA_RULE_ID", "FLTOUT_TYPE_ID" from "PUBLIC"."REA_NREACT_ACT"
+20599  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+20600  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing stmnt 1505200354 select "REA_RULE_ID", "REASON_ID", "LST_UPDATE_TS" from "PUBLIC"."REA_NREACT_SET_RSN"
+20601  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+Aug 20, 2020 12:54:19 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@194e4a19
+Aug 20, 2020 12:54:19 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/dataset/ProposalNotToReactActionDlServiceTest.xml]
+20642  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 427315566 insert into "PUBLIC"."REA_NREACT_ACT" ("REA_RULE_ID", "FLTOUT_TYPE_ID") values (?, ?) [params=?, ?]
+20642  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+20643  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 427315566 insert into "PUBLIC"."REA_NREACT_ACT" ("REA_RULE_ID", "FLTOUT_TYPE_ID") values (?, ?) [params=?, ?]
+20644  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+20644  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing batch prepstmnt 427315566 insert into "PUBLIC"."REA_NREACT_ACT" ("REA_RULE_ID", "FLTOUT_TYPE_ID") values (?, ?) [params=?, ?]
+20646  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+20647  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 610760630 insert into "PUBLIC"."REA_NREACT_SET_RSN" ("REA_RULE_ID", "REASON_ID") values (?, ?) [params=?, ?]
+20648  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+20649  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 610760630 insert into "PUBLIC"."REA_NREACT_SET_RSN" ("REA_RULE_ID", "REASON_ID") values (?, ?) [params=?, ?]
+20650  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+20651  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing batch prepstmnt 610760630 insert into "PUBLIC"."REA_NREACT_SET_RSN" ("REA_RULE_ID", "REASON_ID") values (?, ?) [params=?, ?]
+20654  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+20675  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 1142446551 DELETE FROM PUBLIC.REA_NREACT_SET_RSN t0 WHERE (t0.REA_RULE_ID = ?) [params=?]
+20676  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+Aug 20, 2020 12:54:19 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/result/PhysicalDeleteElementsRsnTestResult.xml]
+Aug 20, 2020 12:54:19 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@112e1c2c
+20690  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing stmnt 396759382 select "REA_RULE_ID", "FLTOUT_TYPE_ID" from "PUBLIC"."REA_NREACT_ACT"
+20692  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+20694  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing stmnt 292959380 select "REA_RULE_ID", "REASON_ID", "LST_UPDATE_TS" from "PUBLIC"."REA_NREACT_SET_RSN"
+20695  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+Aug 20, 2020 12:54:19 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@112e1c2c
+20705  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 1532648756 SELECT t0.FLTOUT_TYPE_ID, t1.REA_RULE_ID, t1.REASON_ID FROM PUBLIC.REA_NREACT_ACT t0 LEFT OUTER JOIN PUBLIC.REA_NREACT_SET_RSN t1 ON t0.REA_RULE_ID = t1.REA_RULE_ID WHERE t0.REA_RULE_ID = ? ORDER BY t1.REA_RULE_ID ASC [params=?]
+20710  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+20715  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 630957877 INSERT INTO PUBLIC.REA_NREACT_ACT (REA_RULE_ID, FLTOUT_TYPE_ID) VALUES (?, ?) [params=?, ?]
+20720  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+20721  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 995383449 INSERT INTO PUBLIC.REA_NREACT_SET_RSN (REA_RULE_ID, REASON_ID) VALUES (?, ?) [params=?, ?]
+20724  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+20725  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 1342618635 INSERT INTO PUBLIC.REA_NREACT_SET_RSN (REA_RULE_ID, REASON_ID) VALUES (?, ?) [params=?, ?]
+20726  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+Aug 20, 2020 12:54:19 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/result/ProposalNotToReactCreateTestResult.xml]
+Aug 20, 2020 12:54:19 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@5beee6e8
+20767  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 1274198436 UPDATE PUBLIC.REA_NREACT_ACT SET FLTOUT_TYPE_ID = ? WHERE REA_RULE_ID = ? [params=?, ?]
+20769  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+20771  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing stmnt 787587637 select "REA_RULE_ID", "FLTOUT_TYPE_ID" from "PUBLIC"."REA_NREACT_ACT"
+20772  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+20774  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing stmnt 212742556 select "REA_RULE_ID", "REASON_ID", "LST_UPDATE_TS" from "PUBLIC"."REA_NREACT_SET_RSN"
+20776  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+Aug 20, 2020 12:54:19 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@5beee6e8
+20784  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 2129109142 UPDATE PUBLIC.REA_NREACT_ACT SET FLTOUT_TYPE_ID = ? WHERE REA_RULE_ID = ? [params=?, ?]
+20785  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+]]></system-err>
+</testsuite>

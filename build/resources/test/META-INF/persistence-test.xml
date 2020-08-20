@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+		
+    <persistence-unit name="in_memory_database_testing" transaction-type="RESOURCE_LOCAL">
+   
+
+		<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+
+		<!-- Define your entities here: -->
+		<!-- <class>colruyt.rearulmgtdmnmw.entity.MyEntity</class> -->
+		<class>colruyt.rearulmgtdmnejb.entity.ReactionRule</class>
+		<class>colruyt.rearulmgtdmnejb.entity.FilteringRuleAction</class>
+		<class>colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleAction</class>
+		<class>colruyt.rearulmgtdmnejb.entity.PriceProductHierarchyElement</class>
+		<class>colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySet</class>
+		<class>colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElement</class>
+		<class>colruyt.rearulmgtdmnejb.entity.PriceProductHierarchySetElementPK</class>
+		<class>colruyt.rearulmgtdmnejb.entity.ReactionPeriodRuleAction</class>
+		<class>colruyt.rearulmgtdmnejb.entity.QuantityRuleAction</class>
+		<class>colruyt.rearulmgtdmnejb.entity.ReactingRuleAction</class>
+		<class>colruyt.rearulmgtdmnejb.entity.RecordingNotFoundRuleAction</class>
+		<class>colruyt.rearulmgtdmnejb.entity.ReactionRuleSet</class>
+		<class>colruyt.rearulmgtdmnejb.entity.ReactionRuleActionType</class>
+		<class>colruyt.rearulmgtdmnejb.entity.ReactionRuleActionTypePK</class>
+		<class>colruyt.rearulmgtdmnejb.entity.ReactionRuleSourceType</class>
+		<class>colruyt.rearulmgtdmnejb.entity.ReactionRuleSourceTypePK</class>
+		<class>colruyt.rearulmgtdmnejb.entity.RefFilterOutRecordingType</class>
+		<class>colruyt.rearulmgtdmnejb.entity.RefFilterOutRecordingTypeLangPK</class>
+		<class>colruyt.rearulmgtdmnejb.entity.RefQuantityType</class>
+		<class>colruyt.rearulmgtdmnejb.entity.RefQuantityTypeLangPK</class>
+		<class>colruyt.rearulmgtdmnejb.entity.RefReasonType</class>
+		<class>colruyt.rearulmgtdmnejb.entity.RefReasonTypeLangPK</class>
+		<class>colruyt.rearulmgtdmnejb.entity.RefRuleType</class>
+		<class>colruyt.rearulmgtdmnejb.entity.RefRuleTypeLangPK</class>
+		<class>colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleReason</class>
+		<class>colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleReasonPK</class>
+		<class>colruyt.rearulmgtdmnejb.entity.ProposalNotToReactRuleAction</class>
+		<class>colruyt.rearulmgtdmnejb.entity.RefQuantityConditionType</class>
+		<class>colruyt.rearulmgtdmnejb.entity.RefQuantityConditionTypeLangPK</class>
+	    	
+		<properties>
+			<property name="openjpa.jdbc.Schema" value="PUBLIC" />
+			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test" />
+			<property name="javax.persistence.jdbc.user" value="sa" />
+			<property name="openjpa.RuntimeUnenhancedClasses" value="supported" />
+			<property name="openjpa.Log" value="DefaultLevel=WARN,SQL=TRACE" />
+			<property name="openjpa.Compatibility" value="CheckDatabaseForCascadePersistToDetachedEntity=true"/>
+		</properties>
+
+    </persistence-unit>
+
+</persistence>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class colruyt.rearulmgtdmnejb.service.dl.QuantityRuleDlServiceTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class colruyt.rearulmgtdmnejb.service.dl.QuantityRuleDlServiceTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/colruyt.rearulmgtdmnejb.service.dl.html">colruyt.rearulmgtdmnejb.service.dl</a> &gt; QuantityRuleDlServiceTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">3</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.180s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard error</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">createTest</td>
+<td class="success">0.050s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">findByRuleIdTest</td>
+<td class="success">0.059s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">physicalDeleteElementsTest</td>
+<td class="success">0.071s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard error</h2>
+<span class="code">
+<pre>Aug 20, 2020 12:54:19 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/dataset/QuantityRuleDlServiceTest.xml]
+20835  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; batching prepstmnt 391440296 insert into &quot;PUBLIC&quot;.&quot;REA_QTY_RULE&quot; (&quot;REA_RULE_ID&quot;, &quot;QTY_COND_ID&quot;, &quot;QTY_TYPE_ID&quot;) values (?, ?, ?) [params=?, ?, ?]
+20835  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+20836  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; batching prepstmnt 391440296 insert into &quot;PUBLIC&quot;.&quot;REA_QTY_RULE&quot; (&quot;REA_RULE_ID&quot;, &quot;QTY_COND_ID&quot;, &quot;QTY_TYPE_ID&quot;) values (?, ?, ?) [params=?, ?, ?]
+20836  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+20837  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing batch prepstmnt 391440296 insert into &quot;PUBLIC&quot;.&quot;REA_QTY_RULE&quot; (&quot;REA_RULE_ID&quot;, &quot;QTY_COND_ID&quot;, &quot;QTY_TYPE_ID&quot;) values (?, ?, ?) [params=?, ?, ?]
+20841  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [4 ms] spent
+20846  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing prepstmnt 138061940 SELECT t0.QTY_COND_ID, t0.QTY_TYPE_ID FROM PUBLIC.REA_QTY_RULE t0 WHERE t0.REA_RULE_ID = ? [params=?]
+20847  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+Aug 20, 2020 12:54:19 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@29dcbe9
+20854  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing prepstmnt 944642852 UPDATE PUBLIC.REA_QTY_RULE SET QTY_COND_ID = ?, QTY_TYPE_ID = ? WHERE REA_RULE_ID = ? [params=?, ?, ?]
+20858  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+Aug 20, 2020 12:54:19 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/dataset/QuantityRuleDlServiceTest.xml]
+20879  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; batching prepstmnt 1980398517 insert into &quot;PUBLIC&quot;.&quot;REA_QTY_RULE&quot; (&quot;REA_RULE_ID&quot;, &quot;QTY_COND_ID&quot;, &quot;QTY_TYPE_ID&quot;) values (?, ?, ?) [params=?, ?, ?]
+20880  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+20881  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; batching prepstmnt 1980398517 insert into &quot;PUBLIC&quot;.&quot;REA_QTY_RULE&quot; (&quot;REA_RULE_ID&quot;, &quot;QTY_COND_ID&quot;, &quot;QTY_TYPE_ID&quot;) values (?, ?, ?) [params=?, ?, ?]
+20883  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+20884  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing batch prepstmnt 1980398517 insert into &quot;PUBLIC&quot;.&quot;REA_QTY_RULE&quot; (&quot;REA_RULE_ID&quot;, &quot;QTY_COND_ID&quot;, &quot;QTY_TYPE_ID&quot;) values (?, ?, ?) [params=?, ?, ?]
+20892  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [8 ms] spent
+20907  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing prepstmnt 1223426490 DELETE FROM PUBLIC.REA_QTY_RULE t0 WHERE (t0.REA_RULE_ID = ?) [params=?]
+20908  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [1 ms] spent
+Aug 20, 2020 12:54:19 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/result/QuantityRulePhysicalDeleteElementsTestResult.xml]
+Aug 20, 2020 12:54:19 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@3207ddee
+20925  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing stmnt 897454924 select &quot;REA_RULE_ID&quot;, &quot;QTY_COND_ID&quot;, &quot;QTY_TYPE_ID&quot; from &quot;PUBLIC&quot;.&quot;REA_QTY_RULE&quot;
+20927  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [1 ms] spent
+Aug 20, 2020 12:54:19 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@3207ddee
+20936  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing prepstmnt 733274723 SELECT t0.QTY_COND_ID, t0.QTY_TYPE_ID FROM PUBLIC.REA_QTY_RULE t0 WHERE t0.REA_RULE_ID = ? [params=?]
+20937  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+20942  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing prepstmnt 1611485290 INSERT INTO PUBLIC.REA_QTY_RULE (REA_RULE_ID, QTY_COND_ID, QTY_TYPE_ID) VALUES (?, ?, ?) [params=?, ?, ?]
+20944  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [1 ms] spent
+Aug 20, 2020 12:54:19 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/result/QuantityRuleCreateTestResult.xml]
+Aug 20, 2020 12:54:19 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@5cb90358
+20963  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing prepstmnt 1659523081 UPDATE PUBLIC.REA_QTY_RULE SET QTY_COND_ID = ?, QTY_TYPE_ID = ? WHERE REA_RULE_ID = ? [params=?, ?, ?]
+20966  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [3 ms] spent
+20968  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing stmnt 1760481854 select &quot;REA_RULE_ID&quot;, &quot;QTY_COND_ID&quot;, &quot;QTY_TYPE_ID&quot; from &quot;PUBLIC&quot;.&quot;REA_QTY_RULE&quot;
+20970  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [1 ms] spent
+Aug 20, 2020 12:54:19 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@5cb90358
+20975  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; executing prepstmnt 756602736 UPDATE PUBLIC.REA_QTY_RULE SET QTY_COND_ID = ?, QTY_TYPE_ID = ? WHERE REA_RULE_ID = ? [params=?, ?, ?]
+20977  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - &lt;t 1419574106, conn 972522616&gt; [0 ms] spent
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 6.5.1</a> at Aug 20, 2020 12:54:25 PM</p>
+</div>
+</div>
+</body>
+</html>

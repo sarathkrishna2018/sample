@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="colruyt.rearulmgtdmnejb.service.bl.ReactionPeriodRuleServiceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-08-20T10:53:53" hostname="f5f2d81ae076" time="0.044">
+  <properties/>
+  <testcase name="physicalDeleteElementsTest" classname="colruyt.rearulmgtdmnejb.service.bl.ReactionPeriodRuleServiceTest" time="0.012"/>
+  <testcase name="createRuleSpecificAttributesTest" classname="colruyt.rearulmgtdmnejb.service.bl.ReactionPeriodRuleServiceTest" time="0.01"/>
+  <testcase name="getRuleSpecificValuesTest" classname="colruyt.rearulmgtdmnejb.service.bl.ReactionPeriodRuleServiceTest" time="0.006"/>
+  <testcase name="modifyRuleSpecificAttributesTest" classname="colruyt.rearulmgtdmnejb.service.bl.ReactionPeriodRuleServiceTest" time="0.009"/>
+  <system-out><![CDATA[2020-08-20 12:53:53,834 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.ReactionPeriodRuleService - physicalDeleteElements 1
+2020-08-20 12:53:53,841 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.ReactionPeriodRuleService - Create Reaction Period Rule
+2020-08-20 12:53:53,843 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.ReactionPeriodRuleService - Reaction Period Rule Mandatory field Validation
+2020-08-20 12:53:53,852 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.ReactionPeriodRuleService - View Reaction Period Rule
+2020-08-20 12:53:53,861 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.ReactionPeriodRuleService -  Edit Reaction Period Rule
+2020-08-20 12:53:53,862 [DEBUG] colruyt.rearulmgtdmnejb.service.bl.ReactionPeriodRuleService - Reaction Period Rule Mandatory field Validation
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

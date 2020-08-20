@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="colruyt.rearulmgtdmnejb.service.dl.ReactingRuleDlServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-08-20T10:54:19" hostname="f5f2d81ae076" time="0.166">
+  <properties/>
+  <testcase name="findByRuleIdTest" classname="colruyt.rearulmgtdmnejb.service.dl.ReactingRuleDlServiceTest" time="0.049"/>
+  <testcase name="physicalDeleteElementsTest" classname="colruyt.rearulmgtdmnejb.service.dl.ReactingRuleDlServiceTest" time="0.052"/>
+  <testcase name="createTest" classname="colruyt.rearulmgtdmnejb.service.dl.ReactingRuleDlServiceTest" time="0.058"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Aug 20, 2020 12:54:19 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/dataset/ReactingRuleDlServiceTest.xml]
+21021  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 674351127 insert into "PUBLIC"."REA_REACTING_ACT" ("REA_RULE_ID", "CATCH_ALL_YN", "REACTING_AMT", "REACTING_PERC", "THOLD_AMT", "THOLD_PERC") values (?, ?, ?, ?, ?, ?) [params=?, ?, ?, ?, ?, ?]
+21022  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+21022  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 674351127 insert into "PUBLIC"."REA_REACTING_ACT" ("REA_RULE_ID", "CATCH_ALL_YN", "REACTING_AMT", "REACTING_PERC", "THOLD_AMT", "THOLD_PERC") values (?, ?, ?, ?, ?, ?) [params=?, ?, ?, ?, ?, ?]
+21022  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+21023  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing batch prepstmnt 674351127 insert into "PUBLIC"."REA_REACTING_ACT" ("REA_RULE_ID", "CATCH_ALL_YN", "REACTING_AMT", "REACTING_PERC", "THOLD_AMT", "THOLD_PERC") values (?, ?, ?, ?, ?, ?) [params=?, ?, ?, ?, ?, ?]
+21024  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+21025  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 527989488 SELECT t0.CATCH_ALL_YN, t0.REACTING_AMT, t0.REACTING_PERC, t0.THOLD_AMT, t0.THOLD_PERC FROM PUBLIC.REA_REACTING_ACT t0 WHERE t0.REA_RULE_ID = ? [params=?]
+21026  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+Aug 20, 2020 12:54:19 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@4f8fffd8
+21035  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 1450512452 UPDATE PUBLIC.REA_REACTING_ACT SET CATCH_ALL_YN = ?, REACTING_AMT = ?, REACTING_PERC = ?, THOLD_AMT = ?, THOLD_PERC = ? WHERE REA_RULE_ID = ? [params=?, ?, ?, ?, ?, ?]
+21036  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+Aug 20, 2020 12:54:19 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/dataset/ReactingRuleDlServiceTest.xml]
+21056  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 951297074 insert into "PUBLIC"."REA_REACTING_ACT" ("REA_RULE_ID", "CATCH_ALL_YN", "REACTING_AMT", "REACTING_PERC", "THOLD_AMT", "THOLD_PERC") values (?, ?, ?, ?, ?, ?) [params=?, ?, ?, ?, ?, ?]
+21057  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+21057  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 951297074 insert into "PUBLIC"."REA_REACTING_ACT" ("REA_RULE_ID", "CATCH_ALL_YN", "REACTING_AMT", "REACTING_PERC", "THOLD_AMT", "THOLD_PERC") values (?, ?, ?, ?, ?, ?) [params=?, ?, ?, ?, ?, ?]
+21058  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+21058  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing batch prepstmnt 951297074 insert into "PUBLIC"."REA_REACTING_ACT" ("REA_RULE_ID", "CATCH_ALL_YN", "REACTING_AMT", "REACTING_PERC", "THOLD_AMT", "THOLD_PERC") values (?, ?, ?, ?, ?, ?) [params=?, ?, ?, ?, ?, ?]
+21059  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+21070  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 1527538865 DELETE FROM PUBLIC.REA_REACTING_ACT t0 WHERE (t0.REA_RULE_ID = ?) [params=?]
+21072  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+Aug 20, 2020 12:54:19 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/result/ReactingRulePhysicalDeleteElementsTestResult.xml]
+Aug 20, 2020 12:54:19 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@6f43d658
+21087  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing stmnt 238725100 select "REA_RULE_ID", "CATCH_ALL_YN", "REACTING_AMT", "REACTING_PERC", "THOLD_AMT", "THOLD_PERC" from "PUBLIC"."REA_REACTING_ACT"
+21088  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+Aug 20, 2020 12:54:19 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@6f43d658
+21100  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 620828260 SELECT t0.CATCH_ALL_YN, t0.REACTING_AMT, t0.REACTING_PERC, t0.THOLD_AMT, t0.THOLD_PERC FROM PUBLIC.REA_REACTING_ACT t0 WHERE t0.REA_RULE_ID = ? [params=?]
+21103  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+21106  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 541908650 INSERT INTO PUBLIC.REA_REACTING_ACT (REA_RULE_ID, CATCH_ALL_YN, REACTING_AMT, REACTING_PERC, THOLD_AMT, THOLD_PERC) VALUES (?, ?, ?, ?, ?, ?) [params=?, ?, ?, ?, ?, ?]
+21107  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+Aug 20, 2020 12:54:19 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/result/ReactingRuleCreateTestResult.xml]
+Aug 20, 2020 12:54:19 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@797d5e67
+21126  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 116884996 UPDATE PUBLIC.REA_REACTING_ACT SET CATCH_ALL_YN = ?, REACTING_AMT = ?, REACTING_PERC = ?, THOLD_AMT = ?, THOLD_PERC = ? WHERE REA_RULE_ID = ? [params=?, ?, ?, ?, ?, ?]
+21128  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+21136  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing stmnt 1074311678 select "REA_RULE_ID", "CATCH_ALL_YN", "REACTING_AMT", "REACTING_PERC", "THOLD_AMT", "THOLD_PERC" from "PUBLIC"."REA_REACTING_ACT"
+21138  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+Aug 20, 2020 12:54:19 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@797d5e67
+21151  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 1297290324 UPDATE PUBLIC.REA_REACTING_ACT SET CATCH_ALL_YN = ?, REACTING_AMT = ?, REACTING_PERC = ?, THOLD_AMT = ?, THOLD_PERC = ? WHERE REA_RULE_ID = ? [params=?, ?, ?, ?, ?, ?]
+21153  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+]]></system-err>
+</testsuite>

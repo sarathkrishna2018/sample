@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="colruyt.rearulmgtdmnejb.service.dl.ProductHierarchyElementDlServiceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-08-20T10:54:15" hostname="f5f2d81ae076" time="1.468">
+  <properties/>
+  <testcase name="deleteElementsTest" classname="colruyt.rearulmgtdmnejb.service.dl.ProductHierarchyElementDlServiceTest" time="0.14"/>
+  <testcase name="findAllElementsTest" classname="colruyt.rearulmgtdmnejb.service.dl.ProductHierarchyElementDlServiceTest" time="0.52"/>
+  <testcase name="createProductHierarachyTest" classname="colruyt.rearulmgtdmnejb.service.dl.ProductHierarchyElementDlServiceTest" time="0.276"/>
+  <testcase name="findByHierarchyValueListTest" classname="colruyt.rearulmgtdmnejb.service.dl.ProductHierarchyElementDlServiceTest" time="0.532"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Aug 20, 2020 12:54:15 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/dataset/ProductHierarchyElementDlServiceTest.xml]
+17204  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 975853260 insert into "PUBLIC"."REA_PPD_HCHY_ELMNT" ("PPD_HCHY_ELMNT_ID", "PPD_HCHY_TYPE_ID", "PPD_HCHY_VALUE", "CREATED_BY") values (?, ?, ?, ?) [params=?, ?, ?, ?]
+17205  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+17206  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 975853260 insert into "PUBLIC"."REA_PPD_HCHY_ELMNT" ("PPD_HCHY_ELMNT_ID", "PPD_HCHY_TYPE_ID", "PPD_HCHY_VALUE", "CREATED_BY") values (?, ?, ?, ?) [params=?, ?, ?, ?]
+17207  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+17208  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 975853260 insert into "PUBLIC"."REA_PPD_HCHY_ELMNT" ("PPD_HCHY_ELMNT_ID", "PPD_HCHY_TYPE_ID", "PPD_HCHY_VALUE", "CREATED_BY") values (?, ?, ?, ?) [params=?, ?, ?, ?]
+17209  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+17210  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing batch prepstmnt 975853260 insert into "PUBLIC"."REA_PPD_HCHY_ELMNT" ("PPD_HCHY_ELMNT_ID", "PPD_HCHY_TYPE_ID", "PPD_HCHY_VALUE", "CREATED_BY") values (?, ?, ?, ?) [params=?, ?, ?, ?]
+17212  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [2 ms] spent
+17231  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 124900592 insert into "PUBLIC"."REA_PPD_HCHYSET_ELMNT" ("PPD_HCHYSET_ID", "PPD_HCHY_ELMNT_ID", "LST_UPDATE_BY") values (?, ?, ?) [params=?, ?, ?]
+17232  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+17233  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 124900592 insert into "PUBLIC"."REA_PPD_HCHYSET_ELMNT" ("PPD_HCHYSET_ID", "PPD_HCHY_ELMNT_ID", "LST_UPDATE_BY") values (?, ?, ?) [params=?, ?, ?]
+17234  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+17235  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 124900592 insert into "PUBLIC"."REA_PPD_HCHYSET_ELMNT" ("PPD_HCHYSET_ID", "PPD_HCHY_ELMNT_ID", "LST_UPDATE_BY") values (?, ?, ?) [params=?, ?, ?]
+17236  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+17236  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing batch prepstmnt 124900592 insert into "PUBLIC"."REA_PPD_HCHYSET_ELMNT" ("PPD_HCHYSET_ID", "PPD_HCHY_ELMNT_ID", "LST_UPDATE_BY") values (?, ?, ?) [params=?, ?, ?]
+17239  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [2 ms] spent
+17257  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 698218321 DELETE FROM PUBLIC.REA_PPD_HCHY_ELMNT t0 WHERE (t0.PPD_HCHY_ELMNT_ID IN (?, ?)) [params=?, ?]
+17258  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+Aug 20, 2020 12:54:16 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/result/DeleteElementsTestResult.xml]
+Aug 20, 2020 12:54:16 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@2bf50be
+17275  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing stmnt 1293650566 select "PPD_HCHYSET_ID", "PPD_HCHY_ELMNT_ID", "LST_UPDATE_BY" from "PUBLIC"."REA_PPD_HCHYSET_ELMNT"
+17275  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+17278  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing stmnt 200989451 select "PPD_HCHY_ELMNT_ID", "PPD_HCHY_TYPE_ID", "PPD_HCHY_VALUE", "CREATED_BY" from "PUBLIC"."REA_PPD_HCHY_ELMNT"
+17279  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+Aug 20, 2020 12:54:16 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@2bf50be
+Aug 20, 2020 12:54:16 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/dataset/ProductHierarchyElementDlServiceTest.xml]
+17309  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 1221093657 insert into "PUBLIC"."REA_PPD_HCHY_ELMNT" ("PPD_HCHY_ELMNT_ID", "PPD_HCHY_TYPE_ID", "PPD_HCHY_VALUE", "CREATED_BY") values (?, ?, ?, ?) [params=?, ?, ?, ?]
+17309  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+17309  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 1221093657 insert into "PUBLIC"."REA_PPD_HCHY_ELMNT" ("PPD_HCHY_ELMNT_ID", "PPD_HCHY_TYPE_ID", "PPD_HCHY_VALUE", "CREATED_BY") values (?, ?, ?, ?) [params=?, ?, ?, ?]
+17309  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+17310  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 1221093657 insert into "PUBLIC"."REA_PPD_HCHY_ELMNT" ("PPD_HCHY_ELMNT_ID", "PPD_HCHY_TYPE_ID", "PPD_HCHY_VALUE", "CREATED_BY") values (?, ?, ?, ?) [params=?, ?, ?, ?]
+17310  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+17310  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing batch prepstmnt 1221093657 insert into "PUBLIC"."REA_PPD_HCHY_ELMNT" ("PPD_HCHY_ELMNT_ID", "PPD_HCHY_TYPE_ID", "PPD_HCHY_VALUE", "CREATED_BY") values (?, ?, ?, ?) [params=?, ?, ?, ?]
+17312  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+17312  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 1977636259 insert into "PUBLIC"."REA_PPD_HCHYSET_ELMNT" ("PPD_HCHYSET_ID", "PPD_HCHY_ELMNT_ID", "LST_UPDATE_BY") values (?, ?, ?) [params=?, ?, ?]
+17312  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+17313  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 1977636259 insert into "PUBLIC"."REA_PPD_HCHYSET_ELMNT" ("PPD_HCHYSET_ID", "PPD_HCHY_ELMNT_ID", "LST_UPDATE_BY") values (?, ?, ?) [params=?, ?, ?]
+17313  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+17313  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 1977636259 insert into "PUBLIC"."REA_PPD_HCHYSET_ELMNT" ("PPD_HCHYSET_ID", "PPD_HCHY_ELMNT_ID", "LST_UPDATE_BY") values (?, ?, ?) [params=?, ?, ?]
+17314  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+17314  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing batch prepstmnt 1977636259 insert into "PUBLIC"."REA_PPD_HCHYSET_ELMNT" ("PPD_HCHYSET_ID", "PPD_HCHY_ELMNT_ID", "LST_UPDATE_BY") values (?, ?, ?) [params=?, ?, ?]
+17316  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+17348  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 994905242 SELECT t0.PPD_HCHY_ELMNT_ID, t0.CREATED_BY, t0.PPD_HCHY_TYPE_ID, t0.PPD_HCHY_VALUE FROM PUBLIC.REA_PPD_HCHY_ELMNT t0
+17348  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+Aug 20, 2020 12:54:16 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@59dfbb1c
+17761  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 316575858 UPDATE PUBLIC.REA_PPD_HCHY_ELMNT SET CREATED_BY = ?, PPD_HCHY_TYPE_ID = ?, PPD_HCHY_VALUE = ? WHERE PPD_HCHY_ELMNT_ID = ? [params=?, ?, ?, ?]
+17773  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+17774  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 1443944388 UPDATE PUBLIC.REA_PPD_HCHY_ELMNT SET CREATED_BY = ?, PPD_HCHY_TYPE_ID = ?, PPD_HCHY_VALUE = ? WHERE PPD_HCHY_ELMNT_ID = ? [params=?, ?, ?, ?]
+17775  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+17776  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 1476692521 UPDATE PUBLIC.REA_PPD_HCHY_ELMNT SET CREATED_BY = ?, PPD_HCHY_TYPE_ID = ?, PPD_HCHY_VALUE = ? WHERE PPD_HCHY_ELMNT_ID = ? [params=?, ?, ?, ?]
+17777  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+Aug 20, 2020 12:54:16 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/dataset/ProductHierarchyElementDlServiceCreateTest.xml]
+17923  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 525196531 insert into "PUBLIC"."REA_PPD_HCHY_ELMNT" ("PPD_HCHY_ELMNT_ID", "PPD_HCHY_TYPE_ID", "PPD_HCHY_VALUE", "CREATED_BY") values (?, ?, ?, ?) [params=?, ?, ?, ?]
+17923  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+17924  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing batch prepstmnt 525196531 insert into "PUBLIC"."REA_PPD_HCHY_ELMNT" ("PPD_HCHY_ELMNT_ID", "PPD_HCHY_TYPE_ID", "PPD_HCHY_VALUE", "CREATED_BY") values (?, ?, ?, ?) [params=?, ?, ?, ?]
+17925  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+17926  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 1224246597 insert into "PUBLIC"."REA_PPD_HCHYSET_ELMNT" ("PPD_HCHYSET_ID", "PPD_HCHY_ELMNT_ID", "LST_UPDATE_BY") values (?, ?, ?) [params=?, ?, ?]
+17926  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+17926  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing batch prepstmnt 1224246597 insert into "PUBLIC"."REA_PPD_HCHYSET_ELMNT" ("PPD_HCHYSET_ID", "PPD_HCHY_ELMNT_ID", "LST_UPDATE_BY") values (?, ?, ?) [params=?, ?, ?]
+17927  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+17934  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 1383348227 SELECT t0.CREATED_BY, t0.PPD_HCHY_TYPE_ID, t0.PPD_HCHY_VALUE FROM PUBLIC.REA_PPD_HCHY_ELMNT t0 WHERE t0.PPD_HCHY_ELMNT_ID = ? [params=?]
+17935  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+17985  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 2116782229 SELECT t0.PPD_HCHY_ELMNT_ID, t0.PPD_HCHYSET_ID, t0.LST_UPDATE_BY FROM PUBLIC.REA_PPD_HCHYSET_ELMNT t0 WHERE t0.PPD_HCHY_ELMNT_ID = ? [params=?]
+17986  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+18013  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 1329434335 UPDATE PUBLIC.REA_PPD_HCHY_ELMNT SET CREATED_BY = ?, PPD_HCHY_TYPE_ID = ?, PPD_HCHY_VALUE = ? WHERE PPD_HCHY_ELMNT_ID = ? [params=?, ?, ?, ?]
+18014  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+18024  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 1069322193 UPDATE PUBLIC.REA_PPD_HCHYSET_ELMNT SET LST_UPDATE_BY = ? WHERE PPD_HCHY_ELMNT_ID = ? AND PPD_HCHYSET_ID = ? [params=?, ?, ?]
+18024  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+Aug 20, 2020 12:54:16 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/result/ProductHierarchyElementCreateTestResult.xml]
+Aug 20, 2020 12:54:16 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@f1f58b7
+18056  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 1336735127 UPDATE PUBLIC.REA_PPD_HCHY_ELMNT SET PPD_HCHY_TYPE_ID = ? WHERE PPD_HCHY_ELMNT_ID = ? [params=?, ?]
+18057  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+18059  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing stmnt 339028404 select "PPD_HCHYSET_ID", "PPD_HCHY_ELMNT_ID", "LST_UPDATE_BY" from "PUBLIC"."REA_PPD_HCHYSET_ELMNT"
+18059  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+18060  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing stmnt 179182874 select "PPD_HCHY_ELMNT_ID", "PPD_HCHY_TYPE_ID", "PPD_HCHY_VALUE", "CREATED_BY" from "PUBLIC"."REA_PPD_HCHY_ELMNT"
+18062  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+Aug 20, 2020 12:54:16 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@f1f58b7
+18076  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 1119283279 UPDATE PUBLIC.REA_PPD_HCHY_ELMNT SET PPD_HCHY_TYPE_ID = ? WHERE PPD_HCHY_ELMNT_ID = ? [params=?, ?]
+18076  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+Aug 20, 2020 12:54:16 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/dataset/ProductHierarchyElementDlServiceTest.xml]
+18125  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 1975065784 insert into "PUBLIC"."REA_PPD_HCHY_ELMNT" ("PPD_HCHY_ELMNT_ID", "PPD_HCHY_TYPE_ID", "PPD_HCHY_VALUE", "CREATED_BY") values (?, ?, ?, ?) [params=?, ?, ?, ?]
+18140  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+18141  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 1975065784 insert into "PUBLIC"."REA_PPD_HCHY_ELMNT" ("PPD_HCHY_ELMNT_ID", "PPD_HCHY_TYPE_ID", "PPD_HCHY_VALUE", "CREATED_BY") values (?, ?, ?, ?) [params=?, ?, ?, ?]
+18142  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+18143  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 1975065784 insert into "PUBLIC"."REA_PPD_HCHY_ELMNT" ("PPD_HCHY_ELMNT_ID", "PPD_HCHY_TYPE_ID", "PPD_HCHY_VALUE", "CREATED_BY") values (?, ?, ?, ?) [params=?, ?, ?, ?]
+18143  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+18144  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing batch prepstmnt 1975065784 insert into "PUBLIC"."REA_PPD_HCHY_ELMNT" ("PPD_HCHY_ELMNT_ID", "PPD_HCHY_TYPE_ID", "PPD_HCHY_VALUE", "CREATED_BY") values (?, ?, ?, ?) [params=?, ?, ?, ?]
+18146  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [2 ms] spent
+18148  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 775367656 insert into "PUBLIC"."REA_PPD_HCHYSET_ELMNT" ("PPD_HCHYSET_ID", "PPD_HCHY_ELMNT_ID", "LST_UPDATE_BY") values (?, ?, ?) [params=?, ?, ?]
+18148  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+18149  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 775367656 insert into "PUBLIC"."REA_PPD_HCHYSET_ELMNT" ("PPD_HCHYSET_ID", "PPD_HCHY_ELMNT_ID", "LST_UPDATE_BY") values (?, ?, ?) [params=?, ?, ?]
+18150  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+18162  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 775367656 insert into "PUBLIC"."REA_PPD_HCHYSET_ELMNT" ("PPD_HCHYSET_ID", "PPD_HCHY_ELMNT_ID", "LST_UPDATE_BY") values (?, ?, ?) [params=?, ?, ?]
+18162  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+18162  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing batch prepstmnt 775367656 insert into "PUBLIC"."REA_PPD_HCHYSET_ELMNT" ("PPD_HCHYSET_ID", "PPD_HCHY_ELMNT_ID", "LST_UPDATE_BY") values (?, ?, ?) [params=?, ?, ?]
+18164  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [2 ms] spent
+18559  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 391521533 SELECT t0.PPD_HCHY_ELMNT_ID, t0.CREATED_BY, t0.PPD_HCHY_TYPE_ID, t0.PPD_HCHY_VALUE FROM PUBLIC.REA_PPD_HCHY_ELMNT t0 WHERE (t0.PPD_HCHY_VALUE = ? AND t0.PPD_HCHY_VALUE IS NOT NULL) [params=?]
+18567  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [7 ms] spent
+Aug 20, 2020 12:54:17 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@355193cb
+18590  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 1157065299 UPDATE PUBLIC.REA_PPD_HCHY_ELMNT SET CREATED_BY = ?, PPD_HCHY_TYPE_ID = ?, PPD_HCHY_VALUE = ? WHERE PPD_HCHY_ELMNT_ID = ? [params=?, ?, ?, ?]
+18595  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+18596  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 1385063221 UPDATE PUBLIC.REA_PPD_HCHY_ELMNT SET CREATED_BY = ?, PPD_HCHY_TYPE_ID = ?, PPD_HCHY_VALUE = ? WHERE PPD_HCHY_ELMNT_ID = ? [params=?, ?, ?, ?]
+18597  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+]]></system-err>
+</testsuite>

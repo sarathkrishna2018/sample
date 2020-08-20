@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="colruyt.rearulmgtdmnejb.utils.PriceProductConverterTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2020-08-20T10:54:22" hostname="f5f2d81ae076" time="0.049">
+  <properties/>
+  <testcase name="convertFailTest" classname="colruyt.rearulmgtdmnejb.utils.PriceProductConverterTest" time="0.039"/>
+  <testcase name="convertProductsFailTest" classname="colruyt.rearulmgtdmnejb.utils.PriceProductConverterTest" time="0.002"/>
+  <testcase name="convertTest" classname="colruyt.rearulmgtdmnejb.utils.PriceProductConverterTest" time="0.003"/>
+  <testcase name="convertProductsTest" classname="colruyt.rearulmgtdmnejb.utils.PriceProductConverterTest" time="0.002"/>
+  <testcase name="convertToPriceProductHierarchyBosTest" classname="colruyt.rearulmgtdmnejb.utils.PriceProductConverterTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

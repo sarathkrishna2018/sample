@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="colruyt.rearulmgtdmnejb.service.dl.ReactionRuleSourceTypeDlServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-08-20T10:54:22" hostname="f5f2d81ae076" time="0.05">
+  <properties/>
+  <testcase name="physicalDeleteSourceTypeTest" classname="colruyt.rearulmgtdmnejb.service.dl.ReactionRuleSourceTypeDlServiceTest" time="0.05"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Aug 20, 2020 12:54:22 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/dataset/ReactionRuleSourceTypeDlServiceTest.xml]
+23405  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 796470294 insert into "PUBLIC"."REA_RULE_SRC" ("SOURCE_ID", "REA_RULE_ID") values (?, ?) [params=?, ?]
+23406  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+23406  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> batching prepstmnt 796470294 insert into "PUBLIC"."REA_RULE_SRC" ("SOURCE_ID", "REA_RULE_ID") values (?, ?) [params=?, ?]
+23406  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+23407  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing batch prepstmnt 796470294 insert into "PUBLIC"."REA_RULE_SRC" ("SOURCE_ID", "REA_RULE_ID") values (?, ?) [params=?, ?]
+23407  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+23425  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing prepstmnt 159267726 DELETE FROM PUBLIC.REA_RULE_SRC t0 WHERE (t0.REA_RULE_ID = ?) [params=?]
+23426  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [1 ms] spent
+Aug 20, 2020 12:54:22 PM org.unitils.dbunit.DbUnitModule getDataSet
+INFO: Loading DbUnit data set. File names: [/home/gradle/project/build/resources/test/colruyt/rearulmgtdmnejb/service/dl/result/PhysicalDeleteSourceTypeTestResult.xml]
+Aug 20, 2020 12:54:22 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@771fad13
+23438  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> executing stmnt 1664218903 select "REA_RULE_ID", "SOURCE_ID" from "PUBLIC"."REA_RULE_SRC"
+23439  in_memory_database_testing  TRACE  [Test worker] openjpa.jdbc.SQL - <t 1419574106, conn 972522616> [0 ms] spent
+Aug 20, 2020 12:54:22 PM org.unitils.orm.jpa.JpaModule flushOrmPersistenceContext
+INFO: Flushing entity manager org.apache.openjpa.persistence.EntityManagerImpl@771fad13
+]]></system-err>
+</testsuite>

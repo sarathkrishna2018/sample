@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="colruyt.rearulmgtdmnejb.utils.ReaRuleConverterTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2020-08-20T10:54:22" hostname="f5f2d81ae076" time="0.021">
+  <properties/>
+  <testcase name="convertRuleActionTest" classname="colruyt.rearulmgtdmnejb.utils.ReaRuleConverterTest" time="0.001"/>
+  <testcase name="createconvertRuleLineTest" classname="colruyt.rearulmgtdmnejb.utils.ReaRuleConverterTest" time="0.002"/>
+  <testcase name="convertAllSourceTest" classname="colruyt.rearulmgtdmnejb.utils.ReaRuleConverterTest" time="0.002"/>
+  <testcase name="convertRuleSourceTest" classname="colruyt.rearulmgtdmnejb.utils.ReaRuleConverterTest" time="0.001"/>
+  <testcase name="convertRuleBoTest" classname="colruyt.rearulmgtdmnejb.utils.ReaRuleConverterTest" time="0.003"/>
+  <testcase name="convertAllActionTest" classname="colruyt.rearulmgtdmnejb.utils.ReaRuleConverterTest" time="0.005"/>
+  <testcase name="convertGeneralRuleBoTest" classname="colruyt.rearulmgtdmnejb.utils.ReaRuleConverterTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
